@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-contente-dev-202732-authRole",
+      "UnauthRoleArn": "arn:aws:iam::995966967167:role/amplify-contente-dev-202732-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::995966967167:role/amplify-contente-dev-202732-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-contente-dev-202732-deployment",
+      "UnauthRoleName": "amplify-contente-dev-202732-unauthRole",
+      "StackName": "amplify-contente-dev-202732",
+      "StackId": "arn:aws:cloudformation:us-east-1:995966967167:stack/amplify-contente-dev-202732/cb3c5da0-a632-11ed-9e84-12f284457d8b",
+      "AmplifyAppId": "d12cm8tmqhdorb"
+    },
+    "categories": {
+      "auth": {
+        "contente9303b093": {}
+      },
+      "api": {
+        "contente": {}
+      }
+    }
+  }
+}

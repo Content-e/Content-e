@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "contente",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authcontente9303b093",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
