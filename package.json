@@ -1,0 +1,18 @@
+{
+    "name": "content-e",
+    "version": "0.0.1",
+    "description": "AI based content generation",
+    "productName": "Content-E",
+    "author": "AdeelTahir",
+    "private": true,
+    "scripts": {
+        "start": "node test.js"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "openai": "^3.1.0"
+    },
+    "engines": {
+        "node": ">= 16"
+    }
+}
