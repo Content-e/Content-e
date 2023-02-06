@@ -1,0 +1,31 @@
+
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+
+type UserProfile
+@model 
+@auth(rules: [{ allow: owner }]) 
+{
+  id: ID!
+  name: String!
+  userEmail: String! @index
+  description: String
+  brand: [BrandProfile] @hasMany
+  owner: String @auth(rules: [{ allow: owner, operations: [read] }])
+}
+
+type BrandProfile 
+@model 
+@auth(rules: [{ allow: owner }]) 
+{
+  id: ID!
+  name: String
+  toneVoice: [String]
+  pillars: [String]
+  description: String
+  internalMission: String
+  strapLine: String
+  userEmail: String @index 
+}
+
+
