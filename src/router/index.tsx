@@ -48,7 +48,7 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
         redirectToValidRoute();
       else if (!isLoggedIn && !UnAuthRoutesArray.includes(pathname))
         redirectToInValidRoute();
-      handlePathFound(false);
+      handlePathFound(true);
     }
   }, [isLoading, isLoggedIn, email]);
 
