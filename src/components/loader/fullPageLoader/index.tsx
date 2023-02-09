@@ -1,12 +1,15 @@
 import { Spinner } from "react-bootstrap";
+import * as S from "./styles";
 
 export const FullPageLoader: React.FC = () => {
   return (
-    <Spinner
-      animation="border"
-      className="d-flex ml-auto mr-auto mt-5 spinner-border"
-      variant="primary"
-    />
+    <S.LoadingWrapper>
+      <Spinner
+        animation="border"
+        className="spinner-border"
+        variant="primary"
+      />
+    </S.LoadingWrapper>
   );
 };
 export default FullPageLoader;
