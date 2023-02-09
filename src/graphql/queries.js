@@ -1,6 +1,20 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getGPTresponse = /* GraphQL */ `
+  query GetGPTresponse($data: GPT_INPUT) {
+    getGPTresponse(data: $data) {
+      responseType
+      BRAND_NAME
+      BRAND_NAME_REFRESH
+      BRAND_PILLARS
+      BRAND_VALUES
+      BRAND_MISSION_STATEMENT
+      error
+      message
+    }
+  }
+`;
 export const getUserProfile = /* GraphQL */ `
   query GetUserProfile($id: ID!) {
     getUserProfile(id: $id) {

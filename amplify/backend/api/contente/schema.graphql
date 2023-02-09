@@ -28,4 +28,41 @@ type BrandProfile
   userEmail: String @index 
 }
 
+enum GPT_PROMPT {
+  BRAND_NAME
+  BRAND_NAME_REFRESH
+  BRAND_PILLARS
+  BRAND_VALUES
+  BRAND_MISION_STATEMENT
+}
+enum GPT_RESPONSE_TYPE {
+  BRAND_NAME
+  BRAND_NAME_REFRESH
+  BRAND_PILLARS
+  BRAND_VALUES
+  BRAND_MISION_STATEMENT
+}
 
+input GPT_INPUT {
+  context: String
+  prompType: GPT_PROMPT!
+  businessDescription: String
+  toneOfVoice: String
+  brandName: String
+  brandPillars: [String]
+}
+
+type GPT_RESPONSE @aws_cognito_user_pools {
+  responseType: GPT_RESPONSE_TYPE
+  BRAND_NAME: String
+  BRAND_NAME_REFRESH: String
+  BRAND_PILLARS: String
+  BRAND_VALUES: String
+  BRAND_MISSION_STATEMENT: String
+  error: Boolean
+  message: String
+}
+
+type Query{
+  getGPTresponse(data: GPT_INPUT): GPT_RESPONSE @function(name: "GPTLambda-${env}") @aws_iam @aws_cognito_user_pools
+}
