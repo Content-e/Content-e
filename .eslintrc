@@ -1,0 +1,63 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "extends": ["eslint:recommended", "airbnb-typescript/base", "plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended", "prettier", "plugin:prettier/recommended"],
+  "plugins": ["import", "prettier", "no-only-tests"],
+  "rules": {
+    "no-underscore-dangle": "off",
+    "no-extra-semi": 0,
+    "no-restricted-syntax": [2, "WithStatement"],
+    "@typescript-eslint/quotes": [2, "double"],
+    "import/export": 0,
+    "quotes": [2, "double"],
+    "no-console": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-var-requires": 1,
+    "max-len": [
+      2,
+      110, // airbnb's default is 100 but we give some additional space for edge cases where prettier is not that strict
+      2,
+      {
+        "ignoreUrls": true,
+        "ignoreComments": false
+      }
+    ],
+    "@typescript-eslint/indent": 0, // https://github.com/typescript-eslint/typescript-eslint/issues/1824,
+    "@typescript-eslint/no-implied-eval": 0, // trade-0 for faster linting without parserOptions setting
+    "@typescript-eslint/no-throw-literal": 0, // trade-0 for faster linting without parserOptions setting
+    "import/no-cycle": 2,
+    "@typescript-eslint/no-unused-vars": 2,
+    "@typescript-eslint/prefer-optional-chain": 1,
+    "import/extensions": 0,
+    "no-only-tests/no-only-tests": "error"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": [1]
+      }
+    },
+    {
+      "files": ["*.test.*"],
+      "rules": {
+        "import/no-named-as-default-member": 0
+      }
+    }
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts"]
+      }
+    }
+  }
+}
