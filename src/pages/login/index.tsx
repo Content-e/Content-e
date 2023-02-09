@@ -1,7 +1,8 @@
+import { Login } from "components";
 import { FC } from "react";
 
 export const LoginPage: FC = () => {
-  return <div>FINALLY THIS IS LOGIN PAGE</div>;
+  return <Login />;
 };
 
 export default LoginPage;

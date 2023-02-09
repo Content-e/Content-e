@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "state/auth";
 import config from "aws-exports";
 import MainRouter from "./router";
-import "./index.css";
+import "./assets/css/index.css";
 
 Amplify.configure(config);
 
