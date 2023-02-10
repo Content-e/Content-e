@@ -1,16 +1,17 @@
 import React, { FC, useState } from "react";
 import { Input } from "components";
+import { useHistory } from "react-router-dom";
 import * as S from "./styles";
-import GoogleLogin from "../googleLogin";
-import Checkbox from "../checkbox";
+import GoogleLogin from "./googleLogin";
+import { UnAuthRoutes } from "utils";
 
-export const Login: FC = () => {
+export const Register: FC = () => {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onLogin = (): void => {};
   const onSignUp = (): void => {};
-  const onForget = (): void => {};
+  const onLogin = (): void => history.push(UnAuthRoutes.Login);
 
   return (
     <S.LoginWrapper>
@@ -29,17 +30,10 @@ export const Login: FC = () => {
             placeholder="Password"
           />
         </S.InputCanvas>
-        <S.InfoBox>
-          <S.InfoTextWrapper>
-            <Checkbox />
-            <S.InfoText>Remember me</S.InfoText>
-          </S.InfoTextWrapper>
-          <S.InfoTextLink onClick={onForget}>Forgot Password</S.InfoTextLink>
-        </S.InfoBox>
 
         <S.ButtonWrapper>
-          <S.AuthButton onClick={onLogin}>Login</S.AuthButton>
-          <S.AuthButtonWhite onClick={onSignUp}>Sign up</S.AuthButtonWhite>
+          <S.AuthButton onClick={onSignUp}>Sign up</S.AuthButton>
+          <S.AuthButtonWhite onClick={onLogin}>Login</S.AuthButtonWhite>
         </S.ButtonWrapper>
 
         <GoogleLogin />
@@ -48,4 +42,4 @@ export const Login: FC = () => {
   );
 };
 
-export default Login;
+export default Register;

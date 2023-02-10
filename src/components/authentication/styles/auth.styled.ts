@@ -64,7 +64,7 @@ export const InfoBox = styled.div`
   font-size: 14px;
   line-height: 28px;
   color: #e9d8a6;
-  margin: 20px 0 45px;
+  margin: 20px 0 0;
 `;
 
 export const InfoTextWrapper = styled.div`
@@ -105,6 +105,7 @@ export const InfoTextLink = styled.a`
 `;
 
 export const ButtonWrapper = styled.div`
+  margin-top: 45px;
   display: flex;
   align-items: center;
   justify-content: space-around;

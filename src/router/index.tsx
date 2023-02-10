@@ -61,7 +61,7 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
 
       <ShouldRender if={pathFound}>
         <Switch>
-          <Route exact path={AuthRoutes.Logout} component={LogoutPage} />
+          <Route path={AuthRoutes.Logout} component={LogoutPage} />
           {mainRoutes.map((route: RouteProps, index: number) => (
             <Route key={`${index}`} {...route} />
           ))}

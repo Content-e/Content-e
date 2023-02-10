@@ -9,7 +9,7 @@ export const Checkbox: FC = () => {
       <S.CheckBoxlabel className="container">
         <S.CheckInput
           checked={checked}
-          onClick={(): void => setChecked(!checked)}
+          onChange={(): void => setChecked(!checked)}
         />
         <S.CheckBoxTick className={checked ? "tickMark" : ""} />
       </S.CheckBoxlabel>
