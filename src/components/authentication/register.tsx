@@ -42,10 +42,8 @@ export const Register: FC = () => {
   );
 
   useEffect(() => {
-    if (success) {
-      const { email } = signUpState;
-      history.push(UnAuthRoutes.Login, { state: { email } });
-    }
+    if (success)
+      history.push(UnAuthRoutes.Reverify, { state: { ...signUpState } });
   }, [success]);
 
   const commonProps = {

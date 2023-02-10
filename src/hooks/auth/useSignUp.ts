@@ -33,10 +33,7 @@ export const useSignup = (): ApiHookReturnType<
         const response: SignUpResponse = await Auth.signUp({
           username: email,
           password,
-          attributes: {
-            email,
-            "custom:role": "CLIENT_BASIC",
-          },
+          attributes: { email },
         });
         setRes(getSuccessResponse<CognitoUser>(response.user));
         setAuthState((current) => ({

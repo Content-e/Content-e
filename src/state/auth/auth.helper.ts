@@ -1,5 +1,3 @@
-import { companyDetailsKey, defaultInfoState, personalDetailsKey } from "utils";
-
 export const validateEmail = (email: string): string | null => {
   const emailRegExp = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   if (email.length < 1) {
@@ -27,22 +25,4 @@ export const validateVerificationCode = (code: string): string | null => {
   if (!digitMatcher.test(code)) return "Invalid character. Input only digits";
   if (!lengthMatcher.test(code)) return "Invalid character length";
   return null;
-};
-
-export const getUserFullName = (emailProvided: string): string => {
-  const fullNameData =
-    JSON.parse(localStorage.getItem(personalDetailsKey) as string) || {};
-  const { email: storedEmail, fullName } = fullNameData;
-  if (storedEmail === emailProvided) return fullName;
-  return "";
-};
-
-export const getUserCompanyInfo = (
-  emailProvided: string
-): typeof defaultInfoState => {
-  const companyData =
-    JSON.parse(localStorage.getItem(companyDetailsKey) as string) || {};
-  const { email: storedEmail, ...rest } = companyData;
-  if (storedEmail === emailProvided) return rest;
-  return defaultInfoState;
 };

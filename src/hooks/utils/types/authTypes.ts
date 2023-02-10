@@ -1,5 +1,4 @@
 import { CognitoUser } from "@aws-amplify/auth";
-import { UnknownType } from "utils";
 
 export type SignPayloadType = {
   email: string;
@@ -28,11 +27,6 @@ export type GetSuccessResponseType<T> = {
   success: boolean;
   isLoading: boolean;
   error: string | null;
-};
-
-export type ConfirmPayloadType = {
-  code: string;
-  clientMetadata: UnknownType;
 };
 
 export type ApiHookReturnType<R, A> = {

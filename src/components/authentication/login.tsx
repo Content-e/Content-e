@@ -46,7 +46,8 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
   const onForget = (): void => {};
 
   useEffect(() => {
-    if (error === unverifiedUser) history.push(UnAuthRoutes.Reverify);
+    if (error === unverifiedUser)
+      history.push(UnAuthRoutes.Reverify, { state: { ...formState } });
     else if (success) getAuth();
   }, [success, error]);
 

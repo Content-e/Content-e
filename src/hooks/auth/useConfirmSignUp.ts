@@ -5,26 +5,15 @@ import {
   ApiCustomHookStateType,
   apiInitialState,
   ApiHookReturnType,
-  ConfirmPayloadType,
 } from "hooks/utils";
-import useLocalStorage from "hooks/utils/localStorage";
 import { useCallback, useContext, useState } from "react";
 import { AuthContext } from "state/auth";
 import { AuthContextType } from "state/types";
 import ErrorContext from "state/error/error.context";
-import {
-  companyDetailsKey,
-  confirmSignUpErrorHeading,
-  IErrorContextType,
-  personalDetailsKey,
-} from "utils";
+import { confirmSignUpErrorHeading, IErrorContextType } from "utils";
 import { updateErrorState } from "components";
 
-export const useConfirmSignUp = (): ApiHookReturnType<
-  CognitoUser,
-  ConfirmPayloadType
-> => {
-  const { deleteItem } = useLocalStorage();
+export const useConfirmSignUp = (): ApiHookReturnType<CognitoUser, string> => {
   const [res, setRes] =
     useState<ApiCustomHookStateType<CognitoUser>>(apiInitialState);
   const { authState, setAuthState } = useContext<AuthContextType>(AuthContext);
@@ -32,20 +21,16 @@ export const useConfirmSignUp = (): ApiHookReturnType<
     useContext<IErrorContextType>(ErrorContext);
 
   const confirmSignUp = useCallback(
-    async (payload: ConfirmPayloadType): Promise<void> => {
-      const { code, clientMetadata } = payload;
+    async (code: string): Promise<void> => {
       const { email } = authState;
       setRes({ ...apiInitialState, isLoading: true });
       try {
         if (email) {
           const response = await Auth.confirmSignUp(email, code, {
-            clientMetadata,
+            clientMetadata: { email },
           });
-          if (authState.tempPasswd) {
+          if (authState.tempPasswd)
             await Auth.signIn(email, authState.tempPasswd);
-            deleteItem(companyDetailsKey);
-            deleteItem(personalDetailsKey);
-          }
           setRes(getSuccessResponse(response));
           setAuthState((current) => ({
             ...current,

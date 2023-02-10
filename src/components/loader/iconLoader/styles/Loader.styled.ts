@@ -9,12 +9,13 @@ export const rotate = keyframes`
 `;
 
 export const LoadingSpinner = styled.span<PropType>`
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 1.5px solid #005f73;
   border-radius: 50%;
-  border-top-color: white;
+  border-top-color: transparent;
   opacity: 1;
   transition-delay: 200ms;
   width: 14px;
+  margin-left: 10px;
   height: 14px;
   transition: opacity 200ms;
   animation: ${rotate} 1s linear;

@@ -1,56 +1,53 @@
-import React, { FC, useEffect, useMemo, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { IconLoader, Input } from "components";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import * as S from "./styles";
 import GoogleLogin from "./googleLogin";
-import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
-import { useSignup } from "hooks";
-import { validateEmail, validatePassword, withAuth } from "state/auth";
+import { AuthProps, UnAuthRoutes, UnknownType } from "utils";
+import { useConfirmSignUp, useLogin } from "hooks";
+import { validateVerificationCode, withAuth } from "state/auth";
 
-export const Reverify: FC = () => {
+export const Reverify: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
+  const { state } = useLocation();
   const {
     performAction,
     res: { isLoading, success },
-  } = useSignup();
+  } = useConfirmSignUp();
+  const {
+    res: { isLoading: loginLoading, success: loginSuccess },
+    performAction: autoLogin,
+  } = useLogin();
 
-  const [signUpState, setSignUpState] = useState(defaultSignUpState);
-  const [signUpError, setSignUpError] = useState(defaultSignUpError);
+  const [code, setCode] = useState("");
+  const [codeError, setCodeError] = useState("");
 
-  const updateState = (key: string, value: string): void => {
-    setSignUpError((prev) => ({ ...prev, [key]: null }));
-    setSignUpState((prev) => ({ ...prev, [key]: value }));
-  };
-
-  const validateSignUpForm = (): boolean => {
-    const emailError = validateEmail(signUpState.email);
-    const passwordError = validatePassword(signUpState.password);
-    const notValidated = emailError || passwordError;
-    if (notValidated)
-      setSignUpError({ email: emailError, password: passwordError });
-    return !!notValidated;
+  const validateVerifyForm = (): boolean => {
+    const notValidated = validateVerificationCode(code);
+    if (notValidated) setCodeError("Code length is invalid");
+    return !notValidated;
   };
 
   const onLogin = (): void => history.push(UnAuthRoutes.Login);
-  const onSignUp = (): void => {
-    if (!validateSignUpForm()) performAction(signUpState);
+  const onVerification = (): void => {
+    if (validateVerifyForm()) performAction(code);
   };
-
-  const isSubmittable = useMemo(
-    () => Object.values(signUpError).every((item) => item === null),
-    [signUpError]
-  );
 
   useEffect(() => {
     if (success) {
-      const { email } = signUpState;
-      history.push(UnAuthRoutes.Login, { state: { email } });
+      const { email, password } = (state as UnknownType) || {};
+      autoLogin({ email, password });
     }
   }, [success]);
 
-  const commonProps = {
-    handlers: { state: signUpState, error: signUpError, updateState },
-  };
+  useEffect(() => {
+    const { email, password } = (state as UnknownType) || {};
+    if (!email || !password) history.goBack();
+  }, [state]);
+
+  useEffect(() => {
+    if (loginSuccess) getAuth();
+  }, [loginSuccess]);
 
   return (
     <S.LoginWrapper>
@@ -61,16 +58,23 @@ export const Reverify: FC = () => {
           Welcome to Content-e, use the form below <br /> to login or sign up.
         </S.Title>
         <S.InputCanvas>
-          <Input {...commonProps} placeholder="Email Address" keyProp="email" />
-          <Input {...commonProps} placeholder="Password" keyProp="password" />
+          <Input
+            placeholder="Veerification Code"
+            value={code}
+            errorVal={codeError}
+            keyProp=""
+            handlers={{
+              updateState: (_, value: string): void => setCode(value),
+            }}
+          />
         </S.InputCanvas>
 
         <S.ButtonWrapper>
           <S.AuthButton
-            onClick={onSignUp}
-            disabled={isLoading || !isSubmittable}
+            onClick={onVerification}
+            disabled={isLoading || loginLoading}
           >
-            Sign up {isLoading && <IconLoader />}
+            Verify {isLoading && <IconLoader />}
           </S.AuthButton>
           <S.AuthButtonWhite onClick={onLogin}>Login</S.AuthButtonWhite>
         </S.ButtonWrapper>

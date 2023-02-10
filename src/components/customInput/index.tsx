@@ -2,23 +2,15 @@ import React, { FC, Fragment } from "react";
 import { ShouldRender } from "components";
 import * as S from "./styles";
 import {
-  defaultInfoState,
   defaultSignUpState,
   defaultLoginState,
-  defaultInfoError,
   defaultSignUpError,
   defaultLoginError,
 } from "utils";
 
 interface Handlers {
-  state?:
-    | typeof defaultInfoState
-    | typeof defaultSignUpState
-    | typeof defaultLoginState;
-  error?:
-    | typeof defaultInfoError
-    | typeof defaultSignUpError
-    | typeof defaultLoginError;
+  state?: typeof defaultSignUpState | typeof defaultLoginState;
+  error?: typeof defaultSignUpError | typeof defaultLoginError;
   updateState: (key: string, value: string) => void;
 }
 interface Props {
