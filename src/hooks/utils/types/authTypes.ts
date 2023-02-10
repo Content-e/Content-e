@@ -1,10 +1,15 @@
 import { CognitoUser } from "@aws-amplify/auth";
+import { UnknownType } from "utils";
 
 export type SignPayloadType = {
   email: string;
   password: string;
 };
 
+export type LoginPayloadType = {
+  email: string;
+  password: string;
+};
 export type ApiCustomHookStateType<T> = {
   isLoading: boolean;
   data: T | null;
@@ -27,11 +32,18 @@ export type GetSuccessResponseType<T> = {
 
 export type ConfirmPayloadType = {
   code: string;
+  clientMetadata: UnknownType;
 };
 
 export type ApiHookReturnType<R, A> = {
   res: ApiCustomHookStateType<R>;
   performAction: (payload: A) => Promise<void>;
+};
+
+export type FileUploadHookReturnType<R, N, F> = {
+  res: ApiCustomHookStateType<R>;
+  uploadResume: (file: F) => Promise<void>;
+  uploadImage: (file: F, uploadFileName?: N) => Promise<void>;
 };
 
 export type ApiHookReturnTypeWithoutParams<R> = {

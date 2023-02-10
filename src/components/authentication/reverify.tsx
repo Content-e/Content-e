@@ -7,7 +7,7 @@ import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
 import { useSignup } from "hooks";
 import { validateEmail, validatePassword, withAuth } from "state/auth";
 
-export const Register: FC = () => {
+export const Reverify: FC = () => {
   const history = useHistory();
   const {
     performAction,
@@ -81,4 +81,4 @@ export const Register: FC = () => {
   );
 };
 
-export default withAuth(Register);
+export default withAuth(Reverify);

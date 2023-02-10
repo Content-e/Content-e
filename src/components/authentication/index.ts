@@ -1,2 +1,5 @@
-export * from "./login";
-export * from "./register";
+import Login from "./login";
+import Register from "./register";
+import Reverify from "./reverify";
+
+export { Login, Register, Reverify };

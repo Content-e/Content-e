@@ -17,3 +17,9 @@ export const Input = styled.input`
     opacity: 0.5;
   }
 `;
+
+export const ParagraphError = styled.p`
+  margin-bottom: 0;
+  color: #f00;
+  font-size: 0.75rem;
+`;

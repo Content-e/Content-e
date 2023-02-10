@@ -1,5 +1,7 @@
-import { LogoutPage } from "./logout";
+import LogoutPage from "./logout";
 
 export { LogoutPage };
-export * from "./login";
+
 export * from "./register";
+export * from "./login";
+export * from "./reverify";
