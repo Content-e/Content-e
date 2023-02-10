@@ -123,8 +123,12 @@ export const AuthButton = styled.button`
   justify-content: center;
   color: #005f73;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     background: #ffe69b;
+    outline: none;
+    border: none;
+    box-shadow: none;
   }
 `;
 
@@ -143,5 +147,8 @@ export const AuthButtonWhite = styled.button`
 
   &:hover {
     background: #eee;
+    outline: none;
+    border: none;
+    box-shadow: none;
   }
 `;
