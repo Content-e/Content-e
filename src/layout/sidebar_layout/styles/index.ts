@@ -6,6 +6,7 @@ export const MainWrapper = styled.div`
   flex-grow: 1;
   height: 100vh;
   overflow: hidden;
+  padding: 20px;
 `;
 
 export const AppInner = styled.div`
