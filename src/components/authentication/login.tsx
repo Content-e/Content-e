@@ -65,7 +65,12 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
         </S.Title>
         <S.InputCanvas>
           <Input {...commonProps} placeholder="Email Address" keyProp="email" />
-          <Input {...commonProps} placeholder="Password" keyProp="password" />
+          <Input
+            {...commonProps}
+            type="password"
+            placeholder="Password"
+            keyProp="password"
+          />
         </S.InputCanvas>
         <S.InfoBox>
           <S.InfoTextWrapper>
