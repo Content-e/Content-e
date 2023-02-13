@@ -12,10 +12,10 @@ export const HomePage: FC<ProfileProps> = ({ profileState: { data } }) => {
     <Fragment key="home page">
       <S.TopWrapper>
         <Meter />
-        {data && <NoDataFound />}
-        {!data?.brand && <BrandHead data={data?.brand} />}
+        {!data && <NoDataFound />}
+        {data?.brand && <BrandHead data={data?.brand} />}
       </S.TopWrapper>
-      {!data?.brand && <BrandBody data={data?.brand} />}
+      {data?.brand && <BrandBody data={data?.brand} />}
     </Fragment>
   );
 };
