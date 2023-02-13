@@ -1,5 +1,5 @@
 import { ApolloError } from "@apollo/client";
-import { UnknownType } from "utils";
+import { GetUserProfileType } from "hooks/utils";
 
 export interface IProfileDetails {
   id: string;
@@ -17,7 +17,7 @@ export interface IProfile {
 }
 
 export interface IProfileState {
-  data?: UnknownType | null;
+  data?: GetUserProfileType | null;
   isLoading: boolean;
   error?: ApolloError | Error;
 }
