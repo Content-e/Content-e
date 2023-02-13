@@ -7,7 +7,7 @@ export const MeterWrapper = styled.div`
 `;
 
 export const Heading = styled.div`
-  font-family: "Lato";
+  font-family: "LatoLight";
   text-align: center;
   font-style: normal;
   font-weight: 300;

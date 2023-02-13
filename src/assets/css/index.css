@@ -1,15 +1,26 @@
 @font-face {
-  font-family: "Lato";
-  src: url("../fonts/Lato.ttf");
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Lato';
+  src: url('../fonts/Lato.ttf');
 }
 
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter.ttf");
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Inter';
+  src: url('../fonts/Inter.ttf');
+}
+
+@font-face {
+  font-family: 'LatoBold';
+  src: url('../fonts/Lato-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'LatoLight';
+  src: url('../fonts/Lato-Light.ttf');
+}
+
+@font-face {
+  font-family: 'InterLight';
+  src: url('../fonts/Inter-Light.ttf');
 }
 
 body {

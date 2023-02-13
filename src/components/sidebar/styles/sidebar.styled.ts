@@ -90,7 +90,7 @@ export const SidebarMenuItem = styled.div`
   align-items: center;
   justify-content: flex-start;
   color: #001219;
-  font-family: "Lato" !important;
+  font-family: "LatoLight" !important;
   font-size: 14px;
   padding: 12px 34px 11px;
   border-radius: 10px;
@@ -133,7 +133,7 @@ export const LogoutBtn = styled.div`
   justify-content: flex-start;
   color: #e9d8a6;
   margin-bottom: 45px;
-  font-family: "Inter";
+  font-family: "InterLight";
   margin-left: -20px;
   cursor: pointer;
 
