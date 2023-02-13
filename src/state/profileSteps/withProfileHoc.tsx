@@ -1,4 +1,4 @@
-// import { getClientJob, getClientProfile } from "hooks";
+import { getUserProfile } from "hooks";
 import withApolloProvider from "hooks/apollo/withApollo";
 import React, { useCallback, useContext, useEffect } from "react";
 import { AuthContext } from "state/auth";
@@ -16,6 +16,7 @@ export function withProfile<T>(
 ): React.FC<T & HocProps> {
   return withApolloProvider((props: T & HocProps) => {
     const { shouldCallApi } = props;
+    const { getProfile, profileData, error, loading } = getUserProfile();
     const { profileState, setProfileState } =
       useContext<ProfileContextType>(ProfileContext);
     const {
@@ -25,10 +26,7 @@ export function withProfile<T>(
     const refetchProfile = useCallback((): void => {
       if (userId && shouldCallApi) {
         setProfileState({ isLoading: true });
-        // getProfile({
-        //   variables: { id: userId },
-        //   onCompleted: (res) => fetchClientJob(res?.getClient?.companyID),
-        // });
+        getProfile({ variables: { id: userId } });
       }
     }, [userId, shouldCallApi]);
 
@@ -40,28 +38,25 @@ export function withProfile<T>(
       if (profileState.data === undefined) refetchProfile();
     }, [userId]);
 
-    // useEffect(() => {
-    //   if (!loading && shouldUpdate) {
-    //     if (profileData)
-    //       setProfileState({
-    //         data: profileData,
-    //         isLoading: false,
-    //         error: undefined,
-    //       });
-    //     else if (error)
-    //       setProfileState({ isLoading: false, error, data: null });
-    //     setShouldUpdate(false);
-    //   }
-    // }, [profileData, loading, error]);
+    useEffect(() => {
+      if (!loading) {
+        if (profileData)
+          setProfileState({
+            data: profileData,
+            isLoading: false,
+            error: undefined,
+          });
+        else if (error)
+          setProfileState({ isLoading: false, error, data: null });
+      }
+    }, [profileData, loading, error]);
 
     useEffect(() => {
-      if (!isLoggedIn) {
-        setProfileState(initialProfileState);
-      }
+      if (!isLoggedIn) setProfileState(initialProfileState);
     }, [isLoggedIn]);
 
     const profileProps: ProfileProps = {
-      // profileState: { ...profileState },
+      profileState: { ...profileState },
       refetchProfile,
       cleanProfileState,
     };

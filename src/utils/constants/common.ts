@@ -1,4 +1,5 @@
 import { AuthStateType } from "hooks/utils";
+import { IProfileState } from "state/profileSteps";
 import { FlattenSimpleInterpolation } from "styled-components";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,8 +17,7 @@ export type AuthProps = {
   setAuthState: React.Dispatch<React.SetStateAction<AuthStateType>>;
 };
 export type ProfileProps = {
-  // profileState: IProfileState;
-  // jobID: string | null;
+  profileState: IProfileState;
   refetchProfile: () => void;
   cleanProfileState: () => void;
 };
