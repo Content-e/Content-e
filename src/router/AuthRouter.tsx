@@ -1,6 +1,6 @@
 import withApolloProvider from "hooks/apollo/withApollo";
 import { SidebarLayout } from "layout";
-import { ExplorePage } from "pages";
+import { MainPage } from "pages";
 import { FC } from "react";
 import { Route, Switch } from "react-router-dom";
 import { withProfile } from "state/profileSteps";
@@ -10,7 +10,7 @@ const AuthRouterPaths: FC<ProfileProps> = () => {
   return (
     <Switch>
       <SidebarLayout>
-        <Route exact path={AuthRoutes.Explore} component={ExplorePage} />
+        <Route exact path={AuthRoutes.Home} component={MainPage} />
       </SidebarLayout>
     </Switch>
   );

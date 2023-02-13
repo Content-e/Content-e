@@ -9,10 +9,10 @@ export const MainWrapper = styled.div`
   padding: 20px;
 `;
 
-export const AppInner = styled.div`
-  width: 100%;
-`;
-
 export const AppMain = styled.div`
   width: 100%;
+  border: 1px solid #ffffff;
+  box-shadow: 0px 0px 4px rgb(0 0 0 / 20%);
+  border-radius: 20px;
+  padding: 36px 60px 21px;
 `;

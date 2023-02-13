@@ -30,7 +30,7 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
     const queryParams = new URLSearchParams(search);
     const term = queryParams.get("redirectUrl");
     if (term) history.replace(term);
-    else history.replace(AuthRoutes.Explore);
+    else history.replace(AuthRoutes.Home);
   };
 
   const redirectToInValidRoute = (): void => {

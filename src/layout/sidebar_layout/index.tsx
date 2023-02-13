@@ -1,4 +1,4 @@
-import { Header, Sidebar } from "components";
+import { Sidebar } from "components";
 import { FC, ReactNode, useState } from "react";
 import * as S from "./styles";
 
@@ -11,10 +11,7 @@ export const SidebarLayout: FC<Props> = ({ children }) => {
   return (
     <S.MainWrapper>
       <Sidebar showMenu={showMenu} toggleMenu={toggleMenu} />
-      <S.AppMain>
-        <Header toggleMenu={toggleMenu} />
-        <S.AppInner>{children}</S.AppInner>
-      </S.AppMain>
+      <S.AppMain>{children}</S.AppMain>
     </S.MainWrapper>
   );
 };

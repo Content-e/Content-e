@@ -39,4 +39,5 @@ export const updateErrorState = (
   ]);
 
 export const isEmptyString = (input?: string | null): boolean =>
+  // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
   !input || !input.replace(/<\/?[^>]+(>|$)/g, "").length;
