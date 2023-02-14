@@ -5,19 +5,23 @@ import BrandName from "./brandName";
 import Field from "./field";
 import * as S from "./styles";
 import ToneOfVoice from "./toneOfVoice";
+import NameSuggestionModal from "./nameSuggestionModal";
 
 interface Props {
   data?: GetUserProfileType | null;
   onSubmit: () => void;
   goToStep: (step: number) => void;
 }
-export const BrandSteps: FC<Props> = ({ data }) => {
+export const StepOne: FC<Props> = ({ data }) => {
   const [description, setDescription] = useState("");
   const [toneOfVoice, setToneOfVoice] = useState("");
   const [brandName, updateBrandName] = useState("");
+  const [showSuggestion, setShowSuggestion] = useState(false);
 
-  const getSuggestions = (): void => {
-    console.log("button is clicked");
+  const toggleSuggestionBox = (): void => setShowSuggestion(!showSuggestion);
+  const insertBrandName = (text: string): void => {
+    updateBrandName(text);
+    toggleSuggestionBox();
   };
 
   console.log(data);
@@ -33,13 +37,21 @@ export const BrandSteps: FC<Props> = ({ data }) => {
       <ToneOfVoice onSelect={setToneOfVoice} />
       <Field {...createBrand.brandName} />
       <BrandName
-        disableSuggestions={!!(description && toneOfVoice)}
+        disableSuggestions={!description || !toneOfVoice}
         brandName={brandName}
         updateBrandName={updateBrandName}
-        getSuggestions={getSuggestions}
+        getSuggestions={toggleSuggestionBox}
       />
+      {showSuggestion && (
+        <NameSuggestionModal
+          toneOfVoice={toneOfVoice}
+          description={description}
+          onCancel={toggleSuggestionBox}
+          onInsertion={insertBrandName}
+        />
+      )}
     </S.TopWrapper>
   );
 };
 
-export default BrandSteps;
+export default StepOne;

@@ -35,4 +35,10 @@ export const SuggestionButton = styled.button`
   &:hover {
     background: #ffe69b;
   }
+
+  &.disabled,
+  &.disabled:hover {
+    background: #eee !important;
+    color: rgba(0, 0, 0, 0.4) !important;
+  }
 `;

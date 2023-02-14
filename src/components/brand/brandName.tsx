@@ -22,6 +22,7 @@ export const BrandName: FC<Props> = ({
         placeholder="Enter Brand Name"
       />
       <S.SuggestionButton
+        className={disableSuggestions ? "disabled" : ""}
         disabled={disableSuggestions}
         onClick={getSuggestions}
       >
