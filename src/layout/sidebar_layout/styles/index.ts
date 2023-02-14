@@ -16,4 +16,5 @@ export const AppMain = styled.div`
   border-radius: 20px;
   padding: 36px 60px 21px;
   position: relative;
+  overflow: auto;
 `;

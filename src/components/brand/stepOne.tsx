@@ -6,13 +6,14 @@ import Field from "./field";
 import * as S from "./styles";
 import ToneOfVoice from "./toneOfVoice";
 import NameSuggestionModal from "./nameSuggestionModal";
+import { StepBelt } from "./stepBelt";
 
 interface Props {
   data?: GetUserProfileType | null;
   onSubmit: () => void;
   goToStep: (step: number) => void;
 }
-export const StepOne: FC<Props> = ({ data }) => {
+export const StepOne: FC<Props> = ({ data, onSubmit }) => {
   const [description, setDescription] = useState("");
   const [toneOfVoice, setToneOfVoice] = useState("");
   const [brandName, updateBrandName] = useState("");
@@ -50,6 +51,7 @@ export const StepOne: FC<Props> = ({ data }) => {
           onInsertion={insertBrandName}
         />
       )}
+      <StepBelt step={0} onNext={onSubmit} onPrev={() => {}} />
     </S.TopWrapper>
   );
 };
