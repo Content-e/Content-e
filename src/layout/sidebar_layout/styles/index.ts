@@ -15,4 +15,5 @@ export const AppMain = styled.div`
   box-shadow: 0px 0px 4px rgb(0 0 0 / 20%);
   border-radius: 20px;
   padding: 36px 60px 21px;
+  position: relative;
 `;
