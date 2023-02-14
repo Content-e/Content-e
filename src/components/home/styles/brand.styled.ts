@@ -45,6 +45,6 @@ export const EditBrandButton = styled.div`
   color: #005f73;
 
   &:hover {
-    background: #e9d8a6;
+    background: #ffe69b;
   }
 `;

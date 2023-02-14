@@ -1,11 +1,23 @@
-import { FC } from "react";
+import { FC, Fragment, useState } from "react";
 import { withProfile } from "state/profileSteps";
 import { ProfileProps } from "utils";
-import * as S from "./styles";
+import StepOne from "./stepOne";
 
 export const BrandSteps: FC<ProfileProps> = ({ profileState: { data } }) => {
+  const [step, updateStep] = useState(0);
+
   console.log(data);
-  return <S.TopWrapper></S.TopWrapper>;
+  const goToNextStep = (): void => {
+    if (step > 1) updateStep(step + 1);
+  };
+
+  return (
+    <Fragment key="brand steps">
+      {step === 0 && (
+        <StepOne data={data} onSubmit={goToNextStep} goToStep={updateStep} />
+      )}
+    </Fragment>
+  );
 };
 
 export default withProfile(BrandSteps);
