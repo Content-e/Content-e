@@ -3,10 +3,11 @@ import * as S from "./styles";
 
 interface Props {
   step: number;
+  disabled: boolean;
   onNext?: () => void;
   onPrev?: () => void;
 }
-export const StepBelt: FC<Props> = ({ step, onNext, onPrev }) => {
+export const StepBelt: FC<Props> = ({ step, onNext, onPrev, disabled }) => {
   return (
     <S.StepBeltWrapper>
       <S.StepBelt>
@@ -22,7 +23,11 @@ export const StepBelt: FC<Props> = ({ step, onNext, onPrev }) => {
       </S.StepBelt>
       <S.StepBtnHandler>
         {onPrev && <S.PrimaryBtn onClick={onPrev}>Back</S.PrimaryBtn>}
-        {onNext && <S.OutlineBtn onClick={onNext}>Next</S.OutlineBtn>}
+        {onNext && (
+          <S.OutlineBtn onClick={onNext} disabled={disabled}>
+            Next
+          </S.OutlineBtn>
+        )}
       </S.StepBtnHandler>
     </S.StepBeltWrapper>
   );

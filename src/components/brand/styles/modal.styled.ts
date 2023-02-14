@@ -162,13 +162,13 @@ export const OutlineBtn = styled(Button)`
     text-decoration: none;
   }
   &:disabled {
-    background: transparent;
+    background: #d2d2d2;
     opacity: 0.7;
-    border: 1px solid #343a40;
+    border: 1px solid #d2d2d2;
     box-shadow: none;
     outline: none;
-    color: #969696;
     text-decoration: none;
+    color: #005f73;
   }
 `;
 

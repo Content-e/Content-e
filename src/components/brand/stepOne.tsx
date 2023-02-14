@@ -51,7 +51,11 @@ export const StepOne: FC<Props> = ({ data, onSubmit }) => {
           onInsertion={insertBrandName}
         />
       )}
-      <StepBelt step={0} onNext={onSubmit} onPrev={() => {}} />
+      <StepBelt
+        step={0}
+        onNext={onSubmit}
+        disabled={!description || !toneOfVoice || !brandName}
+      />
     </S.TopWrapper>
   );
 };

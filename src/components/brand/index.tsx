@@ -8,7 +8,7 @@ export const BrandSteps: FC<ProfileProps> = ({ profileState: { data } }) => {
 
   console.log(data);
   const goToNextStep = (): void => {
-    if (step > 1) updateStep(step + 1);
+    if (step < 2) updateStep(step + 1);
   };
 
   return (
