@@ -33,6 +33,7 @@ export const StepOne: FC<Props> = ({ data, onSubmit, ...rest }) => {
       <Field {...createBrand.brandName} />
       <SuggestedInput
         small
+        placeholder="Enter Brand Name"
         disableSuggestions={!description || !toneOfVoice}
         value={brandName}
         setValue={updateBrandName}

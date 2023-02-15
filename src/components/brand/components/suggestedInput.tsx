@@ -5,6 +5,7 @@ import SuggestionButton from "./suggestionButton";
 
 interface Props {
   small?: boolean;
+  placeholder?: string;
   disableSuggestions?: boolean;
   getSuggestions: () => void;
   value: string;
@@ -12,14 +13,14 @@ interface Props {
 }
 
 export const SuggestedInput: FC<Props> = (props) => {
-  const { value, setValue, small } = props;
+  const { value, setValue, small, placeholder } = props;
   return (
     <S.BrandNameBox>
       <S.BrandInput
         className={classNames({ small: small })}
         value={value}
         onChange={(e): void => setValue(e.target.value)}
-        placeholder="Enter Brand Name"
+        placeholder={placeholder}
       />
       <SuggestionButton {...props} />
     </S.BrandNameBox>
