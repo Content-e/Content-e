@@ -171,6 +171,7 @@ export type GPT_INPUT = {
   toneOfVoice?: string | null,
   brandName?: string | null,
   brandPillars?: Array< string | null > | null,
+  brandMissionStatement?: string | null,
 };
 
 export enum GPT_PROMPT {
@@ -179,6 +180,7 @@ export enum GPT_PROMPT {
   BRAND_PILLARS = "BRAND_PILLARS",
   BRAND_VALUES = "BRAND_VALUES",
   BRAND_MISION_STATEMENT = "BRAND_MISION_STATEMENT",
+  BRAND_TAGLINE_STATEMENT = "BRAND_TAGLINE_STATEMENT",
 }
 
 
@@ -190,6 +192,7 @@ export type GPT_RESPONSE = {
   BRAND_PILLARS?: string | null,
   BRAND_VALUES?: string | null,
   BRAND_MISSION_STATEMENT?: string | null,
+  BRAND_TAGLINE_STATEMENT?: string | null,
   error?: boolean | null,
   message?: string | null,
 };
@@ -200,6 +203,7 @@ export enum GPT_RESPONSE_TYPE {
   BRAND_PILLARS = "BRAND_PILLARS",
   BRAND_VALUES = "BRAND_VALUES",
   BRAND_MISION_STATEMENT = "BRAND_MISION_STATEMENT",
+  BRAND_TAGLINE_STATEMENT = "BRAND_TAGLINE_STATEMENT",
 }
 
 
@@ -441,6 +445,7 @@ export type GetGPTresponseQuery = {
     BRAND_PILLARS?: string | null,
     BRAND_VALUES?: string | null,
     BRAND_MISSION_STATEMENT?: string | null,
+    BRAND_TAGLINE_STATEMENT?: string | null,
     error?: boolean | null,
     message?: string | null,
   } | null,

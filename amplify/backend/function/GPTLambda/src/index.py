@@ -1,7 +1,8 @@
 import json
 # from helpers import validate_event, prepare_gpt_prompt, call_gpt
 import openai
-openai.api_key = "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"
+import os
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 GPT_RESPONSE_TYPE =  ["BRAND_NAME","BRAND_NAME_REFRESH","BRAND_PILLARS","BRAND_VALUES","BRAND_MISION_STATEMENT"]
 
@@ -29,6 +30,18 @@ BRAND_MISSION_STATEMENT_PROMPT=\
 \n"{}"\
 \n"{}"\
 \n"{}"\
+\n\nReturn as json format.'
+
+BRAND_TAGLINE_STATEMENT_PROMPT=\
+'Act as a Brand marketer produce 5 tagline options for a business with the business description \
+\n"{}"\
+\n\nThe brand has a communication tone of voice of "{}", a brand name of "{}", brand pillars of \
+\n"{}",\
+\n"{}",\
+\n"{}",\
+\n"{}"\
+\nAnd a mission statement of "{}"\
+\n\nThe definition of a tagline is a short sentence or phrase that sums up what your brand is all about, reflecting your company values and providing a differentiating identity and personality.\
 \n\nReturn as json format.'
 
 def call_gpt (prompt):
@@ -68,6 +81,12 @@ def validate_event(event):
         and not event['arguments']['data']['brandName']\
         and not event['arguments']['data']['brandPillars']:
         return False 
+    if prompt_type == "BRAND_TAGLINE_STATEMENT" and not event['arguments']['data']['businessDescription']\
+        and not event['arguments']['data']['toneOfVoice']\
+        and not event['arguments']['data']['brandName']\
+        and not event['arguments']['data']['brandPillars']\
+        and not event['arguments']['data']['brandMissionStatement']:
+        return False 
     return True
 def parse_brand_name_output(data: str, refresh=False):
     ret =[]
@@ -89,7 +108,7 @@ def get_gpt_response (event_data):
     brand_name = event_data['brandName'] if 'brandName' in event_data else None
     brand_pillars = event_data['brandPillars'] if 'brandPillars' in event_data else None
     brand_values = event_data['brandValues'] if 'brandValues' in event_data else None
-    brand_mision_statement = event_data['brandMisionStatement'] if 'brandMisionStatement' in event_data else None
+    brand_mision_statement = event_data['brandMissionStatement'] if 'brandMissionStatement' in event_data else None
 
     if prompType == "BRAND_NAME":
         return parse_gpt_output(call_gpt(BRAND_NAME_PROMPT.format(business_description, toneOf_voice)))
@@ -101,7 +120,8 @@ def get_gpt_response (event_data):
         return parse_gpt_output(call_gpt(BRAND_VALUES_PROMPT.format(business_description, toneOf_voice, brand_name)))
     elif prompType == "BRAND_MISION_STATEMENT":
         return parse_gpt_output(call_gpt(BRAND_MISSION_STATEMENT_PROMPT.format(business_description, toneOf_voice, brand_name, brand_pillars[0], brand_pillars[1],brand_pillars[2],brand_pillars[3])))
-    
+    elif prompType == "BRAND_TAGLINE_STATEMENT":
+        return parse_gpt_output(call_gpt(BRAND_TAGLINE_STATEMENT_PROMPT.format(business_description, toneOf_voice, brand_name, brand_pillars[0], brand_pillars[1],brand_pillars[2],brand_pillars[3], brand_mision_statement)))
 
 def handler(event, context):
   try:
@@ -118,6 +138,7 @@ def handler(event, context):
 
     gpt_res = get_gpt_response(event['arguments']['data'])
     ret = {"error": False}
+    print(gpt_res)
     ret[event['arguments']['data']["prompType"]] = gpt_res
 
     return {
