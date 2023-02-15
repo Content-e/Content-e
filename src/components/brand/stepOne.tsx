@@ -13,7 +13,7 @@ interface Props {
   onSubmit: () => void;
   goToStep: (step: number) => void;
 }
-export const StepOne: FC<Props> = ({ data, onSubmit }) => {
+export const StepOne: FC<Props> = ({ data, onSubmit, ...rest }) => {
   const [description, setDescription] = useState("");
   const [toneOfVoice, setToneOfVoice] = useState("");
   const [brandName, updateBrandName] = useState("");
@@ -29,11 +29,7 @@ export const StepOne: FC<Props> = ({ data, onSubmit }) => {
   return (
     <S.TopWrapper>
       <Field {...createBrand.description} />
-      <TextArea
-        value={description}
-        updateValue={setDescription}
-        placeholder="Brand pillar / value  short description"
-      />
+      <TextArea value={description} updateValue={setDescription} />
       <Field {...createBrand.tonOfVoice} />
       <ToneOfVoice onSelect={setToneOfVoice} />
       <Field {...createBrand.brandName} />
@@ -52,6 +48,7 @@ export const StepOne: FC<Props> = ({ data, onSubmit }) => {
         />
       )}
       <StepBelt
+        {...rest}
         step={0}
         onNext={onSubmit}
         disabled={!description || !toneOfVoice || !brandName}

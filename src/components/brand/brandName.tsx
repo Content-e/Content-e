@@ -1,5 +1,6 @@
 import { FC } from "react";
 import * as S from "./styles";
+import SuggestionButton from "./suggestionButton";
 
 interface Props {
   disableSuggestions: boolean;
@@ -8,12 +9,8 @@ interface Props {
   updateBrandName: (name: string) => void;
 }
 
-export const BrandName: FC<Props> = ({
-  disableSuggestions,
-  getSuggestions,
-  brandName,
-  updateBrandName,
-}) => {
+export const BrandName: FC<Props> = (props) => {
+  const { brandName, updateBrandName } = props;
   return (
     <S.BrandNameBox>
       <S.BrandInput
@@ -21,13 +18,7 @@ export const BrandName: FC<Props> = ({
         onChange={(e): void => updateBrandName(e.target.value)}
         placeholder="Enter Brand Name"
       />
-      <S.SuggestionButton
-        className={disableSuggestions ? "disabled" : ""}
-        disabled={disableSuggestions}
-        onClick={getSuggestions}
-      >
-        Get Suggestions
-      </S.SuggestionButton>
+      <SuggestionButton {...props} />
     </S.BrandNameBox>
   );
 };

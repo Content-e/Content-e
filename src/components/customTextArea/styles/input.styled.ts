@@ -11,6 +11,10 @@ export const TextArea = styled.textarea`
   line-height: 28px;
   padding: 10px 15px;
 
+  &.small_box {
+    width: 90%;
+  }
+
   &::placeholder {
     opacity: 0.5;
   }

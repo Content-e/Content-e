@@ -6,7 +6,7 @@ export const StepBeltWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 430px;
-  margin: 100px auto 60px;
+  margin: 100px auto 30px;
 `;
 export const StepBelt = styled.div`
     display: flex;

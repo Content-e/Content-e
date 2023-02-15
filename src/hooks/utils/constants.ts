@@ -35,4 +35,16 @@ export const createBrand = {
   brandName: {
     heading: "Whats your brand name?",
   },
+  pillars: {
+    heading: "Brand communication pillars",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nisl diam, commodo eu vulputate at, finibus eget nisi. Praesent commodo, neque ut facilisis condimentum, leo nisl fringilla purus, at feugiat lectus dui in nulla. Fusce.",
+  },
+  missionStatement: {
+    heading: "mission statement",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec lobortis nunc, eu euismod neque. Nam nec nisl vel sapien consectetur dapibus ut non lectus. Sed eu nibh ac urna mattis aliquet. Quisque molestie, augue non tincidunt suscipit.",
+  },
+  strapLine: {
+    heading: "Strap line",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec lobortis nunc, eu euismod neque. Nam nec nisl vel sapien consectetur dapibus ut non lectus. Sed eu nibh ac urna mattis aliquet. Quisque molestie, augue non tincidunt suscipit.",
+  },
 };
