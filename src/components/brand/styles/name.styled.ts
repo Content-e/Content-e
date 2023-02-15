@@ -7,13 +7,18 @@ export const BrandNameBox = styled.div`
 `;
 
 export const BrandInput = styled.input`
-    width: 380px;
+    min-width: 200px;
+    max-width: 650px;
+    width: 100%;
     line-height: 24px;
     padding: 10px 15px;
     border: 1px solid #E2E1E5;
     border-radius: 5px;
     margin-top: 15px;
 
+    &.small {
+      max-width: 380px;
+    }
     &::placeholder {
       opacity: 0.5;
     }
@@ -24,13 +29,16 @@ export const SuggestionButton = styled.button`
   background: #e9d8a6;
   border: 1px solid #ffffff;
   border-radius: 5px;
-  margin-left: 36px;
-  margin-top: 15px;
+  margin: 15px 0 0px 36px;
   font-size: 14px;
   line-height: 28px;
   text-align: center;
   color: #005f73;
   font-family: "Inter";
+
+  &.separateBtn {
+    margin-bottom: 20px;
+  }
 
   &:hover {
     background: #ffe69b;

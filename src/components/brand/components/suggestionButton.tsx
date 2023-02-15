@@ -1,18 +1,24 @@
 import { FC } from "react";
-import * as S from "./styles";
+import cn from "classnames";
+import * as S from "../styles";
 
 interface Props {
-  disableSuggestions: boolean;
+  disableSuggestions?: boolean;
   getSuggestions: () => void;
+  isSeparateBtn?: boolean;
 }
 
 export const SuggestionButton: FC<Props> = ({
   disableSuggestions,
   getSuggestions,
+  isSeparateBtn,
 }) => {
   return (
     <S.SuggestionButton
-      className={disableSuggestions ? "disabled" : ""}
+      className={cn({
+        disabled: disableSuggestions,
+        separateBtn: isSeparateBtn,
+      })}
       disabled={disableSuggestions}
       onClick={getSuggestions}
     >

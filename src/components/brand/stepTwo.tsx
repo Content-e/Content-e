@@ -1,20 +1,22 @@
 import { FC, useState } from "react";
 import { TextArea } from "components/customTextArea";
-import { createBrand, GetUserProfileType } from "hooks/utils";
-import Field from "./field";
+import { createBrand, BrandType } from "hooks/utils";
+import Field from "./components/field";
 import * as S from "./styles";
-import { StepBelt } from "./stepBelt";
-import SuggestionButton from "./suggestionButton";
-import PillarSuggestionModal from "./pillarSuggestionModal";
+import { StepBelt, SuggestionButton } from "./components";
+import { PillarSuggestionModal } from "./modals";
 
 interface Props {
-  data?: GetUserProfileType | null;
+  data?: BrandType | null;
   onSubmit: () => void;
   onPrev: () => void;
   goToStep: (step: number) => void;
 }
 export const StepTwo: FC<Props> = ({ data, onSubmit, ...rest }) => {
-  const [pillarDescription, setPillarDescription] = useState("");
+  const { items } = data || {};
+  const [pillarDescription, setPillarDescription] = useState(
+    items?.pillars || ""
+  );
   const [showSuggestion, setShowSuggestion] = useState(false);
 
   const toggleSuggestionBox = (): void => setShowSuggestion(!showSuggestion);
@@ -23,7 +25,6 @@ export const StepTwo: FC<Props> = ({ data, onSubmit, ...rest }) => {
     toggleSuggestionBox();
   };
 
-  console.log(data);
   return (
     <S.TopWrapper>
       <Field {...createBrand.pillars} />

@@ -3,11 +3,12 @@ import { withProfile } from "state/profileSteps";
 import { ProfileProps } from "utils";
 import StepOne from "./stepOne";
 import StepTwo from "./stepTwo";
+import StepThree from "./stepThree";
 
 export const BrandSteps: FC<ProfileProps> = ({ profileState: { data } }) => {
-  const [step, updateStep] = useState(1);
+  const { brand } = data || {};
+  const [step, updateStep] = useState(0);
 
-  console.log(data);
   const goToNextStep = (): void => {
     if (step < 2) updateStep(step + 1);
   };
@@ -18,11 +19,19 @@ export const BrandSteps: FC<ProfileProps> = ({ profileState: { data } }) => {
   return (
     <Fragment key="brand steps">
       {step === 0 && (
-        <StepOne data={data} onSubmit={goToNextStep} goToStep={updateStep} />
+        <StepOne data={brand} onSubmit={goToNextStep} goToStep={updateStep} />
       )}
       {step === 1 && (
         <StepTwo
-          data={data}
+          data={brand}
+          onSubmit={goToNextStep}
+          onPrev={goToPrevStep}
+          goToStep={updateStep}
+        />
+      )}
+      {step === 2 && (
+        <StepThree
+          data={brand}
           onSubmit={goToNextStep}
           onPrev={goToPrevStep}
           goToStep={updateStep}

@@ -1,7 +1,7 @@
 import { ToneOptions } from "hooks/utils";
 import { FC, useState } from "react";
 import { Dropdown } from "react-bootstrap";
-import * as S from "./styles";
+import * as S from "../styles";
 
 interface Props {
   onSelect: (text: string) => void;

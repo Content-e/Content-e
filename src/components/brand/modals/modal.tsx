@@ -1,36 +1,39 @@
-import { FullPageLoader } from "components/loader";
+import { FullPageLoader } from "components";
 import { FC, useEffect, useMemo, useState } from "react";
 import { Modal } from "react-bootstrap";
-import * as S from "./styles";
+import * as S from "../styles";
 
 interface Props {
+  title: string;
+  responses: Array<string>;
+  loading: boolean;
   onCancel: () => void;
+  onRefresh: () => void;
   onInsertion: (text: string) => void;
 }
-export const PillarSuggestionModal: FC<Props> = ({ onCancel, onInsertion }) => {
+export const CustomModal: FC<Props> = ({
+  onCancel,
+  onInsertion,
+  onRefresh,
+  title,
+  loading,
+  responses,
+}) => {
   const [selectedName, setSelectedName] = useState("");
-  const [responseNames, setResponseNames] = useState<Array<string>>([]);
-  const [loading, setLoading] = useState(false);
 
-  const refreshResponse = (): void => {
-    setLoading(true);
-    setTimeout(() => {
-      setResponseNames(["first name", "second name", "third name"]);
-      setLoading(false);
-    }, 5000);
-  };
+  useEffect(onRefresh, []);
 
   useEffect(() => {
-    refreshResponse();
-  }, []);
+    if (loading) setSelectedName("");
+  }, [loading]);
 
   const suggestionResponse = useMemo(() => {
-    if (!responseNames.length)
+    if (!responses.length)
       return <S.NoSuggestion>No Suggestions</S.NoSuggestion>;
 
     return (
       <S.SuggestionCanvas>
-        {responseNames.map((name, index) => (
+        {responses.map((name, index) => (
           <S.SuggestionBox
             key={index}
             className={name === selectedName ? "active" : ""}
@@ -41,7 +44,7 @@ export const PillarSuggestionModal: FC<Props> = ({ onCancel, onInsertion }) => {
         ))}
       </S.SuggestionCanvas>
     );
-  }, [responseNames, loading, selectedName]);
+  }, [responses, selectedName]);
 
   return (
     <S.ModalWrapper
@@ -51,7 +54,7 @@ export const PillarSuggestionModal: FC<Props> = ({ onCancel, onInsertion }) => {
       onHide={onCancel}
     >
       <Modal.Body>
-        <S.ModalTitle>Brand pillar suggestions</S.ModalTitle>
+        <S.ModalTitle>{title}</S.ModalTitle>
         <S.CrossIcon onClick={onCancel}>
           <img src={"/images/circle-cross.svg"} alt="cross-icon" />
         </S.CrossIcon>
@@ -65,8 +68,13 @@ export const PillarSuggestionModal: FC<Props> = ({ onCancel, onInsertion }) => {
           )}
         </S.ModalInputWrapper>
         <S.ModalBtnWrapper>
-          <S.OutlineBtn onClick={refreshResponse}>Refresh</S.OutlineBtn>
-          <S.PrimaryBtn onClick={(): void => onInsertion(selectedName)}>
+          <S.OutlineBtn onClick={onRefresh} disabled={loading}>
+            Refresh
+          </S.OutlineBtn>
+          <S.PrimaryBtn
+            onClick={(): void => onInsertion(selectedName)}
+            disabled={!selectedName}
+          >
             Done
           </S.PrimaryBtn>
         </S.ModalBtnWrapper>
@@ -75,4 +83,4 @@ export const PillarSuggestionModal: FC<Props> = ({ onCancel, onInsertion }) => {
   );
 };
 
-export default PillarSuggestionModal;
+export default CustomModal;
