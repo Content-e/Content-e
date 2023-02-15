@@ -109,6 +109,16 @@ export const PrimaryBtn = styled(Button)`
   text-align: center;
   color: #005f73;
 
+  &:disabled {
+    background: #d2d2d2;
+    opacity: 0.7;
+    border: 1px solid #d2d2d2;
+    box-shadow: none;
+    outline: none;
+    text-decoration: none;
+    color: #005f73;
+  }
+
   &:not(:disabled):not(.disabled):active:focus,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):active,
