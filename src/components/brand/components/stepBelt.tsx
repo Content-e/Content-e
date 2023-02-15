@@ -21,7 +21,7 @@ export const StepBelt: FC<Props> = ({
         onClick={(): void => goToStep(e)}
         className={step >= e ? "active" : ""}
       >
-        e + 1
+        {e + 1}
       </S.StepNumber>
       {showBar && (
         <S.StepBar>
