@@ -9,6 +9,7 @@ export const getGPTresponse = /* GraphQL */ `
       BRAND_NAME
       BRAND_NAME_REFRESH
       BRAND_PILLARS
+      BRAND_PILLARS_REFRESH
       BRAND_VALUES
       BRAND_MISSION_STATEMENT
       BRAND_TAGLINE_STATEMENT
