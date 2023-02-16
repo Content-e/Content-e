@@ -86,11 +86,24 @@ def validate_event(event):
         and not event['arguments']['data']['brandName']\
         and not event['arguments']['data']['brandPillars']:
         return False 
+    if prompt_type == "BRAND_MISSION_STATEMENT_REFRESH" and not event['arguments']['data']['businessDescription']\
+        and not event['arguments']['data']['toneOfVoice']\
+        and not event['arguments']['data']['brandName']\
+        and not event['arguments']['data']['brandPillars']\
+        and not event['arguments']['data']['brandMissionStatement']:
+        return False 
     if prompt_type == "BRAND_TAGLINE_STATEMENT" and not event['arguments']['data']['businessDescription']\
         and not event['arguments']['data']['toneOfVoice']\
         and not event['arguments']['data']['brandName']\
         and not event['arguments']['data']['brandPillars']\
         and not event['arguments']['data']['brandMissionStatement']:
+        return False 
+    if prompt_type == "BRAND_TAGLINE_STATEMENT_REFRESH" and not event['arguments']['data']['businessDescription']\
+        and not event['arguments']['data']['toneOfVoice']\
+        and not event['arguments']['data']['brandName']\
+        and not event['arguments']['data']['brandPillars']\
+        and not event['arguments']['data']['brandMissionStatement']\
+        and not event['arguments']['data']['tagLine']:
         return False 
     return True
 
@@ -118,6 +131,7 @@ def get_gpt_response (event_data):
     brand_name = event_data['brandName'] if 'brandName' in event_data else None
     brand_pillars = event_data['brandPillars'] if 'brandPillars' in event_data else None
     brand_values = event_data['brandValues'] if 'brandValues' in event_data else None
+    tagLine = event_data['tagLine'] if 'tagLine' in event_data else None
     brand_mision_statement = event_data['brandMissionStatement'] if 'brandMissionStatement' in event_data else None
 
     if prompType == "BRAND_NAME":
@@ -132,8 +146,12 @@ def get_gpt_response (event_data):
         return parse_gpt_output(call_gpt(BRAND_VALUES_PROMPT.format(business_description, toneOf_voice, brand_name)))
     elif prompType == "BRAND_MISSION_STATEMENT":
         return parse_gpt_output(call_gpt(BRAND_MISSION_STATEMENT_PROMPT.format(business_description, toneOf_voice, brand_name, brand_pillars[0], brand_pillars[1],brand_pillars[2],brand_pillars[3])))
+    elif prompType == "BRAND_MISSION_STATEMENT_REFRESH":
+        return parse_gpt_output(call_gpt(BRAND_MISSION_STATEMENT_PROMPT.format(business_description, toneOf_voice, brand_name, brand_pillars[0], brand_pillars[1],brand_pillars[2],brand_pillars[3])+ "\nbot: "+brand_mision_statement+"\nUser: Give me more mission statement. Return as json format."),True)
     elif prompType == "BRAND_TAGLINE_STATEMENT":
         return parse_gpt_output(call_gpt(BRAND_TAGLINE_STATEMENT_PROMPT.format(business_description, toneOf_voice, brand_name, brand_pillars[0], brand_pillars[1],brand_pillars[2],brand_pillars[3], brand_mision_statement)))
+    elif prompType == "BRAND_TAGLINE_STATEMENT_REFRESH":
+        return parse_gpt_output(call_gpt(BRAND_TAGLINE_STATEMENT_PROMPT.format(business_description, toneOf_voice, brand_name, brand_pillars[0], brand_pillars[1],brand_pillars[2],brand_pillars[3], brand_mision_statement)+ "\nbot: "+tagLine+"\nUser: Give me more tagline options"),True)
 
 def handler(event, context):
   try:
