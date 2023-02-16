@@ -9,6 +9,8 @@ import * as S from "./styles";
 
 export const HomePage: FC<ProfileProps> = ({ profileState: { data } }) => {
   const brandExists = useMemo(() => data?.brand?.[0], [data]);
+
+  if (!data) return <Fragment key="no profie found" />;
   return (
     <Fragment key="home page">
       <S.TopWrapper>

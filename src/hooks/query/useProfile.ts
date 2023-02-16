@@ -15,9 +15,11 @@ export const getUserProfile = (): GetUserProfileProps => {
     GetUserProfileQuery,
     GetUserProfileQueryVariables
   >(getQuery(getUserQuery));
-  const profileData = { ...data?.getUserProfile, brand: undefined } || null;
+  const profileData = data?.getUserProfile
+    ? { ...data?.getUserProfile, brand: undefined }
+    : null;
   const errorData =
-    error || (profileData ? undefined : new Error("No Talent Found"));
+    error || (profileData ? undefined : new Error("No User Found"));
   return {
     loading,
     getProfile,
@@ -33,6 +35,6 @@ export const createsUserProfile = (): CreateUserProfileProps => {
   >(getQuery(createUserQuery));
   const profileData = data?.createUserProfile || null;
   const errorData =
-    error || (profileData ? undefined : new Error("No Talent Found"));
+    error || (profileData ? undefined : new Error("No User Found"));
   return { loading, createProfile, profileData, error: errorData };
 };

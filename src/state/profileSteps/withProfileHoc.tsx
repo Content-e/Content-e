@@ -1,6 +1,6 @@
-import { getUserProfile } from "hooks";
+import { createsUserProfile, getUserProfile } from "hooks";
 import withApolloProvider from "hooks/apollo/withApollo";
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "state/auth";
 import { AuthContextType } from "state/types/authTypes";
 import { initialProfileState, ProfileProps } from "utils";
@@ -17,14 +17,23 @@ export function withProfile<T>(
   return withApolloProvider((props: T & HocProps) => {
     const { shouldCallApi } = props;
     const { getProfile, profileData, error, loading } = getUserProfile();
+    const {
+      createProfile,
+      profileData: createProfileData,
+      loading: createProfileLoading,
+    } = createsUserProfile();
+
     const { profileState, setProfileState } =
       useContext<ProfileContextType>(ProfileContext);
     const {
-      authState: { userId, isLoggedIn },
+      authState: { userId, isLoggedIn, email },
     } = useContext<AuthContextType>(AuthContext);
+    const [createProfileApiCall, updateCreateProfileApiCall] = useState(false);
+    const [isApiCalled, setIsApiCalled] = useState(false);
 
     const refetchProfile = useCallback((): void => {
       if (userId && shouldCallApi) {
+        setIsApiCalled(true);
         setProfileState({ isLoading: true });
         getProfile({ variables: { id: userId } });
       }
@@ -39,17 +48,28 @@ export function withProfile<T>(
     }, [userId]);
 
     useEffect(() => {
-      if (!loading) {
+      if (!loading && shouldCallApi && isApiCalled) {
+        setIsApiCalled(false);
         if (profileData)
           setProfileState({
             data: profileData,
             isLoading: false,
             error: undefined,
           });
-        else if (error)
+        else if (error) {
+          if (profileData === null && !createProfileApiCall) {
+            const input = { name: "", userEmail: email };
+            createProfile({ variables: { input } });
+            updateCreateProfileApiCall(true);
+          }
           setProfileState({ isLoading: false, error, data: null });
+        }
       }
     }, [profileData, loading, error]);
+
+    useEffect(() => {
+      if (createProfileData && !createProfileLoading) refetchProfile();
+    }, [createProfileLoading, createProfileData]);
 
     useEffect(() => {
       if (!isLoggedIn) setProfileState(initialProfileState);
