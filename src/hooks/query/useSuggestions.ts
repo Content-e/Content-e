@@ -8,7 +8,7 @@ export const useGetSuggestions = (): GetSuggestionsProps => {
   const [getSuggestions, { data, loading, error }] = useLazyQuery<
     GetGPTresponseQuery,
     GetGPTresponseQueryVariables
-  >(getQuery(getGPTresponse));
+  >(getQuery(getGPTresponse), { fetchPolicy: "no-cache" });
   const suggestions = data?.getGPTresponse || null;
   const errorData =
     error || (suggestions ? undefined : new Error("No Suggestions"));

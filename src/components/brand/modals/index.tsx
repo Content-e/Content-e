@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { CreateBrandProfileInput, GPT_PROMPT } from "API";
 import CustomModal from "./modal";
 import { useGetSuggestions } from "hooks/query/useSuggestions";
+import { getSuggestions } from "../components";
 
 interface Props {
   data: CreateBrandProfileInput;
@@ -12,10 +13,14 @@ interface Props {
 }
 export const Modal: FC<Props> = ({ data, prompType, ...rest }) => {
   const [responseNames, setResponseNames] = useState<Array<string>>([]);
-  const { getSuggestions, loading, suggestions, error } = useGetSuggestions();
+  const [loading, setLoading] = useState(false);
+
+  const { getSuggestions: getSuggestionsApi, suggestions } =
+    useGetSuggestions();
 
   const refreshResponse = (): void => {
-    getSuggestions({
+    setLoading(true);
+    getSuggestionsApi({
       variables: {
         data: {
           prompType,
@@ -30,20 +35,12 @@ export const Modal: FC<Props> = ({ data, prompType, ...rest }) => {
   };
 
   useEffect(() => {
-    if (!loading) {
-      if (suggestions) {
-        const result = suggestions[prompType];
-        if (result) {
-          const responseArray = Object.values(JSON.parse(result));
-          // setResponseNames(responseArray[0] as Array<string>);
-          console.log(responseArray);
-        }
-        console.log(suggestions);
-      } else if (error) {
-        setResponseNames([]);
-      }
+    if (loading && suggestions) {
+      setLoading(false);
+      const suggestionRes = getSuggestions(prompType, suggestions);
+      setResponseNames(suggestionRes || []);
     }
-  }, [loading, suggestions, error]);
+  }, [loading, suggestions]);
 
   return (
     <CustomModal

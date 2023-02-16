@@ -1,7 +1,7 @@
-import { FC, Fragment, useMemo, useState } from "react";
+import { FC, Fragment, useEffect, useMemo, useState } from "react";
 import { CreateBrandProfileInput } from "API";
 import { withProfile } from "state/profileSteps";
-import { ProfileProps } from "utils";
+import { AuthRoutes, ProfileProps } from "utils";
 import StepOne from "./stepOne";
 import StepTwo from "./stepTwo";
 import StepThree from "./stepThree";
@@ -11,16 +11,28 @@ import {
   isTaglineSuggestionDisable,
   StepBelt,
 } from "./components";
+import { BrandProps, withBrand } from "state/brand";
+import { useHistory } from "react-router-dom";
 
-export const BrandSteps: FC<ProfileProps> = ({ profileState: { data } }) => {
+export const BrandSteps: FC<ProfileProps & BrandProps> = ({
+  profileState: { data, isLoading },
+  brandState,
+  refetchProfile,
+  updateData,
+  loading,
+  data: updatedDataRes,
+}) => {
+  const history = useHistory();
   const [step, updateStep] = useState(0);
   const [brandData, setBrandData] = useState<CreateBrandProfileInput>(
-    data?.brand?.[0] || {}
+    brandState || {}
   );
 
   const goToNextStep = (): void => {
     if (step < 2) updateStep(step + 1);
+    else updateData(brandData);
   };
+
   const goToPrevStep = (): void => {
     if (step > 0) updateStep(step - 1);
   };
@@ -38,6 +50,14 @@ export const BrandSteps: FC<ProfileProps> = ({ profileState: { data } }) => {
     } else newStep = stp;
     updateStep(newStep);
   };
+
+  useEffect(() => {
+    if (!loading && updatedDataRes) refetchProfile();
+  }, [loading, updatedDataRes]);
+
+  useEffect(() => {
+    if (!isLoading && data && updatedDataRes) history.push(AuthRoutes.Home);
+  }, [isLoading, data, updatedDataRes]);
 
   const nextStepDisabled = useMemo(() => {
     if (step === 0) return isPillarSuggestionDisable(brandData);
@@ -63,4 +83,4 @@ export const BrandSteps: FC<ProfileProps> = ({ profileState: { data } }) => {
   );
 };
 
-export default withProfile(BrandSteps);
+export default withProfile(withBrand(BrandSteps));

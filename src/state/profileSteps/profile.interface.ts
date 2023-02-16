@@ -1,5 +1,5 @@
 import { ApolloError } from "@apollo/client";
-import { UserProfile } from "API";
+import { BrandProfile, UserProfile } from "API";
 
 export interface IProfileDetails {
   id: string;
@@ -25,4 +25,9 @@ export interface IProfileState {
 export interface ProfileContextType {
   profileState: IProfileState;
   setProfileState: React.Dispatch<React.SetStateAction<IProfileState>>;
+}
+
+export interface BrandContextType {
+  brandState: BrandProfile | null;
+  setBrandState: React.Dispatch<React.SetStateAction<BrandProfile>>;
 }

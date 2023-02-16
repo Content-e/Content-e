@@ -64,7 +64,7 @@ export const StepThree: FC<Props> = ({ data, onUpdate }) => {
         <Modal
           title="Misson statement suggestions"
           data={data}
-          prompType={GPT_PROMPT.BRAND_MISION_STATEMENT}
+          prompType={GPT_PROMPT.BRAND_MISSION_STATEMENT}
           onCancel={toggleMissionSuggestionBox}
           onInsertion={insertMissionStatement}
         />

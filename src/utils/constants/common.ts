@@ -1,3 +1,4 @@
+import { BrandProfile } from "API";
 import { AuthStateType } from "hooks/utils";
 import { IProfileState } from "state/profileSteps";
 import { FlattenSimpleInterpolation } from "styled-components";
@@ -17,6 +18,7 @@ export type AuthProps = {
   setAuthState: React.Dispatch<React.SetStateAction<AuthStateType>>;
 };
 export type ProfileProps = {
+  brandState: BrandProfile | null;
   profileState: IProfileState;
   refetchProfile: () => void;
   cleanProfileState: () => void;

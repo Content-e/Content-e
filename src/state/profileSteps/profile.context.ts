@@ -1,10 +1,13 @@
 import { createContext } from "react";
 import { initialProfileState } from "utils";
-import { ProfileContextType } from "./profile.interface";
+import { BrandContextType, ProfileContextType } from "./profile.interface";
 
 export const ProfileContext = createContext<ProfileContextType>({
   profileState: initialProfileState,
   setProfileState: (): void => {},
 });
 
-export default ProfileContext;
+export const BrandContext = createContext<BrandContextType>({
+  brandState: null,
+  setBrandState: (): void => {},
+});

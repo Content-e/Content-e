@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import withApolloProvider from "hooks/apollo/withApollo";
 import { createUserBrand, updateUserBrand } from "hooks/query/useBrand";
 import { BrandProps } from "./brand.interface";
 import { CreateBrandProfileInput } from "API";
+import { AuthContext } from "state/auth";
+import { ProfileContext } from "state/profileSteps";
 
 export function withBrand<T>(Component: React.FC<T & BrandProps>): React.FC<T> {
   return withApolloProvider((props: T) => {
@@ -16,10 +18,23 @@ export function withBrand<T>(Component: React.FC<T & BrandProps>): React.FC<T> {
       loading: updateBrandLoading,
       brand: updateBrandRes,
     } = updateUserBrand();
+    const {
+      authState: { email },
+    } = useContext(AuthContext);
+    const {
+      profileState: { data: profileData },
+    } = useContext(ProfileContext);
 
     const updateData = (data: CreateBrandProfileInput): void => {
-      if (data.id) updateBrand(data);
-      else createBrand(data);
+      if (email && profileData?.id) {
+        const input = {
+          ...data,
+          userProfileBrandId: profileData.id,
+          userEmail: email,
+        };
+        if (data.id) updateBrand({ variables: { input } });
+        else createBrand({ variables: { input } });
+      }
     };
 
     const hocProps = {

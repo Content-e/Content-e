@@ -13,3 +13,10 @@ export type CreateBrandProps = {
   loading: boolean;
   error?: Error;
 };
+
+export type GetBrandProfileProps = {
+  loading: boolean;
+  getBrand: (unknown) => void;
+  brandData?: BrandProfile | null;
+  error?: Error;
+};

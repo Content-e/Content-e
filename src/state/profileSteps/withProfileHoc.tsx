@@ -4,8 +4,8 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "state/auth";
 import { AuthContextType } from "state/types/authTypes";
 import { initialProfileState, ProfileProps } from "utils";
-import { ProfileContextType } from "./profile.interface";
-import { ProfileContext } from "./profile.context";
+import { BrandContext, ProfileContext } from "./profile.context";
+import { useGetBrandProfile } from "hooks/query/useBrand";
 
 interface HocProps {
   shouldCallApi?: boolean;
@@ -23,9 +23,10 @@ export function withProfile<T>(
       profileData: createProfileData,
       loading: createProfileLoading,
     } = createUserProfile();
+    const { getBrand, brandData, loading: brandLoading } = useGetBrandProfile();
 
-    const { profileState, setProfileState } =
-      useContext<ProfileContextType>(ProfileContext);
+    const { profileState, setProfileState } = useContext(ProfileContext);
+    const { brandState, setBrandState } = useContext(BrandContext);
     const {
       authState: { isLoggedIn, email },
     } = useContext<AuthContextType>(AuthContext);
@@ -53,7 +54,7 @@ export function withProfile<T>(
         setIsApiCalled(false);
         if (profileData && isProfileExists)
           setProfileState({
-            data: profileData,
+            data: profileData?.items[0],
             isLoading: false,
             error: undefined,
           });
@@ -71,11 +72,21 @@ export function withProfile<T>(
     }, [createProfileLoading, createProfileData]);
 
     useEffect(() => {
+      if (shouldCallApi && profileState.data?.id)
+        getBrand({ variables: { id: profileState.data?.id } });
+    }, [profileState]);
+
+    useEffect(() => {
+      if (!brandLoading && brandData) setBrandState(brandData);
+    }, [brandLoading, brandData]);
+
+    useEffect(() => {
       if (!isLoggedIn) setProfileState(initialProfileState);
     }, [isLoggedIn]);
 
     const profileProps: ProfileProps = {
       profileState: { ...profileState },
+      brandState,
       refetchProfile,
       cleanProfileState,
     };
