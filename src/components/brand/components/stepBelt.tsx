@@ -16,7 +16,7 @@ export const StepBelt: FC<Props> = ({
   goToStep,
 }) => {
   const getStepWithBar = (e: number, showBar?: boolean): JSX.Element => (
-    <Fragment key="step number and bar">
+    <Fragment key={`step number and bar ${e}`}>
       <S.StepNumber
         onClick={(): void => goToStep(e)}
         className={step >= e ? "active" : ""}

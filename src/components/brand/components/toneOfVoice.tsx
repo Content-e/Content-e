@@ -1,20 +1,14 @@
 import { ToneOptions } from "hooks/utils";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Dropdown } from "react-bootstrap";
 import * as S from "../styles";
 
 interface Props {
-  onSelect: (text: Array<string>) => void;
+  currentTone?: string | null;
+  onSelect: (text: string) => void;
 }
 
-export const ToneOfVoice: FC<Props> = ({ onSelect }) => {
-  const [currentTone, setCurrentTone] = useState("");
-
-  const handleClick = (text: string): void => {
-    setCurrentTone(text);
-    onSelect([text]);
-  };
-
+export const ToneOfVoice: FC<Props> = ({ currentTone, onSelect }) => {
   return (
     <S.DropdownTag className={currentTone ? "option__selected" : ""}>
       <Dropdown.Toggle variant="success" id="dropdown-for-salary">
@@ -27,7 +21,7 @@ export const ToneOfVoice: FC<Props> = ({ onSelect }) => {
         {ToneOptions.map((text) => (
           <Dropdown.Item
             className={currentTone === text ? "active" : ""}
-            onClick={(): void => handleClick(text)}
+            onClick={(): void => onSelect(text)}
             key={`${text}toneOfVoice`}
           >
             {text}

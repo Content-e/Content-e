@@ -1,25 +1,24 @@
 import { FC, useState } from "react";
-import { BrandProfile } from "API";
+import { CreateBrandProfileInput } from "API";
 import { TextArea } from "components/customTextArea";
 import { createBrand } from "hooks/utils";
 import Field from "./components/field";
 import * as S from "./styles";
-import { StepBelt, SuggestedInput, SuggestionButton } from "./components";
+import { SuggestedInput, SuggestionButton } from "./components";
 import { StrapLineSuggestionModal, MissionSuggestionModal } from "./modals";
 
 interface Props {
-  data?: BrandProfile;
-  onSubmit: () => void;
-  onPrev: () => void;
-  goToStep: (step: number) => void;
+  data: CreateBrandProfileInput;
+  onUpdate: (data: CreateBrandProfileInput) => void;
 }
-export const StepThree: FC<Props> = ({ data, onSubmit, ...rest }) => {
-  const [missionStatement, setMissionStatement] = useState(
-    data?.internalMission || ""
-  );
+export const StepThree: FC<Props> = ({ data, onUpdate }) => {
+  const { internalMission, strapLine } = data;
   const [showMissionSuggestion, setShowMissionSuggestion] = useState(false);
-  const [strapLine, setStrapLine] = useState(data?.strapLine || "");
   const [showStrapSuggestion, setShowStrapSuggestion] = useState(false);
+
+  const setMission = (text: string): void =>
+    onUpdate({ internalMission: text });
+  const setStrapLine = (text: string): void => onUpdate({ strapLine: text });
 
   const toggleMissionSuggestionBox = (): void =>
     setShowMissionSuggestion(!showMissionSuggestion);
@@ -27,7 +26,7 @@ export const StepThree: FC<Props> = ({ data, onSubmit, ...rest }) => {
     setShowStrapSuggestion(!showStrapSuggestion);
 
   const insertMissionStatement = (text: string): void => {
-    setMissionStatement(text);
+    setMission(text);
     toggleMissionSuggestionBox();
   };
 
@@ -39,7 +38,7 @@ export const StepThree: FC<Props> = ({ data, onSubmit, ...rest }) => {
   return (
     <S.TopWrapper>
       <Field {...createBrand.missionStatement} />
-      <TextArea value={missionStatement} updateValue={setMissionStatement} />
+      <TextArea value={internalMission || ""} updateValue={setMission} />
 
       <S.SuggestionBoxPanel>
         <SuggestionButton
@@ -50,7 +49,7 @@ export const StepThree: FC<Props> = ({ data, onSubmit, ...rest }) => {
 
       <Field {...createBrand.strapLine} />
       <SuggestedInput
-        value={strapLine}
+        value={strapLine || ""}
         setValue={setStrapLine}
         getSuggestions={toggleStrapSuggestionBox}
       />
@@ -67,13 +66,6 @@ export const StepThree: FC<Props> = ({ data, onSubmit, ...rest }) => {
           onInsertion={insertStrapLine}
         />
       )}
-
-      <StepBelt
-        {...rest}
-        step={2}
-        onNext={onSubmit}
-        disabled={!missionStatement || !strapLine}
-      />
     </S.TopWrapper>
   );
 };

@@ -1,27 +1,24 @@
 import { FC, useState } from "react";
-import { BrandProfile } from "API";
+import { CreateBrandProfileInput } from "API";
 import { TextArea } from "components/customTextArea";
 import { createBrand } from "hooks/utils";
 import Field from "./components/field";
 import * as S from "./styles";
-import { StepBelt, SuggestionButton } from "./components";
+import { SuggestionButton } from "./components";
 import { PillarSuggestionModal } from "./modals";
 
 interface Props {
-  data?: BrandProfile;
-  onSubmit: () => void;
-  onPrev: () => void;
-  goToStep: (step: number) => void;
+  data: CreateBrandProfileInput;
+  onUpdate: (data: CreateBrandProfileInput) => void;
 }
-export const StepTwo: FC<Props> = ({ data, onSubmit, ...rest }) => {
-  const [pillarDescription, setPillarDescription] = useState<
-    Array<string | null>
-  >(data?.pillars || []);
+export const StepTwo: FC<Props> = ({ data, onUpdate }) => {
+  const { pillars } = data;
   const [showSuggestion, setShowSuggestion] = useState(false);
 
+  const setPillars = (text: string): void => onUpdate({ pillars: [text] });
   const toggleSuggestionBox = (): void => setShowSuggestion(!showSuggestion);
   const insertPillarDiscription = (text: string): void => {
-    setPillarDescription([text]);
+    setPillars(text);
     toggleSuggestionBox();
   };
 
@@ -31,8 +28,8 @@ export const StepTwo: FC<Props> = ({ data, onSubmit, ...rest }) => {
       <S.SubHeading>Brand communication pillar</S.SubHeading>
       <TextArea
         small
-        value={pillarDescription[0] || ""}
-        updateValue={(text: string): void => setPillarDescription([text])}
+        value={pillars?.[0] || ""}
+        updateValue={setPillars}
         placeholder="Brand pillar / value  short description"
       />
 
@@ -51,13 +48,6 @@ export const StepTwo: FC<Props> = ({ data, onSubmit, ...rest }) => {
           onInsertion={insertPillarDiscription}
         />
       )}
-
-      <StepBelt
-        {...rest}
-        step={1}
-        onNext={onSubmit}
-        disabled={!pillarDescription}
-      />
     </S.TopWrapper>
   );
 };

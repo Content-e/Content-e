@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import CustomModal from "./modal";
 
 interface Props {
-  toneOfVoice: Array<string | null> | null;
+  toneOfVoice: string;
   description: string;
   onCancel: () => void;
   onInsertion: (text: string) => void;
