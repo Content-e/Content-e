@@ -1,6 +1,6 @@
-import { ToneOptions } from "hooks/utils";
 import { FC } from "react";
 import { Dropdown } from "react-bootstrap";
+import { ToneOptions } from "utils";
 import * as S from "../styles";
 
 interface Props {

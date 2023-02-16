@@ -1,11 +1,16 @@
 import { FC, useState } from "react";
-import { CreateBrandProfileInput } from "API";
-import { TextArea } from "components/customTextArea";
-import { createBrand } from "hooks/utils";
-import Field from "./components/field";
+import { CreateBrandProfileInput, GPT_PROMPT } from "API";
+import { createBrand } from "utils";
+import { TextArea } from "components";
+import {
+  Field,
+  SuggestedInput,
+  SuggestionButton,
+  isMissionSuggestionDisable,
+  isTaglineSuggestionDisable,
+} from "./components";
+import Modal from "./modals";
 import * as S from "./styles";
-import { SuggestedInput, SuggestionButton } from "./components";
-import { StrapLineSuggestionModal, MissionSuggestionModal } from "./modals";
 
 interface Props {
   data: CreateBrandProfileInput;
@@ -42,7 +47,7 @@ export const StepThree: FC<Props> = ({ data, onUpdate }) => {
 
       <S.SuggestionBoxPanel>
         <SuggestionButton
-          disableSuggestions={false}
+          disableSuggestions={isMissionSuggestionDisable(data)}
           getSuggestions={toggleMissionSuggestionBox}
         />
       </S.SuggestionBoxPanel>
@@ -52,16 +57,23 @@ export const StepThree: FC<Props> = ({ data, onUpdate }) => {
         value={strapLine || ""}
         setValue={setStrapLine}
         getSuggestions={toggleStrapSuggestionBox}
+        disableSuggestions={isTaglineSuggestionDisable(data)}
       />
 
       {showMissionSuggestion && (
-        <MissionSuggestionModal
+        <Modal
+          title="Misson statement suggestions"
+          data={data}
+          prompType={GPT_PROMPT.BRAND_MISION_STATEMENT}
           onCancel={toggleMissionSuggestionBox}
           onInsertion={insertMissionStatement}
         />
       )}
       {showStrapSuggestion && (
-        <StrapLineSuggestionModal
+        <Modal
+          title="Tagline suggestions"
+          data={data}
+          prompType={GPT_PROMPT.BRAND_TAGLINE_STATEMENT}
           onCancel={toggleStrapSuggestionBox}
           onInsertion={insertStrapLine}
         />

@@ -1,5 +1,6 @@
 export * from "./auth";
 export * from "./types";
+export * from "./brand";
 export * from "./routes";
 export * from "./common";
 export * from "./dashboard";

@@ -1,11 +1,15 @@
 import { FC, useState } from "react";
-import { CreateBrandProfileInput } from "API";
-import { TextArea } from "components/customTextArea";
-import { createBrand } from "hooks/utils";
-import Field from "./components/field";
+import { CreateBrandProfileInput, GPT_PROMPT } from "API";
+import { createBrand } from "utils";
+import { TextArea } from "components";
+import {
+  Field,
+  SuggestedInput,
+  ToneOfVoice,
+  isNameSuggestionDisable,
+} from "./components";
+import Modal from "./modals";
 import * as S from "./styles";
-import { NameSuggestionModal } from "./modals";
-import { SuggestedInput, ToneOfVoice } from "./components";
 
 interface Props {
   data: CreateBrandProfileInput;
@@ -35,15 +39,16 @@ export const StepOne: FC<Props> = ({ data, onUpdate }) => {
       <SuggestedInput
         small
         placeholder="Enter Brand Name"
-        disableSuggestions={!description || !toneVoice}
+        disableSuggestions={isNameSuggestionDisable(data)}
         value={name || ""}
         setValue={setName}
         getSuggestions={toggleSuggestionBox}
       />
       {showSuggestion && (
-        <NameSuggestionModal
-          toneOfVoice={toneVoice?.[0] || ""}
-          description={description || ""}
+        <Modal
+          data={data}
+          title="Brand name suggestions"
+          prompType={GPT_PROMPT.BRAND_NAME}
           onCancel={toggleSuggestionBox}
           onInsertion={insertBrandName}
         />

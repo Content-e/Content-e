@@ -1,11 +1,14 @@
 import { FC, useState } from "react";
-import { CreateBrandProfileInput } from "API";
-import { TextArea } from "components/customTextArea";
-import { createBrand } from "hooks/utils";
-import Field from "./components/field";
+import { CreateBrandProfileInput, GPT_PROMPT } from "API";
+import { createBrand } from "utils";
+import { TextArea } from "components";
+import {
+  Field,
+  SuggestionButton,
+  isPillarSuggestionDisable,
+} from "./components";
+import Modal from "./modals";
 import * as S from "./styles";
-import { SuggestionButton } from "./components";
-import { PillarSuggestionModal } from "./modals";
 
 interface Props {
   data: CreateBrandProfileInput;
@@ -35,7 +38,7 @@ export const StepTwo: FC<Props> = ({ data, onUpdate }) => {
 
       <S.SuggestionBoxPanel>
         <SuggestionButton
-          disableSuggestions={false}
+          disableSuggestions={isPillarSuggestionDisable(data)}
           getSuggestions={toggleSuggestionBox}
         />
       </S.SuggestionBoxPanel>
@@ -43,7 +46,10 @@ export const StepTwo: FC<Props> = ({ data, onUpdate }) => {
       <S.EmptySpace />
 
       {showSuggestion && (
-        <PillarSuggestionModal
+        <Modal
+          data={data}
+          title="Brand pillar suggestions"
+          prompType={GPT_PROMPT.BRAND_PILLARS}
           onCancel={toggleSuggestionBox}
           onInsertion={insertPillarDiscription}
         />
