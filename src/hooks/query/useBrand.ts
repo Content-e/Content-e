@@ -28,7 +28,7 @@ export const getUserProfile = (): GetUserProfileProps => {
   };
 };
 
-export const createUserProfile = (): CreateUserProfileProps => {
+export const createsUserProfile = (): CreateUserProfileProps => {
   const [createProfile, { data, loading, error }] = useMutation<
     CreateUserProfileMutation,
     CreateUserProfileMutationVariables

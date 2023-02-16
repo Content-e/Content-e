@@ -1,4 +1,4 @@
-import { createsUserProfile, getUserProfile } from "hooks";
+import { createUserProfile, getUserProfile } from "hooks";
 import withApolloProvider from "hooks/apollo/withApollo";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "state/auth";
@@ -21,7 +21,7 @@ export function withProfile<T>(
       createProfile,
       profileData: createProfileData,
       loading: createProfileLoading,
-    } = createsUserProfile();
+    } = createUserProfile();
 
     const { profileState, setProfileState } =
       useContext<ProfileContextType>(ProfileContext);
