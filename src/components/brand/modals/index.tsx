@@ -32,8 +32,13 @@ export const Modal: FC<Props> = ({ data, prompType, ...rest }) => {
   useEffect(() => {
     if (!loading) {
       if (suggestions) {
+        const result = suggestions[prompType];
+        if (result) {
+          const responseArray = Object.values(JSON.parse(result));
+          // setResponseNames(responseArray[0] as Array<string>);
+          console.log(responseArray);
+        }
         console.log(suggestions);
-        setResponseNames(["first name"]);
       } else if (error) {
         setResponseNames([]);
       }

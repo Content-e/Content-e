@@ -18,7 +18,8 @@ export const StepTwo: FC<Props> = ({ data, onUpdate }) => {
   const { pillars } = data;
   const [showSuggestion, setShowSuggestion] = useState(false);
 
-  const setPillars = (text: string): void => onUpdate({ pillars: [text] });
+  const setPillars = (text: string): void =>
+    onUpdate({ pillars: [text, text, text, text] });
   const toggleSuggestionBox = (): void => setShowSuggestion(!showSuggestion);
   const insertPillarDiscription = (text: string): void => {
     setPillars(text);

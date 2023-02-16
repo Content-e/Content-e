@@ -9,7 +9,7 @@ import { createUserProfile as createUserQuery } from "graphql/mutations";
 import { CreateBrandProps, UpdateBrandProps } from "hooks/utils";
 import { getQuery } from "hooks/utils/helpers";
 
-export const createUserProfile = (): CreateBrandProps => {
+export const createUserBrand = (): CreateBrandProps => {
   const [createBrand, { data, loading, error }] = useMutation<
     CreateBrandProfileMutation,
     CreateBrandProfileMutationVariables
@@ -20,7 +20,7 @@ export const createUserProfile = (): CreateBrandProps => {
   return { loading, createBrand, brand, error: errorData };
 };
 
-export const updateUserProfile = (): UpdateBrandProps => {
+export const updateUserBrand = (): UpdateBrandProps => {
   const [updateBrand, { data, loading, error }] = useMutation<
     UpdateBrandProfileMutation,
     UpdateBrandProfileMutationVariables
