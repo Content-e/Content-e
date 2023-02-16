@@ -16,7 +16,8 @@ export function withProfile<T>(
 ): React.FC<T & HocProps> {
   return withApolloProvider((props: T & HocProps) => {
     const { shouldCallApi } = props;
-    const { getProfile, profileData, error, loading } = getUserProfile();
+    const { getProfile, profileData, isProfileExists, error, loading } =
+      getUserProfile();
     const {
       createProfile,
       profileData: createProfileData,
@@ -26,18 +27,18 @@ export function withProfile<T>(
     const { profileState, setProfileState } =
       useContext<ProfileContextType>(ProfileContext);
     const {
-      authState: { userId, isLoggedIn, email },
+      authState: { isLoggedIn, email },
     } = useContext<AuthContextType>(AuthContext);
     const [createProfileApiCall, updateCreateProfileApiCall] = useState(false);
     const [isApiCalled, setIsApiCalled] = useState(false);
 
     const refetchProfile = useCallback((): void => {
-      if (userId && shouldCallApi) {
+      if (email && shouldCallApi) {
         setIsApiCalled(true);
         setProfileState({ isLoading: true });
-        getProfile({ variables: { id: userId } });
+        getProfile({ variables: { userEmail: email } });
       }
-    }, [userId, shouldCallApi]);
+    }, [email, shouldCallApi]);
 
     const cleanProfileState = (): void => {
       setProfileState({ isLoading: false });
@@ -45,23 +46,21 @@ export function withProfile<T>(
 
     useEffect(() => {
       if (profileState.data === undefined) refetchProfile();
-    }, [userId]);
+    }, [email]);
 
     useEffect(() => {
       if (!loading && shouldCallApi && isApiCalled) {
         setIsApiCalled(false);
-        if (profileData)
+        if (profileData && isProfileExists)
           setProfileState({
             data: profileData,
             isLoading: false,
             error: undefined,
           });
-        else if (error) {
-          if (profileData === null && !createProfileApiCall) {
-            const input = { name: "", userEmail: email };
-            createProfile({ variables: { input } });
-            updateCreateProfileApiCall(true);
-          }
+        else if (!isProfileExists && !createProfileApiCall) {
+          const input = { name: "", userEmail: email };
+          createProfile({ variables: { input } });
+          updateCreateProfileApiCall(true);
           setProfileState({ isLoading: false, error, data: null });
         }
       }

@@ -5,6 +5,7 @@ export type GetUserProfileProps = {
   profileData?: UnknownType;
   loading: boolean;
   error?: Error;
+  isProfileExists: boolean;
 };
 
 export type CreateUserProfileProps = {

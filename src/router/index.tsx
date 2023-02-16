@@ -17,6 +17,7 @@ import {
   mainRoutes,
   UnAuthRoutesArray,
 } from "./RoutesConstants";
+import { ProfileProvider } from "state/profileSteps";
 
 const MainRouter: React.FC<AuthProps & ErrorProps> = ({
   authState: { isLoading, isLoggedIn, email },
@@ -62,9 +63,11 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
       <ShouldRender if={pathFound}>
         <Switch>
           <Route path={AuthRoutes.Logout} component={LogoutPage} />
-          {mainRoutes.map((route: RouteProps, index: number) => (
-            <Route key={`${index}`} {...route} />
-          ))}
+          <ProfileProvider>
+            {mainRoutes.map((route: RouteProps, index: number) => (
+              <Route key={`${index}`} {...route} />
+            ))}
+          </ProfileProvider>
         </Switch>
       </ShouldRender>
     </Fragment>
