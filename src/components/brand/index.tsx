@@ -1,11 +1,16 @@
-import { FC, Fragment, useState } from "react";
+import { FC, Fragment, useMemo, useState } from "react";
 import { CreateBrandProfileInput } from "API";
 import { withProfile } from "state/profileSteps";
 import { ProfileProps } from "utils";
 import StepOne from "./stepOne";
 import StepTwo from "./stepTwo";
 import StepThree from "./stepThree";
-import { StepBelt } from "./components";
+import {
+  isMissionSuggestionDisable,
+  isPillarSuggestionDisable,
+  isTaglineSuggestionDisable,
+  StepBelt,
+} from "./components";
 
 export const BrandSteps: FC<ProfileProps> = ({ profileState: { data } }) => {
   const [step, updateStep] = useState(0);
@@ -22,6 +27,24 @@ export const BrandSteps: FC<ProfileProps> = ({ profileState: { data } }) => {
   const updateBrandData = (newBrandData: CreateBrandProfileInput): void => {
     setBrandData({ ...brandData, ...newBrandData });
   };
+  const updateStepNumber = (stp: number): void => {
+    let newStep = step;
+    if (stp > step) {
+      if (
+        (stp === 1 && !isPillarSuggestionDisable(brandData)) ||
+        (stp === 2 && !isMissionSuggestionDisable(brandData))
+      )
+        newStep = stp;
+    } else newStep = stp;
+    updateStep(newStep);
+  };
+
+  const nextStepDisabled = useMemo(() => {
+    if (step === 0) return isPillarSuggestionDisable(brandData);
+    if (step === 1) return isMissionSuggestionDisable(brandData);
+    if (step === 2) return isTaglineSuggestionDisable(brandData);
+    return false;
+  }, [brandData, step]);
 
   return (
     <Fragment key="brand steps">
@@ -32,9 +55,9 @@ export const BrandSteps: FC<ProfileProps> = ({ profileState: { data } }) => {
       <StepBelt
         step={step}
         onNext={goToNextStep}
-        onPrev={goToPrevStep}
-        disabled={false}
-        goToStep={updateStep}
+        onPrev={step > 0 ? goToPrevStep : undefined}
+        disabled={nextStepDisabled}
+        goToStep={updateStepNumber}
       />
     </Fragment>
   );
