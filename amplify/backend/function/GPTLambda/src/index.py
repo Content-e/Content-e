@@ -70,6 +70,11 @@ def validate_event(event):
         return False 
     if prompt_type == "BRAND_PILLARS" and not event['arguments']['data']['businessDescription']\
         and not event['arguments']['data']['toneOfVoice']\
+        and not event['arguments']['data']['brandName']\
+        and not event['arguments']['data']['brandPillars']:
+        return False 
+    if prompt_type == "BRAND_PILLARS_REFRESH" and not event['arguments']['data']['businessDescription']\
+        and not event['arguments']['data']['toneOfVoice']\
         and not event['arguments']['data']['brandName']:
         return False 
     if prompt_type == "BRAND_VALUES" and not event['arguments']['data']['businessDescription']\
@@ -88,17 +93,22 @@ def validate_event(event):
         and not event['arguments']['data']['brandMissionStatement']:
         return False 
     return True
-def parse_brand_name_output(data: str, refresh=False):
-    ret =[]
-    if refresh:
-        data = data.replace("bot","")
-    for each in data.split(','):
-        each = each.strip()
-        if each:
-            ret.append(each)
-    return ret
+
+# def parse_brand_name_output(data: str, refresh=False):
+#     ret =[]
+#     if refresh:
+#         data = data.replace("bot","")
+#     for each in data.split(','):
+#         each = each.strip()
+#         if each:
+#             ret.append(each)
+#     return ret
 
 def parse_gpt_output(data: str, refresh=False):
+    if refresh:
+        # data = "{"+data+"}"
+        data = data.replace("bot:", '')
+        data = data.replace("Bot:", '')
     return data.replace("\n","")
 def get_gpt_response (event_data):
     prompType = event_data['prompType']
@@ -116,9 +126,11 @@ def get_gpt_response (event_data):
         return parse_gpt_output(call_gpt("User: "+ BRAND_NAME_PROMPT.format(business_description, toneOf_voice) + "\nbot: "+brand_name +"\nUser: Give me more brand names"),True)
     elif prompType == "BRAND_PILLARS":
         return parse_gpt_output(call_gpt(BRAND_PILLARS_PROMPT.format(business_description, toneOf_voice, brand_name)))
+    elif prompType == "BRAND_PILLARS_REFRESH":
+        return parse_gpt_output(call_gpt(BRAND_PILLARS_PROMPT.format(business_description, toneOf_voice, brand_name) + "\nbot: "+brand_pillars+"\nUser: Give me more brand pillars"),True)
     elif prompType == "BRAND_VALUES":
         return parse_gpt_output(call_gpt(BRAND_VALUES_PROMPT.format(business_description, toneOf_voice, brand_name)))
-    elif prompType == "BRAND_MISION_STATEMENT":
+    elif prompType == "BRAND_MISSION_STATEMENT":
         return parse_gpt_output(call_gpt(BRAND_MISSION_STATEMENT_PROMPT.format(business_description, toneOf_voice, brand_name, brand_pillars[0], brand_pillars[1],brand_pillars[2],brand_pillars[3])))
     elif prompType == "BRAND_TAGLINE_STATEMENT":
         return parse_gpt_output(call_gpt(BRAND_TAGLINE_STATEMENT_PROMPT.format(business_description, toneOf_voice, brand_name, brand_pillars[0], brand_pillars[1],brand_pillars[2],brand_pillars[3], brand_mision_statement)))
@@ -127,41 +139,20 @@ def handler(event, context):
   try:
     if not validate_event(event):
         return {
-        'statusCode': 400,
-            'headers': {
-                'Access-Control-Allow-Headers': '*',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
-            },
-            'body': json.dumps('Invalid Parameters')
+            'error': True,
+            'message': "Validation Failed"
         }
 
     gpt_res = get_gpt_response(event['arguments']['data'])
     ret = {"error": False}
-    print(gpt_res)
     ret[event['arguments']['data']["prompType"]] = gpt_res
-
-    return {
-        'statusCode': 200,
-        'headers': {
-            'Access-Control-Allow-Headers': '*',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
-        },
-        'body': json.dumps(ret)
-    }
+    import json
+    print(gpt_res)
+    print(json.loads(gpt_res))
+    return ret
   except Exception as e:
     print("Exception : ",e)
-    return {
-        'statusCode': 500,
-        'headers': {
-            'Access-Control-Allow-Headers': '*',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
-        },
-        'body': json.dumps({"error": True, "message": "Something went wrong"})
-    }
-
+    return {"error": True}
 
 
 

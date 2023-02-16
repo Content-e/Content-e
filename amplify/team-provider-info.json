@@ -21,7 +21,7 @@
       "function": {
         "GPTLambda": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/GPTLambda-714e4b5a346d69353039-build.zip"
+          "s3Key": "amplify-builds/GPTLambda-3737767175546a344a4e-build.zip"
         }
       },
       "hosting": {
