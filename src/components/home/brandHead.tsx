@@ -1,21 +1,20 @@
 import { FC } from "react";
-import { BrandType } from "hooks/utils";
+import { BrandProfile } from "API";
 import * as S from "./styles";
 
 interface Props {
-  data?: BrandType;
+  data?: BrandProfile;
 }
 export const BrandHead: FC<Props> = ({ data }) => {
-  const { items } = data || {};
   return (
     <S.BrandTopWrapper>
       <S.BrandName>
         <S.BrandBoldTitle>Brand name:</S.BrandBoldTitle>
-        {items?.name || "Brain-e"}
+        {data?.name}
       </S.BrandName>
       <S.BrandName>
         <S.BrandBoldTitle>Strap line:</S.BrandBoldTitle>
-        {items?.strapLine || "Human and AI Intelligence - Unlocking potential"}.
+        {data?.strapLine}
       </S.BrandName>
     </S.BrandTopWrapper>
   );

@@ -19,11 +19,15 @@ export const BrandSteps: FC<ProfileProps> = ({ profileState: { data } }) => {
   return (
     <Fragment key="brand steps">
       {step === 0 && (
-        <StepOne data={brand} onSubmit={goToNextStep} goToStep={updateStep} />
+        <StepOne
+          data={brand?.[0]}
+          onSubmit={goToNextStep}
+          goToStep={updateStep}
+        />
       )}
       {step === 1 && (
         <StepTwo
-          data={brand}
+          data={brand?.[0]}
           onSubmit={goToNextStep}
           onPrev={goToPrevStep}
           goToStep={updateStep}
@@ -31,7 +35,7 @@ export const BrandSteps: FC<ProfileProps> = ({ profileState: { data } }) => {
       )}
       {step === 2 && (
         <StepThree
-          data={brand}
+          data={brand?.[0]}
           onSubmit={goToNextStep}
           onPrev={goToPrevStep}
           goToStep={updateStep}

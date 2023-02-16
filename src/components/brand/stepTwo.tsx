@@ -1,27 +1,27 @@
 import { FC, useState } from "react";
+import { BrandProfile } from "API";
 import { TextArea } from "components/customTextArea";
-import { createBrand, BrandType } from "hooks/utils";
+import { createBrand } from "hooks/utils";
 import Field from "./components/field";
 import * as S from "./styles";
 import { StepBelt, SuggestionButton } from "./components";
 import { PillarSuggestionModal } from "./modals";
 
 interface Props {
-  data?: BrandType | null;
+  data?: BrandProfile;
   onSubmit: () => void;
   onPrev: () => void;
   goToStep: (step: number) => void;
 }
 export const StepTwo: FC<Props> = ({ data, onSubmit, ...rest }) => {
-  const { items } = data || {};
-  const [pillarDescription, setPillarDescription] = useState(
-    items?.pillars || ""
-  );
+  const [pillarDescription, setPillarDescription] = useState<
+    Array<string | null>
+  >(data?.pillars || []);
   const [showSuggestion, setShowSuggestion] = useState(false);
 
   const toggleSuggestionBox = (): void => setShowSuggestion(!showSuggestion);
   const insertPillarDiscription = (text: string): void => {
-    setPillarDescription(text);
+    setPillarDescription([text]);
     toggleSuggestionBox();
   };
 
@@ -31,8 +31,8 @@ export const StepTwo: FC<Props> = ({ data, onSubmit, ...rest }) => {
       <S.SubHeading>Brand communication pillar</S.SubHeading>
       <TextArea
         small
-        value={pillarDescription}
-        updateValue={setPillarDescription}
+        value={pillarDescription[0] || ""}
+        updateValue={(text: string): void => setPillarDescription([text])}
         placeholder="Brand pillar / value  short description"
       />
 

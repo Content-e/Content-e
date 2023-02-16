@@ -1,20 +1,22 @@
 import { FC, useState } from "react";
+import { BrandProfile } from "API";
 import { TextArea } from "components/customTextArea";
-import { createBrand, BrandType } from "hooks/utils";
+import { createBrand } from "hooks/utils";
 import Field from "./components/field";
 import * as S from "./styles";
 import { NameSuggestionModal } from "./modals";
 import { StepBelt, SuggestedInput, ToneOfVoice } from "./components";
 
 interface Props {
-  data?: BrandType;
+  data?: BrandProfile;
   onSubmit: () => void;
   goToStep: (step: number) => void;
 }
 export const StepOne: FC<Props> = ({ data, onSubmit, ...rest }) => {
-  const { items } = data || {};
-  const [description, setDescription] = useState(items?.description || "");
-  const [toneOfVoice, setToneOfVoice] = useState(items?.toneVoice || "");
+  const [description, setDescription] = useState(data?.description || "");
+  const [toneOfVoice, setToneOfVoice] = useState<Array<string | null>>(
+    data?.toneVoice || []
+  );
   const [brandName, updateBrandName] = useState("");
   const [showSuggestion, setShowSuggestion] = useState(false);
 

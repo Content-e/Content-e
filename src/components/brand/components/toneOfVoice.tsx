@@ -4,7 +4,7 @@ import { Dropdown } from "react-bootstrap";
 import * as S from "../styles";
 
 interface Props {
-  onSelect: (text: string) => void;
+  onSelect: (text: Array<string>) => void;
 }
 
 export const ToneOfVoice: FC<Props> = ({ onSelect }) => {
@@ -12,7 +12,7 @@ export const ToneOfVoice: FC<Props> = ({ onSelect }) => {
 
   const handleClick = (text: string): void => {
     setCurrentTone(text);
-    onSelect(text);
+    onSelect([text]);
   };
 
   return (

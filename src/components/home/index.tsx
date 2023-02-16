@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, useMemo } from "react";
 import { withProfile } from "state/profileSteps";
 import { ProfileProps } from "utils";
 import BrandHead from "./brandHead";
@@ -8,14 +8,15 @@ import { NoDataFound } from "./noData";
 import * as S from "./styles";
 
 export const HomePage: FC<ProfileProps> = ({ profileState: { data } }) => {
+  const brandExists = useMemo(() => data?.brand?.[0], [data]);
   return (
     <Fragment key="home page">
       <S.TopWrapper>
         <Meter />
-        {!data && <NoDataFound />}
-        {data?.brand && <BrandHead data={data?.brand} />}
+        {!brandExists && <NoDataFound />}
+        {brandExists && <BrandHead data={data?.brand?.[0]} />}
       </S.TopWrapper>
-      {data?.brand && <BrandBody data={data?.brand} />}
+      {brandExists && <BrandBody data={data?.brand?.[0]} />}
     </Fragment>
   );
 };

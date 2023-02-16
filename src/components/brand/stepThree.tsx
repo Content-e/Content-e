@@ -1,24 +1,24 @@
 import { FC, useState } from "react";
+import { BrandProfile } from "API";
 import { TextArea } from "components/customTextArea";
-import { createBrand, BrandType } from "hooks/utils";
+import { createBrand } from "hooks/utils";
 import Field from "./components/field";
 import * as S from "./styles";
 import { StepBelt, SuggestedInput, SuggestionButton } from "./components";
 import { StrapLineSuggestionModal, MissionSuggestionModal } from "./modals";
 
 interface Props {
-  data?: BrandType | null;
+  data?: BrandProfile;
   onSubmit: () => void;
   onPrev: () => void;
   goToStep: (step: number) => void;
 }
 export const StepThree: FC<Props> = ({ data, onSubmit, ...rest }) => {
-  const { items } = data || {};
   const [missionStatement, setMissionStatement] = useState(
-    items?.internalMission || ""
+    data?.internalMission || ""
   );
   const [showMissionSuggestion, setShowMissionSuggestion] = useState(false);
-  const [strapLine, setStrapLine] = useState(items?.strapLine || "");
+  const [strapLine, setStrapLine] = useState(data?.strapLine || "");
   const [showStrapSuggestion, setShowStrapSuggestion] = useState(false);
 
   const toggleMissionSuggestionBox = (): void =>
