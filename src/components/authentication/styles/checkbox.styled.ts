@@ -6,20 +6,20 @@ export const CheckBoxTick = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  height: 15px;
-  width: 15px;
+  height: 12px;
+  width: 12px;
   background: transparent;
-  border: 1px solid #e9d8a6;
-  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+  border-radius: 1px;
   &::after {
     display: none;
     content: "";
     position: absolute;
-    left: 4px;
-    top: 1px;
+    left: 2.5px;
+    top: -1px;
     width: 5px;
     height: 10px;
-    border: 1px solid #e9d8ad;
+    border: 1px solid #d1d1d1;
     border-width: 0 1.5px 1.5px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -35,14 +35,14 @@ export const CheckBoxTick = styled.div`
 export const CheckBoxlabel = styled.div`
   display: block;
   position: relative;
-  padding-left: 16px;
+  padding-left: 9px;
   margin-bottom: 0px;
-  margin-top: -7.5px;
+  margin-top: -5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 600;
-  line-height: 18px;
-  color: #121f3e;
+  line-height: 12px;
+  color: #2d3748;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -56,8 +56,8 @@ export const CheckInput = styled.input`
   position: absolute;
   opacity: 0;
   cursor: pointer;
-  height: 15px;
-  width: 15px;
+  height: 12px;
+  width: 12px;
   left: 0px;
   z-index: 2;
 `;

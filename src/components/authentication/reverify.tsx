@@ -51,15 +51,15 @@ export const Reverify: FC<AuthProps> = ({ getAuth }) => {
 
   return (
     <S.LoginWrapper>
+      <S.LoginBanner>
+        <img src="/images/background.png" />
+      </S.LoginBanner>
       <S.LoginCanvas>
         <S.TopHeading>Content-e</S.TopHeading>
         <S.SmHeading>Powered by Brain-e</S.SmHeading>
-        <S.Title>
-          Welcome to Content-e, use the form below <br /> to login or sign up.
-        </S.Title>
         <S.InputCanvas>
           <Input
-            placeholder="Veerification Code"
+            label="Veerification Code"
             value={code}
             errorVal={codeError}
             keyProp=""
@@ -69,17 +69,17 @@ export const Reverify: FC<AuthProps> = ({ getAuth }) => {
           />
         </S.InputCanvas>
 
-        <S.ButtonWrapper>
-          <S.AuthButton
-            onClick={onVerification}
-            disabled={isLoading || loginLoading}
-          >
-            Verify {isLoading && <IconLoader />}
-          </S.AuthButton>
-          <S.AuthButtonWhite onClick={onLogin}>Login</S.AuthButtonWhite>
-        </S.ButtonWrapper>
-
+        <S.AuthButton
+          onClick={onVerification}
+          disabled={isLoading || loginLoading}
+        >
+          Verify {isLoading && <IconLoader />}
+        </S.AuthButton>
         <GoogleLogin />
+        <S.AuthOtherOption>
+          Already have an account?
+          <S.AuthButtonWhite onClick={onLogin}>Login</S.AuthButtonWhite>
+        </S.AuthOtherOption>
       </S.LoginCanvas>
     </S.LoginWrapper>
   );

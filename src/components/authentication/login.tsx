@@ -57,37 +57,41 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
 
   return (
     <S.LoginWrapper>
+      <S.LoginBanner>
+        <img src="/images/background.png" />
+      </S.LoginBanner>
       <S.LoginCanvas>
         <S.TopHeading>Content-e</S.TopHeading>
         <S.SmHeading>Powered by Brain-e</S.SmHeading>
         <S.Title>
-          Welcome to Content-e, use the form below <br /> to login or sign up.
+          Welcome to Content-e, use the form below to login or sign up.
         </S.Title>
         <S.InputCanvas>
-          <Input {...commonProps} placeholder="Email Address" keyProp="email" />
+          <Input {...commonProps} keyProp="email" label="Username" />
           <Input
             {...commonProps}
             type="password"
-            placeholder="Password"
             keyProp="password"
+            label="Password"
           />
         </S.InputCanvas>
+
         <S.InfoBox>
           <S.InfoTextWrapper>
             <Checkbox />
             <S.InfoText>Remember me</S.InfoText>
           </S.InfoTextWrapper>
-          <S.InfoTextLink onClick={onForget}>Forgot Password</S.InfoTextLink>
+          <S.InfoTextLink onClick={onForget}>Forgot Password?</S.InfoTextLink>
         </S.InfoBox>
 
-        <S.ButtonWrapper>
-          <S.AuthButton onClick={onLogin} disabled={isLoading}>
-            Login {isLoading && <IconLoader />}
-          </S.AuthButton>
-          <S.AuthButtonWhite onClick={onSignUp}>Sign up</S.AuthButtonWhite>
-        </S.ButtonWrapper>
-
+        <S.AuthButton onClick={onLogin} disabled={isLoading}>
+          Login {isLoading && <IconLoader />}
+        </S.AuthButton>
         <GoogleLogin />
+        <S.AuthOtherOption>
+          Don't have an account?
+          <S.AuthButtonWhite onClick={onSignUp}>Sign up</S.AuthButtonWhite>
+        </S.AuthOtherOption>
       </S.LoginCanvas>
     </S.LoginWrapper>
   );

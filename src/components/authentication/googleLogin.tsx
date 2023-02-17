@@ -1,13 +1,15 @@
 import React, { FC } from "react";
-import GoogleButton from "react-google-button";
 import * as S from "./styles";
 
 export const GoogleLogin: FC = () => {
-  const ongGoogleLogin = (): void => {};
-
   return (
     <S.GoogleButtonCanvas>
-      <GoogleButton className="googleButton" onClick={ongGoogleLogin} />
+      <S.GoogleButton>
+        <S.GoogleLogo>
+          <img src="/images/googleLogo.svg" alt="google logo" />
+        </S.GoogleLogo>
+        Sign-in with google
+      </S.GoogleButton>
     </S.GoogleButtonCanvas>
   );
 };

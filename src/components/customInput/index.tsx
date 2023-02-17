@@ -20,6 +20,7 @@ interface Props {
   errorVal?: string | null;
   handlers: Handlers;
   keyProp: string;
+  label?: string;
 }
 export const Input: FC<Props> = ({
   type,
@@ -28,9 +29,11 @@ export const Input: FC<Props> = ({
   errorVal,
   keyProp,
   handlers: { state, error, updateState },
+  label,
 }) => {
   return (
     <Fragment key="custom input">
+      {label && <S.InputLabel>{label}</S.InputLabel>}
       <S.Input
         type={type || "string"}
         placeholder={placeholder}

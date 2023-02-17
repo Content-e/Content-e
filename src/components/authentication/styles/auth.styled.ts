@@ -1,70 +1,104 @@
 import styled from "styled-components";
 
 export const LoginWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #005f73;
+  position: relative;
+  background: white;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  flex-direction: row;
+
+  @media only screen and (max-width: 768px) {
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+`;
+
+export const LoginBanner = styled.div`
+  height: 100vh;
+  width: 45vw;
+
+  & img {
+    height: 100%;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const LoginCanvas = styled.div`
-  width: 380px;
+  position: relative;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 200px;
+  align-items: flex-start;
+
+  @media only screen and (max-width: 1024px) {
+    margin-left: 100px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    margin: 0;
+  }
 `;
 
 export const TopHeading = styled.div`
-  font-family: "Lato";
-  /* font-style: normal; */
-  font-weight: 600;
-  font-size: 44px;
-  line-height: 53px;
   text-align: center;
-  color: #ffffff;
+  color: #005f73;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
 `;
 
 export const SmHeading = styled.div`
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 12px;
+  line-height: 15px;
   text-align: center;
-  color: #e9d8a6;
+  color: #001219;
 `;
 
 export const Title = styled.div`
-  font-family: "Inter";
+  font-family: "Lato";
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
-  text-align: center;
-  color: #e9d8a6;
-  margin: 45px 0 30px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  color: #ee9b00;
+  margin: 20px 0 2px;
+  text-align: left;
+  width: 100%;
 `;
 
 export const InputCanvas = styled.div`
-    display: flex;
-    flex-direction: column;
-    
-}`;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
 
 export const InfoBox = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 28px;
-  color: #e9d8a6;
-  margin: 20px 0 0;
+  font-size: 10px;
+  line-height: 12px;
+  color: #2d3748;
+  margin: 10px 0 0;
+  width: 100%;
 `;
 
 export const InfoTextWrapper = styled.div`
@@ -77,12 +111,13 @@ export const InfoText = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-family: "Inter";
+  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 28px;
-  color: #e9d8a6;
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: -0.02em;
+  color: #2d3748;
 `;
 
 export const InfoTextLink = styled.a`
@@ -92,63 +127,64 @@ export const InfoTextLink = styled.a`
   font-family: "Inter";
   text-decoration: none;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 28px;
-  color: #e9d8a6;
+  font-size: 11px;
+  line-height: 12px;
+  color: #007aff;
   cursor: pointer;
 
   &:hover {
-    font-weight: 700;
-    color: #e9d8a6;
     text-decoration: underline;
   }
 `;
 
-export const ButtonWrapper = styled.div`
-  margin-top: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-`;
-
 export const AuthButton = styled.button`
-  padding: 10px 15px;
-  width: 116px;
-  height: 40px;
-  background: #e9d8a6;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
+  width: 100%;
+  margin-top: 20px;
+  height: 35px;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #005f73;
+
+  color: white;
+  background: linear-gradient(180deg, #005f73 0%, #0a9396 100%);
+  border-radius: 5px;
+  width: 100%;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
 
   &:hover,
   &:focus-visible {
-    background: #ffe69b;
+    background: linear-gradient(180deg, #227fa5 0%, #2cb5b8 100%);
     outline: none;
     border: none;
     box-shadow: none;
   }
 `;
 
-export const AuthButtonWhite = styled.button`
-  padding: 10px 15px;
-  /* position: absolute; */
-  width: 116px;
-  height: 40px;
-  background: #ffffff;
-  border: 1px solid #005f73;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #005f73;
+export const AuthOtherOption = styled.div`
+  margin-top: 40px;
+  text-align: center;
+  width: 100%;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 9.87838px;
+  line-height: 14px;
+  letter-spacing: -0.02em;
+  color: #2d3748;
+`;
+
+export const AuthButtonWhite = styled.span`
+  color: #007aff;
+  margin-left: 5px;
+  cursor: pointer;
 
   &:hover {
-    background: #eee;
-    outline: none;
-    border: none;
-    box-shadow: none;
+    text-decoration: underline;
   }
 `;

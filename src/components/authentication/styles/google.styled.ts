@@ -1,27 +1,41 @@
 import styled from "styled-components";
 
 export const GoogleButtonCanvas = styled.div`
-  margin-top: 90px;
+  margin-top: 16px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+`;
 
-  & .googleButton {
-    color: #777 !important;
-    font-weight: bold !important;
-    background: white !important;
-    width: 220px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    height: 46px !important;
+export const GoogleButton = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: #2d3748;
+  border-radius: 3.52799px;
+  height: 35px;
+  color: white;
 
-    & span {
-      margin-left: 7px !important;
-    }
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
 
-    & div {
-      height: 45px !important;
-    }
+  &:hover {
+    background: black;
+  }
+`;
+
+export const GoogleLogo = styled.div`
+  width: 15px;
+  height: 15px;
+  display: flex;
+  margin-right: 10px;
+  & img {
+    max-width: 100%;
   }
 `;
