@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import { AuthContext, UnAuthUserName } from "state/auth";
+import { AuthContext, TitleContext, UnAuthUserName } from "state/auth";
 import { initialAuthContext } from "utils";
 import { AuthStateType } from "../types/authTypes";
 
@@ -9,9 +9,12 @@ interface BaseLayoutProps {
 
 export const AuthProvider: React.FC<BaseLayoutProps> = (props) => {
   const [authState, setAuthState] = useState<AuthStateType>(initialAuthContext);
+  const [title, setTitle] = useState("");
   return (
     <AuthContext.Provider value={{ authState, setAuthState }}>
-      {props.children}
+      <TitleContext.Provider value={{ title, setTitle }}>
+        {props.children}
+      </TitleContext.Provider>
     </AuthContext.Provider>
   );
 };

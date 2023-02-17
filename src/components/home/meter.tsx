@@ -25,15 +25,19 @@ export const Meter: FC<ProfileProps> = () => {
   );
   return (
     <S.MeterWrapper>
-      <S.Heading>Brand Profile</S.Heading>
+      <S.Heading>Brand</S.Heading>
 
-      <S.MeterCanvas percentage={percentage} degree={degree}>
-        {PercentageMapper.map((e) => (
-          <S.MeterNumber className={e.className} key={e.id}>
-            {e.id}
-          </S.MeterNumber>
-        ))}
-      </S.MeterCanvas>
+      <S.MeterBox>
+        <S.MeterCanvas percentage={percentage} degree={degree}>
+          {PercentageMapper.map((e) => (
+            <S.MeterNumber className={e.className} key={e.id}>
+              {e.id}
+            </S.MeterNumber>
+          ))}
+        </S.MeterCanvas>
+
+        <S.MeterValue>{value}%</S.MeterValue>
+      </S.MeterBox>
     </S.MeterWrapper>
   );
 };

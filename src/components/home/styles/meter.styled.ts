@@ -2,18 +2,24 @@ import { IMeterValue } from "state/brand";
 import styled from "styled-components";
 
 export const MeterWrapper = styled.div`
-  width: 274px;
   height: 187px;
+  position: relative;
 `;
 
 export const Heading = styled.div`
-  font-family: "LatoLight";
-  text-align: center;
+  font-family: "Lato";
+  text-align: left;
   font-style: normal;
   font-weight: 300;
-  font-size: 18px;
-  line-height: 28px;
-  color: #001219;
+  font-size: 16px;
+  line-height: 20px;
+  color: #1c1c1c;
+`;
+
+export const MeterBox = styled.div`
+  margin-left: 30px;
+  position: relative;
+  width: 274px;
 `;
 
 export const MeterCanvas = styled.div<IMeterValue>`
@@ -22,7 +28,6 @@ export const MeterCanvas = styled.div<IMeterValue>`
   display: flex;
   height: 135px;
   position: relative;
-  background: white;
   border: none;
 
   &::before {
@@ -132,4 +137,15 @@ export const MeterNumber = styled.div`
     top: auto;
     right: -30px;
   }
+`;
+
+export const MeterValue = styled.div`
+  position: absolute;
+  bottom: 0px;
+  left: auto;
+  right: auto;
+  width: 100%;
+  text-align: center;
+  font-family: "LatoBold";
+  font-size: 25px;
 `;

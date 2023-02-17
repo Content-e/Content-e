@@ -27,24 +27,24 @@ export const EditBtnCanvas = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 50px auto;
+  margin: 50px auto 10px;
 `;
 export const EditBrandButton = styled.div`
-  padding: 8px 40px;
-  background: #e9d8a6;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
+  padding: 11px 60px;
+  background: linear-gradient(180deg, #005f73 0%, #0a9396 100%);
+  border-radius: 4px;
   cursor: pointer;
 
-  font-family: "Inter";
+  font-family: "Lato";
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 28px;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
   text-align: center;
-  color: #005f73;
+  letter-spacing: -0.02em;
+  color: #ffffff;
 
   &:hover {
-    background: #ffe69b;
+    background: linear-gradient(180deg, #227fa5 0%, #2cb5b8 100%);
   }
 `;

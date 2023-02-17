@@ -12,14 +12,14 @@ export const HomePage: FC<ProfileProps> = ({ profileState: { data } }) => {
 
   if (!data) return <Fragment key="no profie found" />;
   return (
-    <Fragment key="home page">
+    <S.TopCanvas>
       <S.TopWrapper>
         <Meter />
         {!brandExists && <NoDataFound />}
         {brandExists && <BrandHead data={brandExists} />}
       </S.TopWrapper>
       {brandExists && <BrandBody data={brandExists} />}
-    </Fragment>
+    </S.TopCanvas>
   );
 };
 

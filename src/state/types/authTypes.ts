@@ -14,6 +14,11 @@ export interface AuthContextType {
   authState: AuthStateType;
 }
 
+export interface TitleContextType {
+  setTitle: React.Dispatch<React.SetStateAction<string>>;
+  title: string;
+}
+
 export interface IUnAuthUserName {
   setFullName: React.Dispatch<React.SetStateAction<string>>;
   fullName: string;
