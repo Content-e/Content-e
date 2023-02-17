@@ -5,3 +5,8 @@ export interface BrandProps {
   data?: BrandProfile | null;
   loading: boolean;
 }
+
+export interface IMeterValue {
+  percentage: number;
+  degree: number;
+}

@@ -1,9 +1,9 @@
+import { IMeterValue } from "state/brand";
 import styled from "styled-components";
 
 export const MeterWrapper = styled.div`
   width: 274px;
   height: 187px;
-  border: 1px solid black;
 `;
 
 export const Heading = styled.div`
@@ -14,4 +14,122 @@ export const Heading = styled.div`
   font-size: 18px;
   line-height: 28px;
   color: #001219;
+`;
+
+export const MeterCanvas = styled.div<IMeterValue>`
+  margin-top: 30px;
+  display: -ms-flexbox;
+  display: flex;
+  height: 135px;
+  position: relative;
+  background: white;
+  border: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    border-radius: 450px 450px 0 0;
+    padding: 50px 50px 0;
+    background: linear-gradient(
+      ${(props): number => props.degree}deg,
+      #aaaabb ${(props): number => props.percentage}%,
+      #dddddd 0%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    -webkit-mask-composite: exclude;
+    -webkit-mask-composite: exclude;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+`;
+
+export const MeterNumber = styled.div`
+  position: absolute;
+  width: fit-content;
+  font-size: 10px;
+
+  &.zero {
+    left: -20px;
+    bottom: -5px;
+    top: auto;
+    right: auto;
+  }
+
+  &.ten {
+    left: -14px;
+    bottom: 35px;
+    top: auto;
+    right: auto;
+  }
+
+  &.twenty {
+    left: 3px;
+    bottom: 74px;
+    top: auto;
+    right: auto;
+  }
+
+  &.thirty {
+    left: 35px;
+    bottom: auto;
+    top: 12px;
+    right: auto;
+  }
+
+  &.forty {
+    right: auto;
+    bottom: auto;
+    top: -11px;
+    left: 80px;
+  }
+
+  &.fifty {
+    left: auto;
+    bottom: auto;
+    top: -20px;
+    right: auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  &.sixty {
+    left: auto;
+    bottom: auto;
+    top: -11px;
+    right: 80px;
+  }
+
+  &.seventy {
+    right: 35px;
+    bottom: auto;
+    top: 12px;
+    left: auto;
+  }
+
+  &.eighty {
+    right: 3px;
+    bottom: 74px;
+    top: auto;
+    left: auto;
+  }
+
+  &.ninty {
+    right: -14px;
+    bottom: 35px;
+    top: auto;
+    left: auto;
+  }
+
+  &.hundred {
+    left: auto;
+    bottom: -5px;
+    top: auto;
+    right: -30px;
+  }
 `;
