@@ -6,7 +6,7 @@ export enum UnAuthRoutes {
 }
 
 export enum AuthRoutes {
-  Home = "/home",
+  Home = "/dashboard",
   Brand = "/brand",
   Logout = "/logout",
 }

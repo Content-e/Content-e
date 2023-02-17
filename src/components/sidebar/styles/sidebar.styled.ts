@@ -6,9 +6,7 @@ export const SidebarWrapper = styled.div`
   flex-shrink: 0;
   height: 100vh;
   width: 0px;
-  border-radius: 0px 8px 8px 0px;
   background: #ffffff;
-  transition: all 0.2s ease-in-out 0s;
   opacity: 0;
   z-index: 4;
   position: relative;
@@ -16,46 +14,69 @@ export const SidebarWrapper = styled.div`
   margin: 0;
 
   @media only screen and (min-width: 992px) {
-    width: 260px;
+    width: 200px;
     opacity: 1;
     background: transparent;
-    margin: 0px 20px 0px 0px;
   }
+
+  @media only screen and (min-width: 1200px) {
+    width: 220px;
+    opacity: 1;
+    background: transparent;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    width: 240px;
+    opacity: 1;
+    background: transparent;
+  }
+
   &.show {
     margin: 0;
-    width: 260px;
+    width: 200px;
     opacity: 1;
     position: absolute;
-    background: transparent;
+
+    background: white;
+    border-right: 1px solid black;
   }
 `;
 
 export const SidebarPanel = styled.div`
-  background: #005f73;
-  border-radius: 15px;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  flex-grow: 0.9;
 `;
 export const TopHeader = styled.div`
   margin-top: 40px;
   text-align: center;
 `;
 export const Heading = styled.div`
-  color: white;
-  font-family: "Lato";
+  color: #005f73;
+  font-family: "LatoBold";
   font-style: normal;
   font-weight: 600;
-  font-size: 28px;
-  line-height: 34px;
+  font-size: 18px;
+  line-height: 24px;
 `;
 export const SubHeading = styled.div`
-  font-family: "Inter";
-  font-size: 12px;
-  line-height: 16px;
-  color: #e9d8a6;
+  font-family: "LatoLight";
+  font-size: 10px;
+  line-height: 12px;
+  color: #33363f;
+`;
+export const UnderLineCanvas = styled.div`
+  margin-top: 20px;
+  width: 100%;
+  height: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+export const UnderLine = styled.div`
+  border-bottom: 1px solid #e5e5e5;
+  width: 70px;
+  height: 1px;
 `;
 export const ProfilePanel = styled.div`
   margin-top: 36px;
@@ -65,76 +86,90 @@ export const ProfilePanel = styled.div`
   flex-direction: row;
 `;
 export const Username = styled.div`
-  font-family: "Inter";
+  font-family: "Lato";
+  font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 28px;
-  color: #d2d2d2;
+  line-height: 20px;
+  color: #1c1c1c;
 `;
 export const Image = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  margin-left: 20px;
+  margin-right: 10px;
 
   & img {
     max-width: 100%;
   }
 `;
 export const SidebarMenu = styled.div`
-  margin: 50px 20px auto;
+  margin-top: 43px;
+  width: 100%;
 `;
 export const SidebarMenuItem = styled.div`
   display: flex;
-  margin-top: 12px;
+  height: 30px;
+  margin: 12px 10px 0;
   align-items: center;
   justify-content: flex-start;
   color: #001219;
   font-family: "LatoLight" !important;
   font-size: 14px;
-  padding: 12px 34px 11px;
-  border-radius: 10px;
-  width: 215px;
+  border-radius: 8px;
+  background: white;
   cursor: pointer;
-
-  & img {
-    max-width: 100%;
+  &.isActive,
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
   }
-
-  &.white {
-    border: 1px solid white;
-    background: white;
-
-    &:hover {
-      background: #eee;
-      border-color: #eee;
-    }
+`;
+export const SelectedLine = styled.div`
+  width: 4px;
+  background: transparent;
+  height: 16px;
+  border-radius: 8px;
+  &.isActive {
+    background: black;
   }
+`;
+export const ArrowIcon = styled.div`
+  width: 16px;
+  height: 16px;
+  margin-left: 15px;
+  display: flex;
 
-  &.green {
-    border: 1px solid #94d2bd;
-    background: #94d2bd;
-
-    &:hover {
-      background: #5acfa8;
-      border-color: #5acfa8;
-    }
+  @media only screen and (min-width: 1200px) {
+    margin-left: 18px;
   }
 `;
 export const MenuIcon = styled.div`
-  width: 24px;
-  height: 24px;
-  margin-right: 30px;
-  margin-top: -3px;
+  width: 20px;
+  height: 20px;
+  margin: 0 6px;
+  display: flex;
+
+  @media only screen and (min-width: 1200px) {
+    margin: 0 12px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    margin: 0 18px;
+  }
 `;
 export const LogoutBtn = styled.div`
+  position: absolute;
+  bottom: 40px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  color: #e9d8a6;
-  margin-bottom: 45px;
-  font-family: "InterLight";
-  margin-left: -20px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+
+  color: #e5e5e5;
   cursor: pointer;
 
   &:hover {
@@ -142,7 +177,7 @@ export const LogoutBtn = styled.div`
   }
 `;
 export const LogoutIcon = styled.div`
-  width: 24px;
-  height: 24px;
-  margin-right: 20px;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
 `;
