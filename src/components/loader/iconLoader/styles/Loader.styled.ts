@@ -9,7 +9,7 @@ export const rotate = keyframes`
 `;
 
 export const LoadingSpinner = styled.span<PropType>`
-  border: 1.5px solid #005f73;
+  border: 1.5px solid white;
   border-radius: 50%;
   border-top-color: transparent;
   opacity: 1;
