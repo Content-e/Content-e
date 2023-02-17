@@ -31,6 +31,10 @@ export function withBrand<T>(Component: React.FC<T & BrandProps>): React.FC<T> {
           ...data,
           userProfileBrandId: profileData.id,
           userEmail: email,
+          __typename: undefined,
+          createdAt: undefined,
+          updatedAt: undefined,
+          owner: undefined,
         };
         if (data.id) updateBrand({ variables: { input } });
         else createBrand({ variables: { input } });

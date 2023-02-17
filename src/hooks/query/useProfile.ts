@@ -1,30 +1,28 @@
 import { useLazyQuery, useMutation } from "@apollo/client";
 import {
-  UserProfilesByUserEmailQuery,
-  UserProfilesByUserEmailQueryVariables,
+  GetUserProfileQuery,
+  GetUserProfileQueryVariables,
   CreateUserProfileMutation,
   CreateUserProfileMutationVariables,
 } from "API";
 import { createUserProfile as createUserQuery } from "graphql/mutations";
-import { userProfilesByUserEmail } from "graphql/queries";
+import { getUserProfile as getUserProfileQuery } from "graphql/queries";
 import { CreateUserProfileProps, GetUserProfileProps } from "hooks/utils";
 import { getQuery } from "hooks/utils/helpers";
 
 export const getUserProfile = (): GetUserProfileProps => {
   const [getProfile, { data, loading, error }] = useLazyQuery<
-    UserProfilesByUserEmailQuery,
-    UserProfilesByUserEmailQueryVariables
-  >(getQuery(userProfilesByUserEmail));
-  const profileData = data?.userProfilesByUserEmail
-    ? { ...data?.userProfilesByUserEmail, brand: undefined }
-    : null;
+    GetUserProfileQuery,
+    GetUserProfileQueryVariables
+  >(getQuery(getUserProfileQuery));
+  const profileData = data?.getUserProfile || null;
   const errorData =
     error || (profileData ? undefined : new Error("No User Found"));
   return {
     loading,
     getProfile,
     profileData,
-    isProfileExists: !!profileData?.items?.length,
+    isProfileExists: !!profileData,
     error: errorData,
   };
 };

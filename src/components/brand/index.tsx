@@ -16,7 +16,6 @@ import { useHistory } from "react-router-dom";
 
 export const BrandSteps: FC<ProfileProps & BrandProps> = ({
   profileState: { data, isLoading },
-  brandState,
   refetchProfile,
   updateData,
   loading,
@@ -25,7 +24,7 @@ export const BrandSteps: FC<ProfileProps & BrandProps> = ({
   const history = useHistory();
   const [step, updateStep] = useState(0);
   const [brandData, setBrandData] = useState<CreateBrandProfileInput>(
-    brandState || {}
+    data?.brand?.items?.[0] || {}
   );
 
   const goToNextStep = (): void => {

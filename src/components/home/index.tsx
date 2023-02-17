@@ -8,7 +8,7 @@ import { NoDataFound } from "./noData";
 import * as S from "./styles";
 
 export const HomePage: FC<ProfileProps> = ({ profileState: { data } }) => {
-  const brandExists = useMemo(() => data?.brand?.[0], [data]);
+  const brandExists = useMemo(() => data?.brand?.items?.[0], [data]);
 
   if (!data) return <Fragment key="no profie found" />;
   return (
@@ -16,9 +16,9 @@ export const HomePage: FC<ProfileProps> = ({ profileState: { data } }) => {
       <S.TopWrapper>
         <Meter />
         {!brandExists && <NoDataFound />}
-        {brandExists && <BrandHead data={data?.brand?.[0]} />}
+        {brandExists && <BrandHead data={brandExists} />}
       </S.TopWrapper>
-      {brandExists && <BrandBody data={data?.brand?.[0]} />}
+      {brandExists && <BrandBody data={brandExists} />}
     </Fragment>
   );
 };

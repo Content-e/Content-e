@@ -4,8 +4,7 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "state/auth";
 import { AuthContextType } from "state/types/authTypes";
 import { initialProfileState, ProfileProps } from "utils";
-import { BrandContext, ProfileContext } from "./profile.context";
-import { useGetBrandProfile } from "hooks/query/useBrand";
+import { ProfileContext } from "./profile.context";
 
 interface HocProps {
   shouldCallApi?: boolean;
@@ -23,12 +22,10 @@ export function withProfile<T>(
       profileData: createProfileData,
       loading: createProfileLoading,
     } = createUserProfile();
-    const { getBrand, brandData, loading: brandLoading } = useGetBrandProfile();
 
     const { profileState, setProfileState } = useContext(ProfileContext);
-    const { brandState, setBrandState } = useContext(BrandContext);
     const {
-      authState: { isLoggedIn, email },
+      authState: { isLoggedIn, email, userId },
     } = useContext<AuthContextType>(AuthContext);
     const [createProfileApiCall, updateCreateProfileApiCall] = useState(false);
     const [isApiCalled, setIsApiCalled] = useState(false);
@@ -37,7 +34,7 @@ export function withProfile<T>(
       if (email && shouldCallApi) {
         setIsApiCalled(true);
         setProfileState({ isLoading: true });
-        getProfile({ variables: { userEmail: email } });
+        getProfile({ variables: { id: userId } });
       }
     }, [email, shouldCallApi]);
 
@@ -54,12 +51,12 @@ export function withProfile<T>(
         setIsApiCalled(false);
         if (profileData && isProfileExists)
           setProfileState({
-            data: profileData?.items[0],
+            data: profileData,
             isLoading: false,
             error: undefined,
           });
         else if (!isProfileExists && !createProfileApiCall) {
-          const input = { name: "", userEmail: email };
+          const input = { name: "", userEmail: email, id: userId };
           createProfile({ variables: { input } });
           updateCreateProfileApiCall(true);
           setProfileState({ isLoading: false, error, data: null });
@@ -72,21 +69,11 @@ export function withProfile<T>(
     }, [createProfileLoading, createProfileData]);
 
     useEffect(() => {
-      if (shouldCallApi && profileState.data?.id)
-        getBrand({ variables: { id: profileState.data?.id } });
-    }, [profileState]);
-
-    useEffect(() => {
-      if (!brandLoading && brandData) setBrandState(brandData);
-    }, [brandLoading, brandData]);
-
-    useEffect(() => {
       if (!isLoggedIn) setProfileState(initialProfileState);
     }, [isLoggedIn]);
 
     const profileProps: ProfileProps = {
       profileState: { ...profileState },
-      brandState,
       refetchProfile,
       cleanProfileState,
     };

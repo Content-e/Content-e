@@ -26,6 +26,20 @@ export const getUserProfile = /* GraphQL */ `
       userEmail
       description
       brand {
+        items {
+          description
+          internalMission
+          name
+          id
+          createdAt
+          userEmail
+          userProfileBrandId
+          updatedAt
+          toneVoice
+          strapLine
+          pillars
+          owner
+        }
         nextToken
       }
       owner
