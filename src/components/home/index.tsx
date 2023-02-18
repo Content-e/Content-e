@@ -13,7 +13,7 @@ export const HomePage: FC<ProfileProps> = ({
 }) => {
   const history = useHistory();
   const { pathname } = useLocation();
-  const brandExists = useMemo(() => data?.brand?.items?.[10], [data]);
+  const brandExists = useMemo(() => data?.brand?.items?.[0], [data]);
 
   useEffect(() => {
     if (!isLoading && !brandExists && AuthRoutes.Brand === pathname)
