@@ -21,6 +21,7 @@ export function withBrand<T>(Component: React.FC<T & BrandProps>): React.FC<T> {
     const {
       authState: { email },
     } = useContext(AuthContext);
+    const { profileState, setProfileState } = useContext(ProfileContext);
     const {
       profileState: { data: profileData },
     } = useContext(ProfileContext);
@@ -48,6 +49,16 @@ export function withBrand<T>(Component: React.FC<T & BrandProps>): React.FC<T> {
     useEffect(() => {
       if (!updateBrandLoading && updateBrandRes) setBrandState(updateBrandRes);
     }, [updateBrandRes, updateBrandLoading]);
+    useEffect(() => {
+      if (brandState && profileState.data?.brand)
+        setProfileState({
+          ...profileState,
+          data: {
+            ...profileState?.data,
+            brand: { ...profileState.data?.brand, items: [brandState] },
+          },
+        });
+    }, [brandState]);
 
     const hocProps = {
       updateData,

@@ -53,6 +53,12 @@ export const SuggestionButton = styled.button`
     margin-bottom: 20px;
   }
 
+  &.hideButton {
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
   &:hover {
     background: #005f73;
     color: #ffffff;

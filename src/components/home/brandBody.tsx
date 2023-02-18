@@ -21,7 +21,9 @@ export const BrandBody: FC<Props> = ({ data }) => {
       </S.BrandName>
       <S.BrandName>
         <S.BrandBoldHead>Brand Pillars:</S.BrandBoldHead>
-        {data?.pillars}
+        {data?.pillars?.map((e, i) => (
+          <div key={i}>{e}</div>
+        ))}
       </S.BrandName>
       <S.BrandName>
         <S.BrandBoldTitle>Brand tone of voice:</S.BrandBoldTitle>

@@ -9,10 +9,11 @@ interface ISuggestionBtn {
 }
 interface Props {
   value?: string;
-  updateValue: (text: string) => void;
   label?: string;
   editable?: boolean;
   suggestionBtn?: ISuggestionBtn;
+  updateValue: (text: string) => void;
+  onEditClick?: () => void;
 }
 export const TextArea: FC<Props> = ({
   value,
@@ -20,6 +21,7 @@ export const TextArea: FC<Props> = ({
   suggestionBtn,
   label,
   editable,
+  onEditClick,
 }) => {
   return (
     <S.TextAreaWrapper>
@@ -34,7 +36,7 @@ export const TextArea: FC<Props> = ({
             className={suggestionBtn ? "small_box" : ""}
           />
           {editable === false && (
-            <S.EditIcon>
+            <S.EditIcon onClick={onEditClick}>
               <img src="/images/edit-icon.svg" alt="edit-icon" />
             </S.EditIcon>
           )}
@@ -45,6 +47,7 @@ export const TextArea: FC<Props> = ({
           <SuggestionButton
             disableSuggestions={suggestionBtn.disabled}
             getSuggestions={suggestionBtn.onClick}
+            hideButton={editable === false}
           />
         </S.SuggestionBoxPanel>
       )}
