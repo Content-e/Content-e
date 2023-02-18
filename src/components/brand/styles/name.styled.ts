@@ -60,8 +60,12 @@ export const SuggestionButton = styled.button`
 
   &.disabled,
   &.disabled:hover {
-    background: #eee !important;
-    color: rgba(0, 0, 0, 0.4) !important;
-    border-color: rgba(0, 0, 0, 0.4) !important;
+    background: #d2d2d2 !important;
+    opacity: 0.7 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    text-decoration: none !important;
+    color: #333 !important;
+    border: 1px solid #333;
   }
 `;

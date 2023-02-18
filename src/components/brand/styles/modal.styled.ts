@@ -46,7 +46,7 @@ export const ModalWrapper = styled(Modal)`
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 38px 20px 29px;
+    padding: 35px 30px 26px;
     border: none;
   }
   & .modal-footer {
@@ -57,22 +57,20 @@ export const ModalWrapper = styled(Modal)`
 export const ModalInputWrapper = styled.div`
   width: 100%;
   min-height: 210px;
+  max-height: 375px;
+  overflow: auto;
 `;
 
 export const CrossIcon = styled.div`
   position: absolute;
-  right: 25px;
-  top: 25px;
-  width: 23px;
-  height: 23px;
+  right: 30px;
+  top: 35px;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  & img {
-    max-width: 100%;
-  }
 `;
 
 export const ModalBtnWrapper = styled.div`
@@ -81,6 +79,7 @@ export const ModalBtnWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-top: 26px;
 `;
 
 export const PrimaryBtn = styled(Button)`
@@ -93,7 +92,6 @@ export const PrimaryBtn = styled(Button)`
   margin: 10px 0 0;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: none;
   font-family: "Lato";
   font-style: normal;
   font-weight: 400;
@@ -103,10 +101,11 @@ export const PrimaryBtn = styled(Button)`
   text-align: center;
   letter-spacing: -0.02em;
   color: #005f73;
-  padding: 15px 70px;
+  padding: 14px 44px;
+  width: 168px;
   background: white;
   border-radius: 4px;
-  outline: 1px solid #005f73;
+  border: 1px solid #005f73;
 
   &.Poppins {
     font-family: "Poppins" !important;
@@ -118,7 +117,8 @@ export const PrimaryBtn = styled(Button)`
     box-shadow: none;
     outline: none;
     text-decoration: none;
-    color: #005f73;
+    color: #333;
+    border: 1px solid #333;
   }
 
   &:not(:disabled):not(.disabled):active:focus,
@@ -131,6 +131,7 @@ export const PrimaryBtn = styled(Button)`
     background-color: #005f73;
     box-shadow: none;
     color: white;
+    border: 1px solid #005f73;
   }
 `;
 
@@ -144,17 +145,18 @@ export const OutlineBtn = styled(Button)`
   margin: 10px 0 0;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: none;
   font-family: "Lato";
   font-style: normal;
   font-weight: 400;
+  border: 1px solid #005f73;
 
   font-size: 12px;
   line-height: 15px;
   text-align: center;
   letter-spacing: -0.02em;
   color: #ffffff;
-  padding: 15px 70px;
+  padding: 14px 44px;
+  width: 168px;
   background: linear-gradient(180deg, #005f73 0%, #0a9396 100%);
   border-radius: 4px;
 
@@ -169,6 +171,7 @@ export const OutlineBtn = styled(Button)`
   &:hover,
   &:focus {
     background: linear-gradient(180deg, #227fa5 0%, #2cb5b8 100%);
+    border: 1px solid #005f73;
     box-shadow: none;
     text-decoration: none;
   }
@@ -178,18 +181,22 @@ export const OutlineBtn = styled(Button)`
     box-shadow: none;
     outline: none;
     text-decoration: none;
-    color: #005f73;
+    color: #333;
+    border: 1px solid #333;
   }
 `;
 
 export const ModalTitle = styled.div`
-  font-size: 20px;
-  line-height: 24px;
-  color: #54595e;
-  font-weight: 600;
   font-family: "Lato";
-  text-align: center;
-  margin: 0px 0px 27px 0px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  color: #001219;
+  text-align: left;
+  margin: 0px 0px 25px 0px;
 `;
 
 export const LoaderCanvas = styled.div`
@@ -204,18 +211,17 @@ export const NoSuggestion = styled.div`
 `;
 
 export const SuggestionCanvas = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}`;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  justify-content: center;
+`;
 export const SuggestionBox = styled.div`
   background: #94d2bd;
-  border-radius: 30px;
+  border-radius: 10px;
   font-family: "LatoLight";
   font-size: 18px;
   padding: 8px 16px;
-  margin-right: 14px;
   cursor: pointer;
 
   &:hover,
