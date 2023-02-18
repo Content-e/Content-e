@@ -22,7 +22,7 @@ export const SuggestionButton: FC<Props> = ({
       disabled={disableSuggestions}
       onClick={getSuggestions}
     >
-      Get Suggestions
+      Suggestions
     </S.SuggestionButton>
   );
 };

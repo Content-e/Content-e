@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { CreateBrandProfileInput, GPT_PROMPT } from "API";
 import { createBrand } from "utils";
 import { TextArea, isPillarSuggestionDisable } from "components";
-import { Field, SuggestionButton } from "./components";
+import { Field } from "./components";
 import Modal from "./modals";
 import * as S from "./styles";
 
@@ -25,20 +25,16 @@ export const StepTwo: FC<Props> = ({ data, onUpdate }) => {
   return (
     <S.TopWrapper>
       <Field {...createBrand.pillars} />
-      <S.SubHeading>Brand communication pillar</S.SubHeading>
       <TextArea
-        small
         value={pillars?.[0] || ""}
         updateValue={setPillars}
-        placeholder="Brand pillar / value  short description"
+        label="Brand communication pillar 1"
+        suggestionBtn={{
+          disabled: isPillarSuggestionDisable(data),
+          className: "insertMargin",
+          onClick: toggleSuggestionBox,
+        }}
       />
-
-      <S.SuggestionBoxPanel>
-        <SuggestionButton
-          disableSuggestions={isPillarSuggestionDisable(data)}
-          getSuggestions={toggleSuggestionBox}
-        />
-      </S.SuggestionBoxPanel>
 
       <S.EmptySpace />
 

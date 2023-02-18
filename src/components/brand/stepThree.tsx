@@ -6,7 +6,7 @@ import {
   isMissionSuggestionDisable,
   isTaglineSuggestionDisable,
 } from "components";
-import { Field, SuggestedInput, SuggestionButton } from "./components";
+import { Field, SuggestedInput } from "./components";
 import Modal from "./modals";
 import * as S from "./styles";
 
@@ -41,14 +41,14 @@ export const StepThree: FC<Props> = ({ data, onUpdate }) => {
   return (
     <S.TopWrapper>
       <Field {...createBrand.missionStatement} />
-      <TextArea value={internalMission || ""} updateValue={setMission} />
-
-      <S.SuggestionBoxPanel>
-        <SuggestionButton
-          disableSuggestions={isMissionSuggestionDisable(data)}
-          getSuggestions={toggleMissionSuggestionBox}
-        />
-      </S.SuggestionBoxPanel>
+      <TextArea
+        value={internalMission || ""}
+        updateValue={setMission}
+        suggestionBtn={{
+          disabled: isMissionSuggestionDisable(data),
+          onClick: toggleMissionSuggestionBox,
+        }}
+      />
 
       <Field {...createBrand.strapLine} />
       <SuggestedInput

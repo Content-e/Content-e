@@ -84,35 +84,37 @@ export const ModalBtnWrapper = styled.div`
 `;
 
 export const PrimaryBtn = styled(Button)`
-  width: 116px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  letter-spacing: -0.01em;
-  background-color: transparent;
   box-shadow: none;
   text-decoration: none;
   margin: 10px 0 0;
   cursor: pointer;
   transition: all 0.3s ease;
-
-  padding: 10px 15px;
-  background: #e9d8a6;
-  border: 1px solid #e9d8a6;
-  border-radius: 5px;
-  font-family: "Inter";
+  border: none;
+  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
+
+  font-size: 12px;
+  line-height: 15px;
   text-align: center;
+  letter-spacing: -0.02em;
   color: #005f73;
+  padding: 15px 70px;
+  background: white;
+  border-radius: 4px;
+  outline: 1px solid #005f73;
+
+  &.Poppins {
+    font-family: "Poppins" !important;
+  }
 
   &:disabled {
     background: #d2d2d2;
     opacity: 0.7;
-    border: 1px solid #d2d2d2;
     box-shadow: none;
     outline: none;
     text-decoration: none;
@@ -126,38 +128,39 @@ export const PrimaryBtn = styled(Button)`
   &.btn:focus-visible,
   &:hover,
   &:focus {
-    border: 1px solid #ffe69b;
-    background-color: #ffe69b;
+    background-color: #005f73;
     box-shadow: none;
-    color: #005f73;
+    color: white;
   }
 `;
 
 export const OutlineBtn = styled(Button)`
-  width: 116px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  letter-spacing: -0.01em;
-  background-color: transparent;
   box-shadow: none;
   text-decoration: none;
   margin: 10px 0 0;
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: 10px 32px;
-  background: #ffffff;
-  border: 1px solid #005f73;
-  border-radius: 5px;
-  font-family: "Inter";
+  border: none;
+  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
-  text-align: center;
-  color: #005f73;
 
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  padding: 15px 70px;
+  background: linear-gradient(180deg, #005f73 0%, #0a9396 100%);
+  border-radius: 4px;
+
+  &.Poppins {
+    font-family: "Poppins" !important;
+  }
   &:not(:disabled):not(.disabled):active:focus,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):active,
@@ -165,16 +168,13 @@ export const OutlineBtn = styled(Button)`
   &.btn:focus-visible,
   &:hover,
   &:focus {
-    background: #005f73;
+    background: linear-gradient(180deg, #227fa5 0%, #2cb5b8 100%);
     box-shadow: none;
-    border: 1px solid #005f73;
-    color: #ffffff;
     text-decoration: none;
   }
   &:disabled {
     background: #d2d2d2;
     opacity: 0.7;
-    border: 1px solid #d2d2d2;
     box-shadow: none;
     outline: none;
     text-decoration: none;

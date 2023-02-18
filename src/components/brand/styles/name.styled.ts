@@ -3,18 +3,28 @@ import styled from "styled-components";
 export const BrandNameBox = styled.div`
   display: flex;
   align-items: center;
+  align-items: center;
   justify-content: flex-start;
+  margin-top: 15px;
+  width: 100%;
+`;
+
+export const BrandInputCanvas = styled.div`
+  width: 80%;
+
+  &.small {
+    width: auto;
+  }
 `;
 
 export const BrandInput = styled.input`
     min-width: 200px;
-    max-width: 650px;
     width: 100%;
-    line-height: 24px;
+    line-height: 26px;
     padding: 10px 15px;
     border: 1px solid #E2E1E5;
     border-radius: 5px;
-    margin-top: 15px;
+    width: 100%;
 
     &.small {
       max-width: 380px;
@@ -29,24 +39,29 @@ export const SuggestionButton = styled.button`
   background: #e9d8a6;
   border: 1px solid #ffffff;
   border-radius: 5px;
-  margin: 15px 0 0px 36px;
-  font-size: 14px;
-  line-height: 28px;
-  text-align: center;
+  margin: 0px 0 0px 10px;
+  background: #ffffff;
+  border: 1px solid #005f73;
   color: #005f73;
-  font-family: "Inter";
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-size: 12px;
+  line-height: 18px;
+  font-family: "Lato";
 
   &.separateBtn {
     margin-bottom: 20px;
   }
 
   &:hover {
-    background: #ffe69b;
+    background: #005f73;
+    color: #ffffff;
   }
 
   &.disabled,
   &.disabled:hover {
     background: #eee !important;
     color: rgba(0, 0, 0, 0.4) !important;
+    border-color: rgba(0, 0, 0, 0.4) !important;
   }
 `;

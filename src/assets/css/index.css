@@ -23,6 +23,11 @@
   src: url('../fonts/Inter-Light.ttf');
 }
 
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Regular.otf');
+}
+
 body {
   margin: 0;
   scroll-behavior: smooth;

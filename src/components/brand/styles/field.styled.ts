@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Heading = styled.div`
-  font-family: "LatoLight";
-  /* font-style: normal; */
+  font-family: "Lato";
+  text-align: left;
+  font-style: normal;
   font-weight: 300;
-  font-size: 18px;
-  line-height: 28px;
-  /* display: flex; */
-  /* align-items: center; */
-  color: #001219;
+  font-size: 15px;
+  line-height: 20px;
+  color: #1c1c1c;
+  margin-top: 15px;
 `;
 
 export const Body = styled.div`
@@ -19,5 +19,5 @@ export const Body = styled.div`
   line-height: 28px;
   color: #001219;
   margin-top: 8px;
-  width: 90%;
+  width: 72%;
 `;

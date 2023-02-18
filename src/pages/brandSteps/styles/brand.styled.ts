@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
-export const BrandPageWrapper = styled.div``;
+export const BrandPageWrapper = styled.div`
+  background: rgba(242, 242, 242, 0.35);
+  border-radius: 8px;
+  padding: 13px 30px;
+  position: relative;
+`;
 export const CrossIcon = styled.div`
   position: absolute;
-  right: 25px;
-  top: 25px;
-  width: 23px;
-  height: 23px;
+  right: 14px;
+  top: 14px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
   display: flex;
   align-items: center;

@@ -72,6 +72,7 @@ export const CustomModal: FC<Props> = ({
             Refresh
           </S.OutlineBtn>
           <S.PrimaryBtn
+            className="Poppins"
             onClick={(): void => onInsertion(selectedName)}
             disabled={!selectedName}
           >

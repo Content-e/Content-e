@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
-export const TopWrapper = styled.div`
-  padding: 0 60px;
+export const TopWrapper = styled.div``;
+
+export const TextAreaWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 `;
 
 export const SubHeading = styled.div`
@@ -17,9 +21,17 @@ export const SuggestionBoxPanel = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -10px;
+  margin-left: 45px;
+
+  &.insertMargin {
+    margin-top: 20px;
+  }
+
+  &.congusted {
+    margin-left: 0px;
+  }
 `;
 
 export const EmptySpace = styled.div`
-  height: 70px;
+  height: 40px;
 `;

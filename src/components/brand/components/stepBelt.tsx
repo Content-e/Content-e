@@ -40,7 +40,7 @@ export const StepBelt: FC<Props> = ({
       </S.StepBelt>
       <S.StepBtnHandler>
         {onPrev && <S.PrimaryBtn onClick={onPrev}>Back</S.PrimaryBtn>}
-        <S.OutlineBtn onClick={onNext} disabled={disabled}>
+        <S.OutlineBtn className="Poppins" onClick={onNext} disabled={disabled}>
           Next
         </S.OutlineBtn>
       </S.StepBtnHandler>

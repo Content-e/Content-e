@@ -10,4 +10,4 @@ export * from "./helpers";
 export * from "./sidebar";
 export * from "./authentication";
 export * from "./customInput";
-export * from "./customTextArea";
+export * from "./brand/components/textArea";

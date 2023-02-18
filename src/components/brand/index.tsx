@@ -1,4 +1,4 @@
-import { FC, Fragment, useEffect, useMemo, useState } from "react";
+import { FC, Fragment, useContext, useEffect, useMemo, useState } from "react";
 import { CreateBrandProfileInput } from "API";
 import { withProfile } from "state/profileSteps";
 import { AuthRoutes, ProfileProps } from "utils";
@@ -13,6 +13,7 @@ import {
 import { StepBelt } from "./components";
 import { BrandProps, withBrand } from "state/brand";
 import { useHistory } from "react-router-dom";
+import { TitleContext } from "state/auth";
 
 export const BrandSteps: FC<ProfileProps & BrandProps> = ({
   profileState: { data, isLoading },
@@ -22,7 +23,8 @@ export const BrandSteps: FC<ProfileProps & BrandProps> = ({
   data: updatedDataRes,
 }) => {
   const history = useHistory();
-  const [step, updateStep] = useState(0);
+  const { setTitle } = useContext(TitleContext);
+  const [step, updateStep] = useState(2);
   const [brandData, setBrandData] = useState<CreateBrandProfileInput>(
     data?.brand?.items?.[0] || {}
   );
@@ -57,6 +59,11 @@ export const BrandSteps: FC<ProfileProps & BrandProps> = ({
   useEffect(() => {
     if (!isLoading && data && updatedDataRes) history.push(AuthRoutes.Home);
   }, [isLoading, data, updatedDataRes]);
+
+  useEffect(() => setBrandData(data?.brand?.items?.[0] || {}), [data]);
+  useEffect(() => {
+    setTitle(`Brand Profile - Step ${step + 1}`);
+  }, [step]);
 
   const nextStepDisabled = useMemo(() => {
     if (step === 0) return isPillarSuggestionDisable(brandData);
