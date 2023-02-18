@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
 export const BrandTopWrapper = styled.div`
-  margin-left: 60px;
+  margin: 0;
+  width: 100%;
+
+  @media only screen and (min-width: 600px) {
+    margin-left: 60px;
+    width: auto;
+  }
 `;
 
 export const BrandWrapper = styled.div``;

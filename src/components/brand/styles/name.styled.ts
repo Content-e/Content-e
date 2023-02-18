@@ -3,36 +3,55 @@ import styled from "styled-components";
 export const BrandNameBox = styled.div`
   display: flex;
   align-items: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
   justify-content: flex-start;
   margin-top: 15px;
   width: 100%;
+
+  @media only screen and (min-width: 426px) {
+    flex-direction: row;
+    gap: none;
+  }
 `;
 
 export const BrandInputCanvas = styled.div`
-  width: 80%;
+  width: 100%;
+
+  @media only screen and (min-width: 526px) {
+    width: 80%;
+  }
 
   &.small {
-    width: auto;
+    width: inherit;
+
+    @media only screen and (min-width: 525px) {
+      width: auto;
+    }
   }
 `;
 
 export const BrandInput = styled.input`
-    min-width: 200px;
-    width: 100%;
-    line-height: 26px;
-    padding: 10px 15px;
-    border: 1px solid #E2E1E5;
-    border-radius: 5px;
-    width: 100%;
+  min-width: 200px;
+  width: 100%;
+  line-height: 26px;
+  padding: 10px 15px;
+  border: 1px solid #e2e1e5;
+  border-radius: 5px;
+  width: 100%;
 
-    &.small {
-      max-width: 380px;
+  &.small {
+    width: inherit;
+
+    @media only screen and (min-width: 525px) {
+      width: 380px;
     }
+
     &::placeholder {
       opacity: 0.5;
     }
-}`;
+  }
+`;
 
 export const SuggestionButton = styled.button`
   padding: 8px 15px;
@@ -54,9 +73,14 @@ export const SuggestionButton = styled.button`
   }
 
   &.hideButton {
-    opacity: 0;
-    pointer-events: none;
-    user-select: none;
+    display: none;
+
+    @media only screen and (min-width: 526px) {
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    }
   }
 
   &:hover {

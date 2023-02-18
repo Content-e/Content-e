@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 export const NoDataWrapper = styled.div`
-  margin-left: 60px;
+  margin: 30px 0 0;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  @media only screen and (min-width: 600px) {
+    margin: 0 0 0 60px;
+  }
 `;
 export const NoDataTitle = styled.div`
   font-family: "Lato";

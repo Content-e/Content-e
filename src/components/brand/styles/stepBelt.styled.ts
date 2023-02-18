@@ -5,14 +5,24 @@ export const StepBeltWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 430px;
+  width: 100%;
   margin: 45px auto 25px;
+
+  @media only screen and (min-width: 525px) {
+    width: 430px;
+  }
 `;
 export const StepBelt = styled.div`
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+
+  @media only screen and (min-width: 525px) {
     justify-content: center;
-}`;
+    width: auto;
+  }
+`;
 export const StepNumber = styled.div`
   width: 40px;
   height: 40px;
@@ -33,12 +43,17 @@ export const StepNumber = styled.div`
   }
 `;
 export const StepBar = styled.div`
+  display: none;
   width: 115px;
   height: 7px;
   background: #eff0f7;
   border-radius: 20px;
   margin: 0 21px;
   position: relative;
+
+  @media only screen and (min-width: 525px) {
+    display: block;
+  }
 
   & span {
     border-radius: 20px;

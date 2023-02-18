@@ -3,7 +3,12 @@ import styled from "styled-components";
 
 export const MeterWrapper = styled.div`
   height: 187px;
+  width: 100%;
   position: relative;
+
+  @media only screen and (min-width: 600px) {
+    width: auto;
+  }
 `;
 
 export const Heading = styled.div`
@@ -17,9 +22,13 @@ export const Heading = styled.div`
 `;
 
 export const MeterBox = styled.div`
-  margin-left: 30px;
+  margin: 0 auto;
   position: relative;
   width: 274px;
+
+  @media only screen and (min-width: 600px) {
+    margin-left: 30px;
+  }
 `;
 
 export const MeterCanvas = styled.div<IMeterValue>`

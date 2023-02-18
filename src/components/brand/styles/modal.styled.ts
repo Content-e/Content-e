@@ -102,10 +102,14 @@ export const PrimaryBtn = styled(Button)`
   letter-spacing: -0.02em;
   color: #005f73;
   padding: 14px 44px;
-  width: 168px;
+  width: 100px;
   background: white;
   border-radius: 4px;
   border: 1px solid #005f73;
+
+  @media only screen and (min-width: 525px) {
+    width: 168px;
+  }
 
   &.Poppins {
     font-family: "Poppins" !important;
@@ -156,9 +160,13 @@ export const OutlineBtn = styled(Button)`
   letter-spacing: -0.02em;
   color: #ffffff;
   padding: 14px 44px;
-  width: 168px;
+  width: 100px;
   background: linear-gradient(180deg, #005f73 0%, #0a9396 100%);
   border-radius: 4px;
+
+  @media only screen and (min-width: 525px) {
+    width: 168px;
+  }
 
   &.Poppins {
     font-family: "Poppins" !important;

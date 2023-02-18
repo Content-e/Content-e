@@ -2,8 +2,17 @@ import styled from "styled-components";
 
 export const TextAreaCanvas = styled.div`
   width: 100%;
+
   &.small_box {
-    width: 80%;
+    width: 100%;
+
+    @media only screen and (min-width: 525px) {
+      width: 90%;
+    }
+
+    @media only screen and (min-width: 992px) {
+      width: 80%;
+    }
   }
 `;
 
@@ -43,12 +52,16 @@ export const TextArea = styled.textarea`
   background: #ffffff;
   border: 1px solid #e2e1e5;
   border-radius: 5px;
-  width: 90%;
+  width: 100%;
   margin: 15px 0 20px;
   resize: none;
   font-size: 14px;
   line-height: 28px;
   padding: 10px 15px;
+
+  @media only screen and (min-width: 992px) {
+    width: 90%;
+  }
 
   &.small_box {
     width: 100%;

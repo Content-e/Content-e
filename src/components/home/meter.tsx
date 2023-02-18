@@ -23,15 +23,15 @@ export const Meter: FC<ProfileProps> = ({ profileState: { data } }) => {
     const brand = data?.brand?.items?.[0];
     if (brand) {
       let tempValue = 0;
-      if (!brand.description?.length) tempValue = 10;
-      if (!brand.toneVoice?.[0]) tempValue = 20;
-      if (!brand.name) tempValue = 40;
-      if (!brand.pillars?.[0]?.length) tempValue = 50;
-      if (!brand.pillars?.[1]?.length) tempValue = 60;
-      if (!brand.pillars?.[2]?.length) tempValue = 70;
-      if (!brand.pillars?.[3]?.length) tempValue = 80;
-      if (!brand.internalMission?.length) tempValue = 90;
-      if (!brand.strapLine) tempValue = 100;
+      if (brand.description?.length) tempValue = 10;
+      if (brand.toneVoice?.[0]) tempValue = 20;
+      if (brand.name) tempValue = 40;
+      if (brand.pillars?.[0]?.length) tempValue = 50;
+      if (brand.pillars?.[1]?.length) tempValue = 60;
+      if (brand.pillars?.[2]?.length) tempValue = 70;
+      if (brand.pillars?.[3]?.length) tempValue = 80;
+      if (brand.internalMission?.length) tempValue = 90;
+      if (brand.strapLine) tempValue = 100;
       setValue(tempValue);
     }
   }, [data]);

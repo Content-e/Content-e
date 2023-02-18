@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SidebarWrapper = styled.div`
-  display: flex;
+  display: none;
   flex-direction: column;
   flex-shrink: 0;
   height: 100vh;
@@ -13,8 +13,9 @@ export const SidebarWrapper = styled.div`
   pointer-events: all;
   margin: 0;
 
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 769px) {
     width: 200px;
+    display: flex;
     opacity: 1;
     background: transparent;
   }
@@ -32,6 +33,7 @@ export const SidebarWrapper = styled.div`
   }
 
   &.show {
+    display: flex;
     margin: 0;
     width: 200px;
     opacity: 1;
@@ -180,4 +182,15 @@ export const LogoutIcon = styled.div`
   width: 18px;
   height: 18px;
   margin-right: 10px;
+`;
+
+export const CrossIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+
+  @media only screen and (min-width: 769px) {
+    display: none;
+  }
 `;

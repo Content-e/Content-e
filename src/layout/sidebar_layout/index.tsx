@@ -15,7 +15,12 @@ export const SidebarLayout: FC<Props> = ({ children }) => {
       <Sidebar showMenu={showMenu} toggleMenu={toggleMenu} />
 
       <S.AppMain>
-        <S.PageTitle>{title}</S.PageTitle>
+        <S.TitleMenu>
+          <S.MenuIcon onClick={toggleMenu}>
+            <img src="/images/menu-icon.png" alt="menu-icon" />
+          </S.MenuIcon>
+          <S.PageTitle>{title}</S.PageTitle>
+        </S.TitleMenu>
         {children}
       </S.AppMain>
     </S.MainWrapper>

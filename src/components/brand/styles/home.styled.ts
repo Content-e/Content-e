@@ -6,6 +6,13 @@ export const TextAreaWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+
+  @media only screen and (min-width: 525px) {
+    flex-direction: row;
+    gap: none;
+  }
 `;
 
 export const SubHeading = styled.div`
@@ -21,10 +28,22 @@ export const SuggestionBoxPanel = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 45px;
+  margin: 0;
+
+  @media only screen and (min-width: 426px) {
+    margin-left: 20px;
+  }
+
+  @media only screen and (min-width: 992px) {
+    margin-left: 45px;
+  }
 
   &.insertMargin {
-    margin-top: 20px;
+    margin: 0px;
+
+    @media only screen and (min-width: 526px) {
+      margin-top: 20px;
+    }
   }
 
   &.congusted {
@@ -33,5 +52,10 @@ export const SuggestionBoxPanel = styled.div`
 `;
 
 export const EmptySpace = styled.div`
+  display: none;
   height: 40px;
+
+  @media only screen and (min-width: 600px) {
+    display: block;
+  }
 `;

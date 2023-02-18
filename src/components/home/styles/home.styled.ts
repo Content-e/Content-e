@@ -9,4 +9,9 @@ export const TopWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-direction: column;
+
+  @media only screen and (min-width: 600px) {
+    flex-direction: row;
+  }
 `;

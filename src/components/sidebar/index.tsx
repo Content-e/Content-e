@@ -10,7 +10,7 @@ interface ISidebar {
   toggleMenu: () => void;
 }
 
-export const Sidebar: FC<ISidebar> = () => {
+export const Sidebar: FC<ISidebar> = ({ showMenu, toggleMenu }) => {
   const history = useHistory();
   const { pathname } = useLocation();
 
@@ -40,7 +40,10 @@ export const Sidebar: FC<ISidebar> = () => {
   };
 
   return (
-    <S.SidebarWrapper>
+    <S.SidebarWrapper className={classNames({ show: showMenu })}>
+      <S.CrossIcon onClick={toggleMenu}>
+        <img src="/images/circle-cross.svg" alt="cross-icon" />
+      </S.CrossIcon>
       <S.SidebarPanel>
         <S.TopHeader>
           <S.Heading>Content-e</S.Heading>

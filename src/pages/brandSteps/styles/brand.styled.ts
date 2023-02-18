@@ -3,8 +3,12 @@ import styled from "styled-components";
 export const BrandPageWrapper = styled.div`
   background: rgba(242, 242, 242, 0.35);
   border-radius: 8px;
-  padding: 13px 30px;
+  padding: 5px 10px;
   position: relative;
+
+  @media only screen and (min-width: 426px) {
+    padding: 13px 30px;
+  }
 `;
 export const CrossIcon = styled.div`
   position: absolute;

@@ -5,7 +5,7 @@ import * as S from "./styles";
 
 export const NoDataFound: FC = () => {
   const history = useHistory();
-  const goToBrand = (): void => history.push(AuthRoutes.Brand);
+  const goToBrand = (): void => history.push(AuthRoutes.EditBrand);
 
   return (
     <S.NoDataWrapper>

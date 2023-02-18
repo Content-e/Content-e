@@ -8,8 +8,15 @@ export const MainWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const PageTitle = styled.div`
+export const TitleMenu = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   margin: 50px 0 10px;
+`;
+
+export const PageTitle = styled.div`
+  margin: 0px;
   font-family: "LatoLight";
   font-style: normal;
   font-weight: 300;
@@ -25,4 +32,19 @@ export const AppMain = styled.div`
   padding: 0px 20px;
   position: relative;
   overflow: auto;
+`;
+
+export const MenuIcon = styled.div`
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  margin-right: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+
+  @media only screen and (min-width: 769px) {
+    display: none;
+  }
 `;
