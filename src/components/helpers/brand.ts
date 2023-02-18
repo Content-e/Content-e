@@ -49,15 +49,19 @@ export const getSuggestions = (
     const output = JSON.parse(data);
     switch (prompt) {
       case GPT_PROMPT.BRAND_NAME:
+      case GPT_PROMPT.BRAND_NAME_REFRESH:
         return brandNames(output);
 
       case GPT_PROMPT.BRAND_PILLARS:
+      case GPT_PROMPT.BRAND_PILLARS_REFRESH:
         return brandPillars(output);
 
       case GPT_PROMPT.BRAND_MISSION_STATEMENT:
+      case GPT_PROMPT.BRAND_MISSION_STATEMENT_REFRESH:
         return brandMission(output);
 
       case GPT_PROMPT.BRAND_TAGLINE_STATEMENT:
+      case GPT_PROMPT.BRAND_TAGLINE_STATEMENT_REFRESH:
         return brandTagline(output);
 
       default:
@@ -82,9 +86,7 @@ export const getSuggestionInput = (
         break;
 
       case GPT_PROMPT.BRAND_PILLARS:
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        data.pillars = rawResponse;
+        data.pillars = [rawResponse];
         break;
 
       case GPT_PROMPT.BRAND_MISSION_STATEMENT:

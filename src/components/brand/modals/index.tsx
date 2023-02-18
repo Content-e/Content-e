@@ -33,9 +33,12 @@ export const Modal: FC<Props> = ({ data, prompType, ...rest }) => {
     if (loading && suggestions) {
       setLoading(false);
       setFirstApiCall(false);
-      const rawData = suggestions?.[prompType];
-      const suggestionRes = getSuggestions(prompType, rawData);
-      setRawResponse(rawData);
+      const prompt = firstApiCall
+        ? prompType
+        : ((prompType + "_REFRESH") as GPT_PROMPT);
+      const rawData = suggestions?.[prompt];
+      const suggestionRes = getSuggestions(prompt, rawData);
+      setRawResponse(rawData || "");
       setResponseNames(suggestionRes || []);
     }
   }, [loading, suggestions]);
