@@ -5,9 +5,10 @@ export const LoginWrapper = styled.div`
   background: white;
   display: flex;
   flex-direction: row;
+  align-items: center;
 
   @media only screen and (max-width: 768px) {
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
     position: absolute;
     top: 0;
