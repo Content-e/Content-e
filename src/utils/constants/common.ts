@@ -18,7 +18,7 @@ export type AuthProps = {
 };
 export type ProfileProps = {
   profileState: IProfileState;
-  refetchProfile: () => void;
+  refetchProfile: (force?: boolean) => void;
   cleanProfileState: () => void;
 };
 export interface IReturnTypeGetStripeProduct {

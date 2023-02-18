@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import withApolloProvider from "hooks/apollo/withApollo";
 import { createUserBrand, updateUserBrand } from "hooks";
 import { BrandProps } from "./brand.interface";
-import { CreateBrandProfileInput } from "API";
+import { BrandProfile, CreateBrandProfileInput } from "API";
 import { AuthContext } from "state/auth";
 import { ProfileContext } from "state/profileSteps";
 
@@ -24,6 +24,7 @@ export function withBrand<T>(Component: React.FC<T & BrandProps>): React.FC<T> {
     const {
       profileState: { data: profileData },
     } = useContext(ProfileContext);
+    const [brandState, setBrandState] = useState<BrandProfile>();
 
     const updateData = (data: CreateBrandProfileInput): void => {
       if (email && profileData?.id) {
@@ -41,10 +42,16 @@ export function withBrand<T>(Component: React.FC<T & BrandProps>): React.FC<T> {
       }
     };
 
+    useEffect(() => {
+      if (!createBrandLoading && createBrandRes) setBrandState(createBrandRes);
+    }, [createBrandRes, createBrandLoading]);
+    useEffect(() => {
+      if (!updateBrandLoading && updateBrandRes) setBrandState(updateBrandRes);
+    }, [updateBrandRes, updateBrandLoading]);
+
     const hocProps = {
       updateData,
-      data: updateBrandRes || createBrandRes,
-      loading: updateBrandLoading || createBrandLoading,
+      data: brandState,
     };
     return <Component {...props} {...hocProps} />;
   });

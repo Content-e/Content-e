@@ -12,30 +12,31 @@ import {
 } from "components";
 import { StepBelt } from "./components";
 import { BrandProps, withBrand } from "state/brand";
-import { useHistory } from "react-router-dom";
 import { TitleContext } from "state/auth";
 
 export const BrandSteps: FC<ProfileProps & BrandProps> = ({
-  profileState: { data, isLoading },
-  refetchProfile,
+  profileState: { data },
   updateData,
-  loading,
   data: updatedDataRes,
 }) => {
-  const history = useHistory();
   const { setTitle } = useContext(TitleContext);
   const [step, updateStep] = useState(0);
+  const [redirect, setRedirect] = useState(false);
   const [brandData, setBrandData] = useState<CreateBrandProfileInput>(
     data?.brand?.items?.[0] || {}
   );
 
   const goToNextStep = (): void => {
+    updateData(brandData);
     if (step < 2) updateStep(step + 1);
-    else updateData(brandData);
+    else setRedirect(true);
   };
 
   const goToPrevStep = (): void => {
-    if (step > 0) updateStep(step - 1);
+    if (step > 0) {
+      updateStep(step - 1);
+      updateData(brandData);
+    }
   };
   const updateBrandData = (newBrandData: CreateBrandProfileInput): void => {
     setBrandData({ ...brandData, ...newBrandData });
@@ -46,19 +47,18 @@ export const BrandSteps: FC<ProfileProps & BrandProps> = ({
       if (
         (stp === 1 && !isPillarSuggestionDisable(brandData)) ||
         (stp === 2 && !isMissionSuggestionDisable(brandData))
-      )
+      ) {
         newStep = stp;
+      }
     } else newStep = stp;
+    updateData(brandData);
     updateStep(newStep);
   };
 
   useEffect(() => {
-    if (!loading && updatedDataRes) refetchProfile();
-  }, [loading, updatedDataRes]);
-
-  useEffect(() => {
-    if (!isLoading && data && updatedDataRes) history.push(AuthRoutes.Home);
-  }, [isLoading, data, updatedDataRes]);
+    if (redirect && updatedDataRes)
+      window.location.href = `${window.location.origin}${AuthRoutes.Home}`;
+  }, [updatedDataRes]);
 
   useEffect(() => setBrandData(data?.brand?.items?.[0] || {}), [data]);
   useEffect(() => {

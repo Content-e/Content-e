@@ -1,6 +1,6 @@
 import { createUserProfile, getUserProfile } from "hooks";
 import withApolloProvider from "hooks/apollo/withApollo";
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "state/auth";
 import { AuthContextType } from "state/types/authTypes";
 import { initialProfileState, ProfileProps } from "utils";
@@ -30,13 +30,13 @@ export function withProfile<T>(
     const [createProfileApiCall, updateCreateProfileApiCall] = useState(false);
     const [isApiCalled, setIsApiCalled] = useState(false);
 
-    const refetchProfile = useCallback((): void => {
-      if (email && shouldCallApi) {
+    const refetchProfile = (force?: boolean): void => {
+      if (email && (shouldCallApi || force)) {
         setIsApiCalled(true);
         setProfileState({ isLoading: true });
         getProfile({ variables: { id: userId } });
       }
-    }, [email, shouldCallApi]);
+    };
 
     const cleanProfileState = (): void => {
       setProfileState({ isLoading: false });

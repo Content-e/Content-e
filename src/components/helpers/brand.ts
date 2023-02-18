@@ -11,7 +11,10 @@ export const isPillarSuggestionDisable = (
 
 export const isMissionSuggestionDisable = (
   data: CreateBrandProfileInput
-): boolean => isPillarSuggestionDisable(data) || !data.pillars;
+): boolean =>
+  isPillarSuggestionDisable(data) ||
+  !data.pillars ||
+  data.pillars?.find((e) => !e?.length) !== undefined;
 
 export const isTaglineSuggestionDisable = (
   data: CreateBrandProfileInput
