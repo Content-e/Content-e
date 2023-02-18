@@ -122,6 +122,7 @@ def parse_gpt_output(data: str, refresh=False):
         # data = "{"+data+"}"
         data = data.replace("bot:", '')
         data = data.replace("Bot:", '')
+    data = data.replace("”", '"')
     return data.replace("\n","")
 def get_gpt_response (event_data):
     prompType = event_data['prompType']
@@ -137,11 +138,11 @@ def get_gpt_response (event_data):
     if prompType == "BRAND_NAME":
         return parse_gpt_output(call_gpt(BRAND_NAME_PROMPT.format(business_description, toneOf_voice)))
     elif prompType == "BRAND_NAME_REFRESH":
-        return parse_gpt_output(call_gpt("User: "+ BRAND_NAME_PROMPT.format(business_description, toneOf_voice) + "\nbot: "+brand_name +"\nUser: Give me more brand names"),True)
+        return parse_gpt_output(call_gpt("User: "+ BRAND_NAME_PROMPT.format(business_description, toneOf_voice) + "\nbot: "+brand_name +"\nUser: Give me more brand names. Return json format."),True)
     elif prompType == "BRAND_PILLARS":
         return parse_gpt_output(call_gpt(BRAND_PILLARS_PROMPT.format(business_description, toneOf_voice, brand_name)))
     elif prompType == "BRAND_PILLARS_REFRESH":
-        return parse_gpt_output(call_gpt(BRAND_PILLARS_PROMPT.format(business_description, toneOf_voice, brand_name) + "\nbot: "+brand_pillars+"\nUser: Give me more brand pillars"),True)
+        return parse_gpt_output(call_gpt(BRAND_PILLARS_PROMPT.format(business_description, toneOf_voice, brand_name) + "\nbot: "+brand_pillars[0]+"\nUser: Give me more brand pillars"),True)
     elif prompType == "BRAND_VALUES":
         return parse_gpt_output(call_gpt(BRAND_VALUES_PROMPT.format(business_description, toneOf_voice, brand_name)))
     elif prompType == "BRAND_MISSION_STATEMENT":

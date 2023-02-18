@@ -198,6 +198,8 @@ export type GPT_RESPONSE = {
   BRAND_VALUES?: string | null,
   BRAND_MISSION_STATEMENT?: string | null,
   BRAND_TAGLINE_STATEMENT?: string | null,
+  BRAND_TAGLINE_STATEMENT_REFRESH?: string | null,
+  BRAND_MISSION_STATEMENT_REFRESH?: string | null,
   error?: boolean | null,
   message?: string | null,
 };
@@ -455,6 +457,8 @@ export type GetGPTresponseQuery = {
     BRAND_VALUES?: string | null,
     BRAND_MISSION_STATEMENT?: string | null,
     BRAND_TAGLINE_STATEMENT?: string | null,
+    BRAND_TAGLINE_STATEMENT_REFRESH?: string | null,
+    BRAND_MISSION_STATEMENT_REFRESH?: string | null,
     error?: boolean | null,
     message?: string | null,
   } | null,

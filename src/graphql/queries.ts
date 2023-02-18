@@ -13,6 +13,8 @@ export const getGPTresponse = /* GraphQL */ `
       BRAND_VALUES
       BRAND_MISSION_STATEMENT
       BRAND_TAGLINE_STATEMENT
+      BRAND_TAGLINE_STATEMENT_REFRESH
+      BRAND_MISSION_STATEMENT_REFRESH
       error
       message
     }
