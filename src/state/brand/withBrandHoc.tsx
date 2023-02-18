@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import withApolloProvider from "hooks/apollo/withApollo";
-import { createUserBrand, updateUserBrand } from "hooks/query/useBrand";
+import { createUserBrand, updateUserBrand } from "hooks";
 import { BrandProps } from "./brand.interface";
 import { CreateBrandProfileInput } from "API";
 import { AuthContext } from "state/auth";

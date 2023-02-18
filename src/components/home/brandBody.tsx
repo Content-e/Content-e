@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { BrandProfile } from "API";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { AuthRoutes } from "utils";
 import * as S from "./styles";
 
@@ -10,7 +10,8 @@ interface Props {
 
 export const BrandBody: FC<Props> = ({ data }) => {
   const history = useHistory();
-  const goToBrand = (): void => history.push(AuthRoutes.Brand);
+  const { pathname } = useLocation();
+  const goToEditBrand = (): void => history.push(AuthRoutes.EditBrand);
 
   return (
     <S.BrandWrapper>
@@ -26,9 +27,13 @@ export const BrandBody: FC<Props> = ({ data }) => {
         <S.BrandBoldTitle>Brand tone of voice:</S.BrandBoldTitle>
         {data?.toneVoice}
       </S.BrandName>
-      <S.EditBtnCanvas>
-        <S.EditBrandButton onClick={goToBrand}>Edit Brand</S.EditBrandButton>
-      </S.EditBtnCanvas>
+      {pathname.includes(AuthRoutes.Brand) && (
+        <S.EditBtnCanvas>
+          <S.EditBrandButton onClick={goToEditBrand}>
+            Edit Brand
+          </S.EditBrandButton>
+        </S.EditBtnCanvas>
+      )}
     </S.BrandWrapper>
   );
 };

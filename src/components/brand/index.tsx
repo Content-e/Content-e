@@ -9,8 +9,8 @@ import {
   isMissionSuggestionDisable,
   isPillarSuggestionDisable,
   isTaglineSuggestionDisable,
-  StepBelt,
-} from "./components";
+} from "components";
+import { StepBelt } from "./components";
 import { BrandProps, withBrand } from "state/brand";
 import { useHistory } from "react-router-dom";
 

@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import { CreateBrandProfileInput, GPT_PROMPT } from "API";
 import CustomModal from "./modal";
-import { useGetSuggestions } from "hooks/query/useSuggestions";
-import { getSuggestions } from "../components";
+import { useGetSuggestions } from "hooks";
+import { getSuggestions } from "components";
 
 interface Props {
   data: CreateBrandProfileInput;

@@ -8,5 +8,6 @@ export enum UnAuthRoutes {
 export enum AuthRoutes {
   Home = "/dashboard",
   Brand = "/brand",
+  EditBrand = "/brandEdit",
   Logout = "/logout",
 }

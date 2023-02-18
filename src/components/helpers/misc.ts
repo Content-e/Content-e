@@ -1,4 +1,5 @@
-import { IErrorStateType } from "utils";
+import { startCase } from "lodash";
+import { AuthRoutes, IErrorStateType } from "utils";
 
 export const matchSlugUrls = (pathname: string, route: string): boolean => {
   if (!route.includes(":")) return pathname === route;
@@ -41,3 +42,6 @@ export const updateErrorState = (
 export const isEmptyString = (input?: string | null): boolean =>
   // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
   !input || !input.replace(/<\/?[^>]+(>|$)/g, "").length;
+
+export const getPageTitle = (path: AuthRoutes): string =>
+  startCase(path.split("/")?.[1]);

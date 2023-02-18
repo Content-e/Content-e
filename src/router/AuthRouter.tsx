@@ -11,7 +11,8 @@ const AuthRouterPaths: FC<ProfileProps> = () => {
     <Switch>
       <SidebarLayout>
         <Route exact path={AuthRoutes.Home} component={MainPage} />
-        <Route exact path={AuthRoutes.Brand} component={BrandStepsPage} />
+        <Route exact path={AuthRoutes.Brand} component={MainPage} />
+        <Route exact path={AuthRoutes.EditBrand} component={BrandStepsPage} />
       </SidebarLayout>
     </Switch>
   );

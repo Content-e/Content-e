@@ -1,12 +1,8 @@
 import { FC, useState } from "react";
 import { CreateBrandProfileInput, GPT_PROMPT } from "API";
 import { createBrand } from "utils";
-import { TextArea } from "components";
-import {
-  Field,
-  SuggestionButton,
-  isPillarSuggestionDisable,
-} from "./components";
+import { TextArea, isPillarSuggestionDisable } from "components";
+import { Field, SuggestionButton } from "./components";
 import Modal from "./modals";
 import * as S from "./styles";
 

@@ -1,9 +1,9 @@
 import { FC } from "react";
 import classNames from "classnames";
-import { startCase } from "lodash";
 import { useHistory, useLocation } from "react-router-dom";
 import { AuthRoutes, UnknownType } from "utils";
 import * as S from "./styles";
+import { getPageTitle } from "components";
 
 interface ISidebar {
   showMenu: boolean;
@@ -34,7 +34,7 @@ export const Sidebar: FC<ISidebar> = () => {
         <S.MenuIcon>
           <img src={`/images/${icon}.svg`} />
         </S.MenuIcon>
-        {startCase(route.split("/")?.[1])}
+        {getPageTitle(route)}
       </S.SidebarMenuItem>
     );
   };
