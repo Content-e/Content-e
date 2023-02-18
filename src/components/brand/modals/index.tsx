@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { CreateBrandProfileInput, GPT_PROMPT } from "API";
 import CustomModal from "./modal";
 import { useGetSuggestions } from "hooks";
-import { getSuggestions } from "components";
+import { getSuggestionInput, getSuggestions } from "components";
 
 interface Props {
   data: CreateBrandProfileInput;
@@ -13,6 +13,8 @@ interface Props {
 }
 export const Modal: FC<Props> = ({ data, prompType, ...rest }) => {
   const [responseNames, setResponseNames] = useState<Array<string>>([]);
+  const [rawResponse, setRawResponse] = useState("");
+  const [firstApiCall, setFirstApiCall] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const { getSuggestions: getSuggestionsApi, suggestions } =
@@ -22,14 +24,7 @@ export const Modal: FC<Props> = ({ data, prompType, ...rest }) => {
     setLoading(true);
     getSuggestionsApi({
       variables: {
-        data: {
-          prompType,
-          businessDescription: data.description,
-          toneOfVoice: data.toneVoice,
-          brandName: data.name,
-          brandPillars: data.pillars,
-          brandMissionStatement: data.internalMission,
-        },
+        data: getSuggestionInput(prompType, data, firstApiCall, rawResponse),
       },
     });
   };
@@ -37,7 +32,10 @@ export const Modal: FC<Props> = ({ data, prompType, ...rest }) => {
   useEffect(() => {
     if (loading && suggestions) {
       setLoading(false);
-      const suggestionRes = getSuggestions(prompType, suggestions);
+      setFirstApiCall(false);
+      const rawData = suggestions?.[prompType];
+      const suggestionRes = getSuggestions(prompType, rawData);
+      setRawResponse(rawData);
       setResponseNames(suggestionRes || []);
     }
   }, [loading, suggestions]);

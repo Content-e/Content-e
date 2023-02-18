@@ -1,4 +1,4 @@
-import { CreateBrandProfileInput, GPT_PROMPT, GPT_RESPONSE } from "API";
+import { CreateBrandProfileInput, GPT_INPUT, GPT_PROMPT } from "API";
 import { UnknownType } from "utils";
 
 export const isNameSuggestionDisable = (
@@ -42,9 +42,8 @@ const brandTagline = (data: UnknownType): Array<string> => {
 
 export const getSuggestions = (
   prompt: GPT_PROMPT,
-  suggestions?: GPT_RESPONSE | null
+  data?: string | null
 ): Array<string> | null => {
-  const data = suggestions?.[prompt];
   if (!data) return null;
   try {
     const output = JSON.parse(data);
@@ -67,4 +66,45 @@ export const getSuggestions = (
   } catch (err) {
     return null;
   }
+};
+
+export const getSuggestionInput = (
+  prompt: GPT_PROMPT,
+  prevData: CreateBrandProfileInput,
+  firstApiCall: boolean,
+  rawResponse: string
+): GPT_INPUT => {
+  const data = { ...prevData };
+  if (!firstApiCall) {
+    switch (prompt) {
+      case GPT_PROMPT.BRAND_NAME:
+        data.name = rawResponse;
+        break;
+
+      case GPT_PROMPT.BRAND_PILLARS:
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        data.pillars = rawResponse;
+        break;
+
+      case GPT_PROMPT.BRAND_MISSION_STATEMENT:
+        data.internalMission = rawResponse;
+        break;
+
+      case GPT_PROMPT.BRAND_TAGLINE_STATEMENT:
+        data.strapLine = rawResponse;
+        break;
+    }
+  }
+  return {
+    prompType: firstApiCall ? prompt : ((prompt + "_REFRESH") as GPT_PROMPT),
+    businessDescription: data.description,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    toneOfVoice: data.toneVoice,
+    brandName: data.name,
+    brandPillars: data.pillars,
+    brandMissionStatement: data.internalMission,
+    tagLine: data.strapLine,
+  };
 };

@@ -33,6 +33,7 @@ export const StepTwo: FC<Props> = ({ data, onUpdate }) => {
       <Field {...createBrand.pillars} />
       {times(4, (i) => (
         <TextArea
+          key={i}
           value={pillars?.[i] || ""}
           updateValue={(text: string): void => setPillars(text, i)}
           label={`Brand communication pillar ${i + 1}`}
