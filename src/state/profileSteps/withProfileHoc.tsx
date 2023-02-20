@@ -57,7 +57,11 @@ export function withProfile<T>(
             error: undefined,
           });
         else if (!isProfileExists && !createProfileApiCall) {
-          const input = { name, userEmail: email, id: userId };
+          const input = {
+            name: name ?? email?.split("@")[0],
+            userEmail: email,
+            id: userId,
+          };
           createProfile({ variables: { input } });
           updateCreateProfileApiCall(true);
           setAuthState({ ...authState, name });
@@ -67,7 +71,9 @@ export function withProfile<T>(
     }, [profileData, loading, error]);
 
     useEffect(() => {
-      if (createProfileData && !createProfileLoading) refetchProfile();
+      if (createProfileData && !createProfileLoading) {
+        window.location.reload();
+      }
     }, [createProfileLoading, createProfileData]);
 
     useEffect(() => {
