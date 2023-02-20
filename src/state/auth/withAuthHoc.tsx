@@ -18,6 +18,7 @@ export function withAuth<T>(Component: React.FC<T & AuthProps>): React.FC<T> {
         const data = await Auth.currentUserInfo();
         const { attributes } = data || {};
         setAuthState({
+          name: attributes.name,
           isLoggedIn: true,
           email: attributes.email,
           isVerified: attributes.email_verified,

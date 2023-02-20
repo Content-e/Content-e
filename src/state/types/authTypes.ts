@@ -1,6 +1,7 @@
 import React from "react";
 
 export type AuthStateType = {
+  name: string | null;
   isLoggedIn: boolean | null;
   email: string | null;
   isVerified: null | boolean;

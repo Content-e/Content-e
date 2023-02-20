@@ -58,6 +58,7 @@ export const TextArea = styled.textarea`
   font-size: 14px;
   line-height: 28px;
   padding: 10px 15px;
+  color: #001219;
 
   @media only screen and (min-width: 992px) {
     width: 90%;
@@ -73,11 +74,4 @@ export const TextArea = styled.textarea`
   &::placeholder {
     opacity: 0.5;
   }
-`;
-
-export const ParagraphError = styled.p`
-  margin-bottom: 0;
-  color: #e9d8a6;
-  text-align: right;
-  font-size: 0.75rem;
 `;

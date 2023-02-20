@@ -24,9 +24,10 @@ export function withProfile<T>(
     } = createUserProfile();
 
     const { profileState, setProfileState } = useContext(ProfileContext);
-    const {
-      authState: { isLoggedIn, email, userId },
-    } = useContext<AuthContextType>(AuthContext);
+    const { authState, setAuthState } =
+      useContext<AuthContextType>(AuthContext);
+
+    const { isLoggedIn, email, userId, name } = authState;
     const [createProfileApiCall, updateCreateProfileApiCall] = useState(false);
     const [isApiCalled, setIsApiCalled] = useState(false);
 
@@ -56,9 +57,10 @@ export function withProfile<T>(
             error: undefined,
           });
         else if (!isProfileExists && !createProfileApiCall) {
-          const input = { name: "", userEmail: email, id: userId };
+          const input = { name, userEmail: email, id: userId };
           createProfile({ variables: { input } });
           updateCreateProfileApiCall(true);
+          setAuthState({ ...authState, name });
           setProfileState({ isLoading: false, error, data: null });
         }
       }

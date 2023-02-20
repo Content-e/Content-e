@@ -5,7 +5,13 @@ import * as S from "./styles";
 import GoogleLogin from "./googleLogin";
 import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
 import { useSignup } from "hooks";
-import { validateEmail, validatePassword, withAuth } from "state/auth";
+import {
+  validateEmail,
+  validateFirstName,
+  validateLastName,
+  validatePassword,
+  withAuth,
+} from "state/auth";
 
 export const Register: FC = () => {
   const history = useHistory();
@@ -25,9 +31,17 @@ export const Register: FC = () => {
   const validateSignUpForm = (): boolean => {
     const emailError = validateEmail(signUpState.email);
     const passwordError = validatePassword(signUpState.password);
-    const notValidated = emailError || passwordError;
+    const firstNameError = validateFirstName(signUpState.firstName);
+    const lastNameError = validateLastName(signUpState.lastName);
+    const notValidated =
+      emailError || passwordError || firstNameError || lastNameError;
     if (notValidated)
-      setSignUpError({ email: emailError, password: passwordError });
+      setSignUpError({
+        email: emailError,
+        password: passwordError,
+        firstName: firstNameError,
+        lastName: lastNameError,
+      });
     return !!notValidated;
   };
 
@@ -61,6 +75,8 @@ export const Register: FC = () => {
           Welcome to Content-e, use the form below to login or sign up.
         </S.Title>
         <S.InputCanvas>
+          <Input {...commonProps} keyProp="firstName" label="First Name" />
+          <Input {...commonProps} keyProp="lastName" label="LastName" />
           <Input {...commonProps} keyProp="email" label="Username" />
           <Input
             {...commonProps}

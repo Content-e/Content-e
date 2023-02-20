@@ -30,7 +30,7 @@ export const Input = styled.input`
 
 export const ParagraphError = styled.p`
   margin-bottom: 0;
-  color: #e9d8a6;
+  color: red;
   text-align: right;
-  font-size: 0.75rem;
+  font-size: 10px;
 `;

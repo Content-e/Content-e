@@ -5,16 +5,21 @@ export const initialAuthContext = {
   userId: null,
   isLoading: false,
   tempPasswd: null,
+  name: null,
 };
 
 export const defaultSignUpState = {
   email: "",
   password: "",
+  firstName: "",
+  lastName: "",
 };
 
 export const defaultSignUpError: { [key: string]: null | string } = {
   email: null,
   password: null,
+  firstName: null,
+  lastName: null,
 };
 
 export const defaultLoginState = {

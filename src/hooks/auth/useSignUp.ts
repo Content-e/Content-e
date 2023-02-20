@@ -27,13 +27,13 @@ export const useSignup = (): ApiHookReturnType<
 
   const performSignUp = useCallback(
     async (payload: SignPayloadType): Promise<void> => {
-      const { email, password } = payload;
+      const { email, password, firstName, lastName } = payload;
       setRes({ ...apiInitialState, isLoading: true });
       try {
         const response: SignUpResponse = await Auth.signUp({
           username: email,
           password,
-          attributes: { email },
+          attributes: { email, name: `${firstName} ${lastName}` },
         });
         setRes(getSuccessResponse<CognitoUser>(response.user));
         setAuthState((current) => ({

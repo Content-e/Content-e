@@ -33,6 +33,7 @@ export const BrandInputCanvas = styled.div`
 
 export const BrandInput = styled.input`
   min-width: 200px;
+  color: #001219;
   width: 100%;
   line-height: 26px;
   padding: 10px 15px;
@@ -57,7 +58,6 @@ export const BrandInput = styled.input`
 
 export const SuggestionButton = styled.button`
   padding: 8px 15px;
-  background: #e9d8a6;
   border: 1px solid #ffffff;
   border-radius: 5px;
   margin: 0px 0 0px 10px;

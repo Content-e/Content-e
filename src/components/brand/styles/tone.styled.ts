@@ -8,14 +8,14 @@ export const DropdownTag = styled(Dropdown)`
   max-width: 280px;
   width: 100%;
   min-height: 48px;
-  color: #666666;
+  color: #001219;
   border-radius: 8px;
   font-family: "Lato";
 
   & .btn-success {
     border: none;
     background: transparent;
-    color: #666666;
+    color: #001219;
     box-shadow: none;
     line-height: 16px;
     font-weight: 400;
@@ -39,7 +39,7 @@ export const DropdownTag = styled(Dropdown)`
     & .btn-success.dropdown-toggle,
     & .btn-success.dropdown-toggle:focus {
       background: transparent;
-      color: #666666;
+      color: #001219;
       box-shadow: none;
     }
   }
@@ -48,7 +48,7 @@ export const DropdownTag = styled(Dropdown)`
   & .dropdown-toggle:hover,
   & .dropdown-toggle:focus {
     background: transparent;
-    color: #666666;
+    color: #001219;
     box-shadow: none;
   }
 
@@ -75,7 +75,8 @@ export const DropdownTag = styled(Dropdown)`
     overflow-y: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    color: #666666;
+    color: #001219;
+    font-size: 14px;
     &::-webkit-scrollbar {
       width: 0px;
       height: 0px;
@@ -87,7 +88,7 @@ export const DropdownTag = styled(Dropdown)`
   & .dropdown-item:active,
   & .dropdown-item.active {
     background: #f9f9f9;
-    color: #666666;
+    color: #001219;
   }
 `;
 

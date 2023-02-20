@@ -1,16 +1,21 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import classNames from "classnames";
 import { useHistory, useLocation } from "react-router-dom";
-import { AuthRoutes, UnknownType } from "utils";
+import { AuthRoutes, ProfileProps, UnknownType } from "utils";
 import * as S from "./styles";
 import { getPageTitle } from "components";
+import { withProfile } from "state/profileSteps";
 
 interface ISidebar {
   showMenu: boolean;
   toggleMenu: () => void;
 }
 
-export const Sidebar: FC<ISidebar> = ({ showMenu, toggleMenu }) => {
+export const Sidebar: FC<ProfileProps & ISidebar> = ({
+  profileState: { data },
+  showMenu,
+  toggleMenu,
+}) => {
   const history = useHistory();
   const { pathname } = useLocation();
 
@@ -39,6 +44,15 @@ export const Sidebar: FC<ISidebar> = ({ showMenu, toggleMenu }) => {
     );
   };
 
+  const userName = useMemo(() => {
+    if (!data) return "Username";
+    else {
+      let name = data.name.slice(0, 14);
+      if (data.name.length > 14) name += "...";
+      return name;
+    }
+  }, [data]);
+
   return (
     <S.SidebarWrapper className={classNames({ show: showMenu })}>
       <S.CrossIcon onClick={toggleMenu}>
@@ -56,7 +70,7 @@ export const Sidebar: FC<ISidebar> = ({ showMenu, toggleMenu }) => {
           <S.Image>
             <img src="/images/default-image.png" />
           </S.Image>
-          <S.Username>Username</S.Username>
+          <S.Username>{userName}</S.Username>
         </S.ProfilePanel>
         <S.SidebarMenu>
           {getOption("chat", AuthRoutes.Home, onHome)}
@@ -74,4 +88,4 @@ export const Sidebar: FC<ISidebar> = ({ showMenu, toggleMenu }) => {
   );
 };
 
-export default Sidebar;
+export default withProfile(Sidebar);
