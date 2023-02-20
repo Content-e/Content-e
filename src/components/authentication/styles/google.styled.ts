@@ -18,6 +18,7 @@ export const GoogleButton = styled.div`
   border-radius: 3.52799px;
   height: 35px;
   color: white;
+  cursor: pointer;
 
   font-family: "Poppins";
   font-style: normal;
