@@ -42,20 +42,11 @@ export const SuggestionBoxPanel = styled.div`
     margin: 0px;
 
     @media only screen and (min-width: 526px) {
-      margin-top: 20px;
+      margin-top: 40px;
     }
   }
 
   &.congusted {
     margin-left: 0px;
-  }
-`;
-
-export const EmptySpace = styled.div`
-  display: none;
-  height: 40px;
-
-  @media only screen and (min-width: 600px) {
-    display: block;
   }
 `;

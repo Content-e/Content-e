@@ -7,6 +7,7 @@ import BrandBody from "./brandBody";
 import Meter from "./meter";
 import { NoDataFound } from "./noData";
 import * as S from "./styles";
+import classNames from "classnames";
 
 export const HomePage: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -23,7 +24,7 @@ export const HomePage: FC<ProfileProps> = ({
   if (!data) return <Fragment key="no profie found" />;
   return (
     <S.TopCanvas>
-      <S.TopWrapper>
+      <S.TopWrapper className={classNames({ hasData: brandExists })}>
         <Meter />
         {!brandExists && <NoDataFound />}
         {brandExists && <BrandHead data={brandExists} />}

@@ -11,6 +11,9 @@ export const TopWrapper = styled.div`
   justify-content: flex-start;
   flex-direction: column;
 
+  &.hasData {
+    align-items: flex-end;
+  }
   @media only screen and (min-width: 600px) {
     flex-direction: row;
   }

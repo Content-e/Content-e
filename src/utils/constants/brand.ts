@@ -1,5 +1,11 @@
 /* eslint-disable max-len */
-export const ToneOptions = ["Considerate and simple"];
+export const ToneOptions = [
+  "Friendly and approachable",
+  "Professional and authoritative",
+  "Playful and humorous",
+  "Inspiring and motivational",
+  "Empathetic and caring",
+];
 export const createBrand = {
   description: {
     heading: "Business description",

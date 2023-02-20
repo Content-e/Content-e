@@ -10,8 +10,14 @@ interface Props {
   title: string;
   onCancel: () => void;
   onInsertion: (text: string) => void;
+  filterResponse?: (data: Array<string>) => Array<string>;
 }
-export const Modal: FC<Props> = ({ data, prompType, ...rest }) => {
+export const Modal: FC<Props> = ({
+  data,
+  prompType,
+  filterResponse,
+  ...rest
+}) => {
   const [responseNames, setResponseNames] = useState<Array<string>>([]);
   const [rawResponse, setRawResponse] = useState("");
   const [firstApiCall, setFirstApiCall] = useState(true);
@@ -39,7 +45,9 @@ export const Modal: FC<Props> = ({ data, prompType, ...rest }) => {
       const rawData = suggestions?.[prompt];
       const suggestionRes = getSuggestions(prompt, rawData);
       setRawResponse(rawData || "");
-      setResponseNames(suggestionRes || []);
+      let newResponse = suggestionRes || [];
+      if (filterResponse) newResponse = filterResponse(newResponse);
+      setResponseNames(newResponse);
     }
   }, [loading, suggestions]);
 

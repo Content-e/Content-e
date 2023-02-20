@@ -8,7 +8,7 @@ interface Props {
 export const BrandHead: FC<Props> = ({ data }) => {
   return (
     <S.BrandTopWrapper>
-      <S.BrandName>
+      <S.BrandName className="firstChild">
         <S.BrandBoldTitle>Brand name:</S.BrandBoldTitle>
         {data?.name}
       </S.BrandName>

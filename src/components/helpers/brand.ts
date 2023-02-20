@@ -25,8 +25,8 @@ const brandPillars = (data: UnknownType): Array<string> => {
   if (data?.BrandPillar1) return Object.values(data);
   if (data?.BrandPillars)
     return data?.BrandPillars.map((e) => {
-      if (e.PillarName) return `${e.PillarName}: ${e.PillarDescription}`;
-      if (e.Pillar) return `${e.Pillar}: ${e.Description}`;
+      if (e.PillarName) return e.PillarDescription;
+      if (e.Pillar) return e.Description;
       return e;
     });
   return [];

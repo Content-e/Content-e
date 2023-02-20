@@ -27,6 +27,8 @@ export const StepTwo: FC<Props> = ({ data, onUpdate }) => {
     setPillars(text, activePillar);
     toggleSuggestionBox();
   };
+  const filterPillars = (res: Array<string>): Array<string> =>
+    pillars ? res.filter((e) => !pillars.find((s) => s === e)) : res;
 
   return (
     <S.TopWrapper>
@@ -47,8 +49,6 @@ export const StepTwo: FC<Props> = ({ data, onUpdate }) => {
         />
       ))}
 
-      <S.EmptySpace />
-
       {showSuggestion && (
         <Modal
           data={data}
@@ -56,6 +56,7 @@ export const StepTwo: FC<Props> = ({ data, onUpdate }) => {
           prompType={GPT_PROMPT.BRAND_PILLARS}
           onCancel={toggleSuggestionBox}
           onInsertion={insertPillarDiscription}
+          filterResponse={filterPillars}
         />
       )}
     </S.TopWrapper>

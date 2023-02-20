@@ -106,13 +106,13 @@ export const Image = styled.div`
   }
 `;
 export const SidebarMenu = styled.div`
-  margin-top: 43px;
+  margin-top: 55px;
   width: 100%;
 `;
 export const SidebarMenuItem = styled.div`
   display: flex;
   height: 30px;
-  margin: 12px 10px 0;
+  margin: 0 10px;
   align-items: center;
   justify-content: flex-start;
   color: #001219;

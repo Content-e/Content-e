@@ -21,7 +21,7 @@ export const TextAreaBox = styled.div`
 `;
 
 export const TextAreaLabel = styled.div`
-  margin: 15px 0 -15px;
+  margin: 15px 0 -10px;
   font-family: "LatoLight";
   font-style: normal;
   font-weight: 300;
@@ -63,6 +63,9 @@ export const TextArea = styled.textarea`
     width: 90%;
   }
 
+  &.no_below_margin {
+    margin-bottom: 0;
+  }
   &.small_box {
     width: 100%;
   }

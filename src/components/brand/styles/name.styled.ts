@@ -39,6 +39,8 @@ export const BrandInput = styled.input`
   border: 1px solid #e2e1e5;
   border-radius: 5px;
   width: 100%;
+  font-family: "Lato";
+  font-size: 14px;
 
   &.small {
     width: inherit;

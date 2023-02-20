@@ -17,7 +17,11 @@ export const BrandName = styled.div`
   font-size: 14px;
   line-height: 28px;
   color: #001219;
-  margin-top: 40px;
+  margin-top: 10px;
+
+  &.firstChild {
+    margin-top: 40px;
+  }
 `;
 
 export const BrandBoldTitle = styled.span`

@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { SuggestionButton } from "./suggestionButton";
 import * as S from "../styles";
+import classNames from "classnames";
 
 interface ISuggestionBtn {
   disabled: boolean;
@@ -33,7 +34,10 @@ export const TextArea: FC<Props> = ({
             value={value || ""}
             onChange={(e): void => updateValue(e.target.value)}
             rows={4}
-            className={suggestionBtn ? "small_box" : ""}
+            className={classNames({
+              small_box: suggestionBtn,
+              no_below_margin: label,
+            })}
           />
           {editable === false && (
             <S.EditIcon onClick={onEditClick}>

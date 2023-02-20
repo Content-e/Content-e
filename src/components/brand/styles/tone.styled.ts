@@ -8,7 +8,6 @@ export const DropdownTag = styled(Dropdown)`
   max-width: 280px;
   width: 100%;
   min-height: 48px;
-  font-size: 12px;
   color: #666666;
   border-radius: 8px;
   font-family: "Lato";
@@ -21,6 +20,7 @@ export const DropdownTag = styled(Dropdown)`
     line-height: 16px;
     font-weight: 400;
     padding: 16px;
+    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
