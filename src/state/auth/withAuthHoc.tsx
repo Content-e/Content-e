@@ -1,5 +1,5 @@
 import { Auth } from "aws-amplify";
-import React, { FC, useCallback, useContext, useEffect } from "react";
+import React, { FC, useContext, useEffect } from "react";
 import { AuthContextType } from "state/types/authTypes";
 import { AuthContext } from "state/auth";
 import { AuthProps, initialAuthContext } from "utils";
@@ -11,7 +11,7 @@ export function withAuth<T>(Component: React.FC<T & AuthProps>): React.FC<T> {
     const { authState, setAuthState } =
       useContext<AuthContextType>(AuthContext);
     const { isLoggedIn, isLoading } = authState;
-    const getAuth = useCallback(async (): Promise<void> => {
+    const getAuth = async (): Promise<void> => {
       try {
         setAuthState({ ...initialAuthContext, isLoading: true });
         await Auth.currentAuthenticatedUser();
@@ -34,7 +34,7 @@ export function withAuth<T>(Component: React.FC<T & AuthProps>): React.FC<T> {
           isLoggedIn: false,
         });
       }
-    }, []);
+    };
 
     useEffect(() => {
       if ((isLoggedIn === null && !isLoading) || authState.tempPasswd === "") {

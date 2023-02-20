@@ -6,11 +6,19 @@ import {
   defaultLoginState,
   defaultSignUpError,
   defaultLoginError,
+  defaultResetState,
+  defaultResetError,
 } from "utils";
 
 interface Handlers {
-  state?: typeof defaultSignUpState | typeof defaultLoginState;
-  error?: typeof defaultSignUpError | typeof defaultLoginError;
+  state?:
+    | typeof defaultSignUpState
+    | typeof defaultLoginState
+    | typeof defaultResetState;
+  error?:
+    | typeof defaultSignUpError
+    | typeof defaultLoginError
+    | typeof defaultResetError;
   updateState: (key: string, value: string) => void;
 }
 interface Props {

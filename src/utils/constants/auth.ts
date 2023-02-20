@@ -32,6 +32,16 @@ export const defaultLoginError: { [key: string]: null | string } = {
   password: null,
 };
 
+export const defaultResetState = {
+  code: "",
+  password: "",
+};
+
+export const defaultResetError: { [key: string]: null | string } = {
+  code: null,
+  password: null,
+};
+
 export type UnAuthUserNameProps = {
   fullName: string;
   setFullName: React.Dispatch<React.SetStateAction<string>>;

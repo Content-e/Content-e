@@ -45,7 +45,7 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
   };
 
   const userName = useMemo(() => {
-    if (!data) return "Username";
+    if (!data?.name?.length) return "Username";
     else {
       let name = data.name.slice(0, 14);
       if (data.name.length > 14) name += "...";

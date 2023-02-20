@@ -1,34 +1,35 @@
 import React, { FC, useEffect, useState } from "react";
 import { IconLoader, Input } from "components";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import * as S from "./styles";
 import GoogleLogin from "./googleLogin";
-import Checkbox from "./checkbox";
 import {
-  AuthProps,
-  defaultLoginError,
-  defaultLoginState,
+  defaultResetError,
+  defaultResetState,
   UnAuthRoutes,
+  UnknownType,
   unverifiedUser,
 } from "utils";
-import { validateEmail, validatePassword, withAuth } from "state/auth";
-import { useLogin } from "hooks";
+import { validateVerificationCode, validatePassword } from "state/auth";
+import { useResetPass } from "hooks";
 
-export const Login: FC<AuthProps> = ({ getAuth }) => {
+export const ResetPassword: FC = () => {
   const history = useHistory();
+  const { state } = useLocation();
+
   const {
     res: { isLoading, error, success },
     performAction,
-  } = useLogin();
+  } = useResetPass();
 
-  const [formState, setFormState] = useState(defaultLoginState);
-  const [formError, setFormError] = useState(defaultLoginError);
+  const [formState, setFormState] = useState(defaultResetState);
+  const [formError, setFormError] = useState(defaultResetError);
 
-  const validateSignUpForm = (): boolean => {
-    const email = validateEmail(formState.email);
+  const validateResetForm = (): boolean => {
+    const code = validateVerificationCode(formState.code);
     const password = validatePassword(formState.password);
-    if (email || password) {
-      setFormError({ email, password });
+    if (code || password) {
+      setFormError({ code, password });
       return false;
     }
     return true;
@@ -39,17 +40,21 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     setFormState((prev) => ({ ...prev, [key]: value }));
   };
 
-  const onLogin = (): void => {
-    if (validateSignUpForm()) performAction(formState);
-  };
   const onSignUp = (): void => history.push(UnAuthRoutes.Register);
-  const onForget = (): void => history.push(UnAuthRoutes.ForgetPassword);
+  const onReset = (): void => {
+    if (validateResetForm()) performAction(formState);
+  };
 
   useEffect(() => {
     if (error === unverifiedUser)
       history.push(UnAuthRoutes.Reverify, { ...formState });
-    else if (success) getAuth();
+    else if (success) history.push(UnAuthRoutes.Login);
   }, [success, error]);
+
+  useEffect(() => {
+    const { email } = (state as UnknownType) || {};
+    if (!email) history.push(UnAuthRoutes.Login);
+  }, [state]);
 
   const commonProps = {
     handlers: { state: formState, error: formError, updateState },
@@ -67,7 +72,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
           Welcome to Content-e, use the form below to login or sign up.
         </S.Title>
         <S.InputCanvas>
-          <Input {...commonProps} keyProp="email" label="Username" />
+          <Input {...commonProps} keyProp="code" label="Verification Code" />
           <Input
             {...commonProps}
             type="password"
@@ -76,16 +81,8 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
           />
         </S.InputCanvas>
 
-        <S.InfoBox>
-          <S.InfoTextWrapper>
-            <Checkbox />
-            <S.InfoText>Remember me</S.InfoText>
-          </S.InfoTextWrapper>
-          <S.InfoTextLink onClick={onForget}>Forgot Password?</S.InfoTextLink>
-        </S.InfoBox>
-
-        <S.AuthButton onClick={onLogin} disabled={isLoading}>
-          Login {isLoading && <IconLoader />}
+        <S.AuthButton onClick={onReset} disabled={isLoading}>
+          Reset Password {isLoading && <IconLoader />}
         </S.AuthButton>
         <GoogleLogin />
         <S.AuthOtherOption>
@@ -97,4 +94,4 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
   );
 };
 
-export default withAuth(Login);
+export default ResetPassword;
