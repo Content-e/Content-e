@@ -4,14 +4,18 @@ import * as S from "../styles";
 
 interface Props {
   heading: string;
-  body?: string;
+  body?: Array<string>;
 }
 export const Field: FC<Props> = ({ heading, body }) => {
   return (
     <Fragment key="field box">
       <S.Heading>{heading}</S.Heading>
-      <ShouldRender if={body}>
-        <S.Body>{body}</S.Body>
+      <ShouldRender if={body?.length}>
+        <Fragment key="description body">
+          {body?.map((text, index) => (
+            <S.Body key={`${heading}-${index}`}>{text}</S.Body>
+          ))}
+        </Fragment>
       </ShouldRender>
     </Fragment>
   );
