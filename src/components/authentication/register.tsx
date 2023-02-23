@@ -1,18 +1,8 @@
-import { Auth } from "aws-amplify";
-import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
-import ErrorContext from "state/error/error.context";
-
-import { useState, useEffect, FC, useContext, useMemo } from "react";
-import { IconLoader, Input, updateErrorState } from "components";
+/* eslint-disable max-len */
+import { useState, useEffect, FC, useMemo } from "react";
+import { IconLoader, Input } from "components";
 import { useHistory } from "react-router-dom";
-import {
-  defaultSignUpError,
-  defaultSignUpState,
-  UnAuthRoutes,
-  IErrorContextType,
-  authFailedErrorHeading,
-  AuthProps,
-} from "utils";
+import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
 import { useSignup } from "hooks";
 import {
   validateEmail,
@@ -22,8 +12,9 @@ import {
 } from "state/auth";
 
 import "./styles/login.css";
+import GoogleLogin from "./googleLogin";
 
-export const Register: FC<AuthProps> = ({ getAuth }) => {
+export const Register: FC = () => {
   const [creator, setCreator] = useState(false);
 
   const history = useHistory();
@@ -72,27 +63,6 @@ export const Register: FC<AuthProps> = ({ getAuth }) => {
     handlers: { state: signUpState, error: signUpError, updateState },
   };
 
-  const [loading, setLoading] = useState(false);
-
-  const { setErrorState } = useContext<IErrorContextType>(ErrorContext);
-
-  const continueWithGoogle = async (): Promise<void> => {
-    setLoading(true);
-    try {
-      await Auth.federatedSignIn({
-        provider: CognitoHostedUIIdentityProvider.Google,
-      });
-      getAuth();
-    } catch (loginError) {
-      setLoading(false);
-      const { message } = loginError;
-      updateErrorState(
-        { title: authFailedErrorHeading, message },
-        setErrorState
-      );
-    }
-  };
-
   return (
     <div className="login">
       <div className="logo-container">
@@ -115,21 +85,14 @@ export const Register: FC<AuthProps> = ({ getAuth }) => {
             Join as a creator
           </div>
         </div>
-        {!creator && (
-          <div className="google-btn" onClick={continueWithGoogle}>
-            <img src="/images/googleLogo.svg" height={25} width={25} />
-            <span className="google-continue">
-              Continue with Google &nbsp; {loading && <IconLoader />}
-            </span>
-          </div>
-        )}
+        {!creator && <GoogleLogin />}
         <div
           className="content-seperation"
-          style={{ marginTop: `${!creator ? "0" : "60px"}` }}
+          style={{ marginTop: `${!creator ? "0px" : "20px"}` }}
         >
           {!creator
             ? "- OR -"
-            : "Creator platform coming soon, register your interest below"}
+            : "If you're an aspiring creator and keen to work with brands and be rewarded, be sure to get on our waiting list and be the first to get access to our platform"}
         </div>
 
         {!creator && (

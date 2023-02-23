@@ -1,21 +1,17 @@
-import { useState, useEffect, FC, useContext } from "react";
+import { useState, useEffect, FC } from "react";
 
-import { IconLoader, Input, updateErrorState } from "components";
+import { IconLoader, Input } from "components";
 import { useHistory } from "react-router-dom";
 import Checkbox from "./checkbox";
+import GoogleLogin from "./googleLogin";
 
-import { Auth } from "aws-amplify";
-import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
 import { validateEmail, validatePassword, withAuth } from "state/auth";
-import ErrorContext from "state/error/error.context";
 import {
   AuthProps,
   defaultLoginError,
   defaultLoginState,
   UnAuthRoutes,
   unverifiedUser,
-  authFailedErrorHeading,
-  IErrorContextType,
 } from "utils";
 import { useLogin } from "hooks";
 
@@ -65,27 +61,6 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     handlers: { state: formState, error: formError, updateState },
   };
 
-  const [loading, setLoading] = useState(false);
-
-  const { setErrorState } = useContext<IErrorContextType>(ErrorContext);
-
-  const continueWithGoogle = async (): Promise<void> => {
-    setLoading(true);
-    try {
-      await Auth.federatedSignIn({
-        provider: CognitoHostedUIIdentityProvider.Google,
-      });
-      getAuth();
-    } catch (loginError) {
-      setLoading(false);
-      const { message } = loginError;
-      updateErrorState(
-        { title: authFailedErrorHeading, message },
-        setErrorState
-      );
-    }
-  };
-
   return (
     <div className="login">
       <div className="logo-container">
@@ -119,16 +94,9 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
         <button className="login-btn" onClick={onLogin} disabled={isLoading}>
           <span>Login {isLoading && <IconLoader />}</span>
         </button>
-
-        <div className="google-btn" onClick={continueWithGoogle}>
-          <img src="/images/googleLogo.svg" height={25} width={25} />
-          <span className="google-continue">
-            Continue with Google&nbsp; {loading && <IconLoader />}
-          </span>
-        </div>
-
+        <GoogleLogin />
         <div className="existing-account" onClick={onSignUp}>
-          Didn't have an account? <span>Sign up&nbsp;</span>
+          Don't have an account? <span>Sign up&nbsp;</span>
         </div>
       </div>
     </div>

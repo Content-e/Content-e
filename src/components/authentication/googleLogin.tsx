@@ -1,11 +1,12 @@
-import React, { FC, useContext, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { Auth } from "aws-amplify";
 import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
 import { IconLoader, updateErrorState } from "components";
-import * as S from "./styles";
 import { withAuth } from "state/auth";
 import { authFailedErrorHeading, AuthProps, IErrorContextType } from "utils";
 import ErrorContext from "state/error/error.context";
+
+import "./styles/login.css";
 
 export const GoogleLogin: FC<AuthProps> = ({ getAuth }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -30,14 +31,12 @@ export const GoogleLogin: FC<AuthProps> = ({ getAuth }) => {
   };
 
   return (
-    <S.GoogleButtonCanvas>
-      <S.GoogleButton onClick={continueWithGoogle}>
-        <S.GoogleLogo>
-          <img src="/images/googleLogo.svg" alt="google logo" />
-        </S.GoogleLogo>
-        Sign-in with google {isLoading && <IconLoader />}
-      </S.GoogleButton>
-    </S.GoogleButtonCanvas>
+    <div className="google-btn" onClick={continueWithGoogle}>
+      <img src="/images/googleLogo.svg" height={25} width={25} />
+      <span className="google-continue">
+        Continue with Google &nbsp; {isLoading && <IconLoader />}
+      </span>
+    </div>
   );
 };
 

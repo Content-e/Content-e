@@ -1,17 +1,10 @@
-import { FC, useEffect, useState, useContext } from "react";
-import { IconLoader, Input, updateErrorState } from "components";
+import { FC, useEffect, useState } from "react";
+import { IconLoader, Input } from "components";
 import { useHistory, useLocation } from "react-router-dom";
-import ErrorContext from "state/error/error.context";
-import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
 
-import { Auth } from "aws-amplify";
-import {
-  AuthProps,
-  UnAuthRoutes,
-  UnknownType,
-  IErrorContextType,
-  authFailedErrorHeading,
-} from "utils";
+import GoogleLogin from "./googleLogin";
+
+import { AuthProps, UnAuthRoutes, UnknownType } from "utils";
 import { useConfirmSignUp, useLogin } from "hooks";
 import { validateVerificationCode, withAuth } from "state/auth";
 
@@ -31,27 +24,6 @@ export const Reverify: FC<AuthProps> = ({ getAuth }) => {
 
   const [code, setCode] = useState("");
   const [codeError, setCodeError] = useState("");
-
-  const [loading, setLoading] = useState(false);
-
-  const { setErrorState } = useContext<IErrorContextType>(ErrorContext);
-
-  const continueWithGoogle = async (): Promise<void> => {
-    setLoading(true);
-    try {
-      await Auth.federatedSignIn({
-        provider: CognitoHostedUIIdentityProvider.Google,
-      });
-      getAuth();
-    } catch (loginError) {
-      setLoading(false);
-      const { message } = loginError;
-      updateErrorState(
-        { title: authFailedErrorHeading, message },
-        setErrorState
-      );
-    }
-  };
 
   const validateVerifyForm = (): boolean => {
     const notValidated = validateVerificationCode(code);
@@ -109,12 +81,7 @@ export const Reverify: FC<AuthProps> = ({ getAuth }) => {
           <span>Verify {isLoading && <IconLoader />}</span>
         </button>
 
-        <div className="google-btn" onClick={continueWithGoogle}>
-          <img src="/images/googleLogo.svg" height={25} width={25} />
-          <span className="google-continue">
-            Continue with Google&nbsp; {loading && <IconLoader />}
-          </span>
-        </div>
+        <GoogleLogin />
 
         <div className="existing-account" onClick={onLogin}>
           Already have an account? <span>Login&nbsp;</span>
