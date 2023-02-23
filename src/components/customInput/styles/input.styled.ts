@@ -11,20 +11,21 @@ export const InputLabel = styled.div`
 `;
 
 export const Input = styled.input`
-  background: #ffffff;
-  border: 1px solid #d1d1d1;
-  border-radius: 5px;
-  height: 35px;
-  padding: 5px 15px;
-  font-size: 14px;
+  padding: 6px 0px;
+  border: none;
+  border-bottom: 1px solid #e8e8e8;
 
   &:focus {
     outline: none;
-    border: 1px solid #616161;
   }
 
   &::placeholder {
-    opacity: 0.5;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #a1a1a1;
+    padding-bottom: 12px;
   }
 `;
 

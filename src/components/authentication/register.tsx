@@ -1,19 +1,22 @@
-import React, { FC, useEffect, useMemo, useState } from "react";
+/* eslint-disable max-len */
+import { useState, useEffect, FC, useMemo } from "react";
 import { IconLoader, Input } from "components";
 import { useHistory } from "react-router-dom";
-import * as S from "./styles";
-import GoogleLogin from "./googleLogin";
 import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
 import { useSignup } from "hooks";
 import {
   validateEmail,
-  validateFirstName,
-  validateLastName,
+  validateFullName,
   validatePassword,
   withAuth,
 } from "state/auth";
 
+import "./styles/login.css";
+import GoogleLogin from "./googleLogin";
+
 export const Register: FC = () => {
+  const [creator, setCreator] = useState(false);
+
   const history = useHistory();
   const {
     performAction,
@@ -31,16 +34,13 @@ export const Register: FC = () => {
   const validateSignUpForm = (): boolean => {
     const emailError = validateEmail(signUpState.email);
     const passwordError = validatePassword(signUpState.password);
-    const firstNameError = validateFirstName(signUpState.firstName);
-    const lastNameError = validateLastName(signUpState.lastName);
-    const notValidated =
-      emailError || passwordError || firstNameError || lastNameError;
+    const fullNameError = validateFullName(signUpState.name);
+    const notValidated = emailError || passwordError || fullNameError;
     if (notValidated)
       setSignUpError({
         email: emailError,
         password: passwordError,
-        firstName: firstNameError,
-        lastName: lastNameError,
+        name: fullNameError,
       });
     return !!notValidated;
   };
@@ -64,38 +64,93 @@ export const Register: FC = () => {
   };
 
   return (
-    <S.LoginWrapper>
-      <S.LoginBanner>
-        <img src="/images/background.png" />
-      </S.LoginBanner>
-      <S.LoginCanvas>
-        <S.TopHeading>Content-e</S.TopHeading>
-        <S.SmHeading>Powered by Brain-e</S.SmHeading>
-        <S.Title>
-          Welcome to Content-e, use the form below to login or sign up.
-        </S.Title>
-        <S.InputCanvas>
-          <Input {...commonProps} keyProp="firstName" label="First Name" />
-          <Input {...commonProps} keyProp="lastName" label="LastName" />
-          <Input {...commonProps} keyProp="email" label="Username" />
-          <Input
-            {...commonProps}
-            type="password"
-            keyProp="password"
-            label="Password"
-          />
-        </S.InputCanvas>
+    <div className="login">
+      <div className="logo-container">
+        <img src="/images/edc-squared.svg" alt="edc-squared" />
+        <div className="subtitle">Everyday creatives, everyday creators.</div>
+      </div>
+      <div className="login-container">
+        <div className="create-account-label">Create Account</div>
+        <div className="btns-container">
+          <div
+            className={`${!creator ? "active" : false}`}
+            onClick={() => setCreator(false)}
+          >
+            Join as a brand
+          </div>
+          <div
+            className={`${creator ? "active" : false}`}
+            onClick={() => setCreator(true)}
+          >
+            Join as a creator
+          </div>
+        </div>
+        {!creator && <GoogleLogin />}
+        <div
+          className="content-seperation"
+          style={{ marginTop: `${!creator ? "0px" : "20px"}` }}
+        >
+          {!creator
+            ? "- OR -"
+            : "If you're an aspiring creator and keen to work with brands and be rewarded, be sure to get on our waiting list and be the first to get access to our platform"}
+        </div>
 
-        <S.AuthButton onClick={onSignUp} disabled={isLoading || !isSubmittable}>
-          Sign up {isLoading && <IconLoader />}
-        </S.AuthButton>
-        <GoogleLogin />
-        <S.AuthOtherOption>
-          Already have an account?
-          <S.AuthButtonWhite onClick={onLogin}>Login</S.AuthButtonWhite>
-        </S.AuthOtherOption>
-      </S.LoginCanvas>
-    </S.LoginWrapper>
+        {!creator && (
+          <>
+            <div className="login-fields">
+              <Input {...commonProps} placeholder="Full Name" keyProp="name" />
+              <Input
+                {...commonProps}
+                placeholder="Email Address"
+                keyProp="email"
+              />
+              <Input
+                {...commonProps}
+                placeholder="Password"
+                type="password"
+                keyProp="password"
+              />
+            </div>
+
+            <button
+              className="login-btn"
+              onClick={onSignUp}
+              disabled={isLoading || !isSubmittable}
+            >
+              <span>Join {isLoading && <IconLoader />}</span>
+            </button>
+
+            <div className="existing-account">
+              Already have an account?&nbsp;
+              <span onClick={onLogin}>Login&nbsp;</span>
+            </div>
+          </>
+        )}
+
+        {creator && (
+          <>
+            <div className="login-fields">
+              <Input {...commonProps} placeholder="Full Name" keyProp="name" />
+              <Input
+                {...commonProps}
+                placeholder="Email Address"
+                keyProp="email"
+              />
+              <Input
+                {...commonProps}
+                placeholder="TikTok Handle"
+                type="tiktok"
+                keyProp="tiktok"
+              />
+            </div>
+
+            <button className="login-btn" disabled={isLoading}>
+              <span>Register {isLoading && <IconLoader />}</span>
+            </button>
+          </>
+        )}
+      </div>
+    </div>
   );
 };
 

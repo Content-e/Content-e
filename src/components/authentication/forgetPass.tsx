@@ -1,11 +1,10 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { IconLoader, Input } from "components";
 import { useHistory } from "react-router-dom";
-import * as S from "./styles";
-import GoogleLogin from "./googleLogin";
 import { UnAuthRoutes } from "utils";
 import { useForgetPass } from "hooks";
 import { validateEmail, withAuth } from "state/auth";
+import GoogleLogin from "./googleLogin";
 
 export const ForgetPassword: FC = () => {
   const history = useHistory();
@@ -37,36 +36,36 @@ export const ForgetPassword: FC = () => {
   }, [success]);
 
   return (
-    <S.LoginWrapper>
-      <S.LoginBanner>
-        <img src="/images/background.png" />
-      </S.LoginBanner>
-      <S.LoginCanvas>
-        <S.TopHeading>Content-e</S.TopHeading>
-        <S.SmHeading>Powered by Brain-e</S.SmHeading>
-        <S.Title>
-          Welcome to Content-e, use the form below to login or sign up.
-        </S.Title>
-        <S.InputCanvas>
+    <div className="login">
+      <div className="logo-container">
+        <img src="/images/edc-squared.svg" alt="edc-squared" />
+        <div className="subtitle">Everyday creatives, everyday creators.</div>
+      </div>
+      <div className="login-container">
+        <div className="create-account-label">Forgot Password</div>
+
+        <div className="login-fields">
           <Input
             keyProp={email}
             value={email}
             errorVal={emailError}
-            label="Username"
+            placeholder="Username"
             handlers={{ updateState }}
           />
-        </S.InputCanvas>
-
-        <S.AuthButton onClick={onForget} disabled={isLoading || !!emailError}>
-          Submit {isLoading && <IconLoader />}
-        </S.AuthButton>
+        </div>
+        <button
+          className="login-btn"
+          onClick={onForget}
+          disabled={isLoading || !!emailError}
+        >
+          <span>Submit {isLoading && <IconLoader />}</span>
+        </button>
         <GoogleLogin />
-        <S.AuthOtherOption>
-          Don't have an account?
-          <S.AuthButtonWhite onClick={onSignUp}>Sign up</S.AuthButtonWhite>
-        </S.AuthOtherOption>
-      </S.LoginCanvas>
-    </S.LoginWrapper>
+        <div className="existing-account" onClick={onSignUp}>
+          Don't have an account? <span>Sign up&nbsp;</span>
+        </div>
+      </div>
+    </div>
   );
 };
 

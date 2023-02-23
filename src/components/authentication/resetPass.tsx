@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { IconLoader, Input } from "components";
 import { useHistory, useLocation } from "react-router-dom";
-import * as S from "./styles";
 import GoogleLogin from "./googleLogin";
 import {
   defaultResetError,
@@ -61,36 +60,36 @@ export const ResetPassword: FC = () => {
   };
 
   return (
-    <S.LoginWrapper>
-      <S.LoginBanner>
-        <img src="/images/background.png" />
-      </S.LoginBanner>
-      <S.LoginCanvas>
-        <S.TopHeading>Content-e</S.TopHeading>
-        <S.SmHeading>Powered by Brain-e</S.SmHeading>
-        <S.Title>
-          Welcome to Content-e, use the form below to login or sign up.
-        </S.Title>
-        <S.InputCanvas>
-          <Input {...commonProps} keyProp="code" label="Verification Code" />
+    <div className="login">
+      <div className="logo-container">
+        <img src="/images/edc-squared.svg" alt="edc-squared" />
+        <div className="subtitle">Everyday creatives, everyday creators.</div>
+      </div>
+      <div className="login-container">
+        <div className="create-account-label">Reset Password</div>
+
+        <div className="login-fields">
+          <Input
+            {...commonProps}
+            keyProp="code"
+            placeholder="Verification Code"
+          />
           <Input
             {...commonProps}
             type="password"
             keyProp="password"
-            label="Password"
+            placeholder="Password"
           />
-        </S.InputCanvas>
-
-        <S.AuthButton onClick={onReset} disabled={isLoading}>
-          Reset Password {isLoading && <IconLoader />}
-        </S.AuthButton>
+        </div>
+        <button className="login-btn" onClick={onReset} disabled={isLoading}>
+          <span>Reset Password {isLoading && <IconLoader />}</span>
+        </button>
         <GoogleLogin />
-        <S.AuthOtherOption>
-          Don't have an account?
-          <S.AuthButtonWhite onClick={onSignUp}>Sign up</S.AuthButtonWhite>
-        </S.AuthOtherOption>
-      </S.LoginCanvas>
-    </S.LoginWrapper>
+        <div className="existing-account" onClick={onSignUp}>
+          Don't have an account? <span>Sign up&nbsp;</span>
+        </div>
+      </div>
+    </div>
   );
 };
 

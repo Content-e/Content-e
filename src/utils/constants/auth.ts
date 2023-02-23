@@ -11,8 +11,7 @@ export const initialAuthContext = {
 export const defaultSignUpState = {
   email: "",
   password: "",
-  firstName: "",
-  lastName: "",
+  name: "",
 };
 
 export const defaultSignUpError: { [key: string]: null | string } = {

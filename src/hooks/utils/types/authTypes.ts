@@ -3,8 +3,7 @@ import { CognitoUser } from "@aws-amplify/auth";
 export type SignPayloadType = {
   email: string;
   password: string;
-  firstName: string;
-  lastName: string;
+  name: string;
 };
 
 export type LoginPayloadType = {
