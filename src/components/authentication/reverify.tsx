@@ -1,11 +1,21 @@
-import React, { FC, useEffect, useState } from "react";
-import { IconLoader, Input } from "components";
+import { FC, useEffect, useState, useContext } from "react";
+import { IconLoader, Input, updateErrorState } from "components";
 import { useHistory, useLocation } from "react-router-dom";
-import * as S from "./styles";
-import GoogleLogin from "./googleLogin";
-import { AuthProps, UnAuthRoutes, UnknownType } from "utils";
+import ErrorContext from "state/error/error.context";
+import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
+
+import { Auth } from "aws-amplify";
+import {
+  AuthProps,
+  UnAuthRoutes,
+  UnknownType,
+  IErrorContextType,
+  authFailedErrorHeading,
+} from "utils";
 import { useConfirmSignUp, useLogin } from "hooks";
 import { validateVerificationCode, withAuth } from "state/auth";
+
+import "./styles/login.css";
 
 export const Reverify: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
@@ -21,6 +31,27 @@ export const Reverify: FC<AuthProps> = ({ getAuth }) => {
 
   const [code, setCode] = useState("");
   const [codeError, setCodeError] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
+  const { setErrorState } = useContext<IErrorContextType>(ErrorContext);
+
+  const continueWithGoogle = async (): Promise<void> => {
+    setLoading(true);
+    try {
+      await Auth.federatedSignIn({
+        provider: CognitoHostedUIIdentityProvider.Google,
+      });
+      getAuth();
+    } catch (loginError) {
+      setLoading(false);
+      const { message } = loginError;
+      updateErrorState(
+        { title: authFailedErrorHeading, message },
+        setErrorState
+      );
+    }
+  };
 
   const validateVerifyForm = (): boolean => {
     const notValidated = validateVerificationCode(code);
@@ -50,38 +81,46 @@ export const Reverify: FC<AuthProps> = ({ getAuth }) => {
   }, [loginSuccess]);
 
   return (
-    <S.LoginWrapper>
-      <S.LoginBanner>
-        <img src="/images/background.png" />
-      </S.LoginBanner>
-      <S.LoginCanvas>
-        <S.TopHeading>Content-e</S.TopHeading>
-        <S.SmHeading>Powered by Brain-e</S.SmHeading>
-        <S.InputCanvas>
+    <div className="login">
+      <div className="logo-container">
+        <img src="/images/edc-squared.svg" alt="edc-squared" />
+        <div className="subtitle">Everyday creatives, everyday creators.</div>
+      </div>
+      <div className="login-container">
+        <div className="create-account-label">Account Verification</div>
+
+        <div className="login-fields">
           <Input
-            label="Veerification Code"
             value={code}
             errorVal={codeError}
+            placeholder="Verification Code"
             keyProp=""
             handlers={{
               updateState: (_, value: string): void => setCode(value),
             }}
           />
-        </S.InputCanvas>
+        </div>
 
-        <S.AuthButton
+        <button
+          className="login-btn"
           onClick={onVerification}
           disabled={isLoading || loginLoading}
         >
-          Verify {isLoading && <IconLoader />}
-        </S.AuthButton>
-        <GoogleLogin />
-        <S.AuthOtherOption>
-          Already have an account?
-          <S.AuthButtonWhite onClick={onLogin}>Login</S.AuthButtonWhite>
-        </S.AuthOtherOption>
-      </S.LoginCanvas>
-    </S.LoginWrapper>
+          <span>Verify {isLoading && <IconLoader />}</span>
+        </button>
+
+        <div className="google-btn" onClick={continueWithGoogle}>
+          <img src="/images/googleLogo.svg" height={25} width={25} />
+          <span className="google-continue">
+            Continue with Google&nbsp; {loading && <IconLoader />}
+          </span>
+        </div>
+
+        <div className="existing-account" onClick={onLogin}>
+          Already have an account? <span>Login&nbsp;</span>
+        </div>
+      </div>
+    </div>
   );
 };
 
