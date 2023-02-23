@@ -6,11 +6,11 @@ export const CheckBoxTick = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  height: 12px;
-  width: 12px;
+  height: 13px;
+  width: 13px;
   background: transparent;
-  border: 1px solid #d1d1d1;
-  border-radius: 1px;
+  border: 2px solid #a1a1a1;
+  border-radius: 2px;
   &::after {
     display: none;
     content: "";

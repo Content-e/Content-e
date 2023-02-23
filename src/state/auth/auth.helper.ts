@@ -19,12 +19,8 @@ export const validatePassword = (password: string): string | null => {
   return null;
 };
 
-export const validateFirstName = (text: string): string | null => {
-  if (text.length < 1) return "Please enter your first name";
-  return null;
-};
-export const validateLastName = (text: string): string | null => {
-  if (text.length < 1) return "Please enter your last name";
+export const validateFullName = (text: string): string | null => {
+  if (text.length < 1) return "Please enter your full name";
   return null;
 };
 
