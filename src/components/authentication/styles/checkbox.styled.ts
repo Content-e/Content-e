@@ -11,6 +11,7 @@ export const CheckBoxTick = styled.div`
   background: transparent;
   border: 2px solid #a1a1a1;
   border-radius: 2px;
+  margin-top: -1.5px;
   &::after {
     display: none;
     content: "";
@@ -19,8 +20,8 @@ export const CheckBoxTick = styled.div`
     top: -1px;
     width: 5px;
     height: 10px;
-    border: 1px solid #d1d1d1;
-    border-width: 0 1.5px 1.5px 0;
+    border: 1px solid #005f73;
+    border-width: 0 2.5px 2.5px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);

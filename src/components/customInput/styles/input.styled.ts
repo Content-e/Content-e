@@ -11,7 +11,7 @@ export const InputLabel = styled.div`
 `;
 
 export const Input = styled.input`
-  padding: 6px 0px;
+  padding: 6px 8px;
   border: none;
   border-bottom: 1px solid #e8e8e8;
 

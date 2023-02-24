@@ -87,12 +87,12 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
           </div>
 
           <div className="existing-account" onClick={onForget}>
-            <span>Forgot Password ?</span>
+            <span>Forgot Password?</span>
           </div>
         </div>
 
         <button className="login-btn" onClick={onLogin} disabled={isLoading}>
-          <span>Login {isLoading && <IconLoader />}</span>
+          <span>Login</span> {isLoading && <IconLoader />}
         </button>
         <GoogleLogin />
         <div className="existing-account" onClick={onSignUp}>

@@ -87,12 +87,12 @@ export const Register: FC = () => {
         </div>
         {!creator && <GoogleLogin />}
         <div
-          className="content-seperation"
+          className={`content-seperation ${!creator ? "or" : ""}`}
           style={{ marginTop: `${!creator ? "0px" : "20px"}` }}
         >
           {!creator
             ? "- OR -"
-            : "If you're an aspiring creator and keen to work with brands and be rewarded, be sure to get on our waiting list and be the first to get access to our platform"}
+            : "If you're an aspiring creator and keen to work with brands and be rewarded, be sure to get on our waiting list and be the first to get access to our platform."}
         </div>
 
         {!creator && (
