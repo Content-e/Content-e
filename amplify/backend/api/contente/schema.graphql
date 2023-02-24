@@ -12,6 +12,8 @@ type UserProfile
   description: String
   brand: [BrandProfile] @hasMany
   owner: String @auth(rules: [{ allow: owner, operations: [read] }])
+  userType: USER_TYPES!
+  tiktokHandler: String
 }
 
 type BrandProfile 
@@ -26,8 +28,40 @@ type BrandProfile
   internalMission: String
   strapLine: String
   userEmail: String @index 
+  tiktokHandle: String
+  vertical: String
+  briefs: [BrandBrief] @hasMany(indexName: "byBrand", fields:[ "id" ])
 }
 
+type BrandBrief 
+@model
+# @auth(rules: [{ allow: owner}])
+{
+  id: ID!
+  BriefName: String
+  vertical: String! @index (name: "byVertical")
+  objective: String
+  brandBriefDetails: String
+  creativeInspirations: [String]
+  active: Boolean 
+  creativeRequests: [CreativeRequest] @hasMany(indexName: "byBrandBrief",fields:[ "id" ])
+  brandId: ID! @index(name: "byBrand")
+}
+
+type CreativeRequest 
+@model
+{
+  brandBriefId: ID! @index (name: "byBrandBrief")
+  creatorId: String! @index (name: "byCreator")
+  status: String! 
+  tiktokCreativeUrl: String!
+  tiktokVideoCode: String!
+}
+
+enum USER_TYPES{
+  CREATIVE_USER
+  BRAND_USER
+}
 enum GPT_PROMPT {
   BRAND_NAME
   BRAND_NAME_REFRESH
