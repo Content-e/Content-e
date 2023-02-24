@@ -171,7 +171,7 @@ export const LogoutBtn = styled.div`
   font-size: 12px;
   line-height: 16px;
 
-  color: #e5e5e5;
+  color: #1c1c1c;
   cursor: pointer;
 
   &:hover {

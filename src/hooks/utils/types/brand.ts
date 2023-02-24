@@ -1,15 +1,15 @@
-import { BrandProfile } from "API";
+// import { BrandProfile } from "API";
 
 export type UpdateBrandProps = {
   updateBrand: (unknown) => void;
-  brand?: BrandProfile | null;
+  brand?: any;
   loading: boolean;
   error?: Error;
 };
 
 export type CreateBrandProps = {
   createBrand: (unknown) => void;
-  brand?: BrandProfile | null;
+  brand?: any;
   loading: boolean;
   error?: Error;
 };
@@ -17,6 +17,6 @@ export type CreateBrandProps = {
 export type GetBrandProfileProps = {
   loading: boolean;
   getBrand: (unknown) => void;
-  brandData?: BrandProfile | null;
+  brandData?: any;
   error?: Error;
 };
