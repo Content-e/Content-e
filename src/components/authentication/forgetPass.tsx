@@ -49,7 +49,7 @@ export const ForgetPassword: FC = () => {
             keyProp={email}
             value={email}
             errorVal={emailError}
-            placeholder="Username"
+            placeholder="Email"
             handlers={{ updateState }}
           />
         </div>
