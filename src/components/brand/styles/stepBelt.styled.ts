@@ -33,7 +33,6 @@ export const StepNumber = styled.div`
   border-radius: 50%;
   font-size: 16px;
   line-height: 28px;
-  font-family: "Lato";
   color: #005f73;
   cursor: pointer;
 

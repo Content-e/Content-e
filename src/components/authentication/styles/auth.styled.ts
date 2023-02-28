@@ -53,7 +53,6 @@ export const LoginCanvas = styled.div`
 export const TopHeading = styled.div`
   text-align: center;
   color: #005f73;
-  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -61,7 +60,6 @@ export const TopHeading = styled.div`
 `;
 
 export const SmHeading = styled.div`
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -71,7 +69,6 @@ export const SmHeading = styled.div`
 `;
 
 export const Title = styled.div`
-  font-family: "Lato";
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -92,7 +89,6 @@ export const InfoBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
@@ -112,7 +108,6 @@ export const InfoText = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
@@ -125,7 +120,6 @@ export const InfoTextLink = styled.a`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-family: "Inter";
   text-decoration: none;
   font-weight: 400;
   font-size: 11px;
@@ -151,7 +145,6 @@ export const AuthButton = styled.button`
   background: linear-gradient(180deg, #005f73 0%, #0a9396 100%);
   border-radius: 5px;
   width: 100%;
-  font-family: "Lato";
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -171,7 +164,6 @@ export const AuthOtherOption = styled.div`
   text-align: center;
   width: 100%;
 
-  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
   font-size: 9.87838px;

@@ -17,7 +17,6 @@ export const TitleMenu = styled.div`
 
 export const PageTitle = styled.div`
   margin: 0px;
-  font-family: "LatoLight";
   font-style: normal;
   font-weight: 300;
   font-size: 18px;

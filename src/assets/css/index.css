@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 @font-face {
   font-family: 'Lato';
   src: url('../fonts/Lato.ttf');
@@ -27,6 +27,14 @@
 @font-face {
   font-family: 'Poppins';
   src: url('../fonts/Poppins-Regular.otf');
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+*,
+*::before,
+*::after {
+  font-family: "Raleway", sans-serif;
 }
 
 body {

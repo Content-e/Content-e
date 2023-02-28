@@ -18,7 +18,6 @@
 }
 
 .cobranded-title {
-  font-family: "Lato";
   font-style: normal;
   width: 642px;
   font-weight: 700;
@@ -42,7 +41,6 @@
   width: 446px;
   height: 358px;
 
-  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   font-size: 50px;
@@ -68,7 +66,6 @@
 }
 
 .cobranded-link-btn span {
-  font-family: "Lato";
   font-style: normal;
   font-weight: 800;
   font-size: 14px;

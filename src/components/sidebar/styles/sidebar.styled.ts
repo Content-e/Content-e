@@ -55,14 +55,12 @@ export const TopHeader = styled.div`
 `;
 export const Heading = styled.div`
   color: #005f73;
-  font-family: "LatoBold";
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 24px;
 `;
 export const SubHeading = styled.div`
-  font-family: "LatoLight";
   font-size: 10px;
   line-height: 12px;
   color: #33363f;
@@ -88,7 +86,6 @@ export const ProfilePanel = styled.div`
   flex-direction: row;
 `;
 export const Username = styled.div`
-  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -116,7 +113,6 @@ export const SidebarMenuItem = styled.div`
   align-items: center;
   justify-content: flex-start;
   color: #001219;
-  font-family: "LatoLight" !important;
   font-size: 14px;
   border-radius: 8px;
   background: white;
@@ -165,7 +161,6 @@ export const LogoutBtn = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-family: "Lato";
   font-style: normal;
   font-weight: 600;
   font-size: 12px;

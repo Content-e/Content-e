@@ -13,7 +13,6 @@ export const BrandTopWrapper = styled.div`
 export const BrandWrapper = styled.div``;
 
 export const BrandName = styled.div`
-  font-family: "Lato";
   font-size: 14px;
   line-height: 28px;
   color: #001219;
@@ -25,12 +24,11 @@ export const BrandName = styled.div`
 `;
 
 export const BrandBoldTitle = styled.span`
-  font-family: "LatoBold";
   margin-right: 5px;
 `;
 
 export const BrandBoldHead = styled.div`
-  font-family: "LatoBold";
+  // font-family: "LatoBold";
 `;
 
 export const EditBtnCanvas = styled.div`
@@ -45,7 +43,6 @@ export const EditBrandButton = styled.div`
   border-radius: 4px;
   cursor: pointer;
 
-  font-family: "Lato";
   font-style: normal;
   font-weight: 600;
   font-size: 10px;

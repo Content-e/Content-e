@@ -92,7 +92,6 @@ export const PrimaryBtn = styled(Button)`
   margin: 10px 0 0;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
 
@@ -112,7 +111,6 @@ export const PrimaryBtn = styled(Button)`
   }
 
   &.Poppins {
-    font-family: "Poppins" !important;
   }
 
   &:disabled {
@@ -149,7 +147,6 @@ export const OutlineBtn = styled(Button)`
   margin: 10px 0 0;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
   border: 1px solid #005f73;
@@ -169,7 +166,6 @@ export const OutlineBtn = styled(Button)`
   }
 
   &.Poppins {
-    font-family: "Poppins" !important;
   }
   &:not(:disabled):not(.disabled):active:focus,
   &:not(:disabled):not(.disabled):active,
@@ -195,7 +191,6 @@ export const OutlineBtn = styled(Button)`
 `;
 
 export const ModalTitle = styled.div`
-  font-family: "Lato";
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -227,7 +222,6 @@ export const SuggestionCanvas = styled.div`
 export const SuggestionBox = styled.div`
   background: #94d2bd;
   border-radius: 10px;
-  font-family: "LatoLight";
   font-size: 18px;
   padding: 8px 16px;
   cursor: pointer;

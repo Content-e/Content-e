@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Heading = styled.div`
-  font-family: "Lato";
   text-align: left;
   font-style: normal;
   font-weight: 300;
@@ -12,7 +11,6 @@ export const Heading = styled.div`
 `;
 
 export const Body = styled.div`
-  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

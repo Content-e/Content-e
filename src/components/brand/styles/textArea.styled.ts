@@ -22,7 +22,6 @@ export const TextAreaBox = styled.div`
 
 export const TextAreaLabel = styled.div`
   margin: 15px 0 -10px;
-  font-family: "LatoLight";
   font-style: normal;
   font-weight: 300;
   font-size: 14px;

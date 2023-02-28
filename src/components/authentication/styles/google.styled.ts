@@ -20,7 +20,6 @@ export const GoogleButton = styled.div`
   color: white;
   cursor: pointer;
 
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
   font-size: 12px;

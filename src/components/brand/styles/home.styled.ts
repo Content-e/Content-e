@@ -17,7 +17,6 @@ export const TextAreaWrapper = styled.div`
 
 export const SubHeading = styled.div`
   margin-top: 20px;
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

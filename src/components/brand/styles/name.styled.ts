@@ -40,7 +40,6 @@ export const BrandInput = styled.input`
   border: 1px solid #e2e1e5;
   border-radius: 5px;
   width: 100%;
-  font-family: "Lato";
   font-size: 14px;
 
   &.small {
@@ -68,7 +67,6 @@ export const SuggestionButton = styled.button`
   padding: 10px 25px;
   font-size: 12px;
   line-height: 18px;
-  font-family: "Lato";
 
   &.separateBtn {
     margin-bottom: 20px;

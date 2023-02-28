@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const InputLabel = styled.div`
   margin: 12px 0 2px;
-  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
   font-size: 9.87838px;

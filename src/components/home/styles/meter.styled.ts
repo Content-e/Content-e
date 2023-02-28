@@ -12,7 +12,6 @@ export const MeterWrapper = styled.div`
 `;
 
 export const Heading = styled.div`
-  font-family: "Lato";
   text-align: left;
   font-style: normal;
   font-weight: 300;
@@ -155,6 +154,5 @@ export const MeterValue = styled.div`
   right: auto;
   width: 100%;
   text-align: center;
-  font-family: "LatoBold";
   font-size: 25px;
 `;

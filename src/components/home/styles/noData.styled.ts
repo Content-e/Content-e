@@ -15,7 +15,6 @@ export const NoDataWrapper = styled.div`
   }
 `;
 export const NoDataTitle = styled.div`
-  font-family: "Lato";
   font-size: 14px;
   line-height: 28px;
   display: flex;
@@ -30,7 +29,6 @@ export const NoDataButton = styled.div`
   cursor: pointer;
   padding: 11px 60px;
 
-  font-family: "Lato";
   font-style: normal;
   font-weight: 600;
   font-size: 10px;

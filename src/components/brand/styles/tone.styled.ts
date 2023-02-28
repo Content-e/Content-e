@@ -10,7 +10,6 @@ export const DropdownTag = styled(Dropdown)`
   min-height: 48px;
   color: #001219;
   border-radius: 8px;
-  font-family: "Lato";
 
   & .btn-success {
     border: none;
