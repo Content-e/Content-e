@@ -149,3 +149,14 @@
 .authorization-code-input input {
   width: 464px;
 }
+
+@media only screen and (max-width: 650px) {
+  .tik-tok-modal {
+    width: auto;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .tik-tok-modal {
+    width: auto;
+  }
+}
