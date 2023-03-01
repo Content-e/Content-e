@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Input } from "components";
 import GoogleLogin from "components/authentication/googleLogin";
 import "./coBrandedModals.css";
 
-export default function ForgotPasswordModal() {
+export const ForgotPasswordModal: FC = () => {
   const [email, setEmail] = useState<string>("");
 
   const updateState = (_: string, value: string): void => {
@@ -35,4 +35,6 @@ export default function ForgotPasswordModal() {
       </div>
     </div>
   );
-}
+};
+
+export default ForgotPasswordModal;

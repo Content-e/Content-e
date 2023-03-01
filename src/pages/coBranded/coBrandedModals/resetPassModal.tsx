@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Input } from "components";
 import GoogleLogin from "components/authentication/googleLogin";
 import { defaultResetError, defaultResetState } from "utils";
 
 import "./coBrandedModals.css";
 
-export default function ResetPassModal() {
+export const ResetPassModal: FC = () => {
   const [formState, setFormState] = useState(defaultResetState);
   const [formError, setFormError] = useState(defaultResetError);
 
@@ -49,4 +49,6 @@ export default function ResetPassModal() {
       </div>
     </div>
   );
-}
+};
+
+export default ResetPassModal;

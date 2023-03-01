@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Input } from "components";
 
 import GoogleLogin from "components/authentication/googleLogin";
 import "./coBrandedModals.css";
 import { defaultSignUpState, defaultSignUpError } from "utils";
 
-export default function SignUpModal() {
+export const SignUpModal: FC = () => {
   const [signUpState, setSignUpState] = useState(defaultSignUpState);
   const [signUpError, setSignUpError] = useState(defaultSignUpError);
 
@@ -45,4 +45,6 @@ export default function SignUpModal() {
       </div>
     </div>
   );
-}
+};
+
+export default SignUpModal;

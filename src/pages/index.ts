@@ -9,3 +9,5 @@ export * from "./forgetPass";
 export * from "./resetPass";
 export * from "./mainpage";
 export * from "./brandSteps";
+
+export * from "./coBranded";

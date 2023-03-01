@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Input } from "components";
 import GoogleLogin from "components/authentication/googleLogin";
 import "./coBrandedModals.css";
+import ResetPassModal from "./resetPassModal";
 
-export default function ReverifyModal() {
+export const ReverifyModal: FC = () => {
   const [code, setCode] = useState("");
 
   return (
@@ -33,4 +34,6 @@ export default function ReverifyModal() {
       </div>
     </div>
   );
-}
+};
+
+export default ResetPassModal;

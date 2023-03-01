@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Input } from "components";
 import GoogleLogin from "components/authentication/googleLogin";
 import { defaultLoginError, defaultLoginState } from "utils";
@@ -6,7 +6,7 @@ import Checkbox from "components/authentication/checkbox";
 
 import "./coBrandedModals.css";
 
-export default function LoginModal() {
+export const LoginModal: FC = () => {
   const [formState, setFormState] = useState(defaultLoginState);
   const [formError, setFormError] = useState(defaultLoginError);
 
@@ -57,4 +57,6 @@ export default function LoginModal() {
       </div>
     </div>
   );
-}
+};
+
+export default LoginModal;
