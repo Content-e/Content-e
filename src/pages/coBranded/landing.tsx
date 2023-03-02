@@ -1,8 +1,8 @@
 import { FC } from "react";
 import CoBrandedMainPage from "./main";
 
-export const SubLanding: FC = () => {
+export const LandingPage: FC = () => {
   return <CoBrandedMainPage />;
 };
 
-export default SubLanding;
+export default LandingPage;

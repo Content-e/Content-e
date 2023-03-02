@@ -1,4 +1,8 @@
-import { isSubDomain, replaceSubPath } from "components";
+import {
+  getMainDomainFromSubdomain,
+  isSubDomainWithBriefId,
+  replaceSubPath,
+} from "components";
 import { FC, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { UnAuthRoutes } from "utils";
@@ -7,17 +11,17 @@ import "./styles.css";
 interface Props {
   isAuthenticated?: boolean;
 }
-export const CoBrandedMainPage: FC<Props> = ({ isAuthenticated }) => {
+export const CoBrandedMainPage: FC<Props> = () => {
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
 
   const goToLogin = (): void =>
-    history.push(replaceSubPath(UnAuthRoutes.SubLogin));
+    history.push(replaceSubPath(UnAuthRoutes.Login));
 
   useEffect(() => {
-    if (!isAuthenticated && (!isSubDomain() || !id || id.length !== 8))
-      history.push(UnAuthRoutes.Login);
-  }, [isAuthenticated]);
+    if (!isSubDomainWithBriefId(id))
+      window.location.href = getMainDomainFromSubdomain();
+  }, []);
 
   return (
     <div className="cobranded-container">

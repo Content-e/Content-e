@@ -28,7 +28,7 @@ export const LoginModal: FC<AuthProps> = ({ getAuth }) => {
   const goToSignUp = (): void =>
     history.push(replaceSubPath(UnAuthRoutes.SubRegister));
   const goToForget = (): void =>
-    history.push(replaceSubPath(UnAuthRoutes.SubForgetPass));
+    history.push(replaceSubPath(UnAuthRoutes.SubForgetPassword));
   const updateState = (key: string, value: string): void => {
     setFormError((prev) => ({ ...prev, [key]: null }));
     setFormState((prev) => ({ ...prev, [key]: value }));
@@ -52,7 +52,7 @@ export const LoginModal: FC<AuthProps> = ({ getAuth }) => {
 
   useEffect(() => {
     if (error === unverifiedUser)
-      history.push(replaceSubPath(UnAuthRoutes.SubReverify), { ...formState });
+      history.push(replaceSubPath(UnAuthRoutes.Reverify), { ...formState });
     else if (success) getAuth();
   }, [success, error]);
 

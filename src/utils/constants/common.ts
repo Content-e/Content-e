@@ -42,3 +42,5 @@ export enum LoaderColors {
   Purple = "#4c40f7",
   White = "#FFF",
 }
+
+export const allowedSubDomains = ["localhost", "sa"];

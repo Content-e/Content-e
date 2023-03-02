@@ -35,7 +35,7 @@ export const ForgotPasswordModal: FC = () => {
 
   useEffect(() => {
     if (success)
-      history.push(replaceSubPath(UnAuthRoutes.SubResetPass), { email });
+      history.push(replaceSubPath(UnAuthRoutes.SubResetPassword), { email });
   }, [success]);
 
   return (

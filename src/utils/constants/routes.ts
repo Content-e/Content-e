@@ -1,15 +1,20 @@
 export enum UnAuthRoutes {
+  Landing = "/landing/:id",
+
   Login = "/login",
+  SubLogin = "/login/:id",
+
   Register = "/register",
+  SubRegister = "/register/:id",
+
   Reverify = "/reverify",
+  SubReverify = "/reverify/:id",
+
   ForgetPassword = "/forgetPassword",
+  SubForgetPassword = "/forgetPassword/:id",
+
   ResetPassword = "/resetPassword",
-  SubLanding = "/:id/landing",
-  SubLogin = "/:id/signin",
-  SubReverify = "/:id/verify",
-  SubRegister = "/:id/signup",
-  SubForgetPass = "/:id/forgetPass",
-  SubResetPass = "/:id/resetPass",
+  SubResetPassword = "/resetPassword/:id",
 }
 
 export enum AuthRoutes {

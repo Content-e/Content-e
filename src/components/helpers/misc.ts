@@ -1,5 +1,10 @@
 import { startCase } from "lodash";
-import { AuthRoutes, IErrorStateType, UnAuthRoutes } from "utils";
+import {
+  allowedSubDomains,
+  AuthRoutes,
+  IErrorStateType,
+  UnAuthRoutes,
+} from "utils";
 
 export const matchSlugUrls = (pathname: string, route: string): boolean => {
   if (!route.includes(":")) return pathname === route;
@@ -46,19 +51,39 @@ export const isEmptyString = (input?: string | null): boolean =>
 export const getPageTitle = (path: AuthRoutes): string =>
   startCase(path.split("/")?.[1]);
 
+export const isSubDomainWithBriefId = (id?: string): boolean => {
+  const initialHost = window.location.hostname.split(".")[0];
+  return allowedSubDomains.includes(initialHost) && id?.length === 8;
+};
+
+export const getMainDomainFromSubdomain = (): string => {
+  const { protocol, host, pathname } = window.location;
+
+  const hostnameParts = host.split(".");
+  if (allowedSubDomains.includes(hostnameParts[0])) hostnameParts.shift();
+
+  const pathnameParts = pathname.split("/");
+  const unAuthRoutes = Object.values(UnAuthRoutes);
+  let pathLastElem = pathnameParts.at(-1);
+  while (pathLastElem) {
+    // eslint-disable-next-line @typescript-eslint/no-loop-func
+    const mainPath = unAuthRoutes.find((e) => e.includes(pathLastElem || ""));
+    if (mainPath) break;
+    pathnameParts.pop();
+    pathLastElem = pathnameParts.at(-1);
+  }
+  return `${protocol}//${hostnameParts.join(".")}${pathnameParts.join("/")}`;
+};
+
 export const replaceSubPath = (path: UnAuthRoutes): string => {
   const desiredPathElems = path.split("/");
   const actualPathElems = window.location.pathname.split("/");
-  if (desiredPathElems.length !== actualPathElems.length) return path;
+  if (desiredPathElems.length !== actualPathElems.length)
+    getMainDomainFromSubdomain();
 
   const updatedPathElems = desiredPathElems.map((e, index) => {
     if (e.includes(":")) return actualPathElems[index];
     return e;
   });
   return updatedPathElems.join("/");
-};
-
-export const isSubDomain = (): boolean => {
-  const initialHost = window.location.hostname.split(".")[0];
-  return initialHost.length === 9;
 };

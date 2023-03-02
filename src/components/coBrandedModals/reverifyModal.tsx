@@ -29,7 +29,7 @@ export const ReverifyModal: FC<AuthProps> = ({ getAuth }) => {
   };
 
   const goToLogin = (): void =>
-    history.push(replaceSubPath(UnAuthRoutes.SubLogin));
+    history.push(replaceSubPath(UnAuthRoutes.Login));
   const goToVerification = (): void => {
     if (!loginLoading && !isLoading && validateVerifyForm())
       performAction(code);
