@@ -1,0 +1,26 @@
+.creator-dashboard-label {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  color: #041416;
+}
+
+.stats-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.campaign-briefs-dashboard-container {
+  margin: 10px 0px;
+}
+
+.notification-dashboard-container {
+  margin: 10px 0px 0px 0px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

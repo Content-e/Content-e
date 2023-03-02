@@ -1,0 +1,40 @@
+.creator-stats-card-container {
+  height: 112px;
+  left: calc(50% - 274.25px / 2 - 336.88px);
+  top: 73px;
+  background: #ffffff;
+  border: 1px solid #9fd0bd;
+  border-radius: 6px;
+  padding: 12px 6px 12px 15px;
+  width: 100%;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats-label {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  color: #001219;
+}
+
+.stats-count {
+  /* font-family: "Comfortaa"; */
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  color: #1c1c1c;
+  margin: 16px 0px;
+}
+
+img {
+  cursor: pointer;
+}

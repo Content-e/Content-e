@@ -12,4 +12,5 @@ export enum AuthRoutes {
   Brand = "/brand",
   EditBrand = "/brandEdit",
   Logout = "/logout",
+  CreatorDashboard = "/creatorDashboard",
 }
