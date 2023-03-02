@@ -35,7 +35,7 @@ type BrandProfile
 
 type BrandBrief 
 @model
-# @auth(rules: [{ allow: owner}])
+@auth(rules: [{ allow: private}])
 {
   id: ID!
   BriefName: String
@@ -50,6 +50,7 @@ type BrandBrief
 
 type CreativeRequest 
 @model
+@auth(rules: [{ allow: private}])
 {
   brandBriefId: ID! @index (name: "byBrandBrief")
   creatorId: String! @index (name: "byCreator")

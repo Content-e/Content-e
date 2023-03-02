@@ -147,101 +147,6 @@ export type CreativeRequest = {
   updatedAt: string,
 };
 
-export type CreateBrandBriefInput = {
-  id?: string | null,
-  BriefName?: string | null,
-  vertical: string,
-  objective?: string | null,
-  brandBriefDetails?: string | null,
-  creativeInspirations?: Array< string | null > | null,
-  active?: boolean | null,
-  brandId: string,
-};
-
-export type ModelBrandBriefConditionInput = {
-  BriefName?: ModelStringInput | null,
-  vertical?: ModelStringInput | null,
-  objective?: ModelStringInput | null,
-  brandBriefDetails?: ModelStringInput | null,
-  creativeInspirations?: ModelStringInput | null,
-  active?: ModelBooleanInput | null,
-  brandId?: ModelIDInput | null,
-  and?: Array< ModelBrandBriefConditionInput | null > | null,
-  or?: Array< ModelBrandBriefConditionInput | null > | null,
-  not?: ModelBrandBriefConditionInput | null,
-};
-
-export type ModelBooleanInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
-export type ModelIDInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-  size?: ModelSizeInput | null,
-};
-
-export type UpdateBrandBriefInput = {
-  id: string,
-  BriefName?: string | null,
-  vertical?: string | null,
-  objective?: string | null,
-  brandBriefDetails?: string | null,
-  creativeInspirations?: Array< string | null > | null,
-  active?: boolean | null,
-  brandId?: string | null,
-};
-
-export type DeleteBrandBriefInput = {
-  id: string,
-};
-
-export type CreateCreativeRequestInput = {
-  brandBriefId: string,
-  creatorId: string,
-  status: string,
-  tiktokCreativeUrl: string,
-  tiktokVideoCode: string,
-  id?: string | null,
-};
-
-export type ModelCreativeRequestConditionInput = {
-  brandBriefId?: ModelIDInput | null,
-  creatorId?: ModelStringInput | null,
-  status?: ModelStringInput | null,
-  tiktokCreativeUrl?: ModelStringInput | null,
-  tiktokVideoCode?: ModelStringInput | null,
-  and?: Array< ModelCreativeRequestConditionInput | null > | null,
-  or?: Array< ModelCreativeRequestConditionInput | null > | null,
-  not?: ModelCreativeRequestConditionInput | null,
-};
-
-export type UpdateCreativeRequestInput = {
-  brandBriefId?: string | null,
-  creatorId?: string | null,
-  status?: string | null,
-  tiktokCreativeUrl?: string | null,
-  tiktokVideoCode?: string | null,
-  id: string,
-};
-
-export type DeleteCreativeRequestInput = {
-  id: string,
-};
-
 export type CreateUserProfileInput = {
   id?: string | null,
   name: string,
@@ -292,6 +197,22 @@ export type ModelBrandProfileConditionInput = {
   userProfileBrandId?: ModelIDInput | null,
 };
 
+export type ModelIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
+
 export type UpdateBrandProfileInput = {
   id: string,
   name?: string | null,
@@ -307,6 +228,85 @@ export type UpdateBrandProfileInput = {
 };
 
 export type DeleteBrandProfileInput = {
+  id: string,
+};
+
+export type CreateBrandBriefInput = {
+  id?: string | null,
+  BriefName?: string | null,
+  vertical: string,
+  objective?: string | null,
+  brandBriefDetails?: string | null,
+  creativeInspirations?: Array< string | null > | null,
+  active?: boolean | null,
+  brandId: string,
+};
+
+export type ModelBrandBriefConditionInput = {
+  BriefName?: ModelStringInput | null,
+  vertical?: ModelStringInput | null,
+  objective?: ModelStringInput | null,
+  brandBriefDetails?: ModelStringInput | null,
+  creativeInspirations?: ModelStringInput | null,
+  active?: ModelBooleanInput | null,
+  brandId?: ModelIDInput | null,
+  and?: Array< ModelBrandBriefConditionInput | null > | null,
+  or?: Array< ModelBrandBriefConditionInput | null > | null,
+  not?: ModelBrandBriefConditionInput | null,
+};
+
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type UpdateBrandBriefInput = {
+  id: string,
+  BriefName?: string | null,
+  vertical?: string | null,
+  objective?: string | null,
+  brandBriefDetails?: string | null,
+  creativeInspirations?: Array< string | null > | null,
+  active?: boolean | null,
+  brandId?: string | null,
+};
+
+export type DeleteBrandBriefInput = {
+  id: string,
+};
+
+export type CreateCreativeRequestInput = {
+  brandBriefId: string,
+  creatorId: string,
+  status: string,
+  tiktokCreativeUrl: string,
+  tiktokVideoCode: string,
+  id?: string | null,
+};
+
+export type ModelCreativeRequestConditionInput = {
+  brandBriefId?: ModelIDInput | null,
+  creatorId?: ModelStringInput | null,
+  status?: ModelStringInput | null,
+  tiktokCreativeUrl?: ModelStringInput | null,
+  tiktokVideoCode?: ModelStringInput | null,
+  and?: Array< ModelCreativeRequestConditionInput | null > | null,
+  or?: Array< ModelCreativeRequestConditionInput | null > | null,
+  not?: ModelCreativeRequestConditionInput | null,
+};
+
+export type UpdateCreativeRequestInput = {
+  brandBriefId?: string | null,
+  creatorId?: string | null,
+  status?: string | null,
+  tiktokCreativeUrl?: string | null,
+  tiktokVideoCode?: string | null,
+  id: string,
+};
+
+export type DeleteCreativeRequestInput = {
   id: string,
 };
 
@@ -363,6 +363,48 @@ export enum GPT_RESPONSE_TYPE {
 }
 
 
+export type ModelUserProfileFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  userEmail?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
+  userType?: ModelUSER_TYPESInput | null,
+  tiktokHandler?: ModelStringInput | null,
+  and?: Array< ModelUserProfileFilterInput | null > | null,
+  or?: Array< ModelUserProfileFilterInput | null > | null,
+  not?: ModelUserProfileFilterInput | null,
+};
+
+export type ModelUserProfileConnection = {
+  __typename: "ModelUserProfileConnection",
+  items:  Array<UserProfile | null >,
+  nextToken?: string | null,
+};
+
+export enum ModelSortDirection {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+
+
+export type ModelBrandProfileFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  toneVoice?: ModelStringInput | null,
+  pillars?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  internalMission?: ModelStringInput | null,
+  strapLine?: ModelStringInput | null,
+  userEmail?: ModelStringInput | null,
+  tiktokHandle?: ModelStringInput | null,
+  vertical?: ModelStringInput | null,
+  and?: Array< ModelBrandProfileFilterInput | null > | null,
+  or?: Array< ModelBrandProfileFilterInput | null > | null,
+  not?: ModelBrandProfileFilterInput | null,
+  userProfileBrandId?: ModelIDInput | null,
+};
+
 export type ModelBrandBriefFilterInput = {
   id?: ModelIDInput | null,
   BriefName?: ModelStringInput | null,
@@ -388,59 +430,15 @@ export type ModelCreativeRequestFilterInput = {
   not?: ModelCreativeRequestFilterInput | null,
 };
 
-export enum ModelSortDirection {
-  ASC = "ASC",
-  DESC = "DESC",
-}
-
-
-export type ModelUserProfileFilterInput = {
-  id?: ModelIDInput | null,
-  name?: ModelStringInput | null,
-  userEmail?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  owner?: ModelStringInput | null,
-  userType?: ModelUSER_TYPESInput | null,
-  tiktokHandler?: ModelStringInput | null,
-  and?: Array< ModelUserProfileFilterInput | null > | null,
-  or?: Array< ModelUserProfileFilterInput | null > | null,
-  not?: ModelUserProfileFilterInput | null,
-};
-
-export type ModelUserProfileConnection = {
-  __typename: "ModelUserProfileConnection",
-  items:  Array<UserProfile | null >,
-  nextToken?: string | null,
-};
-
-export type ModelBrandProfileFilterInput = {
-  id?: ModelIDInput | null,
-  name?: ModelStringInput | null,
-  toneVoice?: ModelStringInput | null,
-  pillars?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  internalMission?: ModelStringInput | null,
-  strapLine?: ModelStringInput | null,
-  userEmail?: ModelStringInput | null,
-  tiktokHandle?: ModelStringInput | null,
-  vertical?: ModelStringInput | null,
-  and?: Array< ModelBrandProfileFilterInput | null > | null,
-  or?: Array< ModelBrandProfileFilterInput | null > | null,
-  not?: ModelBrandProfileFilterInput | null,
-  userProfileBrandId?: ModelIDInput | null,
-};
-
-export type ModelSubscriptionBrandBriefFilterInput = {
+export type ModelSubscriptionUserProfileFilterInput = {
   id?: ModelSubscriptionIDInput | null,
-  BriefName?: ModelSubscriptionStringInput | null,
-  vertical?: ModelSubscriptionStringInput | null,
-  objective?: ModelSubscriptionStringInput | null,
-  brandBriefDetails?: ModelSubscriptionStringInput | null,
-  creativeInspirations?: ModelSubscriptionStringInput | null,
-  active?: ModelSubscriptionBooleanInput | null,
-  brandId?: ModelSubscriptionIDInput | null,
-  and?: Array< ModelSubscriptionBrandBriefFilterInput | null > | null,
-  or?: Array< ModelSubscriptionBrandBriefFilterInput | null > | null,
+  name?: ModelSubscriptionStringInput | null,
+  userEmail?: ModelSubscriptionStringInput | null,
+  description?: ModelSubscriptionStringInput | null,
+  userType?: ModelSubscriptionStringInput | null,
+  tiktokHandler?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
+  or?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
 };
 
 export type ModelSubscriptionIDInput = {
@@ -473,32 +471,6 @@ export type ModelSubscriptionStringInput = {
   notIn?: Array< string | null > | null,
 };
 
-export type ModelSubscriptionBooleanInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
-};
-
-export type ModelSubscriptionCreativeRequestFilterInput = {
-  brandBriefId?: ModelSubscriptionIDInput | null,
-  creatorId?: ModelSubscriptionStringInput | null,
-  status?: ModelSubscriptionStringInput | null,
-  tiktokCreativeUrl?: ModelSubscriptionStringInput | null,
-  tiktokVideoCode?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionCreativeRequestFilterInput | null > | null,
-  or?: Array< ModelSubscriptionCreativeRequestFilterInput | null > | null,
-};
-
-export type ModelSubscriptionUserProfileFilterInput = {
-  id?: ModelSubscriptionIDInput | null,
-  name?: ModelSubscriptionStringInput | null,
-  userEmail?: ModelSubscriptionStringInput | null,
-  description?: ModelSubscriptionStringInput | null,
-  userType?: ModelSubscriptionStringInput | null,
-  tiktokHandler?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
-  or?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
-};
-
 export type ModelSubscriptionBrandProfileFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   name?: ModelSubscriptionStringInput | null,
@@ -512,6 +484,34 @@ export type ModelSubscriptionBrandProfileFilterInput = {
   vertical?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionBrandProfileFilterInput | null > | null,
   or?: Array< ModelSubscriptionBrandProfileFilterInput | null > | null,
+};
+
+export type ModelSubscriptionBrandBriefFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  BriefName?: ModelSubscriptionStringInput | null,
+  vertical?: ModelSubscriptionStringInput | null,
+  objective?: ModelSubscriptionStringInput | null,
+  brandBriefDetails?: ModelSubscriptionStringInput | null,
+  creativeInspirations?: ModelSubscriptionStringInput | null,
+  active?: ModelSubscriptionBooleanInput | null,
+  brandId?: ModelSubscriptionIDInput | null,
+  and?: Array< ModelSubscriptionBrandBriefFilterInput | null > | null,
+  or?: Array< ModelSubscriptionBrandBriefFilterInput | null > | null,
+};
+
+export type ModelSubscriptionBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+};
+
+export type ModelSubscriptionCreativeRequestFilterInput = {
+  brandBriefId?: ModelSubscriptionIDInput | null,
+  creatorId?: ModelSubscriptionStringInput | null,
+  status?: ModelSubscriptionStringInput | null,
+  tiktokCreativeUrl?: ModelSubscriptionStringInput | null,
+  tiktokVideoCode?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionCreativeRequestFilterInput | null > | null,
+  or?: Array< ModelSubscriptionCreativeRequestFilterInput | null > | null,
 };
 
 export type DeleteUserProfileMutationVariables = {
@@ -554,171 +554,6 @@ export type DeleteUserProfileMutation = {
     owner?: string | null,
     userType: USER_TYPES,
     tiktokHandler?: string | null,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type CreateBrandBriefMutationVariables = {
-  input: CreateBrandBriefInput,
-  condition?: ModelBrandBriefConditionInput | null,
-};
-
-export type CreateBrandBriefMutation = {
-  createBrandBrief?:  {
-    __typename: "BrandBrief",
-    id: string,
-    BriefName?: string | null,
-    vertical: string,
-    objective?: string | null,
-    brandBriefDetails?: string | null,
-    creativeInspirations?: Array< string | null > | null,
-    active?: boolean | null,
-    creativeRequests?:  {
-      __typename: "ModelCreativeRequestConnection",
-      items:  Array< {
-        __typename: "CreativeRequest",
-        brandBriefId: string,
-        creatorId: string,
-        status: string,
-        tiktokCreativeUrl: string,
-        tiktokVideoCode: string,
-        id: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
-    brandId: string,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type UpdateBrandBriefMutationVariables = {
-  input: UpdateBrandBriefInput,
-  condition?: ModelBrandBriefConditionInput | null,
-};
-
-export type UpdateBrandBriefMutation = {
-  updateBrandBrief?:  {
-    __typename: "BrandBrief",
-    id: string,
-    BriefName?: string | null,
-    vertical: string,
-    objective?: string | null,
-    brandBriefDetails?: string | null,
-    creativeInspirations?: Array< string | null > | null,
-    active?: boolean | null,
-    creativeRequests?:  {
-      __typename: "ModelCreativeRequestConnection",
-      items:  Array< {
-        __typename: "CreativeRequest",
-        brandBriefId: string,
-        creatorId: string,
-        status: string,
-        tiktokCreativeUrl: string,
-        tiktokVideoCode: string,
-        id: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
-    brandId: string,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type DeleteBrandBriefMutationVariables = {
-  input: DeleteBrandBriefInput,
-  condition?: ModelBrandBriefConditionInput | null,
-};
-
-export type DeleteBrandBriefMutation = {
-  deleteBrandBrief?:  {
-    __typename: "BrandBrief",
-    id: string,
-    BriefName?: string | null,
-    vertical: string,
-    objective?: string | null,
-    brandBriefDetails?: string | null,
-    creativeInspirations?: Array< string | null > | null,
-    active?: boolean | null,
-    creativeRequests?:  {
-      __typename: "ModelCreativeRequestConnection",
-      items:  Array< {
-        __typename: "CreativeRequest",
-        brandBriefId: string,
-        creatorId: string,
-        status: string,
-        tiktokCreativeUrl: string,
-        tiktokVideoCode: string,
-        id: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
-    brandId: string,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type CreateCreativeRequestMutationVariables = {
-  input: CreateCreativeRequestInput,
-  condition?: ModelCreativeRequestConditionInput | null,
-};
-
-export type CreateCreativeRequestMutation = {
-  createCreativeRequest?:  {
-    __typename: "CreativeRequest",
-    brandBriefId: string,
-    creatorId: string,
-    status: string,
-    tiktokCreativeUrl: string,
-    tiktokVideoCode: string,
-    id: string,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type UpdateCreativeRequestMutationVariables = {
-  input: UpdateCreativeRequestInput,
-  condition?: ModelCreativeRequestConditionInput | null,
-};
-
-export type UpdateCreativeRequestMutation = {
-  updateCreativeRequest?:  {
-    __typename: "CreativeRequest",
-    brandBriefId: string,
-    creatorId: string,
-    status: string,
-    tiktokCreativeUrl: string,
-    tiktokVideoCode: string,
-    id: string,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type DeleteCreativeRequestMutationVariables = {
-  input: DeleteCreativeRequestInput,
-  condition?: ModelCreativeRequestConditionInput | null,
-};
-
-export type DeleteCreativeRequestMutation = {
-  deleteCreativeRequest?:  {
-    __typename: "CreativeRequest",
-    brandBriefId: string,
-    creatorId: string,
-    status: string,
-    tiktokCreativeUrl: string,
-    tiktokVideoCode: string,
-    id: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -952,34 +787,13 @@ export type DeleteBrandProfileMutation = {
   } | null,
 };
 
-export type GetGPTresponseQueryVariables = {
-  data?: GPT_INPUT | null,
+export type CreateBrandBriefMutationVariables = {
+  input: CreateBrandBriefInput,
+  condition?: ModelBrandBriefConditionInput | null,
 };
 
-export type GetGPTresponseQuery = {
-  getGPTresponse?:  {
-    __typename: "GPT_RESPONSE",
-    responseType?: GPT_RESPONSE_TYPE | null,
-    BRAND_NAME?: string | null,
-    BRAND_NAME_REFRESH?: string | null,
-    BRAND_PILLARS?: string | null,
-    BRAND_PILLARS_REFRESH?: string | null,
-    BRAND_VALUES?: string | null,
-    BRAND_MISSION_STATEMENT?: string | null,
-    BRAND_TAGLINE_STATEMENT?: string | null,
-    BRAND_TAGLINE_STATEMENT_REFRESH?: string | null,
-    BRAND_MISSION_STATEMENT_REFRESH?: string | null,
-    error?: boolean | null,
-    message?: string | null,
-  } | null,
-};
-
-export type GetBrandBriefQueryVariables = {
-  id: string,
-};
-
-export type GetBrandBriefQuery = {
-  getBrandBrief?:  {
+export type CreateBrandBriefMutation = {
+  createBrandBrief?:  {
     __typename: "BrandBrief",
     id: string,
     BriefName?: string | null,
@@ -1009,53 +823,85 @@ export type GetBrandBriefQuery = {
   } | null,
 };
 
-export type ListBrandBriefsQueryVariables = {
-  filter?: ModelBrandBriefFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
+export type UpdateBrandBriefMutationVariables = {
+  input: UpdateBrandBriefInput,
+  condition?: ModelBrandBriefConditionInput | null,
 };
 
-export type ListBrandBriefsQuery = {
-  listBrandBriefs?:  {
-    __typename: "ModelBrandBriefConnection",
-    items:  Array< {
-      __typename: "BrandBrief",
-      id: string,
-      BriefName?: string | null,
-      vertical: string,
-      objective?: string | null,
-      brandBriefDetails?: string | null,
-      creativeInspirations?: Array< string | null > | null,
-      active?: boolean | null,
-      creativeRequests?:  {
-        __typename: "ModelCreativeRequestConnection",
-        items:  Array< {
-          __typename: "CreativeRequest",
-          brandBriefId: string,
-          creatorId: string,
-          status: string,
-          tiktokCreativeUrl: string,
-          tiktokVideoCode: string,
-          id: string,
-          createdAt: string,
-          updatedAt: string,
-        } | null >,
-        nextToken?: string | null,
-      } | null,
-      brandId: string,
-      createdAt: string,
-      updatedAt: string,
-    } | null >,
-    nextToken?: string | null,
+export type UpdateBrandBriefMutation = {
+  updateBrandBrief?:  {
+    __typename: "BrandBrief",
+    id: string,
+    BriefName?: string | null,
+    vertical: string,
+    objective?: string | null,
+    brandBriefDetails?: string | null,
+    creativeInspirations?: Array< string | null > | null,
+    active?: boolean | null,
+    creativeRequests?:  {
+      __typename: "ModelCreativeRequestConnection",
+      items:  Array< {
+        __typename: "CreativeRequest",
+        brandBriefId: string,
+        creatorId: string,
+        status: string,
+        tiktokCreativeUrl: string,
+        tiktokVideoCode: string,
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    brandId: string,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
-export type GetCreativeRequestQueryVariables = {
-  id: string,
+export type DeleteBrandBriefMutationVariables = {
+  input: DeleteBrandBriefInput,
+  condition?: ModelBrandBriefConditionInput | null,
 };
 
-export type GetCreativeRequestQuery = {
-  getCreativeRequest?:  {
+export type DeleteBrandBriefMutation = {
+  deleteBrandBrief?:  {
+    __typename: "BrandBrief",
+    id: string,
+    BriefName?: string | null,
+    vertical: string,
+    objective?: string | null,
+    brandBriefDetails?: string | null,
+    creativeInspirations?: Array< string | null > | null,
+    active?: boolean | null,
+    creativeRequests?:  {
+      __typename: "ModelCreativeRequestConnection",
+      items:  Array< {
+        __typename: "CreativeRequest",
+        brandBriefId: string,
+        creatorId: string,
+        status: string,
+        tiktokCreativeUrl: string,
+        tiktokVideoCode: string,
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    brandId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type CreateCreativeRequestMutationVariables = {
+  input: CreateCreativeRequestInput,
+  condition?: ModelCreativeRequestConditionInput | null,
+};
+
+export type CreateCreativeRequestMutation = {
+  createCreativeRequest?:  {
     __typename: "CreativeRequest",
     brandBriefId: string,
     creatorId: string,
@@ -1068,165 +914,63 @@ export type GetCreativeRequestQuery = {
   } | null,
 };
 
-export type ListCreativeRequestsQueryVariables = {
-  filter?: ModelCreativeRequestFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
+export type UpdateCreativeRequestMutationVariables = {
+  input: UpdateCreativeRequestInput,
+  condition?: ModelCreativeRequestConditionInput | null,
 };
 
-export type ListCreativeRequestsQuery = {
-  listCreativeRequests?:  {
-    __typename: "ModelCreativeRequestConnection",
-    items:  Array< {
-      __typename: "CreativeRequest",
-      brandBriefId: string,
-      creatorId: string,
-      status: string,
-      tiktokCreativeUrl: string,
-      tiktokVideoCode: string,
-      id: string,
-      createdAt: string,
-      updatedAt: string,
-    } | null >,
-    nextToken?: string | null,
+export type UpdateCreativeRequestMutation = {
+  updateCreativeRequest?:  {
+    __typename: "CreativeRequest",
+    brandBriefId: string,
+    creatorId: string,
+    status: string,
+    tiktokCreativeUrl: string,
+    tiktokVideoCode: string,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
-export type BrandBriefsByVerticalQueryVariables = {
-  vertical: string,
-  sortDirection?: ModelSortDirection | null,
-  filter?: ModelBrandBriefFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
+export type DeleteCreativeRequestMutationVariables = {
+  input: DeleteCreativeRequestInput,
+  condition?: ModelCreativeRequestConditionInput | null,
 };
 
-export type BrandBriefsByVerticalQuery = {
-  brandBriefsByVertical?:  {
-    __typename: "ModelBrandBriefConnection",
-    items:  Array< {
-      __typename: "BrandBrief",
-      id: string,
-      BriefName?: string | null,
-      vertical: string,
-      objective?: string | null,
-      brandBriefDetails?: string | null,
-      creativeInspirations?: Array< string | null > | null,
-      active?: boolean | null,
-      creativeRequests?:  {
-        __typename: "ModelCreativeRequestConnection",
-        items:  Array< {
-          __typename: "CreativeRequest",
-          brandBriefId: string,
-          creatorId: string,
-          status: string,
-          tiktokCreativeUrl: string,
-          tiktokVideoCode: string,
-          id: string,
-          createdAt: string,
-          updatedAt: string,
-        } | null >,
-        nextToken?: string | null,
-      } | null,
-      brandId: string,
-      createdAt: string,
-      updatedAt: string,
-    } | null >,
-    nextToken?: string | null,
+export type DeleteCreativeRequestMutation = {
+  deleteCreativeRequest?:  {
+    __typename: "CreativeRequest",
+    brandBriefId: string,
+    creatorId: string,
+    status: string,
+    tiktokCreativeUrl: string,
+    tiktokVideoCode: string,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
-export type BrandBriefsByBrandIdQueryVariables = {
-  brandId: string,
-  sortDirection?: ModelSortDirection | null,
-  filter?: ModelBrandBriefFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
+export type GetGPTresponseQueryVariables = {
+  data?: GPT_INPUT | null,
 };
 
-export type BrandBriefsByBrandIdQuery = {
-  brandBriefsByBrandId?:  {
-    __typename: "ModelBrandBriefConnection",
-    items:  Array< {
-      __typename: "BrandBrief",
-      id: string,
-      BriefName?: string | null,
-      vertical: string,
-      objective?: string | null,
-      brandBriefDetails?: string | null,
-      creativeInspirations?: Array< string | null > | null,
-      active?: boolean | null,
-      creativeRequests?:  {
-        __typename: "ModelCreativeRequestConnection",
-        items:  Array< {
-          __typename: "CreativeRequest",
-          brandBriefId: string,
-          creatorId: string,
-          status: string,
-          tiktokCreativeUrl: string,
-          tiktokVideoCode: string,
-          id: string,
-          createdAt: string,
-          updatedAt: string,
-        } | null >,
-        nextToken?: string | null,
-      } | null,
-      brandId: string,
-      createdAt: string,
-      updatedAt: string,
-    } | null >,
-    nextToken?: string | null,
-  } | null,
-};
-
-export type CreativeRequestsByBrandBriefIdQueryVariables = {
-  brandBriefId: string,
-  sortDirection?: ModelSortDirection | null,
-  filter?: ModelCreativeRequestFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type CreativeRequestsByBrandBriefIdQuery = {
-  creativeRequestsByBrandBriefId?:  {
-    __typename: "ModelCreativeRequestConnection",
-    items:  Array< {
-      __typename: "CreativeRequest",
-      brandBriefId: string,
-      creatorId: string,
-      status: string,
-      tiktokCreativeUrl: string,
-      tiktokVideoCode: string,
-      id: string,
-      createdAt: string,
-      updatedAt: string,
-    } | null >,
-    nextToken?: string | null,
-  } | null,
-};
-
-export type CreativeRequestsByCreatorIdQueryVariables = {
-  creatorId: string,
-  sortDirection?: ModelSortDirection | null,
-  filter?: ModelCreativeRequestFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type CreativeRequestsByCreatorIdQuery = {
-  creativeRequestsByCreatorId?:  {
-    __typename: "ModelCreativeRequestConnection",
-    items:  Array< {
-      __typename: "CreativeRequest",
-      brandBriefId: string,
-      creatorId: string,
-      status: string,
-      tiktokCreativeUrl: string,
-      tiktokVideoCode: string,
-      id: string,
-      createdAt: string,
-      updatedAt: string,
-    } | null >,
-    nextToken?: string | null,
+export type GetGPTresponseQuery = {
+  getGPTresponse?:  {
+    __typename: "GPT_RESPONSE",
+    responseType?: GPT_RESPONSE_TYPE | null,
+    BRAND_NAME?: string | null,
+    BRAND_NAME_REFRESH?: string | null,
+    BRAND_PILLARS?: string | null,
+    BRAND_PILLARS_REFRESH?: string | null,
+    BRAND_VALUES?: string | null,
+    BRAND_MISSION_STATEMENT?: string | null,
+    BRAND_TAGLINE_STATEMENT?: string | null,
+    BRAND_TAGLINE_STATEMENT_REFRESH?: string | null,
+    BRAND_MISSION_STATEMENT_REFRESH?: string | null,
+    error?: boolean | null,
+    message?: string | null,
   } | null,
 };
 
@@ -1509,12 +1253,12 @@ export type BrandProfilesByUserEmailQuery = {
   } | null,
 };
 
-export type OnCreateBrandBriefSubscriptionVariables = {
-  filter?: ModelSubscriptionBrandBriefFilterInput | null,
+export type GetBrandBriefQueryVariables = {
+  id: string,
 };
 
-export type OnCreateBrandBriefSubscription = {
-  onCreateBrandBrief?:  {
+export type GetBrandBriefQuery = {
+  getBrandBrief?:  {
     __typename: "BrandBrief",
     id: string,
     BriefName?: string | null,
@@ -1544,82 +1288,139 @@ export type OnCreateBrandBriefSubscription = {
   } | null,
 };
 
-export type OnUpdateBrandBriefSubscriptionVariables = {
-  filter?: ModelSubscriptionBrandBriefFilterInput | null,
+export type ListBrandBriefsQueryVariables = {
+  filter?: ModelBrandBriefFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
-export type OnUpdateBrandBriefSubscription = {
-  onUpdateBrandBrief?:  {
-    __typename: "BrandBrief",
-    id: string,
-    BriefName?: string | null,
-    vertical: string,
-    objective?: string | null,
-    brandBriefDetails?: string | null,
-    creativeInspirations?: Array< string | null > | null,
-    active?: boolean | null,
-    creativeRequests?:  {
-      __typename: "ModelCreativeRequestConnection",
-      items:  Array< {
-        __typename: "CreativeRequest",
-        brandBriefId: string,
-        creatorId: string,
-        status: string,
-        tiktokCreativeUrl: string,
-        tiktokVideoCode: string,
-        id: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
-    brandId: string,
-    createdAt: string,
-    updatedAt: string,
+export type ListBrandBriefsQuery = {
+  listBrandBriefs?:  {
+    __typename: "ModelBrandBriefConnection",
+    items:  Array< {
+      __typename: "BrandBrief",
+      id: string,
+      BriefName?: string | null,
+      vertical: string,
+      objective?: string | null,
+      brandBriefDetails?: string | null,
+      creativeInspirations?: Array< string | null > | null,
+      active?: boolean | null,
+      creativeRequests?:  {
+        __typename: "ModelCreativeRequestConnection",
+        items:  Array< {
+          __typename: "CreativeRequest",
+          brandBriefId: string,
+          creatorId: string,
+          status: string,
+          tiktokCreativeUrl: string,
+          tiktokVideoCode: string,
+          id: string,
+          createdAt: string,
+          updatedAt: string,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
+      brandId: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
   } | null,
 };
 
-export type OnDeleteBrandBriefSubscriptionVariables = {
-  filter?: ModelSubscriptionBrandBriefFilterInput | null,
+export type BrandBriefsByVerticalQueryVariables = {
+  vertical: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelBrandBriefFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
-export type OnDeleteBrandBriefSubscription = {
-  onDeleteBrandBrief?:  {
-    __typename: "BrandBrief",
-    id: string,
-    BriefName?: string | null,
-    vertical: string,
-    objective?: string | null,
-    brandBriefDetails?: string | null,
-    creativeInspirations?: Array< string | null > | null,
-    active?: boolean | null,
-    creativeRequests?:  {
-      __typename: "ModelCreativeRequestConnection",
-      items:  Array< {
-        __typename: "CreativeRequest",
-        brandBriefId: string,
-        creatorId: string,
-        status: string,
-        tiktokCreativeUrl: string,
-        tiktokVideoCode: string,
-        id: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
-    brandId: string,
-    createdAt: string,
-    updatedAt: string,
+export type BrandBriefsByVerticalQuery = {
+  brandBriefsByVertical?:  {
+    __typename: "ModelBrandBriefConnection",
+    items:  Array< {
+      __typename: "BrandBrief",
+      id: string,
+      BriefName?: string | null,
+      vertical: string,
+      objective?: string | null,
+      brandBriefDetails?: string | null,
+      creativeInspirations?: Array< string | null > | null,
+      active?: boolean | null,
+      creativeRequests?:  {
+        __typename: "ModelCreativeRequestConnection",
+        items:  Array< {
+          __typename: "CreativeRequest",
+          brandBriefId: string,
+          creatorId: string,
+          status: string,
+          tiktokCreativeUrl: string,
+          tiktokVideoCode: string,
+          id: string,
+          createdAt: string,
+          updatedAt: string,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
+      brandId: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
   } | null,
 };
 
-export type OnCreateCreativeRequestSubscriptionVariables = {
-  filter?: ModelSubscriptionCreativeRequestFilterInput | null,
+export type BrandBriefsByBrandIdQueryVariables = {
+  brandId: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelBrandBriefFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
-export type OnCreateCreativeRequestSubscription = {
-  onCreateCreativeRequest?:  {
+export type BrandBriefsByBrandIdQuery = {
+  brandBriefsByBrandId?:  {
+    __typename: "ModelBrandBriefConnection",
+    items:  Array< {
+      __typename: "BrandBrief",
+      id: string,
+      BriefName?: string | null,
+      vertical: string,
+      objective?: string | null,
+      brandBriefDetails?: string | null,
+      creativeInspirations?: Array< string | null > | null,
+      active?: boolean | null,
+      creativeRequests?:  {
+        __typename: "ModelCreativeRequestConnection",
+        items:  Array< {
+          __typename: "CreativeRequest",
+          brandBriefId: string,
+          creatorId: string,
+          status: string,
+          tiktokCreativeUrl: string,
+          tiktokVideoCode: string,
+          id: string,
+          createdAt: string,
+          updatedAt: string,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
+      brandId: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetCreativeRequestQueryVariables = {
+  id: string,
+};
+
+export type GetCreativeRequestQuery = {
+  getCreativeRequest?:  {
     __typename: "CreativeRequest",
     brandBriefId: string,
     creatorId: string,
@@ -1632,39 +1433,79 @@ export type OnCreateCreativeRequestSubscription = {
   } | null,
 };
 
-export type OnUpdateCreativeRequestSubscriptionVariables = {
-  filter?: ModelSubscriptionCreativeRequestFilterInput | null,
+export type ListCreativeRequestsQueryVariables = {
+  filter?: ModelCreativeRequestFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
-export type OnUpdateCreativeRequestSubscription = {
-  onUpdateCreativeRequest?:  {
-    __typename: "CreativeRequest",
-    brandBriefId: string,
-    creatorId: string,
-    status: string,
-    tiktokCreativeUrl: string,
-    tiktokVideoCode: string,
-    id: string,
-    createdAt: string,
-    updatedAt: string,
+export type ListCreativeRequestsQuery = {
+  listCreativeRequests?:  {
+    __typename: "ModelCreativeRequestConnection",
+    items:  Array< {
+      __typename: "CreativeRequest",
+      brandBriefId: string,
+      creatorId: string,
+      status: string,
+      tiktokCreativeUrl: string,
+      tiktokVideoCode: string,
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
   } | null,
 };
 
-export type OnDeleteCreativeRequestSubscriptionVariables = {
-  filter?: ModelSubscriptionCreativeRequestFilterInput | null,
+export type CreativeRequestsByBrandBriefIdQueryVariables = {
+  brandBriefId: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelCreativeRequestFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
-export type OnDeleteCreativeRequestSubscription = {
-  onDeleteCreativeRequest?:  {
-    __typename: "CreativeRequest",
-    brandBriefId: string,
-    creatorId: string,
-    status: string,
-    tiktokCreativeUrl: string,
-    tiktokVideoCode: string,
-    id: string,
-    createdAt: string,
-    updatedAt: string,
+export type CreativeRequestsByBrandBriefIdQuery = {
+  creativeRequestsByBrandBriefId?:  {
+    __typename: "ModelCreativeRequestConnection",
+    items:  Array< {
+      __typename: "CreativeRequest",
+      brandBriefId: string,
+      creatorId: string,
+      status: string,
+      tiktokCreativeUrl: string,
+      tiktokVideoCode: string,
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type CreativeRequestsByCreatorIdQueryVariables = {
+  creatorId: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelCreativeRequestFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type CreativeRequestsByCreatorIdQuery = {
+  creativeRequestsByCreatorId?:  {
+    __typename: "ModelCreativeRequestConnection",
+    items:  Array< {
+      __typename: "CreativeRequest",
+      brandBriefId: string,
+      creatorId: string,
+      status: string,
+      tiktokCreativeUrl: string,
+      tiktokVideoCode: string,
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
   } | null,
 };
 
@@ -1938,5 +1779,164 @@ export type OnDeleteBrandProfileSubscription = {
     updatedAt: string,
     userProfileBrandId?: string | null,
     owner?: string | null,
+  } | null,
+};
+
+export type OnCreateBrandBriefSubscriptionVariables = {
+  filter?: ModelSubscriptionBrandBriefFilterInput | null,
+};
+
+export type OnCreateBrandBriefSubscription = {
+  onCreateBrandBrief?:  {
+    __typename: "BrandBrief",
+    id: string,
+    BriefName?: string | null,
+    vertical: string,
+    objective?: string | null,
+    brandBriefDetails?: string | null,
+    creativeInspirations?: Array< string | null > | null,
+    active?: boolean | null,
+    creativeRequests?:  {
+      __typename: "ModelCreativeRequestConnection",
+      items:  Array< {
+        __typename: "CreativeRequest",
+        brandBriefId: string,
+        creatorId: string,
+        status: string,
+        tiktokCreativeUrl: string,
+        tiktokVideoCode: string,
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    brandId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateBrandBriefSubscriptionVariables = {
+  filter?: ModelSubscriptionBrandBriefFilterInput | null,
+};
+
+export type OnUpdateBrandBriefSubscription = {
+  onUpdateBrandBrief?:  {
+    __typename: "BrandBrief",
+    id: string,
+    BriefName?: string | null,
+    vertical: string,
+    objective?: string | null,
+    brandBriefDetails?: string | null,
+    creativeInspirations?: Array< string | null > | null,
+    active?: boolean | null,
+    creativeRequests?:  {
+      __typename: "ModelCreativeRequestConnection",
+      items:  Array< {
+        __typename: "CreativeRequest",
+        brandBriefId: string,
+        creatorId: string,
+        status: string,
+        tiktokCreativeUrl: string,
+        tiktokVideoCode: string,
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    brandId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteBrandBriefSubscriptionVariables = {
+  filter?: ModelSubscriptionBrandBriefFilterInput | null,
+};
+
+export type OnDeleteBrandBriefSubscription = {
+  onDeleteBrandBrief?:  {
+    __typename: "BrandBrief",
+    id: string,
+    BriefName?: string | null,
+    vertical: string,
+    objective?: string | null,
+    brandBriefDetails?: string | null,
+    creativeInspirations?: Array< string | null > | null,
+    active?: boolean | null,
+    creativeRequests?:  {
+      __typename: "ModelCreativeRequestConnection",
+      items:  Array< {
+        __typename: "CreativeRequest",
+        brandBriefId: string,
+        creatorId: string,
+        status: string,
+        tiktokCreativeUrl: string,
+        tiktokVideoCode: string,
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    brandId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnCreateCreativeRequestSubscriptionVariables = {
+  filter?: ModelSubscriptionCreativeRequestFilterInput | null,
+};
+
+export type OnCreateCreativeRequestSubscription = {
+  onCreateCreativeRequest?:  {
+    __typename: "CreativeRequest",
+    brandBriefId: string,
+    creatorId: string,
+    status: string,
+    tiktokCreativeUrl: string,
+    tiktokVideoCode: string,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateCreativeRequestSubscriptionVariables = {
+  filter?: ModelSubscriptionCreativeRequestFilterInput | null,
+};
+
+export type OnUpdateCreativeRequestSubscription = {
+  onUpdateCreativeRequest?:  {
+    __typename: "CreativeRequest",
+    brandBriefId: string,
+    creatorId: string,
+    status: string,
+    tiktokCreativeUrl: string,
+    tiktokVideoCode: string,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteCreativeRequestSubscriptionVariables = {
+  filter?: ModelSubscriptionCreativeRequestFilterInput | null,
+};
+
+export type OnDeleteCreativeRequestSubscription = {
+  onDeleteCreativeRequest?:  {
+    __typename: "CreativeRequest",
+    brandBriefId: string,
+    creatorId: string,
+    status: string,
+    tiktokCreativeUrl: string,
+    tiktokVideoCode: string,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };

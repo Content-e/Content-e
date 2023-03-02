@@ -20,256 +20,6 @@ export const getGPTresponse = /* GraphQL */ `
     }
   }
 `;
-export const getBrandBrief = /* GraphQL */ `
-  query GetBrandBrief($id: ID!) {
-    getBrandBrief(id: $id) {
-      id
-      BriefName
-      vertical
-      objective
-      brandBriefDetails
-      creativeInspirations
-      active
-      creativeRequests {
-        items {
-          brandBriefId
-          creatorId
-          status
-          tiktokCreativeUrl
-          tiktokVideoCode
-          id
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      brandId
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listBrandBriefs = /* GraphQL */ `
-  query ListBrandBriefs(
-    $filter: ModelBrandBriefFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listBrandBriefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        BriefName
-        vertical
-        objective
-        brandBriefDetails
-        creativeInspirations
-        active
-        creativeRequests {
-          items {
-            brandBriefId
-            creatorId
-            status
-            tiktokCreativeUrl
-            tiktokVideoCode
-            id
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        brandId
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getCreativeRequest = /* GraphQL */ `
-  query GetCreativeRequest($id: ID!) {
-    getCreativeRequest(id: $id) {
-      brandBriefId
-      creatorId
-      status
-      tiktokCreativeUrl
-      tiktokVideoCode
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listCreativeRequests = /* GraphQL */ `
-  query ListCreativeRequests(
-    $filter: ModelCreativeRequestFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listCreativeRequests(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        brandBriefId
-        creatorId
-        status
-        tiktokCreativeUrl
-        tiktokVideoCode
-        id
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const brandBriefsByVertical = /* GraphQL */ `
-  query BrandBriefsByVertical(
-    $vertical: String!
-    $sortDirection: ModelSortDirection
-    $filter: ModelBrandBriefFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    brandBriefsByVertical(
-      vertical: $vertical
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        BriefName
-        vertical
-        objective
-        brandBriefDetails
-        creativeInspirations
-        active
-        creativeRequests {
-          items {
-            brandBriefId
-            creatorId
-            status
-            tiktokCreativeUrl
-            tiktokVideoCode
-            id
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        brandId
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const brandBriefsByBrandId = /* GraphQL */ `
-  query BrandBriefsByBrandId(
-    $brandId: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelBrandBriefFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    brandBriefsByBrandId(
-      brandId: $brandId
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        BriefName
-        vertical
-        objective
-        brandBriefDetails
-        creativeInspirations
-        active
-        creativeRequests {
-          items {
-            brandBriefId
-            creatorId
-            status
-            tiktokCreativeUrl
-            tiktokVideoCode
-            id
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        brandId
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const creativeRequestsByBrandBriefId = /* GraphQL */ `
-  query CreativeRequestsByBrandBriefId(
-    $brandBriefId: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelCreativeRequestFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    creativeRequestsByBrandBriefId(
-      brandBriefId: $brandBriefId
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        brandBriefId
-        creatorId
-        status
-        tiktokCreativeUrl
-        tiktokVideoCode
-        id
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const creativeRequestsByCreatorId = /* GraphQL */ `
-  query CreativeRequestsByCreatorId(
-    $creatorId: String!
-    $sortDirection: ModelSortDirection
-    $filter: ModelCreativeRequestFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    creativeRequestsByCreatorId(
-      creatorId: $creatorId
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        brandBriefId
-        creatorId
-        status
-        tiktokCreativeUrl
-        tiktokVideoCode
-        id
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
 export const getUserProfile = /* GraphQL */ `
   query GetUserProfile($id: ID!) {
     getUserProfile(id: $id) {
@@ -522,6 +272,256 @@ export const brandProfilesByUserEmail = /* GraphQL */ `
         updatedAt
         userProfileBrandId
         owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getBrandBrief = /* GraphQL */ `
+  query GetBrandBrief($id: ID!) {
+    getBrandBrief(id: $id) {
+      id
+      BriefName
+      vertical
+      objective
+      brandBriefDetails
+      creativeInspirations
+      active
+      creativeRequests {
+        items {
+          brandBriefId
+          creatorId
+          status
+          tiktokCreativeUrl
+          tiktokVideoCode
+          id
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      brandId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listBrandBriefs = /* GraphQL */ `
+  query ListBrandBriefs(
+    $filter: ModelBrandBriefFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listBrandBriefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        BriefName
+        vertical
+        objective
+        brandBriefDetails
+        creativeInspirations
+        active
+        creativeRequests {
+          items {
+            brandBriefId
+            creatorId
+            status
+            tiktokCreativeUrl
+            tiktokVideoCode
+            id
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        brandId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const brandBriefsByVertical = /* GraphQL */ `
+  query BrandBriefsByVertical(
+    $vertical: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelBrandBriefFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    brandBriefsByVertical(
+      vertical: $vertical
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        BriefName
+        vertical
+        objective
+        brandBriefDetails
+        creativeInspirations
+        active
+        creativeRequests {
+          items {
+            brandBriefId
+            creatorId
+            status
+            tiktokCreativeUrl
+            tiktokVideoCode
+            id
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        brandId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const brandBriefsByBrandId = /* GraphQL */ `
+  query BrandBriefsByBrandId(
+    $brandId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelBrandBriefFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    brandBriefsByBrandId(
+      brandId: $brandId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        BriefName
+        vertical
+        objective
+        brandBriefDetails
+        creativeInspirations
+        active
+        creativeRequests {
+          items {
+            brandBriefId
+            creatorId
+            status
+            tiktokCreativeUrl
+            tiktokVideoCode
+            id
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        brandId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getCreativeRequest = /* GraphQL */ `
+  query GetCreativeRequest($id: ID!) {
+    getCreativeRequest(id: $id) {
+      brandBriefId
+      creatorId
+      status
+      tiktokCreativeUrl
+      tiktokVideoCode
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listCreativeRequests = /* GraphQL */ `
+  query ListCreativeRequests(
+    $filter: ModelCreativeRequestFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCreativeRequests(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        brandBriefId
+        creatorId
+        status
+        tiktokCreativeUrl
+        tiktokVideoCode
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const creativeRequestsByBrandBriefId = /* GraphQL */ `
+  query CreativeRequestsByBrandBriefId(
+    $brandBriefId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelCreativeRequestFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    creativeRequestsByBrandBriefId(
+      brandBriefId: $brandBriefId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        brandBriefId
+        creatorId
+        status
+        tiktokCreativeUrl
+        tiktokVideoCode
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const creativeRequestsByCreatorId = /* GraphQL */ `
+  query CreativeRequestsByCreatorId(
+    $creatorId: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelCreativeRequestFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    creativeRequestsByCreatorId(
+      creatorId: $creatorId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        brandBriefId
+        creatorId
+        status
+        tiktokCreativeUrl
+        tiktokVideoCode
+        id
+        createdAt
+        updatedAt
       }
       nextToken
     }
