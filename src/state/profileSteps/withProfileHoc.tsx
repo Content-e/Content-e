@@ -1,3 +1,4 @@
+import { USER_TYPES } from "API";
 import { createUserProfile, getUserProfile } from "hooks";
 import withApolloProvider from "hooks/apollo/withApollo";
 import React, { useContext, useEffect, useState } from "react";
@@ -61,6 +62,8 @@ export function withProfile<T>(
             name: name ?? email?.split("@")[0],
             userEmail: email,
             id: userId,
+            userType:
+              localStorage.getItem("userType") || USER_TYPES.CREATIVE_USER,
           };
           createProfile({ variables: { input } });
           updateCreateProfileApiCall(true);

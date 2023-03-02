@@ -1,4 +1,3 @@
-import withApolloProvider from "hooks/apollo/withApollo";
 import { SidebarLayout } from "layout";
 import { AuthorizeTikTokStep, BrandStepsPage, MainPage } from "pages";
 import { FC } from "react";
@@ -19,6 +18,4 @@ const AuthRouterPaths: FC<ProfileProps> = () => {
   );
 };
 
-export const AuthRouterWithProfile = withProfile(AuthRouterPaths);
-const AuthRouter: FC = () => <AuthRouterWithProfile shouldCallApi />;
-export default withApolloProvider(AuthRouter);
+export default withProfile(AuthRouterPaths);

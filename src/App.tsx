@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "state/auth";
 import MainRouter from "./router";
 import "./assets/css/index.css";
+import { ProfileProvider } from "state/profileSteps";
 
 Amplify.configure(config);
 
@@ -16,7 +17,9 @@ const App: React.FC = () => {
       <Router>
         <div className="App">
           <AuthProvider>
-            <Route path="/" component={MainRouter} />
+            <ProfileProvider>
+              <Route path="/" component={MainRouter} />
+            </ProfileProvider>
           </AuthProvider>
         </div>
       </Router>

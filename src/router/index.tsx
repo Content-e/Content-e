@@ -1,8 +1,14 @@
-import { AuthProps, AuthRoutes, ErrorProps, UnAuthRoutes } from "utils";
+import {
+  AuthProps,
+  AuthRoutes,
+  ErrorProps,
+  ProfileProps,
+  UnAuthRoutes,
+} from "utils";
 import { FullPageLoader, replaceSubPath } from "components";
 import { isValidRoute, ShouldRender, ToastContainer } from "components";
 import { LogoutPage } from "pages";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { FC, Fragment, useEffect, useState } from "react";
 import {
   Route,
   RouteProps,
@@ -17,10 +23,13 @@ import {
   mainRoutes,
   UnAuthRoutesArray,
 } from "./RoutesConstants";
-import { ProfileProvider } from "state/profileSteps";
+import { withProfile } from "state/profileSteps";
+import withApolloProvider from "hooks/apollo/withApollo";
+import { USER_TYPES } from "API";
 
-const MainRouter: React.FC<AuthProps & ErrorProps> = ({
+const MainRouter: React.FC<AuthProps & ErrorProps & ProfileProps> = ({
   authState: { isLoading, isLoggedIn, email },
+  profileState: { data },
   ...rest
 }) => {
   const [pathFound, handlePathFound] = useState(false);
@@ -32,7 +41,10 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
     const term = queryParams.get("redirectUrl");
     if (term) history.replace(term);
     else {
-      if (pathname.split("/").length > 1)
+      if (
+        pathname.split("/").length === 3 &&
+        data?.userType === USER_TYPES.CREATIVE_USER
+      )
         history.replace(replaceSubPath(AuthRoutes.Tiktok));
       else history.replace(AuthRoutes.Home);
     }
@@ -67,15 +79,17 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
       <ShouldRender if={pathFound}>
         <Switch>
           <Route path={AuthRoutes.Logout} component={LogoutPage} />
-          <ProfileProvider>
-            {mainRoutes.map((route: RouteProps, index: number) => (
-              <Route key={`${index}`} {...route} />
-            ))}
-          </ProfileProvider>
+          {mainRoutes.map((route: RouteProps, index: number) => (
+            <Route key={`${index}`} {...route} />
+          ))}
         </Switch>
       </ShouldRender>
     </Fragment>
   );
 };
 
-export default withError(withAuth(MainRouter));
+export const MainRouterWithProfile = withError(
+  withAuth(withProfile(MainRouter))
+);
+const CompleteMainRouter: FC = () => <MainRouterWithProfile shouldCallApi />;
+export default withApolloProvider(CompleteMainRouter);
