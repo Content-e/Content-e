@@ -45,14 +45,14 @@ export const LoginModal: FC<AuthProps> = ({ getAuth }) => {
   };
 
   const onLogin = (): void => {
-    if (validateSignUpForm()) {
+    if (!isLoading && validateSignUpForm()) {
       performAction(formState);
     }
   };
 
   useEffect(() => {
     if (error === unverifiedUser)
-      history.push(UnAuthRoutes.Reverify, { ...formState });
+      history.push(replaceSubPath(UnAuthRoutes.SubReverify), { ...formState });
     else if (success) getAuth();
   }, [success, error]);
 
