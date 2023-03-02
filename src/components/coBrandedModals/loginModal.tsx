@@ -1,24 +1,60 @@
-import { FC, useState } from "react";
-import { Input, replaceSubPath } from "components";
+import { FC, useEffect, useState } from "react";
+import { IconLoader, Input, replaceSubPath } from "components";
 import GoogleLogin from "components/authentication/googleLogin";
-import { defaultLoginError, defaultLoginState, UnAuthRoutes } from "utils";
+import {
+  AuthProps,
+  defaultLoginError,
+  defaultLoginState,
+  UnAuthRoutes,
+  unverifiedUser,
+} from "utils";
 import Checkbox from "components/authentication/checkbox";
 
 import "./coBrandedModals.css";
 import { useHistory } from "react-router-dom";
+import { validateEmail, validatePassword, withAuth } from "state/auth";
+import { useLogin } from "hooks";
 
-export const LoginModal: FC = () => {
+export const LoginModal: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
+  const {
+    res: { isLoading, error, success },
+    performAction,
+  } = useLogin();
 
   const [formState, setFormState] = useState(defaultLoginState);
   const [formError, setFormError] = useState(defaultLoginError);
 
   const goToSignUp = (): void =>
     history.push(replaceSubPath(UnAuthRoutes.SubRegister));
+  const goToForget = (): void =>
+    history.push(replaceSubPath(UnAuthRoutes.SubForgetPass));
   const updateState = (key: string, value: string): void => {
     setFormError((prev) => ({ ...prev, [key]: null }));
     setFormState((prev) => ({ ...prev, [key]: value }));
   };
+
+  const validateSignUpForm = (): boolean => {
+    const email = validateEmail(formState.email);
+    const password = validatePassword(formState.password);
+    if (email || password) {
+      setFormError({ email, password });
+      return false;
+    }
+    return true;
+  };
+
+  const onLogin = (): void => {
+    if (validateSignUpForm()) {
+      performAction(formState);
+    }
+  };
+
+  useEffect(() => {
+    if (error === unverifiedUser)
+      history.push(UnAuthRoutes.Reverify, { ...formState });
+    else if (success) getAuth();
+  }, [success, error]);
 
   const commonProps = {
     handlers: { state: formState, error: formError, updateState },
@@ -44,13 +80,14 @@ export const LoginModal: FC = () => {
             <span className="existing-account">Remember me</span>
           </div>
 
-          <div className="existing-account">
+          <div className="existing-account" onClick={goToForget}>
             <span>Forgot Password?</span>
           </div>
         </div>
 
-        <div className="modal-button">
+        <div className="modal-button" onClick={onLogin}>
           <span className="modal-button-text">Login</span>
+          {isLoading && <IconLoader />}
         </div>
 
         <div className="google-login login-modal">
@@ -64,4 +101,4 @@ export const LoginModal: FC = () => {
   );
 };
 
-export default LoginModal;
+export default withAuth(LoginModal);

@@ -10,13 +10,13 @@ export const AllRoutesArray = UnAuthRoutesArray.concat(AuthRoutesArray);
 
 export const mainRoutes: RouteProps[] = [
   {
-    path: UnAuthRoutesArray,
-    exact: true,
-    component: UnAuthRouter as FC,
-  },
-  {
     path: AuthRoutesArray,
     exact: true,
     component: AuthRouter as FC,
+  },
+  {
+    path: UnAuthRoutesArray,
+    exact: true,
+    component: UnAuthRouter as FC,
   },
 ];
