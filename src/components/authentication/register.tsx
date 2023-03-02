@@ -13,6 +13,7 @@ import {
 
 import "./styles/login.css";
 import GoogleLogin from "./googleLogin";
+import { USER_TYPES } from "API";
 
 export const Register: FC = () => {
   const [creator, setCreator] = useState(false);
@@ -47,6 +48,10 @@ export const Register: FC = () => {
 
   const onLogin = (): void => history.push(UnAuthRoutes.Login);
   const onSignUp = (): void => {
+    localStorage.setItem(
+      "userType",
+      creator ? USER_TYPES.CREATIVE_USER : USER_TYPES.BRAND_USER
+    );
     if (!validateSignUpForm()) performAction(signUpState);
   };
 
