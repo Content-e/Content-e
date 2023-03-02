@@ -1,23 +1,63 @@
-import { FC, useState } from "react";
-import { Input, replaceSubPath } from "components";
+import { FC, useEffect, useState } from "react";
+import { IconLoader, Input, replaceSubPath } from "components";
 import GoogleLogin from "components/authentication/googleLogin";
-import { defaultResetError, defaultResetState, UnAuthRoutes } from "utils";
+import {
+  defaultResetError,
+  defaultResetState,
+  UnAuthRoutes,
+  UnknownType,
+  unverifiedUser,
+} from "utils";
 
 import "./coBrandedModals.css";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { useResetPass } from "hooks";
+import { validateVerificationCode, validatePassword } from "state/auth";
 
 export const ResetPassModal: FC = () => {
   const history = useHistory();
+  const { state } = useLocation();
+
+  const {
+    res: { isLoading, error, success },
+    performAction,
+  } = useResetPass();
 
   const [formState, setFormState] = useState(defaultResetState);
   const [formError, setFormError] = useState(defaultResetError);
 
+  const validateResetForm = (): boolean => {
+    const code = validateVerificationCode(formState.code);
+    const password = validatePassword(formState.password);
+    if (code || password) {
+      setFormError({ code, password });
+      return false;
+    }
+    return true;
+  };
+
   const goToSignUp = (): void =>
     history.push(replaceSubPath(UnAuthRoutes.SubRegister));
+
   const updateState = (key: string, value: string): void => {
     setFormError((prev) => ({ ...prev, [key]: null }));
     setFormState((prev) => ({ ...prev, [key]: value }));
   };
+
+  const onReset = (): void => {
+    if (!isLoading && validateResetForm()) performAction(formState);
+  };
+
+  useEffect(() => {
+    if (error === unverifiedUser)
+      history.push(replaceSubPath(UnAuthRoutes.SubReverify), { ...formState });
+    else if (success) history.push(replaceSubPath(UnAuthRoutes.SubLogin));
+  }, [success, error]);
+
+  useEffect(() => {
+    const { email } = (state as UnknownType) || {};
+    if (!email) history.push(replaceSubPath(UnAuthRoutes.SubLogin));
+  }, [state]);
 
   const commonProps = {
     handlers: { state: formState, error: formError, updateState },
@@ -41,8 +81,9 @@ export const ResetPassModal: FC = () => {
           />
         </div>
 
-        <div className="modal-button">
+        <div className="modal-button" onClick={onReset}>
           <span className="modal-button-text">Reset Password</span>
+          {isLoading && <IconLoader />}
         </div>
 
         <div className="google-login reset-modal">
