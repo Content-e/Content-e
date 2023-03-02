@@ -3,9 +3,15 @@ import { Input } from "components";
 import GoogleLogin from "components/authentication/googleLogin";
 import "./coBrandedModals.css";
 import ResetPassModal from "./resetPassModal";
+import { useHistory } from "react-router-dom";
+import { UnAuthRoutes } from "utils";
 
 export const ReverifyModal: FC = () => {
+  const history = useHistory();
+
   const [code, setCode] = useState("");
+
+  const goToLogin = (): void => history.push(UnAuthRoutes.SubLogin);
 
   return (
     <div className="modal-outer-container">
@@ -29,7 +35,7 @@ export const ReverifyModal: FC = () => {
           <GoogleLogin />
         </div>
         <div className="existing-modal-account">
-          Already have an account? <span>&nbsp;Login</span>
+          Already have an account? <span onClick={goToLogin}>&nbsp;Login</span>
         </div>
       </div>
     </div>

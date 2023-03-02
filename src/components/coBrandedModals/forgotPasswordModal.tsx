@@ -2,10 +2,14 @@ import { FC, useState } from "react";
 import { Input } from "components";
 import GoogleLogin from "components/authentication/googleLogin";
 import "./coBrandedModals.css";
+import { useHistory } from "react-router-dom";
+import { UnAuthRoutes } from "utils";
 
 export const ForgotPasswordModal: FC = () => {
+  const history = useHistory();
   const [email, setEmail] = useState<string>("");
 
+  const goToSignUp = (): void => history.push(UnAuthRoutes.SubRegister);
   const updateState = (_: string, value: string): void => {
     setEmail(value);
   };
@@ -30,7 +34,7 @@ export const ForgotPasswordModal: FC = () => {
           <GoogleLogin />
         </div>
         <div className="existing-modal-account">
-          Don't have an account? <span>&nbsp;Sign up</span>
+          Don't have an account? <span onClick={goToSignUp}>&nbsp;Sign up</span>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ export enum UnAuthRoutes {
   SubReverify = "/:id/verify",
   SubRegister = "/:id/signup",
   SubForgetPass = "/:id/forgetPass",
-  SubResetPass = "/:id/restPass",
+  SubResetPass = "/:id/resetPass",
 }
 
 export enum AuthRoutes {

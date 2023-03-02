@@ -1,15 +1,19 @@
 import { FC, useState } from "react";
 import { Input } from "components";
 import GoogleLogin from "components/authentication/googleLogin";
-import { defaultLoginError, defaultLoginState } from "utils";
+import { defaultLoginError, defaultLoginState, UnAuthRoutes } from "utils";
 import Checkbox from "components/authentication/checkbox";
 
 import "./coBrandedModals.css";
+import { useHistory } from "react-router-dom";
 
 export const LoginModal: FC = () => {
+  const history = useHistory();
+
   const [formState, setFormState] = useState(defaultLoginState);
   const [formError, setFormError] = useState(defaultLoginError);
 
+  const goToSignUp = (): void => history.push(UnAuthRoutes.SubRegister);
   const updateState = (key: string, value: string): void => {
     setFormError((prev) => ({ ...prev, [key]: null }));
     setFormState((prev) => ({ ...prev, [key]: value }));
@@ -52,7 +56,7 @@ export const LoginModal: FC = () => {
           <GoogleLogin />
         </div>
         <div className="existing-modal-account">
-          Don't have an account? <span>&nbsp;Sign up</span>
+          Don't have an account? <span onClick={goToSignUp}>&nbsp;Sign up</span>
         </div>
       </div>
     </div>
