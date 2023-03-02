@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Input } from "components";
+import { Input, replaceSubPath } from "components";
 import GoogleLogin from "components/authentication/googleLogin";
 import "./coBrandedModals.css";
 import ResetPassModal from "./resetPassModal";
@@ -11,7 +11,8 @@ export const ReverifyModal: FC = () => {
 
   const [code, setCode] = useState("");
 
-  const goToLogin = (): void => history.push(UnAuthRoutes.SubLogin);
+  const goToLogin = (): void =>
+    history.push(replaceSubPath(UnAuthRoutes.SubLogin));
 
   return (
     <div className="modal-outer-container">

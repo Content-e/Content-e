@@ -1,3 +1,4 @@
+import { replaceSubPath } from "components";
 import { FC } from "react";
 import { useHistory } from "react-router-dom";
 import { UnAuthRoutes } from "utils";
@@ -6,7 +7,8 @@ import "./styles.css";
 export const CoBrandedMainPage: FC = () => {
   const history = useHistory();
 
-  const goToLogin = (): void => history.push(UnAuthRoutes.SubLogin);
+  const goToLogin = (): void =>
+    history.push(replaceSubPath(UnAuthRoutes.SubLogin));
 
   return (
     <div className="cobranded-container">

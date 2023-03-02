@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Input } from "components";
+import { Input, replaceSubPath } from "components";
 import GoogleLogin from "components/authentication/googleLogin";
 import { defaultResetError, defaultResetState, UnAuthRoutes } from "utils";
 
@@ -12,7 +12,8 @@ export const ResetPassModal: FC = () => {
   const [formState, setFormState] = useState(defaultResetState);
   const [formError, setFormError] = useState(defaultResetError);
 
-  const goToSignUp = (): void => history.push(UnAuthRoutes.SubRegister);
+  const goToSignUp = (): void =>
+    history.push(replaceSubPath(UnAuthRoutes.SubRegister));
   const updateState = (key: string, value: string): void => {
     setFormError((prev) => ({ ...prev, [key]: null }));
     setFormState((prev) => ({ ...prev, [key]: value }));

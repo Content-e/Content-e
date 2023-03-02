@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Input } from "components";
+import { Input, replaceSubPath } from "components";
 import GoogleLogin from "components/authentication/googleLogin";
 import { defaultLoginError, defaultLoginState, UnAuthRoutes } from "utils";
 import Checkbox from "components/authentication/checkbox";
@@ -13,7 +13,8 @@ export const LoginModal: FC = () => {
   const [formState, setFormState] = useState(defaultLoginState);
   const [formError, setFormError] = useState(defaultLoginError);
 
-  const goToSignUp = (): void => history.push(UnAuthRoutes.SubRegister);
+  const goToSignUp = (): void =>
+    history.push(replaceSubPath(UnAuthRoutes.SubRegister));
   const updateState = (key: string, value: string): void => {
     setFormError((prev) => ({ ...prev, [key]: null }));
     setFormState((prev) => ({ ...prev, [key]: value }));

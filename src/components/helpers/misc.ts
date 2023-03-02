@@ -1,5 +1,5 @@
 import { startCase } from "lodash";
-import { AuthRoutes, IErrorStateType } from "utils";
+import { AuthRoutes, IErrorStateType, UnAuthRoutes } from "utils";
 
 export const matchSlugUrls = (pathname: string, route: string): boolean => {
   if (!route.includes(":")) return pathname === route;
@@ -45,3 +45,17 @@ export const isEmptyString = (input?: string | null): boolean =>
 
 export const getPageTitle = (path: AuthRoutes): string =>
   startCase(path.split("/")?.[1]);
+
+export const replaceSubPath = (path: UnAuthRoutes): string => {
+  const desiredPathElems = path.split("/");
+  const actualPathElems = window.location.pathname.split("/");
+  if (desiredPathElems.length !== actualPathElems.length) return path;
+
+  const updatedPathElems = desiredPathElems.map((e, index) => {
+    if (e.includes(":")) return actualPathElems[index];
+    return e;
+  });
+
+  console.log(updatedPathElems);
+  return updatedPathElems.join("/");
+};
