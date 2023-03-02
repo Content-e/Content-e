@@ -56,18 +56,22 @@ const MainRouter: React.FC<AuthProps & ErrorProps & ProfileProps> = ({
         pathname: UnAuthRoutes.Login,
         search: `?redirectUrl=${pathname}`,
       });
-    else history.replace(UnAuthRoutes.Login);
+    else {
+      if (pathname.split("/").length === 3)
+        history.replace(replaceSubPath(UnAuthRoutes.SubLogin));
+      else history.replace(UnAuthRoutes.Login);
+    }
   };
 
   useEffect(() => {
     if (typeof isLoggedIn === "boolean" && !isLoading) {
-      if (isLoggedIn && !isValidRoute(AuthRoutesArray, pathname))
+      if (isLoggedIn && !isValidRoute(AuthRoutesArray, pathname) && data)
         redirectToValidRoute();
       else if (!isLoggedIn && !isValidRoute(UnAuthRoutesArray, pathname))
         redirectToInValidRoute();
       handlePathFound(true);
     }
-  }, [isLoading, isLoggedIn, email]);
+  }, [isLoading, isLoggedIn, email, data]);
 
   return (
     <Fragment>
@@ -89,7 +93,7 @@ const MainRouter: React.FC<AuthProps & ErrorProps & ProfileProps> = ({
 };
 
 export const MainRouterWithProfile = withError(
-  withAuth(withProfile(MainRouter))
+  withProfile(withAuth(MainRouter))
 );
 const CompleteMainRouter: FC = () => <MainRouterWithProfile shouldCallApi />;
 export default withApolloProvider(CompleteMainRouter);
