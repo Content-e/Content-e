@@ -1,5 +1,5 @@
 import { FC, Fragment } from "react";
-import { SignUpModal } from "./coBrandedModals";
+import { SignUpModal } from "components";
 import CoBrandedMainPage from "./main";
 import "./styles.css";
 

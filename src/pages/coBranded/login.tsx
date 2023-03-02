@@ -1,5 +1,5 @@
 import { FC, Fragment } from "react";
-import { LoginModal } from "./coBrandedModals";
+import { LoginModal } from "components";
 import CoBrandedMainPage from "./main";
 import "./styles.css";
 

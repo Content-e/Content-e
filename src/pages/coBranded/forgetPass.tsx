@@ -1,5 +1,5 @@
 import { FC, Fragment } from "react";
-import { ForgotPasswordModal } from "./coBrandedModals";
+import { ForgotPasswordModal } from "components";
 import CoBrandedMainPage from "./main";
 import "./styles.css";
 

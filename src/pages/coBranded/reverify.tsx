@@ -1,5 +1,5 @@
 import { FC, Fragment } from "react";
-import { ResetPassModal } from "./coBrandedModals";
+import { ResetPassModal } from "components";
 import CoBrandedMainPage from "./main";
 import "./styles.css";
 
