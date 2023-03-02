@@ -55,7 +55,10 @@ export const replaceSubPath = (path: UnAuthRoutes): string => {
     if (e.includes(":")) return actualPathElems[index];
     return e;
   });
-
-  console.log(updatedPathElems);
   return updatedPathElems.join("/");
+};
+
+export const isSubDomain = (): boolean => {
+  const initialHost = window.location.hostname.split(".")[0];
+  return initialHost.length === 9;
 };

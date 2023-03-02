@@ -4,7 +4,7 @@ export enum UnAuthRoutes {
   Reverify = "/reverify",
   ForgetPassword = "/forgetPassword",
   ResetPassword = "/resetPassword",
-  SubLanding = "/:id/",
+  SubLanding = "/:id/landing",
   SubLogin = "/:id/signin",
   SubReverify = "/:id/verify",
   SubRegister = "/:id/signup",
