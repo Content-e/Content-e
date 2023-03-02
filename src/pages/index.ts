@@ -1,6 +1,7 @@
 import LogoutPage from "./logout";
+import AuthorizeTikTokStep from "./authorizeTikTok";
 
-export { LogoutPage };
+export { LogoutPage, AuthorizeTikTokStep };
 
 export * from "./register";
 export * from "./login";
@@ -11,4 +12,3 @@ export * from "./mainpage";
 export * from "./brandSteps";
 
 export * from "./coBranded";
-export * from "./authorizeTikTok";

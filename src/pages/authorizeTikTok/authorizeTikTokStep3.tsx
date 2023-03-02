@@ -1,28 +1,37 @@
 import { FC, useState } from "react";
-import { Input } from "components";
+import { IconLoader, Input } from "components";
 import "./authorizeTikTok.css";
-import { validateVerificationCode } from "state/auth";
 
 interface Props {
-  goToNext: () => void;
+  loading: boolean;
+  goToNext: (link: string) => void;
   goToPrev: () => void;
 }
-export const AuthorizeTikTokStep3: FC<Props> = ({ goToPrev, goToNext }) => {
+export const AuthorizeTikTokStep3: FC<Props> = ({
+  loading,
+  goToPrev,
+  goToNext,
+}) => {
   const [tikTokCode, setTikTokCode] = useState<string>("");
-  const [codeError, setCodeError] = useState("");
+  const [codeError, setCodeError] = useState<string | null>(null);
 
   const updateState = (_: string, value: string): void => {
     setTikTokCode(value);
+    setCodeError(null);
   };
 
   const validateVerifyForm = (): boolean => {
-    const notValidated = validateVerificationCode(tikTokCode);
-    if (notValidated) setCodeError("Code length is invalid");
-    return !notValidated;
+    try {
+      const { hostname, pathname } = new URL(tikTokCode);
+      return !!(hostname && pathname);
+    } catch (err) {
+      return false;
+    }
   };
 
   const onSubmit = (): void => {
-    if (validateVerifyForm()) goToNext();
+    if (validateVerifyForm()) goToNext(tikTokCode);
+    else setCodeError("Kindly provide valid URL");
   };
 
   return (
@@ -71,6 +80,7 @@ export const AuthorizeTikTokStep3: FC<Props> = ({ goToPrev, goToNext }) => {
           </div>
           <div className="next-btn-sm" onClick={onSubmit}>
             <span>Next</span>
+            {loading && <IconLoader />}
           </div>
         </div>
       </div>
