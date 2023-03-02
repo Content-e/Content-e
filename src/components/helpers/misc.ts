@@ -75,7 +75,7 @@ export const getMainDomainFromSubdomain = (): string => {
   return `${protocol}//${hostnameParts.join(".")}${pathnameParts.join("/")}`;
 };
 
-export const replaceSubPath = (path: UnAuthRoutes): string => {
+export const replaceSubPath = (path: string): string => {
   const desiredPathElems = path.split("/");
   const actualPathElems = window.location.pathname.split("/");
   if (desiredPathElems.length !== actualPathElems.length)

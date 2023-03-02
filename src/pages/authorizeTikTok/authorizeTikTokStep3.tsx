@@ -1,12 +1,28 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Input } from "components";
 import "./authorizeTikTok.css";
+import { validateVerificationCode } from "state/auth";
 
-export default function AuthorizeTikTokStep3() {
+interface Props {
+  goToNext: () => void;
+  goToPrev: () => void;
+}
+export const AuthorizeTikTokStep3: FC<Props> = ({ goToPrev, goToNext }) => {
   const [tikTokCode, setTikTokCode] = useState<string>("");
+  const [codeError, setCodeError] = useState("");
 
   const updateState = (_: string, value: string): void => {
     setTikTokCode(value);
+  };
+
+  const validateVerifyForm = (): boolean => {
+    const notValidated = validateVerificationCode(tikTokCode);
+    if (notValidated) setCodeError("Code length is invalid");
+    return !notValidated;
+  };
+
+  const onSubmit = (): void => {
+    if (validateVerifyForm()) goToNext();
   };
 
   return (
@@ -43,20 +59,23 @@ export default function AuthorizeTikTokStep3() {
           <Input
             keyProp={tikTokCode}
             value={tikTokCode}
+            errorVal={codeError}
             placeholder="Paste TikTok video code here"
             handlers={{ updateState }}
           />
         </div>
 
         <div className="next-btn-container">
-          <div className="back-btn-sm">
+          <div className="back-btn-sm" onClick={goToPrev}>
             <span>Back</span>
           </div>
-          <div className="next-btn-sm">
+          <div className="next-btn-sm" onClick={onSubmit}>
             <span>Next</span>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default AuthorizeTikTokStep3;

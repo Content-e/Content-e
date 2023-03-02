@@ -11,3 +11,4 @@ export * from "./mainpage";
 export * from "./brandSteps";
 
 export * from "./coBranded";
+export * from "./authorizeTikTok";

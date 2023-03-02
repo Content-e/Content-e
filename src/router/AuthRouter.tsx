@@ -1,6 +1,6 @@
 import withApolloProvider from "hooks/apollo/withApollo";
 import { SidebarLayout } from "layout";
-import { BrandStepsPage, MainPage } from "pages";
+import { AuthorizeTikTokStep, BrandStepsPage, MainPage } from "pages";
 import { FC } from "react";
 import { Route, Switch } from "react-router-dom";
 import { withProfile } from "state/profileSteps";
@@ -9,6 +9,7 @@ import { AuthRoutes, ProfileProps } from "utils";
 const AuthRouterPaths: FC<ProfileProps> = () => {
   return (
     <Switch>
+      <Route exact path={AuthRoutes.Tiktok} component={AuthorizeTikTokStep} />
       <SidebarLayout>
         <Route exact path={AuthRoutes.Home} component={MainPage} />
         <Route exact path={AuthRoutes.Brand} component={MainPage} />

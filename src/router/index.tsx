@@ -1,5 +1,5 @@
 import { AuthProps, AuthRoutes, ErrorProps, UnAuthRoutes } from "utils";
-import { FullPageLoader } from "components";
+import { FullPageLoader, replaceSubPath } from "components";
 import { isValidRoute, ShouldRender, ToastContainer } from "components";
 import { LogoutPage } from "pages";
 import React, { Fragment, useEffect, useState } from "react";
@@ -31,7 +31,11 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
     const queryParams = new URLSearchParams(search);
     const term = queryParams.get("redirectUrl");
     if (term) history.replace(term);
-    else history.replace(AuthRoutes.Home);
+    else {
+      if (pathname.split("/").length > 1)
+        history.replace(replaceSubPath(AuthRoutes.Tiktok));
+      else history.replace(AuthRoutes.Home);
+    }
   };
 
   const redirectToInValidRoute = (): void => {

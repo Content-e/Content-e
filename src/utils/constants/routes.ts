@@ -22,4 +22,5 @@ export enum AuthRoutes {
   Brand = "/brand",
   EditBrand = "/brandEdit",
   Logout = "/logout",
+  Tiktok = "/linkTikTok/:id",
 }

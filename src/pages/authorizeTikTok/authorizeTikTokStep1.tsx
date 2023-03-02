@@ -1,6 +1,10 @@
+import { FC } from "react";
 import "./authorizeTikTok.css";
 
-export default function AuthorizeTikTokStep1() {
+interface Props {
+  goToNext: () => void;
+}
+export const AuthorizeTikTokStep1: FC<Props> = ({ goToNext }) => {
   return (
     <div className="tik-tok-container">
       <div className="tik-tok-modal">
@@ -42,7 +46,7 @@ export default function AuthorizeTikTokStep1() {
           <img src="/images/creator-step1-ads.svg" />
         </div>
 
-        <div className="next-btn-container">
+        <div className="next-btn-container" onClick={goToNext}>
           <div className="next-btn">
             <span>Next</span>
           </div>
@@ -50,4 +54,6 @@ export default function AuthorizeTikTokStep1() {
       </div>
     </div>
   );
-}
+};
+
+export default AuthorizeTikTokStep1;
