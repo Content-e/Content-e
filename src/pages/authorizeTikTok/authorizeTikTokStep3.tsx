@@ -1,12 +1,37 @@
-import { useState } from "react";
-import { Input } from "components";
+import { FC, useState } from "react";
+import { IconLoader, Input } from "components";
 import "./authorizeTikTok.css";
 
-export default function AuthorizeTikTokStep3() {
+interface Props {
+  loading: boolean;
+  goToNext: (link: string) => void;
+  goToPrev: () => void;
+}
+export const AuthorizeTikTokStep3: FC<Props> = ({
+  loading,
+  goToPrev,
+  goToNext,
+}) => {
   const [tikTokCode, setTikTokCode] = useState<string>("");
+  const [codeError, setCodeError] = useState<string | null>(null);
 
   const updateState = (_: string, value: string): void => {
     setTikTokCode(value);
+    setCodeError(null);
+  };
+
+  const validateVerifyForm = (): boolean => {
+    try {
+      const { hostname, pathname } = new URL(tikTokCode);
+      return !!(hostname && pathname);
+    } catch (err) {
+      return false;
+    }
+  };
+
+  const onSubmit = (): void => {
+    if (validateVerifyForm()) goToNext(tikTokCode);
+    else setCodeError("Kindly provide valid URL");
   };
 
   return (
@@ -43,20 +68,24 @@ export default function AuthorizeTikTokStep3() {
           <Input
             keyProp={tikTokCode}
             value={tikTokCode}
+            errorVal={codeError}
             placeholder="Paste TikTok video code here"
             handlers={{ updateState }}
           />
         </div>
 
         <div className="next-btn-container">
-          <div className="back-btn-sm">
+          <div className="back-btn-sm" onClick={goToPrev}>
             <span>Back</span>
           </div>
-          <div className="next-btn-sm">
+          <div className="next-btn-sm" onClick={onSubmit}>
             <span>Next</span>
+            {loading && <IconLoader />}
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default AuthorizeTikTokStep3;

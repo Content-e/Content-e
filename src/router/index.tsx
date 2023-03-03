@@ -1,8 +1,14 @@
-import { AuthProps, AuthRoutes, ErrorProps, UnAuthRoutes } from "utils";
-import { FullPageLoader } from "components";
+import {
+  AuthProps,
+  AuthRoutes,
+  ErrorProps,
+  ProfileProps,
+  UnAuthRoutes,
+} from "utils";
+import { FullPageLoader, replaceSubPath } from "components";
 import { isValidRoute, ShouldRender, ToastContainer } from "components";
 import { LogoutPage } from "pages";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { FC, Fragment, useEffect, useState } from "react";
 import {
   Route,
   RouteProps,
@@ -17,10 +23,13 @@ import {
   mainRoutes,
   UnAuthRoutesArray,
 } from "./RoutesConstants";
-import { ProfileProvider } from "state/profileSteps";
+import { withProfile } from "state/profileSteps";
+import withApolloProvider from "hooks/apollo/withApollo";
+import { USER_TYPES } from "API";
 
-const MainRouter: React.FC<AuthProps & ErrorProps> = ({
+const MainRouter: React.FC<AuthProps & ErrorProps & ProfileProps> = ({
   authState: { isLoading, isLoggedIn, email },
+  profileState: { data },
   ...rest
 }) => {
   const [pathFound, handlePathFound] = useState(false);
@@ -31,7 +40,14 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
     const queryParams = new URLSearchParams(search);
     const term = queryParams.get("redirectUrl");
     if (term) history.replace(term);
-    else history.replace(AuthRoutes.Home);
+    else {
+      if (
+        pathname.split("/").length === 3 &&
+        data?.userType === USER_TYPES.CREATIVE_USER
+      )
+        history.replace(replaceSubPath(AuthRoutes.Tiktok));
+      else history.replace(AuthRoutes.Home);
+    }
   };
 
   const redirectToInValidRoute = (): void => {
@@ -40,18 +56,22 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
         pathname: UnAuthRoutes.Login,
         search: `?redirectUrl=${pathname}`,
       });
-    else history.replace(UnAuthRoutes.Login);
+    else {
+      if (pathname.split("/").length === 3)
+        history.replace(replaceSubPath(UnAuthRoutes.SubLogin));
+      else history.replace(UnAuthRoutes.Login);
+    }
   };
 
   useEffect(() => {
     if (typeof isLoggedIn === "boolean" && !isLoading) {
-      if (isLoggedIn && !isValidRoute(AuthRoutesArray, pathname))
+      if (isLoggedIn && !isValidRoute(AuthRoutesArray, pathname) && data)
         redirectToValidRoute();
-      else if (!isLoggedIn && !UnAuthRoutesArray.includes(pathname))
+      else if (!isLoggedIn && !isValidRoute(UnAuthRoutesArray, pathname))
         redirectToInValidRoute();
       handlePathFound(true);
     }
-  }, [isLoading, isLoggedIn, email]);
+  }, [isLoading, isLoggedIn, email, data]);
 
   return (
     <Fragment>
@@ -63,15 +83,17 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
       <ShouldRender if={pathFound}>
         <Switch>
           <Route path={AuthRoutes.Logout} component={LogoutPage} />
-          <ProfileProvider>
-            {mainRoutes.map((route: RouteProps, index: number) => (
-              <Route key={`${index}`} {...route} />
-            ))}
-          </ProfileProvider>
+          {mainRoutes.map((route: RouteProps, index: number) => (
+            <Route key={`${index}`} {...route} />
+          ))}
         </Switch>
       </ShouldRender>
     </Fragment>
   );
 };
 
-export default withError(withAuth(MainRouter));
+export const MainRouterWithProfile = withError(
+  withProfile(withAuth(MainRouter))
+);
+const CompleteMainRouter: FC = () => <MainRouterWithProfile shouldCallApi />;
+export default withApolloProvider(CompleteMainRouter);
