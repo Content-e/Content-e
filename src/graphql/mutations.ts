@@ -42,153 +42,6 @@ export const deleteUserProfile = /* GraphQL */ `
     }
   }
 `;
-export const createBrandBrief = /* GraphQL */ `
-  mutation CreateBrandBrief(
-    $input: CreateBrandBriefInput!
-    $condition: ModelBrandBriefConditionInput
-  ) {
-    createBrandBrief(input: $input, condition: $condition) {
-      id
-      BriefName
-      vertical
-      objective
-      brandBriefDetails
-      creativeInspirations
-      active
-      creativeRequests {
-        items {
-          brandBriefId
-          creatorId
-          status
-          tiktokCreativeUrl
-          tiktokVideoCode
-          id
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      brandId
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateBrandBrief = /* GraphQL */ `
-  mutation UpdateBrandBrief(
-    $input: UpdateBrandBriefInput!
-    $condition: ModelBrandBriefConditionInput
-  ) {
-    updateBrandBrief(input: $input, condition: $condition) {
-      id
-      BriefName
-      vertical
-      objective
-      brandBriefDetails
-      creativeInspirations
-      active
-      creativeRequests {
-        items {
-          brandBriefId
-          creatorId
-          status
-          tiktokCreativeUrl
-          tiktokVideoCode
-          id
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      brandId
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteBrandBrief = /* GraphQL */ `
-  mutation DeleteBrandBrief(
-    $input: DeleteBrandBriefInput!
-    $condition: ModelBrandBriefConditionInput
-  ) {
-    deleteBrandBrief(input: $input, condition: $condition) {
-      id
-      BriefName
-      vertical
-      objective
-      brandBriefDetails
-      creativeInspirations
-      active
-      creativeRequests {
-        items {
-          brandBriefId
-          creatorId
-          status
-          tiktokCreativeUrl
-          tiktokVideoCode
-          id
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      brandId
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createCreativeRequest = /* GraphQL */ `
-  mutation CreateCreativeRequest(
-    $input: CreateCreativeRequestInput!
-    $condition: ModelCreativeRequestConditionInput
-  ) {
-    createCreativeRequest(input: $input, condition: $condition) {
-      brandBriefId
-      creatorId
-      status
-      tiktokCreativeUrl
-      tiktokVideoCode
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateCreativeRequest = /* GraphQL */ `
-  mutation UpdateCreativeRequest(
-    $input: UpdateCreativeRequestInput!
-    $condition: ModelCreativeRequestConditionInput
-  ) {
-    updateCreativeRequest(input: $input, condition: $condition) {
-      brandBriefId
-      creatorId
-      status
-      tiktokCreativeUrl
-      tiktokVideoCode
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteCreativeRequest = /* GraphQL */ `
-  mutation DeleteCreativeRequest(
-    $input: DeleteCreativeRequestInput!
-    $condition: ModelCreativeRequestConditionInput
-  ) {
-    deleteCreativeRequest(input: $input, condition: $condition) {
-      brandBriefId
-      creatorId
-      status
-      tiktokCreativeUrl
-      tiktokVideoCode
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const createUserProfile = /* GraphQL */ `
   mutation CreateUserProfile(
     $input: CreateUserProfileInput!
@@ -389,6 +242,153 @@ export const deleteBrandProfile = /* GraphQL */ `
       updatedAt
       userProfileBrandId
       owner
+    }
+  }
+`;
+export const createBrandBrief = /* GraphQL */ `
+  mutation CreateBrandBrief(
+    $input: CreateBrandBriefInput!
+    $condition: ModelBrandBriefConditionInput
+  ) {
+    createBrandBrief(input: $input, condition: $condition) {
+      id
+      BriefName
+      vertical
+      objective
+      brandBriefDetails
+      creativeInspirations
+      active
+      creativeRequests {
+        items {
+          brandBriefId
+          creatorId
+          status
+          tiktokCreativeUrl
+          tiktokVideoCode
+          id
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      brandId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateBrandBrief = /* GraphQL */ `
+  mutation UpdateBrandBrief(
+    $input: UpdateBrandBriefInput!
+    $condition: ModelBrandBriefConditionInput
+  ) {
+    updateBrandBrief(input: $input, condition: $condition) {
+      id
+      BriefName
+      vertical
+      objective
+      brandBriefDetails
+      creativeInspirations
+      active
+      creativeRequests {
+        items {
+          brandBriefId
+          creatorId
+          status
+          tiktokCreativeUrl
+          tiktokVideoCode
+          id
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      brandId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteBrandBrief = /* GraphQL */ `
+  mutation DeleteBrandBrief(
+    $input: DeleteBrandBriefInput!
+    $condition: ModelBrandBriefConditionInput
+  ) {
+    deleteBrandBrief(input: $input, condition: $condition) {
+      id
+      BriefName
+      vertical
+      objective
+      brandBriefDetails
+      creativeInspirations
+      active
+      creativeRequests {
+        items {
+          brandBriefId
+          creatorId
+          status
+          tiktokCreativeUrl
+          tiktokVideoCode
+          id
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      brandId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createCreativeRequest = /* GraphQL */ `
+  mutation CreateCreativeRequest(
+    $input: CreateCreativeRequestInput!
+    $condition: ModelCreativeRequestConditionInput
+  ) {
+    createCreativeRequest(input: $input, condition: $condition) {
+      brandBriefId
+      creatorId
+      status
+      tiktokCreativeUrl
+      tiktokVideoCode
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateCreativeRequest = /* GraphQL */ `
+  mutation UpdateCreativeRequest(
+    $input: UpdateCreativeRequestInput!
+    $condition: ModelCreativeRequestConditionInput
+  ) {
+    updateCreativeRequest(input: $input, condition: $condition) {
+      brandBriefId
+      creatorId
+      status
+      tiktokCreativeUrl
+      tiktokVideoCode
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteCreativeRequest = /* GraphQL */ `
+  mutation DeleteCreativeRequest(
+    $input: DeleteCreativeRequestInput!
+    $condition: ModelCreativeRequestConditionInput
+  ) {
+    deleteCreativeRequest(input: $input, condition: $condition) {
+      brandBriefId
+      creatorId
+      status
+      tiktokCreativeUrl
+      tiktokVideoCode
+      id
+      createdAt
+      updatedAt
     }
   }
 `;

@@ -70,7 +70,7 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "OPENAI_API_KEY": "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"
+            "OPENAI_API_KEY": "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"
           }
         },
         "Role": {

@@ -1,0 +1,26 @@
+.best-practices-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 219px;
+  left: calc(50% - 558px / 2 + 374px);
+  top: 514px;
+  background: #ffffff;
+  border: 1px solid #9fd0bd;
+  border-radius: 6px;
+  padding: 15px;
+}
+
+.best-practices-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.best-practices-label {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1c1c1c;
+}
