@@ -78,7 +78,8 @@ export const Reverify: FC<AuthProps> = ({ getAuth }) => {
           onClick={onVerification}
           disabled={isLoading || loginLoading}
         >
-          <span>Verify {isLoading && <IconLoader />}</span>
+          <span style={{ marginRight: 12 }}>Verify</span>
+          {isLoading && <IconLoader />}
         </button>
 
         <GoogleLogin />

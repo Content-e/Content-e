@@ -58,7 +58,8 @@ export const ForgetPassword: FC = () => {
           onClick={onForget}
           disabled={isLoading || !!emailError}
         >
-          <span>Submit {isLoading && <IconLoader />}</span>
+          <span style={{ marginRight: 12 }}>Submit</span>
+          {isLoading && <IconLoader />}
         </button>
         <GoogleLogin />
         <div className="existing-account" onClick={onSignUp}>

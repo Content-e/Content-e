@@ -51,8 +51,8 @@ export const ForgotPasswordModal: FC = () => {
           />
         </div>
         <div className="modal-button" onClick={goToForgetPass}>
-          <span className="modal-button-text">Submit</span>
-          {isLoading && <IconLoader />}
+          <span className="modal-button-text">Submitjkhkj</span>
+          {!isLoading && <IconLoader />}
         </div>
 
         <div className="google-login forgot-password-modal">

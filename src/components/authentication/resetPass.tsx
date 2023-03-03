@@ -82,7 +82,8 @@ export const ResetPassword: FC = () => {
           />
         </div>
         <button className="login-btn" onClick={onReset} disabled={isLoading}>
-          <span>Reset Password {isLoading && <IconLoader />}</span>
+          <span style={{ marginRight: 12 }}>Reset Password</span>
+          {isLoading && <IconLoader />}
         </button>
         <GoogleLogin />
         <div className="existing-account" onClick={onSignUp}>

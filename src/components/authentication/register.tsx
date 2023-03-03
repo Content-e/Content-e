@@ -122,7 +122,8 @@ export const Register: FC = () => {
               onClick={onSignUp}
               disabled={isLoading || !isSubmittable}
             >
-              <span>Join {isLoading && <IconLoader />}</span>
+              <span style={{ marginRight: 12 }}>Join</span>
+              {isLoading && <IconLoader />}
             </button>
 
             <div className="existing-account">
@@ -150,7 +151,8 @@ export const Register: FC = () => {
             </div>
 
             <button className="login-btn" disabled={isLoading}>
-              <span>Register {isLoading && <IconLoader />}</span>
+              <span style={{ marginRight: 12 }}>Register</span>
+              {isLoading && <IconLoader />}
             </button>
           </>
         )}

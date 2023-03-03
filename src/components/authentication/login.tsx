@@ -92,7 +92,8 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
         </div>
 
         <button className="login-btn" onClick={onLogin} disabled={isLoading}>
-          <span>Login</span> {isLoading && <IconLoader />}
+          <span style={{ marginRight: 12 }}>Login</span>
+          {isLoading && <IconLoader />}
         </button>
         <GoogleLogin />
         <div className="existing-account" onClick={onSignUp}>
