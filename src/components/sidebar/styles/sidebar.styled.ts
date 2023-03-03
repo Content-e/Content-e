@@ -14,14 +14,14 @@ export const SidebarWrapper = styled.div`
   margin: 0;
 
   @media only screen and (min-width: 769px) {
-    width: 200px;
+    width: 179px;
     display: flex;
     opacity: 1;
     background: transparent;
   }
 
   @media only screen and (min-width: 1200px) {
-    width: 220px;
+    width: 179x;
     opacity: 1;
     background: transparent;
   }
@@ -50,7 +50,7 @@ export const SidebarPanel = styled.div`
   flex-direction: column;
 `;
 export const TopHeader = styled.div`
-  margin-top: 40px;
+  margin-top: 49px;
   text-align: center;
 `;
 export const Heading = styled.div`
@@ -79,7 +79,7 @@ export const UnderLine = styled.div`
   height: 1px;
 `;
 export const ProfilePanel = styled.div`
-  margin-top: 36px;
+  margin-top: 62px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,23 +87,25 @@ export const ProfilePanel = styled.div`
 `;
 export const Username = styled.div`
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: 300;
+  font-size: 12px;
   line-height: 20px;
-  color: #1c1c1c;
+  color: #409094;
+  font-family: "Comfortaa", cursive;
 `;
 export const Image = styled.div`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 5px;
+  margin-top: -4px;
 
   & img {
     max-width: 100%;
   }
 `;
 export const SidebarMenu = styled.div`
-  margin-top: 55px;
+  margin-top: 60px;
   width: 100%;
 `;
 export const SidebarMenuItem = styled.div`
@@ -113,7 +115,9 @@ export const SidebarMenuItem = styled.div`
   align-items: center;
   justify-content: flex-start;
   color: #001219;
-  font-size: 14px;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 20px;
   border-radius: 8px;
   background: white;
   cursor: pointer;
@@ -128,13 +132,13 @@ export const SelectedLine = styled.div`
   height: 16px;
   border-radius: 8px;
   &.isActive {
-    background: black;
+    background: #ee9b00;
   }
 `;
 export const ArrowIcon = styled.div`
   width: 16px;
   height: 16px;
-  margin-left: 15px;
+  margin-left: 4px;
   display: flex;
 
   @media only screen and (min-width: 1200px) {
@@ -144,39 +148,34 @@ export const ArrowIcon = styled.div`
 export const MenuIcon = styled.div`
   width: 20px;
   height: 20px;
-  margin: 0 6px;
+  margin: 0 4px;
   display: flex;
 
   @media only screen and (min-width: 1200px) {
-    margin: 0 12px;
+    margin: 0 4px;
   }
 
   @media only screen and (min-width: 1440px) {
-    margin: 0 18px;
+    margin: 0 6px;
   }
 `;
 export const LogoutBtn = styled.div`
   position: absolute;
-  bottom: 40px;
+  bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 16px;
-
-  color: #1c1c1c;
+  gap: 3.5px;
+  color: #a1a1a1;
   cursor: pointer;
 
   &:hover {
     text-decoration: underline;
   }
-`;
-export const LogoutIcon = styled.div`
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
 `;
 
 export const CrossIcon = styled.div`

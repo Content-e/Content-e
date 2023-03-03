@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC } from "react";
 import classNames from "classnames";
 import { useHistory, useLocation } from "react-router-dom";
 import { AuthRoutes, ProfileProps, UnknownType } from "utils";
@@ -12,7 +12,7 @@ interface ISidebar {
 }
 
 export const Sidebar: FC<ProfileProps & ISidebar> = ({
-  profileState: { data },
+  // profileState: { data },
   showMenu,
   toggleMenu,
 }) => {
@@ -44,14 +44,14 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
     );
   };
 
-  const userName = useMemo(() => {
-    if (!data?.name?.length) return "Username";
-    else {
-      let name = data.name.slice(0, 14);
-      if (data.name.length > 14) name += "...";
-      return name;
-    }
-  }, [data]);
+  // const userName = useMemo(() => {
+  //   if (!data?.name?.length) return "Username";
+  //   else {
+  //     let name = data.name.slice(0, 14);
+  //     if (data.name.length > 14) name += "...";
+  //     return name;
+  //   }
+  // }, [data]);
 
   return (
     <S.SidebarWrapper className={classNames({ show: showMenu })}>
@@ -60,17 +60,18 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
       </S.CrossIcon>
       <S.SidebarPanel>
         <S.TopHeader>
-          <S.Heading>Content-e</S.Heading>
+          {/* <S.Heading>Content-e</S.Heading>
           <S.SubHeading>Powered by Brain-e.io</S.SubHeading>
           <S.UnderLineCanvas>
             <S.UnderLine />
-          </S.UnderLineCanvas>
+          </S.UnderLineCanvas> */}
+          <img src="/images/sidebar-logo.svg" />
         </S.TopHeader>
         <S.ProfilePanel>
           <S.Image>
             <img src="/images/default-image.png" />
           </S.Image>
-          <S.Username>{userName}</S.Username>
+          <S.Username>Creator Profile</S.Username>
         </S.ProfilePanel>
         <S.SidebarMenu>
           {getOption("chat", AuthRoutes.Home, onHome)}
@@ -78,9 +79,7 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
         </S.SidebarMenu>
 
         <S.LogoutBtn onClick={onLogout}>
-          <S.LogoutIcon>
-            <img src="/images/logout.svg" />
-          </S.LogoutIcon>
+          <img src="/images/logout.svg" />
           Logout
         </S.LogoutBtn>
       </S.SidebarPanel>
