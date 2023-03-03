@@ -1,7 +1,8 @@
 import LogoutPage from "./logout";
 import AuthorizeTikTokStep from "./authorizeTikTok";
+import RedirectingStep from "./redirector";
 
-export { LogoutPage, AuthorizeTikTokStep };
+export { LogoutPage, AuthorizeTikTokStep, RedirectingStep };
 
 export * from "./register";
 export * from "./login";

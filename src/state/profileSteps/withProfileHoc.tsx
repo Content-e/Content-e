@@ -45,8 +45,9 @@ export function withProfile<T>(
     };
 
     useEffect(() => {
-      if (profileState.data === undefined) refetchProfile();
-    }, [email]);
+      if (email && isLoggedIn && userId && profileState.data === undefined)
+        refetchProfile();
+    }, [email, isLoggedIn, profileData, userId]);
 
     useEffect(() => {
       if (!loading && shouldCallApi && isApiCalled) {
