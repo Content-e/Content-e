@@ -4,7 +4,7 @@ import { PropType } from "..";
 
 export const rotate = keyframes`
   100% {
-    transform: scale(0.8) rotate(360deg);
+    transform: rotate(360deg);
   }
 `;
 
@@ -15,11 +15,11 @@ export const LoadingSpinner = styled.span<PropType>`
   opacity: 1;
   transition-delay: 200ms;
   width: 14px;
-  transform: scale(0.9);
   height: 14px;
   transition: opacity 200ms;
   animation: ${rotate} 1s linear;
   animation-iteration-count: infinite;
+  padding: 0px !important;
   ${(props): StyledProps =>
     props.color === "#4c40f7"
       ? css`
