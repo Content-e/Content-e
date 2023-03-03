@@ -19,9 +19,12 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
   const history = useHistory();
   const { pathname } = useLocation();
 
+  // const onHome = (): void => history.push(AuthRoutes.Home);
   const onLogout = (): void => history.push(AuthRoutes.Logout);
-  const onHome = (): void => history.push(AuthRoutes.Home);
   const onBrand = (): void => history.push(AuthRoutes.Brand);
+  const onCreatorProfile = (): void => history.push(AuthRoutes.CreatorProfile);
+  const onCreatorDashboaard = (): void =>
+    history.push(AuthRoutes.CreatorDashboard);
 
   const getOption = (
     icon: string,
@@ -60,22 +63,20 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
       </S.CrossIcon>
       <S.SidebarPanel>
         <S.TopHeader>
-          {/* <S.Heading>Content-e</S.Heading>
-          <S.SubHeading>Powered by Brain-e.io</S.SubHeading>
-          <S.UnderLineCanvas>
-            <S.UnderLine />
-          </S.UnderLineCanvas> */}
           <img src="/images/sidebar-logo.svg" />
         </S.TopHeader>
         <S.ProfilePanel>
           <S.Image>
             <img src="/images/default-image.png" />
           </S.Image>
-          <S.Username>Creator Profile</S.Username>
+          <S.Username onClick={onCreatorProfile}>Creator Profile</S.Username>
         </S.ProfilePanel>
         <S.SidebarMenu>
-          {getOption("chat", AuthRoutes.Home, onHome)}
-          {getOption("bag", AuthRoutes.Brand, onBrand)}
+          {getOption("chat", AuthRoutes.Home, onCreatorDashboaard)}
+          {getOption("bag", AuthRoutes.BrandBrief, onBrand)}
+          {getOption("wallet", AuthRoutes.Wallet, onBrand)}
+          {getOption("book", AuthRoutes.BestPractices, onBrand)}
+          {/* {getOption("bag", AuthRoutes.Brand, onBrand)} */}
         </S.SidebarMenu>
 
         <S.LogoutBtn onClick={onLogout}>

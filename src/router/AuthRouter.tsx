@@ -8,6 +8,7 @@ import {
 } from "pages";
 
 import CreatorDashboard from "pages/creatorDashboard/creatorDashboard";
+import CreatorProfile from "pages/creatorProfile/creatorProfile";
 import { FC } from "react";
 import { Route, Switch } from "react-router-dom";
 import { withProfile } from "state/profileSteps";
@@ -26,6 +27,11 @@ const AuthRouterPaths: FC<ProfileProps> = () => {
           exact
           path={AuthRoutes.CreatorDashboard}
           component={CreatorDashboard}
+        />
+        <Route
+          exact
+          path={AuthRoutes.CreatorProfile}
+          component={CreatorProfile}
         />
       </SidebarLayout>
     </Switch>

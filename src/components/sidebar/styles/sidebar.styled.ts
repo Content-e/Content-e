@@ -12,6 +12,7 @@ export const SidebarWrapper = styled.div`
   position: relative;
   pointer-events: all;
   margin: 0;
+  border-right: 1px solid #9fd0bd;
 
   @media only screen and (min-width: 769px) {
     width: 179px;
@@ -92,6 +93,7 @@ export const Username = styled.div`
   line-height: 20px;
   color: #409094;
   font-family: "Comfortaa", cursive;
+  cursor: pointer;
 `;
 export const Image = styled.div`
   width: 24px;
@@ -124,6 +126,7 @@ export const SidebarMenuItem = styled.div`
   &.isActive,
   &:hover {
     background: rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #ee9b00;
   }
 `;
 export const SelectedLine = styled.div`
@@ -131,9 +134,6 @@ export const SelectedLine = styled.div`
   background: transparent;
   height: 16px;
   border-radius: 8px;
-  &.isActive {
-    background: #ee9b00;
-  }
 `;
 export const ArrowIcon = styled.div`
   width: 16px;
