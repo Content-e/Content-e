@@ -1,11 +1,12 @@
 import { USER_TYPES } from "API";
-import { createUserProfile, getUserProfile } from "hooks";
+import { createUserProfile, getUserProfile, updateUserProfile } from "hooks";
 import withApolloProvider from "hooks/apollo/withApollo";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "state/auth";
 import { AuthContextType } from "state/types/authTypes";
 import { initialProfileState, ProfileProps } from "utils";
 import { ProfileContext } from "./profile.context";
+import { IUpdateProfile } from "./profile.interface";
 
 interface HocProps {
   shouldCallApi?: boolean;
@@ -23,6 +24,11 @@ export function withProfile<T>(
       profileData: createProfileData,
       loading: createProfileLoading,
     } = createUserProfile();
+    const {
+      updateProfile,
+      profileData: updateProfileData,
+      loading: updateProfileLoading,
+    } = updateUserProfile();
 
     const { profileState, setProfileState } = useContext(ProfileContext);
     const { authState, setAuthState } =
@@ -40,14 +46,28 @@ export function withProfile<T>(
       }
     };
 
+    const editProfile = (input: IUpdateProfile): void => {
+      if (profileState?.data?.id) {
+        const { userEmail, description, tiktokHandler, id } = profileState.data;
+        const prevInput = { id, userEmail, description, tiktokHandler };
+        updateProfile({ variables: { input: { ...prevInput, ...input } } });
+      }
+    };
+
     const cleanProfileState = (): void => {
       setProfileState({ isLoading: false });
     };
 
     useEffect(() => {
-      if (email && isLoggedIn && userId && profileState.data === undefined)
+      if (
+        email &&
+        isLoggedIn &&
+        userId &&
+        profileState.data === undefined &&
+        shouldCallApi
+      )
         refetchProfile();
-    }, [email, isLoggedIn, profileData, userId]);
+    }, [email, isLoggedIn, profileState.data, userId, shouldCallApi]);
 
     useEffect(() => {
       if (!loading && shouldCallApi && isApiCalled) {
@@ -81,6 +101,15 @@ export function withProfile<T>(
     }, [createProfileLoading, createProfileData]);
 
     useEffect(() => {
+      if (updateProfileData && !updateProfileLoading)
+        setProfileState({
+          data: updateProfileData,
+          isLoading: false,
+          error: undefined,
+        });
+    }, [updateProfileLoading, updateProfileData]);
+
+    useEffect(() => {
       if (!isLoggedIn) setProfileState(initialProfileState);
     }, [isLoggedIn]);
 
@@ -88,6 +117,8 @@ export function withProfile<T>(
       profileState: { ...profileState },
       refetchProfile,
       cleanProfileState,
+      editProfile,
+      updateProfileData,
     };
     return <Component {...props} {...profileProps} />;
   });

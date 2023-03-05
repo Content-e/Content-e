@@ -14,3 +14,10 @@ export type CreateUserProfileProps = {
   loading: boolean;
   error?: Error;
 };
+
+export type UpdateUserProfileProps = {
+  updateProfile: (unknown) => void;
+  profileData?: UnknownType;
+  loading: boolean;
+  error?: Error;
+};

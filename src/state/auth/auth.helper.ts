@@ -24,6 +24,16 @@ export const validateFullName = (text: string): string | null => {
   return null;
 };
 
+export const validateDescription = (text: string): string | null => {
+  if (text.length < 1) return "Please enter your description";
+  return null;
+};
+
+export const validateTiktokHandle = (text: string): string | null => {
+  if (text.length < 1) return "Please enter your tiktok handle";
+  return null;
+};
+
 export const validateVerificationCode = (code: string): string | null => {
   const digitMatcher = /^[0-9]{1,}$/;
   const lengthMatcher = /^.{6}$/;

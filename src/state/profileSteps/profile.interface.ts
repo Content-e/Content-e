@@ -31,3 +31,15 @@ export interface BrandContextType {
   brandState: BrandProfile | null;
   setBrandState: React.Dispatch<React.SetStateAction<BrandProfile>>;
 }
+
+export interface IUpdateProfile {
+  tiktokHandler: string;
+  description: string;
+  name: string;
+}
+
+export interface IUpdateProfileError {
+  tiktokHandler: string | null;
+  description: string | null;
+  name: string | null;
+}

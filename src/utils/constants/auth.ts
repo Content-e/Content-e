@@ -31,6 +31,18 @@ export const defaultLoginError: { [key: string]: null | string } = {
   password: null,
 };
 
+export const defaultProfileState = {
+  name: "",
+  description: "",
+  tiktokHandler: "",
+};
+
+export const defaultProfileError = {
+  name: null,
+  description: null,
+  tiktokHandler: null,
+};
+
 export const defaultResetState = {
   code: "",
   password: "",

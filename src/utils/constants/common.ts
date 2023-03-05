@@ -1,5 +1,5 @@
 import { AuthStateType } from "hooks/utils";
-import { IProfileState } from "state/profileSteps";
+import { IProfileState, IUpdateProfile } from "state/profileSteps";
 import { FlattenSimpleInterpolation } from "styled-components";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,6 +19,8 @@ export type AuthProps = {
 export type ProfileProps = {
   profileState: IProfileState;
   refetchProfile: (force?: boolean) => void;
+  editProfile: (input: IUpdateProfile) => void;
+  updateProfileData: IProfileState;
   cleanProfileState: () => void;
 };
 export interface IReturnTypeGetStripeProduct {
