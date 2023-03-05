@@ -1,0 +1,172 @@
+.landing-page-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.landing-page-wrapper .landing-page-bg_image {
+  position: absolute;
+  top: 0;
+  bottom: auto;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  opacity: 0.9;
+}
+.landing-page-wrapper .landing-page-bg_image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.landing-page-wrapper .landing-page-menu-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 56px;
+  margin-top: 32px;
+}
+.landing-page-wrapper .landing-page-menu-header .landing-page-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.landing-page-wrapper .landing-page-menu-header .landing-page-menu .landing-page-menu-items {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #e5d7ad;
+  font-family: 'Raleway';
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.landing-page-wrapper .landing-page-menu-header .landing-page-menu .landing-page-menu-items.btn-item {
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: black;
+  background: #e5d7ad;
+  font-weight: 700;
+}
+.landing-page-wrapper .landing-page-menu-header .landing-page-socials {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-right: 36px;
+}
+.landing-page-wrapper .landing-page-menu-header .landing-page-socials-item {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.landing-page-wrapper .landing-page-menu-header .landing-page-socials-item img {
+  width: 100%;
+  height: 100%;
+}
+.landing-page-wrapper .landing-page-body {
+  margin-left: 10%;
+  margin-top: 9%;
+}
+.landing-page-wrapper .landing-page-body .landing-page-title {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 58px;
+  line-height: 68px;
+  display: flex;
+  align-items: center;
+  color: #e6d7ad;
+  max-width: 558px;
+}
+.landing-page-wrapper .landing-page-body .landing-page-subtitle {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #e6d6ac;
+  margin-top: 26px;
+}
+.landing-page-wrapper .landing-page-body .landing-page-workBtn {
+  padding: 15px 40px;
+  border-radius: 30px;
+  color: black;
+  background: #e5d7ad;
+  font-weight: 700;
+  margin-top: 70px;
+  text-transform: uppercase;
+  width: fit-content;
+  font-size: 14px;
+}
+.landing-page-wrapper .landing-page-body .landing-page-steps-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 65px;
+  margin-top: 50px;
+}
+.landing-page-wrapper .landing-page-body .landing-page-steps-wrapper .landing-page-single-steps {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+.landing-page-wrapper .landing-page-body .landing-page-steps-wrapper .landing-page-single-steps .landing-page-step-number-circle {
+  border: 4px solid #e6d7ad;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.landing-page-wrapper .landing-page-body .landing-page-steps-wrapper .landing-page-single-steps .landing-page-step-number-circle .landing-page-step-number-text {
+  width: 100%;
+  color: #e6d7ad;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+.landing-page-wrapper .landing-page-body .landing-page-steps-wrapper .landing-page-single-steps .landing-page-step-text {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  color: #e6d7ad;
+  max-width: 212px;
+}
+
+@media only screen and (max-width: 1060px) {
+  .landing-page-wrapper .landing-page-body {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+@media only screen and (max-width: 525px) {
+  .landing-page-wrapper .landing-page-bg_image {
+    height: 100%;
+  }
+  .landing-page-wrapper .landing-page-body .landing-page-steps-wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 50px;
+  }
+}

@@ -4,13 +4,14 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { UnAuthFullNameProvider } from "state/auth";
 import { UnAuthRoutes as path, UnknownType } from "utils";
 import {
+  LandingPage,
   ForgetPasswordPage,
   LoginPage,
   RegisterPage,
   ResetPasswordPage,
   ReverifyPage,
   SubForgetPass,
-  LandingPage,
+  SubLanding,
   SubLogin,
   SubRegister,
   SubResetPass,
@@ -22,6 +23,7 @@ const UnAuthRouter: FC = () => {
     <UnAuthFullNameProvider>
       <Switch>
         <Route exact path={path.Landing} component={LandingPage} />
+        <Route exact path={path.SubLanding} component={SubLanding} />
 
         <Route exact path={path.Login} component={LoginPage} />
         <Route exact path={path.SubLogin} component={SubLogin} />
