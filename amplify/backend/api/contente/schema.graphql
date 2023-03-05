@@ -18,7 +18,7 @@ type UserProfile
 
 type BrandProfile 
 @model 
-@auth(rules: [{ allow: owner }]) 
+@auth(rules: [{ allow: private }]) 
 {
   id: ID!
   name: String
@@ -46,6 +46,7 @@ type BrandBrief
   active: Boolean 
   creativeRequests: [CreativeRequest] @hasMany(indexName: "byBrandBrief",fields:[ "id" ])
   brandId: ID! @index(name: "byBrand")
+  brandProfile: BrandProfile @hasOne (fields: [ "brandId" ])
 }
 
 type CreativeRequest 

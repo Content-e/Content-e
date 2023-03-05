@@ -30,7 +30,6 @@ export const onCreateUserProfile = /* GraphQL */ `
           createdAt
           updatedAt
           userProfileBrandId
-          owner
         }
         nextToken
       }
@@ -70,7 +69,6 @@ export const onUpdateUserProfile = /* GraphQL */ `
           createdAt
           updatedAt
           userProfileBrandId
-          owner
         }
         nextToken
       }
@@ -110,7 +108,6 @@ export const onDeleteUserProfile = /* GraphQL */ `
           createdAt
           updatedAt
           userProfileBrandId
-          owner
         }
         nextToken
       }
@@ -125,9 +122,8 @@ export const onDeleteUserProfile = /* GraphQL */ `
 export const onCreateBrandProfile = /* GraphQL */ `
   subscription OnCreateBrandProfile(
     $filter: ModelSubscriptionBrandProfileFilterInput
-    $owner: String
   ) {
-    onCreateBrandProfile(filter: $filter, owner: $owner) {
+    onCreateBrandProfile(filter: $filter) {
       id
       name
       toneVoice
@@ -151,6 +147,21 @@ export const onCreateBrandProfile = /* GraphQL */ `
             nextToken
           }
           brandId
+          brandProfile {
+            id
+            name
+            toneVoice
+            pillars
+            description
+            internalMission
+            strapLine
+            userEmail
+            tiktokHandle
+            vertical
+            createdAt
+            updatedAt
+            userProfileBrandId
+          }
           createdAt
           updatedAt
         }
@@ -159,16 +170,14 @@ export const onCreateBrandProfile = /* GraphQL */ `
       createdAt
       updatedAt
       userProfileBrandId
-      owner
     }
   }
 `;
 export const onUpdateBrandProfile = /* GraphQL */ `
   subscription OnUpdateBrandProfile(
     $filter: ModelSubscriptionBrandProfileFilterInput
-    $owner: String
   ) {
-    onUpdateBrandProfile(filter: $filter, owner: $owner) {
+    onUpdateBrandProfile(filter: $filter) {
       id
       name
       toneVoice
@@ -192,6 +201,21 @@ export const onUpdateBrandProfile = /* GraphQL */ `
             nextToken
           }
           brandId
+          brandProfile {
+            id
+            name
+            toneVoice
+            pillars
+            description
+            internalMission
+            strapLine
+            userEmail
+            tiktokHandle
+            vertical
+            createdAt
+            updatedAt
+            userProfileBrandId
+          }
           createdAt
           updatedAt
         }
@@ -200,16 +224,14 @@ export const onUpdateBrandProfile = /* GraphQL */ `
       createdAt
       updatedAt
       userProfileBrandId
-      owner
     }
   }
 `;
 export const onDeleteBrandProfile = /* GraphQL */ `
   subscription OnDeleteBrandProfile(
     $filter: ModelSubscriptionBrandProfileFilterInput
-    $owner: String
   ) {
-    onDeleteBrandProfile(filter: $filter, owner: $owner) {
+    onDeleteBrandProfile(filter: $filter) {
       id
       name
       toneVoice
@@ -233,6 +255,21 @@ export const onDeleteBrandProfile = /* GraphQL */ `
             nextToken
           }
           brandId
+          brandProfile {
+            id
+            name
+            toneVoice
+            pillars
+            description
+            internalMission
+            strapLine
+            userEmail
+            tiktokHandle
+            vertical
+            createdAt
+            updatedAt
+            userProfileBrandId
+          }
           createdAt
           updatedAt
         }
@@ -241,7 +278,6 @@ export const onDeleteBrandProfile = /* GraphQL */ `
       createdAt
       updatedAt
       userProfileBrandId
-      owner
     }
   }
 `;
@@ -271,6 +307,36 @@ export const onCreateBrandBrief = /* GraphQL */ `
         nextToken
       }
       brandId
+      brandProfile {
+        id
+        name
+        toneVoice
+        pillars
+        description
+        internalMission
+        strapLine
+        userEmail
+        tiktokHandle
+        vertical
+        briefs {
+          items {
+            id
+            BriefName
+            vertical
+            objective
+            brandBriefDetails
+            creativeInspirations
+            active
+            brandId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userProfileBrandId
+      }
       createdAt
       updatedAt
     }
@@ -302,6 +368,36 @@ export const onUpdateBrandBrief = /* GraphQL */ `
         nextToken
       }
       brandId
+      brandProfile {
+        id
+        name
+        toneVoice
+        pillars
+        description
+        internalMission
+        strapLine
+        userEmail
+        tiktokHandle
+        vertical
+        briefs {
+          items {
+            id
+            BriefName
+            vertical
+            objective
+            brandBriefDetails
+            creativeInspirations
+            active
+            brandId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userProfileBrandId
+      }
       createdAt
       updatedAt
     }
@@ -333,6 +429,36 @@ export const onDeleteBrandBrief = /* GraphQL */ `
         nextToken
       }
       brandId
+      brandProfile {
+        id
+        name
+        toneVoice
+        pillars
+        description
+        internalMission
+        strapLine
+        userEmail
+        tiktokHandle
+        vertical
+        briefs {
+          items {
+            id
+            BriefName
+            vertical
+            objective
+            brandBriefDetails
+            creativeInspirations
+            active
+            brandId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userProfileBrandId
+      }
       createdAt
       updatedAt
     }

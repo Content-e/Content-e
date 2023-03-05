@@ -53,7 +53,8 @@ export const getPageTitle = (path: AuthRoutes): string =>
 
 export const isSubDomainWithBriefId = (id?: string): boolean => {
   const initialHost = window.location.hostname.split(".")[0];
-  return allowedSubDomains.includes(initialHost) && id?.length === 8;
+  const length = id?.length || 0;
+  return allowedSubDomains.includes(initialHost) && length > 8;
 };
 
 export const getMainDomainFromSubdomain = (): string => {

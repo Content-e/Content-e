@@ -30,7 +30,6 @@ export const deleteUserProfile = /* GraphQL */ `
           createdAt
           updatedAt
           userProfileBrandId
-          owner
         }
         nextToken
       }
@@ -70,7 +69,6 @@ export const createUserProfile = /* GraphQL */ `
           createdAt
           updatedAt
           userProfileBrandId
-          owner
         }
         nextToken
       }
@@ -110,7 +108,6 @@ export const updateUserProfile = /* GraphQL */ `
           createdAt
           updatedAt
           userProfileBrandId
-          owner
         }
         nextToken
       }
@@ -151,6 +148,21 @@ export const createBrandProfile = /* GraphQL */ `
             nextToken
           }
           brandId
+          brandProfile {
+            id
+            name
+            toneVoice
+            pillars
+            description
+            internalMission
+            strapLine
+            userEmail
+            tiktokHandle
+            vertical
+            createdAt
+            updatedAt
+            userProfileBrandId
+          }
           createdAt
           updatedAt
         }
@@ -159,7 +171,6 @@ export const createBrandProfile = /* GraphQL */ `
       createdAt
       updatedAt
       userProfileBrandId
-      owner
     }
   }
 `;
@@ -192,6 +203,21 @@ export const updateBrandProfile = /* GraphQL */ `
             nextToken
           }
           brandId
+          brandProfile {
+            id
+            name
+            toneVoice
+            pillars
+            description
+            internalMission
+            strapLine
+            userEmail
+            tiktokHandle
+            vertical
+            createdAt
+            updatedAt
+            userProfileBrandId
+          }
           createdAt
           updatedAt
         }
@@ -200,7 +226,6 @@ export const updateBrandProfile = /* GraphQL */ `
       createdAt
       updatedAt
       userProfileBrandId
-      owner
     }
   }
 `;
@@ -233,6 +258,21 @@ export const deleteBrandProfile = /* GraphQL */ `
             nextToken
           }
           brandId
+          brandProfile {
+            id
+            name
+            toneVoice
+            pillars
+            description
+            internalMission
+            strapLine
+            userEmail
+            tiktokHandle
+            vertical
+            createdAt
+            updatedAt
+            userProfileBrandId
+          }
           createdAt
           updatedAt
         }
@@ -241,7 +281,6 @@ export const deleteBrandProfile = /* GraphQL */ `
       createdAt
       updatedAt
       userProfileBrandId
-      owner
     }
   }
 `;
@@ -272,6 +311,36 @@ export const createBrandBrief = /* GraphQL */ `
         nextToken
       }
       brandId
+      brandProfile {
+        id
+        name
+        toneVoice
+        pillars
+        description
+        internalMission
+        strapLine
+        userEmail
+        tiktokHandle
+        vertical
+        briefs {
+          items {
+            id
+            BriefName
+            vertical
+            objective
+            brandBriefDetails
+            creativeInspirations
+            active
+            brandId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userProfileBrandId
+      }
       createdAt
       updatedAt
     }
@@ -304,6 +373,36 @@ export const updateBrandBrief = /* GraphQL */ `
         nextToken
       }
       brandId
+      brandProfile {
+        id
+        name
+        toneVoice
+        pillars
+        description
+        internalMission
+        strapLine
+        userEmail
+        tiktokHandle
+        vertical
+        briefs {
+          items {
+            id
+            BriefName
+            vertical
+            objective
+            brandBriefDetails
+            creativeInspirations
+            active
+            brandId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userProfileBrandId
+      }
       createdAt
       updatedAt
     }
@@ -336,6 +435,36 @@ export const deleteBrandBrief = /* GraphQL */ `
         nextToken
       }
       brandId
+      brandProfile {
+        id
+        name
+        toneVoice
+        pillars
+        description
+        internalMission
+        strapLine
+        userEmail
+        tiktokHandle
+        vertical
+        briefs {
+          items {
+            id
+            BriefName
+            vertical
+            objective
+            brandBriefDetails
+            creativeInspirations
+            active
+            brandId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userProfileBrandId
+      }
       createdAt
       updatedAt
     }
