@@ -29,7 +29,7 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
   const redirectToInValidRoute = (): void => {
     if (pathname.split("/").length === 3)
       history.replace(replaceSubPath(UnAuthRoutes.SubLogin));
-    else history.replace(UnAuthRoutes.Login);
+    else history.replace(UnAuthRoutes.Landing);
   };
 
   useEffect(() => {
