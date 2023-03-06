@@ -49,7 +49,7 @@ export const LandingPage: React.FC = () => {
             Everyday creators, everyday creative.
           </div>
           <div className="landing-page-subtitle">
-            Driving change and impact.
+            Your content, your story, your impact.
           </div>
           {/* <div className="landing-page-workBtn">How it works</div> */}
           <div className="landing-page-workBtn">Coming Soon</div>
