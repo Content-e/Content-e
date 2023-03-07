@@ -1,0 +1,54 @@
+.campaign-brief-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.campaign-brief-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 11px;
+}
+
+.back-btn {
+  width: 77px;
+  height: 34px;
+  left: 1239px;
+  top: 29px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #9fd0bd;
+}
+
+.back-btn-text {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: -0.02em;
+  color: #005f73;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.campaign-brief-details-text {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  display: flex;
+  color: #1c1c1c;
+}
+
+.brand-description {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
