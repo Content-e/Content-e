@@ -5,7 +5,7 @@
 }
 
 .creative-inspiration-text {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -28,4 +28,30 @@
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.carousel-video {
+  height: 281px;
+  width: 180px;
+  object-fit: initial;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  width: 17px;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  width: 7%;
+}
+.carousel-wrapper {
+  width: 227px;
+}
+.carousel-wrapper .active,
+.carousel-item-next, .carousel-item-prev, .carousel-item.active {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,11 +1,23 @@
+import { BrandBrief } from "API";
 import BestPractices from "components/bestPractices/bestPractices";
 import CampaignBriefTable from "components/campaignBriefTable/campaignBriefTable";
 import CreatorNotifications from "components/creatorNotifications/creatorNotifications";
 import CreatorStatsCard from "components/creatorStatsCard/creatorStatsCard";
+import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
+import { useState } from "react";
 
 import "./creatorDashboard.css";
 
 export default function CreatorDashboard() {
+  const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
+
+  if (selectedBrief)
+    return (
+      <CampaignBriefDetails
+        data={selectedBrief}
+        onBack={(): void => setSelectedBrief(undefined)}
+      />
+    );
   return (
     <>
       <div>
@@ -18,7 +30,13 @@ export default function CreatorDashboard() {
         </div>
       </div>
       <div className="campaign-briefs-dashboard-container ">
-        <CampaignBriefTable />
+        <div className="campaign-table-container">
+          <div className="campaign-table-header">
+            <div className="campaign-table-label">Campaign briefs</div>
+            <img src="/images/morevert.svg" />
+          </div>
+          <CampaignBriefTable searchText="" onSingleSelect={setSelectedBrief} />
+        </div>
       </div>
 
       <div className="notification-dashboard-container">

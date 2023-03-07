@@ -1,31 +1,34 @@
+import { useState } from "react";
+import { BrandBrief } from "API";
+import CampaignBriefTable from "components/campaignBriefTable/campaignBriefTable";
+import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
 import "./campaignBriefs.css";
 
 export default function CampaignBriefs() {
+  const [searchText, setSearchText] = useState("");
+  const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
+
+  if (selectedBrief)
+    return (
+      <CampaignBriefDetails
+        data={selectedBrief}
+        onBack={(): void => setSelectedBrief(undefined)}
+      />
+    );
   return (
     <div>
       <div className="campaign-table-label">Campaign briefs</div>
       <div className="campaign-table-container">
-        <input className="campaign-search" placeholder="Search..." />
-        <table>
-          <tr className="table-header-bottom-border">
-            <th className="table-header-label">Brief Name</th>
-            <th className="table-header-label">Brand</th>
-            <th className="table-header-label">Vertical</th>
-            <th className="table-header-label">Objective</th>
-            <th className="table-header-label">Status</th>
-            <th className="table-header-label">Details</th>
-          </tr>
-          <tr>
-            <td className="table-description">briefName</td>
-            <td className="table-description">brandName</td>
-            <td className="table-description">vertical</td>
-            <td className="table-description">objective</td>
-            <td className="table-description">status</td>
-            <td>
-              <img src="/images/table-search.svg" />
-            </td>
-          </tr>
-        </table>
+        <input
+          className="campaign-search"
+          placeholder="Search..."
+          value={searchText}
+          onChange={(e): void => setSearchText(e.target.value)}
+        />
+        <CampaignBriefTable
+          searchText={searchText}
+          onSingleSelect={setSelectedBrief}
+        />
       </div>
     </div>
   );

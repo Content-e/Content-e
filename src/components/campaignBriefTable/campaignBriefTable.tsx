@@ -1,4 +1,5 @@
-import { FC, useEffect, useState } from "react";
+import { BrandBrief } from "API";
+import { FC, useEffect, useMemo, useState } from "react";
 import {
   IBriefListElems,
   ICreatorBriefListProps,
@@ -6,13 +7,28 @@ import {
 } from "state/dashboard";
 import "./campaignBriefTable.css";
 
-const withCreatorBriefListCampaignBriefTable: FC<ICreatorBriefListProps> = ({
+interface Props {
+  searchText: string;
+  onSingleSelect: (e: BrandBrief) => void;
+}
+const withCreatorBriefListCampaignBriefTable: FC<
+  Props & ICreatorBriefListProps
+> = ({
+  searchText,
   briefList,
   requestList,
   loading,
   error,
+  onSingleSelect,
 }) => {
   const [data, setData] = useState<Array<IBriefListElems>>([]);
+
+  const onSelectBrief = (id?: string): void => {
+    if (id) {
+      const selectedBrief = briefList?.find((e) => e?.id === id);
+      if (selectedBrief) onSingleSelect(selectedBrief);
+    }
+  };
 
   useEffect(() => {
     if (!loading && !error && requestList && briefList) {
@@ -37,36 +53,34 @@ const withCreatorBriefListCampaignBriefTable: FC<ICreatorBriefListProps> = ({
     }
   }, [briefList, requestList, loading, error]);
 
-  return (
-    <div className="campaign-table-container">
-      <div className="campaign-table-header">
-        <div className="campaign-table-label">Campaign briefs</div>
-        <img src="/images/morevert.svg" />
-      </div>
+  const filteredData = useMemo(
+    () => data.filter((e) => e.briefName?.toLowerCase().includes(searchText)),
+    [data, searchText]
+  );
 
-      <table>
-        <tr className="table-header-bottom-border">
-          <th className="table-header-label">Brief Name</th>
-          <th className="table-header-label">Brand</th>
-          <th className="table-header-label">Vertical</th>
-          <th className="table-header-label">Objective</th>
-          <th className="table-header-label">Status</th>
-          <th className="table-header-label">Details</th>
+  return (
+    <table>
+      <tr className="table-header-bottom-border">
+        <th className="table-header-label">Brief Name</th>
+        <th className="table-header-label">Brand</th>
+        <th className="table-header-label">Vertical</th>
+        <th className="table-header-label">Objective</th>
+        <th className="table-header-label">Status</th>
+        <th className="table-header-label">Details</th>
+      </tr>
+      {filteredData.map((brief, index) => (
+        <tr key={`${brief?.id} -- ${index}`}>
+          <td className="table-description">{brief?.briefName}</td>
+          <td className="table-description">{brief?.brandName}</td>
+          <td className="table-description">{brief?.vertical}</td>
+          <td className="table-description">{brief?.objective}</td>
+          <td className="table-description">{brief?.status}</td>
+          <td onClick={() => onSelectBrief(brief?.id)}>
+            <img src="/images/table-search.svg" />
+          </td>
         </tr>
-        {data.map((brief, index) => (
-          <tr key={`${brief?.id} -- ${index}`}>
-            <td className="table-description">{brief?.briefName}</td>
-            <td className="table-description">{brief?.brandName}</td>
-            <td className="table-description">{brief?.vertical}</td>
-            <td className="table-description">{brief?.objective}</td>
-            <td className="table-description">{brief?.status}</td>
-            <td>
-              <img src="/images/table-search.svg" />
-            </td>
-          </tr>
-        ))}
-      </table>
-    </div>
+      ))}
+    </table>
   );
 };
 
