@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { FullPageLoader } from "components";
 import withApolloProvider from "hooks/apollo/withApollo";
 import { SidebarLayout } from "layout";
@@ -8,9 +9,10 @@ import {
   RedirectingStep,
 } from "pages";
 
+import CampaignBriefs from "pages/campaignBriefs/campaignBriefs";
 import CreatorDashboard from "pages/creatorDashboard/creatorDashboard";
 import CreatorProfile from "pages/creatorProfile/creatorProfile";
-import { FC } from "react";
+
 import { Route, Switch } from "react-router-dom";
 import { withProfile } from "state/profileSteps";
 import { AuthRoutes, ProfileProps } from "utils";
@@ -36,6 +38,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
             exact
             path={AuthRoutes.CreatorProfile}
             component={CreatorProfile}
+          />
+          <Route
+            exact
+            path={AuthRoutes.CampaignBrief}
+            component={CampaignBriefs}
           />
         </SidebarLayout>
       </Switch>

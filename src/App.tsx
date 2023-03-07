@@ -6,8 +6,8 @@ import ErrorProvider from "state/error/error.provider";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "state/auth";
 import MainRouter from "./router";
-import "./assets/css/index.css";
 import { ProfileProvider } from "state/profileSteps";
+import "./assets/css/index.css";
 
 Amplify.configure(config);
 

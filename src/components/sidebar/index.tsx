@@ -22,6 +22,7 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
   // const onHome = (): void => history.push(AuthRoutes.Home);
   const onLogout = (): void => history.push(AuthRoutes.Logout);
   const onBrand = (): void => history.push(AuthRoutes.Brand);
+  const onCampaignBrand = (): void => history.push(AuthRoutes.CampaignBrief);
   const onCreatorProfile = (): void => history.push(AuthRoutes.CreatorProfile);
   const onCreatorDashboaard = (): void =>
     history.push(AuthRoutes.CreatorDashboard);
@@ -73,6 +74,7 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
         </S.ProfilePanel>
         <S.SidebarMenu>
           {getOption("chat", AuthRoutes.Home, onCreatorDashboaard)}
+          {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrand)}
           {getOption("bag", AuthRoutes.BrandBrief, onBrand)}
           {getOption("wallet", AuthRoutes.Wallet, onBrand)}
           {getOption("book", AuthRoutes.BestPractices, onBrand)}
