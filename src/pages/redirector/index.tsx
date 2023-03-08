@@ -11,6 +11,13 @@ const RedirectingStep: React.FC<ProfileProps> = ({
   const history = useHistory();
   const { pathname } = useLocation();
   const pathnameParts = pathname.split("/");
+
+  const redirectToDashboard = () => {
+    if (data?.userType === USER_TYPES.CREATIVE_USER)
+      history.replace(AuthRoutes.CreatorDashboard);
+    else if (data?.userType === USER_TYPES.BRAND_USER)
+      history.replace(AuthRoutes.BrandBrief);
+  };
   const redirectToValidRoute = (): void => {
     if (
       pathnameParts.length === 3 &&
@@ -18,14 +25,11 @@ const RedirectingStep: React.FC<ProfileProps> = ({
       data?.userType === USER_TYPES.CREATIVE_USER
     )
       history.replace(replaceSubPath(AuthRoutes.Tiktok));
-    else history.replace(AuthRoutes.Home);
+    else redirectToDashboard();
   };
 
   useEffect(() => {
-    // const x = 10;
-    // if (x < 2) {
     if (data) redirectToValidRoute();
-    // }
   }, [data]);
 
   return <FullPageLoader />;

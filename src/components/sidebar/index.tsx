@@ -75,7 +75,11 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
         <S.SidebarMenu>
           {data?.userType === USER_TYPES.CREATIVE_USER && (
             <Fragment key="creator menu options">
-              {getOption("chat", AuthRoutes.Home, onCreatorDashboaard)}
+              {getOption(
+                "chat",
+                AuthRoutes.CreatorDashboard,
+                onCreatorDashboaard
+              )}
               {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrand)}
               {getOption("wallet", AuthRoutes.Wallet, onBrand)}
               {getOption("book", AuthRoutes.BestPractices, onBrand)}

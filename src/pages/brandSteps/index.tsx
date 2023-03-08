@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 export const BrandStepsPage: FC = () => {
   const history = useHistory();
-  const goToHome = (): void => history.push(AuthRoutes.Home);
+  const goToHome = (): void => history.push(AuthRoutes.Redirector);
 
   return (
     <S.BrandPageWrapper>

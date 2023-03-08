@@ -57,7 +57,7 @@ export const BrandSteps: FC<ProfileProps & BrandProps> = ({
 
   useEffect(() => {
     if (redirect && updatedDataRes)
-      window.location.href = `${window.location.origin}${AuthRoutes.Home}`;
+      window.location.href = `${window.location.origin}${AuthRoutes.Redirector}`;
   }, [updatedDataRes]);
 
   useEffect(() => setBrandData(data?.brand?.items?.[0] || {}), [data]);

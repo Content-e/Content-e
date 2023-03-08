@@ -26,7 +26,6 @@ const AuthRouterPaths: FC<ProfileProps> = ({
         <Route exact path={AuthRoutes.Redirector} component={RedirectingStep} />
         <Route exact path={AuthRoutes.Tiktok} component={AuthorizeTikTokStep} />
         <SidebarLayout>
-          <Route exact path={AuthRoutes.Home} component={MainPage} />
           <Route exact path={AuthRoutes.Brand} component={MainPage} />
           <Route exact path={AuthRoutes.EditBrand} component={BrandStepsPage} />
           <Route
