@@ -16,7 +16,7 @@ export const CoBrandedMainPage: FC<Props> = () => {
   const { id } = useParams<{ id: string }>();
 
   const goToLogin = (): void =>
-    history.push(replaceSubPath(UnAuthRoutes.Login));
+    history.push(replaceSubPath(UnAuthRoutes.SubLogin));
 
   useEffect(() => {
     if (!isSubDomainWithBriefId(id))
