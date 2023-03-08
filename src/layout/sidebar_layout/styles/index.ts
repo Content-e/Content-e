@@ -12,7 +12,7 @@ export const TitleMenu = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 50px 0 10px;
+  margin: 39px 0 10px;
 `;
 
 export const PageTitle = styled.div`
@@ -26,7 +26,6 @@ export const PageTitle = styled.div`
 
 export const AppMain = styled.div`
   width: 100%;
-  border: 1px solid #ffffff;
   box-shadow: 0px 0px 4px rgb(0 0 0 / 20%);
   padding: 0px 20px;
   position: relative;

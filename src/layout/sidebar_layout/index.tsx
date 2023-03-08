@@ -1,6 +1,5 @@
 import { Sidebar } from "components";
-import { FC, ReactNode, useContext, useState } from "react";
-import { TitleContext } from "state/auth";
+import { FC, ReactNode, useState } from "react";
 import * as S from "./styles";
 
 interface Props {
@@ -8,7 +7,6 @@ interface Props {
 }
 export const SidebarLayout: FC<Props> = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const { title } = useContext(TitleContext);
   const toggleMenu = (): void => setShowMenu(!showMenu);
   return (
     <S.MainWrapper>
@@ -19,7 +17,6 @@ export const SidebarLayout: FC<Props> = ({ children }) => {
           <S.MenuIcon onClick={toggleMenu}>
             <img src="/images/menu-icon.png" alt="menu-icon" />
           </S.MenuIcon>
-          <S.PageTitle>{title}</S.PageTitle>
         </S.TitleMenu>
         {children}
       </S.AppMain>

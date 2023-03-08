@@ -12,7 +12,6 @@ const RedirectingStep: React.FC<ProfileProps> = ({
   const { pathname } = useLocation();
   const pathnameParts = pathname.split("/");
   const redirectToValidRoute = (): void => {
-    console.log(pathname.split("/").length, data?.userType);
     if (
       pathnameParts.length === 3 &&
       pathnameParts[2].length &&
