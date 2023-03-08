@@ -37,8 +37,8 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
         />
       </div>
       <div className="brand-description">
-        <BrandDesciption detail={data.brandBriefDetails} />
-        <CampaignSlider />
+        <BrandDesciption id={data.id} detail={data.brandBriefDetails} />
+        <CampaignSlider videoUrls={data.creativeInspirations} />
       </div>
     </>
   );
