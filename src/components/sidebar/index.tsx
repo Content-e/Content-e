@@ -1,10 +1,11 @@
-import { FC } from "react";
+import { FC, Fragment, useMemo } from "react";
 import classNames from "classnames";
 import { useHistory, useLocation } from "react-router-dom";
 import { AuthRoutes, ProfileProps, UnknownType } from "utils";
 import * as S from "./styles";
 import { getPageTitle } from "components";
 import { withProfile } from "state/profileSteps";
+import { USER_TYPES } from "API";
 
 interface ISidebar {
   showMenu: boolean;
@@ -12,14 +13,13 @@ interface ISidebar {
 }
 
 export const Sidebar: FC<ProfileProps & ISidebar> = ({
-  // profileState: { data },
+  profileState: { data },
   showMenu,
   toggleMenu,
 }) => {
   const history = useHistory();
   const { pathname } = useLocation();
 
-  // const onHome = (): void => history.push(AuthRoutes.Home);
   const onLogout = (): void => history.push(AuthRoutes.Logout);
   const onBrand = (): void => history.push(AuthRoutes.Brand);
   const onCampaignBrand = (): void => history.push(AuthRoutes.CampaignBrief);
@@ -48,14 +48,14 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
     );
   };
 
-  // const userName = useMemo(() => {
-  //   if (!data?.name?.length) return "Username";
-  //   else {
-  //     let name = data.name.slice(0, 14);
-  //     if (data.name.length > 14) name += "...";
-  //     return name;
-  //   }
-  // }, [data]);
+  const userName = useMemo(() => {
+    if (!data?.name?.length) return "Username";
+    else {
+      let name = data.name.slice(0, 14);
+      if (data.name.length > 14) name += "...";
+      return name;
+    }
+  }, [data]);
 
   return (
     <S.SidebarWrapper className={classNames({ show: showMenu })}>
@@ -70,15 +70,22 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
           <S.Image>
             <img src="/images/default-image.png" />
           </S.Image>
-          <S.Username onClick={onCreatorProfile}>Creator Profile</S.Username>
+          <S.Username onClick={onCreatorProfile}>{userName}</S.Username>
         </S.ProfilePanel>
         <S.SidebarMenu>
-          {getOption("chat", AuthRoutes.Home, onCreatorDashboaard)}
-          {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrand)}
-          {getOption("bag", AuthRoutes.BrandBrief, onBrand)}
-          {getOption("wallet", AuthRoutes.Wallet, onBrand)}
-          {getOption("book", AuthRoutes.BestPractices, onBrand)}
-          {/* {getOption("bag", AuthRoutes.Brand, onBrand)} */}
+          {data?.userType === USER_TYPES.CREATIVE_USER && (
+            <Fragment key="creator menu options">
+              {getOption("chat", AuthRoutes.Home, onCreatorDashboaard)}
+              {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrand)}
+              {getOption("wallet", AuthRoutes.Wallet, onBrand)}
+              {getOption("book", AuthRoutes.BestPractices, onBrand)}
+            </Fragment>
+          )}
+          {data?.userType === USER_TYPES.BRAND_USER && (
+            <Fragment key="creator menu options">
+              {getOption("bag", AuthRoutes.BrandBrief, onBrand)}
+            </Fragment>
+          )}
         </S.SidebarMenu>
 
         <S.LogoutBtn onClick={onLogout}>
