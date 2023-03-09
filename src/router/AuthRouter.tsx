@@ -17,6 +17,7 @@ import { Route, Switch } from "react-router-dom";
 import { withProfile } from "state/profileSteps";
 import { AuthRoutes, ProfileProps } from "utils";
 import Wallet from "pages/wallet/wallet";
+import BestPractice from "pages/bestPractice/practice";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -45,6 +46,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
             component={CampaignBriefs}
           />
           <Route exact path={AuthRoutes.Wallet} component={Wallet} />
+          <Route
+            exact
+            path={AuthRoutes.BestPractices}
+            component={BestPractice}
+          />
         </SidebarLayout>
       </Switch>
     );
