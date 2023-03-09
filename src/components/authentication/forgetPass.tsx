@@ -5,6 +5,7 @@ import { UnAuthRoutes } from "utils";
 import { useForgetPass } from "hooks";
 import { validateEmail, withAuth } from "state/auth";
 import GoogleLogin from "./googleLogin";
+import Navbar from "components/navbar/navbar";
 
 export const ForgetPassword: FC = () => {
   const history = useHistory();
@@ -26,7 +27,7 @@ export const ForgetPassword: FC = () => {
     return !!error;
   };
 
-  const onSignUp = (): void => history.push(UnAuthRoutes.Register);
+  const onLogin = (): void => history.push(UnAuthRoutes.Login);
   const onForget = (): void => {
     if (!validateSignUpForm()) performAction(email);
   };
@@ -37,33 +38,43 @@ export const ForgetPassword: FC = () => {
 
   return (
     <div className="login">
-      <div className="logo-container">
-        <img src="/images/edc-squared.svg" alt="edc-squared" />
-        <div className="subtitle">Everyday creatives, everyday creators.</div>
-      </div>
-      <div className="login-container">
-        <div className="create-account-label">Forgot Password</div>
-
-        <div className="login-fields">
-          <Input
-            keyProp={email}
-            value={email}
-            errorVal={emailError}
-            placeholder="Email"
-            handlers={{ updateState }}
-          />
+      <div className="login__landing">
+        <img src="/images/edc-logo.png" alt="edc-squared" />
+        <div className="login__landing-container">
+          <span>
+            Everyday creators, <br />
+            everyday creative.
+          </span>
+          <div>Your content, your story, your impact.</div>
         </div>
-        <button
-          className="login-btn"
-          onClick={onForget}
-          disabled={isLoading || !!emailError}
-        >
-          <span style={{ marginRight: 12 }}>Submit</span>
-          {isLoading && <IconLoader />}
-        </button>
-        <GoogleLogin />
-        <div className="existing-account" onClick={onSignUp}>
-          Don't have an account? <span>Sign up&nbsp;</span>
+      </div>
+      <div className="login__container">
+        <Navbar />
+        <div className="login__box">
+          <div className="login__title" style={{ marginBottom: 16 }}>
+            Forgot password
+          </div>
+          <div className="login__fields">
+            <Input
+              keyProp={email}
+              value={email}
+              errorVal={emailError}
+              placeholder="Email address"
+              handlers={{ updateState }}
+            />
+          </div>
+          <button
+            className="login__btn"
+            onClick={onForget}
+            disabled={isLoading || !!emailError}
+          >
+            <span style={{ marginRight: 12 }}>Submit</span>
+            {isLoading && <IconLoader />}
+          </button>
+          <GoogleLogin />
+          <div className="login__already">
+            Already have an account? <span onClick={onLogin}>Login</span>
+          </div>
         </div>
       </div>
     </div>

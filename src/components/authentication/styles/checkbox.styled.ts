@@ -6,23 +6,23 @@ export const CheckBoxTick = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  height: 13px;
-  width: 13px;
-  background: transparent;
-  border: 2px solid #a1a1a1;
-  border-radius: 2px;
+  height: 12px;
+  width: 12px;
+  background: #ffffff;
+  border: 1px solid #a1a1a1;
   margin-top: -1.5px;
+  overflow: hidden;
   &::after {
     display: none;
     content: "";
     position: absolute;
-    left: 2.5px;
-    top: -1px;
     width: 5px;
     height: 10px;
     border: 1px solid #005f73;
     border-width: 0 2.5px 2.5px 0;
     -webkit-transform: rotate(45deg);
+    left: 2.6px;
+    top: -0.3px;
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
@@ -36,7 +36,6 @@ export const CheckBoxTick = styled.div`
 export const CheckBoxlabel = styled.div`
   display: block;
   position: relative;
-  padding-left: 9px;
   margin-bottom: 0px;
   margin-top: -5px;
   cursor: pointer;

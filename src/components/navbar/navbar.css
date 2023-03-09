@@ -1,0 +1,44 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    flex-direction: row;
+}
+
+.navbar li a {
+    font-family: "Raleway";
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: -0.02em;
+    color: #409094;
+    text-decoration: none;
+    width: min-content;
+    cursor: pointer;
+}
+
+.navbar li a.button {
+    background: #ffffff;
+    border: 1px solid #409094;
+    border-radius: 20px;
+    width: 135px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.navbar img {
+    cursor: pointer;
+}

@@ -9,6 +9,7 @@ import { useConfirmSignUp, useLogin } from "hooks";
 import { validateVerificationCode, withAuth } from "state/auth";
 
 import "./styles/login.css";
+import Navbar from "components/navbar/navbar";
 
 export const Reverify: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
@@ -54,38 +55,45 @@ export const Reverify: FC<AuthProps> = ({ getAuth }) => {
 
   return (
     <div className="login">
-      <div className="logo-container">
-        <img src="/images/edc-squared.svg" alt="edc-squared" />
-        <div className="subtitle">Everyday creatives, everyday creators.</div>
-      </div>
-      <div className="login-container">
-        <div className="create-account-label">Account Verification</div>
-
-        <div className="login-fields">
-          <Input
-            value={code}
-            errorVal={codeError}
-            placeholder="Verification Code"
-            keyProp=""
-            handlers={{
-              updateState: (_, value: string): void => setCode(value),
-            }}
-          />
+      <div className="login__landing">
+        <img src="/images/edc-logo.png" alt="edc-squared" />
+        <div className="login__landing-container">
+          <span>
+            Everyday creators, <br />
+            everyday creative.
+          </span>
+          <div>Your content, your story, your impact.</div>
         </div>
-
-        <button
-          className="login-btn"
-          onClick={onVerification}
-          disabled={isLoading || loginLoading}
-        >
-          <span style={{ marginRight: 12 }}>Verify</span>
-          {isLoading && <IconLoader />}
-        </button>
-
-        <GoogleLogin />
-
-        <div className="existing-account" onClick={onLogin}>
-          Already have an account? <span>Login&nbsp;</span>
+      </div>
+      <div className="login__container">
+        <Navbar />
+        <div className="login__box">
+          <div className="login__title" style={{ marginBottom: 16 }}>
+            Account verification
+          </div>
+          <div className="login__fields">
+            <Input
+              value={code}
+              errorVal={codeError}
+              placeholder="Verification code"
+              keyProp=""
+              handlers={{
+                updateState: (_, value: string): void => setCode(value),
+              }}
+            />
+          </div>
+          <button
+            className="login__btn"
+            onClick={onVerification}
+            disabled={isLoading || loginLoading}
+          >
+            <span style={{ marginRight: 12 }}>Verify</span>
+            {isLoading && <IconLoader />}
+          </button>
+          <GoogleLogin />
+          <div className="login__already">
+            Already have an account? <span onClick={onLogin}>Login</span>
+          </div>
         </div>
       </div>
     </div>
