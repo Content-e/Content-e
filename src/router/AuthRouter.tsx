@@ -16,6 +16,7 @@ import CreatorProfile from "pages/creatorProfile/creatorProfile";
 import { Route, Switch } from "react-router-dom";
 import { withProfile } from "state/profileSteps";
 import { AuthRoutes, ProfileProps } from "utils";
+import Wallet from "pages/wallet/wallet";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -43,6 +44,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
             path={AuthRoutes.CampaignBrief}
             component={CampaignBriefs}
           />
+          <Route exact path={AuthRoutes.Wallet} component={Wallet} />
         </SidebarLayout>
       </Switch>
     );
