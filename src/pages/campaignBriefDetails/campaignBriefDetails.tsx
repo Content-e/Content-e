@@ -1,16 +1,19 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import BrandCard from "components/brandCard/brandCard";
 import BrandDesciption from "components/brandDescription/brandDescription";
 import CampaignDetailCard from "components/campaignDetailCard/campaignDetailCard";
 import CampaignSlider from "components/campaignSlider/campaignSlider";
 import "./campaignBriefDetails.css";
 import { BrandBrief } from "API";
+import DetailCard from "components/brandCard/detailCard";
 
 interface Props {
   data: BrandBrief;
   onBack: () => void;
 }
 const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
+  const [showDetails, handleDetailVisibility] = useState(false);
+
   return (
     <>
       <div className="campaign-brief-header-container">
@@ -22,7 +25,10 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
         </div>
       </div>
       <div className="campaign-brief-container">
-        <BrandCard briefName={data.BriefName} />
+        <BrandCard
+          briefName={data.BriefName}
+          onShowDetails={(): void => handleDetailVisibility(true)}
+        />
         <CampaignDetailCard
           campaign={data.brandProfile?.name}
           campaignHeader="Brand Name"
@@ -40,6 +46,12 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
         <BrandDesciption id={data.id} detail={data.brandBriefDetails} />
         <CampaignSlider videoUrls={data.creativeInspirations} />
       </div>
+      {data.brandProfile && showDetails && (
+        <DetailCard
+          data={data.brandProfile}
+          onCross={(): void => handleDetailVisibility(false)}
+        />
+      )}
     </>
   );
 };
