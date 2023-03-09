@@ -61,7 +61,9 @@ export const getMainDomainFromSubdomain = (): string => {
   const { protocol, host, pathname } = window.location;
 
   const hostnameParts = host.split(".");
-  if (allowedSubDomains.includes(hostnameParts[0])) hostnameParts.shift();
+  const explicitFalse = hostnameParts[0] === "staging";
+  if (!explicitFalse && allowedSubDomains.includes(hostnameParts[0]))
+    hostnameParts.shift();
 
   const pathnameParts = pathname.split("/");
   const unAuthRoutes = Object.values(UnAuthRoutes);
