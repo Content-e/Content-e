@@ -45,4 +45,4 @@ export enum LoaderColors {
   White = "#FFF",
 }
 
-export const allowedSubDomains = ["localhost", "sa"];
+export const allowedSubDomains = ["localhost", "sa", "staging"];
