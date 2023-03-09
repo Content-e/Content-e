@@ -26,8 +26,9 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
   const onCreatorProfile = (): void => history.push(AuthRoutes.CreatorProfile);
   const onWallet = (): void => history.push(AuthRoutes.Wallet);
   const onBestPractice = (): void => history.push(AuthRoutes.BestPractices);
-  const onCreatorDashboaard = (): void =>
+  const onCreatorDashboard = (): void =>
     history.push(AuthRoutes.CreatorDashboard);
+  const onBrandDashboard = (): void => history.push(AuthRoutes.BrandDashboard);
 
   const getOption = (
     icon: string,
@@ -80,7 +81,7 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
               {getOption(
                 "chat",
                 AuthRoutes.CreatorDashboard,
-                onCreatorDashboaard
+                onCreatorDashboard
               )}
               {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrand)}
               {getOption("wallet", AuthRoutes.Wallet, onWallet)}
@@ -89,6 +90,7 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
           )}
           {data?.userType === USER_TYPES.BRAND_USER && (
             <Fragment key="creator menu options">
+              {getOption("chat", AuthRoutes.BrandDashboard, onBrandDashboard)}
               {getOption("bag", AuthRoutes.BrandBrief, onBrand)}
             </Fragment>
           )}

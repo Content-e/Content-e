@@ -18,6 +18,7 @@ import { withProfile } from "state/profileSteps";
 import { AuthRoutes, ProfileProps } from "utils";
 import Wallet from "pages/wallet/wallet";
 import BestPractice from "pages/bestPractice/practice";
+import BrandDashboard from "pages/brandDashboard/brandDashboard";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -34,6 +35,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
             exact
             path={AuthRoutes.CreatorDashboard}
             component={CreatorDashboard}
+          />
+          <Route
+            exact
+            path={AuthRoutes.BrandDashboard}
+            component={BrandDashboard}
           />
           <Route
             exact

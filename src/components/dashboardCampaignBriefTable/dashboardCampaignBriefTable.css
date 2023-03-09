@@ -1,0 +1,27 @@
+table {
+  width: 100%;
+}
+
+.table-header-bottom-border {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-campaign-table-header-label {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #a1a1a1;
+  width: auto;
+}
+
+.dashboard-campaign-table-description {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #001219;
+  width: auto;
+}

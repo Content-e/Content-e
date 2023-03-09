@@ -28,6 +28,7 @@ export enum AuthRoutes {
 
   CreatorProfile = "/creatorProfile",
   CreatorDashboard = "/creatorDashboard",
+  BrandDashboard = "/brandDashboard",
   CampaignBrief = "/campaignBrief",
   Wallet = "/wallet",
   BestPractices = "/bestPractices",
