@@ -75,7 +75,9 @@ export const Register: FC = () => {
         <div className="subtitle">Everyday creatives, everyday creators.</div>
       </div>
       <div className="login-container">
-        <div className="create-account-label">Create Account</div>
+        <div className="create-account-label">
+          Create a {creator ? "Creator" : "Brand"} Account
+        </div>
         <div className="btns-container">
           <div
             className={`${!creator ? "active" : false}`}
@@ -90,72 +92,32 @@ export const Register: FC = () => {
             Join as a creator
           </div>
         </div>
-        {!creator && <GoogleLogin />}
-        <div
-          className={`content-seperation ${!creator ? "or" : ""}`}
-          style={{ marginTop: `${!creator ? "0px" : "20px"}` }}
-        >
-          {!creator
-            ? "- OR -"
-            : "If you're an aspiring creator and keen to work with brands and be rewarded, be sure to get on our waiting list and be the first to get access to our platform."}
+        <GoogleLogin />
+
+        <div className="login-fields">
+          <Input {...commonProps} placeholder="Full Name" keyProp="name" />
+          <Input {...commonProps} placeholder="Email Address" keyProp="email" />
+          <Input
+            {...commonProps}
+            placeholder="Password"
+            type="password"
+            keyProp="password"
+          />
         </div>
 
-        {!creator && (
-          <>
-            <div className="login-fields">
-              <Input {...commonProps} placeholder="Full Name" keyProp="name" />
-              <Input
-                {...commonProps}
-                placeholder="Email Address"
-                keyProp="email"
-              />
-              <Input
-                {...commonProps}
-                placeholder="Password"
-                type="password"
-                keyProp="password"
-              />
-            </div>
+        <button
+          className="login-btn"
+          onClick={onSignUp}
+          disabled={isLoading || !isSubmittable}
+        >
+          <span style={{ marginRight: 12 }}>Join</span>
+          {isLoading && <IconLoader />}
+        </button>
 
-            <button
-              className="login-btn"
-              onClick={onSignUp}
-              disabled={isLoading || !isSubmittable}
-            >
-              <span style={{ marginRight: 12 }}>Join</span>
-              {isLoading && <IconLoader />}
-            </button>
-
-            <div className="existing-account">
-              Already have an account?&nbsp;
-              <span onClick={onLogin}>Login&nbsp;</span>
-            </div>
-          </>
-        )}
-
-        {creator && (
-          <>
-            <div className="login-fields">
-              <Input {...commonProps} placeholder="Full Name" keyProp="name" />
-              <Input
-                {...commonProps}
-                placeholder="Email Address"
-                keyProp="email"
-              />
-              <Input
-                {...commonProps}
-                placeholder="TikTok Handle"
-                type="tiktok"
-                keyProp="tiktok"
-              />
-            </div>
-
-            <button className="login-btn" disabled={isLoading}>
-              <span style={{ marginRight: 12 }}>Register</span>
-              {isLoading && <IconLoader />}
-            </button>
-          </>
-        )}
+        <div className="existing-account">
+          Already have an account?&nbsp;
+          <span onClick={onLogin}>Login&nbsp;</span>
+        </div>
       </div>
     </div>
   );
