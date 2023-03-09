@@ -13,22 +13,15 @@ export const SidebarWrapper = styled.div`
   pointer-events: all;
   margin: 0;
   border-right: 1px solid #9fd0bd;
+  width: 240px;
 
   @media only screen and (min-width: 769px) {
-    width: 179px;
     display: flex;
     opacity: 1;
     background: transparent;
   }
 
-  @media only screen and (min-width: 1200px) {
-    width: 179x;
-    opacity: 1;
-    background: transparent;
-  }
-
   @media only screen and (min-width: 1440px) {
-    width: 240px;
     opacity: 1;
     background: transparent;
   }
