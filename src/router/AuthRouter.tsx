@@ -19,6 +19,7 @@ import { AuthRoutes, ProfileProps } from "utils";
 import Wallet from "pages/wallet/wallet";
 import BestPractice from "pages/bestPractice/practice";
 import BrandDashboard from "pages/brandDashboard/brandDashboard";
+import CreativeDetails from "pages/creativeDetails/creativeDetails";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -56,6 +57,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
             exact
             path={AuthRoutes.BestPractices}
             component={BestPractice}
+          />
+          <Route
+            exact
+            path={AuthRoutes.Creatives}
+            component={CreativeDetails}
           />
         </SidebarLayout>
       </Switch>

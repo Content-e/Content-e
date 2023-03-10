@@ -33,4 +33,5 @@ export enum AuthRoutes {
   Wallet = "/wallet",
   BestPractices = "/bestPractices",
   BrandBrief = "/brandBrief",
+  Creatives = "/creatives",
 }

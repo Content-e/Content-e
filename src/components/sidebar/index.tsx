@@ -29,6 +29,7 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
   const onCreatorDashboard = (): void =>
     history.push(AuthRoutes.CreatorDashboard);
   const onBrandDashboard = (): void => history.push(AuthRoutes.BrandDashboard);
+  const onCreatives = (): void => history.push(AuthRoutes.Creatives);
 
   const getOption = (
     icon: string,
@@ -91,6 +92,7 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
           {data?.userType === USER_TYPES.BRAND_USER && (
             <Fragment key="creator menu options">
               {getOption("chat", AuthRoutes.BrandDashboard, onBrandDashboard)}
+              {getOption("notes", AuthRoutes.BrandBrief, onCreatives)}
               {getOption("bag", AuthRoutes.BrandBrief, onBrand)}
             </Fragment>
           )}
