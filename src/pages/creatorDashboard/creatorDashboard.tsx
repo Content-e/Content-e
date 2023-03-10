@@ -7,9 +7,15 @@ import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetail
 import { useState } from "react";
 
 import "./creatorDashboard.css";
+import { AuthRoutes } from "utils";
+import { useHistory } from "react-router-dom";
 
 export default function CreatorDashboard() {
+  const history = useHistory();
+
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
+
+  const onCampaign = (): void => history.push(AuthRoutes.CampaignBrief);
 
   if (selectedBrief)
     return (
@@ -33,7 +39,7 @@ export default function CreatorDashboard() {
         <div className="campaign-table-container">
           <div className="campaign-table-header">
             <div className="campaign-table-label">Campaign briefs</div>
-            <img src="/images/morevert.svg" />
+            <img onClick={onCampaign} src="/images/morevert.svg" />
           </div>
           <CampaignBriefTable searchText="" onSingleSelect={setSelectedBrief} />
         </div>

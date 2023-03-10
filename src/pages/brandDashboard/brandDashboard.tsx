@@ -1,8 +1,12 @@
 import BrandCreativesTable from "components/brandCreativesTable/brandCreativesTable";
 import DashboardCampaignBriefTable from "components/dashboardCampaignBriefTable/dashboardCampaignBriefTable";
 import "./brandDashboard.css";
+import { useHistory } from "react-router-dom";
+import { AuthRoutes } from "utils";
 
 export default function BrandDashboard() {
+  const history = useHistory();
+
   return (
     <>
       <div className="dashboard-label">Dashboard</div>
@@ -20,7 +24,10 @@ export default function BrandDashboard() {
         <div className="dashboard-campaign-brief-container">
           <div className="brand-table-header">
             <div className="brand-table-label">Campaign briefs</div>
-            <img src="/images/morevert.svg" />
+            <img
+              onClick={() => history.push(AuthRoutes.CampaignBrief)}
+              src="/images/morevert.svg"
+            />
           </div>
           <DashboardCampaignBriefTable />
         </div>
