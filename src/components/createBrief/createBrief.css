@@ -1,0 +1,50 @@
+.create-brief-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.create-brief-input-title {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  color: #031416;
+}
+
+.create-brief-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-brief-input {
+  padding: 6px 12px;
+  background: #ffffff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06),
+    0px 0px 0px 1px rgba(104, 113, 130, 0.16);
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.creative-inspiration-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.creative-inspiration-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-brief-input::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #a1a9b8;
+}
