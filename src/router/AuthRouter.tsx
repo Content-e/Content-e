@@ -20,6 +20,7 @@ import Wallet from "pages/wallet/wallet";
 import BestPractice from "pages/bestPractice/practice";
 import BrandDashboard from "pages/brandDashboard/brandDashboard";
 import CreativeDetails from "pages/creativeDetails/creativeDetails";
+import CreateBrief from "components/createBrief/createBrief";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -63,6 +64,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
             path={AuthRoutes.Creatives}
             component={CreativeDetails}
           />
+          <Route exact path={AuthRoutes.CreateBrief} component={CreateBrief} />
         </SidebarLayout>
       </Switch>
     );
