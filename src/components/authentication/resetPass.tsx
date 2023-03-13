@@ -11,6 +11,7 @@ import {
 } from "utils";
 import { validateVerificationCode, validatePassword } from "state/auth";
 import { useResetPass } from "hooks";
+import Navbar from "components/navbar/navbar";
 
 export const ResetPassword: FC = () => {
   const history = useHistory();
@@ -61,33 +62,43 @@ export const ResetPassword: FC = () => {
 
   return (
     <div className="login">
-      <div className="logo-container">
-        <img src="/images/edc-squared.svg" alt="edc-squared" />
-        <div className="subtitle">Everyday creatives, everyday creators.</div>
-      </div>
-      <div className="login-container">
-        <div className="create-account-label">Reset Password</div>
-
-        <div className="login-fields">
-          <Input
-            {...commonProps}
-            keyProp="code"
-            placeholder="Verification Code"
-          />
-          <Input
-            {...commonProps}
-            type="password"
-            keyProp="password"
-            placeholder="Password"
-          />
+      <div className="login__landing">
+        <img src="/images/edc-logo.png" alt="edc-squared" />
+        <div className="login__landing-container">
+          <span>
+            Everyday creators, <br />
+            everyday creative.
+          </span>
+          <div>Your content, your story, your impact.</div>
         </div>
-        <button className="login-btn" onClick={onReset} disabled={isLoading}>
-          <span style={{ marginRight: 12 }}>Reset Password</span>
-          {isLoading && <IconLoader />}
-        </button>
-        <GoogleLogin />
-        <div className="existing-account" onClick={onSignUp}>
-          Don't have an account? <span>Sign up&nbsp;</span>
+      </div>
+      <div className="login__container">
+        <Navbar />
+        <div className="login__box">
+          <div className="login__title" style={{ marginBottom: 16 }}>
+            Reset Password
+          </div>
+          <div className="login__fields">
+            <Input
+              {...commonProps}
+              keyProp="code"
+              placeholder="Verification Code"
+            />
+            <Input
+              {...commonProps}
+              type="password"
+              keyProp="password"
+              placeholder="Password"
+            />
+          </div>
+          <button className="login__btn" onClick={onReset} disabled={isLoading}>
+            <span style={{ marginRight: 12 }}>Reset Password</span>
+            {isLoading && <IconLoader />}
+          </button>
+          <GoogleLogin />
+          <div className="login__already" onClick={onSignUp}>
+            Don't have an account? <span>Sign up&nbsp;</span>
+          </div>
         </div>
       </div>
     </div>

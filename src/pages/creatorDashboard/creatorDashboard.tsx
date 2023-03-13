@@ -7,7 +7,7 @@ import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetail
 import { useState } from "react";
 
 import "./creatorDashboard.css";
-import { AuthRoutes } from "utils";
+import { AuthRoutes, CreatorDashboardBoxes } from "utils";
 import { useHistory } from "react-router-dom";
 
 export default function CreatorDashboard() {
@@ -29,10 +29,13 @@ export default function CreatorDashboard() {
       <div>
         <div className="creator-dashboard-label">Creator Dashboard</div>
         <div className="stats-container">
-          <CreatorStatsCard label="Wallet" count="8" />
-          <CreatorStatsCard label="Approval rate" count="8" />
-          <CreatorStatsCard label="Conversion rate" count="8" />
-          <CreatorStatsCard label="Click through rate" count="8" />
+          <CreatorStatsCard type={CreatorDashboardBoxes.Wallet} value="8" />
+          <CreatorStatsCard type={CreatorDashboardBoxes.Approval} value="8" />
+          <CreatorStatsCard type={CreatorDashboardBoxes.Conversion} value="8" />
+          <CreatorStatsCard
+            type={CreatorDashboardBoxes.ClickThrough}
+            value="8"
+          />
         </div>
       </div>
       <div className="campaign-briefs-dashboard-container ">

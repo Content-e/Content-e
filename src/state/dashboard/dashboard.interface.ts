@@ -1,5 +1,6 @@
 import { ApolloError } from "@apollo/client";
 import { BrandBrief, CreativeRequest } from "API";
+import { Placement } from "react-bootstrap/esm/types";
 
 export interface ICreatorBriefListProps {
   briefList?: Array<BrandBrief | null> | null;
@@ -17,4 +18,16 @@ export interface IBriefListElems {
   objective?: string | null;
   status?: string;
   id?: string;
+}
+
+export interface IDashboardValue {
+  label: string;
+  placement: Placement;
+  tooltip: string;
+}
+export interface ICreatorDashboardBox {
+  Wallet: IDashboardValue;
+  Approval: IDashboardValue;
+  Conversion: IDashboardValue;
+  ClickThrough: IDashboardValue;
 }
