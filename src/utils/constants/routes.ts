@@ -19,21 +19,20 @@ export enum UnAuthRoutes {
 }
 
 export enum AuthRoutes {
-  Brand = "/brand",
-  EditBrand = "/brandEdit",
-
   Logout = "/logout",
   Tiktok = "/linkTikTok/:id",
   Redirector = "/redirecting/:id?",
 
   CreatorProfile = "/creatorProfile",
   CreatorDashboard = "/creatorDashboard",
-  BrandDashboard = "/brandDashboard",
   CampaignBrief = "/campaignBrief",
   Wallet = "/wallet",
   BestPractices = "/bestPractices",
-  BrandBrief = "/brandBrief",
+
+  BrandDashboard = "/brandDashboard",
+  BrandBriefs = "/brandBriefs",
   Creatives = "/creatives",
   CreateBrief = "/createBrief",
-  BrandBriefs = "/brandBriefs",
+  Brand = "/brandProfile",
+  EditBrand = "/brandEdit",
 }

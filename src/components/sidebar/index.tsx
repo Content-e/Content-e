@@ -22,7 +22,8 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
 
   const onLogout = (): void => history.push(AuthRoutes.Logout);
   const onBrand = (): void => history.push(AuthRoutes.Brand);
-  const onCampaignBrand = (): void => history.push(AuthRoutes.CampaignBrief);
+  const onCampaignBrief = (): void => history.push(AuthRoutes.CampaignBrief);
+  const onBrandBriefs = (): void => history.push(AuthRoutes.BrandBriefs);
   const onCreatorProfile = (): void => history.push(AuthRoutes.CreatorProfile);
   const onWallet = (): void => history.push(AuthRoutes.Wallet);
   const onBestPractice = (): void => history.push(AuthRoutes.BestPractices);
@@ -84,7 +85,7 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
                 AuthRoutes.CreatorDashboard,
                 onCreatorDashboard
               )}
-              {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrand)}
+              {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrief)}
               {getOption("wallet", AuthRoutes.Wallet, onWallet)}
               {getOption("book", AuthRoutes.BestPractices, onBestPractice)}
             </Fragment>
@@ -92,8 +93,9 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
           {data?.userType === USER_TYPES.BRAND_USER && (
             <Fragment key="creator menu options">
               {getOption("chat", AuthRoutes.BrandDashboard, onBrandDashboard)}
-              {getOption("notes", AuthRoutes.BrandBrief, onCreatives)}
-              {getOption("bag", AuthRoutes.BrandBrief, onBrand)}
+              {getOption("notes", AuthRoutes.Creatives, onCreatives)}
+              {getOption("bag", AuthRoutes.BrandBriefs, onBrandBriefs)}
+              {getOption("bag", AuthRoutes.Brand, onBrand)}
             </Fragment>
           )}
         </S.SidebarMenu>

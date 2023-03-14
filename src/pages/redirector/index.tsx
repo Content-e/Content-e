@@ -16,7 +16,7 @@ const RedirectingStep: React.FC<ProfileProps> = ({
     if (data?.userType === USER_TYPES.CREATIVE_USER)
       history.replace(AuthRoutes.CreatorDashboard);
     else if (data?.userType === USER_TYPES.BRAND_USER)
-      history.replace(AuthRoutes.BrandBrief);
+      history.replace(AuthRoutes.BrandDashboard);
   };
   const redirectToValidRoute = (): void => {
     if (
