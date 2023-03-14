@@ -36,9 +36,8 @@ const withCreatorBriefListCampaignBriefTable: FC<
       briefList.forEach((brief) => {
         if (brief) {
           const { BriefName, brandProfile, vertical, objective, id } = brief;
-          const status = requestList.find(
-            (e) => e?.brandBriefId === id
-          )?.status;
+          const status =
+            requestList.find((e) => e?.brandBriefId === id)?.status || "new";
           output.push({
             id,
             briefName: BriefName,
