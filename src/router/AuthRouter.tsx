@@ -21,6 +21,7 @@ import BestPractice from "pages/bestPractice/practice";
 import BrandDashboard from "pages/brandDashboard/brandDashboard";
 import CreativeDetails from "pages/creativeDetails/creativeDetails";
 import CreateBrief from "components/createBrief/createBrief";
+import BrandBriefs from "pages/brandBriefs/brandBriefs";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -65,6 +66,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
             component={CreativeDetails}
           />
           <Route exact path={AuthRoutes.CreateBrief} component={CreateBrief} />
+          <Route exact path={AuthRoutes.BrandBriefs} component={BrandBriefs} />
         </SidebarLayout>
       </Switch>
     );
