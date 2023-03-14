@@ -35,4 +35,5 @@ export enum AuthRoutes {
   CreateBrief = "/createBrief",
   Brand = "/brandProfile",
   EditBrand = "/brandEdit",
+  CreativesTable = "/creativesTable",
 }
