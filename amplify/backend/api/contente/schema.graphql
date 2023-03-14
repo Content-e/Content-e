@@ -58,6 +58,7 @@ type CreativeRequest
   status: String! 
   tiktokCreativeUrl: String!
   tiktokVideoCode: String!
+  creativeTiktokHandle: String
 }
 
 enum USER_TYPES{

@@ -31,5 +31,38 @@
         }
       }
     }
+  },
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-contente-staging-175407-authRole",
+      "UnauthRoleArn": "arn:aws:iam::995966967167:role/amplify-contente-staging-175407-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::995966967167:role/amplify-contente-staging-175407-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-contente-staging-175407-deployment",
+      "UnauthRoleName": "amplify-contente-staging-175407-unauthRole",
+      "StackName": "amplify-contente-staging-175407",
+      "StackId": "arn:aws:cloudformation:us-east-1:995966967167:stack/amplify-contente-staging-175407/fe982250-bc1d-11ed-8733-0aad81c3a6e3",
+      "AmplifyAppId": "d12cm8tmqhdorb"
+    },
+    "categories": {
+      "auth": {
+        "contente9303b093": {}
+      },
+      "function": {
+        "GPTLambda": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/GPTLambda-51393343754847536143-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d12cm8tmqhdorb",
+          "type": "manual"
+        }
+      },
+      "api": {
+        "contente": {}
+      }
+    }
   }
 }

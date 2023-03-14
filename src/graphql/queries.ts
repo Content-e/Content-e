@@ -303,6 +303,7 @@ export const getBrandBrief = /* GraphQL */ `
           status
           tiktokCreativeUrl
           tiktokVideoCode
+          creativeTiktokHandle
           id
           createdAt
           updatedAt
@@ -367,6 +368,7 @@ export const listBrandBriefs = /* GraphQL */ `
             status
             tiktokCreativeUrl
             tiktokVideoCode
+            creativeTiktokHandle
             id
             createdAt
             updatedAt
@@ -429,6 +431,7 @@ export const brandBriefsByVertical = /* GraphQL */ `
             status
             tiktokCreativeUrl
             tiktokVideoCode
+            creativeTiktokHandle
             id
             createdAt
             updatedAt
@@ -491,6 +494,7 @@ export const brandBriefsByBrandId = /* GraphQL */ `
             status
             tiktokCreativeUrl
             tiktokVideoCode
+            creativeTiktokHandle
             id
             createdAt
             updatedAt
@@ -531,6 +535,7 @@ export const getCreativeRequest = /* GraphQL */ `
       status
       tiktokCreativeUrl
       tiktokVideoCode
+      creativeTiktokHandle
       id
       createdAt
       updatedAt
@@ -554,6 +559,7 @@ export const listCreativeRequests = /* GraphQL */ `
         status
         tiktokCreativeUrl
         tiktokVideoCode
+        creativeTiktokHandle
         id
         createdAt
         updatedAt
@@ -583,6 +589,7 @@ export const creativeRequestsByBrandBriefId = /* GraphQL */ `
         status
         tiktokCreativeUrl
         tiktokVideoCode
+        creativeTiktokHandle
         id
         createdAt
         updatedAt
@@ -612,6 +619,7 @@ export const creativeRequestsByCreatorId = /* GraphQL */ `
         status
         tiktokCreativeUrl
         tiktokVideoCode
+        creativeTiktokHandle
         id
         createdAt
         updatedAt
