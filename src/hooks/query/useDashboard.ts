@@ -1,13 +1,20 @@
 import { useLazyQuery } from "@apollo/client";
 import {
   BrandBrief,
+  BrandBriefsByBrandIdQuery,
+  BrandBriefsByBrandIdQueryVariables,
   CreativeRequestsByCreatorIdQuery,
   CreativeRequestsByCreatorIdQueryVariables,
   ListBrandBriefsQuery,
   ListBrandBriefsQueryVariables,
 } from "API";
-import { creativeRequestsByCreatorId, listBrandBriefs } from "graphql/queries";
 import {
+  brandBriefsByBrandId,
+  creativeRequestsByCreatorId,
+  listBrandBriefs,
+} from "graphql/queries";
+import {
+  GetBrandBriefListProps,
   GetCreatorBriefListProps,
   GetCreatorCreativeRequestsProps,
 } from "hooks/utils";
@@ -41,6 +48,22 @@ export const getCreatorRequests = (): GetCreatorCreativeRequestsProps => {
     listCreativeRequests,
     data: data?.creativeRequestsByCreatorId?.items,
     nextToken: data?.creativeRequestsByCreatorId?.nextToken,
+    error,
+  };
+};
+
+export const getBrandBriefList = (): GetBrandBriefListProps => {
+  const [getBrandBriefs, { data, loading, error }] = useLazyQuery<
+    BrandBriefsByBrandIdQuery,
+    BrandBriefsByBrandIdQueryVariables
+  >(getQuery(brandBriefsByBrandId));
+
+  const briefList = data?.brandBriefsByBrandId?.items;
+  return {
+    loading,
+    getBrandBriefs,
+    data: briefList as UnknownType as Array<BrandBrief>,
+    nextToken: data?.brandBriefsByBrandId?.nextToken,
     error,
   };
 };

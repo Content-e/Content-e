@@ -16,3 +16,11 @@ export type GetCreatorCreativeRequestsProps = {
   nextToken?: string | null;
   error?: ApolloError | null;
 };
+
+export type GetBrandBriefListProps = {
+  loading: boolean;
+  getBrandBriefs: (unknown) => void;
+  data?: Array<BrandBrief | null> | null;
+  nextToken?: string | null;
+  error?: ApolloError | null;
+};

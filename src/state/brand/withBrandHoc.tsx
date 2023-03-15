@@ -37,6 +37,9 @@ export function withBrand<T>(Component: React.FC<T & BrandProps>): React.FC<T> {
           createdAt: undefined,
           updatedAt: undefined,
           owner: undefined,
+          briefs: undefined,
+          vertical: undefined,
+          tiktokHandle: undefined,
         };
         if (data.id) updateBrand({ variables: { input } });
         else createBrand({ variables: { input } });

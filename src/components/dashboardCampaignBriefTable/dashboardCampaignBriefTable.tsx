@@ -1,22 +1,34 @@
+import { BrandBrief } from "API";
+import { FC } from "react";
 import "./dashboardCampaignBriefTable.css";
 
-export default function DashboardCampaignBriefTable() {
-  return (
-    <table>
-      <tr className="table-header-bottom-border">
-        <th className="dashboard-campaign-table-header-label">Brief Name</th>
-        <th className="dashboard-campaign-table-header-label">Brand</th>
-        <th className="dashboard-campaign-table-header-label">Vertical</th>
-      </tr>
-      <tr>
-        <td className="dashboard-campaign-table-description ">
-          TikTok link to video content
-        </td>
-        <td className="dashboard-campaign-table-description ">Awareness</td>
-        <td>
-          <img src="/images/table-search.svg" />
-        </td>
-      </tr>
-    </table>
-  );
+interface Props {
+  data?: Array<BrandBrief | null>;
+  openBrief: (briefId: string) => void;
 }
+
+export const DashboardCampaignBriefTable: FC<Props> = ({ data, openBrief }) => {
+  const showDetails = (id?: string): void => {
+    if (id) openBrief(id);
+  };
+
+  return (
+    <>
+      {data?.map((e) => (
+        <tr>
+          <td className="dashboard-campaign-table-description ">
+            {e?.BriefName}
+          </td>
+          <td className="dashboard-campaign-table-description ">
+            {e?.objective}
+          </td>
+          <td onClick={(): void => showDetails(e?.id)}>
+            <img src="/images/table-search.svg" />
+          </td>
+        </tr>
+      ))}
+    </>
+  );
+};
+
+export default DashboardCampaignBriefTable;

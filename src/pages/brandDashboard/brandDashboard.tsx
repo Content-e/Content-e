@@ -1,58 +1,21 @@
-import BrandCreativesTable from "components/brandCreativesTable/brandCreativesTable";
-import DashboardCampaignBriefTable from "components/dashboardCampaignBriefTable/dashboardCampaignBriefTable";
 import "./brandDashboard.css";
-import { useHistory } from "react-router-dom";
-import { AuthRoutes } from "utils";
+import { FC } from "react";
+import { BrandBriefProps, withBrandBriefs } from "state/brandBrief";
+import CreativeRequests from "./creativeRequests";
+import BrandBriefs from "./brandBriefs";
+import BrandInfo from "./brandInfo";
 
-export default function BrandDashboard() {
-  const history = useHistory();
-
+export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
   return (
     <>
       <div className="dashboard-label">Dashboard</div>
-      <div className="creative-table-container">
-        <div className="brand-table-container">
-          <div className="brand-table-header">
-            <div className="brand-table-label">Creatives</div>
-            <img src="/images/morevert.svg" />
-          </div>
-          <BrandCreativesTable />
-        </div>
-      </div>
-
+      <CreativeRequests {...props} openCreative={() => {}} />
       <div className="dashboard-campaign-section">
-        <div className="dashboard-campaign-brief-container">
-          <div className="brand-table-header">
-            <div className="brand-table-label">Campaign briefs</div>
-            <img
-              onClick={() => history.push(AuthRoutes.CampaignBrief)}
-              src="/images/morevert.svg"
-            />
-          </div>
-          <DashboardCampaignBriefTable />
-        </div>
-
-        <div className="dashboard-campaign-brief-container">
-          <div className="brand-table-header">
-            <div className="brand-table-label">Brand Profile</div>
-            <img src="/images/morevert.svg" />
-          </div>
-          <div className="brand-profile-container">
-            <div className="brand-name">Brand Name</div>
-            <div className="brand-description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at
-              viverra erat, nec imperdiet nisl. Praesent dapibus, tellus in
-              egestas laoreet, metus tortor aliquet quam, eget luctus lorem orci
-              nec magna.
-            </div>
-            <div className="brand-profile-btn-container">
-              <div className="brand-profile-btn">
-                <span className="brand-profile-text">Brand Profile</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <BrandBriefs {...props} openBrief={() => {}} />
+        <BrandInfo {...props} />
       </div>
     </>
   );
-}
+};
+
+export default withBrandBriefs(BrandDashboard);
