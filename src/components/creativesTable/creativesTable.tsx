@@ -1,6 +1,24 @@
+import CreativeDetails from "pages/creativeDetails/creativeDetails";
+import { FC, useState } from "react";
+import {
+  BrandBriefProps,
+  ISelectredRequest,
+  withBrandBriefs,
+} from "state/brandBrief";
+import CreativeEntries from "./creativeEntries";
 import "./creativesTable.css";
 
-export default function CreativesTable() {
+export const CreativesTable: FC<BrandBriefProps> = (props) => {
+  const [selectedRequest, setSelectedRequest] = useState<ISelectredRequest>();
+
+  if (selectedRequest)
+    return (
+      <CreativeDetails
+        {...props}
+        selectedRequest={selectedRequest}
+        onBack={(): void => setSelectedRequest(undefined)}
+      />
+    );
   return (
     <>
       <div className="creatives-table-label">Creatives</div>
@@ -16,19 +34,10 @@ export default function CreativesTable() {
             <th className="creatives-table-header-label">Status</th>
             <th className="creatives-table-header-label">Details</th>
           </tr>
-          <tr>
-            <td className="creatives-table-description">Summer Campaign</td>
-            <td className="creatives-table-description">SA tourism</td>
-            <td className="creatives-table-description">Video link</td>
-            <td className="creatives-table-description">1284</td>
-            <td className="creatives-table-description">4.8%</td>
-            <td className="creatives-table-description">Requested</td>
-            <td>
-              <img src="/images/table-search.svg" />
-            </td>
-          </tr>
+          <CreativeEntries {...props} openCreative={setSelectedRequest} />
         </table>
       </div>
     </>
   );
-}
+};
+export default withBrandBriefs(CreativesTable);

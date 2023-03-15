@@ -13,6 +13,7 @@ export interface IMeterValue {
 
 export interface ICreativeEntry {
   creativeLink?: string | null;
+  videoLink?: string | null;
   creatorHandle?: string | null;
   briefName?: string | null;
   status?: string | null;
