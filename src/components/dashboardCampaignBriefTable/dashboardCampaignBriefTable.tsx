@@ -4,12 +4,12 @@ import "./dashboardCampaignBriefTable.css";
 
 interface Props {
   data?: Array<BrandBrief | null>;
-  openBrief: (briefId: string) => void;
+  openBrief: (brief: BrandBrief) => void;
 }
 
 export const DashboardCampaignBriefTable: FC<Props> = ({ data, openBrief }) => {
-  const showDetails = (id?: string): void => {
-    if (id) openBrief(id);
+  const showDetails = (brief?: BrandBrief | null): void => {
+    if (brief) openBrief(brief);
   };
 
   return (
@@ -22,7 +22,7 @@ export const DashboardCampaignBriefTable: FC<Props> = ({ data, openBrief }) => {
           <td className="dashboard-campaign-table-description ">
             {e?.objective}
           </td>
-          <td onClick={(): void => showDetails(e?.id)}>
+          <td onClick={(): void => showDetails(e)}>
             <img src="/images/table-search.svg" />
           </td>
         </tr>

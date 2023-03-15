@@ -1,4 +1,6 @@
+import { BrandBrief } from "API";
 import BrandBriefTable from "components/brandBriefTable/brandBriefTable";
+import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
 import { FC, useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { BrandBriefProps, withBrandBriefs } from "state/brandBrief";
@@ -8,6 +10,7 @@ import "./brandBriefs.css";
 export const BrandBriefs: FC<BrandBriefProps> = ({ data }) => {
   const history = useHistory();
   const [input, setInput] = useState("");
+  const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
 
   const goToBriefCreation = (): void => history.push(AuthRoutes.CreateBrief);
 
@@ -20,6 +23,13 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data }) => {
     [data, input]
   );
 
+  if (selectedBrief)
+    return (
+      <CampaignBriefDetails
+        data={selectedBrief}
+        onBack={(): void => setSelectedBrief(undefined)}
+      />
+    );
   return (
     <div>
       <div className="brand-table-label">Brand briefs</div>
@@ -33,7 +43,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data }) => {
           />
           <img src="/images/add-brief.svg" onClick={goToBriefCreation} />
         </div>
-        <BrandBriefTable data={filteredData} />
+        <BrandBriefTable data={filteredData} openBrief={setSelectedBrief} />
       </div>
     </div>
   );

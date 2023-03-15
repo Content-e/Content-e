@@ -4,7 +4,7 @@ import { BrandBrief } from "API";
 
 interface Props {
   data?: Array<BrandBrief | null>;
-  openBrief: (briefId: string) => void;
+  openBrief: (brief: BrandBrief) => void;
 }
 
 export const BrandBriefs: FC<Props> = (props) => {

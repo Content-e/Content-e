@@ -4,8 +4,13 @@ import "./brandBriefTable.css";
 
 interface Props {
   data?: Array<BrandBrief | null> | null;
+  openBrief: (brief: BrandBrief) => void;
 }
-export const BrandBriefTable: FC<Props> = ({ data }) => {
+export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
+  const onBriefSelection = (brief?: BrandBrief | null): void => {
+    if (brief) openBrief(brief);
+  };
+
   return (
     <table className="brand-table">
       <tr className="brand-table-header-bottom-border">
@@ -24,8 +29,10 @@ export const BrandBriefTable: FC<Props> = ({ data }) => {
             {e?.creativeInspirations?.[0]}
           </td>
           <td className="brand-table-description">{e?.objective}</td>
-          <td className="brand-table-description">Active</td>
-          <td>
+          <td className="brand-table-description">
+            {e?.active ? "Active" : "Inactive"}
+          </td>
+          <td onClick={(): void => onBriefSelection(e)}>
             <img src="/images/table-search.svg" />
           </td>
         </tr>
