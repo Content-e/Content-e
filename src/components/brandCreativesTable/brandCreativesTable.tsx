@@ -1,11 +1,11 @@
 import { BrandBrief } from "API";
 import { FC, useMemo } from "react";
-import { ICreativeEntry } from "state/brandBrief";
+import { ICreativeEntry, ISelectredRequest } from "state/brandBrief";
 import "./brandCreativesTable.css";
 
 interface Props {
   data?: Array<BrandBrief | null>;
-  openCreative: (creativeId: string) => void;
+  openCreative: (data: ISelectredRequest) => void;
 }
 export const BrandCreativesTable: FC<Props> = ({ data, openCreative }) => {
   const requests = useMemo(() => {
@@ -19,6 +19,7 @@ export const BrandCreativesTable: FC<Props> = ({ data, openCreative }) => {
             briefName: brief.BriefName,
             status: req?.status,
             id: req.id,
+            briefId: brief.id,
           });
       });
     });
@@ -35,7 +36,11 @@ export const BrandCreativesTable: FC<Props> = ({ data, openCreative }) => {
           </td>
           <td className="table-description">{e.briefName}</td>
           <td className="table-description">{e.status}</td>
-          <td onClick={(): void => openCreative(e.id)}>
+          <td
+            onClick={(): void =>
+              openCreative({ briefId: e.briefId, requestId: e.id })
+            }
+          >
             <img src="/images/table-search.svg" />
           </td>
         </tr>

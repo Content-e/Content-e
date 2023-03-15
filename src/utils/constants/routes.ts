@@ -35,5 +35,4 @@ export enum AuthRoutes {
   BrandBriefs = "/brandBriefs",
   CreateBrief = "/createBrief",
   Creatives = "/creatives",
-  CreativesTable = "/creativesTable",
 }

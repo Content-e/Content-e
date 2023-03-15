@@ -2,10 +2,11 @@ import BrandCreativesTable from "components/brandCreativesTable/brandCreativesTa
 import "./brandDashboard.css";
 import { FC } from "react";
 import { BrandBrief } from "API";
+import { ISelectredRequest } from "state/brandBrief";
 
 interface Props {
   data?: Array<BrandBrief | null>;
-  openCreative: (creativeId: string) => void;
+  openCreative: (data: ISelectredRequest) => void;
 }
 
 export const CreativeRequests: FC<Props> = (props) => {

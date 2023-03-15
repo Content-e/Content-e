@@ -14,7 +14,6 @@ import { AuthRoutes, ProfileProps } from "utils";
 import Wallet from "pages/wallet/wallet";
 import BestPractice from "pages/bestPractice/practice";
 import BrandDashboard from "pages/brandDashboard/brandDashboard";
-import CreativeDetails from "pages/creativeDetails/creativeDetails";
 import CreateBrief from "components/createBrief/createBrief";
 import BrandBriefs from "pages/brandBriefs/brandBriefs";
 import CreativesTable from "components/creativesTable/creativesTable";
@@ -56,18 +55,9 @@ const AuthRouterPaths: FC<ProfileProps> = ({
             path={AuthRoutes.BestPractices}
             component={BestPractice}
           />
-          <Route
-            exact
-            path={AuthRoutes.Creatives}
-            component={CreativeDetails}
-          />
+          <Route exact path={AuthRoutes.Creatives} component={CreativesTable} />
           <Route exact path={AuthRoutes.CreateBrief} component={CreateBrief} />
           <Route exact path={AuthRoutes.BrandBriefs} component={BrandBriefs} />
-          <Route
-            exact
-            path={AuthRoutes.CreativesTable}
-            component={CreativesTable}
-          />
         </SidebarLayout>
       </Switch>
     );

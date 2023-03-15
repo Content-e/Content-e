@@ -16,5 +16,11 @@ export interface ICreativeEntry {
   creatorHandle?: string | null;
   briefName?: string | null;
   status?: string | null;
+  briefId: string;
   id: string;
+}
+
+export interface ISelectredRequest {
+  requestId: string;
+  briefId: string;
 }

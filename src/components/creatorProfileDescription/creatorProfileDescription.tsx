@@ -1,37 +1,30 @@
+import { getUserProfile } from "hooks";
+import { FC, useEffect, useMemo } from "react";
 import "./creatorProfileDescription.css";
 
-export default function CreatorProfileDescription() {
+interface Props {
+  creatorId: string;
+}
+
+export const CreatorProfileDescription: FC<Props> = ({ creatorId }) => {
+  const { getProfile, loading, profileData } = getUserProfile();
+
+  useEffect(() => {
+    if (creatorId) getProfile({ variables: { id: creatorId } });
+  }, [creatorId]);
+
+  const description = useMemo(() => {
+    if (!loading && profileData) return profileData.description;
+    return "";
+  }, [loading, profileData]);
   return (
     <div className="creator-profile-container">
       <div className="creator-profile-text">
         <div>Creator Profile</div>
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit
-          amet maximus libero, eu dictum tellus. Donec mollis imperdiet turpis,
-          vitae hendrerit leo dictum at. Nullam lorem libero, pellentesque ac
-          viverra nec, tempor id quam. Mauris leo lectus, rutrum a nunc non,
-          porttitor ornare dui. Integer ac tristique purus.
-        </div>
-        <div>
-          <li>
-            In rutrum ornare hendrerit. Donec dignissim justo a tellus sagittis
-            molestie.
-          </li>
-          <li>
-            Suspendisse tincidunt, sem sollicitudin convallis gravida, magna
-            enim pellentesque lacus, ac finibus orci ipsum sed lacus. Donec
-            scelerisque a purus nec posuere.
-          </li>
-          <li>
-            Nam suscipit mauris vel urna mattis, in auctor massa volutpat.
-            Vestibulum elementum molestie sapien at congue.
-          </li>
-        </div>
-        <div>
-          Nam accumsan convallis nunc sit amet semper. Curabitur sit amet erat
-          justo.
-        </div>
+        <div>{description}</div>
       </div>
     </div>
   );
-}
+};
+
+export default CreatorProfileDescription;
