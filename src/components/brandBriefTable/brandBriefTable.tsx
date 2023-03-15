@@ -1,6 +1,11 @@
+import { BrandBrief } from "API";
+import { FC } from "react";
 import "./brandBriefTable.css";
 
-export default function BrandBriefTable() {
+interface Props {
+  data?: Array<BrandBrief | null> | null;
+}
+export const BrandBriefTable: FC<Props> = ({ data }) => {
   return (
     <table className="brand-table">
       <tr className="brand-table-header-bottom-border">
@@ -11,16 +16,22 @@ export default function BrandBriefTable() {
         <th className="brand-table-header-label">Status</th>
         <th className="brand-table-header-label">Details</th>
       </tr>
-      <tr>
-        <td className="brand-table-description">Summer Campaign</td>
-        <td className="brand-table-description">SA tourism wants to promote</td>
-        <td className="brand-table-description">UGC summer campaign</td>
-        <td className="brand-table-description">Awareness</td>
-        <td className="brand-table-description">Active</td>
-        <td>
-          <img src="/images/table-search.svg" />
-        </td>
-      </tr>
+      {data?.map((e) => (
+        <tr>
+          <td className="brand-table-description">{e?.BriefName}</td>
+          <td className="brand-table-description">{e?.brandBriefDetails}</td>
+          <td className="brand-table-description">
+            {e?.creativeInspirations?.[0]}
+          </td>
+          <td className="brand-table-description">{e?.objective}</td>
+          <td className="brand-table-description">Active</td>
+          <td>
+            <img src="/images/table-search.svg" />
+          </td>
+        </tr>
+      ))}
     </table>
   );
-}
+};
+
+export default BrandBriefTable;
