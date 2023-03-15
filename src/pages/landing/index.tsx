@@ -13,7 +13,7 @@ export const LandingPage: React.FC = () => {
       <div className="landing-page-container">
         <div className="landing-page-navbar comingSoon">
           <div className="landing-page-logo">
-            <img src="/images/edc-logo.png" alt="edc-squared" />
+            <img src="/images/edc-logo.svg" alt="edc-squared" />
           </div>
           <div className="landing-page-menu-header">
             <div className="landing-page-menu">

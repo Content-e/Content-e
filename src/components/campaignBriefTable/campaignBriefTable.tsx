@@ -60,20 +60,20 @@ const withCreatorBriefListCampaignBriefTable: FC<
   return (
     <table>
       <tr className="table-header-bottom-border">
-        <th className="table-header-label">Brief Name</th>
-        <th className="table-header-label">Brand</th>
-        <th className="table-header-label">Vertical</th>
-        <th className="table-header-label">Objective</th>
-        <th className="table-header-label">Status</th>
-        <th className="table-header-label">Details</th>
+        <th className="campaign table-header-label">Brief Name</th>
+        <th className="campaign table-header-label">Brand</th>
+        <th className="campaign table-header-label">Vertical</th>
+        <th className="campaign table-header-label">Objective</th>
+        <th className="campaign table-header-label">Status</th>
+        <th className="campaign table-header-label">Details</th>
       </tr>
       {filteredData.map((brief, index) => (
         <tr key={`${brief?.id} -- ${index}`}>
-          <td className="table-description">{brief?.briefName}</td>
-          <td className="table-description">{brief?.brandName}</td>
-          <td className="table-description">{brief?.vertical}</td>
-          <td className="table-description">{brief?.objective}</td>
-          <td className="table-description">{brief?.status}</td>
+          <td className="campaign table-description">{brief?.briefName}</td>
+          <td className="campaign table-description">{brief?.brandName}</td>
+          <td className="campaign table-description">{brief?.vertical}</td>
+          <td className="campaign table-description">{brief?.objective}</td>
+          <td className="campaign table-description">{brief?.status}</td>
           <td onClick={() => onSelectBrief(brief?.id)}>
             <img src="/images/table-search.svg" />
           </td>

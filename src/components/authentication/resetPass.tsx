@@ -63,7 +63,7 @@ export const ResetPassword: FC = () => {
   return (
     <div className="login">
       <div className="login__landing">
-        <img src="/images/edc-logo.png" alt="edc-squared" />
+        <img src="/images/edc-logo.svg" alt="edc-squared" />
         <div className="login__landing-container">
           <span>
             Everyday creators, <br />

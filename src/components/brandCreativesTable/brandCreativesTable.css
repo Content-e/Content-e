@@ -16,6 +16,20 @@ table {
   width: 25%;
 }
 
+.table-header-label.campaign {
+  width: 17.66%;
+}
+.table-header-label.campaign:nth-of-type(4) {
+  width: 25.66%;
+}
+.table-header-label.campaign:nth-of-type(5) {
+  width: 14.66%;
+}
+
+.table-header-label.campaign:nth-of-type(6) {
+  width: 6.66%;
+}
+
 .table-description {
   font-family: "Raleway";
   font-style: normal;
@@ -24,4 +38,18 @@ table {
   line-height: 18px;
   color: #001219;
   width: 25%;
+}
+
+.table-description.campaign {
+  width: 17.66%;
+}
+.table-description.campaign:nth-of-type(4) {
+  width: 24.66%;
+}
+.table-description.campaign:nth-of-type(5) {
+  width: 13.66%;
+}
+
+.table-description.campaign:nth-of-type(6) {
+  width: 8.66%;
 }
