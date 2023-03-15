@@ -1,12 +1,11 @@
 import { FC } from "react";
 import { BrandSteps } from "components";
 import * as S from "./styles";
-import { AuthRoutes } from "utils";
 import { useHistory } from "react-router-dom";
 
 export const BrandStepsPage: FC = () => {
   const history = useHistory();
-  const goToHome = (): void => history.push(AuthRoutes.Redirector);
+  const goToHome = (): void => history.goBack();
 
   return (
     <S.BrandPageWrapper>

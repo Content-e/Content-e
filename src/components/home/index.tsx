@@ -1,7 +1,6 @@
-import { FC, Fragment, useEffect, useMemo } from "react";
+import { FC, Fragment, useMemo } from "react";
 import { withProfile } from "state/profileSteps";
-import { useHistory, useLocation } from "react-router-dom";
-import { AuthRoutes, ProfileProps } from "utils";
+import { ProfileProps } from "utils";
 import BrandHead from "./brandHead";
 import BrandBody from "./brandBody";
 import Meter from "./meter";
@@ -9,17 +8,8 @@ import { NoDataFound } from "./noData";
 import * as S from "./styles";
 import classNames from "classnames";
 
-export const HomePage: FC<ProfileProps> = ({
-  profileState: { data, isLoading },
-}) => {
-  const history = useHistory();
-  const { pathname } = useLocation();
+export const HomePage: FC<ProfileProps> = ({ profileState: { data } }) => {
   const brandExists = useMemo(() => data?.brand?.items?.[0], [data]);
-
-  useEffect(() => {
-    if (!isLoading && !brandExists && AuthRoutes.Brand === pathname)
-      history.push(AuthRoutes.EditBrand);
-  }, [brandExists, isLoading]);
 
   if (!data) return <Fragment key="no profie found" />;
   return (

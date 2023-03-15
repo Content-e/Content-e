@@ -1,13 +1,8 @@
 import { FC } from "react";
-import { FullPageLoader } from "components";
+import { FullPageLoader, HomePage } from "components";
 import withApolloProvider from "hooks/apollo/withApollo";
 import { SidebarLayout } from "layout";
-import {
-  AuthorizeTikTokStep,
-  BrandStepsPage,
-  MainPage,
-  RedirectingStep,
-} from "pages";
+import { AuthorizeTikTokStep, BrandStepsPage, RedirectingStep } from "pages";
 
 import CampaignBriefs from "pages/campaignBriefs/campaignBriefs";
 import CreatorDashboard from "pages/creatorDashboard/creatorDashboard";
@@ -33,7 +28,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
         <Route exact path={AuthRoutes.Redirector} component={RedirectingStep} />
         <Route exact path={AuthRoutes.Tiktok} component={AuthorizeTikTokStep} />
         <SidebarLayout>
-          <Route exact path={AuthRoutes.Brand} component={MainPage} />
+          <Route exact path={AuthRoutes.Brand} component={HomePage} />
           <Route exact path={AuthRoutes.EditBrand} component={BrandStepsPage} />
           <Route
             exact

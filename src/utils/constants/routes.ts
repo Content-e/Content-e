@@ -29,11 +29,11 @@ export enum AuthRoutes {
   Wallet = "/wallet",
   BestPractices = "/bestPractices",
 
-  BrandDashboard = "/brandDashboard",
-  BrandBriefs = "/brandBriefs",
-  Creatives = "/creatives",
-  CreateBrief = "/createBrief",
   Brand = "/brandProfile",
   EditBrand = "/brandEdit",
+  BrandDashboard = "/brandDashboard",
+  BrandBriefs = "/brandBriefs",
+  CreateBrief = "/createBrief",
+  Creatives = "/creatives",
   CreativesTable = "/creativesTable",
 }
