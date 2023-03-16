@@ -88,7 +88,7 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
               {getOption("chat", AuthRoutes.Dashboard, onDashboard)}
               {getOption("notes", AuthRoutes.Creatives, onCreatives)}
               {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrief)}
-              {getOption("book", AuthRoutes.Brand, onBrand)}
+              {getOption("bookOpen", AuthRoutes.Brand, onBrand)}
             </Fragment>
           )}
         </S.SidebarMenu>
