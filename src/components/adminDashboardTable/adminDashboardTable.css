@@ -1,0 +1,27 @@
+.admin-dashboard-table {
+  border-bottom: 1px solid #9fd0bd;
+}
+
+.admin-dashboard-table-header-label {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #a1a1a1;
+  width: auto;
+}
+
+.admin-dashboard-table-description {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #1c1c1c;
+  width: auto;
+}
+
+table {
+  width: 100%;
+}

@@ -1,0 +1,48 @@
+.admin-dashboard-cards {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-dashboard-title {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  color: #041416;
+}
+
+.admin-dashboard-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-table-container {
+  width: 50%;
+  margin-top: 10px;
+}
+
+.admin-panel {
+  width: 100%;
+}
+
+.creator-payments-container {
+  padding: 15px;
+  background: #ffffff;
+  border: 1px solid #9fd0bd;
+  border-radius: 6px;
+  height: 308px;
+  width: auto;
+}
+
+.creator-payments {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1c1c1c;
+  margin-bottom: 8px;
+}

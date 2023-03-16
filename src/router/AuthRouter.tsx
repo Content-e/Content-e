@@ -17,6 +17,7 @@ import BrandDashboard from "pages/brandDashboard/brandDashboard";
 import CreateBrief from "components/createBrief/createBrief";
 import BrandBriefs from "pages/brandBriefs/brandBriefs";
 import CreativesTable from "components/creativesTable/creativesTable";
+import AdminDashboard from "pages/adminDashboard/adminDashboard";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -58,6 +59,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
           <Route exact path={AuthRoutes.Creatives} component={CreativesTable} />
           <Route exact path={AuthRoutes.CreateBrief} component={CreateBrief} />
           <Route exact path={AuthRoutes.BrandBriefs} component={BrandBriefs} />
+          <Route
+            exact
+            path={AuthRoutes.AdminDashboard}
+            component={AdminDashboard}
+          />
         </SidebarLayout>
       </Switch>
     );
