@@ -1,6 +1,12 @@
+import { FC } from "react";
+import { useHistory } from "react-router-dom";
+import { AuthRoutes } from "utils";
 import "./brandProfileConfirmationModal.css";
 
-export default function BrandProfileConfirmationModal() {
+export const BrandProfileConfirmationModal: FC = () => {
+  const history = useHistory();
+  const goToBrand = (): void => history.push(AuthRoutes.Brand);
+
   return (
     <div className="brand-confirmation-modal">
       <div className="brand-confirmation-modal-content-container">
@@ -13,11 +19,13 @@ export default function BrandProfileConfirmationModal() {
           navigation.
         </div>
         <div className="brand-confirm-btn-container">
-          <div className="brand-confirm-btn">
+          <div className="brand-confirm-btn" onClick={goToBrand}>
             <span className="brand-confirm-btn-title">Ok</span>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default BrandProfileConfirmationModal;

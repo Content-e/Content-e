@@ -1,5 +1,7 @@
 import { BrandBrief } from "API";
 import BrandBriefTable from "components/brandBriefTable/brandBriefTable";
+// eslint-disable-next-line max-len
+import BrandProfileConfirmationModal from "components/brandProfileConfirmationModal/brandProfileConfirmationModal";
 import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
 import { FC, useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -7,12 +9,16 @@ import { BrandBriefProps, withBrandBriefs } from "state/brandBrief";
 import { AuthRoutes } from "utils";
 import "./brandBriefs.css";
 
-export const BrandBriefs: FC<BrandBriefProps> = ({ data }) => {
+export const BrandBriefs: FC<BrandBriefProps> = ({ data, brand }) => {
   const history = useHistory();
   const [input, setInput] = useState("");
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
+  const [showAlert, setShowAlert] = useState(false);
 
-  const goToBriefCreation = (): void => history.push(AuthRoutes.CreateBrief);
+  const goToBriefCreation = (): void => {
+    if (brand) history.push(AuthRoutes.CreateBrief);
+    else setShowAlert(true);
+  };
 
   useEffect(() => {
     if (data) setInput("");
@@ -32,6 +38,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data }) => {
     );
   return (
     <div>
+      {showAlert && <BrandProfileConfirmationModal />}
       <div className="brand-table-label">Brand briefs</div>
       <div className="brand-table-container">
         <div className="brand-brief-label-container">

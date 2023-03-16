@@ -18,6 +18,7 @@ import Wallet from "pages/wallet/wallet";
 import BestPractice from "pages/bestPractice/practice";
 import CreativesTable from "components/creativesTable/creativesTable";
 import AdminDashboard from "pages/adminDashboard/adminDashboard";
+import CreateBrief from "components/createBrief/createBrief";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -34,6 +35,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
           <Route exact path={AuthRoutes.Creatives} component={CreativesTable} />
           <Route exact path={AuthRoutes.Brand} component={HomePage} />
           <Route exact path={AuthRoutes.EditBrand} component={BrandStepsPage} />
+          <Route exact path={AuthRoutes.CreateBrief} component={CreateBrief} />
           <Route exact path={AuthRoutes.Wallet} component={Wallet} />
           <Route
             exact

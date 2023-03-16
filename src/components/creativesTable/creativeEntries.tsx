@@ -31,7 +31,7 @@ export const CreativeEntries: FC<Props> = ({ data, openCreative }) => {
   return (
     <>
       {requests.map((e) => (
-        <tr>
+        <tr key={e.id}>
           <td className="creatives-table-description">{e.briefName}</td>
           <td className="creatives-table-description">{e.creatorHandle}</td>
           <td className="creatives-table-description">{e.videoLink}</td>
