@@ -1,6 +1,7 @@
+import { FC } from "react";
 import "./createBrief.css";
 
-export default function CreateBrief() {
+export const CreateBrief: FC = () => {
   return (
     <div className="create-brief-box">
       <div className="brief-container">
@@ -17,10 +18,6 @@ export default function CreateBrief() {
           </div>
           <div className="create-brief-input-container">
             <div className="create-brief-input-title">Objective</div>
-            <input className="create-brief-input" />
-          </div>
-          <div className="create-brief-input-container">
-            <div className="create-brief-input-title">Brief name</div>
             <input className="create-brief-input" />
           </div>
           <div className="create-brief-input-container">
@@ -68,4 +65,6 @@ export default function CreateBrief() {
       </div>
     </div>
   );
-}
+};
+
+export default CreateBrief;
