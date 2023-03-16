@@ -1,6 +1,12 @@
+import { IconLoader } from "components/loader";
+import { FC } from "react";
 import "./campaignConfirmationModal.css";
 
-export default function CampaignConfirmationModal() {
+interface Props {
+  onOkay: () => void;
+  isLoading?: boolean;
+}
+export const CampaignConfirmationModal: FC<Props> = ({ onOkay, isLoading }) => {
   return (
     <div className="campaign-confirmation-modal">
       <div className="campaign-confirmation-modal-content-container">
@@ -12,11 +18,16 @@ export default function CampaignConfirmationModal() {
           will start spending.
         </div>
         <div className="confirm-btn-container">
-          <div className="confirm-btn">
-            <span className="confirm-btn-title">Confirm</span>
+          <div className="confirm-btn" onClick={onOkay}>
+            <span className="confirm-btn-title">
+              <span style={{ marginRight: 12 }}>Confirm</span>{" "}
+              {isLoading && <IconLoader />}
+            </span>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default CampaignConfirmationModal;

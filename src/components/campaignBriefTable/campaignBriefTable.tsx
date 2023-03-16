@@ -74,7 +74,7 @@ const withCreatorBriefListCampaignBriefTable: FC<
           <td className="campaign table-description">{brief?.vertical}</td>
           <td className="campaign table-description">{brief?.objective}</td>
           <td className="campaign table-description">{brief?.status}</td>
-          <td onClick={() => onSelectBrief(brief?.id)}>
+          <td onClick={(): void => onSelectBrief(brief?.id)}>
             <img src="/images/table-search.svg" />
           </td>
         </tr>
