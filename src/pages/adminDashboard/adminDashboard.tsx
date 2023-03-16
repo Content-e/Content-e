@@ -9,23 +9,23 @@ export default function AdminDashboard() {
         <div className="admin-dashboard-title">Admin Dashboard</div>
         <div className="admin-dashboard-cards">
           <CreativeDetailsCard
-            campaign="Dev"
-            campaignHeader="Campaign brief name"
+            campaign="0"
+            campaignHeader="Last 24 hour spend"
             iconCheck={false}
           />
           <CreativeDetailsCard
-            campaign="Dev"
-            campaignHeader="Campaign brief name"
+            campaign="0"
+            campaignHeader="Number of creatives linked"
             iconCheck={false}
           />
           <CreativeDetailsCard
-            campaign="Dev"
-            campaignHeader="Campaign brief name"
+            campaign="0"
+            campaignHeader="Creative approval rate"
             iconCheck={false}
           />
           <CreativeDetailsCard
-            campaign="Dev"
-            campaignHeader="Campaign brief name"
+            campaign="0"
+            campaignHeader="Average ad spend per creative"
             iconCheck={false}
           />
         </div>
