@@ -23,13 +23,10 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
   const onLogout = (): void => history.push(AuthRoutes.Logout);
   const onBrand = (): void => history.push(AuthRoutes.Brand);
   const onCampaignBrief = (): void => history.push(AuthRoutes.CampaignBrief);
-  const onBrandBriefs = (): void => history.push(AuthRoutes.BrandBriefs);
-  const onCreatorProfile = (): void => history.push(AuthRoutes.CreatorProfile);
+  const onEditProfile = (): void => history.push(AuthRoutes.EditProfile);
   const onWallet = (): void => history.push(AuthRoutes.Wallet);
   const onBestPractice = (): void => history.push(AuthRoutes.BestPractices);
-  const onCreatorDashboard = (): void =>
-    history.push(AuthRoutes.CreatorDashboard);
-  const onBrandDashboard = (): void => history.push(AuthRoutes.BrandDashboard);
+  const onDashboard = (): void => history.push(AuthRoutes.Dashboard);
   const onCreatives = (): void => history.push(AuthRoutes.Creatives);
 
   const getOption = (
@@ -75,16 +72,12 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
           <S.Image>
             <img src="/images/default-image.png" />
           </S.Image>
-          <S.Username onClick={onCreatorProfile}>{userName}</S.Username>
+          <S.Username onClick={onEditProfile}>{userName}</S.Username>
         </S.ProfilePanel>
         <S.SidebarMenu>
           {data?.userType === USER_TYPES.CREATIVE_USER && (
             <Fragment key="creator menu options">
-              {getOption(
-                "chat",
-                AuthRoutes.CreatorDashboard,
-                onCreatorDashboard
-              )}
+              {getOption("chat", AuthRoutes.Dashboard, onDashboard)}
               {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrief)}
               {getOption("wallet", AuthRoutes.Wallet, onWallet)}
               {getOption("book", AuthRoutes.BestPractices, onBestPractice)}
@@ -92,9 +85,9 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
           )}
           {data?.userType === USER_TYPES.BRAND_USER && (
             <Fragment key="creator menu options">
-              {getOption("chat", AuthRoutes.BrandDashboard, onBrandDashboard)}
+              {getOption("chat", AuthRoutes.Dashboard, onDashboard)}
               {getOption("notes", AuthRoutes.Creatives, onCreatives)}
-              {getOption("bag", AuthRoutes.BrandBriefs, onBrandBriefs)}
+              {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrief)}
               {getOption("book", AuthRoutes.Brand, onBrand)}
             </Fragment>
           )}

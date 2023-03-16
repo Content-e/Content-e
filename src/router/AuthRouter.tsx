@@ -2,20 +2,20 @@ import { FC } from "react";
 import { FullPageLoader, HomePage } from "components";
 import withApolloProvider from "hooks/apollo/withApollo";
 import { SidebarLayout } from "layout";
-import { AuthorizeTikTokStep, BrandStepsPage, RedirectingStep } from "pages";
+import {
+  AuthorizeTikTokStep,
+  BrandStepsPage,
+  Brief,
+  Dashboard,
+  RedirectingStep,
+} from "pages";
 
-import CampaignBriefs from "pages/campaignBriefs/campaignBriefs";
-import CreatorDashboard from "pages/creatorDashboard/creatorDashboard";
-import CreatorProfile from "pages/creatorProfile/creatorProfile";
-
+import EditProfile from "pages/editProfile";
 import { Route, Switch } from "react-router-dom";
 import { withProfile } from "state/profileSteps";
 import { AuthRoutes, ProfileProps } from "utils";
 import Wallet from "pages/wallet/wallet";
 import BestPractice from "pages/bestPractice/practice";
-import BrandDashboard from "pages/brandDashboard/brandDashboard";
-import CreateBrief from "components/createBrief/createBrief";
-import BrandBriefs from "pages/brandBriefs/brandBriefs";
 import CreativesTable from "components/creativesTable/creativesTable";
 import AdminDashboard from "pages/adminDashboard/adminDashboard";
 
@@ -28,37 +28,18 @@ const AuthRouterPaths: FC<ProfileProps> = ({
         <Route exact path={AuthRoutes.Redirector} component={RedirectingStep} />
         <Route exact path={AuthRoutes.Tiktok} component={AuthorizeTikTokStep} />
         <SidebarLayout>
+          <Route exact path={AuthRoutes.EditProfile} component={EditProfile} />
+          <Route exact path={AuthRoutes.Dashboard} component={Dashboard} />
+          <Route exact path={AuthRoutes.CampaignBrief} component={Brief} />
+          <Route exact path={AuthRoutes.Creatives} component={CreativesTable} />
           <Route exact path={AuthRoutes.Brand} component={HomePage} />
           <Route exact path={AuthRoutes.EditBrand} component={BrandStepsPage} />
-          <Route
-            exact
-            path={AuthRoutes.CreatorDashboard}
-            component={CreatorDashboard}
-          />
-          <Route
-            exact
-            path={AuthRoutes.BrandDashboard}
-            component={BrandDashboard}
-          />
-          <Route
-            exact
-            path={AuthRoutes.CreatorProfile}
-            component={CreatorProfile}
-          />
-          <Route
-            exact
-            path={AuthRoutes.CampaignBrief}
-            component={CampaignBriefs}
-          />
           <Route exact path={AuthRoutes.Wallet} component={Wallet} />
           <Route
             exact
             path={AuthRoutes.BestPractices}
             component={BestPractice}
           />
-          <Route exact path={AuthRoutes.Creatives} component={CreativesTable} />
-          <Route exact path={AuthRoutes.CreateBrief} component={CreateBrief} />
-          <Route exact path={AuthRoutes.BrandBriefs} component={BrandBriefs} />
           <Route
             exact
             path={AuthRoutes.AdminDashboard}

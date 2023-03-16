@@ -15,7 +15,7 @@ export const DashboardCampaignBriefTable: FC<Props> = ({ data, openBrief }) => {
   return (
     <>
       {data?.map((e) => (
-        <tr>
+        <tr key={e?.id}>
           <td className="dashboard-campaign-table-description ">
             {e?.BriefName}
           </td>

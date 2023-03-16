@@ -12,12 +12,6 @@ const RedirectingStep: React.FC<ProfileProps> = ({
   const { pathname } = useLocation();
   const pathnameParts = pathname.split("/");
 
-  const redirectToDashboard = () => {
-    if (data?.userType === USER_TYPES.CREATIVE_USER)
-      history.replace(AuthRoutes.CreatorDashboard);
-    else if (data?.userType === USER_TYPES.BRAND_USER)
-      history.replace(AuthRoutes.BrandDashboard);
-  };
   const redirectToValidRoute = (): void => {
     if (
       pathnameParts.length === 3 &&
@@ -25,7 +19,7 @@ const RedirectingStep: React.FC<ProfileProps> = ({
       data?.userType === USER_TYPES.CREATIVE_USER
     )
       history.replace(replaceSubPath(AuthRoutes.Tiktok));
-    else redirectToDashboard();
+    else history.replace(AuthRoutes.Dashboard);
   };
 
   useEffect(() => {

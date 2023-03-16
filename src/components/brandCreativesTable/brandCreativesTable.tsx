@@ -29,7 +29,7 @@ export const BrandCreativesTable: FC<Props> = ({ data, openCreative }) => {
   return (
     <>
       {requests.map((e) => (
-        <tr>
+        <tr key={e.id}>
           <td className="table-description">{e.creativeLink}</td>
           <td className="table-description">
             {e.creatorHandle ? `@${e.creatorHandle}` : ""}

@@ -22,7 +22,7 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
         <th className="brand-table-header-label">Details</th>
       </tr>
       {data?.map((e) => (
-        <tr>
+        <tr key={e?.id}>
           <td className="brand-table-description">{e?.BriefName}</td>
           <td className="brand-table-description">{e?.brandBriefDetails}</td>
           <td className="brand-table-description">

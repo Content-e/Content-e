@@ -23,17 +23,17 @@ export enum AuthRoutes {
   Tiktok = "/linkTikTok/:id",
   Redirector = "/redirecting/:id?",
 
-  CreatorProfile = "/creatorProfile",
-  CreatorDashboard = "/creatorDashboard",
-  CampaignBrief = "/campaignBriefs",
+  Dashboard = "/dashboard",
+  CampaignBrief = "/campaignBrief",
+  EditProfile = "/editProfile",
+
   Wallet = "/wallet",
   BestPractices = "/bestPractices",
 
+  Creatives = "/creatives",
+  CreateBrief = "/createBrief",
   Brand = "/brandProfile",
   EditBrand = "/brandEdit",
-  BrandDashboard = "/brandDashboard",
-  BrandBriefs = "/brandBriefs",
-  CreateBrief = "/createBrief",
-  Creatives = "/creatives",
+
   AdminDashboard = "/adminDashboard",
 }

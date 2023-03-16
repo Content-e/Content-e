@@ -1,5 +1,6 @@
+import { USER_TYPES } from "API";
 import { ShouldRender } from "components";
-import { FC, useEffect, useState } from "react";
+import { FC, Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   validateDescription,
@@ -19,7 +20,7 @@ import {
 } from "utils";
 import "./creatorProfile.css";
 
-export const CreatorProfile: FC<ProfileProps> = ({
+export const EditProfile: FC<ProfileProps> = ({
   editProfile,
   updateProfileData,
   profileState: { data },
@@ -64,8 +65,7 @@ export const CreatorProfile: FC<ProfileProps> = ({
   }, [data]);
 
   useEffect(() => {
-    if (isLoading && updateProfileData)
-      history.push(AuthRoutes.CreatorDashboard);
+    if (isLoading && updateProfileData) history.push(AuthRoutes.Dashboard);
   }, [isLoading, updateProfileData]);
 
   if (!data) return <></>;
@@ -93,30 +93,36 @@ export const CreatorProfile: FC<ProfileProps> = ({
               readOnly
             />
           </div>
-          <div className="field-label-container">
-            <div className="field-label">TikTok handle</div>
-            <input
-              className="creator-profile-input"
-              value={formState.tiktokHandler}
-              onChange={(e): void =>
-                updateState("tiktokHandler", e.target.value)
-              }
-            />
-            <ShouldRender if={formError.tiktokHandler}>
-              <span>{formError.tiktokHandler}</span>
-            </ShouldRender>
-          </div>
-          <div className="field-label-container">
-            <div className="field-label">Describe yourself</div>
-            <textarea
-              className="creator-profile-textarea"
-              value={formState.description}
-              onChange={(e): void => updateState("description", e.target.value)}
-            />
-            <ShouldRender if={formError.description}>
-              <span>{formError.description}</span>
-            </ShouldRender>
-          </div>
+          {data?.userType === USER_TYPES.CREATIVE_USER && (
+            <Fragment>
+              <div className="field-label-container">
+                <div className="field-label">TikTok handle</div>
+                <input
+                  className="creator-profile-input"
+                  value={formState.tiktokHandler}
+                  onChange={(e): void =>
+                    updateState("tiktokHandler", e.target.value)
+                  }
+                />
+                <ShouldRender if={formError.tiktokHandler}>
+                  <span>{formError.tiktokHandler}</span>
+                </ShouldRender>
+              </div>
+              <div className="field-label-container">
+                <div className="field-label">Describe yourself</div>
+                <textarea
+                  className="creator-profile-textarea"
+                  value={formState.description}
+                  onChange={(e): void =>
+                    updateState("description", e.target.value)
+                  }
+                />
+                <ShouldRender if={formError.description}>
+                  <span>{formError.description}</span>
+                </ShouldRender>
+              </div>
+            </Fragment>
+          )}
         </div>
 
         <div className="save-profile-container">
@@ -129,4 +135,4 @@ export const CreatorProfile: FC<ProfileProps> = ({
   );
 };
 
-export default withProfile(CreatorProfile);
+export default withProfile(EditProfile);
