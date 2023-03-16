@@ -1,10 +1,12 @@
 import { useMutation } from "@apollo/client";
 import {
+  CreateBrandBriefMutation,
+  CreateBrandBriefMutationVariables,
   UpdateCreativeRequestMutation,
   UpdateCreativeRequestMutationVariables,
 } from "API";
-import { updateCreativeRequest } from "graphql/mutations";
-import { IUpdateBriefResponse } from "hooks/utils";
+import { createBrandBrief, updateCreativeRequest } from "graphql/mutations";
+import { ICreateBriefResponse, IUpdateBriefResponse } from "hooks/utils";
 import { getQuery } from "hooks/utils/helpers";
 
 export const updateBriefStatus = (): IUpdateBriefResponse => {
@@ -15,4 +17,12 @@ export const updateBriefStatus = (): IUpdateBriefResponse => {
   const response = data?.updateCreativeRequest || null;
 
   return { loading, updateStatus, error, response };
+};
+
+export const createCampaignBrief = (): ICreateBriefResponse => {
+  const [createBrief, { data, loading, error }] = useMutation<
+    CreateBrandBriefMutation,
+    CreateBrandBriefMutationVariables
+  >(getQuery(createBrandBrief));
+  return { loading, createBrief, error, data: data?.createBrandBrief };
 };

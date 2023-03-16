@@ -25,9 +25,7 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
         <tr key={e?.id}>
           <td className="brand-table-description">{e?.BriefName}</td>
           <td className="brand-table-description">{e?.brandBriefDetails}</td>
-          <td className="brand-table-description">
-            {e?.creativeInspirations?.[0]}
-          </td>
+          <td className="brand-table-description">{e?.vertical}</td>
           <td className="brand-table-description">{e?.objective}</td>
           <td className="brand-table-description">
             {e?.active ? "Active" : "Inactive"}
