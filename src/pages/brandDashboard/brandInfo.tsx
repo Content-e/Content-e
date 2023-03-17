@@ -16,10 +16,12 @@ export const BrandInfo: FC<Props> = ({ brand }) => {
     <div className="dashboard-campaign-brief-container">
       <div className="brand-table-header">
         <div className="brand-table-label">Brand Profile</div>
-        <img src="/images/morevert.svg" />
+        <img src="/images/morevert.svg" onClick={goToBrandPage} />
       </div>
       <div className="brand-profile-container">
-        {brand?.name && <div className="brand-name">{brand?.name}</div>}
+        {brand?.name && (
+          <div className="brand-name capitalized">{brand?.name}</div>
+        )}
         {brand?.description && (
           <div className="brand-description">{brand?.description}</div>
         )}

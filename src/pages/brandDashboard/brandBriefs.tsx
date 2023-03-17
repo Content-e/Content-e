@@ -1,6 +1,8 @@
 import DashboardCampaignBriefTable from "components/dashboardCampaignBriefTable/dashboardCampaignBriefTable";
 import { FC } from "react";
 import { BrandBrief } from "API";
+import { useHistory } from "react-router-dom";
+import { AuthRoutes } from "utils";
 
 interface Props {
   data?: Array<BrandBrief | null>;
@@ -8,11 +10,14 @@ interface Props {
 }
 
 export const BrandBriefs: FC<Props> = (props) => {
+  const history = useHistory();
+  const goToBriefs = (): void => history.push(AuthRoutes.CampaignBrief);
+
   return (
     <div className="dashboard-campaign-brief-container">
       <div className="brand-table-header">
         <div className="brand-table-label">Campaign briefs</div>
-        <img src="/images/morevert.svg" />
+        <img src="/images/morevert.svg" onClick={goToBriefs} />
       </div>
       <table>
         <tr className="table-header-bottom-border">

@@ -3,6 +3,8 @@ import "./brandDashboard.css";
 import { FC } from "react";
 import { BrandBrief } from "API";
 import { ISelectredRequest } from "state/brandBrief";
+import { useHistory } from "react-router-dom";
+import { AuthRoutes } from "utils";
 
 interface Props {
   data?: Array<BrandBrief | null>;
@@ -10,12 +12,15 @@ interface Props {
 }
 
 export const CreativeRequests: FC<Props> = (props) => {
+  const history = useHistory();
+  const goToCreatives = (): void => history.push(AuthRoutes.Creatives);
+
   return (
     <div className="creative-table-container">
       <div className="brand-table-container">
         <div className="brand-table-header">
           <div className="brand-table-label">Creatives</div>
-          <img src="/images/morevert.svg" />
+          <img src="/images/morevert.svg" onClick={goToCreatives} />
         </div>
         <table>
           <tr className="table-header-bottom-border">

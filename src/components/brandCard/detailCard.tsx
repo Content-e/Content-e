@@ -11,7 +11,7 @@ const DetailCard: FC<Props> = ({ data, onCross }) => {
     <div className="detail-card-wrapper">
       <div className="detail-card-canvas">
         <div className="detail-card-header">
-          <div className="detail-card-heading">{data.name}</div>
+          <div className="detail-card-heading capitalized">{data.name}</div>
           <div className="detail-card-cross">
             <img
               src="/images/close-icon.svg"

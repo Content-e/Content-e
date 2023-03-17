@@ -69,11 +69,21 @@ const withCreatorBriefListCampaignBriefTable: FC<
       </tr>
       {filteredData.map((brief, index) => (
         <tr key={`${brief?.id} -- ${index}`}>
-          <td className="campaign table-description">{brief?.briefName}</td>
-          <td className="campaign table-description">{brief?.brandName}</td>
-          <td className="campaign table-description">{brief?.vertical}</td>
-          <td className="campaign table-description">{brief?.objective}</td>
-          <td className="campaign table-description">{brief?.status}</td>
+          <td className="campaign table-description capitalized">
+            {brief?.briefName}
+          </td>
+          <td className="campaign table-description capitalized">
+            {brief?.brandName}
+          </td>
+          <td className="campaign table-description capitalized">
+            {brief?.vertical}
+          </td>
+          <td className="campaign table-description capitalized">
+            {brief?.objective}
+          </td>
+          <td className="campaign table-description capitalized">
+            {brief?.status}
+          </td>
           <td onClick={(): void => onSelectBrief(brief?.id)}>
             <img src="/images/table-search.svg" />
           </td>

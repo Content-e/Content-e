@@ -16,10 +16,10 @@ export const DashboardCampaignBriefTable: FC<Props> = ({ data, openBrief }) => {
     <>
       {data?.map((e) => (
         <tr key={e?.id}>
-          <td className="dashboard-campaign-table-description ">
+          <td className="dashboard-campaign-table-description capitalized">
             {e?.BriefName}
           </td>
-          <td className="dashboard-campaign-table-description ">
+          <td className="dashboard-campaign-table-description capitalized">
             {e?.objective}
           </td>
           <td onClick={(): void => showDetails(e)}>

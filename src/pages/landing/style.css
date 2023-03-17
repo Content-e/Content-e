@@ -78,6 +78,8 @@
   border-radius: 30px;
   color: black;
   background: #e5d7ad;
+  pointer-events: all;
+  user-select: all;
   font-weight: 700;
 }
 .landing-page-wrapper .landing-page-container .landing-page-navbar .landing-page-menu-header .landing-page-socials {
@@ -108,11 +110,10 @@
 }
 .landing-page-wrapper .landing-page-body {
   margin-left: 117px;
-  flex: 1 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: -5%;
+  margin-top: 14.6%;
 }
 .landing-page-wrapper .landing-page-body .landing-page-title {
   font-family: "Raleway";

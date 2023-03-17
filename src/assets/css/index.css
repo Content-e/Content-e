@@ -47,3 +47,7 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.capitalized {
+  text-transform: capitalize;
+}

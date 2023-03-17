@@ -1,3 +1,4 @@
+import { USER_TYPES } from "API";
 import { startCase } from "lodash";
 import {
   allowedSubDomains,
@@ -89,4 +90,10 @@ export const replaceSubPath = (path: string): string => {
     return e;
   });
   return updatedPathElems.join("/");
+};
+
+export const getProfileRole = (userType?: USER_TYPES): string => {
+  if (userType === USER_TYPES.CREATIVE_USER) return "Creator";
+  if (userType === USER_TYPES.BRAND_USER) return "Brand";
+  return "";
 };

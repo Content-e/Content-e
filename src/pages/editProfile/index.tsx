@@ -1,5 +1,5 @@
 import { USER_TYPES } from "API";
-import { ShouldRender } from "components";
+import { getProfileRole, ShouldRender } from "components";
 import { FC, Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
@@ -71,7 +71,9 @@ export const EditProfile: FC<ProfileProps> = ({
   if (!data) return <></>;
   return (
     <>
-      <div className="creator-profile">Creator Profile</div>
+      <div className="creator-profile">
+        {getProfileRole(data.userType)} Profile
+      </div>
       <div className="creator-profile-form-container">
         <div className="creator-profile-form">
           <div className="field-label-container">

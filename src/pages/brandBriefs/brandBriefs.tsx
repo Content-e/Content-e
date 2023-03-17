@@ -39,7 +39,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data, brand }) => {
   return (
     <div>
       {showAlert && <BrandProfileConfirmationModal />}
-      <div className="brand-table-label">Brand briefs</div>
+      <div className="brand-table-label">Campaign briefs</div>
       <div className="brand-table-container">
         <div className="brand-brief-label-container">
           <input

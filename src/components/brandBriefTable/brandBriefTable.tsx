@@ -23,11 +23,17 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
       </tr>
       {data?.map((e) => (
         <tr key={e?.id}>
-          <td className="brand-table-description">{e?.BriefName}</td>
-          <td className="brand-table-description">{e?.brandBriefDetails}</td>
-          <td className="brand-table-description">{e?.vertical}</td>
-          <td className="brand-table-description">{e?.objective}</td>
-          <td className="brand-table-description">
+          <td className="brand-table-description capitalized">
+            {e?.BriefName}
+          </td>
+          <td className="brand-table-description capitalized">
+            {e?.brandBriefDetails}
+          </td>
+          <td className="brand-table-description capitalized">{e?.vertical}</td>
+          <td className="brand-table-description capitalized">
+            {e?.objective}
+          </td>
+          <td className="brand-table-description capitalized">
             {e?.active ? "Active" : "Inactive"}
           </td>
           <td onClick={(): void => onBriefSelection(e)}>
