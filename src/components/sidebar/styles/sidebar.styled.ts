@@ -13,7 +13,7 @@ export const SidebarWrapper = styled.div`
   pointer-events: all;
   margin: 0;
   border-right: 1px solid #9fd0bd;
-  width: 240px;
+  width: 179px;
 
   @media only screen and (min-width: 769px) {
     display: flex;
@@ -133,10 +133,6 @@ export const ArrowIcon = styled.div`
   height: 16px;
   margin-left: 4px;
   display: flex;
-
-  @media only screen and (min-width: 1200px) {
-    margin-left: 18px;
-  }
 `;
 export const MenuIcon = styled.div`
   width: 20px;
