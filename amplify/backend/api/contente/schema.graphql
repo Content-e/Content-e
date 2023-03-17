@@ -55,10 +55,11 @@ type CreativeRequest
 {
   brandBriefId: ID! @index (name: "byBrandBrief")
   creatorId: String! @index (name: "byCreator")
-  status: String! 
+  status: String! @index (name: "byStatus")
   tiktokCreativeUrl: String!
   tiktokVideoCode: String!
   creativeTiktokHandle: String
+  creatorDescription: String
 }
 
 enum USER_TYPES{

@@ -304,6 +304,7 @@ export const getBrandBrief = /* GraphQL */ `
           tiktokCreativeUrl
           tiktokVideoCode
           creativeTiktokHandle
+          creatorDescription
           id
           createdAt
           updatedAt
@@ -369,6 +370,7 @@ export const listBrandBriefs = /* GraphQL */ `
             tiktokCreativeUrl
             tiktokVideoCode
             creativeTiktokHandle
+            creatorDescription
             id
             createdAt
             updatedAt
@@ -432,6 +434,7 @@ export const brandBriefsByVertical = /* GraphQL */ `
             tiktokCreativeUrl
             tiktokVideoCode
             creativeTiktokHandle
+            creatorDescription
             id
             createdAt
             updatedAt
@@ -495,6 +498,7 @@ export const brandBriefsByBrandId = /* GraphQL */ `
             tiktokCreativeUrl
             tiktokVideoCode
             creativeTiktokHandle
+            creatorDescription
             id
             createdAt
             updatedAt
@@ -536,6 +540,7 @@ export const getCreativeRequest = /* GraphQL */ `
       tiktokCreativeUrl
       tiktokVideoCode
       creativeTiktokHandle
+      creatorDescription
       id
       createdAt
       updatedAt
@@ -560,6 +565,7 @@ export const listCreativeRequests = /* GraphQL */ `
         tiktokCreativeUrl
         tiktokVideoCode
         creativeTiktokHandle
+        creatorDescription
         id
         createdAt
         updatedAt
@@ -590,6 +596,7 @@ export const creativeRequestsByBrandBriefId = /* GraphQL */ `
         tiktokCreativeUrl
         tiktokVideoCode
         creativeTiktokHandle
+        creatorDescription
         id
         createdAt
         updatedAt
@@ -620,6 +627,38 @@ export const creativeRequestsByCreatorId = /* GraphQL */ `
         tiktokCreativeUrl
         tiktokVideoCode
         creativeTiktokHandle
+        creatorDescription
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const creativeRequestsByStatus = /* GraphQL */ `
+  query CreativeRequestsByStatus(
+    $status: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelCreativeRequestFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    creativeRequestsByStatus(
+      status: $status
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        brandBriefId
+        creatorId
+        status
+        tiktokCreativeUrl
+        tiktokVideoCode
+        creativeTiktokHandle
+        creatorDescription
         id
         createdAt
         updatedAt

@@ -305,6 +305,7 @@ export const createBrandBrief = /* GraphQL */ `
           tiktokCreativeUrl
           tiktokVideoCode
           creativeTiktokHandle
+          creatorDescription
           id
           createdAt
           updatedAt
@@ -368,6 +369,7 @@ export const updateBrandBrief = /* GraphQL */ `
           tiktokCreativeUrl
           tiktokVideoCode
           creativeTiktokHandle
+          creatorDescription
           id
           createdAt
           updatedAt
@@ -431,6 +433,7 @@ export const deleteBrandBrief = /* GraphQL */ `
           tiktokCreativeUrl
           tiktokVideoCode
           creativeTiktokHandle
+          creatorDescription
           id
           createdAt
           updatedAt
@@ -485,6 +488,7 @@ export const createCreativeRequest = /* GraphQL */ `
       tiktokCreativeUrl
       tiktokVideoCode
       creativeTiktokHandle
+      creatorDescription
       id
       createdAt
       updatedAt
@@ -503,6 +507,7 @@ export const updateCreativeRequest = /* GraphQL */ `
       tiktokCreativeUrl
       tiktokVideoCode
       creativeTiktokHandle
+      creatorDescription
       id
       createdAt
       updatedAt
@@ -521,6 +526,7 @@ export const deleteCreativeRequest = /* GraphQL */ `
       tiktokCreativeUrl
       tiktokVideoCode
       creativeTiktokHandle
+      creatorDescription
       id
       createdAt
       updatedAt

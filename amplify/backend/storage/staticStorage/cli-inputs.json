@@ -1,0 +1,13 @@
+{
+  "resourceName": "staticStorage",
+  "policyUUID": "22139672",
+  "bucketName": "user-avatar",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
