@@ -2,7 +2,6 @@ import { FC, useState } from "react";
 import BrandCard from "components/brandCard/brandCard";
 import BrandDesciption from "components/brandDescription/brandDescription";
 import CampaignDetailCard from "components/campaignDetailCard/campaignDetailCard";
-import CampaignSlider from "components/campaignSlider/campaignSlider";
 import "./campaignBriefDetails.css";
 import { BrandBrief } from "API";
 import DetailCard from "components/brandCard/detailCard";
@@ -43,8 +42,11 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
         />
       </div>
       <div className="brand-description">
-        <BrandDesciption id={data.id} detail={data.brandBriefDetails} />
-        <CampaignSlider videoUrls={data.creativeInspirations} />
+        <BrandDesciption
+          id={data.id}
+          detail={data.brandBriefDetails}
+          videoUrls={data.creativeInspirations}
+        />
       </div>
       {data.brandProfile && showDetails && (
         <DetailCard
