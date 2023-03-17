@@ -101,6 +101,7 @@ export type BrandProfile = {
   userEmail?: string | null,
   tiktokHandle?: string | null,
   vertical?: string | null,
+  metaData?: string | null,
   briefs?: ModelBrandBriefConnection | null,
   createdAt: string,
   updatedAt: string,
@@ -180,6 +181,7 @@ export type CreateBrandProfileInput = {
   userEmail?: string | null,
   tiktokHandle?: string | null,
   vertical?: string | null,
+  metaData?: string | null,
   userProfileBrandId?: string | null,
 };
 
@@ -193,6 +195,7 @@ export type ModelBrandProfileConditionInput = {
   userEmail?: ModelStringInput | null,
   tiktokHandle?: ModelStringInput | null,
   vertical?: ModelStringInput | null,
+  metaData?: ModelStringInput | null,
   and?: Array< ModelBrandProfileConditionInput | null > | null,
   or?: Array< ModelBrandProfileConditionInput | null > | null,
   not?: ModelBrandProfileConditionInput | null,
@@ -226,6 +229,7 @@ export type UpdateBrandProfileInput = {
   userEmail?: string | null,
   tiktokHandle?: string | null,
   vertical?: string | null,
+  metaData?: string | null,
   userProfileBrandId?: string | null,
 };
 
@@ -407,6 +411,7 @@ export type ModelBrandProfileFilterInput = {
   userEmail?: ModelStringInput | null,
   tiktokHandle?: ModelStringInput | null,
   vertical?: ModelStringInput | null,
+  metaData?: ModelStringInput | null,
   and?: Array< ModelBrandProfileFilterInput | null > | null,
   or?: Array< ModelBrandProfileFilterInput | null > | null,
   not?: ModelBrandProfileFilterInput | null,
@@ -492,6 +497,7 @@ export type ModelSubscriptionBrandProfileFilterInput = {
   userEmail?: ModelSubscriptionStringInput | null,
   tiktokHandle?: ModelSubscriptionStringInput | null,
   vertical?: ModelSubscriptionStringInput | null,
+  metaData?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionBrandProfileFilterInput | null > | null,
   or?: Array< ModelSubscriptionBrandProfileFilterInput | null > | null,
 };
@@ -552,6 +558,7 @@ export type DeleteUserProfileMutation = {
         userEmail?: string | null,
         tiktokHandle?: string | null,
         vertical?: string | null,
+        metaData?: string | null,
         briefs?:  {
           __typename: "ModelBrandBriefConnection",
           nextToken?: string | null,
@@ -596,6 +603,7 @@ export type CreateUserProfileMutation = {
         userEmail?: string | null,
         tiktokHandle?: string | null,
         vertical?: string | null,
+        metaData?: string | null,
         briefs?:  {
           __typename: "ModelBrandBriefConnection",
           nextToken?: string | null,
@@ -640,6 +648,7 @@ export type UpdateUserProfileMutation = {
         userEmail?: string | null,
         tiktokHandle?: string | null,
         vertical?: string | null,
+        metaData?: string | null,
         briefs?:  {
           __typename: "ModelBrandBriefConnection",
           nextToken?: string | null,
@@ -676,6 +685,7 @@ export type CreateBrandProfileMutation = {
     userEmail?: string | null,
     tiktokHandle?: string | null,
     vertical?: string | null,
+    metaData?: string | null,
     briefs?:  {
       __typename: "ModelBrandBriefConnection",
       items:  Array< {
@@ -704,6 +714,7 @@ export type CreateBrandProfileMutation = {
           userEmail?: string | null,
           tiktokHandle?: string | null,
           vertical?: string | null,
+          metaData?: string | null,
           createdAt: string,
           updatedAt: string,
           userProfileBrandId?: string | null,
@@ -737,6 +748,7 @@ export type UpdateBrandProfileMutation = {
     userEmail?: string | null,
     tiktokHandle?: string | null,
     vertical?: string | null,
+    metaData?: string | null,
     briefs?:  {
       __typename: "ModelBrandBriefConnection",
       items:  Array< {
@@ -765,6 +777,7 @@ export type UpdateBrandProfileMutation = {
           userEmail?: string | null,
           tiktokHandle?: string | null,
           vertical?: string | null,
+          metaData?: string | null,
           createdAt: string,
           updatedAt: string,
           userProfileBrandId?: string | null,
@@ -798,6 +811,7 @@ export type DeleteBrandProfileMutation = {
     userEmail?: string | null,
     tiktokHandle?: string | null,
     vertical?: string | null,
+    metaData?: string | null,
     briefs?:  {
       __typename: "ModelBrandBriefConnection",
       items:  Array< {
@@ -826,6 +840,7 @@ export type DeleteBrandProfileMutation = {
           userEmail?: string | null,
           tiktokHandle?: string | null,
           vertical?: string | null,
+          metaData?: string | null,
           createdAt: string,
           updatedAt: string,
           userProfileBrandId?: string | null,
@@ -886,6 +901,7 @@ export type CreateBrandBriefMutation = {
       userEmail?: string | null,
       tiktokHandle?: string | null,
       vertical?: string | null,
+      metaData?: string | null,
       briefs?:  {
         __typename: "ModelBrandBriefConnection",
         items:  Array< {
@@ -957,6 +973,7 @@ export type UpdateBrandBriefMutation = {
       userEmail?: string | null,
       tiktokHandle?: string | null,
       vertical?: string | null,
+      metaData?: string | null,
       briefs?:  {
         __typename: "ModelBrandBriefConnection",
         items:  Array< {
@@ -1028,6 +1045,7 @@ export type DeleteBrandBriefMutation = {
       userEmail?: string | null,
       tiktokHandle?: string | null,
       vertical?: string | null,
+      metaData?: string | null,
       briefs?:  {
         __typename: "ModelBrandBriefConnection",
         items:  Array< {
@@ -1164,6 +1182,7 @@ export type GetUserProfileQuery = {
         userEmail?: string | null,
         tiktokHandle?: string | null,
         vertical?: string | null,
+        metaData?: string | null,
         briefs?:  {
           __typename: "ModelBrandBriefConnection",
           nextToken?: string | null,
@@ -1211,6 +1230,7 @@ export type ListUserProfilesQuery = {
           userEmail?: string | null,
           tiktokHandle?: string | null,
           vertical?: string | null,
+          metaData?: string | null,
           createdAt: string,
           updatedAt: string,
           userProfileBrandId?: string | null,
@@ -1258,6 +1278,7 @@ export type UserProfilesByUserEmailQuery = {
           userEmail?: string | null,
           tiktokHandle?: string | null,
           vertical?: string | null,
+          metaData?: string | null,
           createdAt: string,
           updatedAt: string,
           userProfileBrandId?: string | null,
@@ -1291,6 +1312,7 @@ export type GetBrandProfileQuery = {
     userEmail?: string | null,
     tiktokHandle?: string | null,
     vertical?: string | null,
+    metaData?: string | null,
     briefs?:  {
       __typename: "ModelBrandBriefConnection",
       items:  Array< {
@@ -1319,6 +1341,7 @@ export type GetBrandProfileQuery = {
           userEmail?: string | null,
           tiktokHandle?: string | null,
           vertical?: string | null,
+          metaData?: string | null,
           createdAt: string,
           updatedAt: string,
           userProfileBrandId?: string | null,
@@ -1355,6 +1378,7 @@ export type ListBrandProfilesQuery = {
       userEmail?: string | null,
       tiktokHandle?: string | null,
       vertical?: string | null,
+      metaData?: string | null,
       briefs?:  {
         __typename: "ModelBrandBriefConnection",
         items:  Array< {
@@ -1403,6 +1427,7 @@ export type BrandProfilesByUserEmailQuery = {
       userEmail?: string | null,
       tiktokHandle?: string | null,
       vertical?: string | null,
+      metaData?: string | null,
       briefs?:  {
         __typename: "ModelBrandBriefConnection",
         items:  Array< {
@@ -1472,6 +1497,7 @@ export type GetBrandBriefQuery = {
       userEmail?: string | null,
       tiktokHandle?: string | null,
       vertical?: string | null,
+      metaData?: string | null,
       briefs?:  {
         __typename: "ModelBrandBriefConnection",
         items:  Array< {
@@ -1546,6 +1572,7 @@ export type ListBrandBriefsQuery = {
         userEmail?: string | null,
         tiktokHandle?: string | null,
         vertical?: string | null,
+        metaData?: string | null,
         briefs?:  {
           __typename: "ModelBrandBriefConnection",
           nextToken?: string | null,
@@ -1611,6 +1638,7 @@ export type BrandBriefsByVerticalQuery = {
         userEmail?: string | null,
         tiktokHandle?: string | null,
         vertical?: string | null,
+        metaData?: string | null,
         briefs?:  {
           __typename: "ModelBrandBriefConnection",
           nextToken?: string | null,
@@ -1676,6 +1704,7 @@ export type BrandBriefsByBrandIdQuery = {
         userEmail?: string | null,
         tiktokHandle?: string | null,
         vertical?: string | null,
+        metaData?: string | null,
         briefs?:  {
           __typename: "ModelBrandBriefConnection",
           nextToken?: string | null,
@@ -1847,6 +1876,7 @@ export type OnCreateUserProfileSubscription = {
         userEmail?: string | null,
         tiktokHandle?: string | null,
         vertical?: string | null,
+        metaData?: string | null,
         briefs?:  {
           __typename: "ModelBrandBriefConnection",
           nextToken?: string | null,
@@ -1891,6 +1921,7 @@ export type OnUpdateUserProfileSubscription = {
         userEmail?: string | null,
         tiktokHandle?: string | null,
         vertical?: string | null,
+        metaData?: string | null,
         briefs?:  {
           __typename: "ModelBrandBriefConnection",
           nextToken?: string | null,
@@ -1935,6 +1966,7 @@ export type OnDeleteUserProfileSubscription = {
         userEmail?: string | null,
         tiktokHandle?: string | null,
         vertical?: string | null,
+        metaData?: string | null,
         briefs?:  {
           __typename: "ModelBrandBriefConnection",
           nextToken?: string | null,
@@ -1970,6 +2002,7 @@ export type OnCreateBrandProfileSubscription = {
     userEmail?: string | null,
     tiktokHandle?: string | null,
     vertical?: string | null,
+    metaData?: string | null,
     briefs?:  {
       __typename: "ModelBrandBriefConnection",
       items:  Array< {
@@ -1998,6 +2031,7 @@ export type OnCreateBrandProfileSubscription = {
           userEmail?: string | null,
           tiktokHandle?: string | null,
           vertical?: string | null,
+          metaData?: string | null,
           createdAt: string,
           updatedAt: string,
           userProfileBrandId?: string | null,
@@ -2030,6 +2064,7 @@ export type OnUpdateBrandProfileSubscription = {
     userEmail?: string | null,
     tiktokHandle?: string | null,
     vertical?: string | null,
+    metaData?: string | null,
     briefs?:  {
       __typename: "ModelBrandBriefConnection",
       items:  Array< {
@@ -2058,6 +2093,7 @@ export type OnUpdateBrandProfileSubscription = {
           userEmail?: string | null,
           tiktokHandle?: string | null,
           vertical?: string | null,
+          metaData?: string | null,
           createdAt: string,
           updatedAt: string,
           userProfileBrandId?: string | null,
@@ -2090,6 +2126,7 @@ export type OnDeleteBrandProfileSubscription = {
     userEmail?: string | null,
     tiktokHandle?: string | null,
     vertical?: string | null,
+    metaData?: string | null,
     briefs?:  {
       __typename: "ModelBrandBriefConnection",
       items:  Array< {
@@ -2118,6 +2155,7 @@ export type OnDeleteBrandProfileSubscription = {
           userEmail?: string | null,
           tiktokHandle?: string | null,
           vertical?: string | null,
+          metaData?: string | null,
           createdAt: string,
           updatedAt: string,
           userProfileBrandId?: string | null,
@@ -2177,6 +2215,7 @@ export type OnCreateBrandBriefSubscription = {
       userEmail?: string | null,
       tiktokHandle?: string | null,
       vertical?: string | null,
+      metaData?: string | null,
       briefs?:  {
         __typename: "ModelBrandBriefConnection",
         items:  Array< {
@@ -2247,6 +2286,7 @@ export type OnUpdateBrandBriefSubscription = {
       userEmail?: string | null,
       tiktokHandle?: string | null,
       vertical?: string | null,
+      metaData?: string | null,
       briefs?:  {
         __typename: "ModelBrandBriefConnection",
         items:  Array< {
@@ -2317,6 +2357,7 @@ export type OnDeleteBrandBriefSubscription = {
       userEmail?: string | null,
       tiktokHandle?: string | null,
       vertical?: string | null,
+      metaData?: string | null,
       briefs?:  {
         __typename: "ModelBrandBriefConnection",
         items:  Array< {

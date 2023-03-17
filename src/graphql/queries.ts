@@ -39,6 +39,7 @@ export const getUserProfile = /* GraphQL */ `
           userEmail
           tiktokHandle
           vertical
+          metaData
           briefs {
             nextToken
           }
@@ -80,6 +81,7 @@ export const listUserProfiles = /* GraphQL */ `
             userEmail
             tiktokHandle
             vertical
+            metaData
             createdAt
             updatedAt
             userProfileBrandId
@@ -128,6 +130,7 @@ export const userProfilesByUserEmail = /* GraphQL */ `
             userEmail
             tiktokHandle
             vertical
+            metaData
             createdAt
             updatedAt
             userProfileBrandId
@@ -157,6 +160,7 @@ export const getBrandProfile = /* GraphQL */ `
       userEmail
       tiktokHandle
       vertical
+      metaData
       briefs {
         items {
           id
@@ -181,6 +185,7 @@ export const getBrandProfile = /* GraphQL */ `
             userEmail
             tiktokHandle
             vertical
+            metaData
             createdAt
             updatedAt
             userProfileBrandId
@@ -214,6 +219,7 @@ export const listBrandProfiles = /* GraphQL */ `
         userEmail
         tiktokHandle
         vertical
+        metaData
         briefs {
           items {
             id
@@ -263,6 +269,7 @@ export const brandProfilesByUserEmail = /* GraphQL */ `
         userEmail
         tiktokHandle
         vertical
+        metaData
         briefs {
           items {
             id
@@ -323,6 +330,7 @@ export const getBrandBrief = /* GraphQL */ `
         userEmail
         tiktokHandle
         vertical
+        metaData
         briefs {
           items {
             id
@@ -389,6 +397,7 @@ export const listBrandBriefs = /* GraphQL */ `
           userEmail
           tiktokHandle
           vertical
+          metaData
           briefs {
             nextToken
           }
@@ -453,6 +462,7 @@ export const brandBriefsByVertical = /* GraphQL */ `
           userEmail
           tiktokHandle
           vertical
+          metaData
           briefs {
             nextToken
           }
@@ -517,6 +527,7 @@ export const brandBriefsByBrandId = /* GraphQL */ `
           userEmail
           tiktokHandle
           vertical
+          metaData
           briefs {
             nextToken
           }

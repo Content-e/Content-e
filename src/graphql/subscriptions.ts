@@ -24,6 +24,7 @@ export const onCreateUserProfile = /* GraphQL */ `
           userEmail
           tiktokHandle
           vertical
+          metaData
           briefs {
             nextToken
           }
@@ -63,6 +64,7 @@ export const onUpdateUserProfile = /* GraphQL */ `
           userEmail
           tiktokHandle
           vertical
+          metaData
           briefs {
             nextToken
           }
@@ -102,6 +104,7 @@ export const onDeleteUserProfile = /* GraphQL */ `
           userEmail
           tiktokHandle
           vertical
+          metaData
           briefs {
             nextToken
           }
@@ -134,6 +137,7 @@ export const onCreateBrandProfile = /* GraphQL */ `
       userEmail
       tiktokHandle
       vertical
+      metaData
       briefs {
         items {
           id
@@ -158,6 +162,7 @@ export const onCreateBrandProfile = /* GraphQL */ `
             userEmail
             tiktokHandle
             vertical
+            metaData
             createdAt
             updatedAt
             userProfileBrandId
@@ -188,6 +193,7 @@ export const onUpdateBrandProfile = /* GraphQL */ `
       userEmail
       tiktokHandle
       vertical
+      metaData
       briefs {
         items {
           id
@@ -212,6 +218,7 @@ export const onUpdateBrandProfile = /* GraphQL */ `
             userEmail
             tiktokHandle
             vertical
+            metaData
             createdAt
             updatedAt
             userProfileBrandId
@@ -242,6 +249,7 @@ export const onDeleteBrandProfile = /* GraphQL */ `
       userEmail
       tiktokHandle
       vertical
+      metaData
       briefs {
         items {
           id
@@ -266,6 +274,7 @@ export const onDeleteBrandProfile = /* GraphQL */ `
             userEmail
             tiktokHandle
             vertical
+            metaData
             createdAt
             updatedAt
             userProfileBrandId
@@ -320,6 +329,7 @@ export const onCreateBrandBrief = /* GraphQL */ `
         userEmail
         tiktokHandle
         vertical
+        metaData
         briefs {
           items {
             id
@@ -383,6 +393,7 @@ export const onUpdateBrandBrief = /* GraphQL */ `
         userEmail
         tiktokHandle
         vertical
+        metaData
         briefs {
           items {
             id
@@ -446,6 +457,7 @@ export const onDeleteBrandBrief = /* GraphQL */ `
         userEmail
         tiktokHandle
         vertical
+        metaData
         briefs {
           items {
             id

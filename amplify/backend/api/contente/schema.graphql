@@ -30,6 +30,7 @@ type BrandProfile
   userEmail: String @index 
   tiktokHandle: String
   vertical: String
+  metaData: String
   briefs: [BrandBrief] @hasMany(indexName: "byBrand", fields:[ "id" ])
 }
 
