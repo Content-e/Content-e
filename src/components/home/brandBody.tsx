@@ -15,6 +15,14 @@ export const BrandBody: FC<Props> = ({ data }) => {
 
   return (
     <S.BrandWrapper>
+      <S.BrandName className="firstChild">
+        <S.BrandBoldTitle>Brand name:</S.BrandBoldTitle>
+        {data?.name}
+      </S.BrandName>
+      <S.BrandName>
+        <S.BrandBoldTitle>Strap line:</S.BrandBoldTitle>
+        {data?.strapLine}
+      </S.BrandName>
       <S.BrandName>
         <S.BrandBoldTitle>Mission Statement:</S.BrandBoldTitle>
         {data?.internalMission}

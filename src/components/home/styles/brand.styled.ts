@@ -25,6 +25,7 @@ export const BrandName = styled.div`
 
 export const BrandBoldTitle = styled.span`
   margin-right: 5px;
+  font-weight: bold;
 `;
 
 export const BrandBoldHead = styled.div`

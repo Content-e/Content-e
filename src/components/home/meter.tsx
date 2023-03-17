@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { FC, useEffect, useMemo, useState } from "react";
 import { withProfile } from "state/profileSteps";
 import { ProfileProps } from "utils";
@@ -41,9 +42,8 @@ export const Meter: FC<ProfileProps> = ({ profileState: { data } }) => {
     [value]
   );
   return (
-    <S.MeterWrapper>
-      <S.Heading>Brand</S.Heading>
-
+    <S.MeterWrapper className={classNames({ noData: !data })}>
+      <S.Heading>Brand identity</S.Heading>
       <S.MeterBox>
         <S.MeterCanvas percentage={percentage} degree={degree}>
           {PercentageMapper.map((e) => (

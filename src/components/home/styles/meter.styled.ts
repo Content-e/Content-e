@@ -7,7 +7,11 @@ export const MeterWrapper = styled.div`
   position: relative;
 
   @media only screen and (min-width: 600px) {
-    width: auto;
+    width: 100%;
+
+    &.noData {
+      width: 310px;
+    }
   }
 `;
 
@@ -18,6 +22,7 @@ export const Heading = styled.div`
   font-size: 16px;
   line-height: 20px;
   color: #1c1c1c;
+  width: 100%;
 `;
 
 export const MeterBox = styled.div`
@@ -26,7 +31,7 @@ export const MeterBox = styled.div`
   width: 274px;
 
   @media only screen and (min-width: 600px) {
-    margin-left: 30px;
+    margin-left: 0 auto;
   }
 `;
 
@@ -49,7 +54,7 @@ export const MeterCanvas = styled.div<IMeterValue>`
     padding: 50px 50px 0;
     background: linear-gradient(
       ${(props): number => props.degree}deg,
-      #aaaabb ${(props): number => props.percentage}%,
+      #e8e8ee ${(props): number => props.percentage}%,
       #dddddd 0%
     );
     -webkit-mask: linear-gradient(#fff 0 0) content-box,

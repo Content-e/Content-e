@@ -29,12 +29,12 @@ export default function CreatorDashboard() {
       <div>
         <div className="creator-dashboard-label">Creator Dashboard</div>
         <div className="stats-container">
-          <CreatorStatsCard type={CreatorDashboardBoxes.Wallet} value="8" />
-          <CreatorStatsCard type={CreatorDashboardBoxes.Approval} value="8" />
-          <CreatorStatsCard type={CreatorDashboardBoxes.Conversion} value="8" />
+          <CreatorStatsCard type={CreatorDashboardBoxes.Wallet} value="0" />
+          <CreatorStatsCard type={CreatorDashboardBoxes.Approval} value="0" />
+          <CreatorStatsCard type={CreatorDashboardBoxes.Conversion} value="0" />
           <CreatorStatsCard
             type={CreatorDashboardBoxes.ClickThrough}
-            value="8"
+            value="0"
           />
         </div>
       </div>
