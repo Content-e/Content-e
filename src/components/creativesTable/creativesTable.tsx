@@ -9,6 +9,7 @@ import CreativeEntries from "./creativeEntries";
 import "./creativesTable.css";
 
 export const CreativesTable: FC<BrandBriefProps> = (props) => {
+  const [searchText, setSearchText] = useState("");
   const [selectedRequest, setSelectedRequest] = useState<ISelectredRequest>();
 
   if (selectedRequest)
@@ -23,7 +24,12 @@ export const CreativesTable: FC<BrandBriefProps> = (props) => {
     <>
       <div className="creatives-table-label">Creatives</div>
       <div className="creatives-table-container">
-        <input className="creatives-search" placeholder="Search..." />
+        <input
+          className="creatives-search"
+          placeholder="Search..."
+          value={searchText}
+          onChange={(e): void => setSearchText(e.target.value)}
+        />
         <table className="creatives-table">
           <tr className="creatives-table-header-bottom-border">
             <th className="creatives-table-header-label">Brief Name</th>
@@ -34,7 +40,11 @@ export const CreativesTable: FC<BrandBriefProps> = (props) => {
             <th className="creatives-table-header-label">Status</th>
             <th className="creatives-table-header-label">Details</th>
           </tr>
-          <CreativeEntries {...props} openCreative={setSelectedRequest} />
+          <CreativeEntries
+            {...props}
+            searchText={searchText}
+            openCreative={setSelectedRequest}
+          />
         </table>
       </div>
     </>

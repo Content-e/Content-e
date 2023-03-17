@@ -5,10 +5,15 @@ import "./creativesTable.css";
 
 interface Props {
   data?: Array<BrandBrief | null>;
+  searchText: string;
   openCreative: (data: ISelectredRequest) => void;
 }
 
-export const CreativeEntries: FC<Props> = ({ data, openCreative }) => {
+export const CreativeEntries: FC<Props> = ({
+  data,
+  searchText,
+  openCreative,
+}) => {
   const requests = useMemo(() => {
     const rqArray = [] as Array<ICreativeEntry>;
     data?.forEach((brief) => {
@@ -30,31 +35,33 @@ export const CreativeEntries: FC<Props> = ({ data, openCreative }) => {
 
   return (
     <>
-      {requests.map((e) => (
-        <tr key={e.id}>
-          <td className="creatives-table-description capitalized">
-            {e.briefName}
-          </td>
-          <td className="creatives-table-description capitalized">
-            {e.creatorHandle}
-          </td>
-          <td className="creatives-table-description capitalized">
-            {e.videoLink}
-          </td>
-          <td className="creatives-table-description capitalized">0</td>
-          <td className="creatives-table-description capitalized">0%</td>
-          <td className="creatives-table-description capitalized">
-            {e.status}
-          </td>
-          <td
-            onClick={(): void =>
-              openCreative({ briefId: e.briefId, requestId: e.id })
-            }
-          >
-            <img src="/images/table-search.svg" />
-          </td>
-        </tr>
-      ))}
+      {requests
+        .filter((e) => e.briefName?.includes(searchText))
+        .map((e) => (
+          <tr key={e.id}>
+            <td className="creatives-table-description capitalized">
+              {e.briefName}
+            </td>
+            <td className="creatives-table-description capitalized">
+              {e.creatorHandle}
+            </td>
+            <td className="creatives-table-description capitalized">
+              {e.videoLink}
+            </td>
+            <td className="creatives-table-description capitalized">0</td>
+            <td className="creatives-table-description capitalized">0%</td>
+            <td className="creatives-table-description capitalized">
+              {e.status}
+            </td>
+            <td
+              onClick={(): void =>
+                openCreative({ briefId: e.briefId, requestId: e.id })
+              }
+            >
+              <img src="/images/table-search.svg" />
+            </td>
+          </tr>
+        ))}
     </>
   );
 };
