@@ -2,6 +2,8 @@ export enum UnAuthRoutes {
   Landing = "/landing",
   SubLanding = "/landing/:id",
 
+  Brands = "/brands",
+
   Login = "/login",
   SubLogin = "/login/:id",
 
