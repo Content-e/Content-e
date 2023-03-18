@@ -39,20 +39,24 @@ export const EditBtnCanvas = styled.div`
   margin: 50px auto 10px;
 `;
 export const EditBrandButton = styled.div`
-  padding: 11px 60px;
-  background: linear-gradient(180deg, #005f73 0%, #0a9396 100%);
-  border-radius: 4px;
-  cursor: pointer;
-
+  font-family: "Raleway";
   font-style: normal;
-  font-weight: 600;
-  font-size: 10px;
-  line-height: 12px;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: #041416;
+  padding: 9px 54px;
+  background: #ffffff;
+  border: 1px solid #005f73;
+  border-radius: 10px;
+  cursor: pointer;
 
   &:hover {
+    color: white;
     background: linear-gradient(180deg, #227fa5 0%, #2cb5b8 100%);
   }
 `;

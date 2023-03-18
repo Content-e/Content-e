@@ -33,6 +33,10 @@ export const TopWrapper = styled.div`
 
 export const BrandTopHead = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
+
+  @media only screen and (min-width: 600px) {
+    flex-direction: row;
+  }
 `;

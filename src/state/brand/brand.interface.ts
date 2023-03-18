@@ -9,3 +9,12 @@ export interface IMeterValue {
   percentage: number;
   degree: number;
 }
+
+export interface IBrandFormState {
+  tiktok?: string;
+  website?: string;
+  instagram?: string;
+  facebook?: string;
+  linkedin?: string;
+  twitter?: string;
+}

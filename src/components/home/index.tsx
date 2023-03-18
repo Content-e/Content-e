@@ -6,6 +6,7 @@ import Meter from "./meter";
 import { NoDataFound } from "./noData";
 import * as S from "./styles";
 import classNames from "classnames";
+import BrandForm from "./brandForm";
 
 export const HomePage: FC<ProfileProps> = ({ profileState: { data } }) => {
   const brandExists = useMemo(() => data?.brand?.items?.[0], [data]);
@@ -20,8 +21,13 @@ export const HomePage: FC<ProfileProps> = ({ profileState: { data } }) => {
             <Meter />
             {!brandExists && <NoDataFound />}
           </S.TopWrapper>
-          {brandExists && <BrandBody data={brandExists} />}
+          {brandExists && <BrandBody data={brandExists as any} />}
         </S.TopCanvas>
+        {brandExists && (
+          <S.TopCanvas>
+            <BrandForm />
+          </S.TopCanvas>
+        )}
       </S.BrandTopHead>
     </>
   );
