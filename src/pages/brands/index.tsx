@@ -96,7 +96,7 @@ export const BrandsPage: React.FC = () => {
                 <div className="brands-page-step-number-text">1</div>
               </div>
               <div className="brands-page-step-text">
-                Creators post content about the brands and topics they love.
+                Post your everyday content about brands and topics you love.
               </div>
             </div>
             <div className="brands-page-single-steps">
@@ -104,7 +104,7 @@ export const BrandsPage: React.FC = () => {
                 <div className="brands-page-step-number-text">2</div>
               </div>
               <div className="brands-page-step-text">
-                Content is linked to brands via EDC squared
+                Link your content via EDC squared.
               </div>
             </div>
             <div className="brands-page-single-steps">
@@ -112,7 +112,7 @@ export const BrandsPage: React.FC = () => {
                 <div className="brands-page-step-number-text">3</div>
               </div>
               <div className="brands-page-step-text">
-                If brands like it, they promote it.
+                If a brand likes it, they will approve and promote it.
               </div>
             </div>
             <div className="brands-page-single-steps">
@@ -120,8 +120,7 @@ export const BrandsPage: React.FC = () => {
                 <div className="brands-page-step-number-text">4</div>
               </div>
               <div className="brands-page-step-text">
-                Creators earn from their content. Brands get authentic content
-                at scale.
+                The better your content performs the more you earn.
               </div>
             </div>
             <div className="brands-page-single-steps">
@@ -129,8 +128,7 @@ export const BrandsPage: React.FC = () => {
                 <div className="brands-page-step-number-text">5</div>
               </div>
               <div className="brands-page-step-text">
-                Creators earn from their content. Brands get authentic content
-                at scale.
+                Track your earnings in realtime.
               </div>
             </div>
           </div>
