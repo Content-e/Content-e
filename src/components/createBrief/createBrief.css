@@ -39,17 +39,21 @@
   border: none;
   outline: none;
 }
+
 .create-brief-input.select-input {
   padding: 6px 10px;
+  cursor: pointer;
 }
+
 .create-brief-input.select-input::-ms-expand {
   display: none;
 }
+
 .create-brief-input.select-input {
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
-  text-overflow: '';
+  text-overflow: initial;
 }
 
 .creative-inspiration-box {
@@ -117,6 +121,13 @@
   align-items: center;
   width: 120px;
   height: 34px;
+  color: #031416;
+  cursor: pointer;
+}
+
+.create-brief-btn:hover {
+  background: #9fd0bd;
+  color: white;
 }
 
 .create-brief-text {
@@ -126,7 +137,6 @@
   font-size: 12px;
   line-height: 14px;
   letter-spacing: -0.02em;
-  color: #031416;
 }
 
 .input-brief-error {

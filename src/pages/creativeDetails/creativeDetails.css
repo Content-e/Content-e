@@ -21,6 +21,11 @@
   align-items: center;
   justify-content: center;
   border: 1px solid #9fd0bd;
+  color: #005f73;
+}
+.back-btn:hover {
+  background: #9fd0bd;
+  color: white;
 }
 
 .back-btn-text {
@@ -30,7 +35,6 @@
   font-size: 12px;
   line-height: 14px;
   letter-spacing: -0.02em;
-  color: #005f73;
   display: flex;
   align-items: center;
   justify-content: center;

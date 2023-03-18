@@ -149,7 +149,7 @@ export const OutlineBtn = styled(Button)`
   transition: all 0.3s ease;
   font-style: normal;
   font-weight: 400;
-  border: 1px solid #005f73;
+  border: none;
 
   font-size: 12px;
   line-height: 15px;
@@ -158,7 +158,7 @@ export const OutlineBtn = styled(Button)`
   color: #ffffff;
   padding: 14px 44px;
   width: 100px;
-  background: linear-gradient(180deg, #005f73 0%, #0a9396 100%);
+  background: linear-gradient(180deg, #9fd0bd 0%, #409094 100%);
   border-radius: 4px;
 
   @media only screen and (min-width: 525px) {
@@ -174,8 +174,7 @@ export const OutlineBtn = styled(Button)`
   &.btn:focus-visible,
   &:hover,
   &:focus {
-    background: linear-gradient(180deg, #227fa5 0%, #2cb5b8 100%);
-    border: 1px solid #005f73;
+    background: linear-gradient(180deg, #77c1a4 0%, #226a6e 100%);
     box-shadow: none;
     text-decoration: none;
   }

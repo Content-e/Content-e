@@ -37,7 +37,7 @@ export const StepNumber = styled.div`
   cursor: pointer;
 
   &.active {
-    background: #005f73;
+    background: #409093;
     color: white;
   }
 `;
@@ -49,6 +49,7 @@ export const StepBar = styled.div`
   border-radius: 20px;
   margin: 0 21px;
   position: relative;
+  border: 1px solid #409093;
 
   @media only screen and (min-width: 525px) {
     display: block;
@@ -56,7 +57,7 @@ export const StepBar = styled.div`
 
   & span {
     border-radius: 20px;
-    background: #005f73;
+    background: #409093;
     position: absolute;
     width: 50%;
     height: 7px;

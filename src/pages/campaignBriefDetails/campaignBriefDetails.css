@@ -22,23 +22,28 @@
   justify-content: center;
   border: 1px solid #9fd0bd;
   cursor: pointer;
+  color: #005f73;
+}
+
+.back-btn:hover {
+  background: #9fd0bd;
+  color: white;
 }
 
 .back-btn-text {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
   line-height: 14px;
   letter-spacing: -0.02em;
-  color: #005f73;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .campaign-brief-details-text {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 600;
   font-size: 12px;

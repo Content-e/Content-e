@@ -42,7 +42,8 @@ export const CreativeDetails: FC<Props> = ({
               : ""
           }
           campaignHeader="Creator handle"
-          iconCheck={true}
+          // TODO: icon click don't take it to anywhere
+          iconCheck={false}
         />
         <CreativeDetailsCard
           campaign={brief?.BriefName}

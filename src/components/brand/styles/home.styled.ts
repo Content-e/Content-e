@@ -49,3 +49,10 @@ export const SuggestionBoxPanel = styled.div`
     margin-left: 0px;
   }
 `;
+
+export const TopBordered = styled.div`
+  border: 1px solid #9fd0bd;
+  border-radius: 12px;
+  padding: 0 15px;
+  margin-bottom: 30px;
+`;

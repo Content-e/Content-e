@@ -52,16 +52,12 @@ export const TextArea = styled.textarea`
   border: 1px solid #e2e1e5;
   border-radius: 5px;
   width: 100%;
-  margin: 15px 0 20px;
+  margin: 15px 0 5px;
   resize: none;
   font-size: 14px;
   line-height: 28px;
   padding: 10px 15px;
   color: #001219;
-
-  @media only screen and (min-width: 992px) {
-    width: 90%;
-  }
 
   &.no_below_margin {
     margin-bottom: 0;

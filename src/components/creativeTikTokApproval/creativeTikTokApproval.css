@@ -34,6 +34,12 @@
   justify-content: center;
   width: 120px;
   height: 34px;
+  cursor: pointer;
+  color: #001219;
+}
+.permission-btn-container:hover {
+  background: #9fd0bd;
+  color: white
 }
 
 .permission-btn-label {
@@ -46,7 +52,6 @@
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
-  color: #001219;
 }
 
 .creative-approval-box {

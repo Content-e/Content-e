@@ -11,7 +11,6 @@ export * from "./login";
 export * from "./reverify";
 export * from "./forgetPass";
 export * from "./resetPass";
-export * from "./brandSteps";
 export * from "./landing";
 
 export * from "./coBranded";

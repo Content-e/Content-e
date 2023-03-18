@@ -2,7 +2,7 @@ import { Dropdown } from "react-bootstrap";
 import styled from "styled-components";
 
 export const DropdownTag = styled(Dropdown)`
-  margin: 20px 0 30px;
+  margin: 20px 0;
   background: #fff;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
   max-width: 280px;

@@ -13,6 +13,7 @@ import {
 import { StepBelt } from "./components";
 import { BrandProps, withBrand } from "state/brand";
 import { TitleContext } from "state/auth";
+import { TopBordered, TopHeading } from "./styles";
 
 export const BrandSteps: FC<ProfileProps & BrandProps> = ({
   profileState: { data },
@@ -74,17 +75,23 @@ export const BrandSteps: FC<ProfileProps & BrandProps> = ({
 
   return (
     <Fragment key="brand steps">
-      {step === 0 && <StepOne data={brandData} onUpdate={updateBrandData} />}
-      {step === 1 && <StepTwo data={brandData} onUpdate={updateBrandData} />}
-      {step === 2 && <StepThree data={brandData} onUpdate={updateBrandData} />}
+      <TopHeading>Brand identity - Step {step + 1}</TopHeading>
 
-      <StepBelt
-        step={step}
-        onNext={goToNextStep}
-        onPrev={step > 0 ? goToPrevStep : undefined}
-        disabled={nextStepDisabled}
-        goToStep={updateStepNumber}
-      />
+      <TopBordered>
+        {step === 0 && <StepOne data={brandData} onUpdate={updateBrandData} />}
+        {step === 1 && <StepTwo data={brandData} onUpdate={updateBrandData} />}
+        {step === 2 && (
+          <StepThree data={brandData} onUpdate={updateBrandData} />
+        )}
+
+        <StepBelt
+          step={step}
+          onNext={goToNextStep}
+          onPrev={step > 0 ? goToPrevStep : undefined}
+          disabled={nextStepDisabled}
+          goToStep={updateStepNumber}
+        />
+      </TopBordered>
     </Fragment>
   );
 };

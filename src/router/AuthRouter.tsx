@@ -1,14 +1,8 @@
 import { FC, Fragment, useEffect } from "react";
-import { FullPageLoader, HomePage, isValidRoute } from "components";
+import { BrandSteps, FullPageLoader, HomePage, isValidRoute } from "components";
 import withApolloProvider from "hooks/apollo/withApollo";
 import { SidebarLayout } from "layout";
-import {
-  AuthorizeTikTokStep,
-  BrandStepsPage,
-  Brief,
-  Dashboard,
-  RedirectingStep,
-} from "pages";
+import { AuthorizeTikTokStep, Brief, Dashboard, RedirectingStep } from "pages";
 
 import EditProfile from "pages/editProfile";
 import {
@@ -67,7 +61,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
               <Route
                 exact
                 path={BrandRoutes.EditBrand}
-                component={BrandStepsPage}
+                component={BrandSteps}
               />
               <Route
                 exact
