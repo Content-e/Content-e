@@ -36,8 +36,6 @@ export const CreateBrief: FC<ProfileProps> = ({
     const errObj = { ...initialCreateBriefError };
     if (!formState.BriefName.length)
       errObj.BriefName = "Brief name is required";
-    if (!formState.vertical.length)
-      errObj.vertical = "Tiktok campaign link is required";
     if (!formState.objective.length) errObj.objective = "Objective is required";
     if (!formState.active.length) errObj.active = "Status is required";
     if (!formState.creativeInspirations.find((e) => e.length))
@@ -51,8 +49,12 @@ export const CreateBrief: FC<ProfileProps> = ({
 
   const handleSubmit = (): void => {
     const brandId = profile?.brand?.items?.[0]?.id;
-    if (brandId && validateInputs())
-      createBrief({ variables: { input: { ...formState, brandId } } });
+    const x = 3;
+    if (brandId && validateInputs() && x < 2)
+      createBrief({
+        variables: { input: { ...formState, brandId, vertical: "retail" } },
+      });
+    else console.log({ ...formState, brandId, vertical: "retail" });
   };
 
   useEffect(() => {
@@ -67,13 +69,16 @@ export const CreateBrief: FC<ProfileProps> = ({
           <BriefInput {...props} keyProp="BriefName" title="Brief Name" />
           <BriefInput
             {...props}
-            keyProp="vertical"
+            keyProp="tiktok"
             title="Select TikTok campaign to link to"
           />
           <BriefInput {...props} keyProp="objective" title="Objective" />
           <div className="create-brief-input-container">
             <div className="create-brief-input-title">Brief status</div>
-            <select className="create-brief-input" onChange={updateStatus}>
+            <select
+              className="create-brief-input select-input"
+              onChange={updateStatus}
+            >
               <option value="">Select one</option>
               <option value="Active">Active</option>
               <option value="Inactive">Inactive</option>

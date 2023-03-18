@@ -28,6 +28,7 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .create-brief-input {
@@ -37,6 +38,18 @@
   border-radius: 6px;
   border: none;
   outline: none;
+}
+.create-brief-input.select-input {
+  padding: 6px 10px;
+}
+.create-brief-input.select-input::-ms-expand {
+  display: none;
+}
+.create-brief-input.select-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
 }
 
 .creative-inspiration-box {
