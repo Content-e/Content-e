@@ -29,7 +29,7 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
           <td className="brand-table-description capitalized">
             {e?.brandBriefDetails}
           </td>
-          <td className="brand-table-description capitalized">{e?.vertical}</td>
+          <td className="brand-table-description capitalized"></td>
           <td className="brand-table-description capitalized">
             {e?.objective}
           </td>
