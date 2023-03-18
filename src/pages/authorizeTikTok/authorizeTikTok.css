@@ -14,11 +14,14 @@
 .tik-tok-container {
   background: rgba(217, 217, 217, 0.3);
   position: absolute;
-  float: left;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   pointer-events: all;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 .tik-tok-modal {
@@ -173,4 +176,17 @@
   .tik-tok-modal {
     width: auto;
   }
+}
+
+.tiktok-alert-message {
+  pointer-events: all;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
 }

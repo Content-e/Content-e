@@ -1,8 +1,10 @@
 import classNames from "classnames";
+import TiktokHandlerAlertModal from "components/tiktokHandlerAlertModal";
 import { handleCreativeRequest } from "hooks/query/useTikTokAuth";
 import { FC, useEffect, useState } from "react";
 import { withAuth } from "state/auth";
-import { AuthProps } from "utils";
+import { withProfile } from "state/profileSteps";
+import { AuthProps, ProfileProps } from "utils";
 import "./authorizeTikTok.css";
 import AuthorizeTikTokStep1 from "./authorizeTikTokStep1";
 import AuthorizeTikTokStep2 from "./authorizeTikTokStep2";
@@ -13,27 +15,33 @@ interface Props {
   briefId: string;
   disableBackground?: boolean;
 }
-export const AuthorizeTikTokHandler: FC<Props & AuthProps> = ({
+export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
   authState,
   disableBackground,
   briefId: id,
   onCross,
+  profileState: { data: profile },
 }) => {
   const { createTiktokRequest, loading, data } = handleCreativeRequest();
 
   const { userId } = authState || {};
   const [step, setStep] = useState(0);
+  const [showAlert, setAlertVisibility] = useState(false);
 
+  const toggleAlert = (): void => setAlertVisibility(!showAlert);
   const submitSteps = (link: string): void => {
     if (!loading && userId && id) {
-      const input = {
-        brandBriefId: id,
-        creatorId: userId,
-        status: "submit",
-        tiktokCreativeUrl: link,
-        tiktokVideoCode: link,
-      };
-      createTiktokRequest({ variables: { input } });
+      if (profile?.tiktokHandler) {
+        const input = {
+          brandBriefId: id,
+          creatorId: userId,
+          status: "new",
+          tiktokCreativeUrl: link,
+          tiktokVideoCode: link,
+          creativeTiktokHandle: profile?.tiktokHandler,
+        };
+        createTiktokRequest({ variables: { input } });
+      } else toggleAlert();
     }
   };
 
@@ -70,8 +78,13 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps> = ({
           />
         )}
       </div>
+      {showAlert && (
+        <div className="tiktok-alert-message">
+          <TiktokHandlerAlertModal onClick={toggleAlert} />
+        </div>
+      )}
     </div>
   );
 };
 
-export default withAuth(AuthorizeTikTokHandler);
+export default withAuth(withProfile(AuthorizeTikTokHandler));
