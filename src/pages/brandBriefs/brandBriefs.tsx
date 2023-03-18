@@ -6,7 +6,7 @@ import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetail
 import { FC, useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { BrandBriefProps, withBrandBriefs } from "state/brandBrief";
-import { AuthRoutes } from "utils";
+import { BrandRoutes } from "utils";
 import "./brandBriefs.css";
 
 export const BrandBriefs: FC<BrandBriefProps> = ({ data, brand }) => {
@@ -16,7 +16,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data, brand }) => {
   const [showAlert, setShowAlert] = useState(false);
 
   const goToBriefCreation = (): void => {
-    if (brand) history.push(AuthRoutes.CreateBrief);
+    if (brand) history.push(BrandRoutes.CreateBrief);
     else setShowAlert(true);
   };
 

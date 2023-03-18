@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import "./bestPractices.css";
-import { AuthRoutes } from "utils";
+import { CreatorRoutes } from "utils";
 
 export default function BestPractices() {
   const history = useHistory();
@@ -9,7 +9,7 @@ export default function BestPractices() {
       <div className="best-practices-header">
         <div className="best-practices-label">Best Practices</div>
         <img
-          onClick={() => history.push(AuthRoutes.BestPractices)}
+          onClick={() => history.push(CreatorRoutes.BestPractices)}
           src="/images/morevert.svg"
         />
       </div>

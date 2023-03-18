@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { FullPageLoader, HomePage } from "components";
+import { FC, Fragment, useEffect } from "react";
+import { FullPageLoader, HomePage, isValidRoute } from "components";
 import withApolloProvider from "hooks/apollo/withApollo";
 import { SidebarLayout } from "layout";
 import {
@@ -11,18 +11,41 @@ import {
 } from "pages";
 
 import EditProfile from "pages/editProfile";
-import { Route, Switch } from "react-router-dom";
+import {
+  Redirect,
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 import { withProfile } from "state/profileSteps";
-import { AuthRoutes, ProfileProps } from "utils";
+import { AuthRoutes, BrandRoutes, CreatorRoutes, ProfileProps } from "utils";
 import Wallet from "pages/wallet/wallet";
 import BestPractice from "pages/bestPractice/practice";
 import CreativesTable from "components/creativesTable/creativesTable";
 import AdminDashboard from "pages/adminDashboard/adminDashboard";
 import CreateBrief from "components/createBrief/createBrief";
+import { USER_TYPES } from "API";
+import { BrandAuthArray, CreatorAuthArray } from "./RoutesConstants";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
 }) => {
+  const history = useHistory();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (pathname && data) {
+      if (
+        (data?.userType === USER_TYPES.CREATIVE_USER &&
+          !isValidRoute(CreatorAuthArray, pathname)) ||
+        (data?.userType === USER_TYPES.BRAND_USER &&
+          !isValidRoute(BrandAuthArray, pathname))
+      )
+        history.push(AuthRoutes.Dashboard);
+    }
+  }, [pathname, data]);
+
   if (!isLoading && data)
     return (
       <Switch>
@@ -32,20 +55,51 @@ const AuthRouterPaths: FC<ProfileProps> = ({
           <Route exact path={AuthRoutes.EditProfile} component={EditProfile} />
           <Route exact path={AuthRoutes.Dashboard} component={Dashboard} />
           <Route exact path={AuthRoutes.CampaignBrief} component={Brief} />
-          <Route exact path={AuthRoutes.Creatives} component={CreativesTable} />
-          <Route exact path={AuthRoutes.Brand} component={HomePage} />
-          <Route exact path={AuthRoutes.EditBrand} component={BrandStepsPage} />
-          <Route exact path={AuthRoutes.CreateBrief} component={CreateBrief} />
-          <Route exact path={AuthRoutes.Wallet} component={Wallet} />
-          <Route
-            exact
-            path={AuthRoutes.BestPractices}
-            component={BestPractice}
-          />
+
+          {data.userType === USER_TYPES.BRAND_USER && (
+            <Fragment key="brand user routes">
+              <Route
+                exact
+                path={BrandRoutes.Creatives}
+                component={CreativesTable}
+              />
+              <Route exact path={BrandRoutes.Brand} component={HomePage} />
+              <Route
+                exact
+                path={BrandRoutes.EditBrand}
+                component={BrandStepsPage}
+              />
+              <Route
+                exact
+                path={BrandRoutes.CreateBrief}
+                component={CreateBrief}
+              />
+            </Fragment>
+          )}
+
+          {data.userType === USER_TYPES.CREATIVE_USER && (
+            <Fragment key="creator user routes">
+              <Route exact path={CreatorRoutes.Wallet} component={Wallet} />
+              <Route
+                exact
+                path={CreatorRoutes.BestPractices}
+                component={BestPractice}
+              />
+            </Fragment>
+          )}
+
           <Route
             exact
             path={AuthRoutes.AdminDashboard}
             component={AdminDashboard}
+          />
+
+          <Route
+            exact
+            path="/"
+            component={(): JSX.Element => (
+              <Redirect to={AuthRoutes.Dashboard} />
+            )}
           />
         </SidebarLayout>
       </Switch>

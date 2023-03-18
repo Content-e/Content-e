@@ -1,6 +1,6 @@
 import "./brandDashboard.css";
 import { useHistory } from "react-router-dom";
-import { AuthRoutes } from "utils";
+import { BrandRoutes } from "utils";
 import { FC } from "react";
 import { BrandProfile } from "API";
 
@@ -10,7 +10,7 @@ interface Props {
 export const BrandInfo: FC<Props> = ({ brand }) => {
   const history = useHistory();
 
-  const goToBrandPage = (): void => history.push(AuthRoutes.Brand);
+  const goToBrandPage = (): void => history.push(BrandRoutes.Brand);
 
   return (
     <div className="dashboard-campaign-brief-container">

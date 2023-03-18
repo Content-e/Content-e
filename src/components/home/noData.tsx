@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { useHistory } from "react-router-dom";
-import { AuthRoutes } from "utils";
+import { BrandRoutes } from "utils";
 import * as S from "./styles";
 
 export const NoDataFound: FC = () => {
   const history = useHistory();
-  const goToBrand = (): void => history.push(AuthRoutes.EditBrand);
+  const goToBrand = (): void => history.push(BrandRoutes.EditBrand);
 
   return (
     <S.NoDataWrapper>

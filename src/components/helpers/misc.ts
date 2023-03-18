@@ -3,6 +3,8 @@ import { startCase } from "lodash";
 import {
   allowedSubDomains,
   AuthRoutes,
+  BrandRoutes,
+  CreatorRoutes,
   IErrorStateType,
   UnAuthRoutes,
 } from "utils";
@@ -49,8 +51,9 @@ export const isEmptyString = (input?: string | null): boolean =>
   // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
   !input || !input.replace(/<\/?[^>]+(>|$)/g, "").length;
 
-export const getPageTitle = (path: AuthRoutes): string =>
-  startCase(path.split("/")?.[1]);
+export const getPageTitle = (
+  path: AuthRoutes | CreatorRoutes | BrandRoutes
+): string => startCase(path.split("/")?.[1]);
 
 export const isSubDomainWithBriefId = (id?: string): boolean => {
   const initialHost = window.location.hostname.split(".")[0];

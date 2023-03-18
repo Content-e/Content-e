@@ -1,7 +1,13 @@
 import { FC, Fragment, useMemo } from "react";
 import classNames from "classnames";
 import { useHistory, useLocation } from "react-router-dom";
-import { AuthRoutes, ProfileProps, UnknownType } from "utils";
+import {
+  AuthRoutes,
+  BrandRoutes,
+  CreatorRoutes,
+  ProfileProps,
+  UnknownType,
+} from "utils";
 import * as S from "./styles";
 import { getPageTitle } from "components";
 import { withProfile } from "state/profileSteps";
@@ -21,17 +27,17 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
   const { pathname } = useLocation();
 
   const onLogout = (): void => history.push(AuthRoutes.Logout);
-  const onBrand = (): void => history.push(AuthRoutes.Brand);
+  const onBrand = (): void => history.push(BrandRoutes.Brand);
   const onCampaignBrief = (): void => history.push(AuthRoutes.CampaignBrief);
   const onEditProfile = (): void => history.push(AuthRoutes.EditProfile);
-  const onWallet = (): void => history.push(AuthRoutes.Wallet);
-  const onBestPractice = (): void => history.push(AuthRoutes.BestPractices);
+  const onWallet = (): void => history.push(CreatorRoutes.Wallet);
+  const onBestPractice = (): void => history.push(CreatorRoutes.BestPractices);
   const onDashboard = (): void => history.push(AuthRoutes.Dashboard);
-  const onCreatives = (): void => history.push(AuthRoutes.Creatives);
+  const onCreatives = (): void => history.push(BrandRoutes.Creatives);
 
   const getOption = (
     icon: string,
-    route: AuthRoutes,
+    route: AuthRoutes | CreatorRoutes | BrandRoutes,
     onClick: UnknownType
   ): JSX.Element => {
     const classes = classNames({ isActive: pathname.includes(route) });
@@ -79,16 +85,16 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
             <Fragment key="creator menu options">
               {getOption("chat", AuthRoutes.Dashboard, onDashboard)}
               {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrief)}
-              {getOption("wallet", AuthRoutes.Wallet, onWallet)}
-              {getOption("book", AuthRoutes.BestPractices, onBestPractice)}
+              {getOption("wallet", CreatorRoutes.Wallet, onWallet)}
+              {getOption("book", CreatorRoutes.BestPractices, onBestPractice)}
             </Fragment>
           )}
           {data?.userType === USER_TYPES.BRAND_USER && (
             <Fragment key="creator menu options">
               {getOption("chat", AuthRoutes.Dashboard, onDashboard)}
-              {getOption("notes", AuthRoutes.Creatives, onCreatives)}
+              {getOption("notes", BrandRoutes.Creatives, onCreatives)}
               {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrief)}
-              {getOption("bookOpen", AuthRoutes.Brand, onBrand)}
+              {getOption("bookOpen", BrandRoutes.Brand, onBrand)}
             </Fragment>
           )}
         </S.SidebarMenu>

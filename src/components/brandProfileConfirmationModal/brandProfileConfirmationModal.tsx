@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { useHistory } from "react-router-dom";
-import { AuthRoutes } from "utils";
+import { BrandRoutes } from "utils";
 import "./brandProfileConfirmationModal.css";
 
 export const BrandProfileConfirmationModal: FC = () => {
   const history = useHistory();
-  const goToBrand = (): void => history.push(AuthRoutes.Brand);
+  const goToBrand = (): void => history.push(BrandRoutes.Brand);
 
   return (
     <div className="brand-confirmation-modal">

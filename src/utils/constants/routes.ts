@@ -27,13 +27,17 @@ export enum AuthRoutes {
   CampaignBrief = "/campaignBrief",
   EditProfile = "/editProfile",
 
+  AdminDashboard = "/adminDashboard",
+}
+
+export enum CreatorRoutes {
   Wallet = "/wallet",
   BestPractices = "/bestPractices",
+}
 
+export enum BrandRoutes {
   Creatives = "/creatives",
   CreateBrief = "/createBrief",
   Brand = "/brandProfile",
   EditBrand = "/brandEdit",
-
-  AdminDashboard = "/adminDashboard",
 }

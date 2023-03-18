@@ -4,7 +4,7 @@ import { FC } from "react";
 import { BrandBrief } from "API";
 import { ISelectredRequest } from "state/brandBrief";
 import { useHistory } from "react-router-dom";
-import { AuthRoutes } from "utils";
+import { BrandRoutes } from "utils";
 
 interface Props {
   data?: Array<BrandBrief | null>;
@@ -13,7 +13,7 @@ interface Props {
 
 export const CreativeRequests: FC<Props> = (props) => {
   const history = useHistory();
-  const goToCreatives = (): void => history.push(AuthRoutes.Creatives);
+  const goToCreatives = (): void => history.push(BrandRoutes.Creatives);
 
   return (
     <div className="creative-table-container">
