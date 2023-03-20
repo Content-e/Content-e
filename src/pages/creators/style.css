@@ -1,4 +1,4 @@
-.brands-page-wrapper {
+.creators-page-wrapper {
   display: flex;
   flex-direction: column;
   padding: 45px 45px 0px 45px;
@@ -10,7 +10,7 @@
   );
 }
 
-.brands-page-wrapper .brands-page-bg_image {
+.creators-page-wrapper .creators-page-bg_image {
   top: 0;
   bottom: auto;
   right: 0;
@@ -24,50 +24,50 @@
   );
 }
 
-.brands-page-wrapper .brands-page-container {
+.creators-page-wrapper .creators-page-container {
   display: flex;
   flex-direction: column;
 }
-.brands-page-wrapper .brands-page-container .brands-page-navbar {
+.creators-page-wrapper .creators-page-container .creators-page-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.brands-page-wrapper
-  .brands-page-container
-  .brands-page-navbar
-  .brands-page-logo {
+.creators-page-wrapper
+  .creators-page-container
+  .creators-page-navbar
+  .creators-page-logo {
   width: 160px;
   height: 60px;
   display: flex;
 }
 
-.brands-page-wrapper
-  .brands-page-container
-  .brands-page-navbar
-  .brands-page-menu-header {
+.creators-page-wrapper
+  .creators-page-container
+  .creators-page-navbar
+  .creators-page-menu-header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
   gap: 56px;
 }
-.brands-page-wrapper
-  .brands-page-container
-  .brands-page-navbar
-  .brands-page-menu-header
-  .brands-page-menu {
+.creators-page-wrapper
+  .creators-page-container
+  .creators-page-navbar
+  .creators-page-menu-header
+  .creators-page-menu {
   display: flex;
   flex-direction: row;
   gap: 28px;
 }
-.brands-page-wrapper
-  .brands-page-container
-  .brands-page-navbar
-  .brands-page-menu-header
-  .brands-page-menu
-  .brands-page-menu-items {
+.creators-page-wrapper
+  .creators-page-container
+  .creators-page-navbar
+  .creators-page-menu-header
+  .creators-page-menu
+  .creators-page-menu-items {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 700;
@@ -80,12 +80,12 @@
   cursor: pointer;
 }
 
-.brands-page-wrapper
-  .brands-page-container
-  .brands-page-navbar
-  .brands-page-menu-header
-  .brands-page-menu
-  .brands-page-menu-items.btn-item {
+.creators-page-wrapper
+  .creators-page-container
+  .creators-page-navbar
+  .creators-page-menu-header
+  .creators-page-menu
+  .creators-page-menu-items.btn-item {
   padding: 10px 20px;
   border-radius: 30px;
   color: black;
@@ -95,22 +95,22 @@
   font-weight: 700;
 }
 
-.brands-page-wrapper
-  .brands-page-container
-  .brands-page-navbar
-  .brands-page-menu-header
-  .brands-page-socials {
+.creators-page-wrapper
+  .creators-page-container
+  .creators-page-navbar
+  .creators-page-menu-header
+  .creators-page-socials {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
 }
 
-.brands-page-wrapper
-  .brands-page-container
-  .brands-page-navbar
-  .brands-page-menu-header
-  .brands-page-socials-item {
+.creators-page-wrapper
+  .creators-page-container
+  .creators-page-navbar
+  .creators-page-menu-header
+  .creators-page-socials-item {
   width: 24px;
   height: 24px;
   display: flex;
@@ -118,16 +118,16 @@
   justify-content: center;
 }
 
-.brands-page-wrapper
-  .brands-page-container
-  .brands-page-navbar
-  .brands-page-menu-header
-  .brands-page-socials-item
+.creators-page-wrapper
+  .creators-page-container
+  .creators-page-navbar
+  .creators-page-menu-header
+  .creators-page-socials-item
   img {
   width: 100%;
   height: 100%;
 }
-.brands-page-wrapper .brands-page-body {
+.creators-page-wrapper .creators-page-body {
   margin-left: 67px;
   flex: 1 1;
   display: flex;
@@ -137,7 +137,7 @@
   max-width: 645px;
 }
 
-.brands-page-wrapper .brands-page-body .brands-page-title {
+.creators-page-wrapper .creators-page-body .creators-page-title {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 700;
@@ -146,7 +146,7 @@
   text-transform: capitalize;
   color: #e9d8a6;
 }
-.brands-page-wrapper .brands-page-body .brands-page-subtitle {
+.creators-page-wrapper .creators-page-body .creators-page-subtitle {
   font-family: "Raleway";
   margin-top: 7px;
   font-style: normal;
@@ -158,7 +158,7 @@
   color: #e9d8a6;
 }
 
-.brands-content-container-gradient {
+.creators-content-container-gradient {
   background-image: url("../../../public/images/glass-image.svg");
   padding: 31px 45px 0px 35px;
   border-radius: 50px;
@@ -204,13 +204,13 @@
   cursor: pointer;
 }
 
-.brands-btn {
+.creators-btn {
   width: 135px;
   height: 34px;
   justify-content: center;
 }
 
-.brands-page-workBtn {
+.creators-page-workBtn {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 700;
@@ -222,7 +222,7 @@
   margin-top: 5px;
 }
 
-.brands-page-steps-wrapper {
+.creators-page-steps-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -231,7 +231,7 @@
   margin-top: 15px;
 }
 
-.brands-page-steps-wrapper .brands-page-single-steps {
+.creators-page-steps-wrapper .creators-page-single-steps {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -239,9 +239,9 @@
   gap: 16px;
 }
 
-.brands-page-steps-wrapper
-  .brands-page-single-steps
-  .brands-page-step-number-circle {
+.creators-page-steps-wrapper
+  .creators-page-single-steps
+  .creators-page-step-number-circle {
   border: 2.5px solid #e6d7ad;
   border-radius: 50%;
   width: 50px;
@@ -253,10 +253,10 @@
   background-color: #898639;
 }
 
-.brands-page-steps-wrapper
-  .brands-page-single-steps
-  .brands-page-step-number-circle
-  .brands-page-step-number-text {
+.creators-page-steps-wrapper
+  .creators-page-single-steps
+  .creators-page-step-number-circle
+  .creators-page-step-number-text {
   width: 100%;
   color: #e6d7ad;
   display: flex;
@@ -266,7 +266,9 @@
   font-weight: 600;
 }
 
-.brands-page-steps-wrapper .brands-page-single-steps .brands-page-step-text {
+.creators-page-steps-wrapper
+  .creators-page-single-steps
+  .creators-page-step-text {
   max-width: 400px;
   font-family: "Raleway";
   font-style: normal;
@@ -278,7 +280,7 @@
   color: #e9d8a6;
 }
 
-.brands-page-detailed-content {
+.creators-page-detailed-content {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 400;
@@ -287,14 +289,14 @@
   color: #e5d5a5;
 }
 
-.brands-page-detailed-content-container {
+.creators-page-detailed-content-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-top: 18px;
 }
 
-.for-brands-btn {
+.for-creators-btn {
   background: linear-gradient(
     116.82deg,
     #001219 0%,
@@ -339,7 +341,7 @@
   padding: 10px;
 }
 
-.for-brands-content-btn-container {
+.for-creators-content-btn-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -347,7 +349,7 @@
   margin-top: 32px;
 }
 
-.brands-content-container {
+.creators-content-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -365,7 +367,7 @@
   margin-top: 45px;
 }
 
-.brands-footer {
+.creators-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -373,20 +375,20 @@
   gap: 20px;
 }
 
-.brands-footer-text-container {
+.creators-footer-text-container {
   display: flex;
   align-items: center;
   gap: 20px;
   margin-top: 25px;
 }
 
-.brands-footer-img-container {
+.creators-footer-img-container {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.brands-footer-text {
+.creators-footer-text {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 300;
@@ -396,7 +398,7 @@
   cursor: pointer;
 }
 
-.brand-main-points {
+.creators-main-points {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 400;
@@ -405,13 +407,13 @@
   color: #e9d8a6;
 }
 
-.brand-single-point {
+.creators-single-point {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.brand-points {
+.creators-points {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -419,16 +421,16 @@
 }
 
 @media only screen and (max-width: 1060px) {
-  .brands-page-wrapper .brands-page-bg_image img {
+  .creators-page-wrapper .creators-page-bg_image img {
     object-fit: cover;
   }
-  .brands-page-wrapper .brands-page-body {
+  .creators-page-wrapper .creators-page-body {
     margin-left: 20px;
     margin-right: 20px;
   }
 }
 @media only screen and (max-width: 525px) {
-  .brands-page-wrapper .brands-page-body .brands-page-steps-wrapper {
+  .creators-page-wrapper .creators-page-body .creators-page-steps-wrapper {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
