@@ -4,20 +4,28 @@ import { BrandProps, IBrandFormState, withBrand } from "state/brand";
 import * as S from "./styles";
 import { ProfileProps } from "utils";
 import BrandInput from "./brandInput";
+import { IconLoader } from "components/loader";
+import classNames from "classnames";
 
 export const BrandForm: FC<ProfileProps & BrandProps> = ({
   profileState: { data },
   updateData,
+  brandLoading,
+  data: brandState,
 }) => {
   const [formState, setFormState] = useState<IBrandFormState>({});
+  const [btnDisable, setBtnDisable] = useState(true);
 
   const handleChange = (key: string, value: string): void => {
     setFormState((prev) => ({ ...prev, [key]: value }));
+    setBtnDisable(false);
   };
 
   const submitForm = (): void => {
-    const brand = data?.brand?.items?.[0];
-    updateData({ ...brand, metaData: JSON.stringify(formState) });
+    if (!brandLoading) {
+      const brand = data?.brand?.items?.[0];
+      updateData({ ...brand, metaData: JSON.stringify(formState) });
+    }
   };
 
   useEffect(() => {
@@ -31,6 +39,10 @@ export const BrandForm: FC<ProfileProps & BrandProps> = ({
       }
     }
   }, [data]);
+
+  useEffect(() => {
+    if (!brandLoading && brandState) setBtnDisable(true);
+  }, [brandState, brandLoading]);
 
   const props = { formState, onChange: handleChange };
 
@@ -49,7 +61,19 @@ export const BrandForm: FC<ProfileProps & BrandProps> = ({
       <BrandInput {...props} keyProp="twitter" title="Brand Twitter handle" />
 
       <S.SaveButtonContainer>
-        <S.SaveButton onClick={submitForm}>Save</S.SaveButton>
+        <S.SaveButton
+          onClick={submitForm}
+          disabled={btnDisable}
+          className={classNames({
+            "no-dirty-state": btnDisable,
+            active: brandLoading,
+          })}
+        >
+          <S.SaveBtnText className={classNames({ loading: brandLoading })}>
+            Save
+          </S.SaveBtnText>
+          {brandLoading && <IconLoader />}
+        </S.SaveButton>
       </S.SaveButtonContainer>
     </S.BrandInputForm>
   );

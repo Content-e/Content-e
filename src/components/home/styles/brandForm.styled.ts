@@ -30,8 +30,20 @@ export const SaveButton = styled.button`
   border: 1px solid #005f73;
   border-radius: 10px;
 
-  &:hover {
+  &.no-dirty-state {
+    border: 1px solid lightgrey;
+    color: grey;
+    opacity: 0.8;
+  }
+  &:hover:not([disabled]),
+  &.active:not([disabled]) {
     color: white;
     background: linear-gradient(180deg, #227fa5 0%, #2cb5b8 100%);
+  }
+`;
+
+export const SaveBtnText = styled.span`
+  &.loading {
+    margin-right: 10px;
   }
 `;

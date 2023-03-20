@@ -3,6 +3,7 @@ import { BrandProfile, CreateBrandProfileInput } from "API";
 export interface BrandProps {
   updateData: (data: CreateBrandProfileInput) => void;
   data?: BrandProfile;
+  brandLoading?: boolean;
 }
 
 export interface IMeterValue {

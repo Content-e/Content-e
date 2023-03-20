@@ -64,6 +64,7 @@ export function withBrand<T>(Component: React.FC<T & BrandProps>): React.FC<T> {
     }, [brandState]);
 
     const hocProps = {
+      brandLoading: updateBrandLoading || createBrandLoading,
       updateData,
       data: brandState,
     };
