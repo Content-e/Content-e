@@ -97,63 +97,63 @@ export const LandingPage: React.FC = () => {
             <img src="/images/landing-union.svg" />
           </div>
         </div>
+      </div>
 
-        <div className="how-it-works-container">
-          <div className="landing-page-workBtn">How it works</div>
-          <div className="landing-page-steps-wrapper">
-            <div className="landing-page-single-steps">
-              <div className="landing-page-step-number-circle">
-                <div className="landing-page-step-number-text">1</div>
-              </div>
-              <div className="landing-page-step-text">
-                Creators post content about the brands and topics they love.
-              </div>
+      <div className="how-it-works-container-landing">
+        <div className="landing-page-workBtn">How it works</div>
+        <div className="landing-page-steps-wrapper">
+          <div className="landing-page-single-steps">
+            <div className="landing-page-step-number-circle">
+              <div className="landing-page-step-number-text">1</div>
             </div>
-            <div className="landing-page-single-steps">
-              <div className="landing-page-step-number-circle">
-                <div className="landing-page-step-number-text">2</div>
-              </div>
-              <div className="landing-page-step-text">
-                Content is linked to brands via EDC squared
-              </div>
+            <div className="landing-page-step-text">
+              Creators post content about the brands and topics they love.
             </div>
-            <div className="landing-page-single-steps">
-              <div className="landing-page-step-number-circle">
-                <div className="landing-page-step-number-text">3</div>
-              </div>
-              <div className="landing-page-step-text">
-                If brands like it, they promote it.
-              </div>
+          </div>
+          <div className="landing-page-single-steps">
+            <div className="landing-page-step-number-circle">
+              <div className="landing-page-step-number-text">2</div>
             </div>
-            <div className="landing-page-single-steps">
-              <div className="landing-page-step-number-circle">
-                <div className="landing-page-step-number-text">4</div>
-              </div>
-              <div className="landing-page-step-text">
-                Creators earn from their content. Brands get authentic content
-                at scale.
-              </div>
+            <div className="landing-page-step-text">
+              Content is linked to brands via EDC squared
+            </div>
+          </div>
+          <div className="landing-page-single-steps">
+            <div className="landing-page-step-number-circle">
+              <div className="landing-page-step-number-text">3</div>
+            </div>
+            <div className="landing-page-step-text">
+              If brands like it, they promote it.
+            </div>
+          </div>
+          <div className="landing-page-single-steps">
+            <div className="landing-page-step-number-circle">
+              <div className="landing-page-step-number-text">4</div>
+            </div>
+            <div className="landing-page-step-text">
+              Creators earn from their content. Brands get authentic content at
+              scale.
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="landing-footer">
-          <div className="landing-footer-text-container">
-            <div className="landing-footer-text">Home</div>
-            <div className="landing-footer-text">For Creators</div>
-            <div className="landing-footer-text">For Brands</div>
-            <div className="landing-footer-text">Say Hello</div>
-          </div>
+      <div className="landing-footer">
+        <div className="landing-footer-text-container">
+          <div className="landing-footer-text">Home</div>
+          <div className="landing-footer-text">For Creators</div>
+          <div className="landing-footer-text">For Brands</div>
+          <div className="landing-footer-text">Say Hello</div>
+        </div>
 
-          <div className="landing-footer-img-container">
-            <img src="/images/landing-insta.svg" />
-            <img src="/images/landing-twitter.svg" />
-            <img src="/images/landing-tiktok.svg" />
-          </div>
+        <div className="landing-footer-img-container">
+          <img src="/images/landing-insta.svg" />
+          <img src="/images/landing-twitter.svg" />
+          <img src="/images/landing-tiktok.svg" />
+        </div>
 
-          <div className="landing-footer-text">
-            © 2023 Copyright EDC Squared. All Rights Reserved.
-          </div>
+        <div className="landing-footer-text">
+          © 2023 Copyright EDC Squared. All Rights Reserved.
         </div>
       </div>
     </div>

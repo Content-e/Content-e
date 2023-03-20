@@ -356,7 +356,7 @@
   margin-top: 40px;
 }
 
-.how-it-works-container {
+.how-it-works-container-creators {
   background: linear-gradient(
     180deg,
     rgba(231, 215, 167, 0.25) 0%,
@@ -364,7 +364,6 @@
   );
   border-radius: 50px;
   padding: 26px 99px 62px 99px;
-  margin-top: 45px;
 }
 
 .creators-footer {

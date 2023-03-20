@@ -107,70 +107,70 @@ export const CreatorsPage: React.FC = () => {
             <img src="/images/creators-union.svg" />
           </div>
         </div>
+      </div>
 
-        <div className="how-it-works-container">
-          <div className="creators-page-workBtn">How it works</div>
-          <div className="creators-page-steps-wrapper">
-            <div className="creators-page-single-steps">
-              <div className="creators-page-step-number-circle">
-                <div className="creators-page-step-number-text">1</div>
-              </div>
-              <div className="creators-page-step-text">
-                Post your everyday content about brands and topics you love.
-              </div>
+      <div className="how-it-works-container-creators">
+        <div className="creators-page-workBtn">How it works</div>
+        <div className="creators-page-steps-wrapper">
+          <div className="creators-page-single-steps">
+            <div className="creators-page-step-number-circle">
+              <div className="creators-page-step-number-text">1</div>
             </div>
-            <div className="creators-page-single-steps">
-              <div className="creators-page-step-number-circle">
-                <div className="creators-page-step-number-text">2</div>
-              </div>
-              <div className="creators-page-step-text">
-                Link your content via EDC squared.
-              </div>
+            <div className="creators-page-step-text">
+              Post your everyday content about brands and topics you love.
             </div>
-            <div className="creators-page-single-steps">
-              <div className="creators-page-step-number-circle">
-                <div className="creators-page-step-number-text">3</div>
-              </div>
-              <div className="creators-page-step-text">
-                If a brand likes it, they will approve and promote it.
-              </div>
+          </div>
+          <div className="creators-page-single-steps">
+            <div className="creators-page-step-number-circle">
+              <div className="creators-page-step-number-text">2</div>
             </div>
-            <div className="creators-page-single-steps">
-              <div className="creators-page-step-number-circle">
-                <div className="creators-page-step-number-text">4</div>
-              </div>
-              <div className="creators-page-step-text">
-                The better your content performs the more you earn.
-              </div>
+            <div className="creators-page-step-text">
+              Link your content via EDC squared.
             </div>
-            <div className="creators-page-single-steps">
-              <div className="creators-page-step-number-circle">
-                <div className="creators-page-step-number-text">5</div>
-              </div>
-              <div className="creators-page-step-text">
-                Track your earnings in realtime.
-              </div>
+          </div>
+          <div className="creators-page-single-steps">
+            <div className="creators-page-step-number-circle">
+              <div className="creators-page-step-number-text">3</div>
+            </div>
+            <div className="creators-page-step-text">
+              If a brand likes it, they will approve and promote it.
+            </div>
+          </div>
+          <div className="creators-page-single-steps">
+            <div className="creators-page-step-number-circle">
+              <div className="creators-page-step-number-text">4</div>
+            </div>
+            <div className="creators-page-step-text">
+              The better your content performs the more you earn.
+            </div>
+          </div>
+          <div className="creators-page-single-steps">
+            <div className="creators-page-step-number-circle">
+              <div className="creators-page-step-number-text">5</div>
+            </div>
+            <div className="creators-page-step-text">
+              Track your earnings in realtime.
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="landing-footer">
-          <div className="landing-footer-text-container">
-            <div className="landing-footer-text">Home</div>
-            <div className="landing-footer-text">For Creators</div>
-            <div className="landing-footer-text">For Brands</div>
-            <div className="landing-footer-text">Say Hello</div>
-          </div>
+      <div className="landing-footer">
+        <div className="landing-footer-text-container">
+          <div className="landing-footer-text">Home</div>
+          <div className="landing-footer-text">For Creators</div>
+          <div className="landing-footer-text">For Brands</div>
+          <div className="landing-footer-text">Say Hello</div>
+        </div>
 
-          <div className="landing-footer-img-container">
-            <img src="/images/landing-insta.svg" />
-            <img src="/images/landing-twitter.svg" />
-            <img src="/images/landing-tiktok.svg" />
-          </div>
+        <div className="landing-footer-img-container">
+          <img src="/images/landing-insta.svg" />
+          <img src="/images/landing-twitter.svg" />
+          <img src="/images/landing-tiktok.svg" />
+        </div>
 
-          <div className="landing-footer-text">
-            © 2023 Copyright EDC Squared. All Rights Reserved.
-          </div>
+        <div className="landing-footer-text">
+          © 2023 Copyright EDC Squared. All Rights Reserved.
         </div>
       </div>
     </div>
