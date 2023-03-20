@@ -1,5 +1,6 @@
 import { USER_TYPES } from "API";
-import { getProfileRole, ShouldRender } from "components";
+import classNames from "classnames";
+import { getProfileRole, IconLoader, ShouldRender } from "components";
 import { FC, Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
@@ -34,8 +35,11 @@ export const EditProfile: FC<ProfileProps> = ({
 
   const validateProfileForm = (): boolean => {
     const name = validateFullName(formState?.name || "");
-    const description = validateDescription(formState?.description || "");
-    const tiktokHandler = validateTiktokHandle(formState?.tiktokHandler || "");
+    const isCreator = data?.userType === USER_TYPES.CREATIVE_USER ? true : null;
+    const description =
+      isCreator && validateDescription(formState?.description || "");
+    const tiktokHandler =
+      isCreator && validateTiktokHandle(formState?.tiktokHandler || "");
     if (name || description || tiktokHandler) {
       setFormError({ name, description, tiktokHandler });
       return false;
@@ -129,7 +133,10 @@ export const EditProfile: FC<ProfileProps> = ({
 
         <div className="save-profile-container">
           <div className="save-profile" onClick={submitProfile}>
-            <span>Save profile</span>
+            <span className={classNames({ loading: isLoading })}>
+              Save profile
+            </span>
+            {isLoading && <IconLoader color="#005f73" />}
           </div>
         </div>
       </div>

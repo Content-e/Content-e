@@ -1,5 +1,5 @@
-import styled, { css, keyframes } from "styled-components";
-import { StyledProps } from "utils";
+import styled, { keyframes } from "styled-components";
+
 import { PropType } from "..";
 
 export const rotate = keyframes`
@@ -11,7 +11,7 @@ export const rotate = keyframes`
 export const LoadingSpinner = styled.span<PropType>`
   border: 1.5px solid white;
   border-radius: 50%;
-  border-top-color: transparent;
+  border-top-color: ${(props): string => props.color || "transparent"};
   opacity: 1;
   transition-delay: 200ms;
   width: 14px;
@@ -20,10 +20,4 @@ export const LoadingSpinner = styled.span<PropType>`
   animation: ${rotate} 1s linear;
   animation-iteration-count: infinite;
   padding: 0px !important;
-  ${(props): StyledProps =>
-    props.color === "#4c40f7"
-      ? css`
-          border-top-color: #4c40f7;
-        `
-      : css``}
 `;

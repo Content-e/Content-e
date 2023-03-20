@@ -85,7 +85,7 @@
   justify-content: center;
 }
 
-.save-profile span {
+.save-profile:first-child {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 300;
@@ -93,6 +93,9 @@
   line-height: 14px;
   letter-spacing: -0.02em;
   color: #005f73;
+}
+.save-profile .loading {
+  margin-right: 10px;
 }
 
 .save-profile-container {
