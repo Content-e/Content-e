@@ -66,6 +66,7 @@ export type ModelUSER_TYPESInput = {
 export enum USER_TYPES {
   CREATIVE_USER = "CREATIVE_USER",
   BRAND_USER = "BRAND_USER",
+  ADMIN_USER = "ADMIN_USER",
 }
 
 

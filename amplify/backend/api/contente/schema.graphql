@@ -66,6 +66,7 @@ type CreativeRequest
 enum USER_TYPES{
   CREATIVE_USER
   BRAND_USER
+  ADMIN_USER
 }
 enum GPT_PROMPT {
   BRAND_NAME
