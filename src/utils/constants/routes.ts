@@ -7,6 +7,7 @@ export enum UnAuthRoutes {
 
   Login = "/login",
   SubLogin = "/login/:id",
+  AdminLogin = "/adminLogin",
 
   Register = "/register",
   SubRegister = "/register/:id",

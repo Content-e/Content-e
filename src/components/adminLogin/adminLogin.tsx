@@ -1,14 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
-
+import { FC, useEffect, useState } from "react";
 import { IconLoader, Input } from "components";
+import { AuthProps, defaultLoginError, defaultLoginState } from "utils";
+import "./adminLogin.css";
+import { validateEmail, validatePassword, withAuth } from "state/auth";
+import { useLogin } from "hooks";
 import Checkbox from "components/authentication/checkbox";
 
-import { defaultLoginError, defaultLoginState } from "utils";
+export const AdminLogin: FC<AuthProps> = ({ getAuth }) => {
+  const {
+    res: { isLoading, success },
+    performAction,
+  } = useLogin();
 
-import "./adminLogin.css";
-
-export const AdminLogin = () => {
   const [formState, setFormState] = useState(defaultLoginState);
   const [formError, setFormError] = useState(defaultLoginError);
 
@@ -16,6 +20,26 @@ export const AdminLogin = () => {
     setFormError((prev) => ({ ...prev, [key]: null }));
     setFormState((prev) => ({ ...prev, [key]: value }));
   };
+
+  const validateSignUpForm = (): boolean => {
+    const email = validateEmail(formState.email);
+    const password = validatePassword(formState.password);
+    if (email || password) {
+      setFormError({ email, password });
+      return false;
+    }
+    return true;
+  };
+
+  const onLogin = (): void => {
+    if (!isLoading && validateSignUpForm()) {
+      performAction(formState);
+    }
+  };
+
+  useEffect(() => {
+    if (success) getAuth();
+  }, [success]);
 
   const commonProps = {
     handlers: { state: formState, error: formError, updateState },
@@ -49,17 +73,9 @@ export const AdminLogin = () => {
               <span>Forgot Password?</span>{" "}
             </div>{" "}
           </div>
-          {/* <button
-            className="login_btn"
-            onClick={onSignUp}
-            disabled={isLoading || !isSubmittable}
-          >
-            <span style={{ marginRight: 12 }}>Sign up</span>
-            {isLoading && <IconLoader />}
-          </button>{" "} */}
-          <button className="login_btn">
+          <button className="login_btn" onClick={onLogin}>
             <span style={{ marginRight: 12 }}>Login</span>
-            {/* {isLoading && <IconLoader />} */}
+            {isLoading && <IconLoader />}
           </button>
         </div>
       </div>
@@ -67,4 +83,4 @@ export const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default withAuth(AdminLogin);

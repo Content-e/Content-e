@@ -17,7 +17,6 @@ import { AuthRoutes, BrandRoutes, CreatorRoutes, ProfileProps } from "utils";
 import Wallet from "pages/wallet/wallet";
 import BestPractice from "pages/bestPractice/practice";
 import CreativesTable from "components/creativesTable/creativesTable";
-import AdminDashboard from "pages/adminDashboard/adminDashboard";
 import CreateBrief from "components/createBrief/createBrief";
 import { USER_TYPES } from "API";
 import { BrandAuthArray, CreatorAuthArray } from "./RoutesConstants";
@@ -34,7 +33,9 @@ const AuthRouterPaths: FC<ProfileProps> = ({
         (data?.userType === USER_TYPES.CREATIVE_USER &&
           !isValidRoute(CreatorAuthArray, pathname)) ||
         (data?.userType === USER_TYPES.BRAND_USER &&
-          !isValidRoute(BrandAuthArray, pathname))
+          !isValidRoute(BrandAuthArray, pathname)) ||
+        (data.userType === USER_TYPES.ADMIN_USER &&
+          !pathname.includes(AuthRoutes.Dashboard))
       )
         history.push(AuthRoutes.Dashboard);
     }
@@ -81,12 +82,6 @@ const AuthRouterPaths: FC<ProfileProps> = ({
               />
             </Fragment>
           )}
-
-          <Route
-            exact
-            path={AuthRoutes.AdminDashboard}
-            component={AdminDashboard}
-          />
 
           <Route
             exact

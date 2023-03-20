@@ -19,6 +19,7 @@ import {
   CreatorsPage,
   BrandsPage,
 } from "pages";
+import AdminLogin from "components/adminLogin/adminLogin";
 
 const UnAuthRouter: FC = () => {
   return (
@@ -32,6 +33,7 @@ const UnAuthRouter: FC = () => {
 
         <Route exact path={path.Login} component={LoginPage} />
         <Route exact path={path.SubLogin} component={SubLogin} />
+        <Route exact path={path.AdminLogin} component={AdminLogin} />
 
         <Route exact path={path.Register} component={RegisterPage} />
         <Route exact path={path.SubRegister} component={SubRegister} />
