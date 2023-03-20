@@ -13,5 +13,6 @@ export * from "./forgetPass";
 export * from "./resetPass";
 export * from "./landing";
 export * from "./creators";
+export * from "./brands";
 
 export * from "./coBranded";

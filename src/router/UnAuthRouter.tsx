@@ -17,6 +17,7 @@ import {
   SubResetPass,
   SubReverify,
   CreatorsPage,
+  BrandsPage,
 } from "pages";
 
 const UnAuthRouter: FC = () => {
@@ -25,6 +26,7 @@ const UnAuthRouter: FC = () => {
       <Switch>
         <Route exact path={path.Landing} component={LandingPage} />
         <Route exact path={path.Creators} component={CreatorsPage} />
+        <Route exact path={path.Brands} component={BrandsPage} />
 
         <Route exact path={path.SubLanding} component={SubLanding} />
 

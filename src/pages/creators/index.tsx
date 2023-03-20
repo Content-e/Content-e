@@ -1,7 +1,11 @@
 import React from "react";
 import "./style.css";
+import { useHistory } from "react-router-dom";
+import { UnAuthRoutes } from "utils";
 
 export const CreatorsPage: React.FC = () => {
+  const history = useHistory();
+
   return (
     <div className="creators-page-wrapper">
       <div className="creators-content-container-gradient">
@@ -15,9 +19,25 @@ export const CreatorsPage: React.FC = () => {
             </div>
             <div className="creators-page-menu-header">
               <div className="creators-page-menu">
-                <div className="creators-page-menu-items">Home</div>
-                <div className="creators-page-menu-items">For Creators</div>
-                <div className="creators-page-menu-items">For Brands</div>
+                <div
+                  className="creators-page-menu-items"
+                  onClick={() => history.push(UnAuthRoutes.Landing)}
+                >
+                  Home
+                </div>
+                <div
+                  className="creators-page-menu-items"
+                  onClick={() => history.push(UnAuthRoutes.Creators)}
+                  style={{ color: "#D9D9D9" }}
+                >
+                  For Creators
+                </div>
+                <div
+                  className="creators-page-menu-items"
+                  onClick={() => history.push(UnAuthRoutes.Brands)}
+                >
+                  For Brands
+                </div>
                 <div className="creators-page-menu-items">Say Hello</div>
                 <div className="login-signup">Login / Sign up</div>
 

@@ -1,7 +1,11 @@
 import React from "react";
 import "./style.css";
+import { useHistory } from "react-router-dom";
+import { UnAuthRoutes } from "utils";
 
 export const LandingPage: React.FC = () => {
+  const history = useHistory();
+
   return (
     <div className="landing-page-wrapper">
       <div className="landing-content-container-gradient">
@@ -15,9 +19,25 @@ export const LandingPage: React.FC = () => {
             </div>
             <div className="landing-page-menu-header">
               <div className="landing-page-menu">
-                <div className="landing-page-menu-items">Home</div>
-                <div className="landing-page-menu-items">For Creators</div>
-                <div className="landing-page-menu-items">For Brands</div>
+                <div
+                  className="landing-page-menu-items"
+                  onClick={() => history.push(UnAuthRoutes.Landing)}
+                  style={{ color: "#D9D9D9" }}
+                >
+                  Home
+                </div>
+                <div
+                  className="landing-page-menu-items"
+                  onClick={() => history.push(UnAuthRoutes.Creators)}
+                >
+                  For Creators
+                </div>
+                <div
+                  className="landing-page-menu-items"
+                  onClick={() => history.push(UnAuthRoutes.Brands)}
+                >
+                  For Brands
+                </div>
                 <div className="landing-page-menu-items">Say Hello</div>
                 <div className="login-signup">Login / Sign up</div>
 
