@@ -37,7 +37,6 @@ export const CreateBrief: FC<ProfileProps> = ({
     if (!formState.BriefName.length)
       errObj.BriefName = "Brief name is required";
     if (!formState.objective.length) errObj.objective = "Objective is required";
-    if (!formState.active.length) errObj.active = "Status is required";
     if (!formState.creativeInspirations.find((e) => e.length))
       errObj.creativeInspirations = "Atleast one inspiration is required";
     if (!formState.brandBriefDetails.length)
@@ -49,12 +48,14 @@ export const CreateBrief: FC<ProfileProps> = ({
 
   const handleSubmit = (): void => {
     const brandId = profile?.brand?.items?.[0]?.id;
-    const x = 3;
-    if (brandId && validateInputs() && x < 2)
+    if (brandId && validateInputs()) {
+      const { active, tiktokHandle, ...rest } = formState;
       createBrief({
-        variables: { input: { ...formState, brandId, vertical: "retail" } },
+        variables: {
+          input: { ...rest, brandId, vertical: "retail", active: !!active },
+        },
       });
-    else console.log({ ...formState, brandId, vertical: "retail" });
+    }
   };
 
   useEffect(() => {
@@ -63,48 +64,50 @@ export const CreateBrief: FC<ProfileProps> = ({
 
   const props = { formState, errorState: formError, onChange: handleChange };
   return (
-    <div className="create-brief-box">
-      <div className="brief-container">
-        <div className="create-brief-input-box">
-          <BriefInput {...props} keyProp="BriefName" title="Brief Name" />
-          <BriefInput
-            {...props}
-            keyProp="tiktok"
-            title="Select TikTok campaign to link to"
-          />
-          <BriefInput {...props} keyProp="objective" title="Objective" />
-          <div className="create-brief-input-container">
-            <div className="create-brief-input-title">Brief status</div>
-            <select
-              className="create-brief-input select-input"
-              onChange={updateStatus}
-            >
-              <option value="">Select one</option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-            </select>
-            <ShouldRender if={formError.active}>
-              <div className="input-brief-error">{formError.active}</div>
-            </ShouldRender>
+    <>
+      <div className="creatives-table-label">Create Brief</div>
+      <div className="create-brief-box">
+        <div className="brief-container">
+          <div className="create-brief-input-box">
+            <BriefInput {...props} keyProp="BriefName" title="Brief Name" />
+            <BriefInput
+              {...props}
+              keyProp="tiktokHandle"
+              title="Select TikTok campaign to link to"
+            />
+            <BriefInput {...props} keyProp="objective" title="Objective" />
+            <div className="create-brief-input-container">
+              <div className="create-brief-input-title">Brief status</div>
+              <select
+                className="create-brief-input select-input"
+                onChange={updateStatus}
+              >
+                <option value={1}>Active</option>
+                <option value={0}>Inactive</option>
+              </select>
+              <ShouldRender if={formError.active}>
+                <div className="input-brief-error">{formError.active}</div>
+              </ShouldRender>
+            </div>
+          </div>
+          <BriefInspirations {...props} keyProp="creativeInspirations" />
+        </div>
+
+        <BriefInput
+          {...props}
+          keyProp="brandBriefDetails"
+          title="Brief details"
+          isTextArea
+        />
+
+        <div className="create-brief-btn-container">
+          <div className="create-brief-btn" onClick={() => handleSubmit()}>
+            <span className="create-brief-text">Create Brief</span>
+            {loading && <IconLoader />}
           </div>
         </div>
-        <BriefInspirations {...props} keyProp="creativeInspirations" />
       </div>
-
-      <BriefInput
-        {...props}
-        keyProp="brandBriefDetails"
-        title="Brief details"
-        isTextArea
-      />
-
-      <div className="create-brief-btn-container">
-        <div className="create-brief-btn" onClick={() => handleSubmit()}>
-          <span className="create-brief-text">Create Brief</span>
-          {loading && <IconLoader />}
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

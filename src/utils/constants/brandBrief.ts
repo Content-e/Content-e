@@ -2,11 +2,12 @@ import { ICreateBriefError, ICreateBriefState } from "state/brandBrief";
 
 export const initialCreateBriefState: ICreateBriefState = {
   BriefName: "",
+  tiktokHandle: "",
   vertical: "",
   objective: "",
   brandBriefDetails: "",
   creativeInspirations: [] as Array<string>,
-  active: "",
+  active: true,
 };
 
 export const initialCreateBriefError: ICreateBriefError = {

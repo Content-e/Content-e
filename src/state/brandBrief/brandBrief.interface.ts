@@ -28,11 +28,12 @@ export interface ISelectredRequest {
 
 export interface ICreateBriefState {
   BriefName: string;
+  tiktokHandle: string;
   vertical: string;
   objective: string;
   brandBriefDetails: string;
   creativeInspirations: Array<string>;
-  active: string;
+  active: boolean;
 }
 export interface ICreateBriefError {
   BriefName: string | null;
