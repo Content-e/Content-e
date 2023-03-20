@@ -18,6 +18,7 @@ import {
   SubReverify,
   CreatorsPage,
   BrandsPage,
+  SayHello,
 } from "pages";
 import AdminLogin from "components/adminLogin/adminLogin";
 
@@ -28,6 +29,7 @@ const UnAuthRouter: FC = () => {
         <Route exact path={path.Landing} component={LandingPage} />
         <Route exact path={path.Creators} component={CreatorsPage} />
         <Route exact path={path.Brands} component={BrandsPage} />
+        <Route exact path={path.SayHello} component={SayHello} />
 
         <Route exact path={path.SubLanding} component={SubLanding} />
 

@@ -38,7 +38,12 @@ export const LandingPage: React.FC = () => {
                 >
                   For Brands
                 </div>
-                <div className="landing-page-menu-items">Say Hello</div>
+                <div
+                  className="landing-page-menu-items"
+                  onClick={() => history.push(UnAuthRoutes.SayHello)}
+                >
+                  Say Hello
+                </div>
                 <div className="login-signup">Login / Sign up</div>
 
                 <div className="landing-page-socials">

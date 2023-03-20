@@ -4,6 +4,7 @@ export enum UnAuthRoutes {
 
   Creators = "/creators",
   Brands = "/brands",
+  SayHello = "/sayHello",
 
   Login = "/login",
   SubLogin = "/login/:id",
