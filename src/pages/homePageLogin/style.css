@@ -1,63 +1,67 @@
-.say-hello-page-wrapper {
+.home-page-login-page-wrapper {
   display: flex;
   flex-direction: column;
   padding: 45px 45px 0px 45px;
   background-color: #041416;
+  height: 100vh;
 }
 
-.say-hello-page-wrapper .say-hello-page-bg_image {
+.home-page-login-page-wrapper .home-page-login-page-bg_image {
   top: 0;
   bottom: auto;
   right: 0;
   left: 0;
   z-index: -1;
   background-color: #041416;
+  height: 100vh;
 }
 
-.say-hello-page-wrapper .say-hello-page-container {
+.home-page-login-page-wrapper .home-page-login-page-container {
   display: flex;
   flex-direction: column;
 }
-.say-hello-page-wrapper .say-hello-page-container .say-hello-page-navbar {
+.home-page-login-page-wrapper
+  .home-page-login-page-container
+  .home-page-login-page-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.say-hello-page-wrapper
-  .say-hello-page-container
-  .say-hello-page-navbar
-  .say-hello-page-logo {
+.home-page-login-page-wrapper
+  .home-page-login-page-container
+  .home-page-login-page-navbar
+  .home-page-login-page-logo {
   width: 160px;
   height: 60px;
   display: flex;
 }
 
-.say-hello-page-wrapper
-  .say-hello-page-container
-  .say-hello-page-navbar
-  .say-hello-page-menu-header {
+.home-page-login-page-wrapper
+  .home-page-login-page-container
+  .home-page-login-page-navbar
+  .home-page-login-page-menu-header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
   gap: 56px;
 }
-.say-hello-page-wrapper
-  .say-hello-page-container
-  .say-hello-page-navbar
-  .say-hello-page-menu-header
-  .say-hello-page-menu {
+.home-page-login-page-wrapper
+  .home-page-login-page-container
+  .home-page-login-page-navbar
+  .home-page-login-page-menu-header
+  .home-page-login-page-menu {
   display: flex;
   flex-direction: row;
   gap: 28px;
 }
-.say-hello-page-wrapper
-  .say-hello-page-container
-  .say-hello-page-navbar
-  .say-hello-page-menu-header
-  .say-hello-page-menu
-  .say-hello-page-menu-items {
+.home-page-login-page-wrapper
+  .home-page-login-page-container
+  .home-page-login-page-navbar
+  .home-page-login-page-menu-header
+  .home-page-login-page-menu
+  .home-page-login-page-menu-items {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 700;
@@ -70,12 +74,12 @@
   cursor: pointer;
 }
 
-.say-hello-page-wrapper
-  .say-hello-page-container
-  .say-hello-page-navbar
-  .say-hello-page-menu-header
-  .say-hello-page-menu
-  .say-hello-page-menu-items.btn-item {
+.home-page-login-page-wrapper
+  .home-page-login-page-container
+  .home-page-login-page-navbar
+  .home-page-login-page-menu-header
+  .home-page-login-page-menu
+  .home-page-login-page-menu-items.btn-item {
   padding: 10px 20px;
   border-radius: 30px;
   color: black;
@@ -85,22 +89,22 @@
   font-weight: 700;
 }
 
-.say-hello-page-wrapper
-  .say-hello-page-container
-  .say-hello-page-navbar
-  .say-hello-page-menu-header
-  .say-hello-page-socials {
+.home-page-login-page-wrapper
+  .home-page-login-page-container
+  .home-page-login-page-navbar
+  .home-page-login-page-menu-header
+  .home-page-login-page-socials {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
 }
 
-.say-hello-page-wrapper
-  .say-hello-page-container
-  .say-hello-page-navbar
-  .say-hello-page-menu-header
-  .say-hello-page-socials-item {
+.home-page-login-page-wrapper
+  .home-page-login-page-container
+  .home-page-login-page-navbar
+  .home-page-login-page-menu-header
+  .home-page-login-page-socials-item {
   width: 24px;
   height: 24px;
   display: flex;
@@ -108,16 +112,16 @@
   justify-content: center;
 }
 
-.say-hello-page-wrapper
-  .say-hello-page-container
-  .say-hello-page-navbar
-  .say-hello-page-menu-header
-  .say-hello-page-socials-item
+.home-page-login-page-wrapper
+  .home-page-login-page-container
+  .home-page-login-page-navbar
+  .home-page-login-page-menu-header
+  .home-page-login-page-socials-item
   img {
   width: 100%;
   height: 100%;
 }
-.say-hello-page-wrapper .say-hello-page-body {
+.home-page-login-page-wrapper .home-page-login-page-body {
   flex: 1 1;
   display: flex;
   flex-direction: column;
@@ -126,16 +130,19 @@
   max-width: 645px;
 }
 
-.say-hello-page-wrapper .say-hello-page-body .say-hello-page-title {
+.home-page-login-page-wrapper
+  .home-page-login-page-body
+  .home-page-login-page-title {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 700;
   font-size: 60px;
   line-height: 70px;
-  text-transform: capitalize;
   color: #e9d8a6;
 }
-.say-hello-page-wrapper .say-hello-page-body .say-hello-page-subtitle {
+.home-page-login-page-wrapper
+  .home-page-login-page-body
+  .home-page-login-page-subtitle {
   font-family: "Raleway";
   margin-top: 25px;
   font-style: normal;
@@ -147,7 +154,7 @@
   color: #e9d8a6;
 }
 
-.say-hello-content-container-gradient {
+.home-page-login-content-container-gradient {
   background-image: url("../../../public/images/glass-image.svg");
   padding: 31px 45px 0px 35px;
   border-radius: 50px;
@@ -175,7 +182,7 @@
   cursor: pointer;
 }
 
-.say-hello-page-workBtn {
+.home-page-login-page-workBtn {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 700;
@@ -186,7 +193,7 @@
   color: #e5d5a5;
 }
 
-.say-hello-page-steps-wrapper {
+.home-page-login-page-steps-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -195,7 +202,7 @@
   margin-top: 19px;
 }
 
-.say-hello-page-steps-wrapper .say-hello-page-single-steps {
+.home-page-login-page-steps-wrapper .home-page-login-page-single-steps {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -203,9 +210,9 @@
   gap: 16px;
 }
 
-.say-hello-page-steps-wrapper
-  .say-hello-page-single-steps
-  .say-hello-page-step-number-circle {
+.home-page-login-page-steps-wrapper
+  .home-page-login-page-single-steps
+  .home-page-login-page-step-number-circle {
   border: 2.5px solid #e6d7ad;
   border-radius: 50%;
   width: 50px;
@@ -216,10 +223,10 @@
   flex-shrink: 0;
 }
 
-.say-hello-page-steps-wrapper
-  .say-hello-page-single-steps
-  .say-hello-page-step-number-circle
-  .say-hello-page-step-number-text {
+.home-page-login-page-steps-wrapper
+  .home-page-login-page-single-steps
+  .home-page-login-page-step-number-circle
+  .home-page-login-page-step-number-text {
   width: 100%;
   color: #e6d7ad;
   display: flex;
@@ -229,9 +236,9 @@
   font-weight: 600;
 }
 
-.say-hello-page-steps-wrapper
-  .say-hello-page-single-steps
-  .say-hello-page-step-text {
+.home-page-login-page-steps-wrapper
+  .home-page-login-page-single-steps
+  .home-page-login-page-step-text {
   max-width: 212px;
   font-family: "Raleway";
   font-style: normal;
@@ -243,7 +250,7 @@
   color: #e9d8a6;
 }
 
-.say-hello-page-detailed-content {
+.home-page-login-page-detailed-content {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 400;
@@ -252,7 +259,7 @@
   color: #e5d5a5;
 }
 
-.say-hello-page-detailed-content-container {
+.home-page-login-page-detailed-content-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -304,7 +311,7 @@
   padding: 10px;
 }
 
-.for-say-hello-content-btn-container {
+.for-home-page-login-content-btn-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -312,10 +319,7 @@
   margin-top: 32px;
 }
 
-.say-hello-content-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.home-page-login-content-container {
   padding: 138px 98px 99px 93px;
 }
 
@@ -329,7 +333,7 @@
   color: #e9d8a6;
 }
 
-.how-it-works-container-say-hello {
+.how-it-works-container-home-page-login {
   background: linear-gradient(
     180deg,
     rgba(231, 215, 167, 0.25) 0%,
@@ -339,7 +343,7 @@
   padding: 21px 99px 62px 99px;
 }
 
-.say-hello-footer {
+.home-page-login-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -348,20 +352,20 @@
   margin-bottom: 25px;
 }
 
-.say-hello-footer-text-container {
+.home-page-login-footer-text-container {
   display: flex;
   align-items: center;
   gap: 20px;
   margin-top: 25px;
 }
 
-.say-hello-footer-img-container {
+.home-page-login-footer-img-container {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.say-hello-footer-text {
+.home-page-login-footer-text {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 300;
@@ -371,14 +375,14 @@
   cursor: pointer;
 }
 
-.say-hello-field-container {
+.home-page-login-field-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
   width: 100%;
 }
 
-.say-hello-input-text {
+.home-page-login-input-text {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 400;
@@ -388,7 +392,7 @@
   color: #e9d8a6;
 }
 
-.say-hello-input {
+.home-page-login-input {
   border: none;
   border-bottom: 1px solid #e9d8a6;
   background-color: transparent;
@@ -401,7 +405,7 @@
   width: 100%;
 }
 
-.say-hello-input::placeholder {
+.home-page-login-input::placeholder {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 400;
@@ -410,17 +414,17 @@
   color: rgba(233, 216, 166, 0.5);
 }
 
-.say-hello-input:focus {
+.home-page-login-input:focus {
   outline: none;
 }
 
-.say-hello-input-container {
+.home-page-login-input-container {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.say-hello-input-box {
+.home-page-login-input-box {
   display: flex;
   flex-direction: column;
   width: 55%;
@@ -428,22 +432,29 @@
   padding-right: 40px;
 }
 
-.send-message-btn {
-  background: #e7d7a7;
-  border-radius: 25px;
+.say-hello-btn {
+  background: #e5d7ad;
+  border: 1px solid #b6e6ad;
+  border-radius: 20px;
   font-family: "Raleway";
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
-  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 0px;
-  color: #001219;
-  width: 165px;
-  margin-top: 73px;
+  letter-spacing: -0.02em;
+  width: 135px;
+  padding: 12px 0px;
+  color: #041416;
+  text-transform: uppercase;
+}
+.say-hello-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 70px 0px 40px 0px;
 }
 
 .hello-edc {
@@ -457,16 +468,18 @@
 }
 
 @media only screen and (max-width: 1060px) {
-  .say-hello-page-wrapper .say-hello-page-bg_image img {
+  .home-page-login-page-wrapper .home-page-login-page-bg_image img {
     object-fit: cover;
   }
-  .say-hello-page-wrapper .say-hello-page-body {
+  .home-page-login-page-wrapper .home-page-login-page-body {
     margin-left: 20px;
     margin-right: 20px;
   }
 }
 @media only screen and (max-width: 525px) {
-  .say-hello-page-wrapper .say-hello-page-body .say-hello-page-steps-wrapper {
+  .home-page-login-page-wrapper
+    .home-page-login-page-body
+    .home-page-login-page-steps-wrapper {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;

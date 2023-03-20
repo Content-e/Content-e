@@ -43,7 +43,12 @@ export const SayHello: React.FC = () => {
                 >
                   Say Hello
                 </div>
-                <div className="login-signup">Login / Sign up</div>
+                <div
+                  className="login-signup"
+                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                >
+                  Login / Sign up
+                </div>
 
                 <div className="say-hello-page-socials">
                   <div className="say-hello-page-socials-item">

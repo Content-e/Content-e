@@ -44,7 +44,12 @@ export const CreatorsPage: React.FC = () => {
                 >
                   Say Hello
                 </div>
-                <div className="login-signup">Login / Sign up</div>
+                <div
+                  className="login-signup"
+                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                >
+                  Login / Sign up
+                </div>
 
                 <div className="creators-page-socials">
                   <div className="creators-page-socials-item">

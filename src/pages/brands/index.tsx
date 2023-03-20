@@ -44,7 +44,12 @@ export const BrandsPage: React.FC = () => {
                 >
                   Say Hello
                 </div>
-                <div className="login-signup">Login / Sign up</div>
+                <div
+                  className="login-signup"
+                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                >
+                  Login / Sign up
+                </div>
 
                 <div className="brands-page-socials">
                   <div className="brands-page-socials-item">

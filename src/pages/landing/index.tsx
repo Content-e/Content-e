@@ -44,7 +44,12 @@ export const LandingPage: React.FC = () => {
                 >
                   Say Hello
                 </div>
-                <div className="login-signup">Login / Sign up</div>
+                <div
+                  className="login-signup"
+                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                >
+                  Login / Sign up
+                </div>
 
                 <div className="landing-page-socials">
                   <div className="landing-page-socials-item">
