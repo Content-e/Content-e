@@ -27,7 +27,7 @@ export enum AuthRoutes {
   Redirector = "/redirecting/:id?",
 
   Dashboard = "/dashboard",
-  CampaignBrief = "/campaignBrief",
+  CampaignBrief = "/campaignBriefs",
   EditProfile = "/editProfile",
 
   AdminDashboard = "/adminDashboard",
