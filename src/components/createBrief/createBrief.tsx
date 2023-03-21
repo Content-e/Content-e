@@ -24,13 +24,16 @@ export const CreateBrief: FC<ProfileProps> = ({
   const [formState, setFormState] = useState(initialCreateBriefState);
   const [formError, setFormError] = useState(initialCreateBriefError);
 
-  const handleChange = (key: string, value: string | Array<string>): void => {
+  const handleChange = (
+    key: string,
+    value: string | Array<string> | boolean
+  ): void => {
     setFormState((prev) => ({ ...prev, [key]: value }));
     setFormError((prev) => ({ ...prev, [key]: null }));
   };
 
   const updateStatus = (e: UnknownType): void =>
-    handleChange("active", e.target.value);
+    handleChange("active", !!parseInt(e.target.value));
 
   const validateInputs = (): boolean => {
     const errObj = { ...initialCreateBriefError };
@@ -49,11 +52,9 @@ export const CreateBrief: FC<ProfileProps> = ({
   const handleSubmit = (): void => {
     const brandId = profile?.brand?.items?.[0]?.id;
     if (brandId && validateInputs()) {
-      const { active, tiktokHandle, ...rest } = formState;
+      const { tiktokHandle, ...rest } = formState;
       createBrief({
-        variables: {
-          input: { ...rest, brandId, vertical: "retail", active: !!active },
-        },
+        variables: { input: { ...rest, brandId, vertical: "retail" } },
       });
     }
   };
