@@ -31,3 +31,9 @@ export interface ICreatorDashboardBox {
   Conversion: IDashboardValue;
   ClickThrough: IDashboardValue;
 }
+
+export interface INotification {
+  name?: string | null;
+  status: string;
+  time: string;
+}
