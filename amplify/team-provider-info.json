@@ -55,7 +55,7 @@
         },
         "emailService": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
-          "s3Key": "amplify-builds/emailService-74346f6b773071475662-build.zip"
+          "s3Key": "amplify-builds/emailService-597873714144332f7941-build.zip"
         }
       },
       "hosting": {

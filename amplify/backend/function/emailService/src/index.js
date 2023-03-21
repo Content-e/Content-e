@@ -23,11 +23,11 @@ exports.handler = async (event) => {
         };
     
         await ses.sendEmail(params).promise();
-        return {error:false}
+        return true
         
     } catch (error) {
         console.log("Email Service:: Exception", error);
-        return {error: true, message: error?.message}
+        return false
 
     }
 

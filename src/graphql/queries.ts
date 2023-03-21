@@ -22,10 +22,7 @@ export const getGPTresponse = /* GraphQL */ `
 `;
 export const sendEmail = /* GraphQL */ `
   query SendEmail($data: EMAIL_INPUT) {
-    sendEmail(data: $data) {
-      error
-      message
-    }
+    sendEmail(data: $data)
   }
 `;
 export const getUserProfile = /* GraphQL */ `

@@ -382,12 +382,6 @@ export type EMAIL_INPUT = {
   from: string,
 };
 
-export type EMAIL_OUTPUT = {
-  __typename: "EMAIL_OUTPUT",
-  error: boolean,
-  message?: string | null,
-};
-
 export type ModelUserProfileFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -1175,11 +1169,7 @@ export type SendEmailQueryVariables = {
 };
 
 export type SendEmailQuery = {
-  sendEmail?:  {
-    __typename: "EMAIL_OUTPUT",
-    error: boolean,
-    message?: string | null,
-  } | null,
+  sendEmail?: boolean | null,
 };
 
 export type GetUserProfileQueryVariables = {
