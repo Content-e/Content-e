@@ -119,11 +119,21 @@ export const BrandsPage: React.FC = () => {
             </div>
 
             <div className="for-brands-content-btn-container">
-              <div className="login-signup brands-btn">Login / Sign up</div>
-              <div className="login-signup brands-btn">Say Hello</div>
+              <div
+                className="login-signup brands-btn"
+                onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+              >
+                Login / Sign up
+              </div>
+              <div
+                className="login-signup brands-btn"
+                onClick={() => history.push(UnAuthRoutes.SayHello)}
+              >
+                Say Hello
+              </div>
             </div>
           </div>
-          <img src="/images/brands-union.svg" />
+          <img src="/images/brands-union.svg" style={{ marginLeft: "63px" }} />
         </div>
       </div>
 

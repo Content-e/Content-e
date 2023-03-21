@@ -97,14 +97,27 @@ export const LandingPage: React.FC = () => {
 
               <div className="for-landing-content-btn-container">
                 <div className="for-brands-btn">
-                  <span className="for-content-btn-text">FOR BRANDS</span>
+                  <span
+                    className="for-content-btn-text"
+                    onClick={() => history.push(UnAuthRoutes.Brands)}
+                  >
+                    FOR BRANDS
+                  </span>
                 </div>
                 <div className="for-creators-btn">
-                  <span className="for-content-btn-text">FOR CREATORS</span>
+                  <span
+                    className="for-content-btn-text"
+                    onClick={() => history.push(UnAuthRoutes.Creators)}
+                  >
+                    FOR CREATORS
+                  </span>
                 </div>
               </div>
             </div>
-            <img src="/images/landing-union.svg" />
+            <img
+              src="/images/landing-union.svg"
+              style={{ marginLeft: "63px" }}
+            />
           </div>
         </div>
       </div>

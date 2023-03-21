@@ -110,11 +110,24 @@ export const CreatorsPage: React.FC = () => {
               </div>
 
               <div className="for-creators-content-btn-container">
-                <div className="login-signup creators-btn">Login / Sign up</div>
-                <div className="login-signup creators-btn">Say Hello</div>
+                <div
+                  className="login-signup creators-btn"
+                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                >
+                  Login / Sign up
+                </div>
+                <div
+                  className="login-signup creators-btn"
+                  onClick={() => history.push(UnAuthRoutes.SayHello)}
+                >
+                  Say Hello
+                </div>
               </div>
             </div>
-            <img src="/images/creators-union.svg" />
+            <img
+              src="/images/creators-union.svg"
+              style={{ marginLeft: "63px" }}
+            />
           </div>
         </div>
       </div>
