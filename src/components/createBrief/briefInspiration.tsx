@@ -31,6 +31,7 @@ export const BriefInspirations: FC<Props> = ({
             onChange={(e): void => handleChange(index, e.target.value)}
             key={index.toString()}
             className="create-brief-input"
+            value={formState[key][index]}
             placeholder="Paste creative URL"
           />
         ))}

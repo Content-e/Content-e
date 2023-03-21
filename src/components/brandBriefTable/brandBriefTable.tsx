@@ -2,6 +2,8 @@ import { BrandBrief } from "API";
 import { getSlicedArray } from "components/helpers";
 import Pagination from "components/pagination";
 import { FC, Fragment, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { BrandRoutes } from "utils";
 import "./brandBriefTable.css";
 
 interface Props {
@@ -11,10 +13,14 @@ interface Props {
 
 const tableLimit = 7;
 export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
+  const history = useHistory();
   const [currentPage, setCurrentPage] = useState(0);
 
   const onBriefSelection = (brief?: BrandBrief | null): void => {
     if (brief) openBrief(brief);
+  };
+  const onBriefEdit = (brief?: BrandBrief | null): void => {
+    if (brief) history.push(BrandRoutes.EditBrief, { brief });
   };
 
   return (
@@ -27,6 +33,7 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
           <th className="brand-table-header-label">Objective</th>
           <th className="brand-table-header-label">Status</th>
           <th className="brand-table-header-label">Details</th>
+          <th className="brand-table-header-label">Edit</th>
         </tr>
         {getSlicedArray(data || [], tableLimit, currentPage)?.map(
           (e, index) => (
@@ -46,6 +53,9 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
               </td>
               <td onClick={(): void => onBriefSelection(e)}>
                 <img src="/images/table-search.svg" />
+              </td>
+              <td onClick={(): void => onBriefEdit(e)}>
+                <img src="/images/edit-icon.svg" />
               </td>
             </tr>
           )

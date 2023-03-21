@@ -6,6 +6,12 @@ export interface BrandBriefProps {
   brand?: BrandProfile | null;
 }
 
+export interface SaveBriefProps {
+  saveData: (data: ICreateBriefState) => void;
+  briefState?: ICreateBriefState;
+  loading: boolean;
+  response?: BrandBrief | null;
+}
 export interface IMeterValue {
   percentage: number;
   degree: number;
@@ -34,6 +40,7 @@ export interface ICreateBriefState {
   brandBriefDetails: string;
   creativeInspirations: Array<string>;
   active: boolean;
+  id?: string;
 }
 export interface ICreateBriefError {
   BriefName: string | null;

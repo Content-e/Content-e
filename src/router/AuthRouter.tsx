@@ -69,6 +69,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
                 path={BrandRoutes.CreateBrief}
                 component={CreateBrief}
               />
+              <Route
+                exact
+                path={BrandRoutes.EditBrief}
+                component={CreateBrief}
+              />
             </Fragment>
           )}
 

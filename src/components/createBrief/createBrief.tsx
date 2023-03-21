@@ -1,26 +1,25 @@
 import { IconLoader } from "components/loader";
 import ShouldRender from "components/shouldRender";
-import { createCampaignBrief } from "hooks";
-// import { isEmpty } from "lodash";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { withProfile } from "state/profileSteps";
+import { SaveBriefProps } from "state/brandBrief";
+import withSaveBrief from "state/brandBrief/withSaveBriefHoc";
 import {
-  AuthRoutes,
   initialCreateBriefError,
   initialCreateBriefState,
-  ProfileProps,
   UnknownType,
 } from "utils";
 import BriefInput from "./briefInput";
 import BriefInspirations from "./briefInspiration";
 import "./createBrief.css";
 
-export const CreateBrief: FC<ProfileProps> = ({
-  profileState: { data: profile },
+export const CreateBrief: FC<SaveBriefProps> = ({
+  saveData,
+  loading,
+  response,
+  briefState,
 }) => {
   const history = useHistory();
-  const { createBrief, loading, data } = createCampaignBrief();
   const [formState, setFormState] = useState(initialCreateBriefState);
   const [formError, setFormError] = useState(initialCreateBriefError);
 
@@ -50,23 +49,26 @@ export const CreateBrief: FC<ProfileProps> = ({
   };
 
   const handleSubmit = (): void => {
-    const brandId = profile?.brand?.items?.[0]?.id;
-    if (brandId && validateInputs()) {
-      const { tiktokHandle, ...rest } = formState;
-      createBrief({
-        variables: { input: { ...rest, brandId, vertical: "retail" } },
-      });
-    }
+    if (validateInputs()) saveData(formState);
   };
 
   useEffect(() => {
-    if (data && !loading) history.push(AuthRoutes.Dashboard);
-  }, [data, loading]);
+    if (response && !loading) history.goBack();
+  }, [response, loading]);
+
+  useEffect(() => {
+    if (briefState) setFormState(briefState);
+  }, [briefState]);
+
+  const headingText = useMemo(
+    () => (briefState ? "Edit" : "Create"),
+    [briefState]
+  );
 
   const props = { formState, errorState: formError, onChange: handleChange };
   return (
     <>
-      <div className="creatives-table-label">Create Brief</div>
+      <div className="creatives-table-label">{headingText} Brief</div>
       <div className="create-brief-box">
         <div className="brief-container">
           <div className="create-brief-input-box">
@@ -82,6 +84,7 @@ export const CreateBrief: FC<ProfileProps> = ({
               <select
                 className="create-brief-input select-input"
                 onChange={updateStatus}
+                value={+formState.active}
               >
                 <option value={1}>Active</option>
                 <option value={0}>Inactive</option>
@@ -102,8 +105,8 @@ export const CreateBrief: FC<ProfileProps> = ({
         />
 
         <div className="create-brief-btn-container">
-          <div className="create-brief-btn" onClick={() => handleSubmit()}>
-            <span className="create-brief-text">Create Brief</span>
+          <div className="create-brief-btn" onClick={handleSubmit}>
+            <span className="create-brief-text">{headingText} Brief</span>
             {loading && <IconLoader />}
           </div>
         </div>
@@ -112,4 +115,4 @@ export const CreateBrief: FC<ProfileProps> = ({
   );
 };
 
-export default withProfile(CreateBrief);
+export default withSaveBrief(CreateBrief);

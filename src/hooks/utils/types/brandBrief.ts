@@ -13,3 +13,10 @@ export type ICreateBriefResponse = {
   loading: boolean;
   error?: Error;
 };
+
+export type IEditBriefResponse = {
+  editBrief: (unknown) => void;
+  data?: BrandBrief | null;
+  loading: boolean;
+  error?: Error;
+};

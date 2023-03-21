@@ -2,11 +2,21 @@ import { useMutation } from "@apollo/client";
 import {
   CreateBrandBriefMutation,
   CreateBrandBriefMutationVariables,
+  UpdateBrandBriefMutation,
+  UpdateBrandBriefMutationVariables,
   UpdateCreativeRequestMutation,
   UpdateCreativeRequestMutationVariables,
 } from "API";
-import { createBrandBrief, updateCreativeRequest } from "graphql/mutations";
-import { ICreateBriefResponse, IUpdateBriefResponse } from "hooks/utils";
+import {
+  createBrandBrief,
+  updateBrandBrief,
+  updateCreativeRequest,
+} from "graphql/mutations";
+import {
+  ICreateBriefResponse,
+  IEditBriefResponse,
+  IUpdateBriefResponse,
+} from "hooks/utils";
 import { getQuery } from "hooks/utils/helpers";
 
 export const updateBriefStatus = (): IUpdateBriefResponse => {
@@ -25,4 +35,12 @@ export const createCampaignBrief = (): ICreateBriefResponse => {
     CreateBrandBriefMutationVariables
   >(getQuery(createBrandBrief));
   return { loading, createBrief, error, data: data?.createBrandBrief };
+};
+
+export const editCampaignBrief = (): IEditBriefResponse => {
+  const [editBrief, { data, loading, error }] = useMutation<
+    UpdateBrandBriefMutation,
+    UpdateBrandBriefMutationVariables
+  >(getQuery(updateBrandBrief));
+  return { loading, editBrief, error, data: data?.updateBrandBrief };
 };

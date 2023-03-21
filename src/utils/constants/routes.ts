@@ -44,6 +44,7 @@ export enum CreatorRoutes {
 export enum BrandRoutes {
   Creatives = "/creatives",
   CreateBrief = "/createBrief",
+  EditBrief = "/editBrief",
   Brand = "/brandProfile",
   EditBrand = "/brandEdit",
 }
