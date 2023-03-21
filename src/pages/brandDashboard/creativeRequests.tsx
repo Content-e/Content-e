@@ -1,18 +1,22 @@
 import BrandCreativesTable from "components/brandCreativesTable/brandCreativesTable";
 import "./brandDashboard.css";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { BrandBrief } from "API";
 import { ISelectredRequest } from "state/brandBrief";
 import { useHistory } from "react-router-dom";
 import { BrandRoutes } from "utils";
+import Pagination from "components/pagination";
 
 interface Props {
   data?: Array<BrandBrief | null>;
   openCreative: (data: ISelectredRequest) => void;
 }
 
+const tableLimit = 7;
 export const CreativeRequests: FC<Props> = (props) => {
   const history = useHistory();
+  const [currentPage, setCurrentPage] = useState(0);
+
   const goToCreatives = (): void => history.push(BrandRoutes.Creatives);
 
   return (
@@ -30,8 +34,17 @@ export const CreativeRequests: FC<Props> = (props) => {
             <th className="table-header-label">Status</th>
             <th className="table-header-label">View</th>
           </tr>
-          <BrandCreativesTable {...props} />
+          <BrandCreativesTable
+            {...props}
+            limit={tableLimit}
+            currentPage={currentPage}
+          />
         </table>
+        <Pagination
+          total={props?.data?.length || 0}
+          limit={tableLimit}
+          goToPage={setCurrentPage}
+        />
       </div>
     </div>
   );

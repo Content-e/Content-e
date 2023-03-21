@@ -100,3 +100,9 @@ export const getProfileRole = (userType?: USER_TYPES): string => {
   if (userType === USER_TYPES.BRAND_USER) return "Brand";
   return "";
 };
+
+export const getSlicedArray = <T>(
+  array: Array<T>,
+  limit: number,
+  page: number
+): Array<T> => array.slice(page * limit, (page + 1) * limit);

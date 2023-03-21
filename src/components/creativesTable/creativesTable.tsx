@@ -1,3 +1,4 @@
+import Pagination from "components/pagination";
 import CreativeDetails from "pages/creativeDetails/creativeDetails";
 import { FC, useState } from "react";
 import {
@@ -8,8 +9,10 @@ import {
 import CreativeEntries from "./creativeEntries";
 import "./creativesTable.css";
 
+const tableLimit = 7;
 export const CreativesTable: FC<BrandBriefProps> = (props) => {
   const [searchText, setSearchText] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
   const [selectedRequest, setSelectedRequest] = useState<ISelectredRequest>();
 
   if (selectedRequest)
@@ -44,8 +47,15 @@ export const CreativesTable: FC<BrandBriefProps> = (props) => {
             {...props}
             searchText={searchText}
             openCreative={setSelectedRequest}
+            limit={tableLimit}
+            currentPage={currentPage}
           />
         </table>
+        <Pagination
+          total={props?.data?.length || 0}
+          limit={tableLimit}
+          goToPage={setCurrentPage}
+        />
       </div>
     </>
   );

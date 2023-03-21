@@ -1,13 +1,21 @@
 import { BrandBrief } from "API";
+import { getSlicedArray } from "components/helpers";
 import { FC, useMemo } from "react";
 import { ICreativeEntry, ISelectredRequest } from "state/brandBrief";
 import "./brandCreativesTable.css";
 
 interface Props {
   data?: Array<BrandBrief | null>;
+  limit: number;
+  currentPage: number;
   openCreative: (data: ISelectredRequest) => void;
 }
-export const BrandCreativesTable: FC<Props> = ({ data, openCreative }) => {
+export const BrandCreativesTable: FC<Props> = ({
+  data,
+  limit,
+  currentPage,
+  openCreative,
+}) => {
   const requests = useMemo(() => {
     const rqArray = [] as Array<ICreativeEntry>;
     data?.forEach((brief) => {
@@ -23,13 +31,13 @@ export const BrandCreativesTable: FC<Props> = ({ data, openCreative }) => {
           });
       });
     });
-    return rqArray;
-  }, [data]);
+    return getSlicedArray(rqArray, limit, currentPage);
+  }, [data, currentPage]);
 
   return (
     <>
-      {requests.map((e) => (
-        <tr key={e.id}>
+      {requests.map((e, index) => (
+        <tr key={`${e.id}-creatives-${index}`}>
           <td className="table-description">{e.creativeLink}</td>
           <td className="table-description">
             {e.creatorHandle ? `@${e.creatorHandle}` : ""}

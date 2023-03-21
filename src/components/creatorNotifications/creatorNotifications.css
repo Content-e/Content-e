@@ -8,6 +8,7 @@
   border: 1px solid #9fd0bd;
   border-radius: 6px;
   padding: 15px;
+  overflow: auto;
 }
 
 .creator-notifications-label {
