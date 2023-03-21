@@ -99,23 +99,23 @@ export const LandingPage: React.FC = () => {
                 <div className="for-brands-btn">
                   <span
                     className="for-content-btn-text"
-                    onClick={() => history.push(UnAuthRoutes.Brands)}
-                  >
-                    FOR BRANDS
-                  </span>
-                </div>
-                <div className="for-creators-btn">
-                  <span
-                    className="for-content-btn-text"
                     onClick={() => history.push(UnAuthRoutes.Creators)}
                   >
                     FOR CREATORS
                   </span>
                 </div>
+                <div className="for-creators-btn">
+                  <span
+                    className="for-content-btn-text"
+                    onClick={() => history.push(UnAuthRoutes.Brands)}
+                  >
+                    FOR BRANDS
+                  </span>
+                </div>
               </div>
             </div>
             <img
-              src="/images/landing-union.svg"
+              src="/images/landing-union.png"
               style={{ marginLeft: "63px" }}
             />
           </div>
@@ -163,10 +163,30 @@ export const LandingPage: React.FC = () => {
 
       <div className="landing-footer">
         <div className="landing-footer-text-container">
-          <div className="landing-footer-text">Home</div>
-          <div className="landing-footer-text">For Creators</div>
-          <div className="landing-footer-text">For Brands</div>
-          <div className="landing-footer-text">Say Hello</div>
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Landing)}
+          >
+            Home
+          </div>
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Creators)}
+          >
+            For Creators
+          </div>
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Brands)}
+          >
+            For Brands
+          </div>
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.SayHello)}
+          >
+            Say Hello
+          </div>
         </div>
 
         <div className="landing-footer-img-container">

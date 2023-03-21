@@ -6,6 +6,10 @@ import { UnAuthRoutes } from "utils";
 export const SayHello: React.FC = () => {
   const history = useHistory();
 
+  const openContactUs = (): void => {
+    window.location.href = "mailto:hello@edcsquared.io";
+  };
+
   return (
     <div className="say-hello-page-wrapper">
       <div className="say-hello-content-container-gradient">
@@ -70,7 +74,9 @@ export const SayHello: React.FC = () => {
               <div className="ask-us-anything">
                 Ask us anything or just say hi...
               </div>
-              <div className="hello-edc">hello@edcsquared.io</div>
+              <div className="hello-edc" onClick={openContactUs}>
+                hello@edcsquared.io
+              </div>
             </div>
             <div className="say-hello-input-box">
               <div className="say-hello-input-container">
@@ -84,7 +90,7 @@ export const SayHello: React.FC = () => {
                 <div className="say-hello-field-container">
                   <div className="say-hello-input-text">Email</div>
                   <input
-                    placeholder="email@address.co.za"
+                    placeholder="email@address.com"
                     className="say-hello-input email"
                   />
                 </div>
@@ -103,10 +109,30 @@ export const SayHello: React.FC = () => {
       </div>
       <div className="say-hello-footer">
         <div className="say-hello-footer-text-container">
-          <div className="say-hello-footer-text">Home</div>
-          <div className="say-hello-footer-text">For Creators</div>
-          <div className="say-hello-footer-text">For Brands</div>
-          <div className="say-hello-footer-text">Say Hello</div>
+          <div
+            className="say-hello-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Landing)}
+          >
+            Home
+          </div>
+          <div
+            className="say-hello-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Creators)}
+          >
+            For Creators
+          </div>
+          <div
+            className="say-hello-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Brands)}
+          >
+            For Brands
+          </div>
+          <div
+            className="say-hello-footer-text"
+            onClick={() => history.push(UnAuthRoutes.SayHello)}
+          >
+            Say Hello
+          </div>
         </div>
 
         <div className="say-hello-footer-img-container">

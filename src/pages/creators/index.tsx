@@ -125,7 +125,7 @@ export const CreatorsPage: React.FC = () => {
               </div>
             </div>
             <img
-              src="/images/creators-union.svg"
+              src="/images/creators-union.png"
               style={{ marginLeft: "63px" }}
             />
           </div>
@@ -180,10 +180,30 @@ export const CreatorsPage: React.FC = () => {
 
       <div className="landing-footer">
         <div className="landing-footer-text-container">
-          <div className="landing-footer-text">Home</div>
-          <div className="landing-footer-text">For Creators</div>
-          <div className="landing-footer-text">For Brands</div>
-          <div className="landing-footer-text">Say Hello</div>
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Landing)}
+          >
+            Home
+          </div>
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Creators)}
+          >
+            For Creators
+          </div>
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Brands)}
+          >
+            For Brands
+          </div>
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.SayHello)}
+          >
+            Say Hello
+          </div>
         </div>
 
         <div className="landing-footer-img-container">

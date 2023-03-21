@@ -154,6 +154,7 @@
   background-repeat: no-repeat;
   margin-bottom: 25px;
   height: auto;
+  background-size: cover;
 }
 
 .login-signup {
@@ -444,6 +445,7 @@
   color: #001219;
   width: 165px;
   margin-top: 73px;
+  cursor: pointer;
 }
 
 .hello-edc {
@@ -454,6 +456,7 @@
   line-height: 23px;
   margin-top: 208px;
   color: #e9d8a6;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1060px) {

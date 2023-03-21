@@ -37,7 +37,12 @@ export const HomePageLogin: React.FC = () => {
                 >
                   For Brands
                 </div>
-                <div className="home-page-login-page-menu-items">Say Hello</div>
+                <div
+                  className="home-page-login-page-menu-items"
+                  onClick={() => history.push(UnAuthRoutes.SayHello)}
+                >
+                  Say Hello
+                </div>
                 <div className="login-signup" style={{ color: "#FFFFFF" }}>
                   Login / Sign up
                 </div>
@@ -67,17 +72,42 @@ export const HomePageLogin: React.FC = () => {
               </div>
             </div>
             <div className="say-hello-btn-container">
-              <div className="say-hello-btn">Say Hello</div>
+              <div
+                className="say-hello-btn"
+                onClick={() => history.push(UnAuthRoutes.SayHello)}
+              >
+                Say Hello
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div className="home-page-login-footer">
         <div className="home-page-login-footer-text-container">
-          <div className="home-page-login-footer-text">Home</div>
-          <div className="home-page-login-footer-text">For Creators</div>
-          <div className="home-page-login-footer-text">For Brands</div>
-          <div className="home-page-login-footer-text">Say Hello</div>
+          <div
+            className="home-page-login-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Landing)}
+          >
+            Home
+          </div>
+          <div
+            className="home-page-login-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Creators)}
+          >
+            For Creators
+          </div>
+          <div
+            className="home-page-login-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Brands)}
+          >
+            For Brands
+          </div>
+          <div
+            className="home-page-login-footer-text"
+            onClick={() => history.push(UnAuthRoutes.SayHello)}
+          >
+            Say Hello
+          </div>
         </div>
 
         <div className="home-page-login-footer-img-container">
