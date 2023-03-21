@@ -20,6 +20,14 @@ export const getGPTresponse = /* GraphQL */ `
     }
   }
 `;
+export const sendEmail = /* GraphQL */ `
+  query SendEmail($data: EMAIL_INPUT) {
+    sendEmail(data: $data) {
+      error
+      message
+    }
+  }
+`;
 export const getUserProfile = /* GraphQL */ `
   query GetUserProfile($id: ID!) {
     getUserProfile(id: $id) {

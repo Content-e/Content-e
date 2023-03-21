@@ -117,6 +117,17 @@ type GPT_RESPONSE @aws_cognito_user_pools {
   message: String
 }
 
+input EMAIL_INPUT {
+  message: String!
+  name: String!
+  from: String!
+}
+type EMAIL_OUTPUT @aws_cognito_user_pools {
+  error: Boolean!
+  message: String
+}
 type Query{
   getGPTresponse(data: GPT_INPUT): GPT_RESPONSE @function(name: "GPTLambda-${env}") @aws_iam @aws_cognito_user_pools
+  sendEmail(data: EMAIL_INPUT): EMAIL_OUTPUT @function(name: "emailService-${env}") @aws_iam @aws_cognito_user_pools
 }
+

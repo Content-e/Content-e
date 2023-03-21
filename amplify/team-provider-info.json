@@ -52,6 +52,10 @@
         "GPTLambda": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
           "s3Key": "amplify-builds/GPTLambda-5974695454704a655256-build.zip"
+        },
+        "emailService": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/emailService-74346f6b773071475662-build.zip"
         }
       },
       "hosting": {

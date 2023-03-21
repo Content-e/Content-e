@@ -376,6 +376,18 @@ export enum GPT_RESPONSE_TYPE {
 }
 
 
+export type EMAIL_INPUT = {
+  message: string,
+  name: string,
+  from: string,
+};
+
+export type EMAIL_OUTPUT = {
+  __typename: "EMAIL_OUTPUT",
+  error: boolean,
+  message?: string | null,
+};
+
 export type ModelUserProfileFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -1154,6 +1166,18 @@ export type GetGPTresponseQuery = {
     BRAND_TAGLINE_STATEMENT_REFRESH?: string | null,
     BRAND_MISSION_STATEMENT_REFRESH?: string | null,
     error?: boolean | null,
+    message?: string | null,
+  } | null,
+};
+
+export type SendEmailQueryVariables = {
+  data?: EMAIL_INPUT | null,
+};
+
+export type SendEmailQuery = {
+  sendEmail?:  {
+    __typename: "EMAIL_OUTPUT",
+    error: boolean,
     message?: string | null,
   } | null,
 };

@@ -68,6 +68,11 @@
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "emailService": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "hosting": {
@@ -91,6 +96,22 @@
         {
           "category": "function",
           "resourceName": "GPTLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_emailService_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "emailService"
+        }
+      ]
+    },
+    "AMPLIFY_function_emailService_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "emailService"
         }
       ]
     },
