@@ -51,12 +51,12 @@ export const CreativesTable: FC<BrandBriefProps> = (props) => {
             currentPage={currentPage}
           />
         </table>
-        <Pagination
-          total={props?.data?.length || 0}
-          limit={tableLimit}
-          goToPage={setCurrentPage}
-        />
       </div>
+      <Pagination
+        total={props?.data?.length || 0}
+        limit={tableLimit}
+        goToPage={setCurrentPage}
+      />
     </>
   );
 };

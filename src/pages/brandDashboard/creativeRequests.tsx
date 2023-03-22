@@ -12,7 +12,7 @@ interface Props {
   openCreative: (data: ISelectredRequest) => void;
 }
 
-const tableLimit = 7;
+const tableLimit = 9;
 export const CreativeRequests: FC<Props> = (props) => {
   const history = useHistory();
   const [currentPage, setCurrentPage] = useState(0);
@@ -20,33 +20,35 @@ export const CreativeRequests: FC<Props> = (props) => {
   const goToCreatives = (): void => history.push(BrandRoutes.Creatives);
 
   return (
-    <div className="creative-table-container">
-      <div className="brand-table-container">
-        <div className="brand-table-header">
-          <div className="brand-table-label">Creatives</div>
-          <img src="/images/morevert.svg" onClick={goToCreatives} />
+    <>
+      <div className="creative-table-container">
+        <div className="brand-table-container">
+          <div className="brand-table-header">
+            <div className="brand-table-label">Creatives</div>
+            <img src="/images/morevert.svg" onClick={goToCreatives} />
+          </div>
+          <table>
+            <tr className="table-header-bottom-border">
+              <th className="table-header-label">Creative link</th>
+              <th className="table-header-label">Creator handle</th>
+              <th className="table-header-label">Brief name</th>
+              <th className="table-header-label">Status</th>
+              <th className="table-header-label">View</th>
+            </tr>
+            <BrandCreativesTable
+              {...props}
+              limit={tableLimit}
+              currentPage={currentPage}
+            />
+          </table>
         </div>
-        <table>
-          <tr className="table-header-bottom-border">
-            <th className="table-header-label">Creative link</th>
-            <th className="table-header-label">Creator handle</th>
-            <th className="table-header-label">Brief name</th>
-            <th className="table-header-label">Status</th>
-            <th className="table-header-label">View</th>
-          </tr>
-          <BrandCreativesTable
-            {...props}
-            limit={tableLimit}
-            currentPage={currentPage}
-          />
-        </table>
-        <Pagination
-          total={props?.data?.length || 0}
-          limit={tableLimit}
-          goToPage={setCurrentPage}
-        />
       </div>
-    </div>
+      <Pagination
+        total={props?.data?.length || 0}
+        limit={tableLimit}
+        goToPage={setCurrentPage}
+      />
+    </>
   );
 };
 

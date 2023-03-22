@@ -95,8 +95,12 @@
 
 .dashboard-campaign-section {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
+}
+
+.dashboard-campaign-brief-wrapper {
+  width: 100%;
 }
 
 .dashboard-campaign-brief-container {
