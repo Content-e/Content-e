@@ -5,3 +5,4 @@ export * from "./suggestions";
 export * from "./tiktok";
 export * from "./dashboard";
 export * from "./brandBrief";
+export * from "./email";

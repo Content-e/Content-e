@@ -3,7 +3,7 @@
   flex-direction: column;
   padding: 45px 45px 0px 45px;
   background-color: #041416;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .home-page-login-page-wrapper .home-page-login-page-bg_image {
@@ -13,7 +13,7 @@
   left: 0;
   z-index: -1;
   background-color: #041416;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .home-page-login-page-wrapper .home-page-login-page-container {
@@ -97,7 +97,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 22px;
 }
 
 .home-page-login-page-wrapper

@@ -3,6 +3,7 @@
   flex-direction: column;
   padding: 45px 45px 0px 45px;
   background-color: #041416;
+  min-height: 100vh;
 }
 
 .say-hello-page-wrapper .say-hello-page-bg_image {
@@ -12,6 +13,7 @@
   left: 0;
   z-index: -1;
   background-color: #041416;
+  min-height: 100vh;
 }
 
 .say-hello-page-wrapper .say-hello-page-container {
@@ -24,19 +26,13 @@
   justify-content: space-between;
 }
 
-.say-hello-page-wrapper
-  .say-hello-page-container
-  .say-hello-page-navbar
-  .say-hello-page-logo {
+.say-hello-page-wrapper .say-hello-page-container .say-hello-page-navbar .say-hello-page-logo {
   width: 160px;
   height: 60px;
   display: flex;
 }
 
-.say-hello-page-wrapper
-  .say-hello-page-container
-  .say-hello-page-navbar
-  .say-hello-page-menu-header {
+.say-hello-page-wrapper .say-hello-page-container .say-hello-page-navbar .say-hello-page-menu-header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -93,7 +89,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 22px;
 }
 
 .say-hello-page-wrapper
@@ -204,9 +200,7 @@
   gap: 16px;
 }
 
-.say-hello-page-steps-wrapper
-  .say-hello-page-single-steps
-  .say-hello-page-step-number-circle {
+.say-hello-page-steps-wrapper .say-hello-page-single-steps .say-hello-page-step-number-circle {
   border: 2.5px solid #e6d7ad;
   border-radius: 50%;
   width: 50px;
@@ -230,9 +224,7 @@
   font-weight: 600;
 }
 
-.say-hello-page-steps-wrapper
-  .say-hello-page-single-steps
-  .say-hello-page-step-text {
+.say-hello-page-steps-wrapper .say-hello-page-single-steps .say-hello-page-step-text {
   max-width: 212px;
   font-family: "Raleway";
   font-style: normal;
@@ -261,12 +253,7 @@
 }
 
 .for-brands-btn {
-  background: linear-gradient(
-    116.82deg,
-    #001219 0%,
-    #bb3e03 5.21%,
-    #ee9b00 100%
-  );
+  background: linear-gradient(116.82deg, #001219 0%, #bb3e03 5.21%, #ee9b00 100%);
   border: 1px solid #e9d8a6;
   border-radius: 20px;
   height: 34px;
@@ -278,12 +265,7 @@
 }
 
 .for-creators-btn {
-  background: linear-gradient(
-    116.82deg,
-    #001219 0%,
-    #0a9396 6.25%,
-    #94d2bd 100%
-  );
+  background: linear-gradient(116.82deg, #001219 0%, #0a9396 6.25%, #94d2bd 100%);
   border: 1px solid #e9d8a6;
   border-radius: 20px;
   height: 34px;
@@ -331,11 +313,7 @@
 }
 
 .how-it-works-container-say-hello {
-  background: linear-gradient(
-    180deg,
-    rgba(231, 215, 167, 0.25) 0%,
-    rgba(217, 217, 217, 0) 100%
-  );
+  background: linear-gradient(180deg, rgba(231, 215, 167, 0.25) 0%, rgba(217, 217, 217, 0) 100%);
   border-radius: 50px;
   padding: 21px 99px 62px 99px;
 }
@@ -444,8 +422,16 @@
   padding: 16px 0px;
   color: #001219;
   width: 165px;
-  margin-top: 73px;
+  margin-top: 15px;
   cursor: pointer;
+}
+
+.say-hello-sent-message {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 19px;
+  color: rgba(233, 216, 166);
+  margin-top: -40px;
 }
 
 .hello-edc {

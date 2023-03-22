@@ -1,14 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 import { UnAuthRoutes } from "utils";
+import { useSendEmail } from "hooks/query/useEmail";
+import axios from "axios";
 
 export const SayHello: React.FC = () => {
   const history = useHistory();
+  const { data, loading } = useSendEmail();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [sent, setSent] = useState(false);
 
   const openContactUs = (): void => {
     window.location.href = "mailto:hello@edcsquared.io";
   };
+
+  const handleSend = async (): Promise<void> => {
+    const mailData = JSON.stringify({
+      operationName: "SendEmail",
+      variables: {
+        data: {
+          from: "adeeltahir1995@gmail.com",
+          message: `${email}, ${message}`,
+          name,
+        },
+      },
+      query:
+        "query SendEmail($data: EMAIL_INPUT) {\n  sendEmail(data: $data)\n}\n",
+    });
+    setSent(false);
+    try {
+      const res = await axios.post(
+        "https://ibqmmfkfajfbvgtxmjzfx3u6rm.appsync-api.us-east-1.amazonaws.com/graphql",
+        mailData,
+        {
+          headers: {
+            "x-api-key": "da2-ndivz7milrarjolsdmpucfdelm",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setSent(true);
+      console.log(res);
+      setMessage("");
+      setEmail("");
+      setName("");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    if (!loading && data) {
+      console.log(data);
+    }
+  }, [loading, data]);
 
   return (
     <div className="say-hello-page-wrapper">
@@ -56,13 +106,19 @@ export const SayHello: React.FC = () => {
 
                 <div className="say-hello-page-socials">
                   <div className="say-hello-page-socials-item">
-                    <img src="/images/linkedin.png" alt="linkedin-icon" />
+                    <a href="https://www.linkedin.com/company/edcsquared/">
+                      <img src="/images/linkedin.png" alt="linkedin-icon" />
+                    </a>
                   </div>
                   <div className="say-hello-page-socials-item">
-                    <img src="/images/tiktok.png" alt="tiktok-icon" />
+                    <a href="https://www.instagram.com/edcsq/">
+                      <img src="/images/instagram.png" alt="instagram-icon" />
+                    </a>
                   </div>
                   <div className="say-hello-page-socials-item">
-                    <img src="/images/instagram.png" alt="instagram-icon" />
+                    <a href="https://www.tiktok.com/@edcsquared">
+                      <img src="/images/tiktok.png" alt="tiktok-icon" />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -83,6 +139,8 @@ export const SayHello: React.FC = () => {
                 <div className="say-hello-field-container">
                   <div className="say-hello-input-text">Name</div>
                   <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     placeholder="Name Surname"
                     className="say-hello-input name"
                   />
@@ -90,6 +148,8 @@ export const SayHello: React.FC = () => {
                 <div className="say-hello-field-container">
                   <div className="say-hello-input-text">Email</div>
                   <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="email@address.com"
                     className="say-hello-input email"
                   />
@@ -98,11 +158,20 @@ export const SayHello: React.FC = () => {
               <div className="say-hello-field-container">
                 <div className="say-hello-input-text">Message</div>
                 <input
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   placeholder="Hi there..."
                   className="say-hello-input message"
                 />
               </div>
-              <div className="send-message-btn">Send Message</div>
+              {sent && (
+                <div className="say-hello-sent-message">
+                  Thanks for sending message.
+                </div>
+              )}
+              <div onClick={handleSend} className="send-message-btn">
+                Send Message
+              </div>
             </div>
           </div>
         </div>
@@ -136,9 +205,15 @@ export const SayHello: React.FC = () => {
         </div>
 
         <div className="say-hello-footer-img-container">
-          <img src="/images/landing-insta.svg" />
-          <img src="/images/landing-twitter.svg" />
-          <img src="/images/landing-tiktok.svg" />
+          <a href="https://www.linkedin.com/company/edcsquared/">
+            <img src="/images/landing-linkedin.svg" />
+          </a>
+          <a href="https://www.instagram.com/edcsq/">
+            <img src="/images/landing-insta.svg" />
+          </a>
+          <a href="https://www.tiktok.com/@edcsquared">
+            <img src="/images/landing-tiktok.svg" />
+          </a>
         </div>
 
         <div className="say-hello-footer-text">

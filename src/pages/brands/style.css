@@ -103,7 +103,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 22px;
 }
 
 .brands-page-wrapper
@@ -161,7 +161,7 @@
 .brands-content-container-gradient {
   background-image: url("../../../public/images/glass-image.svg");
   background-size: cover;
-  padding: 31px 45px 0px 35px;
+  padding: 31px 45px 32px 35px;
   border-radius: 50px;
   background-repeat: no-repeat;
   margin-bottom: 25px;
@@ -299,7 +299,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 55px;
 }
 
 .how-it-works-container-brands {

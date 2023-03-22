@@ -53,13 +53,19 @@ export const CreatorsPage: React.FC = () => {
 
                 <div className="creators-page-socials">
                   <div className="creators-page-socials-item">
-                    <img src="/images/linkedin.png" alt="linkedin-icon" />
+                    <a href="https://www.linkedin.com/company/edcsquared/">
+                      <img src="/images/linkedin.png" alt="linkedin-icon" />
+                    </a>
                   </div>
                   <div className="creators-page-socials-item">
-                    <img src="/images/tiktok.png" alt="tiktok-icon" />
+                    <a href="https://www.instagram.com/edcsq/">
+                      <img src="/images/instagram.png" alt="instagram-icon" />
+                    </a>
                   </div>
                   <div className="creators-page-socials-item">
-                    <img src="/images/instagram.png" alt="instagram-icon" />
+                    <a href="https://www.tiktok.com/@edcsquared">
+                      <img src="/images/tiktok.png" alt="tiktok-icon" />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -126,7 +132,7 @@ export const CreatorsPage: React.FC = () => {
             </div>
             <img
               src="/images/creators-union.png"
-              style={{ marginLeft: "63px" }}
+              style={{ marginLeft: "63px", marginBottom: "-32px" }}
             />
           </div>
         </div>
@@ -207,9 +213,15 @@ export const CreatorsPage: React.FC = () => {
         </div>
 
         <div className="landing-footer-img-container">
-          <img src="/images/landing-insta.svg" />
-          <img src="/images/landing-twitter.svg" />
-          <img src="/images/landing-tiktok.svg" />
+          <a href="https://www.linkedin.com/company/edcsquared/">
+            <img src="/images/landing-linkedin.svg" />
+          </a>
+          <a href="https://www.instagram.com/edcsq/">
+            <img src="/images/landing-insta.svg" />
+          </a>
+          <a href="https://www.tiktok.com/@edcsquared">
+            <img src="/images/landing-tiktok.svg" />
+          </a>
         </div>
 
         <div className="landing-footer-text">
