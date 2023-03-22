@@ -10,7 +10,7 @@ exports.handler = async (event) => {
         console.log("email handler event: ",event)
         var params = {
             Destination: {
-            ToAddresses: ["adeeltahir1995@gmail.com"],
+            ToAddresses: ["Hello@edcsquared.io"],
             },
             Message: {
             Body: {
@@ -19,7 +19,7 @@ exports.handler = async (event) => {
 
             Subject: { Data: `EDC Squared Customer Response | ${event.arguments.data.name}` },
             },
-            Source: event.arguments.data.from,
+            Source: "Hello@edcsquared.io",
         };
     
         await ses.sendEmail(params).promise();
