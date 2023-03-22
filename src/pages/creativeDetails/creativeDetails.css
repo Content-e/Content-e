@@ -6,9 +6,10 @@
 
 .campaign-brief-header-container {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
+  height: 20px;
 }
 
 .back-btn {
@@ -19,10 +20,12 @@
   border-radius: 6px;
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
   justify-content: center;
   border: 1px solid #9fd0bd;
   color: #005f73;
 }
+
 .back-btn:hover {
   background: #9fd0bd;
   color: white;
