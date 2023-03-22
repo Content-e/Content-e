@@ -241,6 +241,13 @@
 
 .mobile-footer {
   display: none;
+  flex-direction: column;
+  gap: 11px;
+  position: fixed;
+  bottom: 20px;
+  right: 0;
+  left: 0;
+  margin: auto;
 }
 
 .footer-social-links {
@@ -293,7 +300,5 @@
 
   .mobile-footer {
     display: flex;
-    flex-direction: column;
-    gap: 11px;
   }
 }

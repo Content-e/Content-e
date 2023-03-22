@@ -17,6 +17,7 @@ import Navbar from "components/navbar/navbar";
 import GoogleLogin from "./googleLogin";
 import { Input } from "components/customInput";
 import { IconLoader } from "components/loader";
+import AuthFooter from "./authFooter";
 
 export const Register: FC = () => {
   const [creator, setCreator] = useState(false);
@@ -72,57 +73,6 @@ export const Register: FC = () => {
   };
 
   return (
-    // <div className="login">
-    //   <div className="logo-container">
-    //     <img src="/images/edc-squared.svg" alt="edc-squared" />
-    //     <div className="subtitle">Everyday creatives, everyday creators.</div>
-    //   </div>
-    //   <div className="login-container">
-    //     <div className="create-account-label">
-    //       Create a {creator ? "Creator" : "Brand"} Account
-    //     </div>
-    //     <div className="btns-container">
-    //       <div
-    //         className={`${!creator ? "active" : false}`}
-    //         onClick={() => setCreator(false)}
-    //       >
-    //         Join as a brand
-    //       </div>
-    //       <div
-    //         className={`${creator ? "active" : false}`}
-    //         onClick={() => setCreator(true)}
-    //       >
-    //         Join as a creator
-    //       </div>
-    //     </div>
-    //     <GoogleLogin />
-
-    //     <div className="login-fields">
-    //       <Input {...commonProps} placeholder="Full Name" keyProp="name" />
-    //       <Input {...commonProps} placeholder="Email Address" keyProp="email" />
-    //       <Input
-    //         {...commonProps}
-    //         placeholder="Password"
-    //         type="password"
-    //         keyProp="password"
-    //       />
-    //     </div>
-
-    //     <button
-    //       className="login-btn"
-    //       onClick={onSignUp}
-    //       disabled={isLoading || !isSubmittable}
-    //     >
-    //       <span style={{ marginRight: 12 }}>Join</span>
-    //       {isLoading && <IconLoader />}
-    //     </button>
-
-    //     <div className="existing-account">
-    //       Already have an account?&nbsp;
-    //       <span onClick={onLogin}>Login&nbsp;</span>
-    //     </div>
-    //   </div>
-    // </div>
     <div className="login">
       <div className="login__landing">
         <img src="/images/edc-logo.svg" alt="edc-squared" />
@@ -182,6 +132,7 @@ export const Register: FC = () => {
             Already have an account? <span onClick={onLogin}>Login</span>
           </div>
         </div>
+        <AuthFooter />
       </div>
     </div>
   );

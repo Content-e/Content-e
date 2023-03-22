@@ -12,6 +12,7 @@ import {
 import { validateVerificationCode, validatePassword } from "state/auth";
 import { useResetPass } from "hooks";
 import Navbar from "components/navbar/navbar";
+import AuthFooter from "./authFooter";
 
 export const ResetPassword: FC = () => {
   const history = useHistory();
@@ -100,6 +101,7 @@ export const ResetPassword: FC = () => {
             Don't have an account? <span>Sign up&nbsp;</span>
           </div>
         </div>
+        <AuthFooter />
       </div>
     </div>
   );

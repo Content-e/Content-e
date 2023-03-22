@@ -6,6 +6,7 @@ import { useForgetPass } from "hooks";
 import { validateEmail, withAuth } from "state/auth";
 import GoogleLogin from "./googleLogin";
 import Navbar from "components/navbar/navbar";
+import AuthFooter from "./authFooter";
 
 export const ForgetPassword: FC = () => {
   const history = useHistory();
@@ -76,6 +77,7 @@ export const ForgetPassword: FC = () => {
             Already have an account? <span onClick={onLogin}>Login</span>
           </div>
         </div>
+        <AuthFooter />
       </div>
     </div>
   );

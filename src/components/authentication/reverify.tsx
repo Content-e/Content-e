@@ -10,6 +10,7 @@ import { validateVerificationCode, withAuth } from "state/auth";
 
 import "./styles/login.css";
 import Navbar from "components/navbar/navbar";
+import AuthFooter from "./authFooter";
 
 export const Reverify: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
@@ -95,6 +96,7 @@ export const Reverify: FC<AuthProps> = ({ getAuth }) => {
             Already have an account? <span onClick={onLogin}>Login</span>
           </div>
         </div>
+        <AuthFooter />
       </div>
     </div>
   );
