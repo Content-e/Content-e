@@ -37,7 +37,7 @@ export const AuthorizeTikTokStep2: FC<Props> = ({
       </div>
 
       <div className="creator-img">
-        <img src="/images/creator-step2-ads.svg" />
+        <img src="/images/creator-step2-ads.png" />
       </div>
 
       <div className="next-btn-container">

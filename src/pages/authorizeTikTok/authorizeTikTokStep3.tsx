@@ -60,7 +60,7 @@ export const AuthorizeTikTokStep3: FC<Props> = ({
       </div>
 
       <div className="creator-img">
-        <img src="/images/creator-step3-ads.svg" />
+        <img src="/images/creator-step3-ads.png" />
       </div>
 
       <div className="authorization-code-input">

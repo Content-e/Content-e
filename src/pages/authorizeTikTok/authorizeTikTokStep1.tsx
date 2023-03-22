@@ -41,7 +41,7 @@ export const AuthorizeTikTokStep1: FC<Props> = ({ goToNext, ...props }) => {
       </div>
 
       <div className="creator-img">
-        <img src="/images/creator-step1-ads.svg" />
+        <img src="/images/creator-step1-ads.png" />
       </div>
 
       <div className="next-btn-container" onClick={goToNext}>
