@@ -49,17 +49,23 @@ export const HomePageLogin: React.FC = () => {
 
                 <div className="home-page-login-page-socials">
                   <div className="home-page-login-page-socials-item">
-                    <a href="https://www.linkedin.com/company/edcsquared/">
+                    <a
+                      target="_blank"
+                      href="https://www.linkedin.com/company/edcsquared/"
+                    >
                       <img src="/images/linkedin.png" alt="linkedin-icon" />
                     </a>
                   </div>
                   <div className="home-page-login-page-socials-item">
-                    <a href="https://www.instagram.com/edcsq/">
+                    <a target="_blank" href="https://www.instagram.com/edcsq/">
                       <img src="/images/instagram.png" alt="instagram-icon" />
                     </a>
                   </div>
                   <div className="home-page-login-page-socials-item">
-                    <a href="https://www.tiktok.com/@edcsquared">
+                    <a
+                      target="_blank"
+                      href="https://www.tiktok.com/@edcsquared"
+                    >
                       <img src="/images/tiktok.png" alt="tiktok-icon" />
                     </a>
                   </div>
@@ -117,13 +123,16 @@ export const HomePageLogin: React.FC = () => {
         </div>
 
         <div className="home-page-login-footer-img-container">
-          <a href="https://www.linkedin.com/company/edcsquared/">
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/company/edcsquared/"
+          >
             <img src="/images/landing-linkedin.svg" />
           </a>
-          <a href="https://www.instagram.com/edcsq/">
+          <a target="_blank" href="https://www.instagram.com/edcsq/">
             <img src="/images/landing-insta.svg" />
           </a>
-          <a href="https://www.tiktok.com/@edcsquared">
+          <a target="_blank" href="https://www.tiktok.com/@edcsquared">
             <img src="/images/landing-tiktok.svg" />
           </a>
         </div>
