@@ -24,3 +24,19 @@ export type GetBrandBriefListProps = {
   nextToken?: string | null;
   error?: ApolloError | null;
 };
+
+export type ListAllRequestsProps = {
+  loading: boolean;
+  getAllRequests: (unknown) => void;
+  data?: Array<BrandBrief | null> | null;
+  nextToken?: string | null;
+  error?: ApolloError | null;
+};
+
+export type ListRequestsByStatusProps = {
+  loading: boolean;
+  getRequestsByStatus: (unknown) => void;
+  data?: Array<BrandBrief | null> | null;
+  nextToken?: string | null;
+  error?: ApolloError | null;
+};

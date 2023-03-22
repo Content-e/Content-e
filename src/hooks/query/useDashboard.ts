@@ -5,18 +5,26 @@ import {
   BrandBriefsByBrandIdQueryVariables,
   CreativeRequestsByCreatorIdQuery,
   CreativeRequestsByCreatorIdQueryVariables,
+  CreativeRequestsByStatusQuery,
+  CreativeRequestsByStatusQueryVariables,
   ListBrandBriefsQuery,
   ListBrandBriefsQueryVariables,
+  ListCreativeRequestsQuery,
+  ListCreativeRequestsQueryVariables,
 } from "API";
 import {
   brandBriefsByBrandId,
   creativeRequestsByCreatorId,
+  creativeRequestsByStatus,
   listBrandBriefs,
+  listCreativeRequests as listAllRequestsQuery,
 } from "graphql/queries";
 import {
   GetBrandBriefListProps,
   GetCreatorBriefListProps,
   GetCreatorCreativeRequestsProps,
+  ListAllRequestsProps,
+  ListRequestsByStatusProps,
 } from "hooks/utils";
 import { getQuery } from "hooks/utils/helpers";
 import { UnknownType } from "utils";
@@ -64,6 +72,38 @@ export const getBrandBriefList = (): GetBrandBriefListProps => {
     getBrandBriefs,
     data: briefList as UnknownType as Array<BrandBrief>,
     nextToken: data?.brandBriefsByBrandId?.nextToken,
+    error,
+  };
+};
+
+export const listAllRequests = (): ListAllRequestsProps => {
+  const [getAllRequests, { data, loading, error }] = useLazyQuery<
+    ListCreativeRequestsQuery,
+    ListCreativeRequestsQueryVariables
+  >(getQuery(listAllRequestsQuery));
+
+  const { items = [], nextToken } = data?.listCreativeRequests || {};
+  return {
+    loading,
+    getAllRequests,
+    data: items as UnknownType as Array<BrandBrief>,
+    nextToken,
+    error,
+  };
+};
+
+export const listRequestsByStatus = (): ListRequestsByStatusProps => {
+  const [getRequestsByStatus, { data, loading, error }] = useLazyQuery<
+    CreativeRequestsByStatusQuery,
+    CreativeRequestsByStatusQueryVariables
+  >(getQuery(creativeRequestsByStatus));
+
+  const { items = [], nextToken } = data?.creativeRequestsByStatus || {};
+  return {
+    loading,
+    getRequestsByStatus,
+    data: items as UnknownType as Array<BrandBrief>,
+    nextToken,
     error,
   };
 };

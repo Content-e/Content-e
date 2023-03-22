@@ -1,8 +1,42 @@
 import "./adminDashboard.css";
 import CreativeDetailsCard from "components/creativeDetailsCard/creativeDetailsCard";
 import AdminDashboardTable from "components/adminDashboardTable/adminDashboardTable";
+import { listAllRequests, listRequestsByStatus } from "hooks";
+import { useEffect, useState } from "react";
+import { CreativeRequestStatus } from "utils";
 
 export default function AdminDashboard() {
+  const [totalRequests, setTotalRequests] = useState(0);
+  const [acceptedRequests, setAcceptedRequests] = useState(0);
+
+  const {
+    getAllRequests,
+    data: allRequestsData,
+    loading: allRequestsLoading,
+  } = listAllRequests();
+  const {
+    getRequestsByStatus,
+    data: statusRequestData,
+    loading: statusReqeuestLoading,
+  } = listRequestsByStatus();
+
+  useEffect(() => {
+    getRequestsByStatus({
+      variables: { limit: 500, status: CreativeRequestStatus.Accept },
+    });
+    getAllRequests({ variables: { limit: 500 } });
+  }, []);
+
+  useEffect(() => {
+    if (!statusReqeuestLoading && allRequestsData)
+      setTotalRequests(allRequestsData.length);
+  }, [allRequestsData, statusReqeuestLoading]);
+
+  useEffect(() => {
+    if (!allRequestsLoading && statusRequestData)
+      setAcceptedRequests(statusRequestData.length);
+  }, [allRequestsLoading, statusRequestData]);
+
   return (
     <div className="admin-panel">
       <div className="admin-dashboard-card-container">
@@ -14,12 +48,14 @@ export default function AdminDashboard() {
             iconCheck={false}
           />
           <CreativeDetailsCard
-            campaign="0"
+            campaign={totalRequests}
             campaignHeader="Number of creatives linked"
             iconCheck={false}
           />
           <CreativeDetailsCard
-            campaign="0"
+            campaign={((acceptedRequests / (totalRequests || 1)) * 100).toFixed(
+              2
+            )}
             campaignHeader="Creative approval rate"
             iconCheck={false}
           />
