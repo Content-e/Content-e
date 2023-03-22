@@ -29,7 +29,7 @@ const Navbar = () => {
           LOGIN / SIGN UP
         </Link>
       </li>
-      <div>
+      <div className="social-links">
         <li>
           <img src="images/tiktok.svg" alt="" />
         </li>

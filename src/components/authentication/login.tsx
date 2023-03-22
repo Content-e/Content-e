@@ -18,6 +18,7 @@ import { useLogin } from "hooks";
 
 import "./styles/login.css";
 import Navbar from "components/navbar/navbar";
+import AuthFooter from "./authFooter";
 
 export const Login: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
@@ -64,45 +65,6 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
   };
 
   return (
-    // <div className="login">
-    //   <div className="logo-container">
-    //     <img src="/images/edc-squared.svg" alt="edc-squared" />
-    //     {/* <div className="subtitle">Everyday creatives, everyday creators.</div> */}
-    //   </div>
-    //   <div className="login-container">
-    //     <div className="create-account-label">Login</div>
-
-    //     <div className="login-fields">
-    //       <Input {...commonProps} placeholder="Email Address" keyProp="email" />
-    //       <Input
-    //         {...commonProps}
-    //         placeholder="Password"
-    //         type="password"
-    //         keyProp="password"
-    //       />
-    //     </div>
-
-    //     <div className="forgot-container">
-    //       <div className="checkbox-container">
-    //         <Checkbox />
-    //         <span className="existing-account">Remember me</span>
-    //       </div>
-
-    //       <div className="existing-account" onClick={onForget}>
-    //         <span>Forgot Password?</span>
-    //       </div>
-    //     </div>
-
-    //     <button className="login-btn" onClick={onLogin} disabled={isLoading}>
-    //       <span style={{ marginRight: 12 }}>Login</span>
-    //       {isLoading && <IconLoader />}
-    //     </button>
-    //     <GoogleLogin />
-    //     <div className="existing-account" onClick={onSignUp}>
-    //       Don't have an account? <span>Sign up&nbsp;</span>
-    //     </div>
-    //   </div>
-    // </div>
     <div className="login">
       <div className="login__landing">
         <img src="/images/edc-logo.svg" alt="edc-squared" />
@@ -159,6 +121,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
             Don’t have an account? <span onClick={onSignUp}>Sign up</span>
           </div>
         </div>
+        <AuthFooter />
       </div>
     </div>
   );
