@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 import { UnAuthRoutes } from "utils";
 
 export const BrandsPage: React.FC = () => {
   const history = useHistory();
+  const [menu, setMenu] = useState(false);
 
   return (
     <div className="brands-page-wrapper">
@@ -17,6 +18,12 @@ export const BrandsPage: React.FC = () => {
                 alt="edc-squared"
               />
             </div>
+            <img
+              src="/images/responsive-menu.svg"
+              alt="responsive-menu"
+              className="responsive-menu"
+              onClick={() => setMenu(!menu)}
+            />
             <div className="brands-page-menu-header">
               <div className="brands-page-menu">
                 <div
@@ -76,6 +83,81 @@ export const BrandsPage: React.FC = () => {
                 </div>
               </div>
             </div>
+            {menu && (
+              <div className="brands-menu">
+                <div className="brands-menu-option-container">
+                  <div
+                    className="brands-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.Landing)}
+                  >
+                    Home
+                  </div>
+                  <div
+                    className="brands-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.Creators)}
+                  >
+                    For Creators
+                  </div>
+                  <div
+                    className="brands-menu-option"
+                    style={{ color: "#D9D9D9" }}
+                    onClick={() => history.push(UnAuthRoutes.Brands)}
+                  >
+                    For Brands
+                  </div>
+                  <div
+                    className="brands-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.SayHello)}
+                  >
+                    Say Hello
+                  </div>
+                  <div
+                    className="login-signup"
+                    onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                  >
+                    Login / Sign UP
+                  </div>
+                  <div className="brands-menu-img-container">
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.linkedin.com/company/edcsquared/"
+                      >
+                        <img
+                          src="/images/linkedin.png"
+                          alt="linkedin-icon"
+                          className="brands-menu-img"
+                        />
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.instagram.com/edcsq/"
+                      >
+                        <img
+                          src="/images/instagram.png"
+                          alt="instagram-icon"
+                          className="brands-menu-img"
+                        />
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.tiktok.com/@edcsquared"
+                      >
+                        <img
+                          src="/images/tiktok.png"
+                          alt="tiktok-icon"
+                          className="brands-menu-img"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -147,6 +229,7 @@ export const BrandsPage: React.FC = () => {
           </div>
           <img
             src="/images/brands-union.png"
+            className="brands-union"
             style={{ marginLeft: "63px", marginBottom: "-32px" }}
           />
         </div>
