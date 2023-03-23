@@ -31,7 +31,7 @@ export function withBrandBriefs<T>(
     }, [brandBriefList, brandBriefListLoading]);
 
     const hocProps: BrandBriefProps = {
-      data: brandBriefsState ? [...brandBriefsState, ...brandBriefsState] : [],
+      data: brandBriefsState,
       loading: brandBriefListLoading,
       brand: data?.brand?.items?.[0],
     };
