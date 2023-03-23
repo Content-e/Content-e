@@ -1,7 +1,6 @@
 import { BrandBrief } from "API";
 import CampaignBriefTable from "components/campaignBriefTable/campaignBriefTable";
 import Pagination from "components/pagination";
-import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
 import { FC, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
@@ -12,9 +11,13 @@ import {
 import { AuthRoutes } from "utils";
 import "./creatorDashboard.css";
 
+interface Props {
+  onSelectRequest: (e: BrandBrief) => void;
+}
 const tableLimit = 9;
-const CreativeRequests: FC<ICreatorBriefListProps> = ({
+const CreativeRequests: FC<Props & ICreatorBriefListProps> = ({
   briefList,
+  onSelectRequest,
   requestList,
   loading,
   error,
@@ -22,7 +25,6 @@ const CreativeRequests: FC<ICreatorBriefListProps> = ({
   const history = useHistory();
   const [data, setData] = useState<Array<IBriefListElems>>([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
 
   const onCampaign = (): void => history.push(AuthRoutes.CampaignBrief);
 
@@ -48,13 +50,6 @@ const CreativeRequests: FC<ICreatorBriefListProps> = ({
     }
   }, [briefList, requestList, loading, error]);
 
-  if (selectedBrief)
-    return (
-      <CampaignBriefDetails
-        data={selectedBrief}
-        onBack={(): void => setSelectedBrief(undefined)}
-      />
-    );
   return (
     <>
       <div className="campaign-briefs-dashboard-container ">
@@ -69,7 +64,7 @@ const CreativeRequests: FC<ICreatorBriefListProps> = ({
             briefList={briefList}
             searchText=""
             currentPage={currentPage}
-            onSingleSelect={setSelectedBrief}
+            onSingleSelect={onSelectRequest}
           />
         </div>
       </div>

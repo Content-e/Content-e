@@ -4,8 +4,21 @@ import CreatorNotifications from "components/creatorNotifications/creatorNotific
 import CreatorStatsCard from "components/creatorStatsCard/creatorStatsCard";
 import "./creatorDashboard.css";
 import { CreatorDashboardBoxes } from "utils";
+import { BrandBrief } from "API";
+import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
+import { useState } from "react";
 
 export default function CreatorDashboard() {
+  const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
+
+  if (selectedBrief)
+    return (
+      <CampaignBriefDetails
+        data={selectedBrief}
+        onBack={(): void => setSelectedBrief(undefined)}
+      />
+    );
+
   return (
     <>
       <div>
@@ -20,7 +33,7 @@ export default function CreatorDashboard() {
           />
         </div>
       </div>
-      <CreativeRequests />
+      <CreativeRequests onSelectRequest={setSelectedBrief} />
 
       <div className="notification-dashboard-container">
         <CreatorNotifications />
