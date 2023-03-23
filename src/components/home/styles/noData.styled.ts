@@ -8,11 +8,6 @@ export const NoDataWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-
-  @media only screen and (min-width: 600px) {
-    margin: 0 0 0 60px;
-    width: auto;
-  }
 `;
 export const NoDataTitle = styled.div`
   font-size: 14px;

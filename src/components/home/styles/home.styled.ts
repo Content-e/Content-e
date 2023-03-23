@@ -7,11 +7,6 @@ export const TopCanvas = styled.div`
   border-radius: 12px;
   width: 100%;
 
-  &.noData {
-    width: 100%;
-    max-width: 810px;
-  }
-
   @media only screen and (min-width: 600px) {
     width: 50%;
   }
@@ -22,10 +17,9 @@ export const TopWrapper = styled.div`
   justify-content: flex-start;
   flex-direction: column;
 
-  &.hasData {
-    flex-direction: column;
-    align-items: center;
-  }
+  flex-direction: column;
+  align-items: center;
+
   @media only screen and (min-width: 600px) {
     flex-direction: row;
   }

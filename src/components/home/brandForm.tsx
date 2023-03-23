@@ -1,4 +1,4 @@
-import { FC, Fragment, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { withProfile } from "state/profileSteps";
 import { BrandProps, IBrandFormState, withBrand } from "state/brand";
 import * as S from "./styles";
@@ -23,7 +23,7 @@ export const BrandForm: FC<ProfileProps & BrandProps> = ({
 
   const submitForm = (): void => {
     if (!brandLoading) {
-      const brand = data?.brand?.items?.[0];
+      const brand = data?.brand?.items?.[0] || {};
       updateData({ ...brand, metaData: JSON.stringify(formState) });
     }
   };
@@ -46,7 +46,6 @@ export const BrandForm: FC<ProfileProps & BrandProps> = ({
 
   const props = { formState, onChange: handleChange };
 
-  if (!data?.brand?.items?.[0]?.id) return <Fragment />;
   return (
     <S.BrandInputForm>
       <BrandInput {...props} keyProp="tiktok" title="Link Tiktok account" />

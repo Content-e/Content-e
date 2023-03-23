@@ -91,12 +91,15 @@ export const Username = styled.div`
 export const Image = styled.div`
   width: 24px;
   height: 24px;
-  border-radius: 50%;
   margin-right: 5px;
   margin-top: -4px;
+  display: flex;
 
   & img {
     max-width: 100%;
+    border: 1px solid #9fd0bd;
+    border-radius: 50%;
+    object-fit: fill;
   }
 `;
 export const SidebarMenu = styled.div`

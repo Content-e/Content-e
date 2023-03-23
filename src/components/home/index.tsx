@@ -5,29 +5,30 @@ import BrandBody from "./brandBody";
 import Meter from "./meter";
 import { NoDataFound } from "./noData";
 import * as S from "./styles";
-import classNames from "classnames";
 import BrandForm from "./brandForm";
 
 export const HomePage: FC<ProfileProps> = ({ profileState: { data } }) => {
-  const brandExists = useMemo(() => data?.brand?.items?.[0], [data]);
+  const brandExists = useMemo(() => {
+    const brandItem = data?.brand?.items?.[0];
+    const { name, description, toneVoice } = brandItem || {};
+    return name || description || toneVoice ? brandItem : null;
+  }, [data]);
 
   if (!data) return <Fragment key="no profie found" />;
   return (
     <>
       <div className="brand-table-label">Brand Profile</div>
       <S.BrandTopHead>
-        <S.TopCanvas className={classNames({ noData: !brandExists })}>
-          <S.TopWrapper className={classNames({ hasData: brandExists })}>
+        <S.TopCanvas>
+          <S.TopWrapper>
             <Meter />
-            {!brandExists && <NoDataFound />}
           </S.TopWrapper>
-          {brandExists && <BrandBody data={brandExists as any} />}
+          {!brandExists && <NoDataFound />}
+          {brandExists && <BrandBody data={brandExists} />}
         </S.TopCanvas>
-        {brandExists && (
-          <S.TopCanvas>
-            <BrandForm />
-          </S.TopCanvas>
-        )}
+        <S.TopCanvas>
+          <BrandForm />
+        </S.TopCanvas>
       </S.BrandTopHead>
     </>
   );

@@ -12,7 +12,9 @@ export const NoDataFound: FC = () => {
       <S.NoDataTitle>
         You do not currently have a brand setup, build your brand now.{" "}
       </S.NoDataTitle>
-      <S.NoDataButton onClick={goToBrand}>Create Brand</S.NoDataButton>
+      <S.EditBtnCanvas>
+        <S.EditBrandButton onClick={goToBrand}>Create Brand</S.EditBrandButton>
+      </S.EditBtnCanvas>
     </S.NoDataWrapper>
   );
 };
