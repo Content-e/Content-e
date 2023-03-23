@@ -110,7 +110,7 @@ export const getSlicedArray = <T>(
 export const isValidUrl = (text: string): boolean => {
   try {
     const url = new URL(text);
-    return ["http", "https"].includes(url.protocol);
+    return ["http:", "https:"].includes(url.protocol);
   } catch (err) {
     return false;
   }

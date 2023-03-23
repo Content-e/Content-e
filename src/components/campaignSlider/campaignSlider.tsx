@@ -1,3 +1,4 @@
+import { isValidUrl } from "components/helpers";
 import { FC } from "react";
 import { Carousel } from "react-bootstrap";
 import "./campaignSlider.css";
@@ -7,6 +8,21 @@ interface Props {
   onClose: () => void;
 }
 export const CampaignSlider: FC<Props> = ({ videoUrls, onClose }) => {
+  const getEmbeddedUrl = (e: string): string => {
+    try {
+      const { hostname, pathname } = new URL(e);
+      if (hostname.includes("tiktok.com")) {
+        const videoId = pathname.split("/").at(-1);
+        const isValidId = /^\d+$/.test(videoId || "");
+        if (videoId?.length && isValidId)
+          return `https://www.tiktok.com/embed/v2/${videoId}`;
+      }
+      return e;
+    } catch (err) {
+      return e;
+    }
+  };
+
   return (
     <div className="campaign-slider-container">
       <div className="creative-inspiration-header">
@@ -26,14 +42,18 @@ export const CampaignSlider: FC<Props> = ({ videoUrls, onClose }) => {
       >
         {videoUrls.map((video, index) => (
           <Carousel.Item key={index}>
-            <iframe
-              src={video}
-              height={528}
-              width="90%"
-              name={`video-${video}-${index}`}
-              // eslint-disable-next-line max-len
-              sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation allow-same-origin"
-            />
+            {isValidUrl(video) ? (
+              <iframe
+                src={getEmbeddedUrl(video)}
+                height={528}
+                width="90%"
+                name={`video-${video}-${index}`}
+                // eslint-disable-next-line max-len
+                sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation allow-same-origin"
+              />
+            ) : (
+              <div className="invalid-inspiration-video">No Video Exists</div>
+            )}
           </Carousel.Item>
         ))}
       </Carousel>
