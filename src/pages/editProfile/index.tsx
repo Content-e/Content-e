@@ -1,4 +1,5 @@
 import { USER_TYPES } from "API";
+import { Storage } from "aws-amplify";
 import classNames from "classnames";
 import { getProfileRole, IconLoader, ShouldRender } from "components";
 import { FC, Fragment, useEffect, useState } from "react";
@@ -9,6 +10,7 @@ import {
   validateTiktokHandle,
 } from "state/auth";
 import {
+  IProfileImageUpload,
   IUpdateProfile,
   IUpdateProfileError,
   withProfile,
@@ -17,7 +19,9 @@ import {
   AuthRoutes,
   defaultProfileError,
   defaultProfileState,
+  AllowedProfileSizeKB,
   ProfileProps,
+  UnknownType,
 } from "utils";
 import "./creatorProfile.css";
 
@@ -32,6 +36,7 @@ export const EditProfile: FC<ProfileProps> = ({
     useState<IUpdateProfile>(defaultProfileState);
   const [formError, setFormError] =
     useState<IUpdateProfileError>(defaultProfileError);
+  const [image, setImage] = useState<IProfileImageUpload>({});
 
   const validateProfileForm = (): boolean => {
     const name = validateFullName(formState?.name || "");
@@ -44,15 +49,26 @@ export const EditProfile: FC<ProfileProps> = ({
       setFormError({ name, description, tiktokHandler });
       return false;
     }
-    return true;
+    return !image.error;
   };
 
-  const submitProfile = (): void => {
+  const handleChange = (e: UnknownType): void => {
+    if (e?.target?.files?.[0]) {
+      if (e.target.files[0].size > AllowedProfileSizeKB * 1024)
+        setImage({ error: `Maximum ${AllowedProfileSizeKB} size allowed` });
+      else setImage({ file: e.target.files[0] });
+    }
+  };
+
+  const submitProfile = async (): Promise<void> => {
     if (!isLoading && validateProfileForm()) {
       setIsLoading(true);
+      if (data?.id && image.file)
+        await Storage.put(`${data.id}/avatar/profile`, image.file);
       editProfile(formState);
     }
   };
+
   const updateState = (key: string, value: string): void => {
     setFormError((prev) => ({ ...prev, [key]: null }));
     setFormState((prev) => ({ ...prev, [key]: value }));
@@ -98,6 +114,13 @@ export const EditProfile: FC<ProfileProps> = ({
               value={data.userEmail}
               readOnly
             />
+          </div>
+          <div className="field-label-container">
+            <div className="field-label">Profile picture</div>
+            <input type="file" accept=".png, .jpg" onChange={handleChange} />
+            <ShouldRender if={image.error}>
+              <span>{image.error}</span>
+            </ShouldRender>
           </div>
           {data?.userType === USER_TYPES.CREATIVE_USER && (
             <Fragment>

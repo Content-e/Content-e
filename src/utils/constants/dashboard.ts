@@ -29,3 +29,5 @@ export const CreatorDashboardBoxes: ICreatorDashboardBox = {
       "Approval rate equals, number of creatives submitted divided number of creatives approved",
   },
 };
+
+export const AllowedProfileSizeKB = 500; // 500 KB

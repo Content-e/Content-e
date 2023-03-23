@@ -43,3 +43,8 @@ export interface IUpdateProfileError {
   description: string | null;
   name: string | null;
 }
+
+export interface IProfileImageUpload {
+  file?: FileList | null;
+  error?: string | null;
+}

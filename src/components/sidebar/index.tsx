@@ -1,4 +1,4 @@
-import { FC, Fragment, useMemo } from "react";
+import { FC, Fragment, useEffect, useMemo, useState } from "react";
 import classNames from "classnames";
 import { useHistory, useLocation } from "react-router-dom";
 import {
@@ -12,6 +12,7 @@ import * as S from "./styles";
 import { getPageTitle } from "components";
 import { withProfile } from "state/profileSteps";
 import { USER_TYPES } from "API";
+import { Storage } from "aws-amplify";
 
 interface ISidebar {
   showMenu: boolean;
@@ -25,6 +26,7 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
 }) => {
   const history = useHistory();
   const { pathname } = useLocation();
+  const [profilePic, setProfilePic] = useState<string>();
 
   const onLogout = (): void => history.push(AuthRoutes.Logout);
   const onBrand = (): void => history.push(BrandRoutes.Brand);
@@ -35,6 +37,16 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
   const onDashboard = (): void => history.push(AuthRoutes.Dashboard);
   const onCreatives = (): void => history.push(BrandRoutes.Creatives);
 
+  const getImageFromS3 = async (id: string): Promise<void> => {
+    try {
+      const url = await Storage.get(`${id}/avatar/profile`);
+      fetch(url).then((res) => {
+        if (res.status === 200) setProfilePic(url);
+      });
+    } catch (err) {
+      console.log("Error", err);
+    }
+  };
   const getOption = (
     icon: string,
     route: AuthRoutes | CreatorRoutes | BrandRoutes,
@@ -65,6 +77,10 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
     }
   }, [data]);
 
+  useEffect(() => {
+    if (data?.id) getImageFromS3(data.id);
+  }, [data]);
+
   return (
     <S.SidebarWrapper className={classNames({ show: showMenu })}>
       <S.CrossIcon onClick={toggleMenu}>
@@ -76,7 +92,7 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
         </S.TopHeader>
         <S.ProfilePanel>
           <S.Image>
-            <img src="/images/default-image.png" />
+            <img src={profilePic || "/images/default-image.png"} />
           </S.Image>
           <S.Username onClick={onEditProfile}>{userName}</S.Username>
         </S.ProfilePanel>
