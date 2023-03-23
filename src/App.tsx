@@ -15,6 +15,18 @@ const App: React.FC = () => {
   const [allowCookies, setAllowCookies] = useState(
     localStorage.getItem("allowCookies")
   );
+  // const [file, setFile] = useState("");
+  // const handleChange = (e: any): void => {
+  //   if (e?.target?.files?.[0]) {
+  //     const maxAllowedSize = 1 * 1024 * 1024;
+  //     if (e.target.files[0].size > maxAllowedSize) console.log("hehehehehe");
+  //     // else Storage.put("userId/avatar/profile", e.target.files[0]);
+  //   }
+  // };
+  // useEffect(() => {
+  //   // Storage.put("userId/avatar/profile.png", "hehehehe");
+  //   Storage.get("userId/avatar/profile").then((a) => setFile(a));
+  // }, []);
 
   return (
     <ErrorProvider>

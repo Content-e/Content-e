@@ -1,3 +1,4 @@
+import { isValidUrl } from "components/helpers";
 import { IconLoader } from "components/loader";
 import ShouldRender from "components/shouldRender";
 import { FC, useEffect, useMemo, useState } from "react";
@@ -41,6 +42,8 @@ export const CreateBrief: FC<SaveBriefProps> = ({
     if (!formState.objective.length) errObj.objective = "Objective is required";
     if (!formState.creativeInspirations.find((e) => e.length))
       errObj.creativeInspirations = "Atleast one inspiration is required";
+    if (formState.creativeInspirations.find((e) => !isValidUrl(e)))
+      errObj.creativeInspirations = "Inspiration URL must be valid";
     if (!formState.brandBriefDetails.length)
       errObj.brandBriefDetails = "Brief details is required";
 

@@ -106,3 +106,12 @@ export const getSlicedArray = <T>(
   limit: number,
   page: number
 ): Array<T> => array.slice(page * limit, (page + 1) * limit);
+
+export const isValidUrl = (text: string): boolean => {
+  try {
+    const url = new URL(text);
+    return ["http", "https"].includes(url.protocol);
+  } catch (err) {
+    return false;
+  }
+};
