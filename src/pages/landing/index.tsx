@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 import { UnAuthRoutes } from "utils";
 
 export const LandingPage: React.FC = () => {
   const history = useHistory();
+  const [menu, setMenu] = useState(false);
 
   return (
     <div className="landing-page-wrapper">
@@ -17,6 +18,12 @@ export const LandingPage: React.FC = () => {
                 alt="edc-squared"
               />
             </div>
+            <img
+              src="/images/responsive-menu.svg"
+              alt="responsive-menu"
+              className="responsive-menu"
+              onClick={() => setMenu(!menu)}
+            />
             <div className="landing-page-menu-header">
               <div className="landing-page-menu">
                 <div
@@ -76,6 +83,82 @@ export const LandingPage: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            {menu && (
+              <div className="landing-menu">
+                <div className="landing-menu-option-container">
+                  <div
+                    className="landing-menu-option"
+                    style={{ color: "#D9D9D9" }}
+                    onClick={() => history.push(UnAuthRoutes.Landing)}
+                  >
+                    Home
+                  </div>
+                  <div
+                    className="landing-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.Creators)}
+                  >
+                    For Creators
+                  </div>
+                  <div
+                    className="landing-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.Brands)}
+                  >
+                    For Brands
+                  </div>
+                  <div
+                    className="landing-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.SayHello)}
+                  >
+                    Say Hello
+                  </div>
+                  <div
+                    className="login-signup"
+                    onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                  >
+                    Login / Sign UP
+                  </div>
+                  <div className="landing-menu-img-container">
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.linkedin.com/company/edcsquared/"
+                      >
+                        <img
+                          src="/images/linkedin.png"
+                          alt="linkedin-icon"
+                          className="landing-menu-img"
+                        />
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.instagram.com/edcsq/"
+                      >
+                        <img
+                          src="/images/instagram.png"
+                          alt="instagram-icon"
+                          className="landing-menu-img"
+                        />
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.tiktok.com/@edcsquared"
+                      >
+                        <img
+                          src="/images/tiktok.png"
+                          alt="tiktok-icon"
+                          className="landing-menu-img"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <div className="landing-content-container">
             <div className="landing-page-body">
@@ -129,6 +212,7 @@ export const LandingPage: React.FC = () => {
             <img
               src="/images/landing-union.png"
               style={{ marginLeft: "63px", marginBottom: "-32px" }}
+              className="landing-union"
             />
           </div>
         </div>
