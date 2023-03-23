@@ -39,9 +39,11 @@ export function withSaveBrief<T>(
         const { tiktokHandle, ...rest } = data;
         const input = { ...rest, brandId };
 
-        if (rest.id)
-          editBrief({ variables: { input: { ...input, vertical: "retail" } } });
-        else createBrief({ variables: { input } });
+        if (rest.id) editBrief({ variables: { input } });
+        else
+          createBrief({
+            variables: { input: { ...input, vertical: "retail" } },
+          });
       }
     };
 

@@ -1,13 +1,17 @@
 .campaign-table-container {
   box-sizing: border-box;
   width: 100%;
-  min-height: 308px;
   left: calc(50% - 1127px / 2 + 89.5px);
   top: 196px;
   background: #ffffff;
   border: 1px solid #9fd0bd;
   border-radius: 6px;
-  padding: 15px;
+  padding: 15px 15px 10px;
+}
+
+.campaign-table-wrapper {
+  height: 308px;
+  position: relative;
 }
 
 .campaign-table-header {

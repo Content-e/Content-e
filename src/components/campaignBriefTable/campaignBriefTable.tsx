@@ -45,8 +45,8 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
         <th className="campaign table-header-label">Brand</th>
         <th className="campaign table-header-label">Vertical</th>
         <th className="campaign table-header-label">Objective</th>
-        <th className="campaign table-header-label">Status</th>
-        <th className="campaign table-header-label">Details</th>
+        <th className="campaign table-header-label centered">Status</th>
+        <th className="campaign table-header-label centered">Details</th>
       </tr>
       {truncatedData.map((brief, index) => (
         <tr key={`${brief?.id} -- ${index}`}>
@@ -62,10 +62,13 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
           <td className="campaign table-description capitalized">
             {brief?.objective}
           </td>
-          <td className="campaign table-description capitalized">
+          <td className="campaign table-description centered capitalized">
             {brief?.status}
           </td>
-          <td onClick={(): void => onSelectBrief(brief?.id)}>
+          <td
+            className="centered"
+            onClick={(): void => onSelectBrief(brief?.id)}
+          >
             <img src="/images/table-search.svg" />
           </td>
         </tr>

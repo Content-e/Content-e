@@ -27,36 +27,42 @@ export const CreativesTable: FC<BrandBriefProps> = (props) => {
     <>
       <div className="creatives-table-label">Creatives</div>
       <div className="creatives-table-container">
-        <input
-          className="creatives-search"
-          placeholder="Search..."
-          value={searchText}
-          onChange={(e): void => setSearchText(e.target.value)}
-        />
-        <table className="creatives-table">
-          <tr className="creatives-table-header-bottom-border">
-            <th className="creatives-table-header-label">Brief Name</th>
-            <th className="creatives-table-header-label">Creator handle</th>
-            <th className="creatives-table-header-label">Creative link</th>
-            <th className="creatives-table-header-label">View count</th>
-            <th className="creatives-table-header-label">Engagement</th>
-            <th className="creatives-table-header-label">Status</th>
-            <th className="creatives-table-header-label">Details</th>
-          </tr>
-          <CreativeEntries
-            {...props}
-            searchText={searchText}
-            openCreative={setSelectedRequest}
-            limit={tableLimit}
-            currentPage={currentPage}
+        <div className="brand-table-wrapper">
+          <input
+            className="creatives-search"
+            placeholder="Search..."
+            value={searchText}
+            onChange={(e): void => setSearchText(e.target.value)}
           />
-        </table>
+          <table className="creatives-table">
+            <tr className="creatives-table-header-bottom-border">
+              <th className="creatives-table-header-label">Brief Name</th>
+              <th className="creatives-table-header-label">Creator handle</th>
+              <th className="creatives-table-header-label">Creative link</th>
+              <th className="creatives-table-header-label centered">
+                View count
+              </th>
+              <th className="creatives-table-header-label centered">
+                Engagement
+              </th>
+              <th className="creatives-table-header-label centered">Status</th>
+              <th className="creatives-table-header-label centered">Details</th>
+            </tr>
+            <CreativeEntries
+              {...props}
+              searchText={searchText}
+              openCreative={setSelectedRequest}
+              limit={tableLimit}
+              currentPage={currentPage}
+            />
+          </table>
+          <Pagination
+            total={props?.data?.length || 0}
+            limit={tableLimit}
+            goToPage={setCurrentPage}
+          />
+        </div>
       </div>
-      <Pagination
-        total={props?.data?.length || 0}
-        limit={tableLimit}
-        goToPage={setCurrentPage}
-      />
     </>
   );
 };

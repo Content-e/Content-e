@@ -14,7 +14,7 @@ import "./creatorDashboard.css";
 interface Props {
   onSelectRequest: (e: BrandBrief) => void;
 }
-const tableLimit = 9;
+const tableLimit = 8;
 const CreativeRequests: FC<Props & ICreatorBriefListProps> = ({
   briefList,
   onSelectRequest,
@@ -54,25 +54,27 @@ const CreativeRequests: FC<Props & ICreatorBriefListProps> = ({
     <>
       <div className="campaign-briefs-dashboard-container ">
         <div className="campaign-table-container">
-          <div className="campaign-table-header">
-            <div className="campaign-table-label">Campaign briefs</div>
-            <img onClick={onCampaign} src="/images/morevert.svg" />
+          <div className="campaign-table-wrapper">
+            <div className="campaign-table-header">
+              <div className="campaign-table-label">Campaign briefs</div>
+              <img onClick={onCampaign} src="/images/morevert.svg" />
+            </div>
+            <CampaignBriefTable
+              data={data}
+              limit={tableLimit}
+              briefList={briefList}
+              searchText=""
+              currentPage={currentPage}
+              onSingleSelect={onSelectRequest}
+            />
+            <Pagination
+              total={data.length}
+              limit={tableLimit}
+              goToPage={setCurrentPage}
+            />
           </div>
-          <CampaignBriefTable
-            data={data}
-            limit={tableLimit}
-            briefList={briefList}
-            searchText=""
-            currentPage={currentPage}
-            onSingleSelect={onSelectRequest}
-          />
         </div>
       </div>
-      <Pagination
-        total={data.length}
-        limit={tableLimit}
-        goToPage={setCurrentPage}
-      />
     </>
   );
 };

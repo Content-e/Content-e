@@ -3,7 +3,11 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
-  margin: 20px;
+  margin: 20px 20px 0;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
 }
 
 .pagination-panel .pagination-box {

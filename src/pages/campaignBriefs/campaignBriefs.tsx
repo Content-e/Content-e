@@ -10,7 +10,7 @@ import {
 } from "state/dashboard";
 import Pagination from "components/pagination";
 
-const tableLimit = 9;
+const tableLimit = 7;
 export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
   briefList,
   requestList,
@@ -56,27 +56,29 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
       <div>
         <div className="campaign-table-label">Campaign briefs</div>
         <div className="campaign-table-container">
-          <input
-            className="campaign-search"
-            placeholder="Search..."
-            value={searchText}
-            onChange={(e): void => setSearchText(e.target.value)}
-          />
-          <CampaignBriefTable
-            data={data}
-            limit={tableLimit}
-            briefList={briefList}
-            currentPage={currentPage}
-            searchText={searchText}
-            onSingleSelect={setSelectedBrief}
-          />
+          <div className="campaign-table-wrapper">
+            <input
+              className="campaign-search"
+              placeholder="Search..."
+              value={searchText}
+              onChange={(e): void => setSearchText(e.target.value)}
+            />
+            <CampaignBriefTable
+              data={data}
+              limit={tableLimit}
+              briefList={briefList}
+              currentPage={currentPage}
+              searchText={searchText}
+              onSingleSelect={setSelectedBrief}
+            />
+            <Pagination
+              total={data.length}
+              limit={tableLimit}
+              goToPage={setCurrentPage}
+            />
+          </div>
         </div>
       </div>
-      <Pagination
-        total={data.length}
-        limit={tableLimit}
-        goToPage={setCurrentPage}
-      />
     </>
   );
 };

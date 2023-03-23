@@ -11,7 +11,7 @@ import { BrandBriefProps, withBrandBriefs } from "state/brandBrief";
 import { BrandRoutes } from "utils";
 import "./brandBriefs.css";
 
-const tableLimit = 8;
+const tableLimit = 7;
 export const BrandBriefs: FC<BrandBriefProps> = ({ data, brand }) => {
   const history = useHistory();
   const [input, setInput] = useState("");
@@ -45,25 +45,27 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data, brand }) => {
       {showAlert && <BrandProfileConfirmationModal />}
       <div className="brand-table-label">Campaign briefs</div>
       <div className="brand-table-container">
-        <div className="brand-brief-label-container">
-          <input
-            className="brand-search"
-            placeholder="Search..."
-            value={input}
-            onChange={(e): void => setInput(e.target.value)}
+        <div className="brand-table-wrapper">
+          <div className="brand-brief-label-container">
+            <input
+              className="brand-search"
+              placeholder="Search..."
+              value={input}
+              onChange={(e): void => setInput(e.target.value)}
+            />
+            <img src="/images/add-brief.svg" onClick={goToBriefCreation} />
+          </div>
+          <BrandBriefTable
+            data={getSlicedArray(filteredData || [], tableLimit, currentPage)}
+            openBrief={setSelectedBrief}
           />
-          <img src="/images/add-brief.svg" onClick={goToBriefCreation} />
+          <Pagination
+            total={data?.length || 0}
+            limit={tableLimit}
+            goToPage={setCurrentPage}
+          />
         </div>
-        <BrandBriefTable
-          data={getSlicedArray(filteredData || [], tableLimit, currentPage)}
-          openBrief={setSelectedBrief}
-        />
       </div>
-      <Pagination
-        total={data?.length || 0}
-        limit={tableLimit}
-        goToPage={setCurrentPage}
-      />
     </div>
   );
 };

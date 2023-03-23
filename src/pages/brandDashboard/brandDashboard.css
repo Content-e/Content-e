@@ -7,7 +7,12 @@
   background: #ffffff;
   border: 1px solid #9fd0bd;
   border-radius: 6px;
-  padding: 15px;
+  padding: 15px 15px 10px;
+}
+
+.brand-table-wrapper {
+  height: 308px;
+  position: relative;
 }
 
 .creative-table-container {
@@ -113,5 +118,10 @@
   background: #ffffff;
   border: 1px solid #9fd0bd;
   border-radius: 6px;
-  padding: 15px;
+  padding: 15px 15px 10px;
+}
+
+.dashboard-campaign-table-wrapper {
+  height: 192px;
+  position: relative;
 }

@@ -14,6 +14,7 @@
   line-height: 18px;
   color: #a1a1a1;
   width: auto;
+  padding: 2px 5px;
 }
 
 .creatives-table-description {
@@ -24,18 +25,23 @@
   line-height: 18px;
   color: #1c1c1c;
   width: auto;
+  padding: 2px 5px;
 }
 
 .creatives-table-container {
   box-sizing: border-box;
   width: 100%;
-  min-height: 308px;
   left: calc(50% - 1127px / 2 + 89.5px);
   top: 196px;
   background: #ffffff;
   border: 1px solid #9fd0bd;
   border-radius: 6px;
-  padding: 15px;
+  padding: 15px 15px 10px;
+}
+
+.brand-table-wrapper {
+  height: 308px;
+  position: relative;
 }
 
 .creatives-table-header {
@@ -82,4 +88,15 @@ img {
   font-size: 12px;
   line-height: 20px;
   color: #a1a9b8;
+}
+
+.centered {
+  text-align: center;
+}
+
+.break-entry {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 105px
 }

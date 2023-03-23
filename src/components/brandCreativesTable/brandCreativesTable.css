@@ -13,15 +13,18 @@ table {
   font-size: 12px;
   line-height: 18px;
   color: #a1a1a1;
-  width: 25%;
+  width: 20%;
+  padding: 2px 5px;
 }
 
 .table-header-label.campaign {
   width: 17.66%;
 }
+
 .table-header-label.campaign:nth-of-type(4) {
   width: 25.66%;
 }
+
 .table-header-label.campaign:nth-of-type(5) {
   width: 14.66%;
 }
@@ -38,18 +41,25 @@ table {
   line-height: 18px;
   color: #001219;
   width: 25%;
+  padding: 2px 5px;
 }
 
 .table-description.campaign {
   width: 17.66%;
 }
+
 .table-description.campaign:nth-of-type(4) {
   width: 24.66%;
 }
+
 .table-description.campaign:nth-of-type(5) {
   width: 13.66%;
 }
 
 .table-description.campaign:nth-of-type(6) {
   width: 8.66%;
+}
+
+.centered {
+  text-align: center;
 }

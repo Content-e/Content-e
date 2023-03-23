@@ -46,21 +46,26 @@ export const CreativeEntries: FC<Props> = ({
     <>
       {requests.map((e, i) => (
         <tr key={`${e.id}--${i}`}>
-          <td className="creatives-table-description capitalized">
+          <td className="creatives-table-description break-entry capitalized">
             {e.briefName}
           </td>
-          <td className="creatives-table-description capitalized">
+          <td className="creatives-table-description break-entry capitalized">
             {e.creatorHandle}
           </td>
-          <td className="creatives-table-description capitalized">
+          <td className="creatives-table-description break-entry capitalized">
             {e.videoLink}
           </td>
-          <td className="creatives-table-description capitalized">0</td>
-          <td className="creatives-table-description capitalized">0%</td>
-          <td className="creatives-table-description capitalized">
+          <td className="creatives-table-description centered capitalized">
+            0
+          </td>
+          <td className="creatives-table-description centered capitalized">
+            0%
+          </td>
+          <td className="creatives-table-description centered capitalized">
             {e.status}
           </td>
           <td
+            className="centered"
             onClick={(): void =>
               openCreative({ briefId: e.briefId, requestId: e.id })
             }

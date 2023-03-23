@@ -12,7 +12,7 @@ interface Props {
   openCreative: (data: ISelectredRequest) => void;
 }
 
-const tableLimit = 9;
+const tableLimit = 8;
 export const CreativeRequests: FC<Props> = (props) => {
   const history = useHistory();
   const [currentPage, setCurrentPage] = useState(0);
@@ -20,9 +20,9 @@ export const CreativeRequests: FC<Props> = (props) => {
   const goToCreatives = (): void => history.push(BrandRoutes.Creatives);
 
   return (
-    <>
-      <div className="creative-table-container">
-        <div className="brand-table-container">
+    <div className="creative-table-container">
+      <div className="brand-table-container">
+        <div className="brand-table-wrapper">
           <div className="brand-table-header">
             <div className="brand-table-label">Creatives</div>
             <img src="/images/morevert.svg" onClick={goToCreatives} />
@@ -32,8 +32,8 @@ export const CreativeRequests: FC<Props> = (props) => {
               <th className="table-header-label">Creative link</th>
               <th className="table-header-label">Creator handle</th>
               <th className="table-header-label">Brief name</th>
-              <th className="table-header-label">Status</th>
-              <th className="table-header-label">View</th>
+              <th className="table-header-label centered">Status</th>
+              <th className="table-header-label centered">View</th>
             </tr>
             <BrandCreativesTable
               {...props}
@@ -41,14 +41,14 @@ export const CreativeRequests: FC<Props> = (props) => {
               currentPage={currentPage}
             />
           </table>
+          <Pagination
+            total={props?.data?.length || 0}
+            limit={tableLimit}
+            goToPage={setCurrentPage}
+          />
         </div>
       </div>
-      <Pagination
-        total={props?.data?.length || 0}
-        limit={tableLimit}
-        goToPage={setCurrentPage}
-      />
-    </>
+    </div>
   );
 };
 

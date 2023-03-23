@@ -26,29 +26,31 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
         <th className="brand-table-header-label">Brief details</th>
         <th className="brand-table-header-label">Linked TikTok campaign</th>
         <th className="brand-table-header-label">Objective</th>
-        <th className="brand-table-header-label">Status</th>
-        <th className="brand-table-header-label">Details</th>
-        <th className="brand-table-header-label">Edit</th>
+        <th className="brand-table-header-label centered">Status</th>
+        <th className="brand-table-header-label centered">Details</th>
+        <th className="brand-table-header-label centered">Edit</th>
       </tr>
       {data?.map((e, index) => (
         <tr key={`${e?.id}-brandBrief--${index}`}>
-          <td className="brand-table-description capitalized">
+          <td className="brand-table-description break-entry capitalized">
             {e?.BriefName}
           </td>
-          <td className="brand-table-description capitalized">
+          <td className="brand-table-description break-entry capitalized">
             {e?.brandBriefDetails}
           </td>
-          <td className="brand-table-description capitalized"></td>
-          <td className="brand-table-description capitalized">
+          <td className="brand-table-description break-entry  capitalized">
+            {e?.creativeInspirations?.[0]}
+          </td>
+          <td className="brand-table-description break-entry capitalized">
             {e?.objective}
           </td>
-          <td className="brand-table-description capitalized">
+          <td className="brand-table-description centered capitalized">
             {e?.active ? "Active" : "Inactive"}
           </td>
-          <td onClick={(): void => onBriefSelection(e)}>
+          <td className="centered" onClick={(): void => onBriefSelection(e)}>
             <img src="/images/table-search.svg" />
           </td>
-          <td onClick={(): void => onBriefEdit(e)}>
+          <td className="centered" onClick={(): void => onBriefEdit(e)}>
             <img src="/images/edit-icon.svg" />
           </td>
         </tr>

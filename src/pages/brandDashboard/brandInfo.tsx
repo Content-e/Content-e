@@ -19,12 +19,16 @@ export const BrandInfo: FC<Props> = ({ brand }) => {
         <img src="/images/morevert.svg" onClick={goToBrandPage} />
       </div>
       <div className="brand-profile-container">
-        {brand?.name && (
-          <div className="brand-name capitalized">{brand?.name}</div>
-        )}
-        {brand?.description && (
-          <div className="brand-description">{brand?.description}</div>
-        )}
+        {/* {brand?.name && ( */}
+        <div className="brand-name capitalized">
+          {brand?.name || "brand name"}
+        </div>
+        {/* )}
+        {brand?.description && ( */}
+        <div className="brand-description">
+          {brand?.description || "brand description"}
+        </div>
+        {/* )} */}
         <div className="brand-profile-btn-container" onClick={goToBrandPage}>
           <div className="brand-profile-btn">
             <span className="brand-profile-text">Brand Profile</span>

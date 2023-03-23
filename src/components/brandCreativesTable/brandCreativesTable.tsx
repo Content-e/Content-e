@@ -43,8 +43,9 @@ export const BrandCreativesTable: FC<Props> = ({
             {e.creatorHandle ? `@${e.creatorHandle}` : ""}
           </td>
           <td className="table-description capitalized">{e.briefName}</td>
-          <td className="table-description capitalized">{e.status}</td>
+          <td className="table-description capitalized centered">{e.status}</td>
           <td
+            className="centered"
             onClick={(): void =>
               openCreative({ briefId: e.briefId, requestId: e.id })
             }
