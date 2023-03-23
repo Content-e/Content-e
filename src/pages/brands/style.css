@@ -265,7 +265,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 16px;
   color: #e5d5a5;
 }
 
@@ -299,7 +299,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 55px;
+  margin-top: 77px;
 }
 
 .how-it-works-container-brands {

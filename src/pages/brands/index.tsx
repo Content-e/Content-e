@@ -172,6 +172,12 @@ export const BrandsPage: React.FC = () => {
 
             <div className="brands-page-detailed-content-container">
               <div className="brands-page-detailed-content">
+                EDC squared is reinventing the way brands collaborate with
+                creators. The platform enables brands to build and nurture
+                relationships with an authentic and engaged community of
+                everyday creators, while providing a positive social impact.
+              </div>
+              <div className="brands-page-detailed-content">
                 Driving impact and influence amongst your audience is one of the
                 biggest challenges in marketing today. The cost to produce
                 content at scale, and the decreasing levels of authenticity
