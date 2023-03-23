@@ -12,6 +12,7 @@ export const SayHello: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [menu, setMenu] = useState(false);
 
   const [sent, setSent] = useState(false);
 
@@ -71,6 +72,12 @@ export const SayHello: React.FC = () => {
                 alt="edc-squared"
               />
             </div>
+            <img
+              src="/images/responsive-menu.svg"
+              alt="responsive-menu"
+              className="responsive-menu"
+              onClick={() => setMenu(!menu)}
+            />
             <div className="say-hello-page-menu-header">
               <div className="say-hello-page-menu">
                 <div
@@ -129,14 +136,89 @@ export const SayHello: React.FC = () => {
                 </div>
               </div>
             </div>
+            {menu && (
+              <div className="say-hello-menu">
+                <div className="say-hello-menu-option-container">
+                  <div
+                    className="say-hello-menu-option"
+                    style={{ color: "#D9D9D9" }}
+                    onClick={() => history.push(UnAuthRoutes.Landing)}
+                  >
+                    Home
+                  </div>
+                  <div
+                    className="say-hello-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.Creators)}
+                  >
+                    For Creators
+                  </div>
+                  <div
+                    className="say-hello-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.Brands)}
+                  >
+                    For Brands
+                  </div>
+                  <div
+                    className="say-hello-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.SayHello)}
+                  >
+                    Say Hello
+                  </div>
+                  <div
+                    className="login-signup"
+                    onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                  >
+                    Login / Sign UP
+                  </div>
+                  <div className="say-hello-menu-img-container">
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.linkedin.com/company/edcsquared/"
+                      >
+                        <img
+                          src="/images/linkedin.png"
+                          alt="linkedin-icon"
+                          className="say-hello-menu-img"
+                        />
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.instagram.com/edcsq/"
+                      >
+                        <img
+                          src="/images/instagram.png"
+                          alt="instagram-icon"
+                          className="say-hello-menu-img"
+                        />
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.tiktok.com/@edcsquared"
+                      >
+                        <img
+                          src="/images/tiktok.png"
+                          alt="tiktok-icon"
+                          className="say-hello-menu-img"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <div className="say-hello-content-container">
             <div className="say-hello-page-body">
               <div className="say-hello-page-title">Let’s talk!</div>
-              <div className="ask-us-anything">
+              <div className="say-hello-ask">
                 Ask us anything or just say hi...
               </div>
-              <div className="hello-edc" onClick={openContactUs}>
+              <div className="say-hello-edc" onClick={openContactUs}>
                 hello@edcsquared.io
               </div>
             </div>
@@ -175,8 +257,10 @@ export const SayHello: React.FC = () => {
                   Thanks for sending message.
                 </div>
               )}
-              <div onClick={handleSend} className="send-message-btn">
-                Send Message
+              <div className="send-message-btn-container">
+                <div onClick={handleSend} className="send-message-btn">
+                  Send Message
+                </div>
               </div>
             </div>
           </div>
