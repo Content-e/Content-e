@@ -27,11 +27,13 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
 
   return (
     <div className="brand-brief-details-container">
-      <div className="brand-brief-title brand-sub-description-margin">
-        Brand brief details
-      </div>
-      <div className="brand-sub-description brand-sub-description-margin">
-        {detail}
+      <div className="brand-brief-info-panel">
+        <div className="brand-brief-title brand-sub-description-margin">
+          Brand brief details
+        </div>
+        <div className="brand-sub-description brand-sub-description-margin">
+          {detail}
+        </div>
       </div>
       <div className="link-creative-btn-container">
         {authenticatedUrls.length > 0 && (

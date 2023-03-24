@@ -13,15 +13,17 @@ export const SidebarLayout: FC<Props> = ({ children }) => {
     <S.MainWrapper>
       <Sidebar />
 
-      <S.AppMain>
-        <S.TitleMenu>
-          <MobileHeader />
-        </S.TitleMenu>
-        {children}
+      <S.ParentWrapper>
+        <S.AppMain>
+          <S.TitleMenu>
+            <MobileHeader />
+          </S.TitleMenu>
+          {children}
+        </S.AppMain>
         <S.Footer>
           <AuthFooter />
         </S.Footer>
-      </S.AppMain>
+      </S.ParentWrapper>
     </S.MainWrapper>
   );
 };

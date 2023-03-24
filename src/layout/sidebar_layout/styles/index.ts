@@ -8,6 +8,13 @@ export const MainWrapper = styled.div`
   overflow: hidden;
 `;
 
+export const ParentWrapper = styled.div`
+  width: 100%;
+  @media only screen and (max-width: 768px) {
+    overflow: auto;
+    padding: 30px 33px 43px;
+  }
+`;
 export const TitleMenu = styled.div`
   display: none;
   align-items: center;
@@ -37,13 +44,13 @@ export const PageTitle = styled.div`
 
 export const AppMain = styled.div`
   width: 100%;
-  box-shadow: 0px 0px 4px rgb(0 0 0 / 20%);
   padding: 49px 20px 0;
   position: relative;
   overflow: auto;
 
   @media only screen and (max-width: 768px) {
-    padding: 30px 33px 43px;
+    padding: 0;
+    min-height: calc(100vh - 187px);
   }
 `;
 
