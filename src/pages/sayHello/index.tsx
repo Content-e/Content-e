@@ -141,7 +141,6 @@ export const SayHello: React.FC = () => {
                 <div className="say-hello-menu-option-container">
                   <div
                     className="say-hello-menu-option"
-                    style={{ color: "#D9D9D9" }}
                     onClick={() => history.push(UnAuthRoutes.Landing)}
                   >
                     Home
@@ -161,6 +160,7 @@ export const SayHello: React.FC = () => {
                   <div
                     className="say-hello-menu-option"
                     onClick={() => history.push(UnAuthRoutes.SayHello)}
+                    style={{ color: "#D9D9D9" }}
                   >
                     Say Hello
                   </div>

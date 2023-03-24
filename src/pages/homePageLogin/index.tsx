@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 import { UnAuthRoutes } from "utils";
 
 export const HomePageLogin: React.FC = () => {
   const history = useHistory();
+  const [menu, setMenu] = useState(false);
 
   return (
     <div className="home-page-login-page-wrapper">
@@ -17,6 +18,12 @@ export const HomePageLogin: React.FC = () => {
                 alt="edc-squared"
               />
             </div>
+            <img
+              src="/images/responsive-menu.svg"
+              alt="responsive-menu"
+              className="responsive-menu"
+              onClick={() => setMenu(!menu)}
+            />
             <div className="home-page-login-page-menu-header">
               <div className="home-page-login-page-menu">
                 <div
@@ -72,6 +79,81 @@ export const HomePageLogin: React.FC = () => {
                 </div>
               </div>
             </div>
+            {menu && (
+              <div className="home-page-login-menu">
+                <div className="home-page-login-menu-option-container">
+                  <div
+                    className="home-page-login-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.Landing)}
+                  >
+                    Home
+                  </div>
+                  <div
+                    className="home-page-login-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.Creators)}
+                  >
+                    For Creators
+                  </div>
+                  <div
+                    className="home-page-login-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.Brands)}
+                  >
+                    For Brands
+                  </div>
+                  <div
+                    className="home-page-login-menu-option"
+                    onClick={() => history.push(UnAuthRoutes.SayHello)}
+                  >
+                    Say Hello
+                  </div>
+                  <div
+                    className="login-signup"
+                    onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                    style={{ color: "white" }}
+                  >
+                    Login / Sign UP
+                  </div>
+                  <div className="home-page-login-menu-img-container">
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.linkedin.com/company/edcsquared/"
+                      >
+                        <img
+                          src="/images/linkedin.png"
+                          alt="linkedin-icon"
+                          className="home-page-login-menu-img"
+                        />
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.instagram.com/edcsq/"
+                      >
+                        <img
+                          src="/images/instagram.png"
+                          alt="instagram-icon"
+                          className="home-page-login-menu-img"
+                        />
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.tiktok.com/@edcsquared"
+                      >
+                        <img
+                          src="/images/tiktok.png"
+                          alt="tiktok-icon"
+                          className="home-page-login-menu-img"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <div className="home-page-login-content-container">
             <div className="home-page-login-page-body">
@@ -83,9 +165,9 @@ export const HomePageLogin: React.FC = () => {
                 In the meantime, why not say hi...
               </div>
             </div>
-            <div className="say-hello-btn-container">
+            <div className="home-page-login-btn-container">
               <div
-                className="say-hello-btn"
+                className="home-page-login-btn"
                 onClick={() => history.push(UnAuthRoutes.SayHello)}
               >
                 Say Hello
