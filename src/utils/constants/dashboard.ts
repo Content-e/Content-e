@@ -12,18 +12,18 @@ export const CreatorDashboardBoxes: ICreatorDashboardBox = {
   },
   Approval: {
     label: "Approval rate",
-    placement: "right",
+    placement: window.innerWidth < 768 ? "left" : "right",
     tooltip:
       "Approval rate equals, number of creatives submitted divided number of creatives approved",
   },
   Conversion: {
     label: "Conversion rate",
-    placement: "left",
+    placement: window.innerWidth < 768 ? "right" : "left",
     tooltip:
       "Approval rate equals, number of creatives submitted divided number of creatives approved",
   },
   ClickThrough: {
-    label: "Click through rate",
+    label: window.innerWidth < 768 ? "CTR rate" : "Click through rate",
     placement: "left",
     tooltip:
       "Approval rate equals, number of creatives submitted divided number of creatives approved",

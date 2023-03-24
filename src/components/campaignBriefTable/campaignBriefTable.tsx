@@ -43,9 +43,13 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
       <tr className="table-header-bottom-border">
         <th className="campaign table-header-label">Brief Name</th>
         <th className="campaign table-header-label">Brand</th>
-        <th className="campaign table-header-label">Vertical</th>
-        <th className="campaign table-header-label">Objective</th>
-        <th className="campaign table-header-label centered">Status</th>
+        <th className="campaign table-header-label hide-on-mobile">Vertical</th>
+        <th className="campaign table-header-label hide-on-mobile">
+          Objective
+        </th>
+        <th className="campaign table-header-label hide-on-mobile centered">
+          Status
+        </th>
         <th className="campaign table-header-label centered">Details</th>
       </tr>
       {truncatedData.map((brief, index) => (
@@ -56,13 +60,13 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
           <td className="campaign table-description capitalized">
             {brief?.brandName}
           </td>
-          <td className="campaign table-description capitalized">
+          <td className="campaign table-description capitalized hide-on-mobile">
             {brief?.vertical}
           </td>
-          <td className="campaign table-description capitalized">
+          <td className="campaign table-description capitalized hide-on-mobile">
             {brief?.objective}
           </td>
-          <td className="campaign table-description centered capitalized">
+          <td className="campaign table-description centered capitalized hide-on-mobile">
             {brief?.status}
           </td>
           <td
