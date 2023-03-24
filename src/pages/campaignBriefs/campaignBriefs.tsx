@@ -54,7 +54,9 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
   return (
     <>
       <div>
-        <div className="campaign-table-label">Campaign briefs</div>
+        <div className="campaign-table-label campaign-table-bold-label">
+          Campaign briefs
+        </div>
         <div className="campaign-table-container">
           <div className="campaign-table-wrapper">
             <input

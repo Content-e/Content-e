@@ -90,3 +90,17 @@ img {
   line-height: 20px;
   color: #a1a9b8;
 }
+
+@media only screen and (max-width: 768px) {
+  .campaign-table-label {
+    margin: 0;
+    padding-bottom: 10px;
+    font-weight: 300;
+    font-size: 14px;
+  }
+
+  .campaign-table-bold-label {
+    font-size: 12px;
+    font-weight: 600;
+  }
+}

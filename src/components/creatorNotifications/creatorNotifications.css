@@ -49,3 +49,11 @@
   line-height: 18px;
   color: #a1a1a1;
 }
+
+@media only screen and (max-width: 768px) {
+
+  .creator-notifications-container,
+  .best-practices-container {
+    height: 124px;
+  }
+}
