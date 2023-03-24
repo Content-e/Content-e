@@ -20,11 +20,6 @@ export const getGPTresponse = /* GraphQL */ `
     }
   }
 `;
-export const sendEmail = /* GraphQL */ `
-  query SendEmail($data: EMAIL_INPUT) {
-    sendEmail(data: $data)
-  }
-`;
 export const getUserProfile = /* GraphQL */ `
   query GetUserProfile($id: ID!) {
     getUserProfile(id: $id) {
@@ -57,6 +52,19 @@ export const getUserProfile = /* GraphQL */ `
       owner
       userType
       tiktokHandler
+      bestPractices {
+        items {
+          headLine
+          description
+          active
+          owner
+          id
+          createdAt
+          updatedAt
+          userProfileBestPracticesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -96,6 +104,19 @@ export const listUserProfiles = /* GraphQL */ `
         owner
         userType
         tiktokHandler
+        bestPractices {
+          items {
+            headLine
+            description
+            active
+            owner
+            id
+            createdAt
+            updatedAt
+            userProfileBestPracticesId
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -145,8 +166,85 @@ export const userProfilesByUserEmail = /* GraphQL */ `
         owner
         userType
         tiktokHandler
+        bestPractices {
+          items {
+            headLine
+            description
+            active
+            owner
+            id
+            createdAt
+            updatedAt
+            userProfileBestPracticesId
+          }
+          nextToken
+        }
         createdAt
         updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getBestPractices = /* GraphQL */ `
+  query GetBestPractices($id: ID!) {
+    getBestPractices(id: $id) {
+      headLine
+      description
+      active
+      owner
+      id
+      createdAt
+      updatedAt
+      userProfileBestPracticesId
+    }
+  }
+`;
+export const listBestPractices = /* GraphQL */ `
+  query ListBestPractices(
+    $filter: ModelBestPracticesFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listBestPractices(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        headLine
+        description
+        active
+        owner
+        id
+        createdAt
+        updatedAt
+        userProfileBestPracticesId
+      }
+      nextToken
+    }
+  }
+`;
+export const bestPracticesByActive = /* GraphQL */ `
+  query BestPracticesByActive(
+    $active: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelBestPracticesFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    bestPracticesByActive(
+      active: $active
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        headLine
+        description
+        active
+        owner
+        id
+        createdAt
+        updatedAt
+        userProfileBestPracticesId
       }
       nextToken
     }
@@ -681,5 +779,10 @@ export const creativeRequestsByStatus = /* GraphQL */ `
       }
       nextToken
     }
+  }
+`;
+export const sendEmail = /* GraphQL */ `
+  query SendEmail($data: EMAIL_INPUT) {
+    sendEmail(data: $data)
   }
 `;

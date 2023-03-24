@@ -37,6 +37,19 @@ export const onCreateUserProfile = /* GraphQL */ `
       owner
       userType
       tiktokHandler
+      bestPractices {
+        items {
+          headLine
+          description
+          active
+          owner
+          id
+          createdAt
+          updatedAt
+          userProfileBestPracticesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -77,6 +90,19 @@ export const onUpdateUserProfile = /* GraphQL */ `
       owner
       userType
       tiktokHandler
+      bestPractices {
+        items {
+          headLine
+          description
+          active
+          owner
+          id
+          createdAt
+          updatedAt
+          userProfileBestPracticesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -117,8 +143,72 @@ export const onDeleteUserProfile = /* GraphQL */ `
       owner
       userType
       tiktokHandler
+      bestPractices {
+        items {
+          headLine
+          description
+          active
+          owner
+          id
+          createdAt
+          updatedAt
+          userProfileBestPracticesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
+    }
+  }
+`;
+export const onCreateBestPractices = /* GraphQL */ `
+  subscription OnCreateBestPractices(
+    $filter: ModelSubscriptionBestPracticesFilterInput
+    $owner: String
+  ) {
+    onCreateBestPractices(filter: $filter, owner: $owner) {
+      headLine
+      description
+      active
+      owner
+      id
+      createdAt
+      updatedAt
+      userProfileBestPracticesId
+    }
+  }
+`;
+export const onUpdateBestPractices = /* GraphQL */ `
+  subscription OnUpdateBestPractices(
+    $filter: ModelSubscriptionBestPracticesFilterInput
+    $owner: String
+  ) {
+    onUpdateBestPractices(filter: $filter, owner: $owner) {
+      headLine
+      description
+      active
+      owner
+      id
+      createdAt
+      updatedAt
+      userProfileBestPracticesId
+    }
+  }
+`;
+export const onDeleteBestPractices = /* GraphQL */ `
+  subscription OnDeleteBestPractices(
+    $filter: ModelSubscriptionBestPracticesFilterInput
+    $owner: String
+  ) {
+    onDeleteBestPractices(filter: $filter, owner: $owner) {
+      headLine
+      description
+      active
+      owner
+      id
+      createdAt
+      updatedAt
+      userProfileBestPracticesId
     }
   }
 `;

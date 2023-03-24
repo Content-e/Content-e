@@ -4,14 +4,22 @@
     "apiName": "contente",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "expirationTime": 7
+      "mode": "AWS_LAMBDA",
+      "lambdaFunction": "graphQlLambdaAuthorizerc946ef1d",
+      "ttlSeconds": "300"
     },
     "additionalAuthTypes": [
       {
         "mode": "AMAZON_COGNITO_USER_POOLS",
         "cognitoUserPoolId": "authcontente9303b093"
+      },
+      {
+        "mode": "API_KEY",
+        "expirationTime": 365,
+        "apiKeyExpirationDate": "2024-03-23T18:15:53.243Z",
+        "keyDescription": "API key while adding custom lambda authorizer on graphql schema fields"
       }
-    ]
+    ],
+    "conflictResolution": {}
   }
 }

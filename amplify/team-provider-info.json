@@ -21,7 +21,11 @@
       "function": {
         "GPTLambda": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/GPTLambda-51393343754847536143-build.zip"
+          "s3Key": "amplify-builds/GPTLambda-5974695454704a655256-build.zip"
+        },
+        "emailService": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/emailService-4651784e763261656c5a-build.zip"
         }
       },
       "hosting": {
@@ -29,6 +33,9 @@
           "appId": "d12cm8tmqhdorb",
           "type": "manual"
         }
+      },
+      "storage": {
+        "staticStorage": {}
       }
     }
   },
@@ -56,6 +63,10 @@
         "emailService": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
           "s3Key": "amplify-builds/emailService-4651784e763261656c5a-build.zip"
+        },
+        "graphQlLambdaAuthorizerc946ef1d": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/graphQlLambdaAuthorizerc946ef1d-305531662f6e64636f59-build.zip"
         }
       },
       "hosting": {

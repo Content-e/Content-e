@@ -14,6 +14,17 @@ type UserProfile
   owner: String @auth(rules: [{ allow: owner, operations: [read] }])
   userType: USER_TYPES!
   tiktokHandler: String
+  bestPractices: [BestPractices] @hasMany
+}
+
+type BestPractices 
+@model
+@auth(rules: [{ allow: private, operations: [read]},{ allow: owner }])
+{
+  headLine: String!
+  description: String!
+  active: String! @index(name: "byStatus")
+  owner: String @auth(rules: [{ allow: owner, operations: [read] }])
 }
 
 type BrandProfile 

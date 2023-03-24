@@ -18,6 +18,14 @@
               "userPoolConfig": {
                 "userPoolId": "authcontente9303b093"
               }
+            },
+            {
+              "apiKeyConfig": {
+                "apiKeyExpirationDate": "2024-03-23T18:15:53.243Z",
+                "apiKeyExpirationDays": 365,
+                "description": "API key while adding custom lambda authorizer on graphql schema fields"
+              },
+              "authenticationType": "API_KEY"
             }
           ],
           "defaultAuthentication": {
@@ -73,6 +81,11 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "graphQlLambdaAuthorizerc946ef1d": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "hosting": {
@@ -112,6 +125,22 @@
         {
           "category": "function",
           "resourceName": "emailService"
+        }
+      ]
+    },
+    "AMPLIFY_function_graphQlLambdaAuthorizerc946ef1d_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "graphQlLambdaAuthorizerc946ef1d"
+        }
+      ]
+    },
+    "AMPLIFY_function_graphQlLambdaAuthorizerc946ef1d_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "graphQlLambdaAuthorizerc946ef1d"
         }
       ]
     },

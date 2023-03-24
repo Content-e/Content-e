@@ -80,6 +80,7 @@ export type UserProfile = {
   owner?: string | null,
   userType: USER_TYPES,
   tiktokHandler?: string | null,
+  bestPractices?: ModelBestPracticesConnection | null,
   createdAt: string,
   updatedAt: string,
 };
@@ -151,6 +152,55 @@ export type CreativeRequest = {
   updatedAt: string,
 };
 
+export type ModelBestPracticesConnection = {
+  __typename: "ModelBestPracticesConnection",
+  items:  Array<BestPractices | null >,
+  nextToken?: string | null,
+};
+
+export type BestPractices = {
+  __typename: "BestPractices",
+  headLine: string,
+  description: string,
+  active: string,
+  owner?: string | null,
+  id: string,
+  createdAt: string,
+  updatedAt: string,
+  userProfileBestPracticesId?: string | null,
+};
+
+export type DeleteBestPracticesInput = {
+  id: string,
+};
+
+export type ModelBestPracticesConditionInput = {
+  headLine?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  active?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
+  and?: Array< ModelBestPracticesConditionInput | null > | null,
+  or?: Array< ModelBestPracticesConditionInput | null > | null,
+  not?: ModelBestPracticesConditionInput | null,
+  userProfileBestPracticesId?: ModelIDInput | null,
+};
+
+export type ModelIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
+
 export type CreateUserProfileInput = {
   id?: string | null,
   name: string,
@@ -169,6 +219,24 @@ export type UpdateUserProfileInput = {
   owner?: string | null,
   userType?: USER_TYPES | null,
   tiktokHandler?: string | null,
+};
+
+export type CreateBestPracticesInput = {
+  headLine: string,
+  description: string,
+  active: string,
+  owner?: string | null,
+  id?: string | null,
+  userProfileBestPracticesId?: string | null,
+};
+
+export type UpdateBestPracticesInput = {
+  headLine?: string | null,
+  description?: string | null,
+  active?: string | null,
+  owner?: string | null,
+  id: string,
+  userProfileBestPracticesId?: string | null,
 };
 
 export type CreateBrandProfileInput = {
@@ -201,22 +269,6 @@ export type ModelBrandProfileConditionInput = {
   or?: Array< ModelBrandProfileConditionInput | null > | null,
   not?: ModelBrandProfileConditionInput | null,
   userProfileBrandId?: ModelIDInput | null,
-};
-
-export type ModelIDInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-  size?: ModelSizeInput | null,
 };
 
 export type UpdateBrandProfileInput = {
@@ -376,12 +428,6 @@ export enum GPT_RESPONSE_TYPE {
 }
 
 
-export type EMAIL_INPUT = {
-  message: string,
-  name: string,
-  from: string,
-};
-
 export type ModelUserProfileFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -406,6 +452,17 @@ export enum ModelSortDirection {
   DESC = "DESC",
 }
 
+
+export type ModelBestPracticesFilterInput = {
+  headLine?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  active?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
+  and?: Array< ModelBestPracticesFilterInput | null > | null,
+  or?: Array< ModelBestPracticesFilterInput | null > | null,
+  not?: ModelBestPracticesFilterInput | null,
+  userProfileBestPracticesId?: ModelIDInput | null,
+};
 
 export type ModelBrandProfileFilterInput = {
   id?: ModelIDInput | null,
@@ -452,6 +509,12 @@ export type ModelCreativeRequestFilterInput = {
   not?: ModelCreativeRequestFilterInput | null,
 };
 
+export type EMAIL_INPUT = {
+  message: string,
+  name: string,
+  from: string,
+};
+
 export type ModelSubscriptionUserProfileFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   name?: ModelSubscriptionStringInput | null,
@@ -491,6 +554,14 @@ export type ModelSubscriptionStringInput = {
   beginsWith?: string | null,
   in?: Array< string | null > | null,
   notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionBestPracticesFilterInput = {
+  headLine?: ModelSubscriptionStringInput | null,
+  description?: ModelSubscriptionStringInput | null,
+  active?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionBestPracticesFilterInput | null > | null,
+  or?: Array< ModelSubscriptionBestPracticesFilterInput | null > | null,
 };
 
 export type ModelSubscriptionBrandProfileFilterInput = {
@@ -579,8 +650,42 @@ export type DeleteUserProfileMutation = {
     owner?: string | null,
     userType: USER_TYPES,
     tiktokHandler?: string | null,
+    bestPractices?:  {
+      __typename: "ModelBestPracticesConnection",
+      items:  Array< {
+        __typename: "BestPractices",
+        headLine: string,
+        description: string,
+        active: string,
+        owner?: string | null,
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        userProfileBestPracticesId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
+  } | null,
+};
+
+export type DeleteBestPracticesMutationVariables = {
+  input: DeleteBestPracticesInput,
+  condition?: ModelBestPracticesConditionInput | null,
+};
+
+export type DeleteBestPracticesMutation = {
+  deleteBestPractices?:  {
+    __typename: "BestPractices",
+    headLine: string,
+    description: string,
+    active: string,
+    owner?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+    userProfileBestPracticesId?: string | null,
   } | null,
 };
 
@@ -624,6 +729,21 @@ export type CreateUserProfileMutation = {
     owner?: string | null,
     userType: USER_TYPES,
     tiktokHandler?: string | null,
+    bestPractices?:  {
+      __typename: "ModelBestPracticesConnection",
+      items:  Array< {
+        __typename: "BestPractices",
+        headLine: string,
+        description: string,
+        active: string,
+        owner?: string | null,
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        userProfileBestPracticesId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -669,8 +789,61 @@ export type UpdateUserProfileMutation = {
     owner?: string | null,
     userType: USER_TYPES,
     tiktokHandler?: string | null,
+    bestPractices?:  {
+      __typename: "ModelBestPracticesConnection",
+      items:  Array< {
+        __typename: "BestPractices",
+        headLine: string,
+        description: string,
+        active: string,
+        owner?: string | null,
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        userProfileBestPracticesId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
+  } | null,
+};
+
+export type CreateBestPracticesMutationVariables = {
+  input: CreateBestPracticesInput,
+  condition?: ModelBestPracticesConditionInput | null,
+};
+
+export type CreateBestPracticesMutation = {
+  createBestPractices?:  {
+    __typename: "BestPractices",
+    headLine: string,
+    description: string,
+    active: string,
+    owner?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+    userProfileBestPracticesId?: string | null,
+  } | null,
+};
+
+export type UpdateBestPracticesMutationVariables = {
+  input: UpdateBestPracticesInput,
+  condition?: ModelBestPracticesConditionInput | null,
+};
+
+export type UpdateBestPracticesMutation = {
+  updateBestPractices?:  {
+    __typename: "BestPractices",
+    headLine: string,
+    description: string,
+    active: string,
+    owner?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+    userProfileBestPracticesId?: string | null,
   } | null,
 };
 
@@ -1164,14 +1337,6 @@ export type GetGPTresponseQuery = {
   } | null,
 };
 
-export type SendEmailQueryVariables = {
-  data?: EMAIL_INPUT | null,
-};
-
-export type SendEmailQuery = {
-  sendEmail?: boolean | null,
-};
-
 export type GetUserProfileQueryVariables = {
   id: string,
 };
@@ -1211,6 +1376,21 @@ export type GetUserProfileQuery = {
     owner?: string | null,
     userType: USER_TYPES,
     tiktokHandler?: string | null,
+    bestPractices?:  {
+      __typename: "ModelBestPracticesConnection",
+      items:  Array< {
+        __typename: "BestPractices",
+        headLine: string,
+        description: string,
+        active: string,
+        owner?: string | null,
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        userProfileBestPracticesId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -1255,6 +1435,21 @@ export type ListUserProfilesQuery = {
       owner?: string | null,
       userType: USER_TYPES,
       tiktokHandler?: string | null,
+      bestPractices?:  {
+        __typename: "ModelBestPracticesConnection",
+        items:  Array< {
+          __typename: "BestPractices",
+          headLine: string,
+          description: string,
+          active: string,
+          owner?: string | null,
+          id: string,
+          createdAt: string,
+          updatedAt: string,
+          userProfileBestPracticesId?: string | null,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -1303,8 +1498,91 @@ export type UserProfilesByUserEmailQuery = {
       owner?: string | null,
       userType: USER_TYPES,
       tiktokHandler?: string | null,
+      bestPractices?:  {
+        __typename: "ModelBestPracticesConnection",
+        items:  Array< {
+          __typename: "BestPractices",
+          headLine: string,
+          description: string,
+          active: string,
+          owner?: string | null,
+          id: string,
+          createdAt: string,
+          updatedAt: string,
+          userProfileBestPracticesId?: string | null,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetBestPracticesQueryVariables = {
+  id: string,
+};
+
+export type GetBestPracticesQuery = {
+  getBestPractices?:  {
+    __typename: "BestPractices",
+    headLine: string,
+    description: string,
+    active: string,
+    owner?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+    userProfileBestPracticesId?: string | null,
+  } | null,
+};
+
+export type ListBestPracticesQueryVariables = {
+  filter?: ModelBestPracticesFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListBestPracticesQuery = {
+  listBestPractices?:  {
+    __typename: "ModelBestPracticesConnection",
+    items:  Array< {
+      __typename: "BestPractices",
+      headLine: string,
+      description: string,
+      active: string,
+      owner?: string | null,
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+      userProfileBestPracticesId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type BestPracticesByActiveQueryVariables = {
+  active: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelBestPracticesFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type BestPracticesByActiveQuery = {
+  bestPracticesByActive?:  {
+    __typename: "ModelBestPracticesConnection",
+    items:  Array< {
+      __typename: "BestPractices",
+      headLine: string,
+      description: string,
+      active: string,
+      owner?: string | null,
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+      userProfileBestPracticesId?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -1865,6 +2143,14 @@ export type CreativeRequestsByStatusQuery = {
   } | null,
 };
 
+export type SendEmailQueryVariables = {
+  data?: EMAIL_INPUT | null,
+};
+
+export type SendEmailQuery = {
+  sendEmail?: boolean | null,
+};
+
 export type OnCreateUserProfileSubscriptionVariables = {
   filter?: ModelSubscriptionUserProfileFilterInput | null,
   owner?: string | null,
@@ -1905,6 +2191,21 @@ export type OnCreateUserProfileSubscription = {
     owner?: string | null,
     userType: USER_TYPES,
     tiktokHandler?: string | null,
+    bestPractices?:  {
+      __typename: "ModelBestPracticesConnection",
+      items:  Array< {
+        __typename: "BestPractices",
+        headLine: string,
+        description: string,
+        active: string,
+        owner?: string | null,
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        userProfileBestPracticesId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -1950,6 +2251,21 @@ export type OnUpdateUserProfileSubscription = {
     owner?: string | null,
     userType: USER_TYPES,
     tiktokHandler?: string | null,
+    bestPractices?:  {
+      __typename: "ModelBestPracticesConnection",
+      items:  Array< {
+        __typename: "BestPractices",
+        headLine: string,
+        description: string,
+        active: string,
+        owner?: string | null,
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        userProfileBestPracticesId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -1995,8 +2311,80 @@ export type OnDeleteUserProfileSubscription = {
     owner?: string | null,
     userType: USER_TYPES,
     tiktokHandler?: string | null,
+    bestPractices?:  {
+      __typename: "ModelBestPracticesConnection",
+      items:  Array< {
+        __typename: "BestPractices",
+        headLine: string,
+        description: string,
+        active: string,
+        owner?: string | null,
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        userProfileBestPracticesId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
+  } | null,
+};
+
+export type OnCreateBestPracticesSubscriptionVariables = {
+  filter?: ModelSubscriptionBestPracticesFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnCreateBestPracticesSubscription = {
+  onCreateBestPractices?:  {
+    __typename: "BestPractices",
+    headLine: string,
+    description: string,
+    active: string,
+    owner?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+    userProfileBestPracticesId?: string | null,
+  } | null,
+};
+
+export type OnUpdateBestPracticesSubscriptionVariables = {
+  filter?: ModelSubscriptionBestPracticesFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnUpdateBestPracticesSubscription = {
+  onUpdateBestPractices?:  {
+    __typename: "BestPractices",
+    headLine: string,
+    description: string,
+    active: string,
+    owner?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+    userProfileBestPracticesId?: string | null,
+  } | null,
+};
+
+export type OnDeleteBestPracticesSubscriptionVariables = {
+  filter?: ModelSubscriptionBestPracticesFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnDeleteBestPracticesSubscription = {
+  onDeleteBestPractices?:  {
+    __typename: "BestPractices",
+    headLine: string,
+    description: string,
+    active: string,
+    owner?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+    userProfileBestPracticesId?: string | null,
   } | null,
 };
 

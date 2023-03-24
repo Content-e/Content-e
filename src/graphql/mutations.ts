@@ -37,8 +37,38 @@ export const deleteUserProfile = /* GraphQL */ `
       owner
       userType
       tiktokHandler
+      bestPractices {
+        items {
+          headLine
+          description
+          active
+          owner
+          id
+          createdAt
+          updatedAt
+          userProfileBestPracticesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
+    }
+  }
+`;
+export const deleteBestPractices = /* GraphQL */ `
+  mutation DeleteBestPractices(
+    $input: DeleteBestPracticesInput!
+    $condition: ModelBestPracticesConditionInput
+  ) {
+    deleteBestPractices(input: $input, condition: $condition) {
+      headLine
+      description
+      active
+      owner
+      id
+      createdAt
+      updatedAt
+      userProfileBestPracticesId
     }
   }
 `;
@@ -77,6 +107,19 @@ export const createUserProfile = /* GraphQL */ `
       owner
       userType
       tiktokHandler
+      bestPractices {
+        items {
+          headLine
+          description
+          active
+          owner
+          id
+          createdAt
+          updatedAt
+          userProfileBestPracticesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -117,8 +160,55 @@ export const updateUserProfile = /* GraphQL */ `
       owner
       userType
       tiktokHandler
+      bestPractices {
+        items {
+          headLine
+          description
+          active
+          owner
+          id
+          createdAt
+          updatedAt
+          userProfileBestPracticesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
+    }
+  }
+`;
+export const createBestPractices = /* GraphQL */ `
+  mutation CreateBestPractices(
+    $input: CreateBestPracticesInput!
+    $condition: ModelBestPracticesConditionInput
+  ) {
+    createBestPractices(input: $input, condition: $condition) {
+      headLine
+      description
+      active
+      owner
+      id
+      createdAt
+      updatedAt
+      userProfileBestPracticesId
+    }
+  }
+`;
+export const updateBestPractices = /* GraphQL */ `
+  mutation UpdateBestPractices(
+    $input: UpdateBestPracticesInput!
+    $condition: ModelBestPracticesConditionInput
+  ) {
+    updateBestPractices(input: $input, condition: $condition) {
+      headLine
+      description
+      active
+      owner
+      id
+      createdAt
+      updatedAt
+      userProfileBestPracticesId
     }
   }
 `;
