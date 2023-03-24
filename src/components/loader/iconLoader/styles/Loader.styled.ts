@@ -20,7 +20,7 @@ export const LoadingSpinner = styled.span<PropType>`
   animation: ${rotate} 1s linear;
   animation-iteration-count: infinite;
   padding: 0px !important;
-  margin-top: ${(props): string => props.sayHello || "-40px"};
+  margin-top: ${(props): string => props.sayHello || "0px"};
 
   @media only screen and (max-width: 420px) {
     margin-top: 0px;

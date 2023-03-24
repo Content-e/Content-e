@@ -9,10 +9,21 @@ export const MainWrapper = styled.div`
 `;
 
 export const TitleMenu = styled.div`
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: flex-start;
-  margin: 39px 0 10px;
+
+  @media only screen and (max-width: 768px) {
+    display: block;
+  }
+`;
+
+export const Footer = styled.div`
+  .mobile-footer {
+    bottom: 0;
+    margin-top: 63px;
+    position: relative;
+  }
 `;
 
 export const PageTitle = styled.div`
@@ -27,9 +38,13 @@ export const PageTitle = styled.div`
 export const AppMain = styled.div`
   width: 100%;
   box-shadow: 0px 0px 4px rgb(0 0 0 / 20%);
-  padding: 0px 20px;
+  padding: 49px 20px 0;
   position: relative;
   overflow: auto;
+
+  @media only screen and (max-width: 768px) {
+    padding: 30px 33px 43px;
+  }
 `;
 
 export const MenuIcon = styled.div`

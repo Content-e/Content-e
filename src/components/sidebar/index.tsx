@@ -14,16 +14,7 @@ import { withProfile } from "state/profileSteps";
 import { USER_TYPES } from "API";
 import { Storage } from "aws-amplify";
 
-interface ISidebar {
-  showMenu: boolean;
-  toggleMenu: () => void;
-}
-
-export const Sidebar: FC<ProfileProps & ISidebar> = ({
-  profileState: { data },
-  showMenu,
-  toggleMenu,
-}) => {
+export const MobileHeader: FC<ProfileProps> = ({ profileState: { data } }) => {
   const history = useHistory();
   const { pathname } = useLocation();
   const [profilePic, setProfilePic] = useState<string>();
@@ -82,8 +73,8 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
   }, [data]);
 
   return (
-    <S.SidebarWrapper className={classNames({ show: showMenu })}>
-      <S.CrossIcon onClick={toggleMenu}>
+    <S.SidebarWrapper>
+      <S.CrossIcon>
         <img src="/images/circle-cross.svg" alt="cross-icon" />
       </S.CrossIcon>
       <S.SidebarPanel>
@@ -124,4 +115,4 @@ export const Sidebar: FC<ProfileProps & ISidebar> = ({
   );
 };
 
-export default withProfile(Sidebar);
+export default withProfile(MobileHeader);
