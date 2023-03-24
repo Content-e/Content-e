@@ -676,4 +676,8 @@
   .say-hello-field-container {
     margin-top: 7px;
   }
+
+  .say-hello-sent-message {
+    margin-top: 0px;
+  }
 }

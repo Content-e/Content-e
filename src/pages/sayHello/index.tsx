@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { UnAuthRoutes } from "utils";
 import { useSendEmail } from "hooks/query/useEmail";
 import axios from "axios";
+import { IconLoader } from "components";
 
 export const SayHello: React.FC = () => {
   const history = useHistory();
@@ -13,8 +14,7 @@ export const SayHello: React.FC = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [menu, setMenu] = useState(false);
-
-  const [sent, setSent] = useState(false);
+  const [isLoading, setIsLoading] = useState("");
 
   const openContactUs = (): void => {
     window.location.href = "mailto:hello@edcsquared.io";
@@ -33,8 +33,8 @@ export const SayHello: React.FC = () => {
       query:
         "query SendEmail($data: EMAIL_INPUT) {\n  sendEmail(data: $data)\n}\n",
     });
-    setSent(false);
     try {
+      setIsLoading("loading");
       const res = await axios.post(
         "https://ibqmmfkfajfbvgtxmjzfx3u6rm.appsync-api.us-east-1.amazonaws.com/graphql",
         mailData,
@@ -45,11 +45,11 @@ export const SayHello: React.FC = () => {
           },
         }
       );
-      setSent(true);
       console.log(res);
       setMessage("");
       setEmail("");
       setName("");
+      setIsLoading("sent");
     } catch (err) {
       console.log(err);
     }
@@ -252,11 +252,15 @@ export const SayHello: React.FC = () => {
                   className="say-hello-input message"
                 />
               </div>
-              {sent && (
+
+              {isLoading === "sent" && (
                 <div className="say-hello-sent-message">
-                  Thanks for sending message.
+                  Thanks for dropping us a note, we will get back to you
+                  shortly.
                 </div>
               )}
+
+              {isLoading === "loading" && <IconLoader sayHello="-40px" />}
               <div className="send-message-btn-container">
                 <div onClick={handleSend} className="send-message-btn">
                   Send Message
