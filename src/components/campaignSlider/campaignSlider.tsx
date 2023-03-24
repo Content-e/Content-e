@@ -29,7 +29,7 @@ export const CampaignSlider: FC<Props> = ({ videoUrls, onClose }) => {
         <div className="creative-inspiration-text">Creative Inspiration</div>
         <img
           src="/images/close-icon.svg"
-          className="close-icon"
+          className="close-icon-inspiration"
           onClick={onClose}
         />
       </div>
@@ -44,8 +44,8 @@ export const CampaignSlider: FC<Props> = ({ videoUrls, onClose }) => {
           <Carousel.Item key={index}>
             {isValidUrl(video) ? (
               <iframe
+                className="inspiration-video-iframe"
                 src={getEmbeddedUrl(video)}
-                height={528}
                 width="90%"
                 name={`video-${video}-${index}`}
                 // eslint-disable-next-line max-len

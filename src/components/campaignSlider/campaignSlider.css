@@ -105,3 +105,26 @@
   justify-content: center;
   height: 528px;
 }
+
+.close-icon-inspiration {
+  cursor: pointer;
+}
+
+.inspiration-video-iframe {
+  height: 528px;
+}
+
+@media only screen and (max-width: 525px) {
+  .campaign-slider-container {
+    width: 358px;
+    height: 600px;
+  }
+
+  .inspiration-video-iframe {
+    height: 478px;
+  }
+
+  .close-icon-inspiration {
+    display: none;
+  }
+}
