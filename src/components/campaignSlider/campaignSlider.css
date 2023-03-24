@@ -120,7 +120,8 @@
     height: 600px;
   }
 
-  .inspiration-video-iframe {
+  .inspiration-video-iframe,
+  .invalid-inspiration-video {
     height: 478px;
   }
 

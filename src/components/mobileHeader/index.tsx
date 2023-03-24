@@ -19,14 +19,18 @@ export const MobileHeader: FC<ProfileProps> = ({ profileState: { data } }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = (): void => setShowMenu(!showMenu);
-  const onLogout = (): void => history.push(AuthRoutes.Logout);
-  const onBrand = (): void => history.push(BrandRoutes.Brand);
-  const onCampaignBrief = (): void => history.push(AuthRoutes.CampaignBrief);
-  const onEditProfile = (): void => history.push(AuthRoutes.EditProfile);
-  const onWallet = (): void => history.push(CreatorRoutes.Wallet);
-  const onBestPractice = (): void => history.push(CreatorRoutes.BestPractices);
-  const onDashboard = (): void => history.push(AuthRoutes.Dashboard);
-  const onCreatives = (): void => history.push(BrandRoutes.Creatives);
+  const goToPath = (route: string): void => {
+    history.push(route);
+    setShowMenu(false);
+  };
+  const onLogout = (): void => goToPath(AuthRoutes.Logout);
+  const onBrand = (): void => goToPath(BrandRoutes.Brand);
+  const onCampaignBrief = (): void => goToPath(AuthRoutes.CampaignBrief);
+  const onEditProfile = (): void => goToPath(AuthRoutes.EditProfile);
+  const onWallet = (): void => goToPath(CreatorRoutes.Wallet);
+  const onBestPractice = (): void => goToPath(CreatorRoutes.BestPractices);
+  const onDashboard = (): void => goToPath(AuthRoutes.Dashboard);
+  const onCreatives = (): void => goToPath(BrandRoutes.Creatives);
 
   const getOption = (
     route: AuthRoutes | CreatorRoutes | BrandRoutes,

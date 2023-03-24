@@ -16,9 +16,11 @@ const BrandCard: FC<Props> = ({ briefName, onShowDetails }) => {
         <div className="brand-title">Brand</div>
         <img src="/images/table-search.svg" onClick={onShowDetails} />
       </div>
-      <div>
-        <b className="campaign-title f-600 capitalized">{briefName}</b>
-        <div className="campaign-title f-300">@{tag}</div>
+      <div className="campaign-title-wrapper">
+        <b className="campaign-title capitalized">{briefName}</b>
+        <div className="campaign-title sub-title-campaign hide-on-mobile">
+          @{tag}
+        </div>
       </div>
     </div>
   );

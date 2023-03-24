@@ -1,5 +1,6 @@
 .campaign-brief-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   gap: 10px;
 }
@@ -65,4 +66,11 @@
   align-items: center;
   margin-top: 10px;
   gap: 10px;
+}
+
+@media only screen and (max-width: 525px) {
+  .campaign-brief-header-container {
+    padding-bottom: 10px;
+    height: auto;
+  }
 }

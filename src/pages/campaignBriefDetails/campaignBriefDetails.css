@@ -1,5 +1,6 @@
 .campaign-brief-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   gap: 10px;
 }
@@ -61,6 +62,16 @@
 
 @media only screen and (max-width: 768px) {
   .back-btn {
-    display: none;
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  .campaign-brief-container {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+
+  .campaign-brief-header-container {
+    padding-bottom: 10px;
   }
 }

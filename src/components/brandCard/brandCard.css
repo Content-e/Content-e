@@ -26,11 +26,14 @@
 }
 
 .campaign-title {
-  font-family: 'Raleway';
+  font-family: 'Comfortaa';
   font-style: normal;
-  font-size: 22px;
-  line-height: 24px;
-  color: #1c1c1c;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  color: #1C1C1C;
+  margin-top: 10px;
 }
 
 .f-600 {
@@ -44,7 +47,7 @@
 /* ----------------- DETAIL CARD ----------------- */
 
 .detail-card-wrapper {
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,11 +137,17 @@
 }
 
 
-@media only screen and (min-width: 768px) {
-  .detail-card-wrapper {
-    position: fixed;
-  }
+.campaign-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
+.sub-title-campaign {
+  font-weight: 300 !important;
+}
+
+@media only screen and (min-width: 768px) {
   .detail-card-wrapper .detail-card-canvas {
     width: 808px;
     position: absolute;
@@ -152,4 +161,15 @@
   .detail-card-wrapper .detail-card-canvas .detail-card-button-panel .detail-card-button {
     width: 469px;
   }
+
+  .campaign-title {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-size: 22px;
+    line-height: 24px;
+    color: #1c1c1c;
+    font-weight: 600;
+    margin: 0 !important;
+  }
+
 }
