@@ -8,9 +8,11 @@
   pointer-events: none;
   user-select: none;
 }
+
 .tik-tok-background {
   background: rgba(0, 0, 0, 0.5);
 }
+
 .tik-tok-container {
   background: rgba(217, 217, 217, 0.3);
   position: absolute;
@@ -161,6 +163,7 @@
   text-align: center;
   justify-content: center;
   margin: 20px 0px;
+  flex-direction: column;
 }
 
 .authorization-code-input input {
@@ -172,9 +175,43 @@
     width: auto;
   }
 }
-@media only screen and (max-width: 450px) {
+
+@media only screen and (max-width: 525px) {
   .tik-tok-modal {
-    width: auto;
+    width: 359px;
+    max-height: 650px;
+    padding: 34px 29px 16px;
+  }
+
+  .tik-tok-header {
+    margin: 0 0 20px;
+    align-items: flex-start;
+  }
+
+  .creator-img {
+    display: none;
+  }
+
+  .next-btn-container {
+    margin-top: 20px;
+    ;
+  }
+
+  .back-btn-sm {
+    display: none;
+  }
+
+  .next-btn-sm {
+    width: 469px
+  }
+
+  .authorization-code-input {
+    margin: 40px 0 22px;
+    align-items: flex-end;
+  }
+
+  .authorization-code-input input {
+    width: 300px;
   }
 }
 
