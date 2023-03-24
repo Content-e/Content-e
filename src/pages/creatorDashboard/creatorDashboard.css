@@ -37,4 +37,7 @@
   .notification-dashboard-container {
     grid-template-columns: repeat(1, 1fr);
   }
+  .creator-dashboard-label {
+    padding-bottom: 10px;
+  }
 }

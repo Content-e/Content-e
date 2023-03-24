@@ -44,7 +44,10 @@
 /* ----------------- DETAIL CARD ----------------- */
 
 .detail-card-wrapper {
-  position: fixed;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   left: 0;
   right: 0;
   top: 0;
@@ -52,25 +55,25 @@
   z-index: 5;
   background: rgba(0, 0, 0, 0.25);
 }
+
 .detail-card-wrapper .detail-card-canvas {
-  width: 808px;
-  position: absolute;
-  float: left;
-  left: 57.5%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  width: 390px;
+  max-height: 650px;
+  overflow: auto;
   background: #ffffff;
   border: 1px solid #dee2e6;
   box-shadow: 0px 0px 2px rgb(0 0 0 / 12%), 0px 20px 20px rgb(0 0 0 / 8%);
   border-radius: 8px;
-  padding: 30px 30px 17px 30px;
+  padding: 30px 25px;
 }
+
 .detail-card-wrapper .detail-card-canvas .detail-card-header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
+
 .detail-card-wrapper .detail-card-canvas .detail-card-header .detail-card-heading {
   font-style: normal;
   font-weight: 700;
@@ -78,6 +81,7 @@
   line-height: 28px;
   color: #005f73;
 }
+
 .detail-card-wrapper .detail-card-canvas .detail-card-header .detail-card-cross {
   position: absolute;
   right: 10px;
@@ -87,10 +91,12 @@
   width: 24px;
   height: 24px;
 }
+
 .detail-card-wrapper .detail-card-canvas .detail-card-header .detail-card-cross img {
   max-width: 100%;
   display: flex;
 }
+
 .detail-card-wrapper .detail-card-canvas .detail-card-body {
   gap: 20px;
   display: flex;
@@ -100,16 +106,20 @@
   font-size: 14px;
   line-height: 20px;
 }
+
 .detail-card-wrapper .detail-card-canvas .detail-card-body .detail-card-single-elem ul {
   margin: 0;
 }
+
 .detail-card-wrapper .detail-card-canvas .detail-card-button-panel {
   margin-top: 22px;
   text-align: center;
   width: 100%;
 }
+
 .detail-card-wrapper .detail-card-canvas .detail-card-button-panel .detail-card-button {
-  width: 469px;
+
+  width: 329px;
   text-align: center;
   background: linear-gradient(180deg, #9fd0bd 0%, #409094 100%);
   border-radius: 10px;
@@ -121,4 +131,25 @@
   font-weight: 300;
   font-size: 12px;
   letter-spacing: -0.02em;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .detail-card-wrapper {
+    position: fixed;
+  }
+
+  .detail-card-wrapper .detail-card-canvas {
+    width: 808px;
+    position: absolute;
+    float: left;
+    left: 57.5%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px 30px 17px 30px;
+  }
+
+  .detail-card-wrapper .detail-card-canvas .detail-card-button-panel .detail-card-button {
+    width: 469px;
+  }
 }
