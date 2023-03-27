@@ -1,5 +1,5 @@
 import { ApolloError } from "@apollo/client";
-import { BrandBrief, CreativeRequest } from "API";
+import { BestPractices, BrandBrief, CreativeRequest } from "API";
 
 export type GetCreatorBriefListProps = {
   loading: boolean;
@@ -37,6 +37,14 @@ export type ListRequestsByStatusProps = {
   loading: boolean;
   getRequestsByStatus: (unknown) => void;
   data?: Array<BrandBrief | null> | null;
+  nextToken?: string | null;
+  error?: ApolloError | null;
+};
+
+export type ListActiveBestPracticeProps = {
+  loading: boolean;
+  getActivePractice: (unknown) => void;
+  data?: Array<BestPractices | null> | null;
   nextToken?: string | null;
   error?: ApolloError | null;
 };

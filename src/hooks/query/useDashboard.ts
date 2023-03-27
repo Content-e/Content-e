@@ -1,5 +1,7 @@
 import { useLazyQuery } from "@apollo/client";
 import {
+  BestPracticesByActiveQuery,
+  BestPracticesByActiveQueryVariables,
   BrandBrief,
   BrandBriefsByBrandIdQuery,
   BrandBriefsByBrandIdQueryVariables,
@@ -20,9 +22,11 @@ import {
   listCreativeRequests as listAllRequestsQuery,
 } from "graphql/queries";
 import {
+  bestPracticesByStatus,
   GetBrandBriefListProps,
   GetCreatorBriefListProps,
   GetCreatorCreativeRequestsProps,
+  ListActiveBestPracticeProps,
   ListAllRequestsProps,
   ListRequestsByStatusProps,
 } from "hooks/utils";
@@ -103,6 +107,22 @@ export const listRequestsByStatus = (): ListRequestsByStatusProps => {
     loading,
     getRequestsByStatus,
     data: items as UnknownType as Array<BrandBrief>,
+    nextToken,
+    error,
+  };
+};
+
+export const getActiveBestPractice = (): ListActiveBestPracticeProps => {
+  const [getActivePractice, { data, loading, error }] = useLazyQuery<
+    BestPracticesByActiveQuery,
+    BestPracticesByActiveQueryVariables
+  >(getQuery(bestPracticesByStatus));
+
+  const { items = [], nextToken } = data?.bestPracticesByActive || {};
+  return {
+    loading,
+    getActivePractice,
+    data: items,
     nextToken,
     error,
   };

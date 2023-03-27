@@ -1,18 +1,23 @@
-import { useHistory } from "react-router-dom";
 import "./bestPractices.css";
-import { CreatorRoutes } from "utils";
+import { FC, Fragment, useEffect, useState } from "react";
+import { getActiveBestPractice } from "hooks";
+import { BestPractices as IBestPractice } from "API";
+import SinglePractice from "./singlePractice";
 
-export default function BestPractices() {
-  const history = useHistory();
-  return (
-    <div className="best-practices-container">
-      <div className="best-practices-header">
-        <div className="best-practices-label">Best Practices</div>
-        <img
-          onClick={() => history.push(CreatorRoutes.BestPractices)}
-          src="/images/morevert.svg"
-        />
-      </div>
-    </div>
-  );
-}
+export const BestPractices: FC = () => {
+  const { getActivePractice, data, loading } = getActiveBestPractice();
+  const [practice, setPractice] = useState<IBestPractice>();
+
+  useEffect(() => {
+    getActivePractice({ variables: { active: "true" } });
+  }, []);
+
+  useEffect(() => {
+    if (!loading && data?.[0]) setPractice(data[0]);
+  }, [data, loading]);
+
+  if (practice) return <SinglePractice practice={practice} showDots />;
+  return <Fragment />;
+};
+
+export default BestPractices;

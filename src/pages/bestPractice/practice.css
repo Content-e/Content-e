@@ -14,3 +14,9 @@
   gap: 10px;
   margin-bottom: 10px;
 }
+
+.best-practice-table {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}

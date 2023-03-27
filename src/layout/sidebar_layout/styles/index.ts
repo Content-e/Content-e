@@ -10,6 +10,7 @@ export const MainWrapper = styled.div`
 
 export const ParentWrapper = styled.div`
   width: 100%;
+  overflow: auto;
   @media only screen and (max-width: 768px) {
     overflow: auto;
     padding: 30px 33px 43px;
