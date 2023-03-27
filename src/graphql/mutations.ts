@@ -41,6 +41,7 @@ export const deleteUserProfile = /* GraphQL */ `
         items {
           headLine
           description
+          urlPath
           active
           owner
           id
@@ -63,6 +64,7 @@ export const deleteBestPractices = /* GraphQL */ `
     deleteBestPractices(input: $input, condition: $condition) {
       headLine
       description
+      urlPath
       active
       owner
       id
@@ -111,6 +113,7 @@ export const createUserProfile = /* GraphQL */ `
         items {
           headLine
           description
+          urlPath
           active
           owner
           id
@@ -164,6 +167,7 @@ export const updateUserProfile = /* GraphQL */ `
         items {
           headLine
           description
+          urlPath
           active
           owner
           id
@@ -186,6 +190,7 @@ export const createBestPractices = /* GraphQL */ `
     createBestPractices(input: $input, condition: $condition) {
       headLine
       description
+      urlPath
       active
       owner
       id
@@ -203,6 +208,7 @@ export const updateBestPractices = /* GraphQL */ `
     updateBestPractices(input: $input, condition: $condition) {
       headLine
       description
+      urlPath
       active
       owner
       id

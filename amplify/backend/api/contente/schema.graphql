@@ -23,6 +23,7 @@ type BestPractices
 {
   headLine: String!
   description: String!
+  urlPath: String!
   active: String! @index(name: "byStatus")
   owner: String @auth(rules: [{ allow: owner, operations: [read] }])
 }

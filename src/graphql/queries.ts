@@ -56,6 +56,7 @@ export const getUserProfile = /* GraphQL */ `
         items {
           headLine
           description
+          urlPath
           active
           owner
           id
@@ -108,6 +109,7 @@ export const listUserProfiles = /* GraphQL */ `
           items {
             headLine
             description
+            urlPath
             active
             owner
             id
@@ -170,6 +172,7 @@ export const userProfilesByUserEmail = /* GraphQL */ `
           items {
             headLine
             description
+            urlPath
             active
             owner
             id
@@ -191,6 +194,7 @@ export const getBestPractices = /* GraphQL */ `
     getBestPractices(id: $id) {
       headLine
       description
+      urlPath
       active
       owner
       id
@@ -210,6 +214,7 @@ export const listBestPractices = /* GraphQL */ `
       items {
         headLine
         description
+        urlPath
         active
         owner
         id
@@ -239,6 +244,7 @@ export const bestPracticesByActive = /* GraphQL */ `
       items {
         headLine
         description
+        urlPath
         active
         owner
         id

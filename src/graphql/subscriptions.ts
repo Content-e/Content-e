@@ -41,6 +41,7 @@ export const onCreateUserProfile = /* GraphQL */ `
         items {
           headLine
           description
+          urlPath
           active
           owner
           id
@@ -94,6 +95,7 @@ export const onUpdateUserProfile = /* GraphQL */ `
         items {
           headLine
           description
+          urlPath
           active
           owner
           id
@@ -147,6 +149,7 @@ export const onDeleteUserProfile = /* GraphQL */ `
         items {
           headLine
           description
+          urlPath
           active
           owner
           id
@@ -169,6 +172,7 @@ export const onCreateBestPractices = /* GraphQL */ `
     onCreateBestPractices(filter: $filter, owner: $owner) {
       headLine
       description
+      urlPath
       active
       owner
       id
@@ -186,6 +190,7 @@ export const onUpdateBestPractices = /* GraphQL */ `
     onUpdateBestPractices(filter: $filter, owner: $owner) {
       headLine
       description
+      urlPath
       active
       owner
       id
@@ -203,6 +208,7 @@ export const onDeleteBestPractices = /* GraphQL */ `
     onDeleteBestPractices(filter: $filter, owner: $owner) {
       headLine
       description
+      urlPath
       active
       owner
       id
