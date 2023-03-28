@@ -40,7 +40,7 @@ export default function AdminDashboard() {
   return (
     <div className="admin-panel">
       <div className="admin-dashboard-card-container">
-        <div className="admin-dashboard-title">Admin Dashboard</div>
+        <div className="admin-dashboard-title">Admin dashboard</div>
         <div className="admin-dashboard-cards">
           <CreativeDetailsCard
             campaign="0"

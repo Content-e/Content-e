@@ -13,7 +13,13 @@ import {
   useLocation,
 } from "react-router-dom";
 import { withProfile } from "state/profileSteps";
-import { AuthRoutes, BrandRoutes, CreatorRoutes, ProfileProps } from "utils";
+import {
+  AdminRoutes,
+  AuthRoutes,
+  BrandRoutes,
+  CreatorRoutes,
+  ProfileProps,
+} from "utils";
 import Wallet from "pages/wallet/wallet";
 import BestPractice from "pages/bestPractice";
 import CreativesTable from "components/creativesTable/creativesTable";
@@ -59,6 +65,21 @@ const AuthRouterPaths: FC<ProfileProps> = ({
             path={AuthRoutes.BestPractices}
             component={BestPractice}
           />
+
+          {data.userType === USER_TYPES.ADMIN_USER && (
+            <Fragment key="admin user routes">
+              <Route
+                exact
+                path={AdminRoutes.CreatePractice}
+                component={CreativesTable}
+              />
+              <Route
+                exact
+                path={AdminRoutes.EditPractice}
+                component={CreativesTable}
+              />
+            </Fragment>
+          )}
 
           {data.userType === USER_TYPES.BRAND_USER && (
             <Fragment key="brand user routes">

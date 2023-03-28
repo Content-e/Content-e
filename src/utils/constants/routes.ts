@@ -38,6 +38,8 @@ export enum AuthRoutes {
 export enum AdminRoutes {
   Brands = "/brands",
   Creators = "/creators",
+  CreatePractice = "/createPractice",
+  EditPractice = "/editPractice",
 }
 
 export enum CreatorRoutes {

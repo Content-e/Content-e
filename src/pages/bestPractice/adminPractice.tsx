@@ -1,31 +1,40 @@
+import { useState, useEffect, FC, useMemo } from "react";
 import { BestPractices as IBestPractice } from "API";
-import SinglePractice from "components/bestPractices/singlePractice";
+import { getSlicedArray } from "components";
+import AdminPracticeTableDetails from "components/bestPracticeTable/bestPracticeTable";
+import Pagination from "components/pagination";
 import { getActiveBestPractice } from "hooks";
-import { useState, useEffect, Fragment } from "react";
+import { useHistory } from "react-router-dom";
+import { AdminRoutes } from "utils";
 import "./practice.css";
+import SinglePractice from "components/bestPractices/singlePractice";
 
-export default function AdminBestPractice() {
-  const { getActivePractice, data, loading } = getActiveBestPractice();
-  const [practices, setPractices] = useState<Array<IBestPractice | null>>([]);
+const tableLimit = 8;
+export const AdminBestPracticeTable: FC = () => {
+  const history = useHistory();
+  const { getActivePractice, data } = getActiveBestPractice();
   const [selectedPractice, setSelectedPractice] = useState<IBestPractice>();
+  const [input, setInput] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const handleClick = (id: string): void => {
-    const selected = practices.find((e) => e?.id === id);
-    if (selected) setSelectedPractice(selected);
-  };
+  const goToPracticeCreation = (): void =>
+    history.push(AdminRoutes.CreatePractice);
 
   useEffect(() => {
     getActivePractice({ variables: { active: "true" } });
   }, []);
 
-  useEffect(() => {
-    if (!loading && data?.[0]) setPractices(data);
-  }, [data, loading]);
+  const filteredData = useMemo(
+    () => data?.filter((e) => e?.headLine?.toLowerCase().includes(input)),
+    [data, input]
+  );
 
   return (
-    <>
+    <div>
       <div className="campaign-brief-header-container">
-        <div className="campaign-brief-details-text">Best practices</div>
+        <div className="campaign-brief-details-text">
+          Admin - Best practices
+        </div>
         {selectedPractice && (
           <div
             className="back-btn"
@@ -38,21 +47,37 @@ export default function AdminBestPractice() {
       {selectedPractice ? (
         <SinglePractice practice={selectedPractice} showDetails />
       ) : (
-        <div className="best-practice-table">
-          {practices.map((singlePractice, index) => {
-            const key = `bestPractice---${singlePractice?.id || index}`;
-            if (singlePractice)
-              return (
-                <SinglePractice
-                  practice={singlePractice}
-                  key={key}
-                  onClick={handleClick}
-                />
-              );
-            return <Fragment key={key} />;
-          })}
+        <div className="brand-table-container">
+          <div className="brand-table-wrapper">
+            <div className="brand-brief-label-container">
+              <input
+                className="brand-search"
+                placeholder="Search..."
+                value={input}
+                onChange={(e): void => setInput(e.target.value)}
+              />
+              <img src="/images/add-brief.svg" onClick={goToPracticeCreation} />
+            </div>
+            <div className="admin-best-practice-table-panel">
+              <AdminPracticeTableDetails
+                data={getSlicedArray(
+                  filteredData || [],
+                  tableLimit,
+                  currentPage
+                )}
+                openPractice={setSelectedPractice}
+              />
+              <Pagination
+                total={data?.length || 0}
+                limit={tableLimit}
+                goToPage={setCurrentPage}
+              />
+            </div>
+          </div>
         </div>
       )}
-    </>
+    </div>
   );
-}
+};
+
+export default AdminBestPracticeTable;
