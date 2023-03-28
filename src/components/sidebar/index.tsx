@@ -24,7 +24,7 @@ export const MobileHeader: FC<ProfileProps> = ({ profileState: { data } }) => {
   const onCampaignBrief = (): void => history.push(AuthRoutes.CampaignBrief);
   const onEditProfile = (): void => history.push(AuthRoutes.EditProfile);
   const onWallet = (): void => history.push(CreatorRoutes.Wallet);
-  const onBestPractice = (): void => history.push(CreatorRoutes.BestPractices);
+  const onBestPractice = (): void => history.push(AuthRoutes.BestPractices);
   const onDashboard = (): void => history.push(AuthRoutes.Dashboard);
   const onCreatives = (): void => history.push(BrandRoutes.Creatives);
 
@@ -93,7 +93,7 @@ export const MobileHeader: FC<ProfileProps> = ({ profileState: { data } }) => {
               {getOption("chat", AuthRoutes.Dashboard, onDashboard)}
               {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrief)}
               {getOption("wallet", CreatorRoutes.Wallet, onWallet)}
-              {getOption("book", CreatorRoutes.BestPractices, onBestPractice)}
+              {getOption("book", AuthRoutes.BestPractices, onBestPractice)}
             </Fragment>
           )}
           {data?.userType === USER_TYPES.BRAND_USER && (

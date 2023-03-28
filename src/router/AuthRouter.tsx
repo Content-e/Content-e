@@ -82,7 +82,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
               <Route exact path={CreatorRoutes.Wallet} component={Wallet} />
               <Route
                 exact
-                path={CreatorRoutes.BestPractices}
+                path={AuthRoutes.BestPractices}
                 component={BestPractice}
               />
             </Fragment>

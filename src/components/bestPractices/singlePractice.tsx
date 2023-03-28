@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import "./bestPractices.css";
-import { CreatorRoutes } from "utils";
+import { AuthRoutes } from "utils";
 import { FC, useEffect, useState } from "react";
 import { BestPractices as IBestPractice } from "API";
 import { Storage } from "aws-amplify";
@@ -56,7 +56,7 @@ export const SinglePractice: FC<Props> = ({
           <div className="best-practices-label">{practice.headLine}</div>
           {showDots && (
             <img
-              onClick={(): void => history.push(CreatorRoutes.BestPractices)}
+              onClick={(): void => history.push(AuthRoutes.BestPractices)}
               src="/images/morevert.svg"
             />
           )}
