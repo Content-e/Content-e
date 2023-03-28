@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { times } from "lodash";
 import { FC, Fragment, useEffect, useMemo, useState } from "react";
-import { withBrandBriefs } from "state/brandBrief";
 import "./style.css";
 
 interface Props {
@@ -59,4 +58,4 @@ export const Pagination: FC<Props> = ({ total, limit, goToPage }) => {
     </div>
   );
 };
-export default withBrandBriefs(Pagination);
+export default Pagination;
