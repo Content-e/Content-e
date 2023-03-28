@@ -15,11 +15,15 @@ import {
 import { withProfile } from "state/profileSteps";
 import { AuthRoutes, BrandRoutes, CreatorRoutes, ProfileProps } from "utils";
 import Wallet from "pages/wallet/wallet";
-import BestPractice from "pages/bestPractice/practice";
+import BestPractice from "pages/bestPractice";
 import CreativesTable from "components/creativesTable/creativesTable";
 import CreateBrief from "components/createBrief/createBrief";
 import { USER_TYPES } from "API";
-import { BrandAuthArray, CreatorAuthArray } from "./RoutesConstants";
+import {
+  AdminAuthArray,
+  BrandAuthArray,
+  CreatorAuthArray,
+} from "./RoutesConstants";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -35,7 +39,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
         (data?.userType === USER_TYPES.BRAND_USER &&
           !isValidRoute(BrandAuthArray, pathname)) ||
         (data.userType === USER_TYPES.ADMIN_USER &&
-          !pathname.includes(AuthRoutes.Dashboard))
+          !isValidRoute(AdminAuthArray, pathname))
       )
         history.push(AuthRoutes.Dashboard);
     }
@@ -50,6 +54,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
           <Route exact path={AuthRoutes.EditProfile} component={EditProfile} />
           <Route exact path={AuthRoutes.Dashboard} component={Dashboard} />
           <Route exact path={AuthRoutes.CampaignBrief} component={Brief} />
+          <Route
+            exact
+            path={AuthRoutes.BestPractices}
+            component={BestPractice}
+          />
 
           {data.userType === USER_TYPES.BRAND_USER && (
             <Fragment key="brand user routes">
@@ -78,14 +87,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
           )}
 
           {data.userType === USER_TYPES.CREATIVE_USER && (
-            <Fragment key="creator user routes">
-              <Route exact path={CreatorRoutes.Wallet} component={Wallet} />
-              <Route
-                exact
-                path={AuthRoutes.BestPractices}
-                component={BestPractice}
-              />
-            </Fragment>
+            <Route exact path={CreatorRoutes.Wallet} component={Wallet} />
           )}
 
           <Route

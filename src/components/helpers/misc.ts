@@ -1,6 +1,7 @@
 import { USER_TYPES } from "API";
 import { startCase } from "lodash";
 import {
+  AdminRoutes,
   allowedSubDomains,
   AuthRoutes,
   BrandRoutes,
@@ -52,7 +53,7 @@ export const isEmptyString = (input?: string | null): boolean =>
   !input || !input.replace(/<\/?[^>]+(>|$)/g, "").length;
 
 export const getPageTitle = (
-  path: AuthRoutes | CreatorRoutes | BrandRoutes
+  path: AuthRoutes | CreatorRoutes | BrandRoutes | AdminRoutes
 ): string => startCase(path.split("/")?.[1]);
 
 export const isSubDomainWithBriefId = (id?: string): boolean => {

@@ -6,7 +6,7 @@ import {
   BrandRoutes,
   CreatorRoutes,
   ProfileProps,
-  UnknownType,
+  AdminRoutes,
 } from "utils";
 import * as S from "./styles";
 import { getPageTitle } from "components";
@@ -20,13 +20,7 @@ export const MobileHeader: FC<ProfileProps> = ({ profileState: { data } }) => {
   const [profilePic, setProfilePic] = useState<string>();
 
   const onLogout = (): void => history.push(AuthRoutes.Logout);
-  const onBrand = (): void => history.push(BrandRoutes.Brand);
-  const onCampaignBrief = (): void => history.push(AuthRoutes.CampaignBrief);
   const onEditProfile = (): void => history.push(AuthRoutes.EditProfile);
-  const onWallet = (): void => history.push(CreatorRoutes.Wallet);
-  const onBestPractice = (): void => history.push(AuthRoutes.BestPractices);
-  const onDashboard = (): void => history.push(AuthRoutes.Dashboard);
-  const onCreatives = (): void => history.push(BrandRoutes.Creatives);
 
   const getImageFromS3 = async (id: string): Promise<void> => {
     try {
@@ -40,13 +34,15 @@ export const MobileHeader: FC<ProfileProps> = ({ profileState: { data } }) => {
   };
   const getOption = (
     icon: string,
-    route: AuthRoutes | CreatorRoutes | BrandRoutes,
-    onClick: UnknownType
+    route: AuthRoutes | CreatorRoutes | BrandRoutes | AdminRoutes
   ): JSX.Element => {
     const classes = classNames({ isActive: pathname.includes(route) });
 
     return (
-      <S.SidebarMenuItem className={classes} onClick={onClick}>
+      <S.SidebarMenuItem
+        className={classes}
+        onClick={(): void => history.push(route)}
+      >
         <S.SelectedLine className={classes} />
         <S.ArrowIcon>
           <img src="/images/arrow-right.svg" />
@@ -90,18 +86,26 @@ export const MobileHeader: FC<ProfileProps> = ({ profileState: { data } }) => {
         <S.SidebarMenu>
           {data?.userType === USER_TYPES.CREATIVE_USER && (
             <Fragment key="creator menu options">
-              {getOption("chat", AuthRoutes.Dashboard, onDashboard)}
-              {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrief)}
-              {getOption("wallet", CreatorRoutes.Wallet, onWallet)}
-              {getOption("book", AuthRoutes.BestPractices, onBestPractice)}
+              {getOption("chat", AuthRoutes.Dashboard)}
+              {getOption("bag", AuthRoutes.CampaignBrief)}
+              {getOption("wallet", CreatorRoutes.Wallet)}
+              {getOption("bookOpen", AuthRoutes.BestPractices)}
             </Fragment>
           )}
           {data?.userType === USER_TYPES.BRAND_USER && (
             <Fragment key="creator menu options">
-              {getOption("chat", AuthRoutes.Dashboard, onDashboard)}
-              {getOption("notes", BrandRoutes.Creatives, onCreatives)}
-              {getOption("bag", AuthRoutes.CampaignBrief, onCampaignBrief)}
-              {getOption("bookOpen", BrandRoutes.Brand, onBrand)}
+              {getOption("chat", AuthRoutes.Dashboard)}
+              {getOption("notes", BrandRoutes.Creatives)}
+              {getOption("bag", AuthRoutes.CampaignBrief)}
+              {getOption("bookOpen", BrandRoutes.Brand)}
+            </Fragment>
+          )}
+          {data?.userType === USER_TYPES.ADMIN_USER && (
+            <Fragment key="creator menu options">
+              {getOption("chat", AuthRoutes.Dashboard)}
+              {getOption("bag", AdminRoutes.Brands)}
+              {getOption("wallet", AdminRoutes.Creators)}
+              {getOption("bookOpen", AuthRoutes.BestPractices)}
             </Fragment>
           )}
         </S.SidebarMenu>

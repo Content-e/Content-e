@@ -1,6 +1,12 @@
 import { FC } from "react";
 import { RouteProps } from "react-router-dom";
-import { AuthRoutes, BrandRoutes, CreatorRoutes, UnAuthRoutes } from "utils";
+import {
+  AdminRoutes,
+  AuthRoutes,
+  BrandRoutes,
+  CreatorRoutes,
+  UnAuthRoutes,
+} from "utils";
 import AuthRouter from "./AuthRouter";
 import UnAuthRouter from "./UnAuthRouter";
 
@@ -12,6 +18,10 @@ export const CreatorAuthArray = [
 export const BrandAuthArray = [
   ...Object.values(AuthRoutes),
   ...Object.values(BrandRoutes),
+] as Array<string>;
+export const AdminAuthArray = [
+  ...Object.values(AuthRoutes),
+  ...Object.values(AdminRoutes),
 ] as Array<string>;
 export const AuthRoutesArray = [
   ...Object.values(AuthRoutes),
