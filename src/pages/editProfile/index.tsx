@@ -55,7 +55,7 @@ export const EditProfile: FC<ProfileProps> = ({
   const handleChange = (e: UnknownType): void => {
     if (e?.target?.files?.[0]) {
       if (e.target.files[0].size > AllowedProfileSizeKB * 1024)
-        setImage({ error: `Maximum ${AllowedProfileSizeKB} size allowed` });
+        setImage({ error: `Maximum ${AllowedProfileSizeKB} KB size allowed` });
       else setImage({ file: e.target.files[0] });
     }
   };

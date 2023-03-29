@@ -27,6 +27,7 @@ export const AuthRoutesArray = [
   ...Object.values(AuthRoutes),
   ...Object.values(CreatorRoutes),
   ...Object.values(BrandRoutes),
+  ...Object.values(AdminRoutes),
 ] as Array<string>;
 export const AllRoutesArray = UnAuthRoutesArray.concat(AuthRoutesArray);
 

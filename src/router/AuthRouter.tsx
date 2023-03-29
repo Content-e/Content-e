@@ -30,6 +30,7 @@ import {
   BrandAuthArray,
   CreatorAuthArray,
 } from "./RoutesConstants";
+import { CreatePractice } from "components/createPractice";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -39,12 +40,18 @@ const AuthRouterPaths: FC<ProfileProps> = ({
 
   useEffect(() => {
     if (pathname && data) {
+      console.log(
+        data?.userType,
+        AdminAuthArray,
+        pathname,
+        !isValidRoute(AdminAuthArray, pathname)
+      );
       if (
         (data?.userType === USER_TYPES.CREATIVE_USER &&
           !isValidRoute(CreatorAuthArray, pathname)) ||
         (data?.userType === USER_TYPES.BRAND_USER &&
           !isValidRoute(BrandAuthArray, pathname)) ||
-        (data.userType === USER_TYPES.ADMIN_USER &&
+        (data?.userType === USER_TYPES.ADMIN_USER &&
           !isValidRoute(AdminAuthArray, pathname))
       )
         history.push(AuthRoutes.Dashboard);
@@ -71,7 +78,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
               <Route
                 exact
                 path={AdminRoutes.CreatePractice}
-                component={CreativesTable}
+                component={CreatePractice}
               />
               <Route
                 exact

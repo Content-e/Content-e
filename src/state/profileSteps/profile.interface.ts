@@ -46,5 +46,6 @@ export interface IUpdateProfileError {
 
 export interface IProfileImageUpload {
   file?: FileList | null;
+  name?: string | null;
   error?: string | null;
 }

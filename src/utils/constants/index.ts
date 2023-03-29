@@ -7,3 +7,4 @@ export * from "./dashboard";
 export * from "./formConstants";
 export * from "./errorMessages";
 export * from "./brandBrief";
+export * from "./bestPractice";
