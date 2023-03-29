@@ -40,12 +40,6 @@ const AuthRouterPaths: FC<ProfileProps> = ({
 
   useEffect(() => {
     if (pathname && data) {
-      console.log(
-        data?.userType,
-        AdminAuthArray,
-        pathname,
-        !isValidRoute(AdminAuthArray, pathname)
-      );
       if (
         (data?.userType === USER_TYPES.CREATIVE_USER &&
           !isValidRoute(CreatorAuthArray, pathname)) ||
@@ -83,7 +77,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
               <Route
                 exact
                 path={AdminRoutes.EditPractice}
-                component={CreativesTable}
+                component={CreatePractice}
               />
             </Fragment>
           )}

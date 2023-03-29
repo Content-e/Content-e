@@ -18,8 +18,8 @@ export const AdminPracticeTableDetails: FC<Props> = ({
   const onBriefSelection = (brief?: BestPractices | null): void => {
     if (brief) openPractice(brief);
   };
-  const onBriefEdit = (brief?: BestPractices | null): void => {
-    if (brief) history.push(AdminRoutes.EditPractice, { brief });
+  const onPracticeEdit = (practice?: BestPractices | null): void => {
+    if (practice) history.push(AdminRoutes.EditPractice, { practice });
   };
 
   return (
@@ -50,7 +50,7 @@ export const AdminPracticeTableDetails: FC<Props> = ({
           </td>
           <td
             className="centered best-practice-icon"
-            onClick={(): void => onBriefEdit(e)}
+            onClick={(): void => onPracticeEdit(e)}
           >
             <img src="/images/edit-icon.svg" />
           </td>

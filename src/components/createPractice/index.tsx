@@ -3,7 +3,7 @@ import { IconLoader } from "components/loader";
 import ShouldRender from "components/shouldRender";
 import { FC, useEffect, useMemo, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { BestPracticeProps, withbestPractice } from "state/bestPractice";
+import { BestPracticeProps, withBestPractice } from "state/bestPractice";
 import { IProfileImageUpload } from "state/profileSteps";
 import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
@@ -147,4 +147,4 @@ export const CreatePractice: FC<BestPracticeProps> = ({
   );
 };
 
-export default withbestPractice(CreatePractice);
+export default withBestPractice(CreatePractice);

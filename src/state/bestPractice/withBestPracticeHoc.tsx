@@ -7,9 +7,9 @@ import {
 } from "./bestPractice.interface";
 import { useHistory, useLocation } from "react-router-dom";
 import { BestPractices } from "API";
-import { BrandRoutes, AdminRoutes } from "utils";
+import { AdminRoutes } from "utils";
 
-export function withbestPractice<T>(
+export function withBestPractice<T>(
   Component: React.FC<T & BestPracticeProps>
 ): React.FC<T> {
   return withApolloProvider((props: T) => {
@@ -36,7 +36,7 @@ export function withbestPractice<T>(
     };
 
     useEffect(() => {
-      if (pathname.includes(BrandRoutes.EditBrief)) {
+      if (pathname.includes(AdminRoutes.EditPractice)) {
         const { practice } = (state || {}) as { practice: BestPractices };
         if (practice?.id) setBestPractice(practice);
         else history.replace(AdminRoutes.CreatePractice);
@@ -52,4 +52,4 @@ export function withbestPractice<T>(
     return <Component {...props} {...hocProps} />;
   });
 }
-export default withbestPractice;
+export default withBestPractice;
