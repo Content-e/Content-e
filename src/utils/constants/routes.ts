@@ -2,8 +2,8 @@ export enum UnAuthRoutes {
   Landing = "/landing",
   SubLanding = "/landing/:id",
 
-  Creators = "/creators",
-  Brands = "/brands",
+  Creators = "/forCreators",
+  Brands = "/forBrands",
   SayHello = "/sayHello",
   HomePageLogin = "/homePageLogin",
 
@@ -36,8 +36,8 @@ export enum AuthRoutes {
 }
 
 export enum AdminRoutes {
-  Brands = "/adminBrands",
-  Creators = "/adminCreators",
+  Brands = "/brands",
+  Creators = "/creators",
   CreatePractice = "/createPractice",
   EditPractice = "/editPractice",
 }
