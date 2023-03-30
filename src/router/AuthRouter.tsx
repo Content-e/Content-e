@@ -30,7 +30,7 @@ import {
   BrandAuthArray,
   CreatorAuthArray,
 } from "./RoutesConstants";
-import { CreatePractice } from "components/createPractice";
+import CreatePractice from "components/createPractice";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },

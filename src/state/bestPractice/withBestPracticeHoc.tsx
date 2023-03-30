@@ -30,9 +30,19 @@ export function withBestPractice<T>(
       data: editData,
     } = editBestPractice();
 
-    const saveData = (input: ICreateBestPractice): void => {
-      if (input.id) editBrief({ variables: { input } });
-      else createBrief({ variables: { input: { input } } });
+    const saveData = (data: ICreateBestPractice): void => {
+      const input = {
+        ...data,
+        createdAt: undefined,
+        updatedAt: undefined,
+        __typename: undefined,
+        userProfileBestPracticesId: undefined,
+      };
+      if (data.id) editBrief({ variables: { input } });
+      else
+        createBrief({
+          variables: { input: { input: { ...input, id: undefined } } },
+        });
     };
 
     useEffect(() => {

@@ -18,5 +18,4 @@ export interface ICreateBestPracticeError {
   headLine: string | null;
   description: string | null;
   urlPath: string | null;
-  active: string | null;
 }

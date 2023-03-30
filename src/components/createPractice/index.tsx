@@ -5,7 +5,13 @@ import { FC, useEffect, useMemo, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { BestPracticeProps, withBestPractice } from "state/bestPractice";
 import { IProfileImageUpload } from "state/profileSteps";
-import { EditorState } from "draft-js";
+import {
+  EditorState,
+  convertToRaw,
+  ContentState,
+  convertFromHTML,
+} from "draft-js";
+
 import { Editor } from "react-draft-wysiwyg";
 import {
   AllowedProfileSizeKB,
@@ -15,6 +21,7 @@ import {
 } from "utils";
 import "./style.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { Storage } from "aws-amplify";
 
 export const CreatePractice: FC<BestPracticeProps> = ({
   saveData,
@@ -28,6 +35,9 @@ export const CreatePractice: FC<BestPracticeProps> = ({
   const [image, setImage] = useState<IProfileImageUpload>({});
   const [formError, setFormError] = useState(initialCreatePracticeError);
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+
+  const getDescription = (): string =>
+    JSON.stringify(convertToRaw(editorState.getCurrentContent()));
   const handleChange = (
     key: string,
     value: string | Array<string> | boolean
@@ -44,18 +54,38 @@ export const CreatePractice: FC<BestPracticeProps> = ({
     }
   };
 
+  const updateEditorState = (e: UnknownType): void => {
+    setEditorState(e);
+    if (formError.description)
+      setFormError({ ...formError, description: null });
+  };
+
   const validateInputs = (): boolean => {
     const errObj = { ...initialCreatePracticeError };
     if (!formState.headLine.length) errObj.headLine = "Headline is required";
-    if (!formState.description.length)
+    if (!getDescription().length)
       errObj.description = "Best practice description is required";
 
+    let imageError: string | undefined = undefined;
+    if (!image.file) imageError = "Image is required";
+
     setFormError({ ...errObj });
-    return !(image.error || Object.values(errObj).find((e) => e));
+    if (!image.error) setImage({ ...image, error: imageError });
+    return !(image.error || imageError || Object.values(errObj).find((e) => e));
   };
 
-  const handleSubmit = (): void => {
-    if (validateInputs()) saveData(formState);
+  const handleSubmit = async (): Promise<void> => {
+    if (validateInputs()) {
+      const imageId = Math.floor(100000000 + Math.random() * 900000000);
+      const imageUrlPath =
+        formState.urlPath || `bestPractices/images/${imageId}`;
+      if (image.file) await Storage.put(imageUrlPath, image.file);
+      saveData({
+        ...formState,
+        description: getDescription(),
+        urlPath: imageUrlPath,
+      });
+    }
   };
 
   useEffect(() => {
@@ -63,13 +93,22 @@ export const CreatePractice: FC<BestPracticeProps> = ({
   }, [response, loading]);
 
   useEffect(() => {
-    if (bestPracticeState) setFormState(bestPracticeState);
+    if (bestPracticeState) {
+      setFormState(bestPracticeState);
+      const a = EditorState.createWithContent(
+        ContentState.createFromBlockArray(
+          convertFromHTML(bestPracticeState.description)
+        )
+      );
+      setEditorState(a);
+    }
   }, [bestPracticeState]);
 
   const headingText = useMemo(
     () => (bestPracticeState ? "Edit" : "Create"),
     [bestPracticeState]
   );
+  const imageName = useMemo(() => image.file?.name, [image]);
 
   return (
     <>
@@ -102,10 +141,10 @@ export const CreatePractice: FC<BestPracticeProps> = ({
             <button
               onClick={(): void => imageInputRef.current?.click()}
               className={classNames("best-practice-input-box", {
-                isBlurred: !image.name,
+                isBlurred: !imageName,
               })}
             >
-              Upload image
+              {imageName || "Upload image"}
             </button>
             <ShouldRender if={image.error}>
               <span>{image.error}</span>
@@ -122,23 +161,28 @@ export const CreatePractice: FC<BestPracticeProps> = ({
               <option value="true">Active</option>
               <option value="false">Inactive</option>
             </select>
-            <ShouldRender if={formError.headLine}>
-              <span>{formError.headLine}</span>
-            </ShouldRender>
           </div>
         </div>
         <div className="create-best-practice-panel">
           <Editor
             editorState={editorState}
-            onEditorStateChange={setEditorState}
+            onEditorStateChange={updateEditorState}
             wrapperClassName="best-practice-editor-wrapper"
             editorClassName="best-practice-editor"
             toolbar={{ options: ["inline", "list", "textAlign"] }}
           />
         </div>
+        <ShouldRender if={formError.description}>
+          <span className="editor-input-error">{formError.description}</span>
+        </ShouldRender>
         <div className="create-best-practice-btn-panel">
-          <div className="create-brief-btn" onClick={handleSubmit}>
-            <span className="create-brief-text">{headingText} Brief</span>
+          <div
+            className="create-brief-btn create-practice-btn"
+            onClick={handleSubmit}
+          >
+            <span className="create-brief-text">
+              {headingText} Best Practice
+            </span>
             {loading && <IconLoader />}
           </div>
         </div>

@@ -7,7 +7,7 @@ export const initialCreatePracticeState: ICreateBestPractice = {
   headLine: "",
   description: "",
   urlPath: "",
-  active: "",
+  active: "true",
   id: "",
 };
 
@@ -15,5 +15,4 @@ export const initialCreatePracticeError: ICreateBestPracticeError = {
   headLine: null,
   description: null,
   urlPath: null,
-  active: null,
 };
