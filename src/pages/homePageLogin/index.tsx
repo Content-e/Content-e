@@ -50,7 +50,11 @@ export const HomePageLogin: React.FC = () => {
                 >
                   Say Hello
                 </div>
-                <div className="login-signup" style={{ color: "#FFFFFF" }}>
+                <div
+                  className="login-signup"
+                  style={{ color: "#FFFFFF" }}
+                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                >
                   Login / Sign up
                 </div>
 

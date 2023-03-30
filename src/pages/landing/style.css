@@ -386,7 +386,7 @@
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 440px) {
   .landing-page-wrapper .landing-page-bg_image {
     width: auto;
     background-color: #041416;

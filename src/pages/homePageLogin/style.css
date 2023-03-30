@@ -311,7 +311,7 @@
   display: none;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 440px) {
   .home-page-login-page-wrapper .home-page-login-page-bg_image {
     width: auto;
     background-color: #041416;
