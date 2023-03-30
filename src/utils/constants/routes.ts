@@ -36,8 +36,8 @@ export enum AuthRoutes {
 }
 
 export enum AdminRoutes {
-  Brands = "/brands",
-  Creators = "/creators",
+  Brands = "/adminBrands",
+  Creators = "/adminCreators",
   CreatePractice = "/createPractice",
   EditPractice = "/editPractice",
 }
