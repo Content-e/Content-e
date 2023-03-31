@@ -39,12 +39,12 @@ export const onCreateUserProfile = /* GraphQL */ `
       tiktokHandler
       bestPractices {
         items {
+          id
           headLine
           description
           urlPath
           active
           owner
-          id
           createdAt
           updatedAt
           userProfileBestPracticesId
@@ -93,12 +93,12 @@ export const onUpdateUserProfile = /* GraphQL */ `
       tiktokHandler
       bestPractices {
         items {
+          id
           headLine
           description
           urlPath
           active
           owner
-          id
           createdAt
           updatedAt
           userProfileBestPracticesId
@@ -147,12 +147,12 @@ export const onDeleteUserProfile = /* GraphQL */ `
       tiktokHandler
       bestPractices {
         items {
+          id
           headLine
           description
           urlPath
           active
           owner
-          id
           createdAt
           updatedAt
           userProfileBestPracticesId
@@ -170,12 +170,12 @@ export const onCreateBestPractices = /* GraphQL */ `
     $owner: String
   ) {
     onCreateBestPractices(filter: $filter, owner: $owner) {
+      id
       headLine
       description
       urlPath
       active
       owner
-      id
       createdAt
       updatedAt
       userProfileBestPracticesId
@@ -188,12 +188,12 @@ export const onUpdateBestPractices = /* GraphQL */ `
     $owner: String
   ) {
     onUpdateBestPractices(filter: $filter, owner: $owner) {
+      id
       headLine
       description
       urlPath
       active
       owner
-      id
       createdAt
       updatedAt
       userProfileBestPracticesId
@@ -206,12 +206,12 @@ export const onDeleteBestPractices = /* GraphQL */ `
     $owner: String
   ) {
     onDeleteBestPractices(filter: $filter, owner: $owner) {
+      id
       headLine
       description
       urlPath
       active
       owner
-      id
       createdAt
       updatedAt
       userProfileBestPracticesId

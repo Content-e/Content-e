@@ -21,6 +21,7 @@ type BestPractices
 @model
 @auth(rules: [{ allow: private, operations: [read]},{ allow: owner }])
 {
+  id: ID!
   headLine: String!
   description: String!
   urlPath: String!

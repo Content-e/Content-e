@@ -54,12 +54,12 @@ export const getUserProfile = /* GraphQL */ `
       tiktokHandler
       bestPractices {
         items {
+          id
           headLine
           description
           urlPath
           active
           owner
-          id
           createdAt
           updatedAt
           userProfileBestPracticesId
@@ -107,12 +107,12 @@ export const listUserProfiles = /* GraphQL */ `
         tiktokHandler
         bestPractices {
           items {
+            id
             headLine
             description
             urlPath
             active
             owner
-            id
             createdAt
             updatedAt
             userProfileBestPracticesId
@@ -170,12 +170,12 @@ export const userProfilesByUserEmail = /* GraphQL */ `
         tiktokHandler
         bestPractices {
           items {
+            id
             headLine
             description
             urlPath
             active
             owner
-            id
             createdAt
             updatedAt
             userProfileBestPracticesId
@@ -192,12 +192,12 @@ export const userProfilesByUserEmail = /* GraphQL */ `
 export const getBestPractices = /* GraphQL */ `
   query GetBestPractices($id: ID!) {
     getBestPractices(id: $id) {
+      id
       headLine
       description
       urlPath
       active
       owner
-      id
       createdAt
       updatedAt
       userProfileBestPracticesId
@@ -212,12 +212,12 @@ export const listBestPractices = /* GraphQL */ `
   ) {
     listBestPractices(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
+        id
         headLine
         description
         urlPath
         active
         owner
-        id
         createdAt
         updatedAt
         userProfileBestPracticesId
@@ -242,12 +242,12 @@ export const bestPracticesByActive = /* GraphQL */ `
       nextToken: $nextToken
     ) {
       items {
+        id
         headLine
         description
         urlPath
         active
         owner
-        id
         createdAt
         updatedAt
         userProfileBestPracticesId

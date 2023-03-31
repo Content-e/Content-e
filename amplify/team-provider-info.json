@@ -26,6 +26,10 @@
         "emailService": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
           "s3Key": "amplify-builds/emailService-4651784e763261656c5a-build.zip"
+        },
+        "graphQlLambdaAuthorizerc946ef1d": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/graphQlLambdaAuthorizerc946ef1d-305531662f6e64636f59-build.zip"
         }
       },
       "hosting": {

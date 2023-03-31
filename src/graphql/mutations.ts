@@ -39,12 +39,12 @@ export const deleteUserProfile = /* GraphQL */ `
       tiktokHandler
       bestPractices {
         items {
+          id
           headLine
           description
           urlPath
           active
           owner
-          id
           createdAt
           updatedAt
           userProfileBestPracticesId
@@ -62,12 +62,12 @@ export const deleteBestPractices = /* GraphQL */ `
     $condition: ModelBestPracticesConditionInput
   ) {
     deleteBestPractices(input: $input, condition: $condition) {
+      id
       headLine
       description
       urlPath
       active
       owner
-      id
       createdAt
       updatedAt
       userProfileBestPracticesId
@@ -111,12 +111,12 @@ export const createUserProfile = /* GraphQL */ `
       tiktokHandler
       bestPractices {
         items {
+          id
           headLine
           description
           urlPath
           active
           owner
-          id
           createdAt
           updatedAt
           userProfileBestPracticesId
@@ -165,12 +165,12 @@ export const updateUserProfile = /* GraphQL */ `
       tiktokHandler
       bestPractices {
         items {
+          id
           headLine
           description
           urlPath
           active
           owner
-          id
           createdAt
           updatedAt
           userProfileBestPracticesId
@@ -188,12 +188,12 @@ export const createBestPractices = /* GraphQL */ `
     $condition: ModelBestPracticesConditionInput
   ) {
     createBestPractices(input: $input, condition: $condition) {
+      id
       headLine
       description
       urlPath
       active
       owner
-      id
       createdAt
       updatedAt
       userProfileBestPracticesId
@@ -206,12 +206,12 @@ export const updateBestPractices = /* GraphQL */ `
     $condition: ModelBestPracticesConditionInput
   ) {
     updateBestPractices(input: $input, condition: $condition) {
+      id
       headLine
       description
       urlPath
       active
       owner
-      id
       createdAt
       updatedAt
       userProfileBestPracticesId

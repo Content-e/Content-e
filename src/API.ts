@@ -160,12 +160,12 @@ export type ModelBestPracticesConnection = {
 
 export type BestPractices = {
   __typename: "BestPractices",
+  id: string,
   headLine: string,
   description: string,
   urlPath: string,
   active: string,
   owner?: string | null,
-  id: string,
   createdAt: string,
   updatedAt: string,
   userProfileBestPracticesId?: string | null,
@@ -224,22 +224,22 @@ export type UpdateUserProfileInput = {
 };
 
 export type CreateBestPracticesInput = {
+  id?: string | null,
   headLine: string,
   description: string,
   urlPath: string,
   active: string,
   owner?: string | null,
-  id?: string | null,
   userProfileBestPracticesId?: string | null,
 };
 
 export type UpdateBestPracticesInput = {
+  id: string,
   headLine?: string | null,
   description?: string | null,
   urlPath?: string | null,
   active?: string | null,
   owner?: string | null,
-  id: string,
   userProfileBestPracticesId?: string | null,
 };
 
@@ -458,6 +458,7 @@ export enum ModelSortDirection {
 
 
 export type ModelBestPracticesFilterInput = {
+  id?: ModelIDInput | null,
   headLine?: ModelStringInput | null,
   description?: ModelStringInput | null,
   urlPath?: ModelStringInput | null,
@@ -562,6 +563,7 @@ export type ModelSubscriptionStringInput = {
 };
 
 export type ModelSubscriptionBestPracticesFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
   headLine?: ModelSubscriptionStringInput | null,
   description?: ModelSubscriptionStringInput | null,
   urlPath?: ModelSubscriptionStringInput | null,
@@ -660,12 +662,12 @@ export type DeleteUserProfileMutation = {
       __typename: "ModelBestPracticesConnection",
       items:  Array< {
         __typename: "BestPractices",
+        id: string,
         headLine: string,
         description: string,
         urlPath: string,
         active: string,
         owner?: string | null,
-        id: string,
         createdAt: string,
         updatedAt: string,
         userProfileBestPracticesId?: string | null,
@@ -685,12 +687,12 @@ export type DeleteBestPracticesMutationVariables = {
 export type DeleteBestPracticesMutation = {
   deleteBestPractices?:  {
     __typename: "BestPractices",
+    id: string,
     headLine: string,
     description: string,
     urlPath: string,
     active: string,
     owner?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
     userProfileBestPracticesId?: string | null,
@@ -741,12 +743,12 @@ export type CreateUserProfileMutation = {
       __typename: "ModelBestPracticesConnection",
       items:  Array< {
         __typename: "BestPractices",
+        id: string,
         headLine: string,
         description: string,
         urlPath: string,
         active: string,
         owner?: string | null,
-        id: string,
         createdAt: string,
         updatedAt: string,
         userProfileBestPracticesId?: string | null,
@@ -802,12 +804,12 @@ export type UpdateUserProfileMutation = {
       __typename: "ModelBestPracticesConnection",
       items:  Array< {
         __typename: "BestPractices",
+        id: string,
         headLine: string,
         description: string,
         urlPath: string,
         active: string,
         owner?: string | null,
-        id: string,
         createdAt: string,
         updatedAt: string,
         userProfileBestPracticesId?: string | null,
@@ -827,12 +829,12 @@ export type CreateBestPracticesMutationVariables = {
 export type CreateBestPracticesMutation = {
   createBestPractices?:  {
     __typename: "BestPractices",
+    id: string,
     headLine: string,
     description: string,
     urlPath: string,
     active: string,
     owner?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
     userProfileBestPracticesId?: string | null,
@@ -847,12 +849,12 @@ export type UpdateBestPracticesMutationVariables = {
 export type UpdateBestPracticesMutation = {
   updateBestPractices?:  {
     __typename: "BestPractices",
+    id: string,
     headLine: string,
     description: string,
     urlPath: string,
     active: string,
     owner?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
     userProfileBestPracticesId?: string | null,
@@ -1392,12 +1394,12 @@ export type GetUserProfileQuery = {
       __typename: "ModelBestPracticesConnection",
       items:  Array< {
         __typename: "BestPractices",
+        id: string,
         headLine: string,
         description: string,
         urlPath: string,
         active: string,
         owner?: string | null,
-        id: string,
         createdAt: string,
         updatedAt: string,
         userProfileBestPracticesId?: string | null,
@@ -1452,12 +1454,12 @@ export type ListUserProfilesQuery = {
         __typename: "ModelBestPracticesConnection",
         items:  Array< {
           __typename: "BestPractices",
+          id: string,
           headLine: string,
           description: string,
           urlPath: string,
           active: string,
           owner?: string | null,
-          id: string,
           createdAt: string,
           updatedAt: string,
           userProfileBestPracticesId?: string | null,
@@ -1516,12 +1518,12 @@ export type UserProfilesByUserEmailQuery = {
         __typename: "ModelBestPracticesConnection",
         items:  Array< {
           __typename: "BestPractices",
+          id: string,
           headLine: string,
           description: string,
           urlPath: string,
           active: string,
           owner?: string | null,
-          id: string,
           createdAt: string,
           updatedAt: string,
           userProfileBestPracticesId?: string | null,
@@ -1542,12 +1544,12 @@ export type GetBestPracticesQueryVariables = {
 export type GetBestPracticesQuery = {
   getBestPractices?:  {
     __typename: "BestPractices",
+    id: string,
     headLine: string,
     description: string,
     urlPath: string,
     active: string,
     owner?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
     userProfileBestPracticesId?: string | null,
@@ -1565,12 +1567,12 @@ export type ListBestPracticesQuery = {
     __typename: "ModelBestPracticesConnection",
     items:  Array< {
       __typename: "BestPractices",
+      id: string,
       headLine: string,
       description: string,
       urlPath: string,
       active: string,
       owner?: string | null,
-      id: string,
       createdAt: string,
       updatedAt: string,
       userProfileBestPracticesId?: string | null,
@@ -1592,12 +1594,12 @@ export type BestPracticesByActiveQuery = {
     __typename: "ModelBestPracticesConnection",
     items:  Array< {
       __typename: "BestPractices",
+      id: string,
       headLine: string,
       description: string,
       urlPath: string,
       active: string,
       owner?: string | null,
-      id: string,
       createdAt: string,
       updatedAt: string,
       userProfileBestPracticesId?: string | null,
@@ -2213,12 +2215,12 @@ export type OnCreateUserProfileSubscription = {
       __typename: "ModelBestPracticesConnection",
       items:  Array< {
         __typename: "BestPractices",
+        id: string,
         headLine: string,
         description: string,
         urlPath: string,
         active: string,
         owner?: string | null,
-        id: string,
         createdAt: string,
         updatedAt: string,
         userProfileBestPracticesId?: string | null,
@@ -2274,12 +2276,12 @@ export type OnUpdateUserProfileSubscription = {
       __typename: "ModelBestPracticesConnection",
       items:  Array< {
         __typename: "BestPractices",
+        id: string,
         headLine: string,
         description: string,
         urlPath: string,
         active: string,
         owner?: string | null,
-        id: string,
         createdAt: string,
         updatedAt: string,
         userProfileBestPracticesId?: string | null,
@@ -2335,12 +2337,12 @@ export type OnDeleteUserProfileSubscription = {
       __typename: "ModelBestPracticesConnection",
       items:  Array< {
         __typename: "BestPractices",
+        id: string,
         headLine: string,
         description: string,
         urlPath: string,
         active: string,
         owner?: string | null,
-        id: string,
         createdAt: string,
         updatedAt: string,
         userProfileBestPracticesId?: string | null,
@@ -2360,12 +2362,12 @@ export type OnCreateBestPracticesSubscriptionVariables = {
 export type OnCreateBestPracticesSubscription = {
   onCreateBestPractices?:  {
     __typename: "BestPractices",
+    id: string,
     headLine: string,
     description: string,
     urlPath: string,
     active: string,
     owner?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
     userProfileBestPracticesId?: string | null,
@@ -2380,12 +2382,12 @@ export type OnUpdateBestPracticesSubscriptionVariables = {
 export type OnUpdateBestPracticesSubscription = {
   onUpdateBestPractices?:  {
     __typename: "BestPractices",
+    id: string,
     headLine: string,
     description: string,
     urlPath: string,
     active: string,
     owner?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
     userProfileBestPracticesId?: string | null,
@@ -2400,12 +2402,12 @@ export type OnDeleteBestPracticesSubscriptionVariables = {
 export type OnDeleteBestPracticesSubscription = {
   onDeleteBestPractices?:  {
     __typename: "BestPractices",
+    id: string,
     headLine: string,
     description: string,
     urlPath: string,
     active: string,
     owner?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
     userProfileBestPracticesId?: string | null,
