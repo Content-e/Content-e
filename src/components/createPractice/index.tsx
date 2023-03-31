@@ -11,7 +11,7 @@ import {
   ContentState,
   convertFromHTML,
 } from "draft-js";
-
+import draftToHtml from "draftjs-to-html";
 import { Editor } from "react-draft-wysiwyg";
 import {
   AllowedProfileSizeKB,
@@ -37,7 +37,7 @@ export const CreatePractice: FC<BestPracticeProps> = ({
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const getDescription = (): string =>
-    JSON.stringify(convertToRaw(editorState.getCurrentContent()));
+    draftToHtml(convertToRaw(editorState.getCurrentContent()));
   const handleChange = (
     key: string,
     value: string | Array<string> | boolean
@@ -67,11 +67,11 @@ export const CreatePractice: FC<BestPracticeProps> = ({
       errObj.description = "Best practice description is required";
 
     let imageError: string | undefined = undefined;
-    if (!image.file) imageError = "Image is required";
+    if (!formState.urlPath && !image.file) imageError = "Image is required";
 
     setFormError({ ...errObj });
-    if (!image.error) setImage({ ...image, error: imageError });
-    return !(image.error || imageError || Object.values(errObj).find((e) => e));
+    setImage({ ...image, error: imageError });
+    return !(imageError || Object.values(errObj).find((e) => e));
   };
 
   const handleSubmit = async (): Promise<void> => {
@@ -108,7 +108,7 @@ export const CreatePractice: FC<BestPracticeProps> = ({
     () => (bestPracticeState ? "Edit" : "Create"),
     [bestPracticeState]
   );
-  const imageName = useMemo(() => image.file?.name, [image]);
+  const imageName = useMemo(() => image.file?.name.slice(0, 15), [image]);
 
   return (
     <>

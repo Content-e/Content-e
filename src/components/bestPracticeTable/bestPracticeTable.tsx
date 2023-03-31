@@ -37,10 +37,10 @@ export const AdminPracticeTableDetails: FC<Props> = ({
             {e?.headLine}
           </td>
           <td className="brand-table-description break-entry capitalized best-practice-description">
-            {e?.description}
+            {e?.description.replaceAll(/<\/?[^>]+(>|$)/gi, "")}
           </td>
           <td className="brand-table-description centered capitalized best-practice-status">
-            {e?.active ? "Active" : "Inactive"}
+            {e?.active === "true" ? "Active" : "Inactive"}
           </td>
           <td
             className="centered best-practice-icon"

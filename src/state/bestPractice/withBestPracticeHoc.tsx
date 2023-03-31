@@ -36,12 +36,13 @@ export function withBestPractice<T>(
         createdAt: undefined,
         updatedAt: undefined,
         __typename: undefined,
+        owner: undefined,
         userProfileBestPracticesId: undefined,
       };
       if (data.id) editBrief({ variables: { input } });
       else
         createBrief({
-          variables: { input: { input: { ...input, id: undefined } } },
+          variables: { input: { ...input, id: undefined } },
         });
     };
 

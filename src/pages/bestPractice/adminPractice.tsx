@@ -3,7 +3,7 @@ import { BestPractices as IBestPractice } from "API";
 import { getSlicedArray } from "components";
 import AdminPracticeTableDetails from "components/bestPracticeTable/bestPracticeTable";
 import Pagination from "components/pagination";
-import { getActiveBestPractice } from "hooks";
+import { listBestPractices } from "hooks";
 import { useHistory } from "react-router-dom";
 import { AdminRoutes } from "utils";
 import "./practice.css";
@@ -12,7 +12,7 @@ import SinglePractice from "components/bestPractices/singlePractice";
 const tableLimit = 8;
 export const AdminBestPracticeTable: FC = () => {
   const history = useHistory();
-  const { getActivePractice, data } = getActiveBestPractice();
+  const { getAllPractice, data } = listBestPractices();
   const [selectedPractice, setSelectedPractice] = useState<IBestPractice>();
   const [input, setInput] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
@@ -21,7 +21,7 @@ export const AdminBestPracticeTable: FC = () => {
     history.push(AdminRoutes.CreatePractice);
 
   useEffect(() => {
-    getActivePractice({ variables: { active: "true" } });
+    getAllPractice({ variables: {} });
   }, []);
 
   const filteredData = useMemo(

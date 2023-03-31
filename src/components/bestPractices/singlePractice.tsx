@@ -68,7 +68,7 @@ export const SinglePractice: FC<Props> = ({
             </div>
           </div>
           <div className="best-practice-description">
-            {practice.description}
+            {practice.description.replaceAll(/<\/?[^>]+(>|$)/gi, "")}
           </div>
         </div>
       </div>
