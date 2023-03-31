@@ -88,6 +88,41 @@ export const CreatePractice: FC<BestPracticeProps> = ({
     }
   };
 
+  const uploadCallback = (file): Promise<UnknownType> => {
+    return new Promise((resolve) => {
+      if (file) {
+        const imageId = Math.floor(100000000 + Math.random() * 900000000);
+        const imageUrlPath = `bestPractices/description/${imageId}`;
+        Storage.put(imageUrlPath, file).then(() => {
+          Storage.get(imageUrlPath).then((url) => {
+            resolve({ data: { link: url } });
+          });
+        });
+      }
+    });
+  };
+
+  const wrapDescription = (descp: string): string => {
+    let newPos = 0;
+    let newDescp = descp;
+
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      const openIndex = newDescp.indexOf("<img", newPos);
+      const closeIndex = newDescp.indexOf("/>", openIndex);
+      if (openIndex > -1 && closeIndex > -1) {
+        newDescp =
+          newDescp.slice(0, openIndex) +
+          "<figure>" +
+          newDescp.slice(openIndex, closeIndex + 2) +
+          "</figure>" +
+          newDescp.slice(closeIndex + 2);
+        newPos = closeIndex + 17;
+      } else break;
+    }
+    return newDescp;
+  };
+
   useEffect(() => {
     if (response && !loading) history.goBack();
   }, [response, loading]);
@@ -95,9 +130,12 @@ export const CreatePractice: FC<BestPracticeProps> = ({
   useEffect(() => {
     if (bestPracticeState) {
       setFormState(bestPracticeState);
+      const editorDesc = wrapDescription(bestPracticeState.description);
       const a = EditorState.createWithContent(
         ContentState.createFromBlockArray(
-          convertFromHTML(bestPracticeState.description)
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          convertFromHTML(editorDesc)
         )
       );
       setEditorState(a);
@@ -169,7 +207,10 @@ export const CreatePractice: FC<BestPracticeProps> = ({
             onEditorStateChange={updateEditorState}
             wrapperClassName="best-practice-editor-wrapper"
             editorClassName="best-practice-editor"
-            toolbar={{ options: ["inline", "list", "textAlign"] }}
+            toolbar={{
+              options: ["inline", "list", "textAlign", "image"],
+              image: { uploadCallback },
+            }}
           />
         </div>
         <ShouldRender if={formError.description}>

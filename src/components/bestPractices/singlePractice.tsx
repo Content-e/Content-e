@@ -67,9 +67,10 @@ export const SinglePractice: FC<Props> = ({
               {practiceImage && <img src={practiceImage} alt="pratice image" />}
             </div>
           </div>
-          <div className="best-practice-description">
-            {practice.description.replaceAll(/<\/?[^>]+(>|$)/gi, "")}
-          </div>
+          <div
+            className="best-practice-description"
+            dangerouslySetInnerHTML={{ __html: practice.description }}
+          />
         </div>
       </div>
     </div>

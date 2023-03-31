@@ -78,3 +78,16 @@
 .best-practices-full-wrapper {
   height: 84vh;
 }
+
+.rdw-image-modal-upload-option {
+  padding: 15px !important;
+}
+
+.rdw-image-modal-upload-option-label {
+  padding: 0 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  word-break: break-all !important;
+}
