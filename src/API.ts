@@ -13,6 +13,7 @@ export type ModelUserProfileConditionInput = {
   owner?: ModelStringInput | null,
   userType?: ModelUSER_TYPESInput | null,
   tiktokHandler?: ModelStringInput | null,
+  tiktokAccountAccess?: ModelStringInput | null,
   and?: Array< ModelUserProfileConditionInput | null > | null,
   or?: Array< ModelUserProfileConditionInput | null > | null,
   not?: ModelUserProfileConditionInput | null,
@@ -81,6 +82,7 @@ export type UserProfile = {
   userType: USER_TYPES,
   tiktokHandler?: string | null,
   bestPractices?: ModelBestPracticesConnection | null,
+  tiktokAccountAccess?: string | null,
   createdAt: string,
   updatedAt: string,
 };
@@ -171,6 +173,75 @@ export type BestPractices = {
   userProfileBestPracticesId?: string | null,
 };
 
+export type CreateApprovedAdsInput = {
+  creativeRequestId?: string | null,
+  identity_id?: string | null,
+  item_id?: string | null,
+  ad_id?: string | null,
+  ad_group_id?: string | null,
+  campaing_id?: string | null,
+  advertiser_id?: string | null,
+  user_profile_id?: string | null,
+  accessToken?: string | null,
+  ad_report?: string | null,
+  status?: string | null,
+  id?: string | null,
+};
+
+export type ModelApprovedAdsConditionInput = {
+  creativeRequestId?: ModelStringInput | null,
+  identity_id?: ModelStringInput | null,
+  item_id?: ModelStringInput | null,
+  ad_id?: ModelStringInput | null,
+  ad_group_id?: ModelStringInput | null,
+  campaing_id?: ModelStringInput | null,
+  advertiser_id?: ModelStringInput | null,
+  user_profile_id?: ModelStringInput | null,
+  accessToken?: ModelStringInput | null,
+  ad_report?: ModelStringInput | null,
+  status?: ModelStringInput | null,
+  and?: Array< ModelApprovedAdsConditionInput | null > | null,
+  or?: Array< ModelApprovedAdsConditionInput | null > | null,
+  not?: ModelApprovedAdsConditionInput | null,
+};
+
+export type ApprovedAds = {
+  __typename: "ApprovedAds",
+  creativeRequestId?: string | null,
+  identity_id?: string | null,
+  item_id?: string | null,
+  ad_id?: string | null,
+  ad_group_id?: string | null,
+  campaing_id?: string | null,
+  advertiser_id?: string | null,
+  user_profile_id?: string | null,
+  accessToken?: string | null,
+  ad_report?: string | null,
+  status?: string | null,
+  id: string,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type UpdateApprovedAdsInput = {
+  creativeRequestId?: string | null,
+  identity_id?: string | null,
+  item_id?: string | null,
+  ad_id?: string | null,
+  ad_group_id?: string | null,
+  campaing_id?: string | null,
+  advertiser_id?: string | null,
+  user_profile_id?: string | null,
+  accessToken?: string | null,
+  ad_report?: string | null,
+  status?: string | null,
+  id: string,
+};
+
+export type DeleteApprovedAdsInput = {
+  id: string,
+};
+
 export type DeleteBestPracticesInput = {
   id: string,
 };
@@ -211,6 +282,7 @@ export type CreateUserProfileInput = {
   owner?: string | null,
   userType: USER_TYPES,
   tiktokHandler?: string | null,
+  tiktokAccountAccess?: string | null,
 };
 
 export type UpdateUserProfileInput = {
@@ -221,6 +293,7 @@ export type UpdateUserProfileInput = {
   owner?: string | null,
   userType?: USER_TYPES | null,
   tiktokHandler?: string | null,
+  tiktokAccountAccess?: string | null,
 };
 
 export type CreateBestPracticesInput = {
@@ -432,6 +505,29 @@ export enum GPT_RESPONSE_TYPE {
 }
 
 
+export type ModelApprovedAdsFilterInput = {
+  creativeRequestId?: ModelStringInput | null,
+  identity_id?: ModelStringInput | null,
+  item_id?: ModelStringInput | null,
+  ad_id?: ModelStringInput | null,
+  ad_group_id?: ModelStringInput | null,
+  campaing_id?: ModelStringInput | null,
+  advertiser_id?: ModelStringInput | null,
+  user_profile_id?: ModelStringInput | null,
+  accessToken?: ModelStringInput | null,
+  ad_report?: ModelStringInput | null,
+  status?: ModelStringInput | null,
+  and?: Array< ModelApprovedAdsFilterInput | null > | null,
+  or?: Array< ModelApprovedAdsFilterInput | null > | null,
+  not?: ModelApprovedAdsFilterInput | null,
+};
+
+export type ModelApprovedAdsConnection = {
+  __typename: "ModelApprovedAdsConnection",
+  items:  Array<ApprovedAds | null >,
+  nextToken?: string | null,
+};
+
 export type ModelUserProfileFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -440,6 +536,7 @@ export type ModelUserProfileFilterInput = {
   owner?: ModelStringInput | null,
   userType?: ModelUSER_TYPESInput | null,
   tiktokHandler?: ModelStringInput | null,
+  tiktokAccountAccess?: ModelStringInput | null,
   and?: Array< ModelUserProfileFilterInput | null > | null,
   or?: Array< ModelUserProfileFilterInput | null > | null,
   not?: ModelUserProfileFilterInput | null,
@@ -521,18 +618,23 @@ export type EMAIL_INPUT = {
   from: string,
 };
 
-export type ModelSubscriptionUserProfileFilterInput = {
-  id?: ModelSubscriptionIDInput | null,
-  name?: ModelSubscriptionStringInput | null,
-  userEmail?: ModelSubscriptionStringInput | null,
-  description?: ModelSubscriptionStringInput | null,
-  userType?: ModelSubscriptionStringInput | null,
-  tiktokHandler?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
-  or?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
+export type ModelSubscriptionApprovedAdsFilterInput = {
+  creativeRequestId?: ModelSubscriptionStringInput | null,
+  identity_id?: ModelSubscriptionStringInput | null,
+  item_id?: ModelSubscriptionStringInput | null,
+  ad_id?: ModelSubscriptionStringInput | null,
+  ad_group_id?: ModelSubscriptionStringInput | null,
+  campaing_id?: ModelSubscriptionStringInput | null,
+  advertiser_id?: ModelSubscriptionStringInput | null,
+  user_profile_id?: ModelSubscriptionStringInput | null,
+  accessToken?: ModelSubscriptionStringInput | null,
+  ad_report?: ModelSubscriptionStringInput | null,
+  status?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionApprovedAdsFilterInput | null > | null,
+  or?: Array< ModelSubscriptionApprovedAdsFilterInput | null > | null,
 };
 
-export type ModelSubscriptionIDInput = {
+export type ModelSubscriptionStringInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -547,7 +649,19 @@ export type ModelSubscriptionIDInput = {
   notIn?: Array< string | null > | null,
 };
 
-export type ModelSubscriptionStringInput = {
+export type ModelSubscriptionUserProfileFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  userEmail?: ModelSubscriptionStringInput | null,
+  description?: ModelSubscriptionStringInput | null,
+  userType?: ModelSubscriptionStringInput | null,
+  tiktokHandler?: ModelSubscriptionStringInput | null,
+  tiktokAccountAccess?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
+  or?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
+};
+
+export type ModelSubscriptionIDInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -618,6 +732,24 @@ export type ModelSubscriptionCreativeRequestFilterInput = {
   or?: Array< ModelSubscriptionCreativeRequestFilterInput | null > | null,
 };
 
+export type LinkTiktokAccountMutationVariables = {
+  authCode?: string | null,
+  userProfileId?: string | null,
+};
+
+export type LinkTiktokAccountMutation = {
+  linkTiktokAccount?: boolean | null,
+};
+
+export type LinkUserTypeMutationVariables = {
+  userType?: string | null,
+  profileId?: string | null,
+};
+
+export type LinkUserTypeMutation = {
+  linkUserType?: boolean | null,
+};
+
 export type DeleteUserProfileMutationVariables = {
   input: DeleteUserProfileInput,
   condition?: ModelUserProfileConditionInput | null,
@@ -674,6 +806,82 @@ export type DeleteUserProfileMutation = {
       } | null >,
       nextToken?: string | null,
     } | null,
+    tiktokAccountAccess?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type CreateApprovedAdsMutationVariables = {
+  input: CreateApprovedAdsInput,
+  condition?: ModelApprovedAdsConditionInput | null,
+};
+
+export type CreateApprovedAdsMutation = {
+  createApprovedAds?:  {
+    __typename: "ApprovedAds",
+    creativeRequestId?: string | null,
+    identity_id?: string | null,
+    item_id?: string | null,
+    ad_id?: string | null,
+    ad_group_id?: string | null,
+    campaing_id?: string | null,
+    advertiser_id?: string | null,
+    user_profile_id?: string | null,
+    accessToken?: string | null,
+    ad_report?: string | null,
+    status?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type UpdateApprovedAdsMutationVariables = {
+  input: UpdateApprovedAdsInput,
+  condition?: ModelApprovedAdsConditionInput | null,
+};
+
+export type UpdateApprovedAdsMutation = {
+  updateApprovedAds?:  {
+    __typename: "ApprovedAds",
+    creativeRequestId?: string | null,
+    identity_id?: string | null,
+    item_id?: string | null,
+    ad_id?: string | null,
+    ad_group_id?: string | null,
+    campaing_id?: string | null,
+    advertiser_id?: string | null,
+    user_profile_id?: string | null,
+    accessToken?: string | null,
+    ad_report?: string | null,
+    status?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type DeleteApprovedAdsMutationVariables = {
+  input: DeleteApprovedAdsInput,
+  condition?: ModelApprovedAdsConditionInput | null,
+};
+
+export type DeleteApprovedAdsMutation = {
+  deleteApprovedAds?:  {
+    __typename: "ApprovedAds",
+    creativeRequestId?: string | null,
+    identity_id?: string | null,
+    item_id?: string | null,
+    ad_id?: string | null,
+    ad_group_id?: string | null,
+    campaing_id?: string | null,
+    advertiser_id?: string | null,
+    user_profile_id?: string | null,
+    accessToken?: string | null,
+    ad_report?: string | null,
+    status?: string | null,
+    id: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -755,6 +963,7 @@ export type CreateUserProfileMutation = {
       } | null >,
       nextToken?: string | null,
     } | null,
+    tiktokAccountAccess?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -816,6 +1025,7 @@ export type UpdateUserProfileMutation = {
       } | null >,
       nextToken?: string | null,
     } | null,
+    tiktokAccountAccess?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -1351,6 +1561,60 @@ export type GetGPTresponseQuery = {
   } | null,
 };
 
+export type GetApprovedAdsQueryVariables = {
+  id: string,
+};
+
+export type GetApprovedAdsQuery = {
+  getApprovedAds?:  {
+    __typename: "ApprovedAds",
+    creativeRequestId?: string | null,
+    identity_id?: string | null,
+    item_id?: string | null,
+    ad_id?: string | null,
+    ad_group_id?: string | null,
+    campaing_id?: string | null,
+    advertiser_id?: string | null,
+    user_profile_id?: string | null,
+    accessToken?: string | null,
+    ad_report?: string | null,
+    status?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type ListApprovedAdsQueryVariables = {
+  filter?: ModelApprovedAdsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListApprovedAdsQuery = {
+  listApprovedAds?:  {
+    __typename: "ModelApprovedAdsConnection",
+    items:  Array< {
+      __typename: "ApprovedAds",
+      creativeRequestId?: string | null,
+      identity_id?: string | null,
+      item_id?: string | null,
+      ad_id?: string | null,
+      ad_group_id?: string | null,
+      campaing_id?: string | null,
+      advertiser_id?: string | null,
+      user_profile_id?: string | null,
+      accessToken?: string | null,
+      ad_report?: string | null,
+      status?: string | null,
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
 export type GetUserProfileQueryVariables = {
   id: string,
 };
@@ -1406,6 +1670,7 @@ export type GetUserProfileQuery = {
       } | null >,
       nextToken?: string | null,
     } | null,
+    tiktokAccountAccess?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -1466,6 +1731,7 @@ export type ListUserProfilesQuery = {
         } | null >,
         nextToken?: string | null,
       } | null,
+      tiktokAccountAccess?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -1530,6 +1796,7 @@ export type UserProfilesByUserEmailQuery = {
         } | null >,
         nextToken?: string | null,
       } | null,
+      tiktokAccountAccess?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -2171,6 +2438,78 @@ export type SendEmailQuery = {
   sendEmail?: boolean | null,
 };
 
+export type OnCreateApprovedAdsSubscriptionVariables = {
+  filter?: ModelSubscriptionApprovedAdsFilterInput | null,
+};
+
+export type OnCreateApprovedAdsSubscription = {
+  onCreateApprovedAds?:  {
+    __typename: "ApprovedAds",
+    creativeRequestId?: string | null,
+    identity_id?: string | null,
+    item_id?: string | null,
+    ad_id?: string | null,
+    ad_group_id?: string | null,
+    campaing_id?: string | null,
+    advertiser_id?: string | null,
+    user_profile_id?: string | null,
+    accessToken?: string | null,
+    ad_report?: string | null,
+    status?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateApprovedAdsSubscriptionVariables = {
+  filter?: ModelSubscriptionApprovedAdsFilterInput | null,
+};
+
+export type OnUpdateApprovedAdsSubscription = {
+  onUpdateApprovedAds?:  {
+    __typename: "ApprovedAds",
+    creativeRequestId?: string | null,
+    identity_id?: string | null,
+    item_id?: string | null,
+    ad_id?: string | null,
+    ad_group_id?: string | null,
+    campaing_id?: string | null,
+    advertiser_id?: string | null,
+    user_profile_id?: string | null,
+    accessToken?: string | null,
+    ad_report?: string | null,
+    status?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteApprovedAdsSubscriptionVariables = {
+  filter?: ModelSubscriptionApprovedAdsFilterInput | null,
+};
+
+export type OnDeleteApprovedAdsSubscription = {
+  onDeleteApprovedAds?:  {
+    __typename: "ApprovedAds",
+    creativeRequestId?: string | null,
+    identity_id?: string | null,
+    item_id?: string | null,
+    ad_id?: string | null,
+    ad_group_id?: string | null,
+    campaing_id?: string | null,
+    advertiser_id?: string | null,
+    user_profile_id?: string | null,
+    accessToken?: string | null,
+    ad_report?: string | null,
+    status?: string | null,
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
 export type OnCreateUserProfileSubscriptionVariables = {
   filter?: ModelSubscriptionUserProfileFilterInput | null,
   owner?: string | null,
@@ -2227,6 +2566,7 @@ export type OnCreateUserProfileSubscription = {
       } | null >,
       nextToken?: string | null,
     } | null,
+    tiktokAccountAccess?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -2288,6 +2628,7 @@ export type OnUpdateUserProfileSubscription = {
       } | null >,
       nextToken?: string | null,
     } | null,
+    tiktokAccountAccess?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -2349,6 +2690,7 @@ export type OnDeleteUserProfileSubscription = {
       } | null >,
       nextToken?: string | null,
     } | null,
+    tiktokAccountAccess?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,

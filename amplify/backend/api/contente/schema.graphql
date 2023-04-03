@@ -162,6 +162,6 @@ type Query{
 
 
 type Mutation{
-  linkTiktokAccount (authCode: Strin, userProfileId: String) @function(name: "linkTiktokAccount-${env}") @aws_iam @aws_cognito_user_pools
-  linkUserType (userType: USER_TYPES, profileId: String!) @function(name: "updateUserType-${env}") @aws_iam @aws_cognito_user_pools
+  linkTiktokAccount(authCode: String, userProfileId: String): Boolean @function(name: "linkTiktokAccount-${env}") @aws_iam @aws_cognito_user_pools
+  linkUserType(userType: String, profileId: String): Boolean @function(name: "updateUserType-${env}") @aws_iam @aws_cognito_user_pools
 }

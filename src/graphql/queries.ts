@@ -20,6 +20,53 @@ export const getGPTresponse = /* GraphQL */ `
     }
   }
 `;
+export const getApprovedAds = /* GraphQL */ `
+  query GetApprovedAds($id: ID!) {
+    getApprovedAds(id: $id) {
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listApprovedAds = /* GraphQL */ `
+  query ListApprovedAds(
+    $filter: ModelApprovedAdsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listApprovedAds(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        creativeRequestId
+        identity_id
+        item_id
+        ad_id
+        ad_group_id
+        campaing_id
+        advertiser_id
+        user_profile_id
+        accessToken
+        ad_report
+        status
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getUserProfile = /* GraphQL */ `
   query GetUserProfile($id: ID!) {
     getUserProfile(id: $id) {
@@ -66,6 +113,7 @@ export const getUserProfile = /* GraphQL */ `
         }
         nextToken
       }
+      tiktokAccountAccess
       createdAt
       updatedAt
     }
@@ -119,6 +167,7 @@ export const listUserProfiles = /* GraphQL */ `
           }
           nextToken
         }
+        tiktokAccountAccess
         createdAt
         updatedAt
       }
@@ -182,6 +231,7 @@ export const userProfilesByUserEmail = /* GraphQL */ `
           }
           nextToken
         }
+        tiktokAccountAccess
         createdAt
         updatedAt
       }

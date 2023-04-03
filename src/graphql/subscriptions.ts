@@ -2,6 +2,72 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateApprovedAds = /* GraphQL */ `
+  subscription OnCreateApprovedAds(
+    $filter: ModelSubscriptionApprovedAdsFilterInput
+  ) {
+    onCreateApprovedAds(filter: $filter) {
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateApprovedAds = /* GraphQL */ `
+  subscription OnUpdateApprovedAds(
+    $filter: ModelSubscriptionApprovedAdsFilterInput
+  ) {
+    onUpdateApprovedAds(filter: $filter) {
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteApprovedAds = /* GraphQL */ `
+  subscription OnDeleteApprovedAds(
+    $filter: ModelSubscriptionApprovedAdsFilterInput
+  ) {
+    onDeleteApprovedAds(filter: $filter) {
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateUserProfile = /* GraphQL */ `
   subscription OnCreateUserProfile(
     $filter: ModelSubscriptionUserProfileFilterInput
@@ -51,6 +117,7 @@ export const onCreateUserProfile = /* GraphQL */ `
         }
         nextToken
       }
+      tiktokAccountAccess
       createdAt
       updatedAt
     }
@@ -105,6 +172,7 @@ export const onUpdateUserProfile = /* GraphQL */ `
         }
         nextToken
       }
+      tiktokAccountAccess
       createdAt
       updatedAt
     }
@@ -159,6 +227,7 @@ export const onDeleteUserProfile = /* GraphQL */ `
         }
         nextToken
       }
+      tiktokAccountAccess
       createdAt
       updatedAt
     }

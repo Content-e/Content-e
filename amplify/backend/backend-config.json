@@ -154,6 +154,38 @@
         }
       ]
     },
+    "AMPLIFY_function_linkTiktokAccount_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "linkTiktokAccount"
+        }
+      ]
+    },
+    "AMPLIFY_function_linkTiktokAccount_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "linkTiktokAccount"
+        }
+      ]
+    },
+    "AMPLIFY_function_updateUserType_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "updateUserType"
+        }
+      ]
+    },
+    "AMPLIFY_function_updateUserType_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "updateUserType"
+        }
+      ]
+    },
     "AMPLIFY_hosting_amplifyhosting_appId": {
       "usedBy": [
         {

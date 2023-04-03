@@ -2,6 +2,16 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const linkTiktokAccount = /* GraphQL */ `
+  mutation LinkTiktokAccount($authCode: String, $userProfileId: String) {
+    linkTiktokAccount(authCode: $authCode, userProfileId: $userProfileId)
+  }
+`;
+export const linkUserType = /* GraphQL */ `
+  mutation LinkUserType($userType: String, $profileId: String) {
+    linkUserType(userType: $userType, profileId: $profileId)
+  }
+`;
 export const deleteUserProfile = /* GraphQL */ `
   mutation DeleteUserProfile(
     $input: DeleteUserProfileInput!
@@ -51,6 +61,76 @@ export const deleteUserProfile = /* GraphQL */ `
         }
         nextToken
       }
+      tiktokAccountAccess
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createApprovedAds = /* GraphQL */ `
+  mutation CreateApprovedAds(
+    $input: CreateApprovedAdsInput!
+    $condition: ModelApprovedAdsConditionInput
+  ) {
+    createApprovedAds(input: $input, condition: $condition) {
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateApprovedAds = /* GraphQL */ `
+  mutation UpdateApprovedAds(
+    $input: UpdateApprovedAdsInput!
+    $condition: ModelApprovedAdsConditionInput
+  ) {
+    updateApprovedAds(input: $input, condition: $condition) {
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteApprovedAds = /* GraphQL */ `
+  mutation DeleteApprovedAds(
+    $input: DeleteApprovedAdsInput!
+    $condition: ModelApprovedAdsConditionInput
+  ) {
+    deleteApprovedAds(input: $input, condition: $condition) {
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
+      id
       createdAt
       updatedAt
     }
@@ -123,6 +203,7 @@ export const createUserProfile = /* GraphQL */ `
         }
         nextToken
       }
+      tiktokAccountAccess
       createdAt
       updatedAt
     }
@@ -177,6 +258,7 @@ export const updateUserProfile = /* GraphQL */ `
         }
         nextToken
       }
+      tiktokAccountAccess
       createdAt
       updatedAt
     }
