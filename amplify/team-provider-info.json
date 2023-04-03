@@ -71,7 +71,9 @@
         "graphQlLambdaAuthorizerc946ef1d": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
           "s3Key": "amplify-builds/graphQlLambdaAuthorizerc946ef1d-305531662f6e64636f59-build.zip"
-        }
+        },
+        "linkTiktokAccount": {},
+        "updateUserType": {}
       },
       "hosting": {
         "amplifyhosting": {

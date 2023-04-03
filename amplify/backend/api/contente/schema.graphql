@@ -15,6 +15,24 @@ type UserProfile
   userType: USER_TYPES!
   tiktokHandler: String
   bestPractices: [BestPractices] @hasMany
+  tiktokAccountAccess: String @auth(rules: [{ allow: owner, operations: [read] }])
+}
+
+type ApprovedAds
+@model
+@aws_iam 
+{
+  creativeRequestId: String
+  identity_id: String #tiktok spark ad response
+  item_id: String #tiktok spark ad response
+  ad_id: String #tiktok ad creation
+  ad_group_id: String #tiktok ad group
+  campaing_id: String #tiktok campaign
+  advertiser_id: String #approved advertiser Id also called account id in tiktok
+  user_profile_id: String #brand user profile
+  accessToken: String # tiktok linked account access token
+  ad_report: String # json object stored after running tiktok reports against the ad_id
+  status: String # ACTIVE or IN_ACTIVE based on if brand user disables the ad and removes from campaign
 }
 
 type BestPractices 
@@ -142,3 +160,8 @@ type Query{
   sendEmail(data: EMAIL_INPUT): Boolean @function(name: "emailService-${env}")  @auth(rules: [{ allow: public }])
 }
 
+
+type Mutation{
+  linkTiktokAccount (authCode: Strin, userProfileId: String) @function(name: "linkTiktokAccount-${env}") @aws_iam @aws_cognito_user_pools
+  linkUserType (userType: USER_TYPES, profileId: String!) @function(name: "updateUserType-${env}") @aws_iam @aws_cognito_user_pools
+}
