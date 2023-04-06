@@ -12,8 +12,8 @@ type UserProfile
   description: String
   brand: [BrandProfile] @hasMany
   owner: String @auth(rules: [{ allow: owner, operations: [read] }])
-  userType: USER_TYPES!
-  tiktokHandler: String
+  userType: USER_TYPES @auth(rules: [{ allow: owner, operations: [read] }])
+  tiktokHandler: String 
   bestPractices: [BestPractices] @hasMany
   tiktokAccountAccess: String @auth(rules: [{ allow: owner, operations: [read] }])
 }
@@ -22,17 +22,18 @@ type ApprovedAds
 @model
 @aws_iam 
 {
-  creativeRequestId: String
+  id: String @index
+  creativeRequestId: String @index
   identity_id: String #tiktok spark ad response
   item_id: String #tiktok spark ad response
-  ad_id: String #tiktok ad creation
-  ad_group_id: String #tiktok ad group
-  campaing_id: String #tiktok campaign
-  advertiser_id: String #approved advertiser Id also called account id in tiktok
-  user_profile_id: String #brand user profile
+  ad_id: String @index#tiktok ad creation
+  ad_group_id: String @index#tiktok ad group
+  campaing_id: String @index #tiktok campaign
+  advertiser_id: String @index#approved advertiser Id also called account id in tiktok
+  user_profile_id: String @index #brand user profile
   accessToken: String # tiktok linked account access token
   ad_report: String # json object stored after running tiktok reports against the ad_id
-  status: String # ACTIVE or IN_ACTIVE based on if brand user disables the ad and removes from campaign
+  status: String @index# ACTIVE or IN_ACTIVE based on if brand user disables the ad and removes from campaign
 }
 
 type BestPractices 
@@ -164,4 +165,9 @@ type Query{
 type Mutation{
   linkTiktokAccount(authCode: String, userProfileId: String): Boolean @function(name: "linkTiktokAccount-${env}") @aws_iam @aws_cognito_user_pools
   linkUserType(userType: String, profileId: String): Boolean @function(name: "updateUserType-${env}") @aws_iam @aws_cognito_user_pools
+  createAds(token:String,authCode:String,advId:String,adgroupId:String,landingPageUrl:String, creativeRequestId:String ): Boolean @function(name: "createAd-${env}") @aws_iam @aws_cognito_user_pools
+  listAdGroups(token: String, advertiser_id:String,campaignId: String ): String @function(name: "listAdGroups-${env}") @aws_iam @aws_cognito_user_pools
+  listCampaigns(token: String,advertiser_id: String ): String @function(name: "listCompaigns-${env}") @aws_iam @aws_cognito_user_pools
+  getVideoFromAuthCode(token: String,advertiser_id: String, authCode: String ): String @function(name: "getVideoFromAuthCode-${env}") @aws_iam @aws_cognito_user_pools
+  
 }

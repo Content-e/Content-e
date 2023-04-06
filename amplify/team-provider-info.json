@@ -79,7 +79,11 @@
         "updateUserType": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
           "s3Key": "amplify-builds/updateUserType-3557756656334e496e72-build.zip"
-        }
+        },
+        "createAd": {},
+        "listCompaigns": {},
+        "listAdGroups": {},
+        "getVideoFromAuthCode": {}
       },
       "hosting": {
         "amplifyhosting": {

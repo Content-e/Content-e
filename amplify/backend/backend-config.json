@@ -77,7 +77,17 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "createAd": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "emailService": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getVideoFromAuthCode": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -88,6 +98,16 @@
       "service": "Lambda"
     },
     "linkTiktokAccount": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "listAdGroups": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "listCompaigns": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"

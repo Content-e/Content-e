@@ -69,7 +69,9 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            }
+            },
+            "USER_PROFILE_TABLE_NAME":"UserProfile-daf5ud4kqze7peoeykz43ykgcm-staging"
+
           }
         },
         "Role": {
@@ -160,7 +162,21 @@
                   }
                 ]
               }
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetItem",
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem"
+              ],
+              "Resource": "*"
             }
+        
           ]
         }
       }

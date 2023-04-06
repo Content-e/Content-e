@@ -1,17 +1,20 @@
 
+const {updateUserAccessToken} = require("./dynamoDb");
+const {exchangeAuthCode}  =require("./tiktokApis");
 
-/**
- * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
- */
 exports.handler = async (event) => {
-    console.log(`EVENT: ${JSON.stringify(event)}`);
-    return {
-        statusCode: 200,
-    //  Uncomment below to enable CORS requests
-    //  headers: {
-    //      "Access-Control-Allow-Origin": "*",
-    //      "Access-Control-Allow-Headers": "*"
-    //  }, 
-        body: JSON.stringify('Hello from Lambda!'),
-    };
+    try {
+        console.log(`EVENT: ${JSON.stringify(event)}`);
+        const tokens = await exchangeAuthCode(event.arguments.authCode);
+        console.log(tokens)
+        if (!tokens?.access_token ||!tokens?.advertiser_id ){
+            return false;
+        }
+        console.log("tokens: ", tokens)
+        await updateUserAccessToken(JSON.stringify(tokens),event.identity.claims.sub);
+        return true;        
+    } catch (error) {
+        console.log("linkTiktokAccount::Errors", error);
+        return false;
+    }
 };

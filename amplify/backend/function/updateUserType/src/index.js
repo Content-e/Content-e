@@ -1,17 +1,21 @@
 
+const {updateUserProfileType} = require("./dynamoDb");
 
-/**
- * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
- */
+
 exports.handler = async (event) => {
-    console.log(`EVENT: ${JSON.stringify(event)}`);
-    return {
-        statusCode: 200,
-    //  Uncomment below to enable CORS requests
-    //  headers: {
-    //      "Access-Control-Allow-Origin": "*",
-    //      "Access-Control-Allow-Headers": "*"
-    //  }, 
-        body: JSON.stringify('Hello from Lambda!'),
-    };
+    try {
+        console.log(`EVENT: ${JSON.stringify(event)}`);
+        user_types = ["CREATIVE_USER","BRAND_USER"]
+        if( !user_types.includes(event.arguments.userType)){
+            return false;
+        }
+        
+        await updateUserProfileType(event.arguments.userType,event?.identity?.claims?.sub || "d1a257d9-4eab-4466-a88d-4e52258136c2");
+        return true;        
+    } catch (error) {
+        console.log("linkTiktokAccount::Errors", error);
+        return false;
+    }
 };
+
+

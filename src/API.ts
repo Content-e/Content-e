@@ -79,7 +79,7 @@ export type UserProfile = {
   description?: string | null,
   brand?: ModelBrandProfileConnection | null,
   owner?: string | null,
-  userType: USER_TYPES,
+  userType?: USER_TYPES | null,
   tiktokHandler?: string | null,
   bestPractices?: ModelBestPracticesConnection | null,
   tiktokAccountAccess?: string | null,
@@ -280,7 +280,7 @@ export type CreateUserProfileInput = {
   userEmail: string,
   description?: string | null,
   owner?: string | null,
-  userType: USER_TYPES,
+  userType?: USER_TYPES | null,
   tiktokHandler?: string | null,
   tiktokAccountAccess?: string | null,
 };
@@ -788,7 +788,7 @@ export type DeleteUserProfileMutation = {
       nextToken?: string | null,
     } | null,
     owner?: string | null,
-    userType: USER_TYPES,
+    userType?: USER_TYPES | null,
     tiktokHandler?: string | null,
     bestPractices?:  {
       __typename: "ModelBestPracticesConnection",
@@ -945,7 +945,7 @@ export type CreateUserProfileMutation = {
       nextToken?: string | null,
     } | null,
     owner?: string | null,
-    userType: USER_TYPES,
+    userType?: USER_TYPES | null,
     tiktokHandler?: string | null,
     bestPractices?:  {
       __typename: "ModelBestPracticesConnection",
@@ -1007,7 +1007,7 @@ export type UpdateUserProfileMutation = {
       nextToken?: string | null,
     } | null,
     owner?: string | null,
-    userType: USER_TYPES,
+    userType?: USER_TYPES | null,
     tiktokHandler?: string | null,
     bestPractices?:  {
       __typename: "ModelBestPracticesConnection",
@@ -1652,7 +1652,7 @@ export type GetUserProfileQuery = {
       nextToken?: string | null,
     } | null,
     owner?: string | null,
-    userType: USER_TYPES,
+    userType?: USER_TYPES | null,
     tiktokHandler?: string | null,
     bestPractices?:  {
       __typename: "ModelBestPracticesConnection",
@@ -1713,7 +1713,7 @@ export type ListUserProfilesQuery = {
         nextToken?: string | null,
       } | null,
       owner?: string | null,
-      userType: USER_TYPES,
+      userType?: USER_TYPES | null,
       tiktokHandler?: string | null,
       bestPractices?:  {
         __typename: "ModelBestPracticesConnection",
@@ -1778,7 +1778,7 @@ export type UserProfilesByUserEmailQuery = {
         nextToken?: string | null,
       } | null,
       owner?: string | null,
-      userType: USER_TYPES,
+      userType?: USER_TYPES | null,
       tiktokHandler?: string | null,
       bestPractices?:  {
         __typename: "ModelBestPracticesConnection",
@@ -2548,7 +2548,7 @@ export type OnCreateUserProfileSubscription = {
       nextToken?: string | null,
     } | null,
     owner?: string | null,
-    userType: USER_TYPES,
+    userType?: USER_TYPES | null,
     tiktokHandler?: string | null,
     bestPractices?:  {
       __typename: "ModelBestPracticesConnection",
@@ -2610,7 +2610,7 @@ export type OnUpdateUserProfileSubscription = {
       nextToken?: string | null,
     } | null,
     owner?: string | null,
-    userType: USER_TYPES,
+    userType?: USER_TYPES | null,
     tiktokHandler?: string | null,
     bestPractices?:  {
       __typename: "ModelBestPracticesConnection",
@@ -2672,7 +2672,7 @@ export type OnDeleteUserProfileSubscription = {
       nextToken?: string | null,
     } | null,
     owner?: string | null,
-    userType: USER_TYPES,
+    userType?: USER_TYPES | null,
     tiktokHandler?: string | null,
     bestPractices?:  {
       __typename: "ModelBestPracticesConnection",
