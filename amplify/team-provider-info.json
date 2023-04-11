@@ -95,8 +95,7 @@
         "getVideoFromAuthCode": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
           "s3Key": "amplify-builds/getVideoFromAuthCode-49396e4938776f32764a-build.zip"
-        },
-        "reportGenerator": {}
+        }
       },
       "hosting": {
         "amplifyhosting": {

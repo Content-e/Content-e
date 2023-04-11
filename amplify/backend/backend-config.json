@@ -112,12 +112,6 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "reportGenerator": {
-      "build": true,
-      "dependsOn": [],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "updateUserType": {
       "build": true,
       "providerPlugin": "awscloudformation",
