@@ -62,7 +62,7 @@
       "function": {
         "GPTLambda": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
-          "s3Key": "amplify-builds/GPTLambda-726167462b6f2f4b5765-build.zip"
+          "s3Key": "amplify-builds/GPTLambda-565148426975555a5563-build.zip"
         },
         "emailService": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
@@ -95,7 +95,8 @@
         "getVideoFromAuthCode": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
           "s3Key": "amplify-builds/getVideoFromAuthCode-49396e4938776f32764a-build.zip"
-        }
+        },
+        "reportGenerator": {}
       },
       "hosting": {
         "amplifyhosting": {

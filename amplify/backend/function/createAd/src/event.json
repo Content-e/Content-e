@@ -6,5 +6,6 @@
     "adgroupId": "1762440321181698",
     "landingPageUrl": "www.edcsquared.com",
     "creativeRequestId": "21925e85-6137-49b8-8ea4-62c5f61c6464"
-  }
+  },
+  "identity":{"claims":{"sub":"2209ea1c-15a4-497e-acb1-70e4292f057e"}}
 }
