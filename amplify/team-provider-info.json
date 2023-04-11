@@ -62,7 +62,7 @@
       "function": {
         "GPTLambda": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
-          "s3Key": "amplify-builds/GPTLambda-5974695454704a655256-build.zip"
+          "s3Key": "amplify-builds/GPTLambda-726167462b6f2f4b5765-build.zip"
         },
         "emailService": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
@@ -74,16 +74,28 @@
         },
         "linkTiktokAccount": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
-          "s3Key": "amplify-builds/linkTiktokAccount-6c2b507832754a64454d-build.zip"
+          "s3Key": "amplify-builds/linkTiktokAccount-643041424f477a647952-build.zip"
         },
         "updateUserType": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
-          "s3Key": "amplify-builds/updateUserType-3557756656334e496e72-build.zip"
+          "s3Key": "amplify-builds/updateUserType-77764b41336343785a74-build.zip"
         },
-        "createAd": {},
-        "listCompaigns": {},
-        "listAdGroups": {},
-        "getVideoFromAuthCode": {}
+        "createAd": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/createAd-683866414b4579355642-build.zip"
+        },
+        "listCompaigns": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/listCompaigns-5667566a6d5973364a57-build.zip"
+        },
+        "listAdGroups": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/listAdGroups-757537684b6939344f4f-build.zip"
+        },
+        "getVideoFromAuthCode": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/getVideoFromAuthCode-49396e4938776f32764a-build.zip"
+        }
       },
       "hosting": {
         "amplifyhosting": {

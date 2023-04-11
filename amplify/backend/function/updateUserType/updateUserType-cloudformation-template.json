@@ -70,8 +70,7 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "USER_PROFILE_TABLE_NAME":"UserProfile-daf5ud4kqze7peoeykz43ykgcm-staging"
-
+            "USER_PROFILE_TABLE_NAME": "UserProfile-daf5ud4kqze7peoeykz43ykgcm-staging"
           }
         },
         "Role": {
@@ -176,7 +175,6 @@
               ],
               "Resource": "*"
             }
-        
           ]
         }
       }

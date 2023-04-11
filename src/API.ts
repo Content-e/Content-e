@@ -174,6 +174,7 @@ export type BestPractices = {
 };
 
 export type CreateApprovedAdsInput = {
+  id?: string | null,
   creativeRequestId?: string | null,
   identity_id?: string | null,
   item_id?: string | null,
@@ -185,7 +186,6 @@ export type CreateApprovedAdsInput = {
   accessToken?: string | null,
   ad_report?: string | null,
   status?: string | null,
-  id?: string | null,
 };
 
 export type ModelApprovedAdsConditionInput = {
@@ -207,6 +207,7 @@ export type ModelApprovedAdsConditionInput = {
 
 export type ApprovedAds = {
   __typename: "ApprovedAds",
+  id?: string | null,
   creativeRequestId?: string | null,
   identity_id?: string | null,
   item_id?: string | null,
@@ -218,12 +219,12 @@ export type ApprovedAds = {
   accessToken?: string | null,
   ad_report?: string | null,
   status?: string | null,
-  id: string,
   createdAt: string,
   updatedAt: string,
 };
 
 export type UpdateApprovedAdsInput = {
+  id: string,
   creativeRequestId?: string | null,
   identity_id?: string | null,
   item_id?: string | null,
@@ -235,7 +236,6 @@ export type UpdateApprovedAdsInput = {
   accessToken?: string | null,
   ad_report?: string | null,
   status?: string | null,
-  id: string,
 };
 
 export type DeleteApprovedAdsInput = {
@@ -506,6 +506,7 @@ export enum GPT_RESPONSE_TYPE {
 
 
 export type ModelApprovedAdsFilterInput = {
+  id?: ModelStringInput | null,
   creativeRequestId?: ModelStringInput | null,
   identity_id?: ModelStringInput | null,
   item_id?: ModelStringInput | null,
@@ -528,6 +529,12 @@ export type ModelApprovedAdsConnection = {
   nextToken?: string | null,
 };
 
+export enum ModelSortDirection {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+
+
 export type ModelUserProfileFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -547,12 +554,6 @@ export type ModelUserProfileConnection = {
   items:  Array<UserProfile | null >,
   nextToken?: string | null,
 };
-
-export enum ModelSortDirection {
-  ASC = "ASC",
-  DESC = "DESC",
-}
-
 
 export type ModelBestPracticesFilterInput = {
   id?: ModelIDInput | null,
@@ -619,6 +620,7 @@ export type EMAIL_INPUT = {
 };
 
 export type ModelSubscriptionApprovedAdsFilterInput = {
+  id?: ModelSubscriptionStringInput | null,
   creativeRequestId?: ModelSubscriptionStringInput | null,
   identity_id?: ModelSubscriptionStringInput | null,
   item_id?: ModelSubscriptionStringInput | null,
@@ -750,6 +752,48 @@ export type LinkUserTypeMutation = {
   linkUserType?: boolean | null,
 };
 
+export type CreateAdsMutationVariables = {
+  token?: string | null,
+  authCode?: string | null,
+  advId?: string | null,
+  adgroupId?: string | null,
+  landingPageUrl?: string | null,
+  creativeRequestId?: string | null,
+};
+
+export type CreateAdsMutation = {
+  createAds?: boolean | null,
+};
+
+export type ListAdGroupsMutationVariables = {
+  token?: string | null,
+  advertiser_id?: string | null,
+  campaignId?: string | null,
+};
+
+export type ListAdGroupsMutation = {
+  listAdGroups?: string | null,
+};
+
+export type ListCampaignsMutationVariables = {
+  token?: string | null,
+  advertiser_id?: string | null,
+};
+
+export type ListCampaignsMutation = {
+  listCampaigns?: string | null,
+};
+
+export type GetVideoFromAuthCodeMutationVariables = {
+  token?: string | null,
+  advertiser_id?: string | null,
+  authCode?: string | null,
+};
+
+export type GetVideoFromAuthCodeMutation = {
+  getVideoFromAuthCode?: string | null,
+};
+
 export type DeleteUserProfileMutationVariables = {
   input: DeleteUserProfileInput,
   condition?: ModelUserProfileConditionInput | null,
@@ -820,6 +864,7 @@ export type CreateApprovedAdsMutationVariables = {
 export type CreateApprovedAdsMutation = {
   createApprovedAds?:  {
     __typename: "ApprovedAds",
+    id?: string | null,
     creativeRequestId?: string | null,
     identity_id?: string | null,
     item_id?: string | null,
@@ -831,7 +876,6 @@ export type CreateApprovedAdsMutation = {
     accessToken?: string | null,
     ad_report?: string | null,
     status?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -845,6 +889,7 @@ export type UpdateApprovedAdsMutationVariables = {
 export type UpdateApprovedAdsMutation = {
   updateApprovedAds?:  {
     __typename: "ApprovedAds",
+    id?: string | null,
     creativeRequestId?: string | null,
     identity_id?: string | null,
     item_id?: string | null,
@@ -856,7 +901,6 @@ export type UpdateApprovedAdsMutation = {
     accessToken?: string | null,
     ad_report?: string | null,
     status?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -870,6 +914,7 @@ export type DeleteApprovedAdsMutationVariables = {
 export type DeleteApprovedAdsMutation = {
   deleteApprovedAds?:  {
     __typename: "ApprovedAds",
+    id?: string | null,
     creativeRequestId?: string | null,
     identity_id?: string | null,
     item_id?: string | null,
@@ -881,7 +926,6 @@ export type DeleteApprovedAdsMutation = {
     accessToken?: string | null,
     ad_report?: string | null,
     status?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -1568,6 +1612,7 @@ export type GetApprovedAdsQueryVariables = {
 export type GetApprovedAdsQuery = {
   getApprovedAds?:  {
     __typename: "ApprovedAds",
+    id?: string | null,
     creativeRequestId?: string | null,
     identity_id?: string | null,
     item_id?: string | null,
@@ -1579,7 +1624,6 @@ export type GetApprovedAdsQuery = {
     accessToken?: string | null,
     ad_report?: string | null,
     status?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -1596,6 +1640,7 @@ export type ListApprovedAdsQuery = {
     __typename: "ModelApprovedAdsConnection",
     items:  Array< {
       __typename: "ApprovedAds",
+      id?: string | null,
       creativeRequestId?: string | null,
       identity_id?: string | null,
       item_id?: string | null,
@@ -1607,7 +1652,262 @@ export type ListApprovedAdsQuery = {
       accessToken?: string | null,
       ad_report?: string | null,
       status?: string | null,
-      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type ApprovedAdsByIdQueryVariables = {
+  id: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelApprovedAdsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ApprovedAdsByIdQuery = {
+  approvedAdsById?:  {
+    __typename: "ModelApprovedAdsConnection",
+    items:  Array< {
+      __typename: "ApprovedAds",
+      id?: string | null,
+      creativeRequestId?: string | null,
+      identity_id?: string | null,
+      item_id?: string | null,
+      ad_id?: string | null,
+      ad_group_id?: string | null,
+      campaing_id?: string | null,
+      advertiser_id?: string | null,
+      user_profile_id?: string | null,
+      accessToken?: string | null,
+      ad_report?: string | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type ApprovedAdsByCreativeRequestIdQueryVariables = {
+  creativeRequestId: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelApprovedAdsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ApprovedAdsByCreativeRequestIdQuery = {
+  approvedAdsByCreativeRequestId?:  {
+    __typename: "ModelApprovedAdsConnection",
+    items:  Array< {
+      __typename: "ApprovedAds",
+      id?: string | null,
+      creativeRequestId?: string | null,
+      identity_id?: string | null,
+      item_id?: string | null,
+      ad_id?: string | null,
+      ad_group_id?: string | null,
+      campaing_id?: string | null,
+      advertiser_id?: string | null,
+      user_profile_id?: string | null,
+      accessToken?: string | null,
+      ad_report?: string | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type ApprovedAdsByAd_idQueryVariables = {
+  ad_id: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelApprovedAdsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ApprovedAdsByAd_idQuery = {
+  approvedAdsByAd_id?:  {
+    __typename: "ModelApprovedAdsConnection",
+    items:  Array< {
+      __typename: "ApprovedAds",
+      id?: string | null,
+      creativeRequestId?: string | null,
+      identity_id?: string | null,
+      item_id?: string | null,
+      ad_id?: string | null,
+      ad_group_id?: string | null,
+      campaing_id?: string | null,
+      advertiser_id?: string | null,
+      user_profile_id?: string | null,
+      accessToken?: string | null,
+      ad_report?: string | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type ApprovedAdsByAd_group_idQueryVariables = {
+  ad_group_id: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelApprovedAdsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ApprovedAdsByAd_group_idQuery = {
+  approvedAdsByAd_group_id?:  {
+    __typename: "ModelApprovedAdsConnection",
+    items:  Array< {
+      __typename: "ApprovedAds",
+      id?: string | null,
+      creativeRequestId?: string | null,
+      identity_id?: string | null,
+      item_id?: string | null,
+      ad_id?: string | null,
+      ad_group_id?: string | null,
+      campaing_id?: string | null,
+      advertiser_id?: string | null,
+      user_profile_id?: string | null,
+      accessToken?: string | null,
+      ad_report?: string | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type ApprovedAdsByCampaing_idQueryVariables = {
+  campaing_id: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelApprovedAdsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ApprovedAdsByCampaing_idQuery = {
+  approvedAdsByCampaing_id?:  {
+    __typename: "ModelApprovedAdsConnection",
+    items:  Array< {
+      __typename: "ApprovedAds",
+      id?: string | null,
+      creativeRequestId?: string | null,
+      identity_id?: string | null,
+      item_id?: string | null,
+      ad_id?: string | null,
+      ad_group_id?: string | null,
+      campaing_id?: string | null,
+      advertiser_id?: string | null,
+      user_profile_id?: string | null,
+      accessToken?: string | null,
+      ad_report?: string | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type ApprovedAdsByAdvertiser_idQueryVariables = {
+  advertiser_id: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelApprovedAdsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ApprovedAdsByAdvertiser_idQuery = {
+  approvedAdsByAdvertiser_id?:  {
+    __typename: "ModelApprovedAdsConnection",
+    items:  Array< {
+      __typename: "ApprovedAds",
+      id?: string | null,
+      creativeRequestId?: string | null,
+      identity_id?: string | null,
+      item_id?: string | null,
+      ad_id?: string | null,
+      ad_group_id?: string | null,
+      campaing_id?: string | null,
+      advertiser_id?: string | null,
+      user_profile_id?: string | null,
+      accessToken?: string | null,
+      ad_report?: string | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type ApprovedAdsByUser_profile_idQueryVariables = {
+  user_profile_id: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelApprovedAdsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ApprovedAdsByUser_profile_idQuery = {
+  approvedAdsByUser_profile_id?:  {
+    __typename: "ModelApprovedAdsConnection",
+    items:  Array< {
+      __typename: "ApprovedAds",
+      id?: string | null,
+      creativeRequestId?: string | null,
+      identity_id?: string | null,
+      item_id?: string | null,
+      ad_id?: string | null,
+      ad_group_id?: string | null,
+      campaing_id?: string | null,
+      advertiser_id?: string | null,
+      user_profile_id?: string | null,
+      accessToken?: string | null,
+      ad_report?: string | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type ApprovedAdsByStatusQueryVariables = {
+  status: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelApprovedAdsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ApprovedAdsByStatusQuery = {
+  approvedAdsByStatus?:  {
+    __typename: "ModelApprovedAdsConnection",
+    items:  Array< {
+      __typename: "ApprovedAds",
+      id?: string | null,
+      creativeRequestId?: string | null,
+      identity_id?: string | null,
+      item_id?: string | null,
+      ad_id?: string | null,
+      ad_group_id?: string | null,
+      campaing_id?: string | null,
+      advertiser_id?: string | null,
+      user_profile_id?: string | null,
+      accessToken?: string | null,
+      ad_report?: string | null,
+      status?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -2445,6 +2745,7 @@ export type OnCreateApprovedAdsSubscriptionVariables = {
 export type OnCreateApprovedAdsSubscription = {
   onCreateApprovedAds?:  {
     __typename: "ApprovedAds",
+    id?: string | null,
     creativeRequestId?: string | null,
     identity_id?: string | null,
     item_id?: string | null,
@@ -2456,7 +2757,6 @@ export type OnCreateApprovedAdsSubscription = {
     accessToken?: string | null,
     ad_report?: string | null,
     status?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -2469,6 +2769,7 @@ export type OnUpdateApprovedAdsSubscriptionVariables = {
 export type OnUpdateApprovedAdsSubscription = {
   onUpdateApprovedAds?:  {
     __typename: "ApprovedAds",
+    id?: string | null,
     creativeRequestId?: string | null,
     identity_id?: string | null,
     item_id?: string | null,
@@ -2480,7 +2781,6 @@ export type OnUpdateApprovedAdsSubscription = {
     accessToken?: string | null,
     ad_report?: string | null,
     status?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -2493,6 +2793,7 @@ export type OnDeleteApprovedAdsSubscriptionVariables = {
 export type OnDeleteApprovedAdsSubscription = {
   onDeleteApprovedAds?:  {
     __typename: "ApprovedAds",
+    id?: string | null,
     creativeRequestId?: string | null,
     identity_id?: string | null,
     item_id?: string | null,
@@ -2504,7 +2805,6 @@ export type OnDeleteApprovedAdsSubscription = {
     accessToken?: string | null,
     ad_report?: string | null,
     status?: string | null,
-    id: string,
     createdAt: string,
     updatedAt: string,
   } | null,

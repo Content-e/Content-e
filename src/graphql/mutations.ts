@@ -12,6 +12,56 @@ export const linkUserType = /* GraphQL */ `
     linkUserType(userType: $userType, profileId: $profileId)
   }
 `;
+export const createAds = /* GraphQL */ `
+  mutation CreateAds(
+    $token: String
+    $authCode: String
+    $advId: String
+    $adgroupId: String
+    $landingPageUrl: String
+    $creativeRequestId: String
+  ) {
+    createAds(
+      token: $token
+      authCode: $authCode
+      advId: $advId
+      adgroupId: $adgroupId
+      landingPageUrl: $landingPageUrl
+      creativeRequestId: $creativeRequestId
+    )
+  }
+`;
+export const listAdGroups = /* GraphQL */ `
+  mutation ListAdGroups(
+    $token: String
+    $advertiser_id: String
+    $campaignId: String
+  ) {
+    listAdGroups(
+      token: $token
+      advertiser_id: $advertiser_id
+      campaignId: $campaignId
+    )
+  }
+`;
+export const listCampaigns = /* GraphQL */ `
+  mutation ListCampaigns($token: String, $advertiser_id: String) {
+    listCampaigns(token: $token, advertiser_id: $advertiser_id)
+  }
+`;
+export const getVideoFromAuthCode = /* GraphQL */ `
+  mutation GetVideoFromAuthCode(
+    $token: String
+    $advertiser_id: String
+    $authCode: String
+  ) {
+    getVideoFromAuthCode(
+      token: $token
+      advertiser_id: $advertiser_id
+      authCode: $authCode
+    )
+  }
+`;
 export const deleteUserProfile = /* GraphQL */ `
   mutation DeleteUserProfile(
     $input: DeleteUserProfileInput!
@@ -73,6 +123,7 @@ export const createApprovedAds = /* GraphQL */ `
     $condition: ModelApprovedAdsConditionInput
   ) {
     createApprovedAds(input: $input, condition: $condition) {
+      id
       creativeRequestId
       identity_id
       item_id
@@ -84,7 +135,6 @@ export const createApprovedAds = /* GraphQL */ `
       accessToken
       ad_report
       status
-      id
       createdAt
       updatedAt
     }
@@ -96,6 +146,7 @@ export const updateApprovedAds = /* GraphQL */ `
     $condition: ModelApprovedAdsConditionInput
   ) {
     updateApprovedAds(input: $input, condition: $condition) {
+      id
       creativeRequestId
       identity_id
       item_id
@@ -107,7 +158,6 @@ export const updateApprovedAds = /* GraphQL */ `
       accessToken
       ad_report
       status
-      id
       createdAt
       updatedAt
     }
@@ -119,6 +169,7 @@ export const deleteApprovedAds = /* GraphQL */ `
     $condition: ModelApprovedAdsConditionInput
   ) {
     deleteApprovedAds(input: $input, condition: $condition) {
+      id
       creativeRequestId
       identity_id
       item_id
@@ -130,7 +181,6 @@ export const deleteApprovedAds = /* GraphQL */ `
       accessToken
       ad_report
       status
-      id
       createdAt
       updatedAt
     }

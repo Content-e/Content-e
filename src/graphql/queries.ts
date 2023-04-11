@@ -23,6 +23,7 @@ export const getGPTresponse = /* GraphQL */ `
 export const getApprovedAds = /* GraphQL */ `
   query GetApprovedAds($id: ID!) {
     getApprovedAds(id: $id) {
+      id
       creativeRequestId
       identity_id
       item_id
@@ -34,7 +35,6 @@ export const getApprovedAds = /* GraphQL */ `
       accessToken
       ad_report
       status
-      id
       createdAt
       updatedAt
     }
@@ -48,6 +48,7 @@ export const listApprovedAds = /* GraphQL */ `
   ) {
     listApprovedAds(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
+        id
         creativeRequestId
         identity_id
         item_id
@@ -59,7 +60,286 @@ export const listApprovedAds = /* GraphQL */ `
         accessToken
         ad_report
         status
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const approvedAdsById = /* GraphQL */ `
+  query ApprovedAdsById(
+    $id: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelApprovedAdsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    approvedAdsById(
+      id: $id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
         id
+        creativeRequestId
+        identity_id
+        item_id
+        ad_id
+        ad_group_id
+        campaing_id
+        advertiser_id
+        user_profile_id
+        accessToken
+        ad_report
+        status
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const approvedAdsByCreativeRequestId = /* GraphQL */ `
+  query ApprovedAdsByCreativeRequestId(
+    $creativeRequestId: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelApprovedAdsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    approvedAdsByCreativeRequestId(
+      creativeRequestId: $creativeRequestId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        creativeRequestId
+        identity_id
+        item_id
+        ad_id
+        ad_group_id
+        campaing_id
+        advertiser_id
+        user_profile_id
+        accessToken
+        ad_report
+        status
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const approvedAdsByAd_id = /* GraphQL */ `
+  query ApprovedAdsByAd_id(
+    $ad_id: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelApprovedAdsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    approvedAdsByAd_id(
+      ad_id: $ad_id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        creativeRequestId
+        identity_id
+        item_id
+        ad_id
+        ad_group_id
+        campaing_id
+        advertiser_id
+        user_profile_id
+        accessToken
+        ad_report
+        status
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const approvedAdsByAd_group_id = /* GraphQL */ `
+  query ApprovedAdsByAd_group_id(
+    $ad_group_id: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelApprovedAdsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    approvedAdsByAd_group_id(
+      ad_group_id: $ad_group_id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        creativeRequestId
+        identity_id
+        item_id
+        ad_id
+        ad_group_id
+        campaing_id
+        advertiser_id
+        user_profile_id
+        accessToken
+        ad_report
+        status
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const approvedAdsByCampaing_id = /* GraphQL */ `
+  query ApprovedAdsByCampaing_id(
+    $campaing_id: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelApprovedAdsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    approvedAdsByCampaing_id(
+      campaing_id: $campaing_id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        creativeRequestId
+        identity_id
+        item_id
+        ad_id
+        ad_group_id
+        campaing_id
+        advertiser_id
+        user_profile_id
+        accessToken
+        ad_report
+        status
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const approvedAdsByAdvertiser_id = /* GraphQL */ `
+  query ApprovedAdsByAdvertiser_id(
+    $advertiser_id: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelApprovedAdsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    approvedAdsByAdvertiser_id(
+      advertiser_id: $advertiser_id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        creativeRequestId
+        identity_id
+        item_id
+        ad_id
+        ad_group_id
+        campaing_id
+        advertiser_id
+        user_profile_id
+        accessToken
+        ad_report
+        status
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const approvedAdsByUser_profile_id = /* GraphQL */ `
+  query ApprovedAdsByUser_profile_id(
+    $user_profile_id: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelApprovedAdsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    approvedAdsByUser_profile_id(
+      user_profile_id: $user_profile_id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        creativeRequestId
+        identity_id
+        item_id
+        ad_id
+        ad_group_id
+        campaing_id
+        advertiser_id
+        user_profile_id
+        accessToken
+        ad_report
+        status
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const approvedAdsByStatus = /* GraphQL */ `
+  query ApprovedAdsByStatus(
+    $status: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelApprovedAdsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    approvedAdsByStatus(
+      status: $status
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        creativeRequestId
+        identity_id
+        item_id
+        ad_id
+        ad_group_id
+        campaing_id
+        advertiser_id
+        user_profile_id
+        accessToken
+        ad_report
+        status
         createdAt
         updatedAt
       }

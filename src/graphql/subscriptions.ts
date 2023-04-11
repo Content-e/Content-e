@@ -7,6 +7,7 @@ export const onCreateApprovedAds = /* GraphQL */ `
     $filter: ModelSubscriptionApprovedAdsFilterInput
   ) {
     onCreateApprovedAds(filter: $filter) {
+      id
       creativeRequestId
       identity_id
       item_id
@@ -18,7 +19,6 @@ export const onCreateApprovedAds = /* GraphQL */ `
       accessToken
       ad_report
       status
-      id
       createdAt
       updatedAt
     }
@@ -29,6 +29,7 @@ export const onUpdateApprovedAds = /* GraphQL */ `
     $filter: ModelSubscriptionApprovedAdsFilterInput
   ) {
     onUpdateApprovedAds(filter: $filter) {
+      id
       creativeRequestId
       identity_id
       item_id
@@ -40,7 +41,6 @@ export const onUpdateApprovedAds = /* GraphQL */ `
       accessToken
       ad_report
       status
-      id
       createdAt
       updatedAt
     }
@@ -51,6 +51,7 @@ export const onDeleteApprovedAds = /* GraphQL */ `
     $filter: ModelSubscriptionApprovedAdsFilterInput
   ) {
     onDeleteApprovedAds(filter: $filter) {
+      id
       creativeRequestId
       identity_id
       item_id
@@ -62,7 +63,6 @@ export const onDeleteApprovedAds = /* GraphQL */ `
       accessToken
       ad_report
       status
-      id
       createdAt
       updatedAt
     }
