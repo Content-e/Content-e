@@ -376,6 +376,8 @@ export const createBrandProfile = /* GraphQL */ `
           brandBriefDetails
           creativeInspirations
           active
+          campaignId
+          adgroupId
           creativeRequests {
             nextToken
           }
@@ -433,6 +435,8 @@ export const updateBrandProfile = /* GraphQL */ `
           brandBriefDetails
           creativeInspirations
           active
+          campaignId
+          adgroupId
           creativeRequests {
             nextToken
           }
@@ -490,6 +494,8 @@ export const deleteBrandProfile = /* GraphQL */ `
           brandBriefDetails
           creativeInspirations
           active
+          campaignId
+          adgroupId
           creativeRequests {
             nextToken
           }
@@ -534,6 +540,8 @@ export const createBrandBrief = /* GraphQL */ `
       brandBriefDetails
       creativeInspirations
       active
+      campaignId
+      adgroupId
       creativeRequests {
         items {
           brandBriefId
@@ -571,6 +579,8 @@ export const createBrandBrief = /* GraphQL */ `
             brandBriefDetails
             creativeInspirations
             active
+            campaignId
+            adgroupId
             brandId
             createdAt
             updatedAt
@@ -599,6 +609,8 @@ export const updateBrandBrief = /* GraphQL */ `
       brandBriefDetails
       creativeInspirations
       active
+      campaignId
+      adgroupId
       creativeRequests {
         items {
           brandBriefId
@@ -636,6 +648,8 @@ export const updateBrandBrief = /* GraphQL */ `
             brandBriefDetails
             creativeInspirations
             active
+            campaignId
+            adgroupId
             brandId
             createdAt
             updatedAt
@@ -664,6 +678,8 @@ export const deleteBrandBrief = /* GraphQL */ `
       brandBriefDetails
       creativeInspirations
       active
+      campaignId
+      adgroupId
       creativeRequests {
         items {
           brandBriefId
@@ -701,6 +717,8 @@ export const deleteBrandBrief = /* GraphQL */ `
             brandBriefDetails
             creativeInspirations
             active
+            campaignId
+            adgroupId
             brandId
             createdAt
             updatedAt

@@ -312,6 +312,8 @@ export const onCreateBrandProfile = /* GraphQL */ `
           brandBriefDetails
           creativeInspirations
           active
+          campaignId
+          adgroupId
           creativeRequests {
             nextToken
           }
@@ -368,6 +370,8 @@ export const onUpdateBrandProfile = /* GraphQL */ `
           brandBriefDetails
           creativeInspirations
           active
+          campaignId
+          adgroupId
           creativeRequests {
             nextToken
           }
@@ -424,6 +428,8 @@ export const onDeleteBrandProfile = /* GraphQL */ `
           brandBriefDetails
           creativeInspirations
           active
+          campaignId
+          adgroupId
           creativeRequests {
             nextToken
           }
@@ -467,6 +473,8 @@ export const onCreateBrandBrief = /* GraphQL */ `
       brandBriefDetails
       creativeInspirations
       active
+      campaignId
+      adgroupId
       creativeRequests {
         items {
           brandBriefId
@@ -504,6 +512,8 @@ export const onCreateBrandBrief = /* GraphQL */ `
             brandBriefDetails
             creativeInspirations
             active
+            campaignId
+            adgroupId
             brandId
             createdAt
             updatedAt
@@ -531,6 +541,8 @@ export const onUpdateBrandBrief = /* GraphQL */ `
       brandBriefDetails
       creativeInspirations
       active
+      campaignId
+      adgroupId
       creativeRequests {
         items {
           brandBriefId
@@ -568,6 +580,8 @@ export const onUpdateBrandBrief = /* GraphQL */ `
             brandBriefDetails
             creativeInspirations
             active
+            campaignId
+            adgroupId
             brandId
             createdAt
             updatedAt
@@ -595,6 +609,8 @@ export const onDeleteBrandBrief = /* GraphQL */ `
       brandBriefDetails
       creativeInspirations
       active
+      campaignId
+      adgroupId
       creativeRequests {
         items {
           brandBriefId
@@ -632,6 +648,8 @@ export const onDeleteBrandBrief = /* GraphQL */ `
             brandBriefDetails
             creativeInspirations
             active
+            campaignId
+            adgroupId
             brandId
             createdAt
             updatedAt

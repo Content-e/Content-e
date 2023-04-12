@@ -609,6 +609,8 @@ export const getBrandProfile = /* GraphQL */ `
           brandBriefDetails
           creativeInspirations
           active
+          campaignId
+          adgroupId
           creativeRequests {
             nextToken
           }
@@ -668,6 +670,8 @@ export const listBrandProfiles = /* GraphQL */ `
             brandBriefDetails
             creativeInspirations
             active
+            campaignId
+            adgroupId
             brandId
             createdAt
             updatedAt
@@ -718,6 +722,8 @@ export const brandProfilesByUserEmail = /* GraphQL */ `
             brandBriefDetails
             creativeInspirations
             active
+            campaignId
+            adgroupId
             brandId
             createdAt
             updatedAt
@@ -742,6 +748,8 @@ export const getBrandBrief = /* GraphQL */ `
       brandBriefDetails
       creativeInspirations
       active
+      campaignId
+      adgroupId
       creativeRequests {
         items {
           brandBriefId
@@ -779,6 +787,8 @@ export const getBrandBrief = /* GraphQL */ `
             brandBriefDetails
             creativeInspirations
             active
+            campaignId
+            adgroupId
             brandId
             createdAt
             updatedAt
@@ -809,6 +819,8 @@ export const listBrandBriefs = /* GraphQL */ `
         brandBriefDetails
         creativeInspirations
         active
+        campaignId
+        adgroupId
         creativeRequests {
           items {
             brandBriefId
@@ -874,6 +886,8 @@ export const brandBriefsByVertical = /* GraphQL */ `
         brandBriefDetails
         creativeInspirations
         active
+        campaignId
+        adgroupId
         creativeRequests {
           items {
             brandBriefId
@@ -939,6 +953,8 @@ export const brandBriefsByBrandId = /* GraphQL */ `
         brandBriefDetails
         creativeInspirations
         active
+        campaignId
+        adgroupId
         creativeRequests {
           items {
             brandBriefId

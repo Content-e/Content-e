@@ -127,6 +127,8 @@ export type BrandBrief = {
   brandBriefDetails?: string | null,
   creativeInspirations?: Array< string | null > | null,
   active?: boolean | null,
+  campaignId?: string | null,
+  adgroupId?: string | null,
   creativeRequests?: ModelCreativeRequestConnection | null,
   brandId: string,
   brandProfile?: BrandProfile | null,
@@ -375,6 +377,8 @@ export type CreateBrandBriefInput = {
   brandBriefDetails?: string | null,
   creativeInspirations?: Array< string | null > | null,
   active?: boolean | null,
+  campaignId?: string | null,
+  adgroupId?: string | null,
   brandId: string,
 };
 
@@ -385,6 +389,8 @@ export type ModelBrandBriefConditionInput = {
   brandBriefDetails?: ModelStringInput | null,
   creativeInspirations?: ModelStringInput | null,
   active?: ModelBooleanInput | null,
+  campaignId?: ModelStringInput | null,
+  adgroupId?: ModelStringInput | null,
   brandId?: ModelIDInput | null,
   and?: Array< ModelBrandBriefConditionInput | null > | null,
   or?: Array< ModelBrandBriefConditionInput | null > | null,
@@ -406,6 +412,8 @@ export type UpdateBrandBriefInput = {
   brandBriefDetails?: string | null,
   creativeInspirations?: Array< string | null > | null,
   active?: boolean | null,
+  campaignId?: string | null,
+  adgroupId?: string | null,
   brandId?: string | null,
 };
 
@@ -594,6 +602,8 @@ export type ModelBrandBriefFilterInput = {
   brandBriefDetails?: ModelStringInput | null,
   creativeInspirations?: ModelStringInput | null,
   active?: ModelBooleanInput | null,
+  campaignId?: ModelStringInput | null,
+  adgroupId?: ModelStringInput | null,
   brandId?: ModelIDInput | null,
   and?: Array< ModelBrandBriefFilterInput | null > | null,
   or?: Array< ModelBrandBriefFilterInput | null > | null,
@@ -712,6 +722,8 @@ export type ModelSubscriptionBrandBriefFilterInput = {
   brandBriefDetails?: ModelSubscriptionStringInput | null,
   creativeInspirations?: ModelSubscriptionStringInput | null,
   active?: ModelSubscriptionBooleanInput | null,
+  campaignId?: ModelSubscriptionStringInput | null,
+  adgroupId?: ModelSubscriptionStringInput | null,
   brandId?: ModelSubscriptionIDInput | null,
   and?: Array< ModelSubscriptionBrandBriefFilterInput | null > | null,
   or?: Array< ModelSubscriptionBrandBriefFilterInput | null > | null,
@@ -1145,6 +1157,8 @@ export type CreateBrandProfileMutation = {
         brandBriefDetails?: string | null,
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
+        campaignId?: string | null,
+        adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
           nextToken?: string | null,
@@ -1208,6 +1222,8 @@ export type UpdateBrandProfileMutation = {
         brandBriefDetails?: string | null,
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
+        campaignId?: string | null,
+        adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
           nextToken?: string | null,
@@ -1271,6 +1287,8 @@ export type DeleteBrandProfileMutation = {
         brandBriefDetails?: string | null,
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
+        campaignId?: string | null,
+        adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
           nextToken?: string | null,
@@ -1319,6 +1337,8 @@ export type CreateBrandBriefMutation = {
     brandBriefDetails?: string | null,
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
+    campaignId?: string | null,
+    adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
       items:  Array< {
@@ -1361,6 +1381,8 @@ export type CreateBrandBriefMutation = {
           brandBriefDetails?: string | null,
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
+          campaignId?: string | null,
+          adgroupId?: string | null,
           brandId: string,
           createdAt: string,
           updatedAt: string,
@@ -1391,6 +1413,8 @@ export type UpdateBrandBriefMutation = {
     brandBriefDetails?: string | null,
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
+    campaignId?: string | null,
+    adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
       items:  Array< {
@@ -1433,6 +1457,8 @@ export type UpdateBrandBriefMutation = {
           brandBriefDetails?: string | null,
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
+          campaignId?: string | null,
+          adgroupId?: string | null,
           brandId: string,
           createdAt: string,
           updatedAt: string,
@@ -1463,6 +1489,8 @@ export type DeleteBrandBriefMutation = {
     brandBriefDetails?: string | null,
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
+    campaignId?: string | null,
+    adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
       items:  Array< {
@@ -1505,6 +1533,8 @@ export type DeleteBrandBriefMutation = {
           brandBriefDetails?: string | null,
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
+          campaignId?: string | null,
+          adgroupId?: string | null,
           brandId: string,
           createdAt: string,
           updatedAt: string,
@@ -2204,6 +2234,8 @@ export type GetBrandProfileQuery = {
         brandBriefDetails?: string | null,
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
+        campaignId?: string | null,
+        adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
           nextToken?: string | null,
@@ -2270,6 +2302,8 @@ export type ListBrandProfilesQuery = {
           brandBriefDetails?: string | null,
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
+          campaignId?: string | null,
+          adgroupId?: string | null,
           brandId: string,
           createdAt: string,
           updatedAt: string,
@@ -2319,6 +2353,8 @@ export type BrandProfilesByUserEmailQuery = {
           brandBriefDetails?: string | null,
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
+          campaignId?: string | null,
+          adgroupId?: string | null,
           brandId: string,
           createdAt: string,
           updatedAt: string,
@@ -2347,6 +2383,8 @@ export type GetBrandBriefQuery = {
     brandBriefDetails?: string | null,
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
+    campaignId?: string | null,
+    adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
       items:  Array< {
@@ -2389,6 +2427,8 @@ export type GetBrandBriefQuery = {
           brandBriefDetails?: string | null,
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
+          campaignId?: string | null,
+          adgroupId?: string | null,
           brandId: string,
           createdAt: string,
           updatedAt: string,
@@ -2422,6 +2462,8 @@ export type ListBrandBriefsQuery = {
       brandBriefDetails?: string | null,
       creativeInspirations?: Array< string | null > | null,
       active?: boolean | null,
+      campaignId?: string | null,
+      adgroupId?: string | null,
       creativeRequests?:  {
         __typename: "ModelCreativeRequestConnection",
         items:  Array< {
@@ -2488,6 +2530,8 @@ export type BrandBriefsByVerticalQuery = {
       brandBriefDetails?: string | null,
       creativeInspirations?: Array< string | null > | null,
       active?: boolean | null,
+      campaignId?: string | null,
+      adgroupId?: string | null,
       creativeRequests?:  {
         __typename: "ModelCreativeRequestConnection",
         items:  Array< {
@@ -2554,6 +2598,8 @@ export type BrandBriefsByBrandIdQuery = {
       brandBriefDetails?: string | null,
       creativeInspirations?: Array< string | null > | null,
       active?: boolean | null,
+      campaignId?: string | null,
+      adgroupId?: string | null,
       creativeRequests?:  {
         __typename: "ModelCreativeRequestConnection",
         items:  Array< {
@@ -3085,6 +3131,8 @@ export type OnCreateBrandProfileSubscription = {
         brandBriefDetails?: string | null,
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
+        campaignId?: string | null,
+        adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
           nextToken?: string | null,
@@ -3147,6 +3195,8 @@ export type OnUpdateBrandProfileSubscription = {
         brandBriefDetails?: string | null,
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
+        campaignId?: string | null,
+        adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
           nextToken?: string | null,
@@ -3209,6 +3259,8 @@ export type OnDeleteBrandProfileSubscription = {
         brandBriefDetails?: string | null,
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
+        campaignId?: string | null,
+        adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
           nextToken?: string | null,
@@ -3256,6 +3308,8 @@ export type OnCreateBrandBriefSubscription = {
     brandBriefDetails?: string | null,
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
+    campaignId?: string | null,
+    adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
       items:  Array< {
@@ -3298,6 +3352,8 @@ export type OnCreateBrandBriefSubscription = {
           brandBriefDetails?: string | null,
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
+          campaignId?: string | null,
+          adgroupId?: string | null,
           brandId: string,
           createdAt: string,
           updatedAt: string,
@@ -3327,6 +3383,8 @@ export type OnUpdateBrandBriefSubscription = {
     brandBriefDetails?: string | null,
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
+    campaignId?: string | null,
+    adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
       items:  Array< {
@@ -3369,6 +3427,8 @@ export type OnUpdateBrandBriefSubscription = {
           brandBriefDetails?: string | null,
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
+          campaignId?: string | null,
+          adgroupId?: string | null,
           brandId: string,
           createdAt: string,
           updatedAt: string,
@@ -3398,6 +3458,8 @@ export type OnDeleteBrandBriefSubscription = {
     brandBriefDetails?: string | null,
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
+    campaignId?: string | null,
+    adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
       items:  Array< {
@@ -3440,6 +3502,8 @@ export type OnDeleteBrandBriefSubscription = {
           brandBriefDetails?: string | null,
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
+          campaignId?: string | null,
+          adgroupId?: string | null,
           brandId: string,
           createdAt: string,
           updatedAt: string,

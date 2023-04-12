@@ -82,7 +82,7 @@
         },
         "createAd": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
-          "s3Key": "amplify-builds/createAd-683866414b4579355642-build.zip"
+          "s3Key": "amplify-builds/createAd-4d70514c483756314d35-build.zip"
         },
         "listCompaigns": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",

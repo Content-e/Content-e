@@ -77,6 +77,8 @@ type BrandBrief
   brandBriefDetails: String
   creativeInspirations: [String]
   active: Boolean 
+  campaignId: String
+  adgroupId: String
   creativeRequests: [CreativeRequest] @hasMany(indexName: "byBrandBrief",fields:[ "id" ])
   brandId: ID! @index(name: "byBrand")
   brandProfile: BrandProfile @hasOne (fields: [ "brandId" ])
