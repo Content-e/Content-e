@@ -14,6 +14,20 @@ export type ICreateBriefResponse = {
   error?: Error;
 };
 
+export type IGetCampaignsListResponse = {
+  getCampaignList: (unknown) => void;
+  data?: string | null;
+  loading: boolean;
+  error?: Error;
+};
+
+export type IGetAdGroupsListResponse = {
+  getAdGroupList: (unknown) => void;
+  data?: string | null;
+  loading: boolean;
+  error?: Error;
+};
+
 export type IEditBriefResponse = {
   editBrief: (unknown) => void;
   data?: BrandBrief | null;

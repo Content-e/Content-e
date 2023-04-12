@@ -8,6 +8,8 @@ export const initialCreateBriefState: ICreateBriefState = {
   brandBriefDetails: "",
   creativeInspirations: [] as Array<string>,
   active: true,
+  campaignId: "",
+  adgroupId: "",
 };
 
 export const initialCreateBriefError: ICreateBriefError = {
@@ -17,4 +19,6 @@ export const initialCreateBriefError: ICreateBriefError = {
   brandBriefDetails: null,
   creativeInspirations: null,
   active: null,
+  campaignId: null,
+  adgroupId: null,
 };

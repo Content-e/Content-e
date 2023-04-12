@@ -2,6 +2,10 @@ import { useMutation } from "@apollo/client";
 import {
   CreateBrandBriefMutation,
   CreateBrandBriefMutationVariables,
+  ListAdGroupsMutation,
+  ListAdGroupsMutationVariables,
+  ListCampaignsMutation,
+  ListCampaignsMutationVariables,
   UpdateBrandBriefMutation,
   UpdateBrandBriefMutationVariables,
   UpdateCreativeRequestMutation,
@@ -9,12 +13,16 @@ import {
 } from "API";
 import {
   createBrandBrief,
+  listAdGroups,
+  listCampaigns,
   updateBrandBrief,
   updateCreativeRequest,
 } from "graphql/mutations";
 import {
   ICreateBriefResponse,
   IEditBriefResponse,
+  IGetAdGroupsListResponse,
+  IGetCampaignsListResponse,
   IUpdateBriefResponse,
 } from "hooks/utils";
 import { getQuery } from "hooks/utils/helpers";
@@ -27,6 +35,22 @@ export const updateBriefStatus = (): IUpdateBriefResponse => {
   const response = data?.updateCreativeRequest || null;
 
   return { loading, updateStatus, error, response };
+};
+
+export const getlistCampaigns = (): IGetCampaignsListResponse => {
+  const [getCampaignList, { data, loading, error }] = useMutation<
+    ListCampaignsMutation,
+    ListCampaignsMutationVariables
+  >(getQuery(listCampaigns));
+  return { loading, getCampaignList, error, data: data?.listCampaigns };
+};
+
+export const getlistAdGroups = (): IGetAdGroupsListResponse => {
+  const [getAdGroupList, { data, loading, error }] = useMutation<
+    ListAdGroupsMutation,
+    ListAdGroupsMutationVariables
+  >(getQuery(listAdGroups));
+  return { loading, getAdGroupList, error, data: data?.listAdGroups };
 };
 
 export const createCampaignBrief = (): ICreateBriefResponse => {

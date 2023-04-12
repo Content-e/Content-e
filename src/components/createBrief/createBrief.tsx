@@ -19,6 +19,10 @@ export const CreateBrief: FC<SaveBriefProps> = ({
   loading,
   response,
   briefState,
+  getAdGroups,
+  dataLoading,
+  listAdGroups,
+  listCampaigns,
 }) => {
   const history = useHistory();
   const [formState, setFormState] = useState(initialCreateBriefState);
@@ -34,6 +38,10 @@ export const CreateBrief: FC<SaveBriefProps> = ({
 
   const updateStatus = (e: UnknownType): void =>
     handleChange("active", !!parseInt(e.target.value));
+  const updateAdGroup = (e: UnknownType): void =>
+    handleChange("adgroupId", e.target.value);
+  const updateCampaign = (e: UnknownType): void =>
+    handleChange("campaignId", e.target.value);
 
   const validateInputs = (): boolean => {
     const errObj = { ...initialCreateBriefError };
@@ -46,6 +54,9 @@ export const CreateBrief: FC<SaveBriefProps> = ({
       errObj.creativeInspirations = "Inspiration URL must be valid";
     if (!formState.brandBriefDetails.length)
       errObj.brandBriefDetails = "Brief details is required";
+    if (!formState.campaignId.length)
+      errObj.campaignId = "Campaign is required";
+    if (!formState.adgroupId.length) errObj.adgroupId = "Ad Group is required";
 
     setFormError({ ...errObj });
     return !Object.values(errObj).find((e) => e);
@@ -63,6 +74,10 @@ export const CreateBrief: FC<SaveBriefProps> = ({
     if (briefState) setFormState(briefState);
   }, [briefState]);
 
+  useEffect(() => {
+    if (formState.campaignId) getAdGroups(formState.campaignId);
+  }, [formState.campaignId]);
+
   const headingText = useMemo(
     () => (briefState ? "Edit" : "Create"),
     [briefState]
@@ -76,11 +91,47 @@ export const CreateBrief: FC<SaveBriefProps> = ({
         <div className="brief-container">
           <div className="create-brief-input-box">
             <BriefInput {...props} keyProp="BriefName" title="Brief Name" />
-            <BriefInput
-              {...props}
-              keyProp="tiktokHandle"
-              title="Select TikTok campaign to link to"
-            />
+
+            <div className="create-brief-input-container">
+              <div className="create-brief-input-title">
+                Select TikTok campaign to link to
+              </div>
+              <select
+                className="create-brief-input select-input"
+                onChange={updateCampaign}
+                value={formState.campaignId}
+                disabled={dataLoading}
+              >
+                <option value="">Select One</option>
+                {listCampaigns.map((e) => (
+                  <option value={e.id}>{e.value}</option>
+                ))}
+              </select>
+              <ShouldRender if={formError.campaignId}>
+                <div className="input-brief-error">{formError.campaignId}</div>
+              </ShouldRender>
+            </div>
+
+            <div className="create-brief-input-container">
+              <div className="create-brief-input-title">
+                Select TikTok adgroup
+              </div>
+              <select
+                className="create-brief-input select-input"
+                onChange={updateAdGroup}
+                value={formState.adgroupId}
+                disabled={dataLoading || !formState.campaignId}
+              >
+                <option value="">Select One</option>
+                {listAdGroups.map((e) => (
+                  <option value={e.id}>{e.value}</option>
+                ))}
+              </select>
+              <ShouldRender if={formError.adgroupId}>
+                <div className="input-brief-error">{formError.adgroupId}</div>
+              </ShouldRender>
+            </div>
+
             <BriefInput {...props} keyProp="objective" title="Objective" />
             <div className="create-brief-input-container">
               <div className="create-brief-input-title">Brief status</div>

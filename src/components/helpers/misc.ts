@@ -96,7 +96,7 @@ export const replaceSubPath = (path: string): string => {
   return updatedPathElems.join("/");
 };
 
-export const getProfileRole = (userType?: USER_TYPES): string => {
+export const getProfileRole = (userType?: USER_TYPES | null): string => {
   if (userType === USER_TYPES.CREATIVE_USER) return "Creator";
   if (userType === USER_TYPES.BRAND_USER) return "Brand";
   return "";

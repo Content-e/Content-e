@@ -8,9 +8,13 @@ export interface BrandBriefProps {
 
 export interface SaveBriefProps {
   saveData: (data: ICreateBriefState) => void;
+  getAdGroups: (campaignId: string) => void;
   briefState?: ICreateBriefState;
   loading: boolean;
   response?: BrandBrief | null;
+  dataLoading: boolean;
+  listAdGroups: Array<ISelectDropdown>;
+  listCampaigns: Array<ISelectDropdown>;
 }
 export interface IMeterValue {
   percentage: number;
@@ -39,6 +43,8 @@ export interface ICreateBriefState {
   objective: string;
   brandBriefDetails: string;
   creativeInspirations: Array<string>;
+  campaignId: string;
+  adgroupId: string;
   active: boolean;
   id?: string;
 }
@@ -49,4 +55,21 @@ export interface ICreateBriefError {
   brandBriefDetails: string | null;
   creativeInspirations: string | null;
   active: string | null;
+  campaignId: string | null;
+  adgroupId: string | null;
+}
+
+export interface ITikTokAccess {
+  access_token: string;
+  advertiser_id: string;
+}
+
+export interface ITikTokCreds {
+  token: string;
+  advertiser_id: string;
+}
+
+export interface ISelectDropdown {
+  id: string;
+  value: string;
 }
