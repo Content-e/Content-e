@@ -34,6 +34,7 @@ export function withBrandBriefs<T>(
       data: brandBriefsState,
       loading: brandBriefListLoading,
       brand: data?.brand?.items?.[0],
+      isTiktokLinked: !!data?.tiktokAccountAccess,
     };
     return <Component {...props} {...hocProps} />;
   });

@@ -4,6 +4,7 @@ export interface BrandBriefProps {
   data?: Array<BrandBrief | null>;
   loading?: boolean;
   brand?: BrandProfile | null;
+  isTiktokLinked: boolean;
 }
 
 export interface SaveBriefProps {

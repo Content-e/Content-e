@@ -8,20 +8,25 @@ import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetail
 import { FC, useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { BrandBriefProps, withBrandBriefs } from "state/brandBrief";
-import { BrandRoutes } from "utils";
+import { BrandErrorModal, BrandRoutes } from "utils";
 import "./brandBriefs.css";
 
 const tableLimit = 7;
-export const BrandBriefs: FC<BrandBriefProps> = ({ data, brand }) => {
+export const BrandBriefs: FC<BrandBriefProps> = ({
+  data,
+  brand,
+  isTiktokLinked,
+}) => {
   const history = useHistory();
   const [input, setInput] = useState("");
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
-  const [showAlert, setShowAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState<BrandErrorModal>();
   const [currentPage, setCurrentPage] = useState(0);
 
   const goToBriefCreation = (): void => {
-    if (brand) history.push(BrandRoutes.CreateBrief);
-    else setShowAlert(true);
+    if (!brand) setShowAlert(BrandErrorModal.NO_BRAND);
+    else if (!isTiktokLinked) setShowAlert(BrandErrorModal.NO_TIKTOK_LINK);
+    else history.push(BrandRoutes.CreateBrief);
   };
 
   useEffect(() => {
@@ -42,7 +47,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data, brand }) => {
     );
   return (
     <div>
-      {showAlert && <BrandProfileConfirmationModal />}
+      {showAlert && <BrandProfileConfirmationModal errorType={showAlert} />}
       <div className="brand-table-label">Campaign briefs</div>
       <div className="brand-table-container">
         <div className="brand-table-wrapper">

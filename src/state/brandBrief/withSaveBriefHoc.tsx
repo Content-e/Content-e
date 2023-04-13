@@ -7,7 +7,6 @@ import {
   getlistCampaigns,
 } from "hooks";
 import {
-  BrandBriefProps,
   ICreateBriefState,
   ISelectDropdown,
   ITikTokAccess,
@@ -20,7 +19,7 @@ import { BrandBrief } from "API";
 import { BrandRoutes, AuthRoutes } from "utils";
 
 export function withSaveBrief<T>(
-  Component: React.FC<T & BrandBriefProps>
+  Component: React.FC<T & SaveBriefProps>
 ): React.FC<T> {
   return withApolloProvider((props: T) => {
     const history = useHistory();
