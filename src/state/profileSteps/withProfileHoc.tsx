@@ -1,5 +1,10 @@
 import { USER_TYPES } from "API";
-import { createUserProfile, getUserProfile, updateUserProfile } from "hooks";
+import {
+  createUserProfile,
+  getUserProfile,
+  updateUserProfile,
+  useUserTypeSetter,
+} from "hooks";
 import withApolloProvider from "hooks/apollo/withApollo";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "state/auth";
@@ -29,6 +34,11 @@ export function withProfile<T>(
       profileData: updateProfileData,
       loading: updateProfileLoading,
     } = updateUserProfile();
+    const {
+      setUserType,
+      data: userTypeData,
+      loading: userTypeLoading,
+    } = useUserTypeSetter();
 
     const { profileState, setProfileState } = useContext(ProfileContext);
     const { authState, setAuthState } =
@@ -83,8 +93,6 @@ export function withProfile<T>(
             name: name ?? email?.split("@")[0],
             userEmail: email,
             id: userId,
-            userType:
-              localStorage.getItem("userType") || USER_TYPES.CREATIVE_USER,
           };
           createProfile({ variables: { input } });
           updateCreateProfileApiCall(true);
@@ -95,10 +103,19 @@ export function withProfile<T>(
     }, [profileData, loading, error]);
 
     useEffect(() => {
-      if (createProfileData && !createProfileLoading) {
-        window.location.reload();
-      }
+      if (createProfileData && !createProfileLoading)
+        setUserType({
+          variables: {
+            profileId: createProfileData.id,
+            userType:
+              localStorage.getItem("userType") || USER_TYPES.CREATIVE_USER,
+          },
+        });
     }, [createProfileLoading, createProfileData]);
+
+    useEffect(() => {
+      if (userTypeData && !userTypeLoading) window.location.reload();
+    }, [userTypeData, userTypeLoading]);
 
     useEffect(() => {
       if (updateProfileData && !updateProfileLoading)

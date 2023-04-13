@@ -23,7 +23,7 @@ export function withBrandBriefs<T>(
       useState<Array<BrandBrief | null>>();
 
     useEffect(() => {
-      getBrandBriefs({ variables: { brandId } });
+      if (brandId) getBrandBriefs({ variables: { brandId } });
     }, []);
     useEffect(() => {
       if (!brandBriefListLoading && brandBriefList)
