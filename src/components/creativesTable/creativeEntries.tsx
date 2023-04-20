@@ -67,7 +67,11 @@ export const CreativeEntries: FC<Props> = ({
           <td
             className="centered"
             onClick={(): void =>
-              openCreative({ briefId: e.briefId, requestId: e.id })
+              openCreative({
+                briefId: e.briefId,
+                requestId: e.id,
+                authCode: e.videoLink || "",
+              })
             }
           >
             <img src="/images/table-search.svg" />

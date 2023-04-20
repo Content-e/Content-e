@@ -35,6 +35,7 @@ export interface ICreativeEntry {
 export interface ISelectredRequest {
   requestId: string;
   briefId: string;
+  authCode: string;
 }
 
 export interface ICreateBriefState {

@@ -2,28 +2,36 @@ import CampaignConfirmationModal from "components/campaignConfirmationModal/camp
 import { updateBriefStatus } from "hooks";
 import { FC, useEffect, useState } from "react";
 import "./creativeTikTokApproval.css";
+import { UnknownType } from "utils";
 
 interface Props {
   requestId: string;
   inspiration?: Array<string | null> | null;
-  onClose: () => void;
+  onClose: (response?: UnknownType) => void;
 }
 export const CreativeTikTokApproval: FC<Props> = ({ requestId, onClose }) => {
   const { updateStatus, loading, response } = updateBriefStatus();
   const [showConfirm, setShowConfirm] = useState(false);
+  const [sendResponse, setSendResponse] = useState(false);
 
   const callApi = (status: string): void =>
     updateStatus({ variables: { input: { id: requestId, status } } });
   const onApprove = (): void => setShowConfirm(true);
   const onSuccess = (): void => {
-    if (!loading) callApi("accept");
+    if (!loading) {
+      callApi("accept");
+      setSendResponse(true);
+    }
   };
   const onReject = (): void => {
-    if (!loading) callApi("reject");
+    if (!loading) {
+      callApi("reject");
+      setSendResponse(false);
+    }
   };
 
   useEffect(() => {
-    if (!loading && response) onClose();
+    if (!loading && response) onClose(sendResponse ? response : undefined);
   }, [response, loading]);
 
   return (

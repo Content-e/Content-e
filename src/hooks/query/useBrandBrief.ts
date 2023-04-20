@@ -1,5 +1,7 @@
 import { useMutation } from "@apollo/client";
 import {
+  CreateAdsMutation,
+  CreateAdsMutationVariables,
   CreateBrandBriefMutation,
   CreateBrandBriefMutationVariables,
   ListAdGroupsMutation,
@@ -12,6 +14,7 @@ import {
   UpdateCreativeRequestMutationVariables,
 } from "API";
 import {
+  createAds,
   createBrandBrief,
   listAdGroups,
   listCampaigns,
@@ -24,6 +27,7 @@ import {
   IGetAdGroupsListResponse,
   IGetCampaignsListResponse,
   IUpdateBriefResponse,
+  IUseCreateAdResponse,
 } from "hooks/utils";
 import { getQuery } from "hooks/utils/helpers";
 
@@ -67,4 +71,12 @@ export const editCampaignBrief = (): IEditBriefResponse => {
     UpdateBrandBriefMutationVariables
   >(getQuery(updateBrandBrief));
   return { loading, editBrief, error, data: data?.updateBrandBrief };
+};
+
+export const useCreateAd = (): IUseCreateAdResponse => {
+  const [createAd, { data, loading, error }] = useMutation<
+    CreateAdsMutation,
+    CreateAdsMutationVariables
+  >(getQuery(createAds));
+  return { loading, createAd, error, data: data?.createAds };
 };

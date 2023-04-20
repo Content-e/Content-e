@@ -23,17 +23,8 @@ export const AuthorizeTikTokStep3: FC<Props> = ({
     setCodeError(null);
   };
 
-  const validateVerifyForm = (): boolean => {
-    try {
-      const { hostname, pathname } = new URL(tikTokCode);
-      return !!(hostname && pathname);
-    } catch (err) {
-      return false;
-    }
-  };
-
   const onSubmit = (): void => {
-    if (validateVerifyForm()) goToNext(tikTokCode);
+    if (tikTokCode.length) goToNext(tikTokCode);
     else setCodeError("Kindly provide valid URL");
   };
 

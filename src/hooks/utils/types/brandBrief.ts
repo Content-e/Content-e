@@ -34,3 +34,10 @@ export type IEditBriefResponse = {
   loading: boolean;
   error?: Error;
 };
+
+export type IUseCreateAdResponse = {
+  createAd: (unknown) => void;
+  data?: boolean | null;
+  loading: boolean;
+  error?: Error;
+};

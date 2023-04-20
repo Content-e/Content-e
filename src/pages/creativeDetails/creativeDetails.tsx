@@ -1,10 +1,13 @@
-import { FC, useMemo } from "react";
-import { BrandBrief } from "API";
+import { FC, useEffect, useMemo } from "react";
+import { BrandBrief, CreativeRequest } from "API";
 import { ISelectredRequest } from "state/brandBrief";
 import CreativeDetailsCard from "components/creativeDetailsCard/creativeDetailsCard";
 import CreatorProfileDescription from "components/creatorProfileDescription/creatorProfileDescription";
 import CreativeTikTokApproval from "components/creativeTikTokApproval/creativeTikTokApproval";
 import "./creativeDetails.css";
+import { withProfile } from "state/profileSteps";
+import { ProfileProps } from "utils";
+import { useCreateAd } from "hooks";
 
 interface Props {
   data?: Array<BrandBrief | null>;
@@ -12,11 +15,18 @@ interface Props {
   onBack: () => void;
 }
 
-export const CreativeDetails: FC<Props> = ({
+export const CreativeDetails: FC<Props & ProfileProps> = ({
   data,
   selectedRequest,
   onBack,
+  profileState: { data: profile },
 }) => {
+  const {
+    createAd,
+    loading: createAdLoading,
+    data: createAdResponse,
+  } = useCreateAd();
+
   const brief = useMemo(
     () => data?.find((e) => e?.id === selectedRequest.briefId),
     [data, selectedRequest]
@@ -25,6 +35,35 @@ export const CreativeDetails: FC<Props> = ({
     const req = brief?.creativeRequests?.items;
     return req?.find((e) => e?.id === selectedRequest.requestId);
   }, [brief]);
+
+  const createNewAd = (response?: CreativeRequest): void => {
+    if (
+      response &&
+      profile?.tiktokAccountAccess &&
+      brief?.adgroupId &&
+      selectedRequest.authCode
+    ) {
+      try {
+        const { access_token: token, advertiser_id: advId } = JSON.parse(
+          profile.tiktokAccountAccess
+        );
+        const input = {
+          token,
+          advId,
+          adgroupId: brief.adgroupId,
+          authCode: selectedRequest.authCode,
+          creativeRequestId: selectedRequest.requestId,
+        };
+        createAd({ variables: { ...input } });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (createAdResponse && !createAdLoading) onBack();
+  }, [createAdLoading, createAdResponse]);
 
   return (
     <>
@@ -67,7 +106,7 @@ export const CreativeDetails: FC<Props> = ({
         )}
         {selectedRequest && (
           <CreativeTikTokApproval
-            onClose={onBack}
+            onClose={createNewAd}
             requestId={selectedRequest.requestId}
             inspiration={brief?.creativeInspirations}
           />
@@ -77,4 +116,4 @@ export const CreativeDetails: FC<Props> = ({
   );
 };
 
-export default CreativeDetails;
+export default withProfile(CreativeDetails);
