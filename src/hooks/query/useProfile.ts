@@ -8,9 +8,12 @@ import {
   UpdateUserProfileMutationVariables,
   LinkUserTypeMutation,
   LinkUserTypeMutationVariables,
+  LinkTiktokAccountMutation,
+  LinkTiktokAccountMutationVariables,
 } from "API";
 import {
   createUserProfile as createUserQuery,
+  linkTiktokAccount,
   linkUserType,
   updateUserProfile as updateUserQuery,
 } from "graphql/mutations";
@@ -18,6 +21,7 @@ import { getUserProfile as getUserProfileQuery } from "graphql/queries";
 import {
   CreateUserProfileProps,
   GetUserProfileProps,
+  ILinkTiktokAccountResponse,
   UpdateUserProfileProps,
   UserTypeSetterProps,
 } from "hooks/utils";
@@ -68,4 +72,12 @@ export const updateUserProfile = (): UpdateUserProfileProps => {
   const errorData =
     error || (profileData ? undefined : new Error("No User Found"));
   return { loading, updateProfile, profileData, error: errorData };
+};
+
+export const useLinkTiktokAccount = (): ILinkTiktokAccountResponse => {
+  const [linkTiktok, { data, loading, error }] = useMutation<
+    LinkTiktokAccountMutation,
+    LinkTiktokAccountMutationVariables
+  >(getQuery(linkTiktokAccount));
+  return { loading, linkTiktok, data: data?.linkTiktokAccount, error };
 };

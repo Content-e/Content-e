@@ -52,4 +52,5 @@ export enum BrandRoutes {
   EditBrief = "/editBrief",
   Brand = "/brandProfile",
   EditBrand = "/brandEdit",
+  LinkTiktokAccount = "/branddashboard",
 }

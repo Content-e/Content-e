@@ -28,3 +28,10 @@ export type UpdateUserProfileProps = {
   loading: boolean;
   error?: Error;
 };
+
+export type ILinkTiktokAccountResponse = {
+  linkTiktok: (unknown) => void;
+  data?: UnknownType;
+  loading: boolean;
+  error?: Error;
+};

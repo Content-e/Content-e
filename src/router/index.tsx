@@ -1,4 +1,10 @@
-import { AuthProps, AuthRoutes, ErrorProps, UnAuthRoutes } from "utils";
+import {
+  AuthProps,
+  AuthRoutes,
+  BrandRoutes,
+  ErrorProps,
+  UnAuthRoutes,
+} from "utils";
 import { FullPageLoader, replaceSubPath } from "components";
 import { isValidRoute, ShouldRender, ToastContainer } from "components";
 import { LogoutPage } from "pages";
@@ -33,6 +39,14 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
   };
 
   useEffect(() => {
+    if (pathname === BrandRoutes.LinkTiktokAccount) {
+      const url = new URL(window.location.href);
+      if (url.searchParams.get("code")) {
+        url.searchParams.delete("code");
+        window.location.href = url.href;
+        return;
+      }
+    }
     if (typeof isLoggedIn === "boolean" && !isLoading) {
       if (isLoggedIn && !isValidRoute(AuthRoutesArray, pathname))
         history.replace(replaceSubPath(AuthRoutes.Redirector));

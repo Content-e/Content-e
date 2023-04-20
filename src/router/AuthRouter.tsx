@@ -31,6 +31,7 @@ import {
   CreatorAuthArray,
 } from "./RoutesConstants";
 import CreatePractice from "components/createPractice";
+import linkTiktokAccount from "pages/linkTiktokAccount";
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -84,6 +85,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
 
           {data.userType === USER_TYPES.BRAND_USER && (
             <Fragment key="brand user routes">
+              <Route
+                exact
+                path={BrandRoutes.LinkTiktokAccount}
+                component={linkTiktokAccount}
+              />
               <Route
                 exact
                 path={BrandRoutes.Creatives}
