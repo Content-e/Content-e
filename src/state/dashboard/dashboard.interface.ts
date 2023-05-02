@@ -18,6 +18,7 @@ export interface IBriefListElems {
   objective?: string | null;
   status?: string;
   id?: string;
+  date?: string;
 }
 
 export interface IDashboardValue {

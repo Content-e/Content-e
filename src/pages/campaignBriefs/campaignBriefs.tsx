@@ -9,6 +9,7 @@ import {
   withCreatorBriefList,
 } from "state/dashboard";
 import Pagination from "components/pagination";
+import moment from "moment";
 
 const tableLimit = 7;
 export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
@@ -37,9 +38,14 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
             vertical,
             objective,
             status,
+            date: brief.createdAt,
           });
         }
       });
+      output.sort(
+        (a, b) => moment(b.date).valueOf() - moment(a.date).valueOf()
+      );
+
       setData(output);
     }
   }, [briefList, requestList, loading, error]);

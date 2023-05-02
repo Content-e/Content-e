@@ -10,6 +10,7 @@ import {
 } from "state/dashboard";
 import { AuthRoutes } from "utils";
 import "./creatorDashboard.css";
+import moment from "moment";
 
 interface Props {
   onSelectRequest: (e: BrandBrief) => void;
@@ -43,9 +44,13 @@ const CreativeRequests: FC<Props & ICreatorBriefListProps> = ({
             vertical,
             objective,
             status,
+            date: brief.createdAt,
           });
         }
       });
+      output.sort(
+        (a, b) => moment(b.date).valueOf() - moment(a.date).valueOf()
+      );
       setData(output);
     }
   }, [briefList, requestList, loading, error]);
