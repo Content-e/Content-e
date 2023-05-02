@@ -46,6 +46,7 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
           id={data.id}
           detail={data.brandBriefDetails}
           videoUrls={data.creativeInspirations}
+          isVideoLinked={!!data.creativeRequests?.items.length}
         />
       </div>
       {data.brandProfile && showDetails && (

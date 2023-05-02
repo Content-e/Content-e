@@ -10,10 +10,12 @@ interface Props {
   detail?: string | null;
   id: string;
   videoUrls?: Array<string | null> | null;
+  isVideoLinked?: boolean;
 }
 export const BrandDesciption: FC<Props & ProfileProps> = ({
   detail,
   id,
+  isVideoLinked,
   profileState: { data },
   videoUrls,
 }) => {
@@ -44,7 +46,7 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
             <span className="link-creative-text">Creative inspiration</span>
           </div>
         )}
-        {data?.userType === USER_TYPES.CREATIVE_USER && (
+        {data?.userType === USER_TYPES.CREATIVE_USER && !isVideoLinked && (
           <div
             className="link-creative-btn"
             onClick={(): void => setPopupVisibility(true)}
