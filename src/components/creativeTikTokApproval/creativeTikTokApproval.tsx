@@ -2,17 +2,18 @@ import CampaignConfirmationModal from "components/campaignConfirmationModal/camp
 import { updateBriefStatus, useCreateAd } from "hooks";
 import { FC, useEffect, useMemo, useState } from "react";
 import "./creativeTikTokApproval.css";
-import { ProfileProps, UnknownType } from "utils";
+import { CreativeRequestStatus, ProfileProps, UnknownType } from "utils";
 import { withProfile } from "state/profileSteps";
+import { CreativeRequest } from "API";
 
 interface Props {
-  requestId: string;
+  request?: CreativeRequest | null;
   createAdPayload: UnknownType;
   inspiration?: Array<string | null> | null;
   onClose: () => void;
 }
 export const CreativeTikTokApproval: FC<Props & ProfileProps> = ({
-  requestId,
+  request,
   onClose,
   createAdPayload,
   profileState: { data: profile },
@@ -32,8 +33,10 @@ export const CreativeTikTokApproval: FC<Props & ProfileProps> = ({
     [loading, createAdLoading]
   );
 
-  const callApi = (status: string): void =>
-    updateStatus({ variables: { input: { id: requestId, status } } });
+  const callApi = (status: string): void => {
+    if (request?.id)
+      updateStatus({ variables: { input: { id: request?.id, status } } });
+  };
 
   const onSuccess = (): void => {
     setErrorMsg("");
@@ -84,14 +87,16 @@ export const CreativeTikTokApproval: FC<Props & ProfileProps> = ({
       )}
       <div className="creative-approval-box">
         <div className="creative-label">Creative</div>
-        <div className="permission-container">
-          <div className="permission-btn-container" onClick={onApprove}>
-            <span className="permission-btn-label">Approve</span>
+        {request?.status === CreativeRequestStatus.New && (
+          <div className="permission-container">
+            <div className="permission-btn-container" onClick={onApprove}>
+              <span className="permission-btn-label">Approve</span>
+            </div>
+            <div className="permission-btn-container" onClick={onReject}>
+              <span className="permission-btn-label">Reject</span>
+            </div>
           </div>
-          <div className="permission-btn-container" onClick={onReject}>
-            <span className="permission-btn-label">Reject</span>
-          </div>
-        </div>
+        )}
         <img src="/images/tikTokCarousel2.svg" />
       </div>
     </div>

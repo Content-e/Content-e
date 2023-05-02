@@ -67,7 +67,7 @@ export const CreativeDetails: FC<Props> = ({
         {selectedRequest && (
           <CreativeTikTokApproval
             onClose={onBack}
-            requestId={selectedRequest.requestId}
+            request={request}
             inspiration={brief?.creativeInspirations}
             createAdPayload={{
               adgroupId: brief?.adgroupId,
