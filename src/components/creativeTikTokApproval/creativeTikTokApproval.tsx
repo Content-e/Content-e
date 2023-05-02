@@ -1,10 +1,10 @@
 import CampaignConfirmationModal from "components/campaignConfirmationModal/campaignConfirmationModal";
-import { updateBriefStatus, useCreateAd } from "hooks";
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "./creativeTikTokApproval.css";
-import { CreativeRequestStatus, ProfileProps, UnknownType } from "utils";
-import { withProfile } from "state/profileSteps";
+import { CreativeRequestStatus, UnknownType } from "utils";
 import { CreativeRequest } from "API";
+import { ViewRequestProps, withRequestView } from "state/requests";
+import { isValidUrl } from "components/helpers";
 
 interface Props {
   request?: CreativeRequest | null;
@@ -12,76 +12,43 @@ interface Props {
   inspiration?: Array<string | null> | null;
   onClose: () => void;
 }
-export const CreativeTikTokApproval: FC<Props & ProfileProps> = ({
+export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
   request,
   onClose,
   createAdPayload,
-  profileState: { data: profile },
+  approveRequest,
+  rejectRequest,
+  getVideoLink,
+  errorMsg,
+  loading,
+  isSuccess,
+  videoUrl,
 }) => {
-  const { updateStatus, loading, response } = updateBriefStatus();
-  const {
-    createAd,
-    loading: createAdLoading,
-    data: createAdResponse,
-  } = useCreateAd();
-
   const [showConfirm, setShowConfirm] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
 
-  const isLoading = useMemo(
-    () => loading || createAdLoading,
-    [loading, createAdLoading]
-  );
-
-  const callApi = (status: string): void => {
-    if (request?.id)
-      updateStatus({ variables: { input: { id: request?.id, status } } });
-  };
-
-  const onSuccess = (): void => {
-    setErrorMsg("");
-    if (
-      !isLoading &&
-      showConfirm &&
-      profile?.tiktokAccountAccess &&
-      createAdPayload.adgroupId &&
-      createAdPayload.authCode
-    ) {
-      try {
-        const { access_token: token, advertiser_id: advId } = JSON.parse(
-          profile.tiktokAccountAccess
-        );
-        const input = { token, advId, ...createAdPayload };
-        createAd({ variables: { ...input } });
-      } catch (err) {
-        setErrorMsg(err.message);
-      }
-    }
+  const onOkay = (): void => {
+    if (showConfirm) approveRequest(createAdPayload);
   };
   const onApprove = (): void => {
-    if (!showConfirm && !isLoading) setShowConfirm(true);
+    if (!showConfirm) setShowConfirm(true);
   };
   const onReject = (): void => {
-    if (!showConfirm && !isLoading) callApi("reject");
+    if (!showConfirm) rejectRequest();
   };
 
   useEffect(() => {
-    if (!isLoading && response) onClose();
-  }, [isLoading, response]);
-
+    if (request?.id) getVideoLink(request.tiktokVideoCode);
+  }, [request]);
   useEffect(() => {
-    if (showConfirm) {
-      if (createAdResponse) callApi("accept");
-      else setErrorMsg("Ad creation failed");
-    }
-  }, [createAdResponse]);
+    if (!loading && isSuccess) onClose();
+  }, [loading, isSuccess]);
 
   return (
     <div className="creative-approval-container">
       {showConfirm && (
         <CampaignConfirmationModal
-          isLoading={isLoading}
-          onOkay={onSuccess}
+          isLoading={loading}
+          onOkay={onOkay}
           errorMsg={errorMsg}
         />
       )}
@@ -97,10 +64,20 @@ export const CreativeTikTokApproval: FC<Props & ProfileProps> = ({
             </div>
           </div>
         )}
-        <img src="/images/tikTokCarousel2.svg" />
+        {isValidUrl(videoUrl || "") && (
+          <iframe
+            className="request-video-iframe"
+            src={videoUrl}
+            width="172px"
+            height="305px"
+            name={"creative-video"}
+            // eslint-disable-next-line max-len
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation allow-same-origin"
+          />
+        )}
       </div>
     </div>
   );
 };
 
-export default withProfile(CreativeTikTokApproval);
+export default withRequestView(CreativeTikTokApproval);

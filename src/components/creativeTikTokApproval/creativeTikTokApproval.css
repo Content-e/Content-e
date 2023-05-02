@@ -57,3 +57,8 @@
 .creative-approval-box {
   display: flex;
 }
+
+.request-video-iframe {
+  height: 305px;
+  width: 172px;
+}

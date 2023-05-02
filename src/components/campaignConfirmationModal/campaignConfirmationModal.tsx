@@ -5,7 +5,7 @@ import "./campaignConfirmationModal.css";
 interface Props {
   onOkay: () => void;
   isLoading?: boolean;
-  errorMsg: string;
+  errorMsg?: string;
 }
 export const CampaignConfirmationModal: FC<Props> = ({
   onOkay,
@@ -29,7 +29,9 @@ export const CampaignConfirmationModal: FC<Props> = ({
               {isLoading && <IconLoader />}
             </span>
           </div>
-          <div className="confirm-btn-error-mesage">{errorMsg}</div>
+          {errorMsg && (
+            <div className="confirm-btn-error-mesage">{errorMsg}</div>
+          )}
         </div>
       </div>
     </div>

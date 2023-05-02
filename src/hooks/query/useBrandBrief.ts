@@ -4,6 +4,8 @@ import {
   CreateAdsMutationVariables,
   CreateBrandBriefMutation,
   CreateBrandBriefMutationVariables,
+  GetVideoFromAuthCodeMutation,
+  GetVideoFromAuthCodeMutationVariables,
   ListAdGroupsMutation,
   ListAdGroupsMutationVariables,
   ListCampaignsMutation,
@@ -16,6 +18,7 @@ import {
 import {
   createAds,
   createBrandBrief,
+  getVideoFromAuthCode,
   listAdGroups,
   listCampaigns,
   updateBrandBrief,
@@ -28,6 +31,7 @@ import {
   IGetCampaignsListResponse,
   IUpdateBriefResponse,
   IUseCreateAdResponse,
+  IUseGetVideoUrlResponse,
 } from "hooks/utils";
 import { getQuery } from "hooks/utils/helpers";
 
@@ -79,4 +83,12 @@ export const useCreateAd = (): IUseCreateAdResponse => {
     CreateAdsMutationVariables
   >(getQuery(createAds));
   return { loading, createAd, error, data: data?.createAds };
+};
+
+export const useGetVideoUrl = (): IUseGetVideoUrlResponse => {
+  const [getVideoUrl, { data, loading, error }] = useMutation<
+    GetVideoFromAuthCodeMutation,
+    GetVideoFromAuthCodeMutationVariables
+  >(getQuery(getVideoFromAuthCode));
+  return { loading, getVideoUrl, error, url: data?.getVideoFromAuthCode };
 };

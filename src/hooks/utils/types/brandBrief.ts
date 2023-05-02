@@ -41,3 +41,10 @@ export type IUseCreateAdResponse = {
   loading: boolean;
   error?: Error;
 };
+
+export type IUseGetVideoUrlResponse = {
+  getVideoUrl: (unknown) => void;
+  url?: string | null;
+  loading: boolean;
+  error?: Error;
+};
