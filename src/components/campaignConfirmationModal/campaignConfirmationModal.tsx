@@ -5,8 +5,13 @@ import "./campaignConfirmationModal.css";
 interface Props {
   onOkay: () => void;
   isLoading?: boolean;
+  errorMsg: string;
 }
-export const CampaignConfirmationModal: FC<Props> = ({ onOkay, isLoading }) => {
+export const CampaignConfirmationModal: FC<Props> = ({
+  onOkay,
+  isLoading,
+  errorMsg,
+}) => {
   return (
     <div className="campaign-confirmation-modal">
       <div className="campaign-confirmation-modal-content-container">
@@ -24,6 +29,7 @@ export const CampaignConfirmationModal: FC<Props> = ({ onOkay, isLoading }) => {
               {isLoading && <IconLoader />}
             </span>
           </div>
+          <div className="confirm-btn-error-mesage">{errorMsg}</div>
         </div>
       </div>
     </div>

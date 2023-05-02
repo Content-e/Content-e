@@ -1,43 +1,86 @@
 import CampaignConfirmationModal from "components/campaignConfirmationModal/campaignConfirmationModal";
-import { updateBriefStatus } from "hooks";
-import { FC, useEffect, useState } from "react";
+import { updateBriefStatus, useCreateAd } from "hooks";
+import { FC, useEffect, useMemo, useState } from "react";
 import "./creativeTikTokApproval.css";
-import { UnknownType } from "utils";
+import { ProfileProps, UnknownType } from "utils";
+import { withProfile } from "state/profileSteps";
 
 interface Props {
   requestId: string;
+  createAdPayload: UnknownType;
   inspiration?: Array<string | null> | null;
-  onClose: (response?: UnknownType) => void;
+  onClose: () => void;
 }
-export const CreativeTikTokApproval: FC<Props> = ({ requestId, onClose }) => {
+export const CreativeTikTokApproval: FC<Props & ProfileProps> = ({
+  requestId,
+  onClose,
+  createAdPayload,
+  profileState: { data: profile },
+}) => {
   const { updateStatus, loading, response } = updateBriefStatus();
+  const {
+    createAd,
+    loading: createAdLoading,
+    data: createAdResponse,
+  } = useCreateAd();
+
   const [showConfirm, setShowConfirm] = useState(false);
-  const [sendResponse, setSendResponse] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const isLoading = useMemo(
+    () => loading || createAdLoading,
+    [loading, createAdLoading]
+  );
 
   const callApi = (status: string): void =>
     updateStatus({ variables: { input: { id: requestId, status } } });
-  const onApprove = (): void => setShowConfirm(true);
+
   const onSuccess = (): void => {
-    if (!loading) {
-      callApi("accept");
-      setSendResponse(true);
+    setErrorMsg("");
+    if (
+      !isLoading &&
+      showConfirm &&
+      profile?.tiktokAccountAccess &&
+      createAdPayload.adgroupId &&
+      createAdPayload.authCode
+    ) {
+      try {
+        const { access_token: token, advertiser_id: advId } = JSON.parse(
+          profile.tiktokAccountAccess
+        );
+        const input = { token, advId, ...createAdPayload };
+        createAd({ variables: { ...input } });
+      } catch (err) {
+        setErrorMsg(err.message);
+      }
     }
   };
+  const onApprove = (): void => {
+    if (!showConfirm && !isLoading) setShowConfirm(true);
+  };
   const onReject = (): void => {
-    if (!loading) {
-      callApi("reject");
-      setSendResponse(false);
-    }
+    if (!showConfirm && !isLoading) callApi("reject");
   };
 
   useEffect(() => {
-    if (!loading && response) onClose(sendResponse ? response : undefined);
-  }, [response, loading]);
+    if (!isLoading && response) onClose();
+  }, [isLoading, response]);
+
+  useEffect(() => {
+    if (showConfirm) {
+      if (createAdResponse) callApi("accept");
+      else setErrorMsg("Ad creation failed");
+    }
+  }, [createAdResponse]);
 
   return (
     <div className="creative-approval-container">
       {showConfirm && (
-        <CampaignConfirmationModal isLoading={loading} onOkay={onSuccess} />
+        <CampaignConfirmationModal
+          isLoading={isLoading}
+          onOkay={onSuccess}
+          errorMsg={errorMsg}
+        />
       )}
       <div className="creative-approval-box">
         <div className="creative-label">Creative</div>
@@ -55,4 +98,4 @@ export const CreativeTikTokApproval: FC<Props> = ({ requestId, onClose }) => {
   );
 };
 
-export default CreativeTikTokApproval;
+export default withProfile(CreativeTikTokApproval);
