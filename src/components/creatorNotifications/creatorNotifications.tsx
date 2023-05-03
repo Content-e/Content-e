@@ -60,7 +60,7 @@ export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
           <img src="/images/feature-notification.svg" />
           <div className="notifiation-container">
             <div className="notification-label">
-              Your creative for {notify.name} is{notify.status}
+              Your creative for {notify.name} is {notify.status}
             </div>
             <div className="notification-timeline">{notify.time}</div>
           </div>
