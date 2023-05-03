@@ -10,7 +10,7 @@ import {
 } from "state/dashboard";
 import { AuthRoutes, CreativeRequestStatus } from "utils";
 import "./creatorDashboard.css";
-import moment from "moment";
+import { getSortedArray } from "components";
 
 interface Props {
   onSelectRequest: (e: BrandBrief) => void;
@@ -49,10 +49,7 @@ const CreativeRequests: FC<Props & ICreatorBriefListProps> = ({
           });
         }
       });
-      output.sort(
-        (a, b) => moment(b.date).valueOf() - moment(a.date).valueOf()
-      );
-      setData(output);
+      setData(getSortedArray(output, "date"));
     }
   }, [briefList, requestList, loading, error]);
 

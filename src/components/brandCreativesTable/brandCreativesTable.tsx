@@ -1,5 +1,5 @@
 import { BrandBrief } from "API";
-import { getSlicedArray } from "components/helpers";
+import { getSlicedArray, getSortedArray } from "components/helpers";
 import { FC, useMemo } from "react";
 import { ICreativeEntry, ISelectredRequest } from "state/brandBrief";
 import "./brandCreativesTable.css";
@@ -28,10 +28,11 @@ export const BrandCreativesTable: FC<Props> = ({
             status: req?.status,
             id: req.id,
             briefId: brief.id,
+            date: req.createdAt,
           });
       });
     });
-    return getSlicedArray(rqArray, limit, currentPage);
+    return getSlicedArray(getSortedArray(rqArray, "date"), limit, currentPage);
   }, [data, currentPage]);
 
   return (

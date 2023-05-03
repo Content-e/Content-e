@@ -1,5 +1,5 @@
 import { BrandBrief } from "API";
-import { getSlicedArray } from "components/helpers";
+import { getSlicedArray, getSortedArray } from "components/helpers";
 import { FC, useMemo } from "react";
 import { ICreativeEntry, ISelectredRequest } from "state/brandBrief";
 import "./creativesTable.css";
@@ -32,11 +32,15 @@ export const CreativeEntries: FC<Props> = ({
             id: req.id,
             videoLink: req.tiktokVideoCode,
             briefId: brief.id,
+            date: req.createdAt,
           });
       });
     });
     return getSlicedArray(
-      rqArray.filter((e) => e.briefName?.includes(searchText)),
+      getSortedArray(
+        rqArray.filter((e) => e.briefName?.includes(searchText)),
+        "date"
+      ),
       limit,
       currentPage
     );

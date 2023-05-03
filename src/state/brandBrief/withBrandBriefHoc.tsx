@@ -4,6 +4,7 @@ import { getBrandBriefList } from "hooks";
 import { BrandBriefProps } from "./brandBrief.interface";
 import { BrandBrief } from "API";
 import { ProfileContext } from "state/profileSteps";
+import { getSortedArray } from "components";
 
 export function withBrandBriefs<T>(
   Component: React.FC<T & BrandBriefProps>
@@ -27,7 +28,7 @@ export function withBrandBriefs<T>(
     }, []);
     useEffect(() => {
       if (!brandBriefListLoading && brandBriefList)
-        setBrandBriefsState(brandBriefList);
+        setBrandBriefsState(getSortedArray(brandBriefList, "createdAt"));
     }, [brandBriefList, brandBriefListLoading]);
 
     const hocProps: BrandBriefProps = {

@@ -9,8 +9,8 @@ import {
   withCreatorBriefList,
 } from "state/dashboard";
 import Pagination from "components/pagination";
-import moment from "moment";
 import { CreativeRequestStatus } from "utils";
+import { getSortedArray } from "components";
 
 const tableLimit = 7;
 export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
@@ -44,11 +44,7 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
           });
         }
       });
-      output.sort(
-        (a, b) => moment(b.date).valueOf() - moment(a.date).valueOf()
-      );
-
-      setData(output);
+      setData(getSortedArray(output, "date"));
     }
   }, [briefList, requestList, loading, error]);
 

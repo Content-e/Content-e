@@ -67,7 +67,7 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
             {brief?.objective}
           </td>
           <td className="campaign table-description centered capitalized hide-on-mobile">
-            {getStatusName(brief?.status)}
+            {getStatusName(brief?.status, true)}
           </td>
           <td
             className="centered"
