@@ -8,6 +8,7 @@ import {
 } from "state/dashboard";
 import { CreativeRequestStatus } from "utils";
 import "./creatorNotifications.css";
+import { getStatusName } from "components/helpers";
 
 export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
   briefList,
@@ -60,7 +61,7 @@ export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
           <img src="/images/feature-notification.svg" />
           <div className="notifiation-container">
             <div className="notification-label">
-              Your creative for {notify.name} is {notify.status}
+              Your creative for {notify.name} is {getStatusName(notify.status)}
             </div>
             <div className="notification-timeline">{notify.time}</div>
           </div>

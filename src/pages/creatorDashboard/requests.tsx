@@ -8,7 +8,7 @@ import {
   ICreatorBriefListProps,
   withCreatorBriefList,
 } from "state/dashboard";
-import { AuthRoutes } from "utils";
+import { AuthRoutes, CreativeRequestStatus } from "utils";
 import "./creatorDashboard.css";
 import moment from "moment";
 
@@ -36,7 +36,8 @@ const CreativeRequests: FC<Props & ICreatorBriefListProps> = ({
         if (brief) {
           const { BriefName, brandProfile, vertical, objective, id } = brief;
           const status =
-            requestList.find((e) => e?.brandBriefId === id)?.status || "new";
+            requestList.find((e) => e?.brandBriefId === id)?.status ||
+            CreativeRequestStatus.New;
           output.push({
             id,
             briefName: BriefName,

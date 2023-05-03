@@ -10,6 +10,7 @@ import {
 } from "state/dashboard";
 import Pagination from "components/pagination";
 import moment from "moment";
+import { CreativeRequestStatus } from "utils";
 
 const tableLimit = 7;
 export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
@@ -30,7 +31,8 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
         if (brief) {
           const { BriefName, brandProfile, vertical, objective, id } = brief;
           const status =
-            requestList.find((e) => e?.brandBriefId === id)?.status || "new";
+            requestList.find((e) => e?.brandBriefId === id)?.status ||
+            CreativeRequestStatus.New;
           output.push({
             id,
             briefName: BriefName,

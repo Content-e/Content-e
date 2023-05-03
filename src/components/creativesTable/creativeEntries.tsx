@@ -1,5 +1,5 @@
 import { BrandBrief } from "API";
-import { getSlicedArray } from "components/helpers";
+import { getSlicedArray, getStatusName } from "components/helpers";
 import { FC, useMemo } from "react";
 import { ICreativeEntry, ISelectredRequest } from "state/brandBrief";
 import "./creativesTable.css";
@@ -62,7 +62,7 @@ export const CreativeEntries: FC<Props> = ({
             0%
           </td>
           <td className="creatives-table-description centered capitalized">
-            {e.status}
+            {getStatusName(e.status)}
           </td>
           <td
             className="centered"

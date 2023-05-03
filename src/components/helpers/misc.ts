@@ -5,6 +5,7 @@ import {
   allowedSubDomains,
   AuthRoutes,
   BrandRoutes,
+  CreativeRequestStatus,
   CreatorRoutes,
   IErrorStateType,
   UnAuthRoutes,
@@ -116,3 +117,6 @@ export const isValidUrl = (text: string): boolean => {
     return false;
   }
 };
+
+export const getStatusName = (e?: string | null): string =>
+  e === CreativeRequestStatus.New ? "Submitted" : e || "";
