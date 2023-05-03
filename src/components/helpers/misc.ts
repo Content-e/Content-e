@@ -118,5 +118,9 @@ export const isValidUrl = (text: string): boolean => {
   }
 };
 
-export const getStatusName = (e?: string | null): string =>
-  e === CreativeRequestStatus.New ? "Submitted" : e || "";
+export const getStatusName = (e?: string | null): string => {
+  if (!e) return "";
+  return e === CreativeRequestStatus.New
+    ? "submitted"
+    : `${e}ed` || "in review";
+};
