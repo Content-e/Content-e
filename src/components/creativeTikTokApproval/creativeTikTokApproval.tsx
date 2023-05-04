@@ -4,7 +4,7 @@ import "./creativeTikTokApproval.css";
 import { CreativeRequestStatus, UnknownType } from "utils";
 import { CreativeRequest } from "API";
 import { ViewRequestProps, withRequestView } from "state/requests";
-import { isValidUrl } from "components/helpers";
+import CreativeTikTokVideo from "./creativeTikTokVideo";
 
 interface Props {
   request?: CreativeRequest | null;
@@ -22,7 +22,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
   errorMsg,
   loading,
   isSuccess,
-  videoUrl,
+  tiktokVideo,
 }) => {
   const [showConfirm, setShowConfirm] = useState(false);
 
@@ -64,17 +64,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
             </div>
           </div>
         )}
-        {isValidUrl(videoUrl || "") && (
-          <iframe
-            className="request-video-iframe"
-            src={videoUrl}
-            width="172px"
-            height="305px"
-            name={"creative-video"}
-            // eslint-disable-next-line max-len
-            sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation allow-same-origin"
-          />
-        )}
+        <CreativeTikTokVideo {...tiktokVideo} />
       </div>
     </div>
   );
