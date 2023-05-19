@@ -7,6 +7,7 @@ import {
   withBrandBriefs,
 } from "state/brandBrief";
 import CreativeEntries from "./creativeEntries";
+import CreativeEntriesMobile from "./creativeEntriesMobile";
 import "./creativesTable.css";
 
 const tableLimit = 7;
@@ -24,30 +25,56 @@ export const CreativesTable: FC<BrandBriefProps> = (props) => {
       />
     );
   return (
-    <>
-      <div className="creatives-table-label">Creatives</div>
-      <div className="creatives-table-container">
-        <div className="brand-table-wrapper">
-          <input
-            className="creatives-search"
-            placeholder="Search..."
-            value={searchText}
-            onChange={(e): void => setSearchText(e.target.value)}
+    <div className="brand-dashboard__items brand-briefs-items">
+      <div className="brand-dashboard__item search-item">
+        <img
+          className="brand-dashboard__item-search"
+          alt=""
+          src="/images/search.svg"
+        />
+        <input
+          className="creatives-search"
+          placeholder="Search..."
+          value={searchText}
+          onChange={(e): void => setSearchText(e.target.value)}
+        />
+      </div>
+      <div className="brand-dashboard__item full mobile-list-item">
+        <div className="brand-dashboard__top mobile-main-title">
+          <div className="brand-dashboard__top-title">Campaign briefs</div>
+          <img
+            className="brand-dashboard__top-icon"
+            alt=""
+            src="/images/dots.svg"
           />
-          <table className="creatives-table">
-            <tr className="creatives-table-header-bottom-border">
-              <th className="creatives-table-header-label">Brief Name</th>
-              <th className="creatives-table-header-label">Creator handle</th>
-              <th className="creatives-table-header-label">Creative link</th>
-              <th className="creatives-table-header-label centered">
-                View count
-              </th>
-              <th className="creatives-table-header-label centered">
-                Engagement
-              </th>
-              <th className="creatives-table-header-label centered">Status</th>
-              <th className="creatives-table-header-label centered">Details</th>
+          <img
+            className="brand-dashboard__top-icon-mobile"
+            alt=""
+            src="/images/dots-dark.svg"
+          />
+        </div>
+        <div className="brand-dashboard__list-mobile">
+          <CreativeEntriesMobile
+            {...props}
+            searchText={searchText}
+            openCreative={setSelectedRequest}
+            limit={tableLimit}
+            currentPage={currentPage}
+          />
+        </div>
+        <table className="brand-dashboard__list">
+          <thead>
+            <tr>
+              <th>Brief name</th>
+              <th>Creator handle</th>
+              <th>Creative link</th>
+              <th>View count</th>
+              <th>Engagement</th>
+              <th>Status</th>
+              <th>Details</th>
             </tr>
+          </thead>
+          <tbody>
             <CreativeEntries
               {...props}
               searchText={searchText}
@@ -55,15 +82,15 @@ export const CreativesTable: FC<BrandBriefProps> = (props) => {
               limit={tableLimit}
               currentPage={currentPage}
             />
-          </table>
-          <Pagination
-            total={props?.data?.length || 0}
-            limit={tableLimit}
-            goToPage={setCurrentPage}
-          />
-        </div>
+          </tbody>
+        </table>
+        <Pagination
+          total={props?.data?.length || 0}
+          limit={tableLimit}
+          goToPage={setCurrentPage}
+        />
       </div>
-    </>
+    </div>
   );
 };
 export default withBrandBriefs(CreativesTable);

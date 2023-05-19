@@ -4,8 +4,20 @@ export const MainWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-grow: 1;
-  height: 100vh;
   overflow: hidden;
+  padding: 38px 40px;
+  background: #f3f8f;
+  gap: 40px;
+  font-family: "Google Sans", Arial, sans-serif;
+  font-weight: 400;
+  color: #fff;
+  background: #f3f8f8;
+  @media screen and (max-width: 1280px) {
+    padding-top: 96px;
+    padding-bottom: 87px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;
 
 export const ParentWrapper = styled.div`
@@ -13,7 +25,6 @@ export const ParentWrapper = styled.div`
   overflow: auto;
   @media only screen and (max-width: 768px) {
     overflow: auto;
-    padding: 30px 33px 43px;
   }
 `;
 export const TitleMenu = styled.div`
@@ -45,7 +56,6 @@ export const PageTitle = styled.div`
 
 export const AppMain = styled.div`
   width: 100%;
-  padding: 49px 20px 0;
   position: relative;
   overflow: auto;
 

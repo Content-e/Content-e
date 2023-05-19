@@ -1,6 +1,6 @@
 import { BrandBrief } from "API";
-import { getSlicedArray, getSortedArray } from "components/helpers";
-import { FC, useMemo } from "react";
+import { getSlicedArray } from "components/helpers";
+import { FC, useMemo, useState, useEffect } from "react";
 import { ICreativeEntry, ISelectredRequest } from "state/brandBrief";
 import "./brandCreativesTable.css";
 
@@ -28,37 +28,99 @@ export const BrandCreativesTable: FC<Props> = ({
             status: req?.status,
             id: req.id,
             briefId: brief.id,
-            date: req.createdAt,
           });
       });
     });
-    return getSlicedArray(getSortedArray(rqArray, "date"), limit, currentPage);
+    return getSlicedArray(rqArray, limit, currentPage);
   }, [data, currentPage]);
+
+  const openedSidebar = false;
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [linkLimit, setLinkLimit] = useState({
+    full: 40,
+    short: 30,
+  });
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize(window.innerWidth);
+    };
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+  useEffect(() => {
+    console.log(windowSize);
+    if (windowSize <= 1350) {
+      setLinkLimit({ full: 35, short: 25 });
+    } else {
+      setLinkLimit({ full: 40, short: 30 });
+    }
+  }, [windowSize]);
 
   return (
     <>
-      {requests.map((e, index) => (
-        <tr key={`${e.id}-creatives-${index}`}>
-          <td className="table-description">{e.creativeLink}</td>
-          <td className="table-description">
-            {e.creatorHandle ? `@${e.creatorHandle}` : ""}
-          </td>
-          <td className="table-description capitalized">{e.briefName}</td>
-          <td className="table-description capitalized centered">{e.status}</td>
-          <td
-            className="centered"
-            onClick={(): void =>
-              openCreative({
-                briefId: e.briefId,
-                requestId: e.id,
-                authCode: e.creativeLink || "",
-              })
-            }
-          >
-            <img src="/images/table-search.svg" />
-          </td>
-        </tr>
-      ))}
+      {requests.map((e, index) => {
+        let color = "";
+        switch (e.status) {
+          case "accept":
+            color = "green";
+            break;
+          case "new":
+            color = "yellow";
+            break;
+          case "reject":
+            color = "red";
+            break;
+        }
+        return (
+          <tr key={`${e.id}-creatives-${index}`}>
+            <td className="brand-dashboard__list-link">
+              <div className="brand-dashboard__list-content">
+                <img alt="" src="/images/link-icon.svg" />
+                <span>
+                  {e.creativeLink
+                    ? openedSidebar
+                      ? e.creativeLink.length > linkLimit.short
+                        ? e.creativeLink.slice(0, linkLimit.short) + "..."
+                        : e.creativeLink
+                      : e.creativeLink.length > linkLimit.full
+                      ? e.creativeLink.slice(0, linkLimit.full) + "..."
+                      : e.creativeLink
+                    : ""}
+                </span>
+              </div>
+            </td>
+            <td className="brand-dashboard__list-handle">
+              <div className="brand-dashboard__list-content">
+                <img alt="" src="/images/default-image.png" />
+                <div>{e.creatorHandle ? e.creatorHandle : ""}</div>
+              </div>
+            </td>
+            <td className="brand-dashboard__list-name">{e.briefName}</td>
+            <td className={`${color} brand-dashboard__list-status`}>
+              <div className="brand-dashboard__list-content">
+                <div className="brand-dashboard__list-dot"></div>
+                <span>{e.status}</span>
+              </div>
+            </td>
+            <td
+              className="brand-dashboard__list-view centered"
+              onClick={(): void =>
+                openCreative({
+                  briefId: e.briefId,
+                  requestId: e.id,
+                  authCode: e.creativeLink || "",
+                })
+              }
+            >
+              <div className="brand-dashboard__list-content">
+                <img alt="" src="/images/doc_1.svg" />
+              </div>
+            </td>
+          </tr>
+        );
+      })}
     </>
   );
 };

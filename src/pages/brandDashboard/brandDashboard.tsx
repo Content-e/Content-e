@@ -33,14 +33,11 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
       />
     );
   return (
-    <>
-      <div className="dashboard-label">Dashboard</div>
+    <div className="brand-dashboard__items dashboard-items">
       <CreativeRequests {...props} openCreative={setSelectedRequest} />
-      <div className="dashboard-campaign-section">
-        <BrandBriefs {...props} openBrief={setSelectedBrief} />
-        <BrandInfo {...props} />
-      </div>
-    </>
+      <BrandBriefs {...props} openBrief={setSelectedBrief} />
+      <BrandInfo {...props} />
+    </div>
   );
 };
 

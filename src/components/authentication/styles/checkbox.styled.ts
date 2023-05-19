@@ -9,7 +9,7 @@ export const CheckBoxTick = styled.div`
   height: 12px;
   width: 12px;
   background: #ffffff;
-  border: 1px solid #a1a1a1;
+  border: 1px solid #3e3e36;
   margin-top: -1.5px;
   overflow: hidden;
   &::after {

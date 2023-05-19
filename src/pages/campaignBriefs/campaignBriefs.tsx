@@ -9,8 +9,7 @@ import {
   withCreatorBriefList,
 } from "state/dashboard";
 import Pagination from "components/pagination";
-import { CreativeRequestStatus } from "utils";
-import { getSortedArray } from "components";
+import moment from "moment";
 
 const tableLimit = 7;
 export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
@@ -31,8 +30,7 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
         if (brief) {
           const { BriefName, brandProfile, vertical, objective, id } = brief;
           const status =
-            requestList.find((e) => e?.brandBriefId === id)?.status ||
-            CreativeRequestStatus.New;
+            requestList.find((e) => e?.brandBriefId === id)?.status || "new";
           output.push({
             id,
             briefName: BriefName,
@@ -44,7 +42,11 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
           });
         }
       });
-      setData(getSortedArray(output, "date"));
+      output.sort(
+        (a, b) => moment(b.date).valueOf() - moment(a.date).valueOf()
+      );
+
+      setData(output);
     }
   }, [briefList, requestList, loading, error]);
 

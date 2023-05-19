@@ -3,7 +3,7 @@ import withApolloProvider from "hooks/apollo/withApollo";
 import { updateBriefStatus, useCreateAd, useGetVideoUrl } from "hooks";
 import { CreativeRequestStatus, UnknownType } from "utils";
 import { ProfileContext } from "state/profileSteps";
-import { ITiktokVideo, ViewRequestProps } from "./requests.interface";
+import { ViewRequestProps } from "./requests.interface";
 
 interface HocProps {
   id?: string;
@@ -19,7 +19,7 @@ export function withRequestView<T>(
     const [errorMsg, setErrorMsg] = useState<string>();
     const [loading, setLoading] = useState(false);
     const [isSuccess, updateSuccessStatus] = useState(false);
-    const [tiktokVideo, setTiktokVideo] = useState<ITiktokVideo>({});
+    const [videoUrl, setVideoUrl] = useState<string>();
 
     const { getVideoUrl, loading: videoLoading, url } = useGetVideoUrl();
     const {
@@ -91,12 +91,8 @@ export function withRequestView<T>(
         try {
           const parse = JSON.parse(url);
           const itemUrl = parse?.data?.item_info?.item_id;
-          const previewUrl = parse?.data?.video_info?.poster_url;
           if (itemUrl)
-            setTiktokVideo({
-              videoUrl: `https://www.tiktok.com/embed/v2/${itemUrl}`,
-              previewUrl,
-            });
+            setVideoUrl(`https://www.tiktok.com/embed/v2/${itemUrl}`);
         } catch (err) {
           setErrorMsg(err.message);
           setLoading(false);
@@ -122,9 +118,9 @@ export function withRequestView<T>(
       rejectRequest,
       getVideoLink,
       loading,
+      videoUrl,
       errorMsg,
       isSuccess,
-      tiktokVideo,
     };
     return <Component {...props} {...hocProps} />;
   });

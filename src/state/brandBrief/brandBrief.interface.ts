@@ -30,7 +30,6 @@ export interface ICreativeEntry {
   status?: string | null;
   briefId: string;
   id: string;
-  date?: string;
 }
 
 export interface ISelectredRequest {

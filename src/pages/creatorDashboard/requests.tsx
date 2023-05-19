@@ -8,9 +8,9 @@ import {
   ICreatorBriefListProps,
   withCreatorBriefList,
 } from "state/dashboard";
-import { AuthRoutes, CreativeRequestStatus } from "utils";
+import { AuthRoutes } from "utils";
 import "./creatorDashboard.css";
-import { getSortedArray } from "components";
+import moment from "moment";
 
 interface Props {
   onSelectRequest: (e: BrandBrief) => void;
@@ -36,8 +36,7 @@ const CreativeRequests: FC<Props & ICreatorBriefListProps> = ({
         if (brief) {
           const { BriefName, brandProfile, vertical, objective, id } = brief;
           const status =
-            requestList.find((e) => e?.brandBriefId === id)?.status ||
-            CreativeRequestStatus.New;
+            requestList.find((e) => e?.brandBriefId === id)?.status || "new";
           output.push({
             id,
             briefName: BriefName,
@@ -49,7 +48,10 @@ const CreativeRequests: FC<Props & ICreatorBriefListProps> = ({
           });
         }
       });
-      setData(getSortedArray(output, "date"));
+      output.sort(
+        (a, b) => moment(b.date).valueOf() - moment(a.date).valueOf()
+      );
+      setData(output);
     }
   }, [briefList, requestList, loading, error]);
 

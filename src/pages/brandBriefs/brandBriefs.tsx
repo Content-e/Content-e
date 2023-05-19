@@ -2,32 +2,32 @@ import { BrandBrief } from "API";
 import { getSlicedArray } from "components";
 import BrandBriefTable from "components/brandBriefTable/brandBriefTable";
 // eslint-disable-next-line max-len
-import BrandProfileConfirmationModal from "components/brandProfileConfirmationModal/brandProfileConfirmationModal";
-import Pagination from "components/pagination";
+//import BrandProfileConfirmationModal from "components/brandProfileConfirmationModal/brandProfileConfirmationModal";
+//import Pagination from "components/pagination";
 import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
 import { FC, useEffect, useMemo, useState } from "react";
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 import { BrandBriefProps, withBrandBriefs } from "state/brandBrief";
-import { BrandErrorModal, BrandRoutes } from "utils";
+//import { BrandErrorModal, BrandRoutes } from "utils";
 import "./brandBriefs.css";
 
 const tableLimit = 7;
 export const BrandBriefs: FC<BrandBriefProps> = ({
   data,
-  brand,
-  isTiktokLinked,
+  //brand,
+  //isTiktokLinked,
 }) => {
-  const history = useHistory();
+  //const history = useHistory();
   const [input, setInput] = useState("");
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
-  const [showAlert, setShowAlert] = useState<BrandErrorModal>();
-  const [currentPage, setCurrentPage] = useState(0);
+  //const [showAlert, setShowAlert] = useState<BrandErrorModal>();
+  //const [currentPage, setCurrentPage] = useState(0);
 
-  const goToBriefCreation = (): void => {
+  /*const goToBriefCreation = (): void => {
     if (!brand) setShowAlert(BrandErrorModal.NO_BRAND);
     else if (!isTiktokLinked) setShowAlert(BrandErrorModal.NO_TIKTOK_LINK);
     else history.push(BrandRoutes.CreateBrief);
-  };
+  };*/
 
   useEffect(() => {
     if (data) setInput("");
@@ -46,6 +46,12 @@ export const BrandBriefs: FC<BrandBriefProps> = ({
       />
     );
   return (
+    <BrandBriefTable
+      data={getSlicedArray(filteredData || [], tableLimit, 1 /*currentPage*/)}
+      openBrief={setSelectedBrief}
+    />
+  );
+  /*return (
     <div>
       {showAlert && <BrandProfileConfirmationModal errorType={showAlert} />}
       <div className="brand-table-label">Campaign briefs</div>
@@ -72,7 +78,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({
         </div>
       </div>
     </div>
-  );
+  );*/
 };
 
 export default withBrandBriefs(BrandBriefs);

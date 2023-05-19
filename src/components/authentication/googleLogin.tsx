@@ -6,7 +6,7 @@ import { withAuth } from "state/auth";
 import { authFailedErrorHeading, AuthProps, IErrorContextType } from "utils";
 import ErrorContext from "state/error/error.context";
 
-import "./styles/login.css";
+import "./styles/login.scss";
 
 export const GoogleLogin: FC<AuthProps> = ({ getAuth }) => {
   const [isLoading, setIsLoading] = useState(false);
