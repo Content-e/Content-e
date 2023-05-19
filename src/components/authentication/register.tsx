@@ -15,9 +15,11 @@ import { IconLoader } from "components/loader";
 import ShouldRender from "components/shouldRender";
 //import AuthFooter from "./authFooter";
 import * as S from "../../components/customInput/styles"; // TODO: separate select into its own component
+import Modal from "./modal";
 
 export const Register: FC = () => {
   const [creator, setCreator] = useState<boolean | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const history = useHistory();
   const {
@@ -56,13 +58,16 @@ export const Register: FC = () => {
   };
 
   const onLogin = (): void => history.push(UnAuthRoutes.Login);
-  const onSignUp = (e): void => {
+  const onSignUp = async (e): Promise<void> => {
     e.preventDefault();
     localStorage.setItem(
       "userType",
       creator ? USER_TYPES.CREATIVE_USER : USER_TYPES.BRAND_USER
     );
-    if (!validateSignUpForm()) performAction(signUpState);
+    if (!validateSignUpForm()) {
+      await performAction(signUpState);
+      setIsModalOpen(true);
+    }
   };
 
   const isSubmittable = useMemo(
@@ -250,6 +255,7 @@ export const Register: FC = () => {
           </li>
         </div>
         <div className="login__copyright">© 2023 Copyright EDC Squared.</div>
+        <Modal isOpen={isModalOpen} handleClose={() => setIsModalOpen(false)} />
       </div>
     </div>
   );
