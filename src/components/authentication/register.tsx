@@ -3,12 +3,7 @@ import { useState, useEffect, FC, useMemo } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
 import { useSignup } from "hooks";
-import {
-  validateEmail,
-  validateFullName,
-  validatePassword,
-  withAuth,
-} from "state/auth";
+import { validateEmail, validateFullName, withAuth } from "state/auth";
 
 import "./styles/login.scss";
 // import GoogleLogin from "./googleLogin";
@@ -17,10 +12,12 @@ import Navbar from "components/navbar/navbar";
 //import GoogleLogin from "./googleLogin";
 import { Input } from "components/customInput";
 import { IconLoader } from "components/loader";
+import ShouldRender from "components/shouldRender";
 //import AuthFooter from "./authFooter";
+import * as S from "../../components/customInput/styles"; // TODO: separate select into its own component
 
 export const Register: FC = () => {
-  const [creator, setCreator] = useState(false);
+  const [creator, setCreator] = useState<boolean | null>(null);
 
   const history = useHistory();
   const {
@@ -41,20 +38,26 @@ export const Register: FC = () => {
 
   const validateSignUpForm = (): boolean => {
     const emailError = validateEmail(signUpState.email);
-    const passwordError = validatePassword(signUpState.password);
+    // TODO: handle password later
+    // const passwordError = validatePassword(signUpState.password);
     const fullNameError = validateFullName(signUpState.name);
-    const notValidated = emailError || passwordError || fullNameError;
+    const roleError = creator === null ? "Please select" : null;
+
+    const notValidated = emailError || fullNameError || roleError;
     if (notValidated)
       setSignUpError({
         email: emailError,
-        password: passwordError,
+        password: null,
         name: fullNameError,
+        ["role-select"]: roleError,
       });
+
     return !!notValidated;
   };
 
   const onLogin = (): void => history.push(UnAuthRoutes.Login);
-  const onSignUp = (): void => {
+  const onSignUp = (e): void => {
+    e.preventDefault();
     localStorage.setItem(
       "userType",
       creator ? USER_TYPES.CREATIVE_USER : USER_TYPES.BRAND_USER
@@ -192,14 +195,17 @@ export const Register: FC = () => {
                   <option value="brand">Brand</option>
                   <option value="creator">Creator</option>
                 </select>
+                <p>
+                  <ShouldRender if={signUpError["role-select"]}>
+                    <S.ParagraphError>
+                      {signUpError["role-select"]}
+                    </S.ParagraphError>
+                  </ShouldRender>
+                </p>
               </div>
               <div className="signup__container-form-field">
                 <label>Tell us a little more about you</label>
-                <Input
-                  {...commonProps}
-                  placeholder="Hi there..."
-                  keyProp="password"
-                />
+                <Input {...commonProps} placeholder="Hi there..." keyProp="" />
               </div>
               <button
                 className="signup__container-form-register-button"
