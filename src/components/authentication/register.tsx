@@ -1,4 +1,4 @@
-import { useState, useEffect, FC, useMemo } from "react";
+import { useState, FC, useMemo } from "react";
 // import { IconLoader, Input } from "components";
 import { useHistory, Link } from "react-router-dom";
 import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
@@ -24,7 +24,7 @@ export const Register: FC = () => {
   const history = useHistory();
   const {
     performAction,
-    res: { isLoading, success },
+    res: { isLoading },
   } = useSignup();
   const openContactUs = (): void => {
     window.location.href = "mailto:hello@edcsquared.io";
@@ -74,10 +74,6 @@ export const Register: FC = () => {
     () => Object.values(signUpError).every((item) => item === null),
     [signUpError]
   );
-
-  useEffect(() => {
-    if (success) history.push(UnAuthRoutes.Reverify, { ...signUpState });
-  }, [success]);
 
   const commonProps = {
     handlers: { state: signUpState, error: signUpError, updateState },
