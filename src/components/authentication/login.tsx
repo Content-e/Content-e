@@ -68,7 +68,9 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
   };
 
   const [showMenu, setShowMenu] = useState(false);
-  const [cookieConfirmed, setCookieConfirmed] = useState(false);
+  const [allowCookies, setAllowCookies] = useState(
+    localStorage.getItem("allowCookies")
+  );
   const toggleMenu = (): void => setShowMenu(!showMenu);
 
   const burgerIcon = "/images/hamburger.svg";
@@ -245,14 +247,21 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
           <div className="login__copyright">© 2023 Copyright EDC Squared.</div>
         </div>
       </div>
-      {!cookieConfirmed && (
+      {!allowCookies && (
         <div className="cookie-message">
           <span>
             We use cookies to help us offer you the best onlinee experience. By
             continuing to use our website and / or clocking OK, you agree to our
             use of cookies in accordance with our Privacy Policy.
           </span>
-          <button onClick={() => setCookieConfirmed(true)}>OK</button>
+          <button
+            onClick={() => {
+              localStorage.setItem("allowCookies", "true");
+              setAllowCookies("true");
+            }}
+          >
+            OK
+          </button>
         </div>
       )}
     </>

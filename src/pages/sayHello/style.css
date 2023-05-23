@@ -274,16 +274,10 @@ ul, li {
 }
 
 .for-brands-btn {
-  background: linear-gradient(
-    116.82deg,
-    #001219 0%,
-    #bb3e03 5.21%,
-    #ee9b00 100%
-  );
-  border: 1px solid #e9d8a6;
-  border-radius: 20px;
-  height: 34px;
-  width: 135px;
+  width: 166px;
+  height: 51px;
+  background: #BB3E03;
+  border-radius: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -291,16 +285,10 @@ ul, li {
 }
 
 .for-creators-btn {
-  background: linear-gradient(
-    116.82deg,
-    #001219 0%,
-    #0a9396 6.25%,
-    #94d2bd 100%
-  );
-  border: 1px solid #e9d8a6;
-  border-radius: 20px;
-  height: 34px;
-  width: 135px;
+  width: 185px;
+  height: 51px;
+  background: #0A9396;
+  border-radius: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -308,14 +296,16 @@ ul, li {
 }
 
 .for-content-btn-text {
-  font-family: "Raleway";
+  font-family: 'Google Sans';
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: -0.02em;
-  color: #d9d9d9;
-  padding: 10px;
+  font-size: 16px;
+  line-height: 130%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
 }
 
 .for-say-hello-content-btn-container {
