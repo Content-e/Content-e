@@ -6,8 +6,8 @@ import {
   INotification,
   withCreatorBriefList,
 } from "state/dashboard";
+import { CreativeRequestStatus } from "utils";
 import "./creatorNotifications.css";
-import { getStatusName } from "components/helpers";
 
 export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
   briefList,
@@ -16,6 +16,19 @@ export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
   error,
 }) => {
   const [data, setData] = useState<Array<INotification>>([]);
+
+  const getNotification = (status: CreativeRequestStatus): string => {
+    switch (status) {
+      case CreativeRequestStatus.New:
+        return "created";
+      case CreativeRequestStatus.Accept:
+        return "accepted";
+      case CreativeRequestStatus.Reject:
+        return "rejected";
+      default:
+        return "in review";
+    }
+  };
 
   useEffect(() => {
     if (!loading && !error && requestList && briefList) {
@@ -29,7 +42,7 @@ export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
         if (status && createdAt !== updatedAt) {
           output.push({
             name: brandProfile?.name,
-            status,
+            status: getNotification(status as CreativeRequestStatus),
             time: moment(updatedAt).fromNow(),
           });
         }
@@ -47,8 +60,7 @@ export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
           <img src="/images/feature-notification.svg" />
           <div className="notifiation-container">
             <div className="notification-label">
-              Your creative for {notify.name} is{" "}
-              {getStatusName(notify.status, true)}
+              Your creative for {notify.name} is{notify.status}
             </div>
             <div className="notification-timeline">{notify.time}</div>
           </div>

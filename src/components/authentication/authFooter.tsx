@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { FC } from "react";
-import "./styles/login.css";
+import "./styles/login.scss";
 
 export const AuthFooter: FC = () => {
   return (

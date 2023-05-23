@@ -43,7 +43,9 @@ export const Meter: FC<ProfileProps> = ({ profileState: { data } }) => {
   );
   return (
     <S.MeterWrapper className={classNames({ noData: !data })}>
-      <S.Heading>Brand identity</S.Heading>
+      <div className="brand-dashboard__top">
+        <div className="brand-dashboard__top-title">Brand identity</div>
+      </div>
       <S.MeterBox>
         <S.MeterCanvas percentage={percentage} degree={degree}>
           {PercentageMapper.map((e) => (

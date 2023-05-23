@@ -1,16 +1,13 @@
 import { USER_TYPES } from "API";
 import { startCase } from "lodash";
-import moment from "moment";
 import {
   AdminRoutes,
   allowedSubDomains,
   AuthRoutes,
   BrandRoutes,
-  CreativeRequestStatus,
   CreatorRoutes,
   IErrorStateType,
   UnAuthRoutes,
-  UnknownType,
 } from "utils";
 
 export const matchSlugUrls = (pathname: string, route: string): boolean => {
@@ -118,23 +115,4 @@ export const isValidUrl = (text: string): boolean => {
   } catch (err) {
     return false;
   }
-};
-
-export const getStatusName = (
-  e?: string | null,
-  alterNewStatus?: boolean
-): string => {
-  if (!e) return "in review";
-  if (alterNewStatus && e === CreativeRequestStatus.New) return "submitted";
-  return `${e}ed`;
-};
-
-export const getSortedArray = (
-  list: Array<UnknownType>,
-  attr: string
-): Array<UnknownType> => {
-  const newArray = [...list];
-  return newArray.sort(
-    (a, b) => moment(b[attr]).valueOf() - moment(a[attr]).valueOf()
-  );
 };

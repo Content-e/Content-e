@@ -74,11 +74,11 @@ export const EditProfile: FC<ProfileProps> = ({
     setFormState((prev) => ({ ...prev, [key]: value }));
   };
 
-  const linkTiktokAccount = (): void => {
+  /*const linkTiktokAccount = (): void => {
     window.open(
       "https://ads.tiktok.com/marketing_api/auth?app_id=7204753405493903362&state=your_custom_params&redirect_uri=http%3A%2F%2Fwww.edcsquared.io%2Fbranddashboard&rid=8w8cll1xcbs"
     );
-  };
+  };*/
 
   useEffect(() => {
     if (data) {
@@ -97,81 +97,91 @@ export const EditProfile: FC<ProfileProps> = ({
   if (!data) return <></>;
   return (
     <>
-      <div className="creator-profile">
-        {getProfileRole(data.userType)} Profile
-      </div>
-      <div className="creator-profile-form-container">
-        <div className="creator-profile-form">
-          <div className="field-label-container">
-            <div className="field-label">Full name</div>
-            <input
-              className="creator-profile-input"
-              value={formState.name}
-              onChange={(e): void => updateState("name", e.target.value)}
-            />
-            <ShouldRender if={formError.name}>
-              <span>{formError.name}</span>
-            </ShouldRender>
-          </div>
-          <div className="field-label-container">
-            <div className="field-label">Email address</div>
-            <input
-              className="creator-profile-input"
-              value={data.userEmail}
-              readOnly
-            />
-          </div>
-          <div className="field-label-container">
-            <div className="field-label">Profile picture</div>
-            <input type="file" accept=".png, .jpg" onChange={handleChange} />
-            <ShouldRender if={image.error}>
-              <span>{image.error}</span>
-            </ShouldRender>
-          </div>
-          {data?.userType === USER_TYPES.CREATIVE_USER && (
-            <Fragment>
-              <div className="field-label-container">
-                <div className="field-label">TikTok handle</div>
-                <input
-                  className="creator-profile-input"
-                  value={formState.tiktokHandler}
-                  onChange={(e): void =>
-                    updateState("tiktokHandler", e.target.value)
-                  }
-                />
-                <ShouldRender if={formError.tiktokHandler}>
-                  <span>{formError.tiktokHandler}</span>
-                </ShouldRender>
-              </div>
-              <div className="field-label-container">
-                <div className="field-label">Describe yourself</div>
-                <textarea
-                  className="creator-profile-textarea"
-                  value={formState.description}
-                  onChange={(e): void =>
-                    updateState("description", e.target.value)
-                  }
-                />
-                <ShouldRender if={formError.description}>
-                  <span>{formError.description}</span>
-                </ShouldRender>
-              </div>
-            </Fragment>
-          )}
-        </div>
-
-        <div className="save-profile-container">
-          <div className="save-profile" onClick={submitProfile}>
-            <span className={classNames({ loading: isLoading })}>
-              Save profile
-            </span>
-            {isLoading && <IconLoader color="#005f73" />}
-          </div>
-          {data?.userType === USER_TYPES.BRAND_USER && (
-            <div className="save-profile" onClick={linkTiktokAccount}>
-              Link Tiktok Account
+      <div className="brand-dashboard__items user-profile-items">
+        <div className="brand-dashboard__item">
+          <div className="brand-dashboard__profile">
+            <div className="brand-dashboard__profile-title">
+              {getProfileRole(data.userType)} user profile
             </div>
-          )}
+            <div className="brand-dashboard__profile-inputs">
+              <div className="brand-dashboard__profile-group">
+                <div className="brand-dashboard__profile-label">Full name</div>
+                <input
+                  className="brand-dashboard__profile-input"
+                  value={formState.name}
+                  onChange={(e): void => updateState("name", e.target.value)}
+                />
+                <ShouldRender if={formError.name}>
+                  <span>{formError.name}</span>
+                </ShouldRender>
+              </div>
+              <div className="brand-dashboard__profile-group">
+                <div className="brand-dashboard__profile-label">
+                  Email Address
+                </div>
+                <input
+                  className="brand-dashboard__profile-input"
+                  value={data.userEmail}
+                  readOnly
+                />
+              </div>
+              <div className="field-label-container">
+                <div className="field-label">Profile picture</div>
+                <input
+                  type="file"
+                  accept=".png, .jpg"
+                  onChange={handleChange}
+                />
+                <ShouldRender if={image.error}>
+                  <span>{image.error}</span>
+                </ShouldRender>
+              </div>
+              {/*data?.userType === USER_TYPES.CREATIVE_USER && (
+                <Fragment>
+                  <div className="field-label-container">
+                    <div className="field-label">TikTok handle</div>
+                    <input
+                      className="creator-profile-input"
+                      value={formState.tiktokHandler}
+                      onChange={(e): void =>
+                        updateState("tiktokHandler", e.target.value)
+                      }
+                    />
+                    <ShouldRender if={formError.tiktokHandler}>
+                      <span>{formError.tiktokHandler}</span>
+                    </ShouldRender>
+                  </div>
+                  <div className="field-label-container">
+                    <div className="field-label">Describe yourself</div>
+                    <textarea
+                      className="creator-profile-textarea"
+                      value={formState.description}
+                      onChange={(e): void =>
+                        updateState("description", e.target.value)
+                      }
+                    />
+                    <ShouldRender if={formError.description}>
+                      <span>{formError.description}</span>
+                    </ShouldRender>
+                  </div>
+                </Fragment>
+              )*/}
+            </div>
+            <button
+              className="brand-dashboard__profile-button"
+              onClick={submitProfile}
+            >
+              <span className={classNames({ loading: isLoading })}>
+                Save profile
+              </span>
+              {isLoading && <IconLoader color="#005f73" />}
+            </button>
+            {/*data?.userType === USER_TYPES.BRAND_USER && (
+              <div className="save-profile" onClick={linkTiktokAccount}>
+                Link Tiktok Account
+              </div>
+            )*/}
+          </div>
         </div>
       </div>
     </>

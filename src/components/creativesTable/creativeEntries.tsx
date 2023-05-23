@@ -1,6 +1,6 @@
 import { BrandBrief } from "API";
-import { getSlicedArray, getSortedArray } from "components/helpers";
-import { FC, useMemo } from "react";
+import { getSlicedArray } from "components/helpers";
+import { FC, useMemo, useState, useEffect } from "react";
 import { ICreativeEntry, ISelectredRequest } from "state/brandBrief";
 import "./creativesTable.css";
 
@@ -19,6 +19,7 @@ export const CreativeEntries: FC<Props> = ({
   limit,
   currentPage,
 }) => {
+  const openedSidebar = false;
   const requests = useMemo(() => {
     const rqArray = [] as Array<ICreativeEntry>;
     data?.forEach((brief) => {
@@ -32,56 +33,141 @@ export const CreativeEntries: FC<Props> = ({
             id: req.id,
             videoLink: req.tiktokVideoCode,
             briefId: brief.id,
-            date: req.createdAt,
           });
       });
     });
     return getSlicedArray(
-      getSortedArray(
-        rqArray.filter((e) => e.briefName?.includes(searchText)),
-        "date"
-      ),
+      rqArray.filter((e) => e.briefName?.includes(searchText)),
       limit,
       currentPage
     );
   }, [data, currentPage]);
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [linkLimit, setLinkLimit] = useState({
+    full: 45,
+    short: 36,
+  });
+  const [briefLimit, setBriefLimit] = useState({
+    full: 33,
+    short: 25,
+  });
+  const [handleLimit, setHandleLimit] = useState({
+    full: 26,
+    short: 22,
+  });
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log(windowSize);
+    if (windowSize <= 1350) {
+      setLinkLimit({ full: 37, short: 28 });
+      setBriefLimit({ full: 25, short: 17 });
+      setHandleLimit({ full: 18, short: 14 });
+    } else {
+      setLinkLimit({ full: 45, short: 36 });
+      setBriefLimit({ full: 33, short: 25 });
+      setHandleLimit({ full: 26, short: 22 });
+    }
+  }, [windowSize]);
 
   return (
     <>
-      {requests.map((e, i) => (
-        <tr key={`${e.id}--${i}`}>
-          <td className="creatives-table-description break-entry capitalized">
-            {e.briefName}
-          </td>
-          <td className="creatives-table-description break-entry capitalized">
-            {e.creatorHandle}
-          </td>
-          <td className="creatives-table-description break-entry capitalized">
-            {e.videoLink}
-          </td>
-          <td className="creatives-table-description centered capitalized">
-            0
-          </td>
-          <td className="creatives-table-description centered capitalized">
-            0%
-          </td>
-          <td className="creatives-table-description centered capitalized">
-            {e.status}
-          </td>
-          <td
-            className="centered"
-            onClick={(): void =>
-              openCreative({
-                briefId: e.briefId,
-                requestId: e.id,
-                authCode: e.videoLink || "",
-              })
-            }
-          >
-            <img src="/images/table-search.svg" />
-          </td>
-        </tr>
-      ))}
+      {requests.map((e, i) => {
+        let color = "";
+        switch (e.status) {
+          case "accept":
+            color = "green";
+            break;
+          case "new":
+            color = "yellow";
+            break;
+          case "reject":
+            color = "red";
+            break;
+        }
+        return (
+          <tr key={`${e.id}--${i}`}>
+            <td className="brand-dashboard__list-name">
+              <div className="brand-dashboard__list-content">
+                {e.briefName
+                  ? openedSidebar
+                    ? e.briefName.length > briefLimit.short
+                      ? e.briefName.slice(0, briefLimit.short) + "..."
+                      : e.briefName
+                    : e.briefName.length > briefLimit.full
+                    ? e.briefName.slice(0, briefLimit.full) + "..."
+                    : e.briefName
+                  : ""}
+              </div>
+            </td>
+            <td className="brand-dashboard__list-name">
+              <div className="brand-dashboard__list-content">
+                {e.creatorHandle
+                  ? openedSidebar
+                    ? e.creatorHandle.length > handleLimit.short
+                      ? e.creatorHandle.slice(0, handleLimit.short) + "..."
+                      : e.creatorHandle
+                    : e.creatorHandle.length > handleLimit.full
+                    ? e.creatorHandle.slice(0, handleLimit.full) + "..."
+                    : e.creatorHandle
+                  : ""}
+              </div>
+            </td>
+            <td className="brand-dashboard__list-link">
+              <div className="brand-dashboard__list-content">
+                <img alt="" src="/images/link-icon.svg" />
+                <span>
+                  {e.videoLink
+                    ? openedSidebar
+                      ? e.videoLink.length > linkLimit.short
+                        ? e.videoLink.slice(0, linkLimit.short) + "..."
+                        : e.videoLink
+                      : e.videoLink.length > linkLimit.full
+                      ? e.videoLink.slice(0, linkLimit.full) + "..."
+                      : e.videoLink
+                    : ""}
+                </span>
+              </div>
+            </td>
+            <td className="brand-dashboard__list-name">
+              <div className="brand-dashboard__list-content">0</div>
+            </td>
+            <td className="brand-dashboard__list-name">
+              <div className="brand-dashboard__list-content">0%</div>
+            </td>
+            <td className={`${color} brand-dashboard__list-status`}>
+              <div className="brand-dashboard__list-content">
+                <div className="brand-dashboard__list-dot"></div>
+                <span>{e.status}</span>
+              </div>
+            </td>
+            <td
+              className="brand-dashboard__list-view-brand-briefs"
+              onClick={(): void =>
+                openCreative({
+                  briefId: e.briefId,
+                  requestId: e.id,
+                  authCode: e.videoLink || "",
+                })
+              }
+            >
+              <div className="brand-dashboard__list-content">
+                <img alt="" src="/images/doc_1.svg" />
+              </div>
+            </td>
+          </tr>
+        );
+      })}
     </>
   );
 };

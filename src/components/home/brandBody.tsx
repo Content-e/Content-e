@@ -2,7 +2,6 @@ import { FC } from "react";
 import { BrandProfile } from "API";
 import { useHistory, useLocation } from "react-router-dom";
 import { BrandRoutes } from "utils";
-import * as S from "./styles";
 
 interface Props {
   data?: BrandProfile;
@@ -14,37 +13,42 @@ export const BrandBody: FC<Props> = ({ data }) => {
   const goToEditBrand = (): void => history.push(BrandRoutes.EditBrand);
 
   return (
-    <S.BrandWrapper>
-      <S.BrandName className="firstChild">
-        <S.BrandBoldTitle>Brand name:</S.BrandBoldTitle>
-        {data?.name}
-      </S.BrandName>
-      <S.BrandName>
-        <S.BrandBoldTitle>Strap line:</S.BrandBoldTitle>
-        {data?.strapLine}
-      </S.BrandName>
-      <S.BrandName>
-        <S.BrandBoldTitle>Mission Statement:</S.BrandBoldTitle>
-        {data?.internalMission}
-      </S.BrandName>
-      <S.BrandName>
-        <S.BrandBoldHead>Brand Pillars:</S.BrandBoldHead>
-        {data?.pillars?.map((e, i) => (
-          <div key={i}>{e}</div>
-        ))}
-      </S.BrandName>
-      <S.BrandName>
-        <S.BrandBoldTitle>Brand tone of voice:</S.BrandBoldTitle>
-        {data?.toneVoice}
-      </S.BrandName>
+    <>
+      <div className="brand-dashboard__text">
+        <p>
+          <span>Brand name:</span>&nbsp;
+          {data?.name}
+        </p>
+        <p>
+          <span>Strap line:</span>&nbsp;
+          {data?.strapLine}
+        </p>
+        <p>
+          <span>Mission Statement:</span>&nbsp;
+          {data?.internalMission}
+        </p>
+        <p>
+          <span>Brand Pillars:</span>&nbsp;
+          {data?.pillars?.map((e, i) => (
+            <div key={i}>{e}</div>
+          ))}
+        </p>
+        <p>
+          <span>Brand tone of voice:</span>&nbsp;
+          {data?.toneVoice}
+        </p>
+      </div>
       {pathname.includes(BrandRoutes.Brand) && (
-        <S.EditBtnCanvas>
-          <S.EditBrandButton onClick={goToEditBrand}>
+        <div className="brand-dashboard__item-button-wrap">
+          <button
+            className="brand-dashboard__item-button"
+            onClick={goToEditBrand}
+          >
             Edit Brand
-          </S.EditBrandButton>
-        </S.EditBtnCanvas>
+          </button>
+        </div>
       )}
-    </S.BrandWrapper>
+    </>
   );
 };
 

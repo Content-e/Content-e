@@ -1,6 +1,6 @@
 import { useState, useEffect, FC, useMemo } from "react";
 // import { IconLoader, Input } from "components";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
 import { useSignup } from "hooks";
 import {
@@ -10,14 +10,14 @@ import {
   withAuth,
 } from "state/auth";
 
-import "./styles/login.css";
+import "./styles/login.scss";
 // import GoogleLogin from "./googleLogin";
 import { USER_TYPES } from "API";
 import Navbar from "components/navbar/navbar";
-import GoogleLogin from "./googleLogin";
+//import GoogleLogin from "./googleLogin";
 import { Input } from "components/customInput";
 import { IconLoader } from "components/loader";
-import AuthFooter from "./authFooter";
+//import AuthFooter from "./authFooter";
 
 export const Register: FC = () => {
   const [creator, setCreator] = useState(false);
@@ -27,6 +27,9 @@ export const Register: FC = () => {
     performAction,
     res: { isLoading, success },
   } = useSignup();
+  const openContactUs = (): void => {
+    window.location.href = "mailto:hello@edcsquared.io";
+  };
 
   const [signUpState, setSignUpState] = useState(defaultSignUpState);
   const [signUpError, setSignUpError] = useState(defaultSignUpError);
@@ -72,67 +75,175 @@ export const Register: FC = () => {
     handlers: { state: signUpState, error: signUpError, updateState },
   };
 
+  const [showMenu, setShowMenu] = useState(false);
+  const toggleMenu = (): void => {
+    setShowMenu(!showMenu);
+    const html = document.documentElement;
+    if (html.classList.contains("is-locked")) {
+      html.classList.remove("is-locked");
+    } else {
+      html.classList.add("is-locked");
+    }
+  };
+
+  const handleRoleChange = (e: any) => {
+    if (e.target.value === "creator") {
+      setCreator(true);
+    } else {
+      setCreator(false);
+    }
+  };
+
+  const burgerIcon = "/images/hamburger.svg";
+  const crossIcon = "/images/cross.svg";
+
   return (
     <div className="login">
-      <div className="login__landing">
-        <img src="/images/edc-logo.svg" alt="edc-squared" />
-        <div className="login__landing-container">
-          <span>
-            Everyday creators, <br />
-            everyday creative.
-          </span>
-          <div>Your content, your story, your impact.</div>
+      <div className="mobile-header">
+        <div className="mobile-header-top">
+          <img
+            src="/images/edc-logo.svg"
+            alt="edc-squared"
+            className="mobile-header__logo"
+          />
+          <img
+            className="mobile-header__burger"
+            src={showMenu ? crossIcon : burgerIcon}
+            alt="edc-squared"
+            onClick={toggleMenu}
+          />
+        </div>
+        {showMenu && (
+          <div className="mobile-header-menu">
+            <Link to={"#"}>HOME</Link>
+            <Link to={"#"}>FOR CREATORS</Link>
+            <Link to={"#"}>FOR BRANDS</Link>
+            <Link to={"#"}>SAY HELLO</Link>
+            <Link className="button" onClick={onLogin} to={"#"}>
+              LOGIN / SIGN UP
+            </Link>
+            <div className="login__social-links mobile-menu-links">
+              <li>
+                <img src="images/linkedin-mobile.svg" alt="" />
+              </li>
+              <li>
+                <img src="images/instagram-mobile.svg" alt="" />
+              </li>
+              <li>
+                <img src="images/tiktok-mobile.svg" alt="" />
+              </li>
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="login__wrap">
+        <div className="login__top">
+          <img
+            src="/images/edc-logo.svg"
+            alt="edc-squared"
+            className="login__logo"
+          />
+          <Navbar />
+        </div>
+        <div className="signup__container">
+          <div className="signup__container-description">
+            <div>
+              <h1>Get In Touch To Sign Up!</h1>
+              <p>
+                Whether you’re a brand, creator or agency.
+                <br />
+                We’d love to have you as part of the EDC squared community. Fill
+                in the form on the right to get started.
+                <br />
+                <br />… Or feel free to drop us an email.
+              </p>
+            </div>
+            <p className="signup__container-description-email">
+              hello@edcsquared.io
+            </p>
+          </div>
+          <div className="signup__container-form">
+            <form>
+              <div className="signup__container-form-name-container">
+                <div className="signup__container-form-field">
+                  <label>Name</label>
+                  <Input {...commonProps} placeholder="Name" keyProp="name" />
+                </div>
+                <div className="signup__container-form-field">
+                  <label>Email</label>
+                  <Input
+                    {...commonProps}
+                    placeholder="email@address.com"
+                    keyProp="email"
+                  />
+                </div>
+              </div>
+              <div className="signup__container-form-field">
+                <label>Who are you?</label>
+                <select
+                  name="role"
+                  id="role-select"
+                  placeholder="Please select"
+                  onChange={(e) => handleRoleChange(e)}
+                >
+                  <option value="" disabled selected hidden>
+                    Please select
+                  </option>
+                  <option value="brand">Brand</option>
+                  <option value="creator">Creator</option>
+                </select>
+              </div>
+              <div className="signup__container-form-field">
+                <label>Tell us a little more about you</label>
+                <Input
+                  {...commonProps}
+                  placeholder="Hi there..."
+                  keyProp="password"
+                />
+              </div>
+              <button
+                className="signup__container-form-register-button"
+                onClick={onSignUp}
+                disabled={isLoading || !isSubmittable}
+              >
+                <span style={isLoading ? { marginRight: 12 } : {}}>
+                  Register
+                </span>
+                {isLoading && <IconLoader />}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-      <div className="login__container">
-        <Navbar />
-        <div className="login__box">
-          <div className="login__title">
-            Create a {!creator ? "Brand" : "Creator"} account
-          </div>
-          <div className={`${creator ? "active" : false} btns-container`}>
-            <div
-              className={`${!creator ? "active" : false}`}
-              onClick={() => setCreator(false)}
-            >
-              Join as a brand
-            </div>
-            <div
-              className={`${creator ? "active" : false}`}
-              onClick={() => setCreator(true)}
-            >
-              Join as a creator
-            </div>
-          </div>
-          <GoogleLogin />
-          <div className="login__or">- OR -</div>
-          <div className="login__fields">
-            <Input {...commonProps} placeholder="Full Name" keyProp="name" />
-            <Input
-              {...commonProps}
-              placeholder="Email Address"
-              keyProp="email"
-            />
-            <Input
-              {...commonProps}
-              placeholder="Password"
-              type="password"
-              keyProp="password"
-            />
-          </div>
-          <button
-            className="login__btn"
-            onClick={onSignUp}
-            disabled={isLoading || !isSubmittable}
-          >
-            <span style={{ marginRight: 12 }}>Sign up</span>
-            {isLoading && <IconLoader />}
-          </button>{" "}
-          <div className="login__already">
-            Already have an account? <span onClick={onLogin}>Login</span>
-          </div>
+      <div className="login__footer">
+        <ul className="login__navbar">
+          <li>
+            <Link to={"#"}>HOME</Link>
+          </li>
+          <li>
+            <Link to={"#"}>FOR CREATORS</Link>
+          </li>
+          <li>
+            <Link to={"#"}>FOR BRANDS</Link>
+          </li>
+          <li>
+            <Link onClick={openContactUs} to={"#"}>
+              Say hello
+            </Link>
+          </li>
+        </ul>
+        <div className="login__social-links">
+          <li>
+            <img src="images/linkedin.svg" alt="" />
+          </li>
+          <li>
+            <img src="images/instagram.svg" alt="" />
+          </li>
+          <li>
+            <img src="images/tiktok.svg" alt="" />
+          </li>
         </div>
-        <AuthFooter />
+        <div className="login__copyright">© 2023 Copyright EDC Squared.</div>
       </div>
     </div>
   );

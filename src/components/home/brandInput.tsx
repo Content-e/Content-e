@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { IBrandFormState } from "state/brand";
-import * as S from "./styles";
 
 interface Props {
   title: string;
@@ -15,13 +14,15 @@ export const BrandInput: FC<Props> = ({
   onChange,
 }) => {
   return (
-    <S.BrandInputContainer>
-      <S.BrandInputTitle>{title}</S.BrandInputTitle>
-      <S.BrandInputPanel
+    <div className="brand-dashboard__form-group">
+      <div className="brand-dashboard__form-label">{title}</div>
+      <input
         value={formState[keyProp]}
+        type="text"
+        className="brand-dashboard__form-input"
         onChange={(e): void => onChange(keyProp, e.target.value)}
       />
-    </S.BrandInputContainer>
+    </div>
   );
 };
 

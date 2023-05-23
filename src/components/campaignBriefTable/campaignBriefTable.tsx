@@ -1,5 +1,5 @@
 import { BrandBrief } from "API";
-import { getSlicedArray, getStatusName } from "components/helpers";
+import { getSlicedArray } from "components/helpers";
 import { FC, useMemo } from "react";
 import { IBriefListElems } from "state/dashboard";
 import "./campaignBriefTable.css";
@@ -67,7 +67,7 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
             {brief?.objective}
           </td>
           <td className="campaign table-description centered capitalized hide-on-mobile">
-            {getStatusName(brief?.status, true)}
+            {brief?.status}
           </td>
           <td
             className="centered"

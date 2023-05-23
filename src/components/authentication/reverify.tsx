@@ -8,7 +8,7 @@ import { AuthProps, UnAuthRoutes, UnknownType } from "utils";
 import { useConfirmSignUp, useLogin } from "hooks";
 import { validateVerificationCode, withAuth } from "state/auth";
 
-import "./styles/login.css";
+import "./styles/login.scss";
 import Navbar from "components/navbar/navbar";
 import AuthFooter from "./authFooter";
 
