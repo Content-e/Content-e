@@ -32,8 +32,7 @@ export const useSignup = (): ApiHookReturnType<
       try {
         const response: SignUpResponse = await Auth.signUp({
           username: email,
-          // Default password that can be changed later. This is dumb insecure, should be changed ASAP
-          password: password || "EDK@t6&VDXgPNYb!x^SGW46eG#j5RWSFKW27",
+          password,
           attributes: { email, name },
         });
         setRes(getSuccessResponse<CognitoUser>(response.user));

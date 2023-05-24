@@ -11,16 +11,18 @@ const BrandCard: FC<Props> = ({ briefName, onShowDetails }) => {
     return briefName.trim().replaceAll(" ", "_").replaceAll("-", "_");
   }, [briefName]);
   return (
-    <div className="brand-card-container">
-      <div className="brand-card-header">
-        <div className="brand-title">Brand</div>
-        <img src="/images/table-search.svg" onClick={onShowDetails} />
-      </div>
-      <div className="campaign-title-wrapper">
-        <b className="campaign-title capitalized">{briefName}</b>
-        <div className="campaign-title sub-title-campaign hide-on-mobile">
-          @{tag}
-        </div>
+    <div className="creator-dashboard__item colored">
+      <div className="creator-dashboard__bg"></div>
+      <div className="creator-dashboard__item-block">
+        <img
+          className="brand-dashboard__item-block-icon"
+          alt=""
+          src="/images/doc_1_white.svg"
+          onClick={onShowDetails}
+        />
+        <div className="creator-dashboard__item-block-key">Brand</div>
+        <div className="creator-dashboard__item-block-value">{briefName}</div>
+        <div className="creator-dashboard__item-block-tag">@{tag}</div>
       </div>
     </div>
   );

@@ -23,23 +23,21 @@ export default function BestPractice() {
   }, [data, loading]);
 
   return (
-    <>
-      <div className="campaign-brief-header-container">
-        <div className="campaign-brief-details-text">Best practices</div>
-        {selectedPractice && (
-          <div
-            className="back-btn"
-            onClick={(): void => setSelectedPractice(undefined)}
-          >
-            <span className="back-btn-text">Back</span>
-          </div>
-        )}
-      </div>
-      {selectedPractice ? (
-        <SinglePractice practice={selectedPractice} showDetails />
-      ) : (
-        <div className="best-practice-table">
-          {practices.map((singlePractice, index) => {
+    <div className="creator-identity step-1">
+      <h2 className="creator-identity__title">Best practices</h2>
+      {selectedPractice && (
+        <div
+          className="back-btn"
+          onClick={(): void => setSelectedPractice(undefined)}
+        >
+          <span className="back-btn-text">Back</span>
+        </div>
+      )}
+      <div className="creator-identity__content c-2">
+        {selectedPractice ? (
+          <SinglePractice practice={selectedPractice} showDetails />
+        ) : (
+          practices.map((singlePractice, index) => {
             const key = `bestPractice---${singlePractice?.id || index}`;
             if (singlePractice)
               return (
@@ -50,9 +48,9 @@ export default function BestPractice() {
                 />
               );
             return <Fragment key={key} />;
-          })}
-        </div>
-      )}
-    </>
+          })
+        )}
+      </div>
+    </div>
   );
 }

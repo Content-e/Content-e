@@ -14,13 +14,13 @@ const Navbar = () => {
     <>
       <ul className="navbar">
         <li>
-          <Link to={"/landing"}>HOME</Link>
+          <Link to={"#"}>HOME</Link>
         </li>
         <li>
-          <Link to={"/forCreators"}>FOR CREATORS</Link>
+          <Link to={"#"}>FOR CREATORS</Link>
         </li>
         <li>
-          <Link to={"/forBrands"}>FOR BRANDS</Link>
+          <Link to={"#"}>FOR BRANDS</Link>
         </li>
         <li>
           <Link onClick={openContactUs} to={"#"}>

@@ -39,44 +39,93 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
   );
 
   return (
-    <table>
-      <tr className="table-header-bottom-border">
-        <th className="campaign table-header-label">Brief Name</th>
-        <th className="campaign table-header-label">Brand</th>
-        <th className="campaign table-header-label hide-on-mobile">Vertical</th>
-        <th className="campaign table-header-label hide-on-mobile">
-          Objective
-        </th>
-        <th className="campaign table-header-label hide-on-mobile centered">
-          Status
-        </th>
-        <th className="campaign table-header-label centered">Details</th>
-      </tr>
-      {truncatedData.map((brief, index) => (
-        <tr key={`${brief?.id} -- ${index}`}>
-          <td className="campaign table-description capitalized">
-            {brief?.briefName}
-          </td>
-          <td className="campaign table-description capitalized">
-            {brief?.brandName}
-          </td>
-          <td className="campaign table-description capitalized hide-on-mobile">
-            {brief?.vertical}
-          </td>
-          <td className="campaign table-description capitalized hide-on-mobile">
-            {brief?.objective}
-          </td>
-          <td className="campaign table-description centered capitalized hide-on-mobile">
-            {brief?.status}
-          </td>
-          <td
-            className="centered"
-            onClick={(): void => onSelectBrief(brief?.id)}
-          >
-            <img src="/images/table-search.svg" />
-          </td>
+    <table className="creator-dashboard__list">
+      <thead>
+        <tr>
+          <th>Brief name</th>
+          <th>Brand</th>
+          <th>Vertical</th>
+          <th>Objective</th>
+          <th>Status</th>
+          <th>Details</th>
         </tr>
-      ))}
+      </thead>
+      <tbody>
+        {truncatedData.map((brief, index) => {
+          let objectiveColor = "";
+          switch (brief?.objective) {
+            case "awareness":
+              objectiveColor = "green";
+              break;
+            case "unawareness":
+              objectiveColor = "red";
+              break;
+          }
+          let statusColor = "";
+          switch (brief?.status) {
+            case "new":
+              statusColor = "green";
+              break;
+            case "rejected":
+              statusColor = "red";
+              break;
+          }
+          return (
+            <tr key={`${brief?.id}-brandBrief--${index}`}>
+              <td className="brand-dashboard__list-name">
+                <div className="brand-dashboard__list-content">
+                  {brief?.briefName
+                    ? brief.briefName.length > 22
+                      ? brief.briefName.slice(0, 22) + "..."
+                      : brief.briefName
+                    : ""}
+                </div>
+              </td>
+              <td className="brand-dashboard__list-name">
+                <div className="brand-dashboard__list-content">
+                  {brief?.brandName
+                    ? brief.brandName.length > 22
+                      ? brief.brandName.slice(0, 22) + "..."
+                      : brief.brandName
+                    : ""}
+                </div>
+              </td>
+              <td className="brand-dashboard__list-name">
+                <div className="brand-dashboard__list-content">
+                  {brief?.vertical
+                    ? brief.vertical.length > 22
+                      ? brief.vertical.slice(0, 22) + "..."
+                      : brief.vertical
+                    : ""}
+                </div>
+              </td>
+              <td className={`${objectiveColor} brand-dashboard__list-status`}>
+                <div className="brand-dashboard__list-content">
+                  {objectiveColor === "red" && (
+                    <img alt="" src="/images/list-cross.svg" />
+                  )}
+                  {objectiveColor === "green" && (
+                    <img alt="" src="/images/list-tip.svg" />
+                  )}
+                  {brief?.objective}
+                </div>
+              </td>
+              <td className={`${statusColor} brand-dashboard__list-status`}>
+                <div className="brand-dashboard__list-content">
+                  <div className="brand-dashboard__list-dot"></div>
+                  <span>{brief?.status}</span>
+                </div>
+              </td>
+              <td
+                className="centered"
+                onClick={(): void => onSelectBrief(brief?.id)}
+              >
+                <img src="/images/doc_red.svg" />
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
     </table>
   );
 };

@@ -14,9 +14,10 @@ export const CreatorStatsCard: FC<Props> = ({
 }) => {
   if (!value) return <Fragment />;
   return (
-    <div className="creator-stats-card-container">
-      <div className="stats-header">
-        <div className="stats-label">{label}</div>
+    <div className="creator-dashboard__item colored">
+      <div className="creator-dashboard__bg"></div>
+      <div className="creator-dashboard__item-block">
+        <div className="creator-dashboard__item-block-key">{label}</div>
         <OverlayTrigger
           placement={placement}
           overlay={
@@ -25,10 +26,14 @@ export const CreatorStatsCard: FC<Props> = ({
             </Tooltip>
           }
         >
-          <img src="/images/tooltip-icon.svg" />
+          <img
+            className="creator-dashboard__item-block-icon"
+            alt=""
+            src="/images/info-icon.svg"
+          />
         </OverlayTrigger>
+        <div className="creator-dashboard__item-block-value">{value}</div>
       </div>
-      <div className="stats-count">{value}</div>
     </div>
   );
 };

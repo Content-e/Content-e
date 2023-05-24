@@ -20,10 +20,9 @@ export default function CreatorDashboard() {
     );
 
   return (
-    <>
-      <div>
-        <div className="creator-dashboard-label">Creator Dashboard</div>
-        <div className="stats-container">
+    <div className="creator-dashboard__items creator-dashboard-items">
+      <div className="creator-dashboard__item statistics-item">
+        <div className="statistics-elements">
           <CreatorStatsCard type={CreatorDashboardBoxes.Wallet} value="0" />
           <CreatorStatsCard type={CreatorDashboardBoxes.Approval} value="0" />
           <CreatorStatsCard type={CreatorDashboardBoxes.Conversion} value="0" />
@@ -34,11 +33,8 @@ export default function CreatorDashboard() {
         </div>
       </div>
       <CreativeRequests onSelectRequest={setSelectedBrief} />
-
-      <div className="notification-dashboard-container">
-        <CreatorNotifications />
-        <BestPractices />
-      </div>
-    </>
+      <CreatorNotifications />
+      <BestPractices />
+    </div>
   );
 }

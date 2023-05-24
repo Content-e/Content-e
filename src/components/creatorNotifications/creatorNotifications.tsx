@@ -52,9 +52,15 @@ export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
   }, [briefList, requestList, loading, error]);
 
   return (
-    <div className="creator-notifications-container">
-      <div className="creator-notifications-label">Notifications</div>
-
+    <div className="creator-dashboard__item half_1">
+      <div className="brand-dashboard__top">
+        <div className="brand-dashboard__top-title">Notifications</div>
+        <img
+          className="brand-dashboard__top-icon"
+          alt=""
+          src="/images/dots-orange.svg"
+        />
+      </div>
       {data.map((notify, index) => (
         <div className="creative-notification-container" key={index}>
           <img src="/images/feature-notification.svg" />

@@ -1,6 +1,4 @@
-import { useHistory } from "react-router-dom";
 import "./bestPractices.css";
-import { AuthRoutes } from "utils";
 import { FC, useEffect, useState } from "react";
 import { BestPractices as IBestPractice } from "API";
 import { Storage } from "aws-amplify";
@@ -14,12 +12,10 @@ interface Props {
 }
 export const SinglePractice: FC<Props> = ({
   practice,
-  showDots,
   onClick,
   showDetails,
 }) => {
   const [practiceImage, setPracticeImage] = useState<string>();
-  const history = useHistory();
 
   const getImagePath = async (): Promise<void> => {
     const { urlPath } = practice;
@@ -40,39 +36,108 @@ export const SinglePractice: FC<Props> = ({
     getImagePath();
   }, [practice]);
 
+  const [mobileDetailsOpened, setMobileDetailsOpened] = useState({
+    first: false,
+    second: false,
+  });
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
   return (
     <div
-      className={classNames("best-practices-container", {
+      className={classNames("creator-identity__block", {
         "best-practices-full": showDetails,
       })}
       onClick={(): void => onClick?.(practice.id)}
     >
-      <div
-        className={classNames("best-practices-wrapper", {
-          "best-practices-full-wrapper": showDetails,
-        })}
-      >
-        <div className="best-practices-header">
-          <div className="best-practices-label">{practice.headLine}</div>
-          {showDots && (
-            <img
-              onClick={(): void => history.push(AuthRoutes.BestPractices)}
-              src="/images/morevert.svg"
-            />
-          )}
-        </div>
-        <div className="best-practice-body">
-          <div className="best-practice-image-wrapper">
-            <div className="best-practice-image">
-              {practiceImage && <img src={practiceImage} alt="pratice image" />}
-            </div>
-          </div>
-          <div
-            className="best-practice-description"
-            dangerouslySetInnerHTML={{ __html: practice.description }}
+      <h3 className="creator-identity__block-title">
+        TikTok creative checklist
+      </h3>
+      <div className="creator-identity__img">
+        <picture>
+          <source
+            srcSet={practiceImage}
+            media="screen and (max-width: 991px)"
           />
-        </div>
+          <img
+            width="633"
+            height="211"
+            src={practiceImage}
+            alt="tiktok creative checklist"
+          />
+        </picture>
       </div>
+      <p>
+        The budget is crucial information as it lets creative teams assess the
+        scale that the project can reach and ensures that they pitch ideas
+        within the company's financial resources. It's inadvisable to allow
+        marketing teams to use the budget as they wish because projects always
+        have a specific fiscal limit. Teams can use their time and resources
+        efficiently if they understand the budgetary constraints of the
+        campaign.
+      </p>
+      {mobileDetailsOpened.first || windowSize > 991 ? (
+        <>
+          <p>
+            If the company already has an established brand, share information
+            about its tone and image to ensure that the campaign is consistent
+            with it. You may have a brand guideline or style guide that you can
+            share. Describe the tone of voice for previous marketing campaigns
+            and communications to ensure that the team's work aligns with the
+            established company image.
+          </p>
+          <p>
+            If you have regular marketing channels that you use consistently,
+            you can mention them in the brief. For example, if you always align
+            social media content with current campaigns, you may specify this so
+            the creative team can provide content that also works for social
+            media. The creative team's ideas might be more suitable for other
+            channels, so being transparent about your usual channels can help to
+            guide the project.
+          </p>
+          <p>
+            Companies with extensive marketing experience may have information
+            about the success of previous campaigns. Provide creative teams with
+            this information, including the campaign objectives and performance.
+            Understanding the success or failure of historic marketing projects
+            can help creative teams identify effective marketing methods for the
+            target audience.
+          </p>
+          <p>
+            If the company already has an established brand, share information
+            about its tone and image to ensure that the campaign is consistent
+            with it.
+          </p>
+        </>
+      ) : null}
+      <div className="creator-dashboard__creative-learn">
+        <button
+          className={`${mobileDetailsOpened.first ? "opened " : ""}learn-more`}
+          onClick={() =>
+            setMobileDetailsOpened((prev) => ({
+              ...prev,
+              first: !prev.first,
+            }))
+          }
+        >
+          Learn more
+        </button>
+      </div>
+      {/*<div
+        className="best-practice-description"
+        dangerouslySetInnerHTML={{ __html: practice.description }}
+      />*/}
     </div>
   );
 };

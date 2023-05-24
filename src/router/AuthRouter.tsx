@@ -58,7 +58,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
       <Switch>
         <Route exact path={AuthRoutes.Redirector} component={RedirectingStep} />
         <Route exact path={AuthRoutes.Tiktok} component={AuthorizeTikTokStep} />
-        <SidebarLayout>
+        <SidebarLayout data={data}>
           <Route exact path={AuthRoutes.EditProfile} component={EditProfile} />
           <Route exact path={AuthRoutes.Dashboard} component={Dashboard} />
           <Route exact path={AuthRoutes.CampaignBrief} component={Brief} />

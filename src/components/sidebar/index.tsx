@@ -98,7 +98,9 @@ export const MobileHeader: FC<ProfileProps> = ({ profileState: { data } }) => {
       </div>
       <div
         onClick={handleSidebarClick}
-        className={`brand-dashboard__sidebar ${openedSidebar ? "opened" : ""}`}
+        className={`brand-dashboard__sidebar ${
+          openedSidebar ? "opened" : ""
+        }  ${data?.userType === "CREATIVE_USER" ? "creative-sidebar" : ""}`}
       >
         <a
           className={`brand-dashboard__logo ${
@@ -111,9 +113,14 @@ export const MobileHeader: FC<ProfileProps> = ({ profileState: { data } }) => {
           />
         </a>
         <div className="brand-dashboard__avatar-wrap" onClick={onEditProfile}>
-          <div className="brand-dashboard__avatar">
-            <img alt="" src={profilePic || "/images/default-image.png"} />
-          </div>
+          <div
+            className="brand-dashboard__avatar"
+            style={{
+              backgroundImage: `url(${
+                profilePic || "/images/default-image.png"
+              })`,
+            }}
+          ></div>
           <span>{userName}</span>
         </div>
         <ul className="brand-dashboard__menu">

@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
-export const MainWrapper = styled.div`
+export const MainWrapperBrand = styled.div`
   width: 100%;
   display: flex;
   flex-grow: 1;
   overflow: hidden;
   padding: 38px 40px;
-  background: #f3f8f;
   gap: 40px;
   font-family: "Google Sans", Arial, sans-serif;
   font-weight: 400;
@@ -20,11 +19,43 @@ export const MainWrapper = styled.div`
   }
 `;
 
+export const MainWrapperCreator = styled.div`
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+  padding: 38px 40px;
+  background: #fcf8eb;
+  gap: 40px;
+  font-family: "Google Sans", Arial, sans-serif;
+  font-weight: 400;
+  color: #fff;
+  .brand-dashboard__mobile-header {
+    background: #bb3e03;
+  }
+  .brand-dashboard__mobile-menu {
+    background: #bb3e03;
+  }
+  .brand-dashboard__profile-title {
+    color: #ca6702;
+  }
+  .brand-dashboard__profile-label {
+    color: #ee9b00;
+  }
+  .brand-dashboard__profile-button {
+    background: #bb3e03;
+  }
+  @media screen and (max-width: 1280px) {
+    padding-top: 96px;
+    padding-bottom: 87px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+`;
+
 export const ParentWrapper = styled.div`
   width: 100%;
-  overflow: auto;
   @media only screen and (max-width: 768px) {
-    overflow: auto;
   }
 `;
 export const TitleMenu = styled.div`
@@ -57,7 +88,6 @@ export const PageTitle = styled.div`
 export const AppMain = styled.div`
   width: 100%;
   position: relative;
-  overflow: auto;
 
   @media only screen and (max-width: 768px) {
     padding: 0;

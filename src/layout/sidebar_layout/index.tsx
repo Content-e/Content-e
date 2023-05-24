@@ -7,28 +7,33 @@ import * as S from "./styles";
 
 interface Props {
   children?: ReactNode;
+  data: any;
 }
-export const SidebarLayout: FC<Props> = ({ children }) => {
-  return (
-    <S.MainWrapper>
-      <Sidebar />
-      <S.ParentWrapper>
-        <S.AppMain>
-          {/*
-          <S.TitleMenu>
-            <MobileHeader />
-          </S.TitleMenu>
-          */}
-          {children}
-        </S.AppMain>
-        {/*
-        <S.Footer>
-          <AuthFooter />
-        </S.Footer>
-        */}
-      </S.ParentWrapper>
-    </S.MainWrapper>
-  );
+
+export const SidebarLayout: FC<Props> = ({ children, data }) => {
+  if (data.userType === "BRAND_USER") {
+    return (
+      <>
+        <S.MainWrapperBrand>
+          <Sidebar />
+          <S.ParentWrapper>
+            <S.AppMain>{children}</S.AppMain>
+          </S.ParentWrapper>
+        </S.MainWrapperBrand>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <S.MainWrapperCreator>
+          <Sidebar />
+          <S.ParentWrapper>
+            <S.AppMain>{children}</S.AppMain>
+          </S.ParentWrapper>
+        </S.MainWrapperCreator>
+      </>
+    );
+  }
 };
 
 export default SidebarLayout;

@@ -125,6 +125,40 @@ export const EditProfile: FC<ProfileProps> = ({
                   readOnly
                 />
               </div>
+              {data?.userType === USER_TYPES.CREATIVE_USER && (
+                <Fragment>
+                  <div className="brand-dashboard__profile-group">
+                    <div className="brand-dashboard__profile-label">
+                      TikTok handle
+                    </div>
+                    <input
+                      className="brand-dashboard__profile-input"
+                      value={formState.tiktokHandler}
+                      onChange={(e): void =>
+                        updateState("tiktokHandler", e.target.value)
+                      }
+                    />
+                    <ShouldRender if={formError.tiktokHandler}>
+                      <span>{formError.tiktokHandler}</span>
+                    </ShouldRender>
+                  </div>
+                  <div className="brand-dashboard__profile-group">
+                    <div className="brand-dashboard__profile-label">
+                      Describe yourself
+                    </div>
+                    <input
+                      className="brand-dashboard__profile-input"
+                      value={formState.description}
+                      onChange={(e): void =>
+                        updateState("description", e.target.value)
+                      }
+                    />
+                    <ShouldRender if={formError.description}>
+                      <span>{formError.description}</span>
+                    </ShouldRender>
+                  </div>
+                </Fragment>
+              )}
               <div className="field-label-container">
                 <div className="field-label">Profile picture</div>
                 <input
@@ -136,36 +170,6 @@ export const EditProfile: FC<ProfileProps> = ({
                   <span>{image.error}</span>
                 </ShouldRender>
               </div>
-              {/*data?.userType === USER_TYPES.CREATIVE_USER && (
-                <Fragment>
-                  <div className="field-label-container">
-                    <div className="field-label">TikTok handle</div>
-                    <input
-                      className="creator-profile-input"
-                      value={formState.tiktokHandler}
-                      onChange={(e): void =>
-                        updateState("tiktokHandler", e.target.value)
-                      }
-                    />
-                    <ShouldRender if={formError.tiktokHandler}>
-                      <span>{formError.tiktokHandler}</span>
-                    </ShouldRender>
-                  </div>
-                  <div className="field-label-container">
-                    <div className="field-label">Describe yourself</div>
-                    <textarea
-                      className="creator-profile-textarea"
-                      value={formState.description}
-                      onChange={(e): void =>
-                        updateState("description", e.target.value)
-                      }
-                    />
-                    <ShouldRender if={formError.description}>
-                      <span>{formError.description}</span>
-                    </ShouldRender>
-                  </div>
-                </Fragment>
-              )*/}
             </div>
             <button
               className="brand-dashboard__profile-button"
