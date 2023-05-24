@@ -82,15 +82,15 @@
         },
         "createAd": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
-          "s3Key": "amplify-builds/createAd-4d70514c483756314d35-build.zip"
+          "s3Key": "amplify-builds/createAd-31676c76553643487566-build.zip"
         },
         "listCompaigns": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
-          "s3Key": "amplify-builds/listCompaigns-5667566a6d5973364a57-build.zip"
+          "s3Key": "amplify-builds/listCompaigns-4257306f326a792b5051-build.zip"
         },
         "listAdGroups": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
-          "s3Key": "amplify-builds/listAdGroups-757537684b6939344f4f-build.zip"
+          "s3Key": "amplify-builds/listAdGroups-394b7643615548623446-build.zip"
         },
         "getVideoFromAuthCode": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
