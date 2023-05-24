@@ -51,7 +51,12 @@ export function withRequestView<T>(
           const { access_token: token, advertiser_id: advId } = JSON.parse(
             profile.tiktokAccountAccess
           );
-          const input = { token, advId, ...createAdPayload };
+          const input = {
+            token,
+            advId,
+            landingPageUrl: `public/${createAdPayload.authCode}`,
+            ...createAdPayload,
+          };
           createAd({ variables: { ...input } });
         } catch (err) {
           setErrorMsg(err.message);
