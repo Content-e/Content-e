@@ -7,6 +7,7 @@
   background: linear-gradient(116.82deg, #E1D6B2 0%, #D9CEAD 33.02%, #DFD2AC 57.14%, #E6DCBF 100%);
   padding: 39px 34px 82px 45px;
   &__wrap {
+    padding: 45px 45px 0px 45px;
     display: flex;
     border-radius: 50px;
     background-image: url("../../../../public/images/glass-auth-bg.png");
@@ -16,7 +17,7 @@
   }
   &__top {
     width: 100%;
-    padding: 32px 56px 0px 35px;
+    padding: 0;
     display: flex;
     justify-content: space-between;
   }
@@ -116,6 +117,87 @@
     display: block;
     margin-top: 26px;
   }
+}
+
+.header-default {
+  color: #e9d8a6;
+}
+
+.header-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+}
+
+.header-list li a {
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+
+.header-list div {
+  display: flex;
+  gap: 23px;
+}
+
+.header-list img {
+  cursor: pointer;
+}
+
+.login-signup {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #041416;
+  background: #e5d7ad;
+  border: 1px solid #b6e6ad;
+  border-radius: 20px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.login-signup-link:hover {
+  color: #041416;
+}
+
+.default-link {
+  color: #e9d8a6;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.default-link:hover {
+  color: #e9d8a6;
+}
+
+.social-links {
+  fill: #e9d8a6;
+}
+
+.header-social-link-item {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active {
+  color: white;
 }
 
 .login__landing {
@@ -382,6 +464,12 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
+}
+
+.header-logo {
+  width: 160px;
+  height: 60px;
+  display: flex;
 }
 
 @media only screen and (max-width: 1280px) {
@@ -692,5 +780,11 @@
                 margin-left: -82px
             }
         }
+    }
+
+    .mobile-header-top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
     }
 }
