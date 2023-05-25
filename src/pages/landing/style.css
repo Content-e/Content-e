@@ -334,7 +334,7 @@
   background: url("../../../public/images/list-mark-1.svg");
   background-size: 100% 100%;
   left: 0;
-  top: 8px;
+  top: 10px;
 }
 
 .detailed-list-item-2::before {
@@ -346,6 +346,7 @@
   background: url("../../../public/images/list-mark-2.svg");
   background-size: 100% 100%;
   left: 0;
+  top: 10px;
 }
 
 .detailed-list-item-3::before {
@@ -357,7 +358,7 @@
   background: url("../../../public/images/list-mark-3.svg");
   background-size: 100% 100%;
   left: 0;
-  top: 8px;
+  top: 10px;
 }
 
 .for-landing-content-btn-container {

@@ -1,164 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 import { UnAuthRoutes } from "utils";
+import HeaderDesktop from "components/authentication/components/header-desktop";
+import HeaderMobile from "components/authentication/components/header-mobile";
 
 export const BrandsPage: React.FC = () => {
   const history = useHistory();
-  const [menu, setMenu] = useState(false);
 
   return (
     <div className="brands-page-wrapper">
       <div className="brands-content-container-gradient">
         <div className="brands-page-container">
-          <div className="brands-page-navbar comingSoon">
-            <div className="brands-page-logo">
-              <img
-                src="/images/edc-squared-landing-logo.svg"
-                alt="edc-squared"
-              />
-            </div>
-            <img
-              src="/images/responsive-menu.svg"
-              alt="responsive-menu"
-              className="responsive-menu"
-              onClick={() => setMenu(!menu)}
-            />
-            <div className="brands-page-menu-header">
-              <div className="brands-page-menu">
-                <div
-                  className="brands-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Landing)}
-                >
-                  Home
-                </div>
-                <div
-                  className="brands-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Creators)}
-                >
-                  For Creators
-                </div>
-                <div
-                  className="brands-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Brands)}
-                  style={{ color: "#D9D9D9" }}
-                >
-                  For Brands
-                </div>
-                <div
-                  className="brands-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.SayHello)}
-                >
-                  Say Hello
-                </div>
-                <div
-                  className="login-signup"
-                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
-                >
-                  Login / Sign up
-                </div>
-
-                <div className="brands-page-socials">
-                  <div className="brands-page-socials-item">
-                    <a
-                      target="_blank"
-                      href="https://www.linkedin.com/company/edcsquared/"
-                    >
-                      <img src="/images/linkedin.png" alt="linkedin-icon" />
-                    </a>
-                  </div>
-                  <div className="brands-page-socials-item">
-                    <a target="_blank" href="https://www.instagram.com/edcsq/">
-                      <img src="/images/instagram.png" alt="instagram-icon" />
-                    </a>
-                  </div>
-                  <div className="brands-page-socials-item">
-                    <a
-                      target="_blank"
-                      href="https://www.tiktok.com/@edcsquared"
-                    >
-                      <img src="/images/tiktok.png" alt="tiktok-icon" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {menu && (
-              <div className="brands-menu">
-                <div className="brands-menu-option-container">
-                  <div
-                    className="brands-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.Landing)}
-                  >
-                    Home
-                  </div>
-                  <div
-                    className="brands-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.Creators)}
-                  >
-                    For Creators
-                  </div>
-                  <div
-                    className="brands-menu-option"
-                    style={{ color: "#D9D9D9" }}
-                    onClick={() => history.push(UnAuthRoutes.Brands)}
-                  >
-                    For Brands
-                  </div>
-                  <div
-                    className="brands-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.SayHello)}
-                  >
-                    Say Hello
-                  </div>
-                  <div
-                    className="login-signup"
-                    onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
-                  >
-                    Login / Sign UP
-                  </div>
-                  <div className="brands-menu-img-container">
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.linkedin.com/company/edcsquared/"
-                      >
-                        <img
-                          src="/images/linkedin.png"
-                          alt="linkedin-icon"
-                          className="brands-menu-img"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.instagram.com/edcsq/"
-                      >
-                        <img
-                          src="/images/instagram.png"
-                          alt="instagram-icon"
-                          className="brands-menu-img"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.tiktok.com/@edcsquared"
-                      >
-                        <img
-                          src="/images/tiktok.png"
-                          alt="tiktok-icon"
-                          className="brands-menu-img"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+          <HeaderDesktop />
+          <HeaderMobile />
         </div>
 
         <div className="brands-content-container">

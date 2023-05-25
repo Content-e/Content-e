@@ -3,9 +3,11 @@ import "./style.css";
 import { useHistory } from "react-router-dom";
 import { UnAuthRoutes } from "utils";
 
+import HeaderDesktop from "components/authentication/components/header-desktop";
+import HeaderMobile from "components/authentication/components/header-mobile";
+
 export const LandingPage: React.FC = () => {
   const history = useHistory();
-  const [menu, setMenu] = useState(false);
   const [allowCookies, setAllowCookies] = useState(
     localStorage.getItem("allowCookies")
   );
@@ -16,160 +18,9 @@ export const LandingPage: React.FC = () => {
         <div className="landing-page-wrapper-container">
           <div className="landing-content-container-gradient">
             <div className="landing-page-container">
-              <div className="landing-page-navbar comingSoon">
-                <div className="landing-page-logo">
-                  <img
-                    src="/images/edc-squared-landing-logo.svg"
-                    alt="edc-squared"
-                  />
-                </div>
-                <img
-                  src="/images/responsive-menu.svg"
-                  alt="responsive-menu"
-                  className="responsive-menu"
-                  onClick={() => setMenu(!menu)}
-                />
-                <div className="landing-page-menu-header">
-                  <div className="landing-page-menu">
-                    <div
-                      className="landing-page-menu-items"
-                      onClick={() => history.push(UnAuthRoutes.Landing)}
-                      style={{ color: "#D9D9D9" }}
-                    >
-                      Home
-                    </div>
-                    <div
-                      className="landing-page-menu-items"
-                      onClick={() => history.push(UnAuthRoutes.Creators)}
-                    >
-                      For Creators
-                    </div>
-                    <div
-                      className="landing-page-menu-items"
-                      onClick={() => history.push(UnAuthRoutes.Brands)}
-                    >
-                      For Brands
-                    </div>
-                    <div
-                      className="landing-page-menu-items"
-                      onClick={() => history.push(UnAuthRoutes.SayHello)}
-                    >
-                      Say Hello
-                    </div>
-                    <div
-                      className="login-signup"
-                      onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
-                    >
-                      Login / Sign up
-                    </div>
-
-                    <div className="landing-page-socials">
-                      <div className="landing-page-socials-item">
-                        <a
-                          target="_blank"
-                          href="https://www.linkedin.com/company/edcsquared/"
-                        >
-                          <img src="/images/linkedin.png" alt="linkedin-icon" />
-                        </a>
-                      </div>
-                      <div className="landing-page-socials-item">
-                        <a
-                          target="_blank"
-                          href="https://www.instagram.com/edcsq/"
-                        >
-                          <img
-                            src="/images/instagram.png"
-                            alt="instagram-icon"
-                          />
-                        </a>
-                      </div>
-                      <div className="landing-page-socials-item">
-                        <a
-                          target="_blank"
-                          href="https://www.tiktok.com/@edcsquared"
-                        >
-                          <img src="/images/tiktok.png" alt="tiktok-icon" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {menu && (
-                  <div className="landing-menu">
-                    <div className="landing-menu-option-container">
-                      <div
-                        className="landing-menu-option"
-                        style={{ color: "#D9D9D9" }}
-                        onClick={() => history.push(UnAuthRoutes.Landing)}
-                      >
-                        Home
-                      </div>
-                      <div
-                        className="landing-menu-option"
-                        onClick={() => history.push(UnAuthRoutes.Creators)}
-                      >
-                        For Creators
-                      </div>
-                      <div
-                        className="landing-menu-option"
-                        onClick={() => history.push(UnAuthRoutes.Brands)}
-                      >
-                        For Brands
-                      </div>
-                      <div
-                        className="landing-menu-option"
-                        onClick={() => history.push(UnAuthRoutes.SayHello)}
-                      >
-                        Say Hello
-                      </div>
-                      <div
-                        className="login-signup"
-                        onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
-                      >
-                        Login / Sign UP
-                      </div>
-                      <div className="landing-menu-img-container">
-                        <div>
-                          <a
-                            target="_blank"
-                            href="https://www.linkedin.com/company/edcsquared/"
-                          >
-                            <img
-                              src="/images/linkedin.png"
-                              alt="linkedin-icon"
-                              className="landing-menu-img"
-                            />
-                          </a>
-                        </div>
-                        <div>
-                          <a
-                            target="_blank"
-                            href="https://www.instagram.com/edcsq/"
-                          >
-                            <img
-                              src="/images/instagram.png"
-                              alt="instagram-icon"
-                              className="landing-menu-img"
-                            />
-                          </a>
-                        </div>
-                        <div>
-                          <a
-                            target="_blank"
-                            href="https://www.tiktok.com/@edcsquared"
-                          >
-                            <img
-                              src="/images/tiktok.png"
-                              alt="tiktok-icon"
-                              className="landing-menu-img"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+              <HeaderDesktop />
+              <div style={{ width: "100%" }}>
+                <HeaderMobile />
               </div>
               <div className="landing-content-container">
                 <div className="landing-page-body">

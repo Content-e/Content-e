@@ -5,6 +5,8 @@ import { UnAuthRoutes } from "utils";
 import { useSendEmail } from "hooks/query/useEmail";
 import axios from "axios";
 import { IconLoader } from "components";
+import HeaderDesktop from "components/authentication/components/header-desktop";
+import HeaderMobile from "components/authentication/components/header-mobile";
 
 export const SayHello: React.FC = () => {
   const history = useHistory();
@@ -13,7 +15,6 @@ export const SayHello: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [menu, setMenu] = useState(false);
   const [isLoading, setIsLoading] = useState("");
 
   const openContactUs = (): void => {
@@ -65,153 +66,8 @@ export const SayHello: React.FC = () => {
     <div className="say-hello-page-wrapper">
       <div className="say-hello-content-container-gradient">
         <div className="say-hello-page-container">
-          <div className="say-hello-page-navbar comingSoon">
-            <div className="say-hello-page-logo">
-              <img
-                src="/images/edc-squared-landing-logo.svg"
-                alt="edc-squared"
-              />
-            </div>
-            <img
-              src="/images/responsive-menu.svg"
-              alt="responsive-menu"
-              className="responsive-menu"
-              onClick={() => setMenu(!menu)}
-            />
-            <div className="say-hello-page-menu-header">
-              <div className="say-hello-page-menu">
-                <div
-                  className="say-hello-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Landing)}
-                >
-                  Home
-                </div>
-                <div
-                  className="say-hello-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Creators)}
-                >
-                  For Creators
-                </div>
-                <div
-                  className="say-hello-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Brands)}
-                >
-                  For Brands
-                </div>
-                <div
-                  className="say-hello-page-menu-items"
-                  style={{ color: "#D9D9D9" }}
-                >
-                  Say Hello
-                </div>
-                <div
-                  className="login-signup"
-                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
-                >
-                  Login / Sign up
-                </div>
-
-                <div className="say-hello-page-socials">
-                  <div className="say-hello-page-socials-item">
-                    <a
-                      target="_blank"
-                      href="https://www.linkedin.com/company/edcsquared/"
-                    >
-                      <img src="/images/linkedin.png" alt="linkedin-icon" />
-                    </a>
-                  </div>
-                  <div className="say-hello-page-socials-item">
-                    <a target="_blank" href="https://www.instagram.com/edcsq/">
-                      <img src="/images/instagram.png" alt="instagram-icon" />
-                    </a>
-                  </div>
-                  <div className="say-hello-page-socials-item">
-                    <a
-                      target="_blank"
-                      href="https://www.tiktok.com/@edcsquared"
-                    >
-                      <img src="/images/tiktok.png" alt="tiktok-icon" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {menu && (
-              <div className="say-hello-menu">
-                <div className="say-hello-menu-option-container">
-                  <div
-                    className="say-hello-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.Landing)}
-                  >
-                    Home
-                  </div>
-                  <div
-                    className="say-hello-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.Creators)}
-                  >
-                    For Creators
-                  </div>
-                  <div
-                    className="say-hello-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.Brands)}
-                  >
-                    For Brands
-                  </div>
-                  <div
-                    className="say-hello-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.SayHello)}
-                    style={{ color: "#D9D9D9" }}
-                  >
-                    Say Hello
-                  </div>
-                  <div
-                    className="login-signup"
-                    onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
-                  >
-                    Login / Sign UP
-                  </div>
-                  <div className="say-hello-menu-img-container">
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.linkedin.com/company/edcsquared/"
-                      >
-                        <img
-                          src="/images/linkedin.png"
-                          alt="linkedin-icon"
-                          className="say-hello-menu-img"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.instagram.com/edcsq/"
-                      >
-                        <img
-                          src="/images/instagram.png"
-                          alt="instagram-icon"
-                          className="say-hello-menu-img"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.tiktok.com/@edcsquared"
-                      >
-                        <img
-                          src="/images/tiktok.png"
-                          alt="tiktok-icon"
-                          className="say-hello-menu-img"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+          <HeaderDesktop />
+          <HeaderMobile />
           <div className="say-hello-content-container">
             <div className="say-hello-page-body">
               <div className="say-hello-page-title">Let’s talk!</div>
