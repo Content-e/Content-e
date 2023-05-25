@@ -23,7 +23,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
   errorMsg,
   loading,
   isSuccess,
-  videoUrl,
+  tiktokVideo,
 }) => {
   const [showConfirm, setShowConfirm] = useState(false);
 
