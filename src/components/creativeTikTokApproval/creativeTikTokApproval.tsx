@@ -4,7 +4,8 @@ import "./creativeTikTokApproval.css";
 import { CreativeRequestStatus, UnknownType } from "utils";
 import { CreativeRequest } from "API";
 import { ViewRequestProps, withRequestView } from "state/requests";
-import { isValidUrl } from "components/helpers";
+import CreativeTikTokVideo from "./creativeTikTokVideo";
+import { Storage } from "aws-amplify";
 
 interface Props {
   request?: CreativeRequest | null;
@@ -26,6 +27,8 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
 }) => {
   const [showConfirm, setShowConfirm] = useState(false);
 
+  const [awsURL, setAwsURL] = useState<any>(null);
+
   const onOkay = (): void => {
     if (showConfirm) approveRequest(createAdPayload);
   };
@@ -37,7 +40,16 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
   };
 
   useEffect(() => {
-    if (request?.id) getVideoLink(request.tiktokVideoCode);
+    if (request?.id && request?.tiktokVideoCode)
+      getVideoLink(request.tiktokVideoCode);
+    else {
+      Storage.get(`${request?.tiktokCreativeUrl}`)
+        .then((data) => {
+          console.log(data);
+          setAwsURL(data);
+        })
+        .catch((err) => console.log(err));
+    }
   }, [request]);
   useEffect(() => {
     if (!loading && isSuccess) onClose();
@@ -64,17 +76,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
             </div>
           </div>
         )}
-        {isValidUrl(videoUrl || "") && (
-          <iframe
-            className="request-video-iframe"
-            src={videoUrl}
-            width="172px"
-            height="305px"
-            name={"creative-video"}
-            // eslint-disable-next-line max-len
-            sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation allow-same-origin"
-          />
-        )}
+        <CreativeTikTokVideo awsURL={awsURL} {...tiktokVideo} />
       </div>
     </div>
   );

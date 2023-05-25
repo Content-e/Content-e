@@ -1,6 +1,9 @@
 import classNames from "classnames";
 import TiktokHandlerAlertModal from "components/tiktokHandlerAlertModal";
-import { handleCreativeRequest } from "hooks/query/useTikTokAuth";
+import {
+  handleCreativeRequest,
+  handleUpdateCreativeRequest,
+} from "hooks/query/useTikTokAuth";
 import { FC, useEffect, useState } from "react";
 import { withAuth } from "state/auth";
 import { withProfile } from "state/profileSteps";
@@ -9,6 +12,8 @@ import "./authorizeTikTok.css";
 import AuthorizeTikTokStep1 from "./authorizeTikTokStep1";
 import AuthorizeTikTokStep2 from "./authorizeTikTokStep2";
 import AuthorizeTikTokStep3 from "./authorizeTikTokStep3";
+import AuthorizeTiktokType from "./authorizeTiktokType";
+import AuthorizeTiktokUpload from "./authorizeTikTokUpload";
 
 interface Props {
   onCross: () => void;
@@ -23,10 +28,13 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
   profileState: { data: profile },
 }) => {
   const { createTiktokRequest, loading, data } = handleCreativeRequest();
+  const { updateTiktokRequest, loading: updateLoading } =
+    handleUpdateCreativeRequest();
 
   const { userId } = authState || {};
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState<any | null>(null);
   const [showAlert, setAlertVisibility] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   const toggleAlert = (): void => setAlertVisibility(!showAlert);
   const submitSteps = (link: string): void => {
@@ -45,8 +53,39 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
     }
   };
 
+  const uploadVideo = async (): Promise<void> => {
+    if (!loading && userId && id) {
+      if (profile?.tiktokHandler) {
+        const input = {
+          brandBriefId: id,
+          creatorId: userId,
+          status: "new",
+          tiktokCreativeUrl: "",
+          tiktokVideoCode: "",
+          creativeTiktokHandle: profile?.tiktokHandler,
+        };
+        const res = await createTiktokRequest({ variables: { input } });
+        return res;
+      }
+    }
+  };
+
+  const updatePath = async (path: string, vidID: string): Promise<void> => {
+    if (!updateLoading && userId && id) {
+      if (profile?.tiktokHandler) {
+        const input = {
+          id: vidID,
+          tiktokCreativeUrl: path,
+        };
+        console.log(path);
+        const res = await updateTiktokRequest({ variables: { input } });
+        console.log(res);
+      }
+    }
+  };
+
   useEffect(() => {
-    if (!loading && data) onCross();
+    if (!loading && data && !uploading) onCross();
   }, [loading, data]);
 
   return (
@@ -56,6 +95,22 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
       })}
     >
       <div className="tik-tok-container">
+        {step === null && (
+          <AuthorizeTiktokType
+            onCross={onCross}
+            goToNext={(): void => setStep(0)}
+            goToUpload={(): void => setStep("upload")}
+          />
+        )}
+        {step === "upload" && (
+          <AuthorizeTiktokUpload
+            onCross={onCross}
+            updatePath={updatePath}
+            goToNext={uploadVideo}
+            setUploading={setUploading}
+            goToPrev={(): void => setStep(null)}
+          />
+        )}
         {step === 0 && (
           <AuthorizeTikTokStep1
             onCross={onCross}
@@ -78,6 +133,7 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
           />
         )}
       </div>
+
       {showAlert && (
         <div className="tiktok-alert-message">
           <TiktokHandlerAlertModal onClick={toggleAlert} />
