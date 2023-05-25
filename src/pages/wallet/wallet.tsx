@@ -1,4 +1,5 @@
 import PaymentCard from "components/paymentCard/paymentCard";
+import PaymentDetails from "components/paymentCard/paymentDetails";
 import WalletCard from "components/walletCard/walletCard";
 
 import "./wallet.css";
@@ -20,7 +21,7 @@ export default function Wallet() {
       </div>
       <div className="wallet-section">
         <PaymentCard />
-        <PaymentCard />
+        <PaymentDetails />
       </div>
     </>
   );
