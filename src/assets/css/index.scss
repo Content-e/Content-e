@@ -2551,6 +2551,10 @@ img {
 		height: 100%;
 		background: url('../../../public/images/glass.png');
 		background-size: 100% 100%;
+		&.long-glass-bg {
+			background: url('../../../public/images/glass-long.png');
+			background-size: 100% 100%;
+		}
 	}
 }
 
@@ -2821,6 +2825,10 @@ input[type='checkbox']:checked + .checkbox {
 		align-items: flex-start;
 		justify-content: flex-end;
 		&-btn {
+			display: block;
+			flex-shrink: 0;
+			width: max-content;
+			height: max-content;
 			padding: 0.916em 1.583em;
 			background: transparent;
 			border-radius: 40px;
@@ -2938,6 +2946,11 @@ input[type='checkbox']:checked + .checkbox {
 		grid-template-columns: 1fr 1fr;
 		grid-gap: 20px;
 	}
+	&__title-wrap {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 	&__title {
 		font-size: 24px;
 		line-height: 120%;
@@ -2950,10 +2963,14 @@ input[type='checkbox']:checked + .checkbox {
 		height: 100%;
 	}
 	&__block {
+		cursor: pointer;
 		border-radius: 16px;
 		background: #fff;
 		padding: 24px;
-		min-height: 100%;
+		height: auto;
+		&.best-practices-full {
+			cursor: inherit;
+		}
 		&-title {
 			color: #ca6702;
 			font-weight: 700;
@@ -2974,16 +2991,14 @@ input[type='checkbox']:checked + .checkbox {
 		}
 	}
 	&__img {
-		&:not(:last-child) {
-			margin-bottom: 20px;
-		}
-		& picture {
-			border-radius: 10px;
-		}
-		& img {
-			width: 100%;
-			height: auto;
-			border-radius: 10px;
+		margin-bottom: 20px;
+		border-radius: 10px;
+		width: 100%;
+		height: 211px;
+		background-position: center;
+		background-size: cover;
+		&.showed-details-img {
+			height: 347px;
 		}
 	}
 	& .creator-dashboard__creative-learn {
@@ -2995,6 +3010,12 @@ input[type='checkbox']:checked + .checkbox {
 	.creator-identity {
 		& .c-2 {
 			grid-template-columns: 100%;
+		}
+		&__img {
+			height: 178px;
+			&.showed-details-img {
+				height: 178px;
+			}
 		}
 	}
 }

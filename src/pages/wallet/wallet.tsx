@@ -6,7 +6,6 @@ import "./wallet.css";
 export default function Wallet() {
   return (
     <>
-      <div className="wallet-title">Wallet</div>
       <div className="wallet-section">
         <WalletCard
           dueDateCheck={true}
@@ -19,7 +18,10 @@ export default function Wallet() {
           cost="$124.68"
         />
       </div>
-      <PaymentCard />
+      <div className="wallet-section">
+        <PaymentCard />
+        <PaymentCard />
+      </div>
     </>
   );
 }

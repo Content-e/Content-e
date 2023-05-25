@@ -24,16 +24,22 @@ export default function BestPractice() {
 
   return (
     <div className="creator-identity step-1">
-      <h2 className="creator-identity__title">Best practices</h2>
-      {selectedPractice && (
-        <div
-          className="back-btn"
-          onClick={(): void => setSelectedPractice(undefined)}
-        >
-          <span className="back-btn-text">Back</span>
-        </div>
-      )}
-      <div className="creator-identity__content c-2">
+      <div className="creator-identity__title-wrap">
+        <h2 className="creator-identity__title">Best practices</h2>
+        {selectedPractice && (
+          <button
+            onClick={(): void => setSelectedPractice(undefined)}
+            className="creator-dashboard__creative-back-btn"
+          >
+            Back
+          </button>
+        )}
+      </div>
+      <div
+        className={`creator-identity__content ${
+          !selectedPractice ? "c-2" : ""
+        }`}
+      >
         {selectedPractice ? (
           <SinglePractice practice={selectedPractice} showDetails />
         ) : (

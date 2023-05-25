@@ -11,6 +11,6 @@
 .wallet-section {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 20px;
+  margin-bottom: 24px;
 }
