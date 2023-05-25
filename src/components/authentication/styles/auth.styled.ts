@@ -181,3 +181,39 @@ export const AuthButtonWhite = styled.span`
     text-decoration: underline;
   }
 `;
+
+export const ModalOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ModalTopBar = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 32px;
+  margin-right: 50px;
+`;
+
+export const ModalContent = styled.div`
+  text-align: center;
+  border-radius: 16px;
+  width: 705px;
+  height: 285px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #7b7b7b;
+`;

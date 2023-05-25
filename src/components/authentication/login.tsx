@@ -95,10 +95,10 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
           </div>
           {showMenu && (
             <div className="mobile-header-menu">
-              <Link to={"#"}>HOME</Link>
-              <Link to={"#"}>FOR CREATORS</Link>
-              <Link to={"#"}>FOR BRANDS</Link>
-              <Link to={"#"}>SAY HELLO</Link>
+              <Link to={"/landing"}>HOME</Link>
+              <Link to={"/forCreators"}>FOR CREATORS</Link>
+              <Link to={"/forBrands"}>FOR BRANDS</Link>
+              <Link to={"/sayHello"}>SAY HELLO</Link>
               <Link className="button" onClick={onSignUp} to={"#"}>
                 LOGIN / SIGN UP
               </Link>
@@ -125,13 +125,13 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
             />
             <ul className="navbar">
               <li>
-                <Link to={"#"}>HOME</Link>
+                <Link to={"/landing"}>HOME</Link>
               </li>
               <li>
-                <Link to={"#"}>FOR CREATORS</Link>
+                <Link to={"/forCreators"}>FOR CREATORS</Link>
               </li>
               <li>
-                <Link to={"#"}>FOR BRANDS</Link>
+                <Link to={"/forBrands"}>FOR BRANDS</Link>
               </li>
               <li>
                 <Link onClick={openContactUs} to={"#"}>
@@ -219,16 +219,16 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
         <div className="login__footer">
           <ul className="login__navbar">
             <li>
-              <Link to={"#"}>HOME</Link>
+              <Link to={"/landing"}>HOME</Link>
             </li>
             <li>
-              <Link to={"#"}>FOR CREATORS</Link>
+              <Link to={"/forCreator"}>FOR CREATORS</Link>
             </li>
             <li>
-              <Link to={"#"}>FOR BRANDS</Link>
+              <Link to={"/forBrands"}>FOR BRANDS</Link>
             </li>
             <li>
-              <Link onClick={openContactUs} to={"#"}>
+              <Link onClick={openContactUs} to={"/sayHello"}>
                 Say hello
               </Link>
             </li>
