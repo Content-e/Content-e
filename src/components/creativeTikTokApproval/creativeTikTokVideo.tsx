@@ -25,7 +25,7 @@ export const CreativeTikTokVideo: FC<Props> = ({
         className="creative-video-preview"
         onClick={toggleModal}
       >
-        <img src={previewUrl ? previewUrl : awsURL} alt="preview image" />
+        {previewUrl && <img src={previewUrl} alt="preview image" />}
         <div className="creative-video-preview-play-icon">
           <img src="/images/play.svg" alt="play icon" />
         </div>
