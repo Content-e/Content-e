@@ -137,7 +137,7 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
             Creative inspiration
           </button>
         )}
-        {data?.userType === USER_TYPES.CREATIVE_USER && !isVideoLinked && (
+        {data?.userType === USER_TYPES.CREATIVE_USER && isVideoLinked && (
           <div
             className="creator-dashboard__creative-btn link"
             onClick={(): void => setPopupVisibility(true)}

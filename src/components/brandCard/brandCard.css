@@ -67,7 +67,8 @@
   border: 1px solid #dee2e6;
   box-shadow: 0px 0px 2px rgb(0 0 0 / 12%), 0px 20px 20px rgb(0 0 0 / 8%);
   border-radius: 8px;
-  padding: 30px 25px;
+  padding: 20px;
+  position: relative;
 }
 
 .detail-card-wrapper .detail-card-canvas .detail-card-header {
@@ -81,18 +82,16 @@
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
-  line-height: 28px;
-  color: #005f73;
+  line-height: 120%;
+  color: #CA6702;
 }
 
 .detail-card-wrapper .detail-card-canvas .detail-card-header .detail-card-cross {
   position: absolute;
-  right: 10px;
-  top: 11px;
+  right: 28px;
+  top: 28px;
   bottom: auto;
   left: auto;
-  width: 24px;
-  height: 24px;
 }
 
 .detail-card-wrapper .detail-card-canvas .detail-card-header .detail-card-cross img {
@@ -101,13 +100,21 @@
 }
 
 .detail-card-wrapper .detail-card-canvas .detail-card-body {
-  gap: 20px;
+  gap: 14px;
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
-  color: #a1a1a1;
+  margin-top: 30px;
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 140%;
+  color: #9C9992;
+}
+
+.detail-card-wrapper .detail-card-canvas .detail-card-body b {
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .detail-card-wrapper .detail-card-canvas .detail-card-body .detail-card-single-elem ul {
@@ -115,25 +122,26 @@
 }
 
 .detail-card-wrapper .detail-card-canvas .detail-card-button-panel {
-  margin-top: 22px;
+  margin-top: 30px;
   text-align: center;
   width: 100%;
 }
 
 .detail-card-wrapper .detail-card-canvas .detail-card-button-panel .detail-card-button {
-
   width: 329px;
   text-align: center;
   background: linear-gradient(180deg, #9fd0bd 0%, #409094 100%);
-  border-radius: 10px;
-  color: white;
   border: none;
-  padding: 8px;
-  font-family: 'Raleway';
+  padding: 16px 32px 14px;
+  background: #BB3E03;
+  border-radius: 40px;
+  font-family: 'Google Sans';
   font-style: normal;
-  font-weight: 300;
-  font-size: 12px;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 130%;
+  color: #FFFFFF;
+  text-transform: uppercase;
 }
 
 
@@ -149,17 +157,17 @@
 
 @media only screen and (min-width: 768px) {
   .detail-card-wrapper .detail-card-canvas {
-    width: 808px;
+    width: 705px;
     position: absolute;
     float: left;
     left: 57.5%;
     top: 50%;
     transform: translate(-50%, -50%);
-    padding: 30px 30px 17px 30px;
+    padding: 24px;
   }
 
   .detail-card-wrapper .detail-card-canvas .detail-card-button-panel .detail-card-button {
-    width: 469px;
+    width: 260px;
   }
 
   .campaign-title {

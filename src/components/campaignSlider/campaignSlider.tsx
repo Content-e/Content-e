@@ -23,12 +23,14 @@ export const CampaignSlider: FC<Props> = ({ videoUrls, onClose }) => {
     }
   };
 
+  console.log(videoUrls);
+
   return (
     <div className="campaign-slider-container">
       <div className="creative-inspiration-header">
         <div className="creative-inspiration-text">Creative Inspiration</div>
         <img
-          src="/images/close-icon.svg"
+          src="/images/modal-cross.svg"
           className="close-icon-inspiration"
           onClick={onClose}
         />
@@ -39,25 +41,27 @@ export const CampaignSlider: FC<Props> = ({ videoUrls, onClose }) => {
         indicators={false}
         className="carousel-wrapper"
         interval={null}
+        slide={false}
       >
         {videoUrls.map((video, index) => (
           <Carousel.Item key={index}>
             {isValidUrl(video) ? (
-              <iframe
-                className="inspiration-video-iframe"
-                src={getEmbeddedUrl(video)}
-                width="90%"
-                name={`video-${video}-${index}`}
-                // eslint-disable-next-line max-len
-                sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation allow-same-origin"
-              />
+              <div className="inspiration-video-iframe-wrap">
+                <iframe
+                  className="inspiration-video-iframe"
+                  src={getEmbeddedUrl(video)}
+                  width="100%"
+                  name={`video-${video}-${index}`}
+                  // eslint-disable-next-line max-len
+                  sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation allow-same-origin"
+                />
+              </div>
             ) : (
               <div className="invalid-inspiration-video">No Video Exists</div>
             )}
           </Carousel.Item>
         ))}
       </Carousel>
-
       <div className="inspiration-clear-button" onClick={onClose}>
         Done
       </div>

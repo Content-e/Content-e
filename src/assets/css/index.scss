@@ -2894,7 +2894,7 @@ input[type='checkbox']:checked + .checkbox {
 			flex-shrink: 0;
 			width: max-content;
 			height: max-content;
-			padding: 0.916em 1.583em;
+			padding: 16px 32px 14px;
 			background: transparent;
 			border-radius: 40px;
 			border: 1px solid #ca6702;
@@ -2918,12 +2918,13 @@ input[type='checkbox']:checked + .checkbox {
 	}
 	&-btn {
 		display: inline-block;
-		padding: 0.916em 1.583em;
+		padding: 16px 32px 14px;
 		background: transparent;
 		border-radius: 40px;
 		font-style: normal;
 		font-weight: 700;
-		font-size: 1.5rem;
+		font-size: 16px;
+		line-height: 130%;
 		text-align: center;
 		text-transform: uppercase;
 		color: #fff;
