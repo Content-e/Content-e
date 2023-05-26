@@ -2,11 +2,10 @@
 import { useState, useEffect, FC } from "react";
 
 import { IconLoader, Input } from "components";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import HeaderDesktop from "components/authentication/components/header-desktop";
 import HeaderMobile from "components/authentication/components/header-mobile";
 import Checkbox from "./checkbox";
-import GoogleLogin from "./googleLogin";
 
 import { validateEmail, validatePassword, withAuth } from "state/auth";
 import {
@@ -19,8 +18,6 @@ import {
 import { useLogin } from "hooks";
 
 import "./styles/login.scss";
-import Navbar from "components/navbar/navbar";
-import AuthFooter from "./authFooter";
 
 export const Login: FC<AuthProps> = ({ getAuth }) => {
   const path = window.location.pathname;
@@ -29,9 +26,6 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     res: { isLoading, error, success },
     performAction,
   } = useLogin();
-  const openContactUs = (): void => {
-    window.location.href = "mailto:hello@edcsquared.io";
-  };
 
   const [formState, setFormState] = useState(defaultLoginState);
   const [formError, setFormError] = useState(defaultLoginError);
@@ -69,15 +63,6 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
   const commonProps = {
     handlers: { state: formState, error: formError, updateState },
   };
-
-  const [showMenu, setShowMenu] = useState(false);
-  const [allowCookies, setAllowCookies] = useState(
-    localStorage.getItem("allowCookies")
-  );
-  const toggleMenu = (): void => setShowMenu(!showMenu);
-
-  const burgerIcon = "/images/hamburger.svg";
-  const crossIcon = "/images/cross.svg";
 
   return (
     <>
@@ -207,23 +192,6 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
           </div>
         </div>
       </div>
-      {!allowCookies && (
-        <div className="cookie-message">
-          <span>
-            We use cookies to help us offer you the best onlinee experience. By
-            continuing to use our website and / or clocking OK, you agree to our
-            use of cookies in accordance with our Privacy Policy.
-          </span>
-          <button
-            onClick={() => {
-              localStorage.setItem("allowCookies", "true");
-              setAllowCookies("true");
-            }}
-          >
-            OK
-          </button>
-        </div>
-      )}
     </>
   );
 };

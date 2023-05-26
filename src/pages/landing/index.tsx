@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 import { UnAuthRoutes } from "utils";
@@ -9,9 +9,6 @@ import HeaderMobile from "components/authentication/components/header-mobile";
 export const LandingPage: React.FC = () => {
   const path = window.location.pathname;
   const history = useHistory();
-  const [allowCookies, setAllowCookies] = useState(
-    localStorage.getItem("allowCookies")
-  );
 
   return (
     <>
@@ -191,23 +188,6 @@ export const LandingPage: React.FC = () => {
           </div>
         </div>
       </div>
-      {!allowCookies && (
-        <div className="cookie-message">
-          <span>
-            We use cookies to help us offer you the best onlinee experience. By
-            continuing to use our website and / or clocking OK, you agree to our
-            use of cookies in accordance with our Privacy Policy.
-          </span>
-          <button
-            onClick={() => {
-              localStorage.setItem("allowCookies", "true");
-              setAllowCookies("true");
-            }}
-          >
-            OK
-          </button>
-        </div>
-      )}
     </>
   );
 };
