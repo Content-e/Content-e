@@ -43,15 +43,17 @@ export const LandingPage: React.FC = () => {
                   </ul>
 
                   <div className="for-landing-content-btn-container">
-                    <div className="for-brands-btn">
-                      <span onClick={() => history.push(UnAuthRoutes.Creators)}>
-                        FOR BRANDS
-                      </span>
+                    <div
+                      className="for-brands-btn"
+                      onClick={() => history.push(UnAuthRoutes.Creators)}
+                    >
+                      FOR CREATORS
                     </div>
-                    <div className="for-creators-btn">
-                      <span onClick={() => history.push(UnAuthRoutes.Brands)}>
-                        FOR CREATORS
-                      </span>
+                    <div
+                      className="for-creators-btn"
+                      onClick={() => history.push(UnAuthRoutes.Brands)}
+                    >
+                      FOR BRANDS
                     </div>
                   </div>
                 </div>
