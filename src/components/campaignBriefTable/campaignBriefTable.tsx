@@ -66,6 +66,15 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
             case "new":
               statusColor = "green";
               break;
+            case "accept":
+              statusColor = "green";
+              break;
+            case "accepted":
+              statusColor = "green";
+              break;
+            case "reject":
+              statusColor = "red";
+              break;
             case "rejected":
               statusColor = "red";
               break;
