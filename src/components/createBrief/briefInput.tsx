@@ -20,18 +20,18 @@ export const BriefInspiration: FC<Props> = ({
   isTextArea,
 }) => {
   return (
-    <div className="create-brief-input-container">
-      <div className="create-brief-input-title">{title}</div>
+    <>
+      <div className="brand-dashboard__form-label">{title}</div>
       <ShouldRender if={!isTextArea}>
         <input
-          className="create-brief-input"
+          className="brand-dashboard__form-input"
           value={formState[key]}
           onChange={(e): void => onChange(key, e.target.value)}
         />
       </ShouldRender>
       <ShouldRender if={isTextArea}>
         <textarea
-          className="creator-brief-textarea"
+          className="brand-dashboard__form-textarea"
           value={formState[key]}
           onChange={(e): void => onChange(key, e.target.value)}
         />
@@ -39,7 +39,7 @@ export const BriefInspiration: FC<Props> = ({
       <ShouldRender if={errorState[key]}>
         <div className="input-brief-error">{errorState[key]}</div>
       </ShouldRender>
-    </div>
+    </>
   );
 };
 

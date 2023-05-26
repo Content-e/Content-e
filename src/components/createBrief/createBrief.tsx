@@ -85,6 +85,59 @@ export const CreateBrief: FC<SaveBriefProps> = ({
 
   const props = { formState, errorState: formError, onChange: handleChange };
   return (
+    <div className="brand-dashboard__items brief-items">
+      <div className="brand-dashboard__item">
+        <div className="brand-dashboard__top">
+          <div className="brand-dashboard__top-title">{headingText} Brief</div>
+          <img
+            className="brand-dashboard__top-icon"
+            alt=""
+            src="/images/dots.svg"
+          />
+        </div>
+        <div className="brand-dashboard__form">
+          <div className="brand-dashboard__form-item form-item-1">
+            <div className="brand-dashboard__form-group">
+              <BriefInput {...props} keyProp="BriefName" title="Brief Name" />
+            </div>
+            <div className="brand-dashboard__form-group">
+              <div className="brand-dashboard__form-label">
+                Select TikTok campaign to link to
+              </div>
+              <select
+                className="brand-dashboard__identity-select"
+                onChange={updateCampaign}
+                value={formState.campaignId}
+                disabled={dataLoading}
+              >
+                <option value="">Select One</option>
+                {listCampaigns.map((e) => (
+                  <option value={e.id}>{e.value}</option>
+                ))}
+              </select>
+            </div>
+            <div className="brand-dashboard__form-group">
+              <BriefInput {...props} keyProp="objective" title="Objective" />
+            </div>
+            <div className="brand-dashboard__form-group">
+              <div className="brand-dashboard__form-label">Brief status</div>
+              <input type="text" className="brand-dashboard__form-input" />
+            </div>
+          </div>
+          <BriefInspirations {...props} keyProp="creativeInspirations" />
+          <div className="brand-dashboard__form-item full form-item-3">
+            <BriefInput
+              {...props}
+              keyProp="brandBriefDetails"
+              title="Brief details"
+              isTextArea
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+  return (
     <>
       <div className="creatives-table-label">{headingText} Brief</div>
       <div className="create-brief-box">

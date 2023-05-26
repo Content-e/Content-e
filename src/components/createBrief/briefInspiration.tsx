@@ -23,19 +23,17 @@ export const BriefInspirations: FC<Props> = ({
   };
 
   return (
-    <div className="creative-inspiration-box">
-      <div className="create-brief-input-title">Creative Inspiration</div>
-      <div className="creative-inspiration-input-container">
-        {times(5, (index) => (
-          <input
-            onChange={(e): void => handleChange(index, e.target.value)}
-            key={index.toString()}
-            className="create-brief-input"
-            value={formState[key][index]}
-            placeholder="Paste creative URL"
-          />
-        ))}
-      </div>
+    <div className="brand-dashboard__form-item block-form-item form-item-2">
+      <div className="brand-dashboard__form-title">Creative Inspiration</div>
+      {times(4, (index) => (
+        <input
+          onChange={(e): void => handleChange(index, e.target.value)}
+          key={index.toString()}
+          className="brand-dashboard__form-input"
+          value={formState[key][index]}
+          placeholder="Paste creative URL"
+        />
+      ))}
       <ShouldRender if={errorState[key]}>
         <div className="input-brief-error">{errorState[key]}</div>
       </ShouldRender>
