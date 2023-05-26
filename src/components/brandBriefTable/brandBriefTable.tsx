@@ -86,17 +86,25 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
       </div>
       <div className="brand-dashboard__item full mobile-list-item">
         <div className="brand-dashboard__top mobile-main-title">
-          <div className="brand-dashboard__top-title">Campaign briefs</div>
-          <img
-            className="brand-dashboard__top-icon"
-            alt=""
-            src="/images/dots.svg"
-          />
-          <img
-            className="brand-dashboard__top-icon-mobile"
-            alt=""
-            src="/images/dots-dark.svg"
-          />
+          <div className="brand-dashboard__top-title">Campaign and briefs</div>
+          <div className="table-actions-container">
+            <button
+              onClick={() => history.push(BrandRoutes.CreateBrief)}
+              className="add-brief-button"
+            >
+              Create
+            </button>
+            <img
+              className="brand-dashboard__top-icon"
+              alt=""
+              src="/images/dots.svg"
+            />
+            <img
+              className="brand-dashboard__top-icon-mobile"
+              alt=""
+              src="/images/dots-dark.svg"
+            />
+          </div>
         </div>
         <div className="brand-dashboard__list-mobile">
           {data?.map((e, i) => {

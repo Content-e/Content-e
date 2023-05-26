@@ -106,3 +106,9 @@
   cursor: pointer;
   gap: 20px;
 }
+
+.save-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

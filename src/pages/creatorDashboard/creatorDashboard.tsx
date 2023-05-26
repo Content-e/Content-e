@@ -22,7 +22,7 @@ export default function CreatorDashboard() {
   return (
     <div className="creator-dashboard__items creator-dashboard-items">
       <div className="creator-dashboard__item statistics-item">
-        <div className="statistics-elements">
+        <div className="statistics-cards-container">
           <CreatorStatsCard type={CreatorDashboardBoxes.Wallet} value="0" />
           <CreatorStatsCard type={CreatorDashboardBoxes.Approval} value="0" />
           <CreatorStatsCard type={CreatorDashboardBoxes.Conversion} value="0" />

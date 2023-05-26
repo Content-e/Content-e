@@ -63,3 +63,12 @@ img {
     max-width: 175px;
   }
 }
+
+@media only screen and (max-width: 586px) {
+  .shrink-mobile {
+    width: 80%;
+  }
+  .grow-mobile {
+    height: 90%;
+  }
+}
