@@ -75,14 +75,17 @@
 }
 
 .save-profile {
-  background: #ffffff;
-  border: 1px solid #005f73;
+  cursor: pointer;
+  color: black;
   border-radius: 10px;
   width: 165px;
   height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
 }
 
 .save-profile:first-child {

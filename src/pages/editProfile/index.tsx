@@ -74,11 +74,11 @@ export const EditProfile: FC<ProfileProps> = ({
     setFormState((prev) => ({ ...prev, [key]: value }));
   };
 
-  /*const linkTiktokAccount = (): void => {
+  const linkTiktokAccount = (): void => {
     window.open(
       "https://ads.tiktok.com/marketing_api/auth?app_id=7204753405493903362&state=your_custom_params&redirect_uri=http%3A%2F%2Fwww.edcsquared.io%2Fbranddashboard&rid=8w8cll1xcbs"
     );
-  };*/
+  };
 
   useEffect(() => {
     if (data) {
@@ -182,11 +182,11 @@ export const EditProfile: FC<ProfileProps> = ({
                 {isLoading && <IconLoader color="#005f73" />}
               </button>
             </div>
-            {/*data?.userType === USER_TYPES.BRAND_USER && (
+            {data?.userType === USER_TYPES.BRAND_USER && (
               <div className="save-profile" onClick={linkTiktokAccount}>
                 Link Tiktok Account
               </div>
-            )*/}
+            )}
           </div>
         </div>
       </div>
