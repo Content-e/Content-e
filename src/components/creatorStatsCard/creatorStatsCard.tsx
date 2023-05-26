@@ -16,8 +16,10 @@ export const CreatorStatsCard: FC<Props> = ({
   return (
     <div className="creator-dashboard__item colored">
       <div className="creator-dashboard__bg"></div>
-      <div className="creator-dashboard__item-block">
-        <div className="creator-dashboard__item-block-key">{label}</div>
+      <div className="creator-dashboard__item-block grow-mobile">
+        <div className="creator-dashboard__item-block-key shrink-mobile">
+          {label}
+        </div>
         <OverlayTrigger
           placement={placement}
           overlay={

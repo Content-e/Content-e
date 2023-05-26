@@ -27,9 +27,23 @@
   gap: 10px;
 }
 
+.statistics-cards-container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+}
+
 @media only screen and (max-width: 768px) {
   .stats-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .statistics-cards-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    column-gap: 10px;
+    row-gap: 10px;
   }
 }
 
