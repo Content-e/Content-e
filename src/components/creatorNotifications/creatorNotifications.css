@@ -11,6 +11,18 @@
   overflow: auto;
 }
 
+.notifications-container {
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.creative-notification-icon-and-text {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .creator-notifications-label {
   font-family: "Raleway";
   font-style: normal;
@@ -21,15 +33,12 @@
 }
 
 .creative-notification-container {
-  display: flex;
-  align-items: center;
   margin-top: 12px;
-  gap: 8px;
 }
 
 .notifiation-container {
-  display: flex;
-  flex-direction: column;
+  margin-left: 32px;
+  margin-top: -6px;
 }
 
 .notification-label {

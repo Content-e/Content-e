@@ -61,17 +61,21 @@ export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
           src="/images/dots-orange.svg"
         />
       </div>
-      {data.map((notify, index) => (
-        <div className="creative-notification-container" key={index}>
-          <img src="/images/feature-notification.svg" />
-          <div className="notifiation-container">
-            <div className="notification-label">
-              Your creative for {notify.name} is{notify.status}
+      <div className="notifications-container">
+        {data.map((notify, index) => (
+          <div className="creative-notification-container" key={index}>
+            <div className="creative-notification-icon-and-text">
+              <img src="/images/feature-notification.svg" />
+              <div className="notification-label">
+                Your creative for {notify.name} is {notify.status}
+              </div>
             </div>
-            <div className="notification-timeline">{notify.time}</div>
+            <div className="notifiation-container">
+              <div className="notification-timeline">{notify.time}</div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
