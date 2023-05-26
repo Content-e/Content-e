@@ -711,8 +711,14 @@ img {
 		cursor: pointer;
 		display: flex;
 		align-items: center;
+    justify-content: center;
+    width: 100%;
 		margin-top: auto;
-		gap: 14px;
+		gap: 10px;
+
+    &:hover {
+      color: inherit;
+    }
 		span {
 			font-style: normal;
 			font-weight: 700;
@@ -2207,7 +2213,7 @@ img {
 				th:last-child {
 					padding-right: 24px;
 					width: 151px;
-				} 
+				}
 			}
 		}
 		tr {
