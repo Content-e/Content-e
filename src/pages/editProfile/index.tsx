@@ -171,15 +171,17 @@ export const EditProfile: FC<ProfileProps> = ({
                 </ShouldRender>
               </div>
             </div>
-            <button
-              className="brand-dashboard__profile-button"
-              onClick={submitProfile}
-            >
-              <span className={classNames({ loading: isLoading })}>
-                Save profile
-              </span>
-              {isLoading && <IconLoader color="#005f73" />}
-            </button>
+            <div className="save-button-container">
+              <button
+                className="brand-dashboard__profile-button"
+                onClick={submitProfile}
+              >
+                <span className={classNames({ loading: isLoading })}>
+                  Save profile
+                </span>
+                {isLoading && <IconLoader color="#005f73" />}
+              </button>
+            </div>
             {/*data?.userType === USER_TYPES.BRAND_USER && (
               <div className="save-profile" onClick={linkTiktokAccount}>
                 Link Tiktok Account
