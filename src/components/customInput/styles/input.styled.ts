@@ -10,7 +10,7 @@ export const InputLabel = styled.div`
 `;
 
 export const Input = styled.input`
-  padding: 6px 8px;
+  padding: 6px 13px;
   border: none;
   border-bottom: 1px solid #e8e8e8;
 
@@ -20,10 +20,10 @@ export const Input = styled.input`
 
   &::placeholder {
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
-    line-height: 17px;
-    color: #a1a1a1;
+    line-height: 160%;
+    color: #9c9992;
     padding-bottom: 12px;
   }
 `;

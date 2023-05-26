@@ -10,7 +10,7 @@ export const AuthorizeTikTokHeader: FC<Props> = ({ title, onCross }) => {
     <div className="tik-tok-header">
       <div className="tik-tok-label-policy">{title}</div>
       <img
-        src="/images/close-icon.svg"
+        src="/images/modal-cross.svg"
         className="close-icon"
         onClick={onCross}
       />
