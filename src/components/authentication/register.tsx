@@ -1,34 +1,34 @@
 import { useState, FC, useMemo } from "react";
 // import { IconLoader, Input } from "components";
-import { useHistory, Link } from "react-router-dom";
-import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
+import { defaultSignUpError, defaultSignUpState } from "utils";
 import { useSignup } from "hooks";
 import { validateEmail, validateFullName, withAuth } from "state/auth";
-
+import { UnAuthRoutes } from "utils";
+import { useHistory } from "react-router-dom";
 import "./styles/login.scss";
 // import GoogleLogin from "./googleLogin";
 import { USER_TYPES } from "API";
-import Navbar from "components/navbar/navbar";
+//import Navbar from "components/navbar/navbar";
 //import GoogleLogin from "./googleLogin";
 import { Input } from "components/customInput";
 import { IconLoader } from "components/loader";
-import ShouldRender from "components/shouldRender";
+//import ShouldRender from "components/shouldRender";
 //import AuthFooter from "./authFooter";
-import * as S from "../../components/customInput/styles"; // TODO: separate select into its own component
+//import * as S from "../../components/customInput/styles"; // TODO: separate select into its own component
 import Modal from "./modal";
+import HeaderDesktop from "components/authentication/components/header-desktop";
+import HeaderMobile from "components/authentication/components/header-mobile";
 
 export const Register: FC = () => {
   const [creator, setCreator] = useState<boolean | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const path = window.location.pathname;
   const history = useHistory();
+
   const {
     performAction,
     res: { isLoading },
   } = useSignup();
-  const openContactUs = (): void => {
-    window.location.href = "mailto:hello@edcsquared.io";
-  };
 
   const [signUpState, setSignUpState] = useState(defaultSignUpState);
   const [signUpError, setSignUpError] = useState(defaultSignUpError);
@@ -57,7 +57,7 @@ export const Register: FC = () => {
     return !!notValidated;
   };
 
-  const onLogin = (): void => history.push(UnAuthRoutes.Login);
+  //const onLogin = (): void => history.push(UnAuthRoutes.Login);
   const onSignUp = async (e): Promise<void> => {
     e.preventDefault();
     localStorage.setItem(
@@ -79,8 +79,7 @@ export const Register: FC = () => {
     handlers: { state: signUpState, error: signUpError, updateState },
   };
 
-  const [showMenu, setShowMenu] = useState(false);
-  const toggleMenu = (): void => {
+  /*const toggleMenu = (): void => {
     setShowMenu(!showMenu);
     const html = document.documentElement;
     if (html.classList.contains("is-locked")) {
@@ -88,7 +87,7 @@ export const Register: FC = () => {
     } else {
       html.classList.add("is-locked");
     }
-  };
+  };*/
 
   const handleRoleChange = (e: any) => {
     if (e.target.value === "creator") {
@@ -98,92 +97,45 @@ export const Register: FC = () => {
     }
   };
 
-  const burgerIcon = "/images/hamburger.svg";
-  const crossIcon = "/images/cross.svg";
+  //const burgerIcon = "/images/hamburger.svg";
+  //const crossIcon = "/images/cross.svg";
 
   return (
     <div className="login">
-      <div className="mobile-header">
-        <div className="mobile-header-top">
-          <img
-            src="/images/edc-logo.svg"
-            alt="edc-squared"
-            className="mobile-header__logo"
-          />
-          <img
-            className="mobile-header__burger"
-            src={showMenu ? crossIcon : burgerIcon}
-            alt="edc-squared"
-            onClick={toggleMenu}
-          />
-        </div>
-        {showMenu && (
-          <div className="mobile-header-menu">
-            <Link to={"/landing"}>HOME</Link>
-            <Link to={"/forCreators"}>FOR CREATORS</Link>
-            <Link to={"/forBrands"}>FOR BRANDS</Link>
-            <Link to={"/sayHello"}>SAY HELLO</Link>
-            <Link className="button" onClick={onLogin} to={"#"}>
-              LOGIN / SIGN UP
-            </Link>
-            <div className="login__social-links mobile-menu-links">
-              <li>
-                <img src="images/linkedin-mobile.svg" alt="" />
-              </li>
-              <li>
-                <img src="images/instagram-mobile.svg" alt="" />
-              </li>
-              <li>
-                <img src="images/tiktok-mobile.svg" alt="" />
-              </li>
-            </div>
-          </div>
-        )}
-      </div>
+      <HeaderMobile />
       <div className="login__wrap">
-        <div className="login__top">
-          <img
-            src="/images/edc-logo.svg"
-            alt="edc-squared"
-            className="login__logo"
-          />
-          <Navbar />
-        </div>
+        <HeaderDesktop />
         <div className="signup__container">
-          <div className="signup__container-description">
-            <div>
-              <h1>Get In Touch To Sign Up!</h1>
-              <p>
-                Whether you’re a brand, creator or agency.
-                <br />
-                We’d love to have you as part of the EDC squared community. Fill
-                in the form on the right to get started.
-                <br />
-                <br />… Or feel free to drop us an email.
-              </p>
+          <div className="signup__title">
+            Create a {!creator ? "Brand" : "Creator"} account
+          </div>
+          <div className={`${creator ? "active" : false} btns-container`}>
+            <div
+              className={`${!creator ? "active" : false}`}
+              onClick={() => setCreator(false)}
+            >
+              Join as a brand
             </div>
-            <p className="signup__container-description-email">
-              hello@edcsquared.io
-            </p>
+            <div
+              className={`${creator ? "active" : false}`}
+              onClick={() => setCreator(true)}
+            >
+              Join as a creator
+            </div>
           </div>
           <div className="signup__container-form">
             <form>
-              <div className="signup__container-form-name-container">
-                <div className="signup__container-form-field">
-                  <label>Name</label>
-                  <Input {...commonProps} placeholder="Name" keyProp="name" />
-                </div>
-                <div className="signup__container-form-field">
-                  <label>Email</label>
-                  <Input
-                    {...commonProps}
-                    placeholder="email@address.com"
-                    keyProp="email"
-                  />
-                </div>
+              <div className="signup__container-form-field">
+                <Input {...commonProps} placeholder="Name" keyProp="name" />
               </div>
               <div className="signup__container-form-field">
-                <label>Who are you?</label>
+                <Input
+                  {...commonProps}
+                  placeholder="email@address.com"
+                  keyProp="email"
+                />
+              </div>
+              <div className="signup__container-form-field">
                 <select
                   name="role"
                   id="role-select"
@@ -196,16 +148,15 @@ export const Register: FC = () => {
                   <option value="brand">Brand</option>
                   <option value="creator">Creator</option>
                 </select>
-                <p>
+                {/*<p>
                   <ShouldRender if={signUpError["role-select"]}>
                     <S.ParagraphError>
                       {signUpError["role-select"]}
                     </S.ParagraphError>
                   </ShouldRender>
-                </p>
+                </p>*/}
               </div>
               <div className="signup__container-form-field">
-                <label>Tell us a little more about you</label>
                 <Input {...commonProps} placeholder="Hi there..." keyProp="" />
               </div>
               <button
@@ -218,39 +169,78 @@ export const Register: FC = () => {
                 </span>
                 {isLoading && <IconLoader />}
               </button>
+              <div className="login__already">
+                Don’t have an account? <span onClick={onSignUp}>Sign up</span>
+              </div>
             </form>
           </div>
         </div>
-      </div>
-      <div className="login__footer">
-        <ul className="login__navbar">
-          <li>
-            <Link to={"/landing"}>HOME</Link>
-          </li>
-          <li>
-            <Link to={"/forCreators"}>FOR CREATORS</Link>
-          </li>
-          <li>
-            <Link to={"/forBrands"}>FOR BRANDS</Link>
-          </li>
-          <li>
-            <Link onClick={openContactUs} to={"/sayHello"}>
-              Say hello
-            </Link>
-          </li>
-        </ul>
-        <div className="login__social-links">
-          <li>
-            <img src="images/linkedin.svg" alt="" />
-          </li>
-          <li>
-            <img src="images/instagram.svg" alt="" />
-          </li>
-          <li>
-            <img src="images/tiktok.svg" alt="" />
-          </li>
+        <div className="login__landing">
+          <img src="/images/login-image.png" />
         </div>
-        <div className="login__copyright">© 2023 Copyright EDC Squared.</div>
+      </div>
+      <div className="landing-footer">
+        <div className="landing-footer-text-container">
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Landing)}
+          >
+            Home
+          </div>
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Creators)}
+          >
+            For Creators
+          </div>
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.Brands)}
+          >
+            For Brands
+          </div>
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.SayHello)}
+          >
+            Say Hello
+          </div>
+          <div
+            className="landing-footer-text"
+            onClick={() => history.push(UnAuthRoutes.SayHello)}
+          >
+            Say Hello
+          </div>
+          <div
+            className="landing-footer-text"
+            onClick={() =>
+              path === "/homePageLogin"
+                ? history.push(UnAuthRoutes.Register)
+                : history.push(UnAuthRoutes.Login)
+            }
+          >
+            Login / Sign up
+          </div>
+        </div>
+
+        <div className="landing-footer-img-container">
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/company/edcsquared/"
+          >
+            <img src="/images/landing-linkedin.svg" />
+          </a>
+          <a target="_blank" href="https://www.instagram.com/edcsq/">
+            <img src="/images/landing-insta.svg" />
+          </a>
+          <a target="_blank" href="https://www.tiktok.com/@edcsquared">
+            <img src="/images/landing-tiktok.svg" />
+          </a>
+        </div>
+
+        <div className="landing-footer-text">
+          © 2023 Copyright EDC Squared. All Rights Reserved.
+        </div>
         <Modal isOpen={isModalOpen} handleClose={() => setIsModalOpen(false)} />
       </div>
     </div>

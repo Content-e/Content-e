@@ -3,6 +3,8 @@ import { useState, useEffect, FC } from "react";
 
 import { IconLoader, Input } from "components";
 import { Link, useHistory } from "react-router-dom";
+import HeaderDesktop from "components/authentication/components/header-desktop";
+import HeaderMobile from "components/authentication/components/header-mobile";
 import Checkbox from "./checkbox";
 import GoogleLogin from "./googleLogin";
 
@@ -21,6 +23,7 @@ import Navbar from "components/navbar/navbar";
 import AuthFooter from "./authFooter";
 
 export const Login: FC<AuthProps> = ({ getAuth }) => {
+  const path = window.location.pathname;
   const history = useHistory();
   const {
     res: { isLoading, error, success },
@@ -79,96 +82,20 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
   return (
     <>
       <div className="login">
-        <div className="mobile-header">
-          <div className="mobile-header-top">
-            <img
-              src="/images/edc-logo.svg"
-              alt="edc-squared"
-              className="mobile-header__logo"
-            />
-            <img
-              className="mobile-header__burger"
-              src={showMenu ? crossIcon : burgerIcon}
-              alt="edc-squared"
-              onClick={toggleMenu}
-            />
-          </div>
-          {showMenu && (
-            <div className="mobile-header-menu">
-              <Link to={"/landing"}>HOME</Link>
-              <Link to={"/forCreators"}>FOR CREATORS</Link>
-              <Link to={"/forBrands"}>FOR BRANDS</Link>
-              <Link to={"/sayHello"}>SAY HELLO</Link>
-              <Link className="button" onClick={onSignUp} to={"#"}>
-                LOGIN / SIGN UP
-              </Link>
-              <div className="login__social-links mobile-menu-links">
-                <li>
-                  <img src="images/linkedin-mobile.svg" alt="" />
-                </li>
-                <li>
-                  <img src="images/instagram-mobile.svg" alt="" />
-                </li>
-                <li>
-                  <img src="images/tiktok-mobile.svg" alt="" />
-                </li>
-              </div>
-            </div>
-          )}
-        </div>
+        <HeaderMobile />
         <div className="login__wrap">
-          <div className="login__top">
-            <img
-              src="/images/edc-logo.svg"
-              alt="edc-squared"
-              className="login__logo"
-            />
-            <ul className="navbar">
-              <li>
-                <Link to={"/landing"}>HOME</Link>
-              </li>
-              <li>
-                <Link to={"/forCreators"}>FOR CREATORS</Link>
-              </li>
-              <li>
-                <Link to={"/forBrands"}>FOR BRANDS</Link>
-              </li>
-              <li>
-                <Link onClick={openContactUs} to={"#"}>
-                  Say hello
-                </Link>
-              </li>
-              <li>
-                <Link className="button" onClick={onSignUp} to={"#"}>
-                  LOGIN / SIGN UP
-                </Link>
-              </li>
-              <div className="social-links">
-                <li>
-                  <img src="images/tiktok.svg" alt="" />
-                </li>
-                <li>
-                  <img src="images/linkedin.svg" alt="" />
-                </li>
-                <li>
-                  <img src="images/instagram.svg" alt="" />
-                </li>
-              </div>
-            </ul>
-          </div>
+          <HeaderDesktop />
           <div className="login__container">
             <div className="login__box">
               <div className="login__title">Login</div>
               {/*<GoogleLogin />*/}
               {/*<div className="login__or">- OR -</div>*/}
               <div className="login__fields">
-                <div className="login__label">email</div>
                 <Input
                   {...commonProps}
                   placeholder="Email Address"
                   keyProp="email"
                 />
-                <div className="login__label">password</div>
                 <Input
                   {...commonProps}
                   placeholder="Password"
@@ -216,35 +143,68 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
             <img src="/images/login-image.png" />
           </div>
         </div>
-        <div className="login__footer">
-          <ul className="login__navbar">
-            <li>
-              <Link to={"/landing"}>HOME</Link>
-            </li>
-            <li>
-              <Link to={"/forCreator"}>FOR CREATORS</Link>
-            </li>
-            <li>
-              <Link to={"/forBrands"}>FOR BRANDS</Link>
-            </li>
-            <li>
-              <Link onClick={openContactUs} to={"/sayHello"}>
-                Say hello
-              </Link>
-            </li>
-          </ul>
-          <div className="login__social-links">
-            <li>
-              <img src="images/linkedin.svg" alt="" />
-            </li>
-            <li>
-              <img src="images/instagram.svg" alt="" />
-            </li>
-            <li>
-              <img src="images/tiktok.svg" alt="" />
-            </li>
+        <div className="landing-footer">
+          <div className="landing-footer-text-container">
+            <div
+              className="landing-footer-text"
+              onClick={() => history.push(UnAuthRoutes.Landing)}
+            >
+              Home
+            </div>
+            <div
+              className="landing-footer-text"
+              onClick={() => history.push(UnAuthRoutes.Creators)}
+            >
+              For Creators
+            </div>
+            <div
+              className="landing-footer-text"
+              onClick={() => history.push(UnAuthRoutes.Brands)}
+            >
+              For Brands
+            </div>
+            <div
+              className="landing-footer-text"
+              onClick={() => history.push(UnAuthRoutes.SayHello)}
+            >
+              Say Hello
+            </div>
+            <div
+              className="landing-footer-text"
+              onClick={() => history.push(UnAuthRoutes.SayHello)}
+            >
+              Say Hello
+            </div>
+            <div
+              className="landing-footer-text"
+              onClick={() =>
+                path === "/homePageLogin"
+                  ? history.push(UnAuthRoutes.Register)
+                  : history.push(UnAuthRoutes.Login)
+              }
+            >
+              Login / Sign up
+            </div>
           </div>
-          <div className="login__copyright">© 2023 Copyright EDC Squared.</div>
+
+          <div className="landing-footer-img-container">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/company/edcsquared/"
+            >
+              <img src="/images/landing-linkedin.svg" />
+            </a>
+            <a target="_blank" href="https://www.instagram.com/edcsq/">
+              <img src="/images/landing-insta.svg" />
+            </a>
+            <a target="_blank" href="https://www.tiktok.com/@edcsquared">
+              <img src="/images/landing-tiktok.svg" />
+            </a>
+          </div>
+
+          <div className="landing-footer-text">
+            © 2023 Copyright EDC Squared. All Rights Reserved.
+          </div>
         </div>
       </div>
       {!allowCookies && (

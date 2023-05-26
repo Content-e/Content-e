@@ -274,25 +274,49 @@ ul, li {
 }
 
 .for-brands-btn {
-  width: 166px;
-  height: 51px;
-  background: #BB3E03;
-  border-radius: 40px;
+  width: 135px;
+  height: 40px;
+  background: linear-gradient(116.82deg, #001219 0%, #BB3E03 5.21%, #EE9B00 100%);
+  border: 1px solid #E9D8A6;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+  
+  color: #D9D9D9;
 }
 
 .for-creators-btn {
-  width: 185px;
-  height: 51px;
-  background: #0A9396;
-  border-radius: 40px;
+  width: 135px;
+  height: 40px;
+  background: linear-gradient(116.82deg, #001219 0%, #0A9396 6.25%, #94D2BD 100%);
+  border: 1px solid #E9D8A6;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+  
+  color: #D9D9D9;
 }
 
 .for-content-btn-text {

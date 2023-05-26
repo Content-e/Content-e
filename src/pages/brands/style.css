@@ -373,6 +373,12 @@
   display: none;
 }
 
+@media only screen and (max-width: 1280) {
+  .responsive-menu {
+    display: block;
+  }
+}
+
 @media only screen and (max-width: 1060px) {
   .brands-page-wrapper .brands-page-bg_image img {
     object-fit: cover;
@@ -523,10 +529,6 @@
     align-items: center;
     justify-content: center;
     gap: 28px;
-  }
-
-  .responsive-menu {
-    display: block;
   }
 
   .brands-menu-option-container {

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { UnAuthRoutes } from "utils";
 
 import "../styles/login.scss";
 
@@ -50,7 +51,11 @@ export const HeaderDesktop = () => {
             className={`${
               path === "/homePageLogin" ? "active" : ""
             } login-signup-link`}
-            to={"/homePageLogin"}
+            to={
+              path === "/homePageLogin" || path === "/login"
+                ? UnAuthRoutes.Register
+                : UnAuthRoutes.Login
+            }
           >
             LOGIN / SIGN UP
           </Link>

@@ -7,6 +7,7 @@ import HeaderDesktop from "components/authentication/components/header-desktop";
 import HeaderMobile from "components/authentication/components/header-mobile";
 
 export const LandingPage: React.FC = () => {
+  const path = window.location.pathname;
   const history = useHistory();
   const [allowCookies, setAllowCookies] = useState(
     localStorage.getItem("allowCookies")
@@ -15,13 +16,11 @@ export const LandingPage: React.FC = () => {
   return (
     <>
       <div className="landing-page-wrapper">
+        <HeaderMobile />
         <div className="landing-page-wrapper-container">
           <div className="landing-content-container-gradient">
             <div className="landing-page-container">
               <HeaderDesktop />
-              <div style={{ width: "100%" }}>
-                <HeaderMobile />
-              </div>
               <div className="landing-content-container">
                 <div className="landing-page-body">
                   <div className="landing-page-title">
@@ -45,26 +44,19 @@ export const LandingPage: React.FC = () => {
 
                   <div className="for-landing-content-btn-container">
                     <div className="for-brands-btn">
-                      <span
-                        className="for-content-btn-text"
-                        onClick={() => history.push(UnAuthRoutes.Creators)}
-                      >
-                        FOR CREATORS
+                      <span onClick={() => history.push(UnAuthRoutes.Creators)}>
+                        FOR BRANDS
                       </span>
                     </div>
                     <div className="for-creators-btn">
-                      <span
-                        className="for-content-btn-text"
-                        onClick={() => history.push(UnAuthRoutes.Brands)}
-                      >
-                        FOR BRANDS
+                      <span onClick={() => history.push(UnAuthRoutes.Brands)}>
+                        FOR CREATORS
                       </span>
                     </div>
                   </div>
                 </div>
                 <img
                   src="/images/landing-union.png"
-                  style={{ marginLeft: "63px", marginBottom: "-32px" }}
                   className="landing-union"
                 />
               </div>
@@ -100,6 +92,11 @@ export const LandingPage: React.FC = () => {
                     className="landing-photo"
                     alt=""
                     src="/images/landing-photo.png"
+                  />
+                  <img
+                    className="landing-photo-mobile"
+                    alt=""
+                    src="/images/landing-photo-mobile.png"
                   />
                 </div>
               </div>
@@ -153,6 +150,22 @@ export const LandingPage: React.FC = () => {
               onClick={() => history.push(UnAuthRoutes.SayHello)}
             >
               Say Hello
+            </div>
+            <div
+              className="landing-footer-text"
+              onClick={() => history.push(UnAuthRoutes.SayHello)}
+            >
+              Say Hello
+            </div>
+            <div
+              className="landing-footer-text"
+              onClick={() =>
+                path === "/homePageLogin"
+                  ? history.push(UnAuthRoutes.Register)
+                  : history.push(UnAuthRoutes.Login)
+              }
+            >
+              Login / Sign up
             </div>
           </div>
 

@@ -2,12 +2,11 @@
   //display: flex;
   width: 100%;
   height: auto;
-  //background-image: url("../../../../public/images/auth-bg-landing.png");
-  //background-size: cover;
-  background: linear-gradient(116.82deg, #E1D6B2 0%, #D9CEAD 33.02%, #DFD2AC 57.14%, #E6DCBF 100%);
-  padding: 39px 34px 82px 45px;
+  background-image: url("../../../../public/images/home-page.png");
+  background-size: cover;
+  padding: 45px 45px 0px 45px;
   &__wrap {
-    padding: 45px 45px 0px 45px;
+    padding: 31px 45px 32px 35px;
     display: flex;
     border-radius: 50px;
     background-image: url("../../../../public/images/glass-auth-bg.png");
@@ -32,10 +31,10 @@
   }
   &__fields {
     input {
-      margin-bottom: 56px;
+      margin-bottom: 5px;
       width: 100%;
       background: none;
-      height: 40px;
+      height: 42px;
       padding-left: 2px;
       padding-right: 2px;
       font-family: 'Raleway';
@@ -43,16 +42,16 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 19px;
-      text-transform: lowercase;
-      border-bottom: 1px solid #66665E;
+      color: #E7D7A7;
+      border-bottom: 1px solid #E8E8E8;
       &::placeholder {
         font-family: 'Raleway';
         font-style: normal;
         font-weight: 400;
         font-size: 16px;
         line-height: 19px;
-        text-transform: lowercase;
-        color: rgba(62, 62, 54, 0.6);
+        text-transform: capitalize;
+        color: #E7D7A7;
       }
       &:last-child {
         margin-bottom: 0;
@@ -60,8 +59,9 @@
     }
   }
   &__bottom {
-    margin-top: 72px;
+    margin-top: 32px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
   }
   &__logo {
@@ -196,7 +196,7 @@
   justify-content: center;
 }
 
-.active {
+.active:not(.login-signup-link) {
   color: white;
 }
 
@@ -205,14 +205,15 @@
   background-size: cover;
   display: flex;
   flex-direction: column;
-  padding-top: 52px;
-  padding-right: 59px;
+  padding-top: 39px;
+  padding-right: 50px;
 }
 
 .login__landing img {
-  width: 492px;
-  height: 545px;
+  width: 451px;
+  height: 502px;
   margin-left: auto;
+  margin-bottom: -32px;
 }
 
 .login__landing-container {
@@ -246,7 +247,9 @@
   /* Widget box style */
   display: flex;
   flex-direction: column;
-  padding: 77px 99px;
+  padding-right: 40px;
+  padding-left: 128px;
+  padding-top: 73px;
 }
 
 .login__box {
@@ -257,10 +260,12 @@
 .login__title {
   font-style: normal;
   font-weight: 700;
-  font-size: 60px;
-  line-height: 70px;
-  color: #3E3E36;
-  margin-bottom: 32px;
+  font-size: 22px;
+  line-height: 26px;
+  /* identical to box height */
+  
+  color: #E7D7A7;
+  margin-bottom: 42px;
 }
 
 .btns-container {
@@ -351,30 +356,34 @@
 }
 
 .login__btn {
-  width: 145px;
-  height: 48px;
-  background: #3E3E36;
-  border-radius: 25px;
+  width: 100%;
+  background: linear-gradient(180deg, #9FD0BD 0%, #409094 100%);
+  border-radius: 10px;
+  height: 34px;
+  font-family: 'Raleway';
   font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
-  text-transform: uppercase;
-  color: #E6D6A6;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 14px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 0;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login__already {
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
-  color: #3E3E36;
-  display: flex;
-  align-items: center;
+  color: #E7D7A7;
+  margin-top: 16px;
+  text-align: center;
 }
 
 .login__already span {
@@ -387,7 +396,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 16px;
+  margin-top: 5px;
 }
 
 .login__checkbox {
@@ -398,9 +407,9 @@
 .login__remember {
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-  color: #3E3E36;
+  font-size: 12px;
+  line-height: 14px;
+  color: #E7D7A7;
 
   margin-left: -4px;
 }
@@ -409,10 +418,10 @@
   font-family: "Raleway";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-  
-  color: #3E3E36;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #E7D7A7;
   cursor: pointer;
 }
 
@@ -492,10 +501,11 @@
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    padding: 38px 20px 32px;
   }
   .login__container {
     width: 100%;
-    padding: 38px 20px 60px 20px;
+    padding: 0;
   }
   .login__landing {
     width: 100%;
@@ -515,6 +525,7 @@
     width: 116px;
   }
   .login__landing {
+    margin-top: 60px;
     padding: 0 19px;
     img {
       max-width: 100%;
@@ -530,12 +541,64 @@
     margin-top: 9px;
     align-items: center;
   }
+  .login__fields {
+    input {
+      height: 40px;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      &::placeholder {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .login__forgot-box {
+    margin-top: 30px;
+  }
+  .login__remember {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .login__forgot {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .login__btn {
+    height: 46px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  .login__already {
+    margin-top: 20px;
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .mobile-footer {
     display: flex;
   }
+}
+
+.signup__title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 26px;
+  /* identical to box height */
+  
+  color: #E7D7A7;
+  margin-bottom: 54px;
 }
 
 .signup {
@@ -545,10 +608,13 @@
   background-color: #E2DBBF;
   color: #3E3E36;
   &__container {
-    padding-top: 77px;
-    padding-bottom: 77px;
-    width: 100%;
+    width: 50%;
+    /* Widget box style */
     display: flex;
+    flex-direction: column;
+    padding-right: 40px;
+    padding-left: 128px;
+    padding-top: 73px;
     &-description {
       width: 50%;
       padding: 0 99px;
@@ -574,12 +640,11 @@
       }
     }
     &-form {
-      width: 50%;
-      padding-right: 50px;
+      margin-top: 33px;
       form {
         display: flex;
         flex-direction: column;
-        gap: 48px;
+        gap: 3px;
       }
       &-name-container {
         display: flex;
@@ -593,43 +658,70 @@
         flex-direction: column;
         margin: 0 8px;
         input, select {
-          margin-top: 12px;
+          height: 42px;
           color: #3E3E36;
           outline: none;
           background: none;
           border: none;
-          border-bottom: #3E3E36 1px solid;
-          padding: 0 0 8px 0;
+          border-bottom: 1px solid #E8E8E8;
+          padding: 0;
+          font-family: 'Raleway';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 16px;
+          color: #E7D7A7;
         }
         input::placeholder {
-          color: #3E3E36;
-          opacity: 0.6;
-          padding: 0;
+          font-family: 'Raleway';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 16px;
+          color: #E7D7A7;
         }
       }
       &-register-button {
-        background-color: #3E3E36;
-        color: #E2DBBF;
-        border-radius: 25px;
-        width: 145px;
-        height: 48px;
-        text-transform: uppercase;
+        width: 100%;
+        background: linear-gradient(180deg, #9FD0BD 0%, #409094 100%);
+        border-radius: 10px;
+        height: 34px;
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 14px;
         display: flex;
-        justify-content: center;
         align-items: center;
+        text-align: center;
+        letter-spacing: -0.02em;
+        color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 21px;
       }
     }
   }
 }
 
-
 @media screen and (max-width: 1280px) {
+  .mobile-header .responsive-menu {
+    display: block;
+  }
+  .btns-container {
+    margin-top: 0;
+    text-transform: uppercase;
+  }
 	.signup {
         margin: 24px 0;
         border-radius: 36px 48px;
         padding: 24px 24px;
         background-color: #E2DBBF;
         color: #3E3E36;
+        &__title {
+          margin-bottom: 40px;
+        }
 
         &__header {
             display: none;
@@ -639,9 +731,7 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            padding-top: 38px;
-            padding-bottom: 38px;
+            padding: 0;
 
             &-description {
                 width: 100%;
@@ -664,11 +754,12 @@
             &-form {
                 width: 100%;
                 padding: 0 20px;
+                margin-top: 21px;
 
                 form {
                     display: flex;
                     flex-direction: column;
-                    gap: 48px;
+                    gap: 20px;
                 }
 
                 &-name-container {
@@ -688,26 +779,42 @@
                     margin: 0;
 
                     input, select {
-                        margin-top: 12px;
-                        color: #3E3E36;
-                        outline: none;
-                        border-bottom: #3E3E36 1px solid;
-                        padding: 0 0 8px 0;
+                      height: 38;
+                      font-family: 'Raleway';
+                      font-style: normal;
+                      font-weight: 500;
+                      font-size: 14px;
+                      line-height: 16px;
+                      color: #E7D7A7;
                     }
 
                     input::placeholder {
-                        color: #3E3E36;
-                        opacity: 0.6;
-                        padding: 0;
+                      font-family: 'Raleway';
+                      font-style: normal;
+                      font-weight: 500;
+                      font-size: 14px;
+                      line-height: 16px;
+                      
+                      color: #E7D7A7;
                     }
                 }
 
                 &-register-button {
-                    background-color: #3E3E36;
-                    color: #E2DBBF;
-                    border-radius: 24px;
-                    padding: 16px 36px;
-                    width: 172px;
+                  font-family: 'Raleway';
+                  font-style: normal;
+                  font-weight: 300;
+                  font-size: 12px;
+                  line-height: 14px;
+                  letter-spacing: -0.02em;
+                  text-transform: uppercase;
+                  color: #FFFFFF;
+                  border-radius: 8px;
+                  max-width: 335px;
+                  margin-left: auto;
+                  margin-right: auto;
+                  height: 46px;
+                  display: flex;
+                  align-items: center;
                 }
             }
         }
