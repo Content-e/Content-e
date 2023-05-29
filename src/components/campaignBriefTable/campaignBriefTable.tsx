@@ -29,7 +29,10 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
   };
 
   const filteredData = useMemo(
-    () => data.filter((e) => e.briefName?.toLowerCase().includes(searchText)),
+    () =>
+      data.filter((e) =>
+        e.briefName?.toLowerCase().includes(searchText.toLowerCase())
+      ),
     [data, searchText]
   );
 
