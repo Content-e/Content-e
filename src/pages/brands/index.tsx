@@ -18,7 +18,7 @@ export const BrandsPage: React.FC = () => {
         </div>
 
         <div className="brands-content-container">
-          <div style={{ paddingTop: "40px" }} className="brands-page-body">
+          <div className="brands-page-body">
             <div className="brands-page-title">
               Solve for authentic content at scale.
             </div>
