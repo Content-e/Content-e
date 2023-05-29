@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import { useHistory } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
 import { useSendEmail } from "hooks/query/useEmail";
 import axios from "axios";
 import { IconLoader } from "components";
 import HeaderDesktop from "components/authentication/components/header-desktop";
 import HeaderMobile from "components/authentication/components/header-mobile";
+import Footer from "components/authentication/components/footer";
 
 export const SayHello: React.FC = () => {
-  const history = useHistory();
   const { data, loading } = useSendEmail();
 
   const [name, setName] = useState("");
@@ -126,53 +124,7 @@ export const SayHello: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="say-hello-footer">
-        <div className="say-hello-footer-text-container">
-          <div
-            className="say-hello-footer-text"
-            onClick={() => history.push(UnAuthRoutes.Landing)}
-          >
-            Home
-          </div>
-          <div
-            className="say-hello-footer-text"
-            onClick={() => history.push(UnAuthRoutes.Creators)}
-          >
-            For Creators
-          </div>
-          <div
-            className="say-hello-footer-text"
-            onClick={() => history.push(UnAuthRoutes.Brands)}
-          >
-            For Brands
-          </div>
-          <div
-            className="say-hello-footer-text"
-            onClick={() => history.push(UnAuthRoutes.SayHello)}
-          >
-            Say Hello
-          </div>
-        </div>
-
-        <div className="say-hello-footer-img-container">
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/company/edcsquared/"
-          >
-            <img src="/images/landing-linkedin.svg" />
-          </a>
-          <a target="_blank" href="https://www.instagram.com/edcsq/">
-            <img src="/images/landing-insta.svg" />
-          </a>
-          <a target="_blank" href="https://www.tiktok.com/@edcsquared">
-            <img src="/images/landing-tiktok.svg" />
-          </a>
-        </div>
-
-        <div className="say-hello-footer-text">
-          © 2023 Copyright EDC Squared. All Rights Reserved.
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };
