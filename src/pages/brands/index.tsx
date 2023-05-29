@@ -17,7 +17,7 @@ export const BrandsPage: React.FC = () => {
         </div>
 
         <div className="brands-content-container">
-          <div className="brands-page-body">
+          <div style={{ paddingTop: "40px" }} className="brands-page-body">
             <div className="brands-page-title">
               Solve for authentic content at scale.
             </div>
@@ -91,7 +91,12 @@ export const BrandsPage: React.FC = () => {
           <img
             src="/images/brands-union.png"
             className="brands-union"
-            style={{ marginLeft: "63px", marginBottom: "-32px" }}
+            style={{
+              marginLeft: "63px",
+              marginBottom: "-32px",
+              width: "492px",
+              height: "595px",
+            }}
           />
         </div>
       </div>
