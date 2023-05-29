@@ -12,7 +12,7 @@ export const ProfileProvider: React.FC<Props> = (props) => {
     useState<IProfileState>(initialProfileState);
   const [brandState, setBrandState] = useState<BrandProfile | null>(null);
   useEffect(() => {
-    document.title = "EDC Squared";
+    document.title = "EDC squared";
   }, []);
   return (
     <ProfileContext.Provider value={{ profileState, setProfileState }}>
