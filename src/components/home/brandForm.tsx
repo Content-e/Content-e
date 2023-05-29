@@ -49,8 +49,8 @@ export const BrandForm: FC<ProfileProps & BrandProps> = ({
   return (
     <>
       <div className="brand-dashboard__form">
-        <BrandInput {...props} keyProp="tiktok" title="Link Tiktok account" />
         <BrandInput {...props} keyProp="website" title="Brand website" />
+        <BrandInput {...props} keyProp="tiktok" title="Brand TikTok account" />
         <BrandInput
           {...props}
           keyProp="instagram"
