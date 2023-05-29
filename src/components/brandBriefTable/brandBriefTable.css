@@ -35,8 +35,26 @@
 
 .add-brief-button {
   color: #fff;
+  font-family: 'Google Sans';
+  font-style: normal;
   font-weight: 700;
-  background-color: #005F73;
-  padding: 4px 12px;
-  border-radius: 10px;
+  font-size: 16px;
+  background-color: #0A9396;
+  border-radius: 40px;
+  width: 240px;
+  padding: 14px 24px;
+}
+
+.search-and-create-container {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+@media screen and (max-width: 705px) {
+  .add-brief-button {
+    font-size: 12px;
+    padding: 16px 16px;
+  }
 }
