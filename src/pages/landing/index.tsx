@@ -54,12 +54,7 @@ export const LandingPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <img
-                  width={492}
-                  style={{ width: "492px", height: "545px" }}
-                  src="/images/landing-union.png"
-                  className="landing-union"
-                />
+                <img src="/images/landing-union.png" />
               </div>
             </div>
           </div>
