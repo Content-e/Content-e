@@ -11,10 +11,10 @@ export const BrandsPage: React.FC = () => {
 
   return (
     <div className="brands-page-wrapper">
+      <HeaderMobile />
       <div className="brands-content-container-gradient">
         <div className="brands-page-container">
           <HeaderDesktop />
-          <HeaderMobile />
         </div>
 
         <div className="brands-content-container">

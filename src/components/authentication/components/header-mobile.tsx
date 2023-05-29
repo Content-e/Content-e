@@ -29,11 +29,16 @@ export const HeaderMobile = () => {
     <div className="mobile-header">
       <div className="mobile-header-top">
         <div className="header-logo">
-          <img src="/images/edc-squared-landing-logo.svg" alt="edc-squared" />
+          <img
+            style={{ height: "48px", marginLeft: "-6px" }}
+            src="/images/edc-squared-landing-logo.svg"
+            alt="edc-squared"
+          />
         </div>
         <img
-          src="/images/responsive-menu.svg"
-          alt="responsive-menu"
+          style={{ width: "32px" }}
+          src="/images/burger-menu.svg"
+          alt="burger-menu"
           className="responsive-menu"
           onClick={toggleMenu}
         />

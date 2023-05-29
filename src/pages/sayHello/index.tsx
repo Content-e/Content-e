@@ -62,10 +62,10 @@ export const SayHello: React.FC = () => {
 
   return (
     <div className="say-hello-page-wrapper">
+      <HeaderMobile />
       <div className="say-hello-content-container-gradient">
         <div className="say-hello-page-container">
           <HeaderDesktop />
-          <HeaderMobile />
           <div className="say-hello-content-container">
             <div className="say-hello-page-body">
               <div className="say-hello-page-title">Let’s talk!</div>
