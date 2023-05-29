@@ -66,17 +66,20 @@ export const HeaderDesktop = () => {
         </li>
         <div className="social-links">
           <li>
-            <a href="https://www.tiktok.com/@edcsquared">
+            <a target="_blank" href="https://www.tiktok.com/@edcsquared">
               <img width={28} height={28} src="images/tiktok.png" alt="" />
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/company/edcsquared/">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/company/edcsquared/"
+            >
               <img width={28} height={28} src="images/linkedin.png" alt="" />
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/edcsq/">
+            <a target="_blank" href="https://www.instagram.com/edcsq/">
               <img width={28} height={28} src="images/instagram.png" alt="" />
             </a>
           </li>
