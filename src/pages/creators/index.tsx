@@ -11,10 +11,10 @@ export const CreatorsPage: React.FC = () => {
 
   return (
     <div className="creators-page-wrapper">
+      <HeaderMobile />
       <div className="creators-content-container-gradient">
         <div className="creators-page-container">
           <HeaderDesktop />
-          <HeaderMobile />
           <div className="creators-content-container">
             <div className="creators-page-body">
               <div className="creators-page-title">
