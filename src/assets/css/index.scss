@@ -484,7 +484,6 @@ img {
 				.brand-dashboard__profile-button {
 					width: 261px;
 					height: 51px;
-					margin-top: auto;
 					margin-left: auto;
 					margin-right: auto;
 				}
@@ -1142,6 +1141,8 @@ img {
 		margin-left: auto;
 		margin-right: auto;
 		padding: 24px;
+		display: flex;
+		flex-direction: column;
 		&-title {
 			font-style: normal;
 			font-weight: 700;
@@ -1188,7 +1189,6 @@ img {
 			text-align: center;
 			text-transform: uppercase;
 			color: #FFFFFF;
-			margin-top: 40px;
 		}
 	}
 	&__tiktok {

@@ -160,11 +160,12 @@ export const EditProfile: FC<ProfileProps> = ({
                 </Fragment>
               )}
               <div className="field-label-container">
-                <div className="field-label">Profile picture</div>
+                <img src="/images/profile-file.svg" />
                 <input
                   type="file"
                   accept=".png, .jpg"
                   onChange={handleChange}
+                  id="profile-file-input"
                 />
                 <ShouldRender if={image.error}>
                   <span>{image.error}</span>
@@ -181,12 +182,13 @@ export const EditProfile: FC<ProfileProps> = ({
                 </span>
                 {isLoading && <IconLoader color="#005f73" />}
               </button>
+              {data?.userType === USER_TYPES.BRAND_USER && (
+                <div className="save-profile" onClick={linkTiktokAccount}>
+                  <span>Link Tiktok Account</span>
+                  <img src="/images/profile-arrow.svg" />
+                </div>
+              )}
             </div>
-            {data?.userType === USER_TYPES.BRAND_USER && (
-              <div className="save-profile" onClick={linkTiktokAccount}>
-                Link Tiktok Account
-              </div>
-            )}
           </div>
         </div>
       </div>
