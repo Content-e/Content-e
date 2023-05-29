@@ -41,7 +41,7 @@ export const CreativesTable: FC<BrandBriefProps> = (props) => {
       </div>
       <div className="brand-dashboard__item full mobile-list-item">
         <div className="brand-dashboard__top mobile-main-title">
-          <div className="brand-dashboard__top-title">Campaign briefs</div>
+          <div className="brand-dashboard__top-title">Creatives</div>
           <img
             className="brand-dashboard__top-icon"
             alt=""
