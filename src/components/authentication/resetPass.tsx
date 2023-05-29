@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { IconLoader, Input } from "components";
 import { useHistory, useLocation } from "react-router-dom";
-import GoogleLogin from "./googleLogin";
 import {
   defaultResetError,
   defaultResetState,
@@ -11,8 +10,9 @@ import {
 } from "utils";
 import { validateVerificationCode, validatePassword } from "state/auth";
 import { useResetPass } from "hooks";
-import Navbar from "components/navbar/navbar";
-import AuthFooter from "./authFooter";
+import Footer from "./components/footer";
+import HeaderDesktop from "./components/header-desktop";
+import HeaderMobile from "./components/header-mobile";
 
 export const ResetPassword: FC = () => {
   const history = useHistory();
@@ -63,46 +63,45 @@ export const ResetPassword: FC = () => {
 
   return (
     <div className="login">
-      <div className="login__landing">
-        <img src="/images/edc-logo.svg" alt="edc-squared" />
-        <div className="login__landing-container">
-          <span>
-            Everyday creators, <br />
-            everyday creative.
-          </span>
-          <div>Your content, your story, your impact.</div>
-        </div>
-      </div>
-      <div className="login__container">
-        <Navbar />
-        <div className="login__box">
-          <div className="login__title" style={{ marginBottom: 16 }}>
-            Reset Password
-          </div>
-          <div className="login__fields">
-            <Input
-              {...commonProps}
-              keyProp="code"
-              placeholder="Verification Code"
-            />
-            <Input
-              {...commonProps}
-              type="password"
-              keyProp="password"
-              placeholder="Password"
-            />
-          </div>
-          <button className="login__btn" onClick={onReset} disabled={isLoading}>
-            <span style={{ marginRight: 12 }}>Reset Password</span>
-            {isLoading && <IconLoader />}
-          </button>
-          <GoogleLogin />
-          <div className="login__already" onClick={onSignUp}>
-            Don't have an account? <span>Sign up&nbsp;</span>
+      <HeaderMobile />
+      <div className="login__wrap">
+        <HeaderDesktop />
+        <div className="login__container">
+          <div className="login__box">
+            <div className="login__title" style={{ marginBottom: 54 }}>
+              Reset Password
+            </div>
+            <div className="login__fields">
+              <Input
+                {...commonProps}
+                keyProp="code"
+                placeholder="Verification Code"
+              />
+              <Input
+                {...commonProps}
+                type="password"
+                keyProp="password"
+                placeholder="Password"
+              />
+            </div>
+            <button
+              className="login__btn forget-btn"
+              onClick={onReset}
+              disabled={isLoading}
+            >
+              <span style={{ marginRight: 12 }}>Reset Password</span>
+              {isLoading && <IconLoader />}
+            </button>
+            <div className="login__already">
+              Already have an account? <span onClick={onSignUp}>Login</span>
+            </div>
           </div>
         </div>
-        <AuthFooter />
+        <div className="login__landing">
+          <img src="/images/login-image.png" alt="picture of a landscape" />
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };
