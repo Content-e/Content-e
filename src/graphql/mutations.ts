@@ -112,8 +112,17 @@ export const deleteUserProfile = /* GraphQL */ `
         nextToken
       }
       tiktokAccountAccess
+      userWallet {
+        id
+        currentBalance
+        totalEarned
+        userProfileId
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
+      userProfileUserWalletId
     }
   }
 `;
@@ -254,8 +263,17 @@ export const createUserProfile = /* GraphQL */ `
         nextToken
       }
       tiktokAccountAccess
+      userWallet {
+        id
+        currentBalance
+        totalEarned
+        userProfileId
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
+      userProfileUserWalletId
     }
   }
 `;
@@ -309,6 +327,60 @@ export const updateUserProfile = /* GraphQL */ `
         nextToken
       }
       tiktokAccountAccess
+      userWallet {
+        id
+        currentBalance
+        totalEarned
+        userProfileId
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userProfileUserWalletId
+    }
+  }
+`;
+export const createUserWallet = /* GraphQL */ `
+  mutation CreateUserWallet(
+    $input: CreateUserWalletInput!
+    $condition: ModelUserWalletConditionInput
+  ) {
+    createUserWallet(input: $input, condition: $condition) {
+      id
+      currentBalance
+      totalEarned
+      userProfileId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateUserWallet = /* GraphQL */ `
+  mutation UpdateUserWallet(
+    $input: UpdateUserWalletInput!
+    $condition: ModelUserWalletConditionInput
+  ) {
+    updateUserWallet(input: $input, condition: $condition) {
+      id
+      currentBalance
+      totalEarned
+      userProfileId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteUserWallet = /* GraphQL */ `
+  mutation DeleteUserWallet(
+    $input: DeleteUserWalletInput!
+    $condition: ModelUserWalletConditionInput
+  ) {
+    deleteUserWallet(input: $input, condition: $condition) {
+      id
+      currentBalance
+      totalEarned
+      userProfileId
       createdAt
       updatedAt
     }

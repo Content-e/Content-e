@@ -16,6 +16,17 @@ type UserProfile
   tiktokHandler: String 
   bestPractices: [BestPractices] @hasMany
   tiktokAccountAccess: String @auth(rules: [{ allow: owner, operations: [read] }])
+  userWallet: UserWallet @hasOne
+}
+
+type UserWallet 
+@model
+@auth(rules: [{ allow: private}])
+{
+  id: ID!
+  currentBalance: String
+  totalEarned: String
+  userProfileId: ID!
 }
 
 type ApprovedAds

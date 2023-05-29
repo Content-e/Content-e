@@ -50,8 +50,8 @@ const uploadToTiktok = async(token, advId, videoPath) => {
         "advertiser_id": advId,
         "video_url": videoUrl,
         "upload_type": "UPLOAD_BY_URL",
-        "allow_download": false,
-        "is_third_party": true
+        "allow_download": true,
+        // "is_third_party": true
     },{headers});
     return {data: _response.data, error: false};
 }
@@ -89,6 +89,8 @@ const generateVideoThumbnail = async (token, advId, videoId) => {
     if(_response?.data?.data?.list?.length < 1 ){
         throw new Error("No thumbnails found");
     }    
+    console.log(_response?.data)
+    console.log(_response?.data?.data?.list)
     return _response?.data?.data?.list?.[0]?.id
 
 }

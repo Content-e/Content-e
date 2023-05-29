@@ -118,8 +118,17 @@ export const onCreateUserProfile = /* GraphQL */ `
         nextToken
       }
       tiktokAccountAccess
+      userWallet {
+        id
+        currentBalance
+        totalEarned
+        userProfileId
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
+      userProfileUserWalletId
     }
   }
 `;
@@ -173,8 +182,17 @@ export const onUpdateUserProfile = /* GraphQL */ `
         nextToken
       }
       tiktokAccountAccess
+      userWallet {
+        id
+        currentBalance
+        totalEarned
+        userProfileId
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
+      userProfileUserWalletId
     }
   }
 `;
@@ -228,6 +246,57 @@ export const onDeleteUserProfile = /* GraphQL */ `
         nextToken
       }
       tiktokAccountAccess
+      userWallet {
+        id
+        currentBalance
+        totalEarned
+        userProfileId
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userProfileUserWalletId
+    }
+  }
+`;
+export const onCreateUserWallet = /* GraphQL */ `
+  subscription OnCreateUserWallet(
+    $filter: ModelSubscriptionUserWalletFilterInput
+  ) {
+    onCreateUserWallet(filter: $filter) {
+      id
+      currentBalance
+      totalEarned
+      userProfileId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUserWallet = /* GraphQL */ `
+  subscription OnUpdateUserWallet(
+    $filter: ModelSubscriptionUserWalletFilterInput
+  ) {
+    onUpdateUserWallet(filter: $filter) {
+      id
+      currentBalance
+      totalEarned
+      userProfileId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUserWallet = /* GraphQL */ `
+  subscription OnDeleteUserWallet(
+    $filter: ModelSubscriptionUserWalletFilterInput
+  ) {
+    onDeleteUserWallet(filter: $filter) {
+      id
+      currentBalance
+      totalEarned
+      userProfileId
       createdAt
       updatedAt
     }
