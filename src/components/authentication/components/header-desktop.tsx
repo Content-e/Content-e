@@ -9,7 +9,11 @@ export const HeaderDesktop = () => {
   return (
     <div className="login__top">
       <div className="header-logo">
-        <img src="/images/edc-squared-landing-logo.svg" alt="edc-squared" />
+        <img
+          style={{ height: "72px", width: "190px" }}
+          src="/images/edc-squared-landing-logo.svg"
+          alt="edc-squared"
+        />
       </div>
       <ul className="header-list">
         <li>

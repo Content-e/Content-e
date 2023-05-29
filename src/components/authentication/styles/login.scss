@@ -723,6 +723,11 @@
   .mobile-header .responsive-menu {
     display: block;
   }
+  .mobile-header-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
   .btns-container {
     margin-top: 0;
     text-transform: uppercase;
