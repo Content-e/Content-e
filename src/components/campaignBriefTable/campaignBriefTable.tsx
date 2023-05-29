@@ -124,7 +124,9 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
               </td>
               <td className={`${statusColor} brand-dashboard__list-status`}>
                 <div className="brand-dashboard__list-content">
-                  <div className="brand-dashboard__list-dot"></div>
+                  {statusColor && (
+                    <div className="brand-dashboard__list-dot"></div>
+                  )}
                   <span>{brief?.status}</span>
                 </div>
               </td>
