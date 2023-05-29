@@ -16,7 +16,7 @@ export const AuthorizeTiktokType: FC<Props> = ({
     <div className="tik-tok-modal">
       <AuthorizeTikTokHeader {...props} title="Select the method" />
       <div className="tik-tok-method">
-        <button onClick={goToNext}>Link via code</button>
+        <button onClick={goToNext}>Link TikTok via code</button>
         <button onClick={goToUpload}>Upload</button>
       </div>
     </div>
