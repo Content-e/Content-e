@@ -57,7 +57,7 @@ export const Register: FC = () => {
     return !!notValidated;
   };
 
-  //const onLogin = (): void => history.push(UnAuthRoutes.Login);
+  const onLogin = (): void => history.push(UnAuthRoutes.Login);
   const onSignUp = async (e): Promise<void> => {
     e.preventDefault();
     localStorage.setItem(
@@ -126,20 +126,24 @@ export const Register: FC = () => {
           <div className="signup__container-form">
             <form>
               <div className="signup__container-form-field">
-                <Input {...commonProps} placeholder="Name" keyProp="name" />
+                <Input
+                  {...commonProps}
+                  placeholder="Full Name"
+                  keyProp="name"
+                />
               </div>
               <div className="signup__container-form-field">
                 <Input
                   {...commonProps}
                   placeholder="email@address.com"
-                  keyProp="email"
+                  keyProp="Email Address"
                 />
               </div>
               <div className="signup__container-form-field">
                 <select
                   name="role"
                   id="role-select"
-                  placeholder="Please select"
+                  placeholder="Who are you?"
                   onChange={(e) => handleRoleChange(e)}
                 >
                   <option value="" disabled selected hidden>
@@ -157,7 +161,11 @@ export const Register: FC = () => {
                 </p>*/}
               </div>
               <div className="signup__container-form-field">
-                <Input {...commonProps} placeholder="Hi there..." keyProp="" />
+                <Input
+                  {...commonProps}
+                  placeholder="Tell us a little more about you and your brand."
+                  keyProp=""
+                />
               </div>
               <button
                 className="signup__container-form-register-button"
@@ -170,7 +178,7 @@ export const Register: FC = () => {
                 {isLoading && <IconLoader />}
               </button>
               <div className="login__already">
-                Don’t have an account? <span onClick={onSignUp}>Sign up</span>
+                Already have an account? <span onClick={onLogin}>Login</span>
               </div>
             </form>
           </div>

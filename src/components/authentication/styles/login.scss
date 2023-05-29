@@ -15,6 +15,7 @@
     background-size: cover;
     flex-wrap: wrap;
     overflow: hidden;
+    justify-content: center;
   }
   &__top {
     width: 100%;
@@ -203,7 +204,7 @@
 }
 
 .login__landing {
-  width: 50%;
+  width: max-content;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -249,9 +250,10 @@
   /* Widget box style */
   display: flex;
   flex-direction: column;
-  padding-right: 40px;
-  padding-left: 128px;
   padding-top: 73px;
+  max-width: 469px;
+  padding-top: 73px;
+  margin-right: 172px;
 }
 
 .login__box {
@@ -508,6 +510,9 @@
   .login__container {
     width: 100%;
     padding: 0;
+    margin-right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
   .login__landing {
     width: 100%;
@@ -611,12 +616,11 @@
   color: #3E3E36;
   &__container {
     width: 50%;
-    /* Widget box style */
+    max-width: 469px;
     display: flex;
     flex-direction: column;
-    padding-right: 40px;
-    padding-left: 128px;
     padding-top: 73px;
+    margin-right: 172px;
     &-description {
       width: 50%;
       padding: 0 99px;
@@ -734,6 +738,9 @@
             display: flex;
             flex-direction: column;
             padding: 0;
+            margin-right: 0;
+            margin-left: auto;
+            margin-right: auto;
 
             &-description {
                 width: 100%;
