@@ -76,24 +76,26 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
   };
 
   return (
-    <div className="brand-dashboard__items brand-briefs-items">
-      <div className="brand-dashboard__item search-item">
-        <img
-          className="brand-dashboard__item-search"
-          alt=""
-          src="/images/search.svg"
-        />
+    <div className="brand-dashboard__items brand-briefs-items new">
+      <div className="search-and-create-container">
+        <div className="brand-dashboard__item search-item">
+          <img
+            className="brand-dashboard__item-search"
+            alt=""
+            src="/images/search.svg"
+          />
+        </div>
+        <button
+          onClick={() => history.push(BrandRoutes.CreateBrief)}
+          className="add-brief-button"
+        >
+          ADD NEW BRIEF
+        </button>
       </div>
       <div className="brand-dashboard__item full mobile-list-item">
         <div className="brand-dashboard__top mobile-main-title">
           <div className="brand-dashboard__top-title">Campaign briefs</div>
           <div className="table-actions-container">
-            <button
-              onClick={() => history.push(BrandRoutes.CreateBrief)}
-              className="add-brief-button"
-            >
-              Create
-            </button>
             <img
               className="brand-dashboard__top-icon"
               alt=""
