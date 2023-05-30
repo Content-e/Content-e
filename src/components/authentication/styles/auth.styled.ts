@@ -217,7 +217,6 @@ export const ModalContent = styled.div`
   text-align: center;
   border-radius: 16px;
   width: 705px;
-  height: 345px;
   background: white;
   display: flex;
   flex-direction: column;
@@ -226,10 +225,10 @@ export const ModalContent = styled.div`
   font-size: 24px;
   font-weight: 700;
   color: #7b7b7b;
+  padding-bottom: 48px;
 
   @media only screen and (max-width: 768px) {
     width: 650px;
-    height: 380px;
     gap: 24px;
   }
 `;
