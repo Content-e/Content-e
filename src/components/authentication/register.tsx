@@ -1,6 +1,6 @@
 import { useState, FC, useMemo } from "react";
 // import { IconLoader, Input } from "components";
-import { defaultSignUpError, defaultSignUpState } from "utils";
+import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
 import { useSignup } from "hooks";
 import { validateEmail, validateFullName, withAuth } from "state/auth";
 import "./styles/login.scss";
@@ -17,8 +17,10 @@ import Modal from "./modal";
 import HeaderDesktop from "components/authentication/components/header-desktop";
 import HeaderMobile from "components/authentication/components/header-mobile";
 import Footer from "./components/footer";
+import { useHistory } from "react-router-dom";
 
 export const Register: FC = () => {
+  const history = useHistory();
   const [creator, setCreator] = useState<boolean | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
