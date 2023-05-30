@@ -42,35 +42,45 @@ export const ForgetPassword: FC = () => {
       <HeaderMobile />
       <div className="login__wrap">
         <HeaderDesktop />
-        <div className="login__container">
-          <div className="login__box">
-            <div className="login__title" style={{ marginBottom: 54 }}>
-              Forgot password
-            </div>
-            <div className="login__fields">
-              <Input
-                keyProp={email}
-                value={email}
-                errorVal={emailError}
-                placeholder="Email address"
-                handlers={{ updateState }}
-              />
-            </div>
-            <button
-              className="login__btn forget-btn"
-              onClick={onForget}
-              disabled={isLoading || !!emailError}
-            >
-              <span style={{ marginRight: 12 }}>Submit</span>
-              {isLoading && <IconLoader />}
-            </button>
-            <div className="login__already">
-              Already have an account? <span onClick={onLogin}>Login</span>
+        <div className="login__content">
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-around",
+            }}
+          >
+            <div className="login__container">
+              <div className="login__box">
+                <div className="login__title" style={{ marginBottom: 54 }}>
+                  Forgot password
+                </div>
+                <div className="login__fields">
+                  <Input
+                    keyProp={email}
+                    value={email}
+                    errorVal={emailError}
+                    placeholder="Email address"
+                    handlers={{ updateState }}
+                  />
+                </div>
+                <button
+                  className="login__btn forget-btn"
+                  onClick={onForget}
+                  disabled={isLoading || !!emailError}
+                >
+                  <span style={{ marginRight: 12 }}>Submit</span>
+                  {isLoading && <IconLoader />}
+                </button>
+                <div className="login__already">
+                  Already have an account? <span onClick={onLogin}>Login</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="login__landing">
-          <img src="/images/login-image.png" alt="picture of a landscape" />
+          <div className="login__landing">
+            <img src="/images/login-image.png" alt="picture of a landscape" />
+          </div>
         </div>
       </div>
       <Footer />

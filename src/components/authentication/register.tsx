@@ -134,90 +134,101 @@ export const Register: FC = () => {
       <HeaderMobile />
       <div className="login__wrap">
         <HeaderDesktop />
-        <div className="signup__container">
-          <div className="signup__title">
-            Create a {!creator ? "Brand" : "Creator"} account
-          </div>
-          <div className={`${creator ? "active" : false} btns-container`}>
-            <div
-              className={`${!creator ? "active" : false}`}
-              onClick={() => setCreator(false)}
-            >
-              Join as a brand
-            </div>
-            <div
-              className={`${creator ? "active" : false}`}
-              onClick={() => setCreator(true)}
-            >
-              Join as a creator
-            </div>
-          </div>
-          <div className="signup__container-form">
-            <form>
-              <div className="signup__container-form-field">
-                <Input
-                  {...commonProps}
-                  placeholder="Full Name"
-                  keyProp="name"
-                />
+        <div className="login__content">
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-around",
+            }}
+          >
+            <div className="signup__container">
+              <div className="signup__title">
+                Create a {!creator ? "Brand" : "Creator"} account
               </div>
-              <div className="signup__container-form-field">
-                <Input
-                  {...commonProps}
-                  placeholder="Email Address"
-                  keyProp="email"
-                />
-              </div>
-              <div className="signup__container-form-field">
-                <select
-                  name="role"
-                  id="role-select"
-                  placeholder="Who are you?"
-                  onChange={(e) => handleRoleChange(e)}
+              <div className={`${creator ? "active" : false} btns-container`}>
+                <div
+                  className={`${!creator ? "active" : false}`}
+                  onClick={() => setCreator(false)}
                 >
-                  <option value="" disabled selected hidden>
-                    Please select
-                  </option>
-                  <option value="brand">Brand</option>
-                  <option value="creator">Creator</option>
-                </select>
-                {/*<p>
+                  Join as a brand
+                </div>
+                <div
+                  className={`${creator ? "active" : false}`}
+                  onClick={() => setCreator(true)}
+                >
+                  Join as a creator
+                </div>
+              </div>
+              <div className="signup__container-form">
+                <form>
+                  <div className="signup__container-form-field">
+                    <Input
+                      {...commonProps}
+                      placeholder="Full Name"
+                      keyProp="name"
+                    />
+                  </div>
+                  <div className="signup__container-form-field">
+                    <Input
+                      {...commonProps}
+                      placeholder="Email Address"
+                      keyProp="email"
+                    />
+                  </div>
+                  <div className="signup__container-form-field">
+                    <select
+                      name="role"
+                      id="role-select"
+                      placeholder="Who are you?"
+                      onChange={(e) => handleRoleChange(e)}
+                    >
+                      <option value="" disabled selected hidden>
+                        Please select
+                      </option>
+                      <option value="brand">Brand</option>
+                      <option value="creator">Creator</option>
+                    </select>
+                    {/*<p>
                   <ShouldRender if={signUpError["role-select"]}>
                     <S.ParagraphError>
                       {signUpError["role-select"]}
                     </S.ParagraphError>
                   </ShouldRender>
                 </p>*/}
+                  </div>
+                  <div className="signup__container-form-field">
+                    <Input
+                      {...commonProps}
+                      placeholder={
+                        creator
+                          ? "Tell us about you and the content you create."
+                          : "Tell us a little more about you and your brand."
+                      }
+                      keyProp="about"
+                    />
+                  </div>
+                  <button
+                    className="signup__container-form-register-button"
+                    onClick={onSignUp}
+                    disabled={isLoading || !isSubmittable}
+                  >
+                    <span style={isLoading ? { marginRight: 12 } : {}}>
+                      Register
+                    </span>
+                    {isLoading && <IconLoader />}
+                  </button>
+                  <div className="login__already">
+                    Already have an account?{" "}
+                    <span onClick={onLogin}>Login</span>
+                  </div>
+                </form>
               </div>
-              <div className="signup__container-form-field">
-                <Input
-                  {...commonProps}
-                  placeholder={
-                    creator
-                      ? "Tell us about you and the content you create."
-                      : "Tell us a little more about you and your brand."
-                  }
-                  keyProp="about"
-                />
-              </div>
-              <button
-                className="signup__container-form-register-button"
-                onClick={onSignUp}
-                disabled={isLoading || !isSubmittable}
-              >
-                <span style={isLoading ? { marginRight: 12 } : {}}>
-                  Register
-                </span>
-                {isLoading && <IconLoader />}
-              </button>
-              <div className="login__already">
-                Already have an account? <span onClick={onLogin}>Login</span>
-              </div>
-            </form>
+            </div>
           </div>
-        </div>
-        <div className="login__landing">
-          <img src="/images/login-image.png" />
+          <div className="login__landing">
+            <img src="/images/login-image.png" />
+          </div>
         </div>
       </div>
       <Footer />

@@ -6,6 +6,10 @@
   background-image: url("../../../../public/images/home-page.png");
   background-size: cover;
   padding: 45px 45px 0px 45px;
+  &__content {
+    width: 100%;
+    display: flex;
+  }
   &__wrap {
     padding: 31px 45px 32px 35px;
     display: flex;

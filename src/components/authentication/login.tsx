@@ -76,35 +76,43 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
         <HeaderMobile />
         <div className="login__wrap">
           <HeaderDesktop />
-          <div className="login__container">
-            <div className="login__box">
-              <div className="login__title">Login</div>
-              {/*<GoogleLogin />*/}
-              {/*<div className="login__or">- OR -</div>*/}
-              <div className="login__fields">
-                <Input
-                  {...commonProps}
-                  placeholder="Email Address"
-                  keyProp="email"
-                />
-                <Input
-                  {...commonProps}
-                  placeholder="Password"
-                  type="password"
-                  keyProp="password"
-                />
-              </div>
-              <div className="login__forgot-box">
-                {" "}
-                <div className="login__checkbox">
-                  <Checkbox />
-                  <span className="login__remember">Remember me.</span>{" "}
-                </div>{" "}
-                <div className="login__forgot" onClick={onForget}>
-                  <span>Forgot Password?</span>{" "}
-                </div>{" "}
-              </div>
-              {/* <button
+          <div className="login__content">
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-around",
+              }}
+            >
+              <div className="login__container">
+                <div className="login__box">
+                  <div className="login__title">Login</div>
+                  {/*<GoogleLogin />*/}
+                  {/*<div className="login__or">- OR -</div>*/}
+                  <div className="login__fields">
+                    <Input
+                      {...commonProps}
+                      placeholder="Email Address"
+                      keyProp="email"
+                    />
+                    <Input
+                      {...commonProps}
+                      placeholder="Password"
+                      type="password"
+                      keyProp="password"
+                    />
+                  </div>
+                  <div className="login__forgot-box">
+                    {" "}
+                    <div className="login__checkbox">
+                      <Checkbox />
+                      <span className="login__remember">Remember me.</span>{" "}
+                    </div>{" "}
+                    <div className="login__forgot" onClick={onForget}>
+                      <span>Forgot Password?</span>{" "}
+                    </div>{" "}
+                  </div>
+                  {/* <button
                 className="login__btn"
                 onClick={onSignUp}
                 disabled={isLoading || !isSubmittable}
@@ -112,26 +120,29 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
                 <span style={{ marginRight: 12 }}>Sign up</span>
                 {isLoading && <IconLoader />}
               </button>{" "} */}
-              <div className="login__bottom">
-                <button
-                  className="login__btn"
-                  onClick={onLogin}
-                  disabled={isLoading}
-                >
-                  <span style={isLoading ? { marginRight: 12 } : {}}>
-                    Login
-                  </span>
-                  {isLoading && <IconLoader />}
-                </button>
-                <div className="login__already">
-                  Don’t have an account? <span onClick={onSignUp}>Sign up</span>
+                  <div className="login__bottom">
+                    <button
+                      className="login__btn"
+                      onClick={onLogin}
+                      disabled={isLoading}
+                    >
+                      <span style={isLoading ? { marginRight: 12 } : {}}>
+                        Login
+                      </span>
+                      {isLoading && <IconLoader />}
+                    </button>
+                    <div className="login__already">
+                      Don’t have an account?{" "}
+                      <span onClick={onSignUp}>Sign up</span>
+                    </div>
+                  </div>
                 </div>
+                {/*<AuthFooter />*/}
               </div>
             </div>
-            {/*<AuthFooter />*/}
-          </div>
-          <div className="login__landing">
-            <img src="/images/login-image.png" />
+            <div className="login__landing">
+              <img src="/images/login-image.png" />
+            </div>
           </div>
         </div>
         <Footer />
