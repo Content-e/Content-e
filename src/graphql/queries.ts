@@ -394,8 +394,17 @@ export const getUserProfile = /* GraphQL */ `
         nextToken
       }
       tiktokAccountAccess
+      userWallet {
+        id
+        currentBalance
+        totalEarned
+        userProfileId
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
+      userProfileUserWalletId
     }
   }
 `;
@@ -448,8 +457,17 @@ export const listUserProfiles = /* GraphQL */ `
           nextToken
         }
         tiktokAccountAccess
+        userWallet {
+          id
+          currentBalance
+          totalEarned
+          userProfileId
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
+        userProfileUserWalletId
       }
       nextToken
     }
@@ -512,6 +530,46 @@ export const userProfilesByUserEmail = /* GraphQL */ `
           nextToken
         }
         tiktokAccountAccess
+        userWallet {
+          id
+          currentBalance
+          totalEarned
+          userProfileId
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+        userProfileUserWalletId
+      }
+      nextToken
+    }
+  }
+`;
+export const getUserWallet = /* GraphQL */ `
+  query GetUserWallet($id: ID!) {
+    getUserWallet(id: $id) {
+      id
+      currentBalance
+      totalEarned
+      userProfileId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUserWallets = /* GraphQL */ `
+  query ListUserWallets(
+    $filter: ModelUserWalletFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserWallets(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        currentBalance
+        totalEarned
+        userProfileId
         createdAt
         updatedAt
       }

@@ -17,6 +17,7 @@ export type ModelUserProfileConditionInput = {
   and?: Array< ModelUserProfileConditionInput | null > | null,
   or?: Array< ModelUserProfileConditionInput | null > | null,
   not?: ModelUserProfileConditionInput | null,
+  userProfileUserWalletId?: ModelIDInput | null,
 };
 
 export type ModelStringInput = {
@@ -71,6 +72,22 @@ export enum USER_TYPES {
 }
 
 
+export type ModelIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
+
 export type UserProfile = {
   __typename: "UserProfile",
   id: string,
@@ -83,8 +100,10 @@ export type UserProfile = {
   tiktokHandler?: string | null,
   bestPractices?: ModelBestPracticesConnection | null,
   tiktokAccountAccess?: string | null,
+  userWallet?: UserWallet | null,
   createdAt: string,
   updatedAt: string,
+  userProfileUserWalletId?: string | null,
 };
 
 export type ModelBrandProfileConnection = {
@@ -175,6 +194,16 @@ export type BestPractices = {
   userProfileBestPracticesId?: string | null,
 };
 
+export type UserWallet = {
+  __typename: "UserWallet",
+  id: string,
+  currentBalance?: string | null,
+  totalEarned?: string | null,
+  userProfileId: string,
+  createdAt: string,
+  updatedAt: string,
+};
+
 export type CreateApprovedAdsInput = {
   id?: string | null,
   creativeRequestId?: string | null,
@@ -260,22 +289,6 @@ export type ModelBestPracticesConditionInput = {
   userProfileBestPracticesId?: ModelIDInput | null,
 };
 
-export type ModelIDInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-  size?: ModelSizeInput | null,
-};
-
 export type CreateUserProfileInput = {
   id?: string | null,
   name: string,
@@ -285,6 +298,7 @@ export type CreateUserProfileInput = {
   userType?: USER_TYPES | null,
   tiktokHandler?: string | null,
   tiktokAccountAccess?: string | null,
+  userProfileUserWalletId?: string | null,
 };
 
 export type UpdateUserProfileInput = {
@@ -296,6 +310,34 @@ export type UpdateUserProfileInput = {
   userType?: USER_TYPES | null,
   tiktokHandler?: string | null,
   tiktokAccountAccess?: string | null,
+  userProfileUserWalletId?: string | null,
+};
+
+export type CreateUserWalletInput = {
+  id?: string | null,
+  currentBalance?: string | null,
+  totalEarned?: string | null,
+  userProfileId: string,
+};
+
+export type ModelUserWalletConditionInput = {
+  currentBalance?: ModelStringInput | null,
+  totalEarned?: ModelStringInput | null,
+  userProfileId?: ModelIDInput | null,
+  and?: Array< ModelUserWalletConditionInput | null > | null,
+  or?: Array< ModelUserWalletConditionInput | null > | null,
+  not?: ModelUserWalletConditionInput | null,
+};
+
+export type UpdateUserWalletInput = {
+  id: string,
+  currentBalance?: string | null,
+  totalEarned?: string | null,
+  userProfileId?: string | null,
+};
+
+export type DeleteUserWalletInput = {
+  id: string,
 };
 
 export type CreateBestPracticesInput = {
@@ -555,11 +597,28 @@ export type ModelUserProfileFilterInput = {
   and?: Array< ModelUserProfileFilterInput | null > | null,
   or?: Array< ModelUserProfileFilterInput | null > | null,
   not?: ModelUserProfileFilterInput | null,
+  userProfileUserWalletId?: ModelIDInput | null,
 };
 
 export type ModelUserProfileConnection = {
   __typename: "ModelUserProfileConnection",
   items:  Array<UserProfile | null >,
+  nextToken?: string | null,
+};
+
+export type ModelUserWalletFilterInput = {
+  id?: ModelIDInput | null,
+  currentBalance?: ModelStringInput | null,
+  totalEarned?: ModelStringInput | null,
+  userProfileId?: ModelIDInput | null,
+  and?: Array< ModelUserWalletFilterInput | null > | null,
+  or?: Array< ModelUserWalletFilterInput | null > | null,
+  not?: ModelUserWalletFilterInput | null,
+};
+
+export type ModelUserWalletConnection = {
+  __typename: "ModelUserWalletConnection",
+  items:  Array<UserWallet | null >,
   nextToken?: string | null,
 };
 
@@ -686,6 +745,15 @@ export type ModelSubscriptionIDInput = {
   beginsWith?: string | null,
   in?: Array< string | null > | null,
   notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionUserWalletFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  currentBalance?: ModelSubscriptionStringInput | null,
+  totalEarned?: ModelSubscriptionStringInput | null,
+  userProfileId?: ModelSubscriptionIDInput | null,
+  and?: Array< ModelSubscriptionUserWalletFilterInput | null > | null,
+  or?: Array< ModelSubscriptionUserWalletFilterInput | null > | null,
 };
 
 export type ModelSubscriptionBestPracticesFilterInput = {
@@ -863,8 +931,18 @@ export type DeleteUserProfileMutation = {
       nextToken?: string | null,
     } | null,
     tiktokAccountAccess?: string | null,
+    userWallet?:  {
+      __typename: "UserWallet",
+      id: string,
+      currentBalance?: string | null,
+      totalEarned?: string | null,
+      userProfileId: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     createdAt: string,
     updatedAt: string,
+    userProfileUserWalletId?: string | null,
   } | null,
 };
 
@@ -1020,8 +1098,18 @@ export type CreateUserProfileMutation = {
       nextToken?: string | null,
     } | null,
     tiktokAccountAccess?: string | null,
+    userWallet?:  {
+      __typename: "UserWallet",
+      id: string,
+      currentBalance?: string | null,
+      totalEarned?: string | null,
+      userProfileId: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     createdAt: string,
     updatedAt: string,
+    userProfileUserWalletId?: string | null,
   } | null,
 };
 
@@ -1082,6 +1170,67 @@ export type UpdateUserProfileMutation = {
       nextToken?: string | null,
     } | null,
     tiktokAccountAccess?: string | null,
+    userWallet?:  {
+      __typename: "UserWallet",
+      id: string,
+      currentBalance?: string | null,
+      totalEarned?: string | null,
+      userProfileId: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    userProfileUserWalletId?: string | null,
+  } | null,
+};
+
+export type CreateUserWalletMutationVariables = {
+  input: CreateUserWalletInput,
+  condition?: ModelUserWalletConditionInput | null,
+};
+
+export type CreateUserWalletMutation = {
+  createUserWallet?:  {
+    __typename: "UserWallet",
+    id: string,
+    currentBalance?: string | null,
+    totalEarned?: string | null,
+    userProfileId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type UpdateUserWalletMutationVariables = {
+  input: UpdateUserWalletInput,
+  condition?: ModelUserWalletConditionInput | null,
+};
+
+export type UpdateUserWalletMutation = {
+  updateUserWallet?:  {
+    __typename: "UserWallet",
+    id: string,
+    currentBalance?: string | null,
+    totalEarned?: string | null,
+    userProfileId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type DeleteUserWalletMutationVariables = {
+  input: DeleteUserWalletInput,
+  condition?: ModelUserWalletConditionInput | null,
+};
+
+export type DeleteUserWalletMutation = {
+  deleteUserWallet?:  {
+    __typename: "UserWallet",
+    id: string,
+    currentBalance?: string | null,
+    totalEarned?: string | null,
+    userProfileId: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -2001,8 +2150,18 @@ export type GetUserProfileQuery = {
       nextToken?: string | null,
     } | null,
     tiktokAccountAccess?: string | null,
+    userWallet?:  {
+      __typename: "UserWallet",
+      id: string,
+      currentBalance?: string | null,
+      totalEarned?: string | null,
+      userProfileId: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     createdAt: string,
     updatedAt: string,
+    userProfileUserWalletId?: string | null,
   } | null,
 };
 
@@ -2062,8 +2221,18 @@ export type ListUserProfilesQuery = {
         nextToken?: string | null,
       } | null,
       tiktokAccountAccess?: string | null,
+      userWallet?:  {
+        __typename: "UserWallet",
+        id: string,
+        currentBalance?: string | null,
+        totalEarned?: string | null,
+        userProfileId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       createdAt: string,
       updatedAt: string,
+      userProfileUserWalletId?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -2127,6 +2296,54 @@ export type UserProfilesByUserEmailQuery = {
         nextToken?: string | null,
       } | null,
       tiktokAccountAccess?: string | null,
+      userWallet?:  {
+        __typename: "UserWallet",
+        id: string,
+        currentBalance?: string | null,
+        totalEarned?: string | null,
+        userProfileId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      userProfileUserWalletId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetUserWalletQueryVariables = {
+  id: string,
+};
+
+export type GetUserWalletQuery = {
+  getUserWallet?:  {
+    __typename: "UserWallet",
+    id: string,
+    currentBalance?: string | null,
+    totalEarned?: string | null,
+    userProfileId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type ListUserWalletsQueryVariables = {
+  filter?: ModelUserWalletFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListUserWalletsQuery = {
+  listUserWallets?:  {
+    __typename: "ModelUserWalletConnection",
+    items:  Array< {
+      __typename: "UserWallet",
+      id: string,
+      currentBalance?: string | null,
+      totalEarned?: string | null,
+      userProfileId: string,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -2913,8 +3130,18 @@ export type OnCreateUserProfileSubscription = {
       nextToken?: string | null,
     } | null,
     tiktokAccountAccess?: string | null,
+    userWallet?:  {
+      __typename: "UserWallet",
+      id: string,
+      currentBalance?: string | null,
+      totalEarned?: string | null,
+      userProfileId: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     createdAt: string,
     updatedAt: string,
+    userProfileUserWalletId?: string | null,
   } | null,
 };
 
@@ -2975,8 +3202,18 @@ export type OnUpdateUserProfileSubscription = {
       nextToken?: string | null,
     } | null,
     tiktokAccountAccess?: string | null,
+    userWallet?:  {
+      __typename: "UserWallet",
+      id: string,
+      currentBalance?: string | null,
+      totalEarned?: string | null,
+      userProfileId: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     createdAt: string,
     updatedAt: string,
+    userProfileUserWalletId?: string | null,
   } | null,
 };
 
@@ -3037,6 +3274,64 @@ export type OnDeleteUserProfileSubscription = {
       nextToken?: string | null,
     } | null,
     tiktokAccountAccess?: string | null,
+    userWallet?:  {
+      __typename: "UserWallet",
+      id: string,
+      currentBalance?: string | null,
+      totalEarned?: string | null,
+      userProfileId: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    userProfileUserWalletId?: string | null,
+  } | null,
+};
+
+export type OnCreateUserWalletSubscriptionVariables = {
+  filter?: ModelSubscriptionUserWalletFilterInput | null,
+};
+
+export type OnCreateUserWalletSubscription = {
+  onCreateUserWallet?:  {
+    __typename: "UserWallet",
+    id: string,
+    currentBalance?: string | null,
+    totalEarned?: string | null,
+    userProfileId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateUserWalletSubscriptionVariables = {
+  filter?: ModelSubscriptionUserWalletFilterInput | null,
+};
+
+export type OnUpdateUserWalletSubscription = {
+  onUpdateUserWallet?:  {
+    __typename: "UserWallet",
+    id: string,
+    currentBalance?: string | null,
+    totalEarned?: string | null,
+    userProfileId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteUserWalletSubscriptionVariables = {
+  filter?: ModelSubscriptionUserWalletFilterInput | null,
+};
+
+export type OnDeleteUserWalletSubscription = {
+  onDeleteUserWallet?:  {
+    __typename: "UserWallet",
+    id: string,
+    currentBalance?: string | null,
+    totalEarned?: string | null,
+    userProfileId: string,
     createdAt: string,
     updatedAt: string,
   } | null,

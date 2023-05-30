@@ -1,0 +1,114 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-contente-dev-202732-authRole",
+      "UnauthRoleArn": "arn:aws:iam::995966967167:role/amplify-contente-dev-202732-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::995966967167:role/amplify-contente-dev-202732-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-contente-dev-202732-deployment",
+      "UnauthRoleName": "amplify-contente-dev-202732-unauthRole",
+      "StackName": "amplify-contente-dev-202732",
+      "StackId": "arn:aws:cloudformation:us-east-1:995966967167:stack/amplify-contente-dev-202732/cb3c5da0-a632-11ed-9e84-12f284457d8b",
+      "AmplifyAppId": "d12cm8tmqhdorb"
+    },
+    "categories": {
+      "auth": {
+        "contente9303b093": {}
+      },
+      "api": {
+        "contente": {}
+      },
+      "function": {
+        "GPTLambda": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/GPTLambda-5974695454704a655256-build.zip"
+        },
+        "emailService": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/emailService-4651784e763261656c5a-build.zip"
+        },
+        "graphQlLambdaAuthorizerc946ef1d": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/graphQlLambdaAuthorizerc946ef1d-305531662f6e64636f59-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d12cm8tmqhdorb",
+          "type": "manual"
+        }
+      },
+      "storage": {
+        "staticStorage": {}
+      }
+    }
+  },
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-contente-staging-175407-authRole",
+      "UnauthRoleArn": "arn:aws:iam::995966967167:role/amplify-contente-staging-175407-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::995966967167:role/amplify-contente-staging-175407-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-contente-staging-175407-deployment",
+      "UnauthRoleName": "amplify-contente-staging-175407-unauthRole",
+      "StackName": "amplify-contente-staging-175407",
+      "StackId": "arn:aws:cloudformation:us-east-1:995966967167:stack/amplify-contente-staging-175407/fe982250-bc1d-11ed-8733-0aad81c3a6e3",
+      "AmplifyAppId": "d12cm8tmqhdorb"
+    },
+    "categories": {
+      "auth": {
+        "contente9303b093": {}
+      },
+      "function": {
+        "GPTLambda": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/GPTLambda-565148426975555a5563-build.zip"
+        },
+        "emailService": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/emailService-4651784e763261656c5a-build.zip"
+        },
+        "graphQlLambdaAuthorizerc946ef1d": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/graphQlLambdaAuthorizerc946ef1d-305531662f6e64636f59-build.zip"
+        },
+        "linkTiktokAccount": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/linkTiktokAccount-643041424f477a647952-build.zip"
+        },
+        "updateUserType": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/updateUserType-77764b41336343785a74-build.zip"
+        },
+        "createAd": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/createAd-61337a6e646359324e46-build.zip"
+        },
+        "listCompaigns": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/listCompaigns-4257306f326a792b5051-build.zip"
+        },
+        "listAdGroups": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/listAdGroups-394b7643615548623446-build.zip"
+        },
+        "getVideoFromAuthCode": {
+          "deploymentBucketName": "amplify-contente-staging-175407-deployment",
+          "s3Key": "amplify-builds/getVideoFromAuthCode-49396e4938776f32764a-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d12cm8tmqhdorb",
+          "type": "manual"
+        }
+      },
+      "api": {
+        "contente": {}
+      },
+      "storage": {
+        "staticStorage": {}
+      }
+    }
+  }
+}
