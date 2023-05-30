@@ -133,7 +133,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: -5%;
 }
 
 .creators-page-wrapper .creators-page-body .creators-page-title {
@@ -351,7 +350,7 @@
 
 .creators-content-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-top: 55px;
 }

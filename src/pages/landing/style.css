@@ -124,12 +124,11 @@
   height: 100%;
 }
 .landing-page-wrapper .landing-page-body {
-  margin-left: 45px;
+  margin-left: 67px;
   flex: 1 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 635px;
 }
 
 .landing-page-wrapper .landing-page-body .landing-page-title {
@@ -143,9 +142,9 @@
 .landing-page-wrapper .landing-page-body .landing-page-subtitle {
   font-family: 'Raleway';
   font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 30px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
   color: #E5D5A5;
   margin-top: 7px;
 }
@@ -488,7 +487,7 @@
     text-align: left;
     height: 365px;
   }
-  .landing-page-steps-item.steps-item-4 
+  .landing-page-steps-item.steps-item-4
   .landing-page-steps-item-content {
     max-width: 335px;
     margin-left: auto;
@@ -552,11 +551,11 @@
     margin-right: 0;
   }
   .landing-page-wrapper .landing-page-body .landing-page-title {
-    font-family: 'Comfortaa';
+    font-family: 'Raleway';
     font-style: normal;
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 55px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
   }
   .landing-page-wrapper .landing-page-body .landing-page-subtitle {
     font-family: 'Raleway';
@@ -599,11 +598,11 @@
   .landing-page-title {
     margin-bottom: 0px;
   }
-  
+
   .landing-page-subtitle {
     margin-bottom: 22px;
   }
-  
+
 }
 /*
 @media only screen and (max-width: 1060px) {
