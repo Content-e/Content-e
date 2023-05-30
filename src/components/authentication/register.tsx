@@ -232,7 +232,12 @@ export const Register: FC = () => {
         </div>
       </div>
       <Footer />
-      <Modal isOpen={isModalOpen} handleClose={() => setIsModalOpen(false)} />
+      <Modal
+        isOpen={isModalOpen}
+        content="Thank you for registering, a member of the EDC squared team will be in
+          touch shortly."
+        handleClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };

@@ -11,6 +11,7 @@ interface Props {
   id: string;
   videoUrls?: Array<string | null> | null;
   isVideoLinked?: boolean;
+  showSuccessModal: () => void;
 }
 export const BrandDesciption: FC<Props & ProfileProps> = ({
   detail,
@@ -18,6 +19,7 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
   isVideoLinked,
   profileState: { data },
   videoUrls,
+  showSuccessModal,
 }) => {
   const [showPopup, setPopupVisibility] = useState(false);
   const [showInspiration, setShowInspiration] = useState(false);
@@ -150,6 +152,7 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
         <AuthorizeTikTokHandler
           briefId={id}
           onCross={(): void => setPopupVisibility(false)}
+          showSuccessModal={showSuccessModal}
           disableBackground
         />
       )}

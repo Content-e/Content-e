@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "start": "ESLINT_NO_DEV_ERRORS='true' react-scripts start",
-    "dev": "react-scripts start",
+    "dev": "ESLINT_NO_DEV_ERRORS='true' react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint \"src/**/*.{js,ts}\"",
     "test": "react-scripts test"

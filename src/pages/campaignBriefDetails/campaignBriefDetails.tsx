@@ -1,17 +1,22 @@
 import { FC, useState } from "react";
+import { useHistory } from "react-router-dom";
 import BrandCard from "components/brandCard/brandCard";
 import BrandDesciption from "components/brandDescription/brandDescription";
 import CampaignDetailCard from "components/campaignDetailCard/campaignDetailCard";
 import "./campaignBriefDetails.css";
 import { BrandBrief } from "API";
 import DetailCard from "components/brandCard/detailCard";
+import Modal from "components/authentication/modal";
+import { AuthRoutes } from "utils";
 
 interface Props {
   data: BrandBrief;
   onBack: () => void;
 }
 const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
+  const history = useHistory();
   const [showDetails, handleDetailVisibility] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   return (
     <div className="creator-dashboard__items creatives-items">
@@ -48,6 +53,7 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
         detail={data.brandBriefDetails}
         videoUrls={data.creativeInspirations}
         isVideoLinked={!!data.creativeRequests?.items.length}
+        showSuccessModal={() => setShowSuccessModal(true)}
       />
       {data.brandProfile && showDetails && (
         <DetailCard
@@ -55,6 +61,14 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
           onCross={(): void => handleDetailVisibility(false)}
         />
       )}
+      <Modal
+        isOpen={showSuccessModal}
+        content="Your creative has been successfully linked!"
+        handleClose={() => setShowSuccessModal(false)}
+        actionLabel="BACK TO DASHBOARD"
+        actionHandler={() => history.push(AuthRoutes.Dashboard)}
+        type="creator"
+      />
     </div>
   );
 };
