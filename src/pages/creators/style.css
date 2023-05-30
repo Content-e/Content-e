@@ -159,7 +159,7 @@
 
 .creators-content-container-gradient {
   background-image: url("../../../public/images/glass-image.svg");
-  padding: 31px 45px 32px 35px;
+  padding: 31px 45px 0 35px;
   border-radius: 50px;
   background-repeat: no-repeat;
   margin-bottom: 25px;

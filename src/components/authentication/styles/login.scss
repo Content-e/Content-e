@@ -7,11 +7,12 @@
   background-size: cover;
   padding: 45px 45px 0px 45px;
   &__content {
+    padding-top: 55px;
     width: 100%;
     display: flex;
   }
   &__wrap {
-    padding: 31px 45px 32px 35px;
+    padding: 31px 45px 0 35px;
     display: flex;
     border-radius: 50px;
     background-image: url("../../../../public/images/glass-image.svg");
@@ -212,15 +213,11 @@
   background-size: cover;
   display: flex;
   flex-direction: column;
-  padding-top: 39px;
-  padding-right: 50px;
 }
 
 .login__landing img {
-  width: 451px;
-  height: 502px;
+  width: 492px;
   margin-left: auto;
-  margin-bottom: -32px;
 }
 
 .login__landing-container {
