@@ -80,6 +80,7 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
         console.log(path);
         const res = await updateTiktokRequest({ variables: { input } });
         console.log(res);
+        window.location.reload();
       }
     }
   };

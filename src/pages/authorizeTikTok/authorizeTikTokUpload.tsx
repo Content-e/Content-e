@@ -63,6 +63,10 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
           name="file"
           multiple={false}
           types={fileTypes}
+          onDrop={() => {
+            const span = document.querySelector(".sc-eGFuAX.gjDYDz");
+            span!.textContent = "File Selected!";
+          }}
         />
       </div>
       {err && <p className="tik-tok-error">Upload the video</p>}
