@@ -192,7 +192,11 @@ export const Register: FC = () => {
               <div className="signup__container-form-field">
                 <Input
                   {...commonProps}
-                  placeholder="Tell us a little more about you and your brand."
+                  placeholder={
+                    creator
+                      ? "Tell us about you and the content you create."
+                      : "Tell us a little more about you and your brand."
+                  }
                   keyProp=""
                 />
               </div>
