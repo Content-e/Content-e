@@ -96,7 +96,6 @@ export const BrandsPage: React.FC = () => {
             className="brands-union"
             style={{
               marginLeft: "63px",
-              marginBottom: "-32px",
               width: "492px",
               height: "595px",
             }}

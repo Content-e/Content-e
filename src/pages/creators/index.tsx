@@ -79,7 +79,7 @@ export const CreatorsPage: React.FC = () => {
             <img
               src="/images/creators-union.png"
               className="creators-union"
-              style={{ marginLeft: "63px", marginBottom: "-32px" }}
+              style={{ marginLeft: "63px" }}
             />
           </div>
         </div>
