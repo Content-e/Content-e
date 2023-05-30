@@ -16,7 +16,8 @@ export default function Modal({ handleClose, isOpen }: Props) {
         </S.ModalTopBar>
         <img src="/images/checkmark.svg" alt="checkmark icon" />
         <span>
-          Thank you for registering, we <br /> will contact you shortly
+          Thank you for registering, a member of the EDC squared team will be in
+          touch shortly.
         </span>
       </S.ModalContent>
     </S.ModalOverlay>
