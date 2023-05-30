@@ -507,6 +507,9 @@
   .login__logo {
     display: none;
   }
+  .login__content {
+    flex-direction: column;
+  }
   .login__top {
     display: none;
   }
