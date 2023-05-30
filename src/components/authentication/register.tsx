@@ -21,7 +21,10 @@ import { useHistory } from "react-router-dom";
 
 export const Register: FC = () => {
   const history = useHistory();
-  const [creator, setCreator] = useState<boolean | null>(null);
+  const params = new URL(location.href).searchParams;
+  const [creator, setCreator] = useState<boolean | null>(
+    params.get("role") === "creator" ? true : null
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {

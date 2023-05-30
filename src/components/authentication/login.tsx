@@ -22,7 +22,7 @@ import Footer from "./components/footer";
 
 export const Login: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
-  const params = new URLSearchParams(window.location.pathname);
+  const params = new URL(location.href).searchParams;
   const {
     res: { isLoading, error, success },
     performAction,
@@ -52,7 +52,8 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     }
   };
 
-  const onSignUp = (): void => history.push(UnAuthRoutes.Register);
+  const onSignUp = (): void =>
+    history.push(UnAuthRoutes.Register + "?role=" + params.get("role"));
   const onForget = (): void => history.push(UnAuthRoutes.ForgetPassword);
 
   useEffect(() => {
