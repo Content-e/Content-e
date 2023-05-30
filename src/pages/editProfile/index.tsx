@@ -24,6 +24,7 @@ import {
   UnknownType,
 } from "utils";
 import "./creatorProfile.css";
+import Modal from "components/authentication/modal";
 
 export const EditProfile: FC<ProfileProps> = ({
   editProfile,
@@ -37,6 +38,7 @@ export const EditProfile: FC<ProfileProps> = ({
   const [formError, setFormError] =
     useState<IUpdateProfileError>(defaultProfileError);
   const [image, setImage] = useState<IProfileImageUpload>({});
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const validateProfileForm = (): boolean => {
     const name = validateFullName(formState?.name || "");
@@ -191,6 +193,12 @@ export const EditProfile: FC<ProfileProps> = ({
             </div>
           </div>
         </div>
+        <Modal
+          isOpen={showSuccessModal}
+          handleClose={() => setShowSuccessModal(false)}
+          type="brand"
+          content="Your platform has been successfully added"
+        />
       </div>
     </>
   );
