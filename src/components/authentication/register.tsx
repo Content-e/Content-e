@@ -18,6 +18,34 @@ import HeaderDesktop from "components/authentication/components/header-desktop";
 import HeaderMobile from "components/authentication/components/header-mobile";
 import Footer from "./components/footer";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+
+const sendJSONEmail = async (json: { name: string }): Promise<void> => {
+  const mailData = JSON.stringify({
+    operationName: "SendEmail",
+    variables: {
+      data: {
+        from: "no-reply@edcsquared.io",
+        message: json,
+        name: json.name,
+      },
+    },
+    query:
+      "query SendEmail($data: EMAIL_INPUT) {\n  sendEmail(data: $data)\n}\n",
+  });
+
+  const res = await axios.post(
+    "https://ibqmmfkfajfbvgtxmjzfx3u6rm.appsync-api.us-east-1.amazonaws.com/graphql",
+    mailData,
+    {
+      headers: {
+        "x-api-key": "da2-ndivz7milrarjolsdmpucfdelm",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  console.log(res);
+};
 
 export const Register: FC = () => {
   const history = useHistory();
@@ -28,7 +56,6 @@ export const Register: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {
-    performAction,
     res: { isLoading },
   } = useSignup();
 
@@ -67,7 +94,7 @@ export const Register: FC = () => {
       creator ? USER_TYPES.CREATIVE_USER : USER_TYPES.BRAND_USER
     );
     if (!validateSignUpForm()) {
-      await performAction(signUpState);
+      await sendJSONEmail(signUpState);
       setIsModalOpen(true);
     }
   };
