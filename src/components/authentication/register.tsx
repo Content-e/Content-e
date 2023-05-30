@@ -197,7 +197,7 @@ export const Register: FC = () => {
                       ? "Tell us about you and the content you create."
                       : "Tell us a little more about you and your brand."
                   }
-                  keyProp=""
+                  keyProp="about"
                 />
               </div>
               <button
