@@ -82,6 +82,7 @@ export const EditProfile: FC<ProfileProps> = ({
 
   useEffect(() => {
     if (data) {
+      console.log(data);
       const { name, description, tiktokHandler } = data;
       const state = { name } as IUpdateProfile;
       if (description) state.description = description;

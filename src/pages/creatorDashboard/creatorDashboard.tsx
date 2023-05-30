@@ -8,7 +8,7 @@ import { BrandBrief } from "API";
 import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
 import { useState } from "react";
 
-export default function CreatorDashboard() {
+export default function CreatorDashboard({ data }) {
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
 
   if (selectedBrief)
@@ -19,16 +19,24 @@ export default function CreatorDashboard() {
       />
     );
 
+  console.log(data);
+
   return (
     <div className="creator-dashboard__items creator-dashboard-items">
       <div className="creator-dashboard__item statistics-item">
         <div className="statistics-cards-container">
-          <CreatorStatsCard type={CreatorDashboardBoxes.Wallet} value="0" />
-          <CreatorStatsCard type={CreatorDashboardBoxes.Approval} value="0" />
-          <CreatorStatsCard type={CreatorDashboardBoxes.Conversion} value="0" />
+          <CreatorStatsCard
+            type={CreatorDashboardBoxes.Wallet}
+            value={`$${data.userWallet ? data.userWallet.currentBalance : "0"}`}
+          />
+          <CreatorStatsCard type={CreatorDashboardBoxes.Approval} value={"0"} />
+          <CreatorStatsCard
+            type={CreatorDashboardBoxes.Conversion}
+            value={"0"}
+          />
           <CreatorStatsCard
             type={CreatorDashboardBoxes.ClickThrough}
-            value="0"
+            value={"0"}
           />
         </div>
       </div>

@@ -115,7 +115,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
           )}
 
           {data.userType === USER_TYPES.CREATIVE_USER && (
-            <Route exact path={CreatorRoutes.Wallet} component={Wallet} />
+            <Route
+              exact
+              path={CreatorRoutes.Wallet}
+              component={() => <Wallet data={data} />}
+            />
           )}
 
           <Route
