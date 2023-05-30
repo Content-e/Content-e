@@ -2,7 +2,7 @@
 import { useState, useEffect, FC } from "react";
 
 import { IconLoader, Input } from "components";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import HeaderDesktop from "components/authentication/components/header-desktop";
 import HeaderMobile from "components/authentication/components/header-mobile";
 import Checkbox from "./checkbox";
@@ -22,6 +22,7 @@ import Footer from "./components/footer";
 
 export const Login: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
+  const params = new URLSearchParams(window.location.pathname);
   const {
     res: { isLoading, error, success },
     performAction,
@@ -53,6 +54,10 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
 
   const onSignUp = (): void => history.push(UnAuthRoutes.Register);
   const onForget = (): void => history.push(UnAuthRoutes.ForgetPassword);
+
+  useEffect(() => {
+    console.log(params);
+  }, [params]);
 
   useEffect(() => {
     if (error === unverifiedUser)

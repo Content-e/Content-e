@@ -77,7 +77,9 @@ export const BrandsPage: React.FC = () => {
             <div className="for-brands-content-btn-container">
               <div
                 className="login-signup brands-btn"
-                onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                onClick={() =>
+                  history.push(UnAuthRoutes.HomePageLogin + "?role=brand")
+                }
               >
                 Login / Sign up
               </div>

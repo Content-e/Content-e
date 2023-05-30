@@ -134,8 +134,8 @@ export const Register: FC = () => {
               <div className="signup__container-form-field">
                 <Input
                   {...commonProps}
-                  placeholder="email@address.com"
-                  keyProp="Email Address"
+                  placeholder="Email Address"
+                  keyProp="email"
                 />
               </div>
               <div className="signup__container-form-field">

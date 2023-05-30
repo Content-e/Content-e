@@ -38,8 +38,8 @@
       width: 100%;
       background: none;
       height: 42px;
-      padding-left: 2px;
-      padding-right: 2px;
+      padding-left: 0px;
+      padding-right: 0px;
       font-family: 'Raleway';
       font-style: normal;
       font-weight: 400;
@@ -278,7 +278,6 @@
   background-color: white;
   border-radius: 12px;
   align-items: center;
-  margin-top: 14px;
   border: 1px solid #9fd0bd;
 }
 
@@ -670,7 +669,7 @@
       &-field {
         display: flex;
         flex-direction: column;
-        margin: 0 8px;
+        margin: 0 0px;
         input, select {
           height: 42px;
           color: #3E3E36;
@@ -775,7 +774,6 @@
 
             &-form {
                 width: 100%;
-                padding: 0 20px;
                 margin-top: 21px;
 
                 form {

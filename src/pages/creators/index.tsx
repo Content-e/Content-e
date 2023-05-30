@@ -62,7 +62,9 @@ export const CreatorsPage: React.FC = () => {
               <div className="for-creators-content-btn-container">
                 <div
                   className="login-signup creators-btn"
-                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                  onClick={() =>
+                    history.push(UnAuthRoutes.HomePageLogin + "?role=creator")
+                  }
                 >
                   Login / Sign up
                 </div>
