@@ -92,6 +92,7 @@ export const CreativeEntries: FC<Props> = ({
             color = "yellow";
             break;
           case "submitted":
+            e.status = "new";
             color = "yellow";
             break;
           case "reject":

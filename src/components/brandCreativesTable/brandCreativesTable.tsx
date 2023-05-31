@@ -68,6 +68,7 @@ export const BrandCreativesTable: FC<Props> = ({
             break;
           case "submitted":
             color = "yellow";
+            e.status = "new";
             break;
 
           case "new":
