@@ -620,10 +620,6 @@
 }*/
 
 @media screen and (max-width: 440px) {
-  .landing-footer-text-container {
-    display: none;
-  }
-
   .landing-content-container-gradient {
     background-position: -50px;
   }
