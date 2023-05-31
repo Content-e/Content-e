@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { ChangeEventHandler, FC, useMemo, useState } from "react";
+import { ChangeEventHandler, FC, useMemo } from "react";
 import { withAuth } from "state/auth";
 import { UnAuthRoutes } from "utils";
 import "./styles/login.scss";
@@ -14,6 +14,8 @@ import Modal from "./modal";
 import useZodForm from "hooks/useZodForm";
 import { z } from "zod";
 import { FormInput } from "components";
+
+const DEFAULT_ROLE = "brand";
 
 const sendJSONEmail = async (json: { name: string }): Promise<void> => {
   const mailData = JSON.stringify({
@@ -55,22 +57,22 @@ export const Register: FC = () => {
 
   const defaultRole = useMemo(() => {
     const value = params.get("role");
+    if (!value) return DEFAULT_ROLE;
     try {
       return signupSchema.shape.role.parse(value);
     } catch (e) {
       console.log(e);
-      return "brand";
+      return DEFAULT_ROLE;
     }
   }, [params]);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {
     register,
     handleSubmit,
     setValue,
+    reset,
     watch,
-    formState: { errors, isValid, isSubmitting, isDirty },
+    formState: { errors, isValid, isSubmitting, isSubmitSuccessful, isDirty },
   } = useZodForm({
     schema: signupSchema,
     defaultValues: {
@@ -82,11 +84,11 @@ export const Register: FC = () => {
     mode: "onBlur",
   });
 
-  const role = watch("role") || "brand";
+  const role = watch("role") || DEFAULT_ROLE;
   const setRole = (value: z.infer<typeof signupSchema>["role"]) =>
     setValue("role", value);
 
-  const onSubmit = handleSubmit(async (data) => {
+  const onSubmit = handleSubmit((data) => {
     localStorage.setItem(
       "userType",
       {
@@ -94,8 +96,7 @@ export const Register: FC = () => {
         brand: USER_TYPES.BRAND_USER,
       }[role]
     );
-    await sendJSONEmail(data);
-    setIsModalOpen(true);
+    return sendJSONEmail(data);
   });
 
   const handleRoleChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
@@ -157,9 +158,6 @@ export const Register: FC = () => {
                       onChange={handleRoleChange}
                       className="mb-4"
                     >
-                      <option value="" disabled selected hidden>
-                        Please select
-                      </option>
                       <option value="brand">Brand</option>
                       <option value="creator">Creator</option>
                     </select>
@@ -204,10 +202,10 @@ export const Register: FC = () => {
       </div>
       <Footer />
       <Modal
-        isOpen={isModalOpen}
+        isOpen={isSubmitSuccessful}
         content="Thank you for registering, a member of the EDC squared team will be in
           touch shortly."
-        handleClose={() => setIsModalOpen(false)}
+        handleClose={() => reset(undefined, { keepDefaultValues: true })}
       />
     </div>
   );
