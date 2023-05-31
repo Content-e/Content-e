@@ -67,7 +67,15 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
             const span = document.querySelector(
               ".tik-tok-upload label div span"
             );
-            span!.textContent = "File Selected!";
+            span!.innerHTML = "File Selected!";
+          }}
+          onSelect={() => {
+            const span = document.querySelector(
+              ".tik-tok-upload label div span"
+            );
+            setTimeout(function () {
+              span!.innerHTML = "File Selected!";
+            }, 50);
           }}
         />
       </div>
