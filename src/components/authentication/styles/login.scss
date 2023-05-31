@@ -513,7 +513,7 @@
     background-position: -50px;
     margin-left: auto;
     margin-right: auto;
-    padding: 38px 20px 32px;
+    padding: 38px 20px 0;
   }
   .login__container {
     width: 100%;
@@ -543,6 +543,7 @@
     margin-top: 60px;
     padding: 0 19px;
     img {
+      min-width: 100%;
       max-width: 100%;
       height: auto;
       margin-left: auto;
