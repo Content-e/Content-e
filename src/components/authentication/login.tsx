@@ -7,12 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import { useLogin } from "hooks";
 import { withAuth } from "state/auth";
-import {
-  AuthProps,
-  defaultLoginState,
-  UnAuthRoutes,
-  unverifiedUser,
-} from "utils";
+import { AuthProps, UnAuthRoutes, unverifiedUser } from "utils";
 
 import useZodForm from "hooks/useZodForm";
 import { z } from "zod";
@@ -43,7 +38,11 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     formState: { errors },
   } = useZodForm({
     schema: loginSchema,
-    defaultValues: defaultLoginState,
+    defaultValues: {
+      email: localStorage.getItem("userEmail") || "",
+      password: "",
+      remember: false,
+    },
     mode: "onBlur",
   });
 
@@ -52,6 +51,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
   const onSubmit = handleSubmit(async (data) => {
     await performAction(data);
     if (data.remember) {
+      localStorage.setItem("userEmail", data.email);
       const result = await Auth.rememberDevice();
       console.log("Device remembered: ", result);
     }
