@@ -1,6 +1,7 @@
-import React, { FC, Fragment } from "react";
+import { FC, Fragment } from "react";
 import { ShouldRender } from "components";
 import * as S from "./styles";
+
 import {
   defaultSignUpState,
   defaultLoginState,
@@ -30,6 +31,7 @@ interface Props {
   keyProp: string;
   label?: string;
 }
+
 export const Input: FC<Props> = ({
   type,
   value,
@@ -54,3 +56,5 @@ export const Input: FC<Props> = ({
     </Fragment>
   );
 };
+
+export { default as FormInput } from "./formInput";
