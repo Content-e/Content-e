@@ -1,7 +1,6 @@
 import { useState, FC, useMemo } from "react";
 // import { IconLoader, Input } from "components";
 import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
-import { useSignup } from "hooks";
 import { validateEmail, validateFullName, withAuth } from "state/auth";
 import "./styles/login.scss";
 // import GoogleLogin from "./googleLogin";
@@ -55,12 +54,9 @@ export const Register: FC = () => {
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const {
-    res: { isLoading },
-  } = useSignup();
-
   const [signUpState, setSignUpState] = useState(defaultSignUpState);
   const [signUpError, setSignUpError] = useState(defaultSignUpError);
+  const [isLoading, setIsLoading] = useState(false);
 
   const updateState = (key: string, value: string): void => {
     setSignUpError((prev) => ({ ...prev, [key]: null }));
@@ -94,7 +90,10 @@ export const Register: FC = () => {
       creator ? USER_TYPES.CREATIVE_USER : USER_TYPES.BRAND_USER
     );
     if (!validateSignUpForm()) {
-      await sendJSONEmail(signUpState);
+      setIsLoading(true);
+      await sendJSONEmail(signUpState)
+        .then(() => setIsLoading(false))
+        .catch(() => setIsLoading(false));
       setIsModalOpen(true);
     }
   };
