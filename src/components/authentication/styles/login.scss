@@ -216,7 +216,7 @@
 }
 
 .login__landing img {
-  width: 492px;
+  min-width: 492px;
   margin-left: auto;
 }
 
@@ -251,9 +251,8 @@
   /* Widget box style */
   display: flex;
   flex-direction: column;
-  padding-top: 73px;
+  padding-top: 55px;
   max-width: 469px;
-  padding-top: 73px;
   margin-right: 172px;
 }
 
@@ -630,7 +629,6 @@
     max-width: 469px;
     display: flex;
     flex-direction: column;
-    padding-top: 73px;
     margin-right: 172px;
     &-description {
       width: 50%;

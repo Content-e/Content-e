@@ -24,6 +24,7 @@ export const defaultSignUpError: { [key: string]: null | string } = {
 export const defaultLoginState = {
   email: "",
   password: "",
+  remember: false,
 };
 
 export const defaultLoginError: { [key: string]: null | string } = {

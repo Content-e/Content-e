@@ -1,23 +1,21 @@
-import { useState, FC, useMemo } from "react";
-// import { IconLoader, Input } from "components";
-import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
-import { validateEmail, validateFullName, withAuth } from "state/auth";
+import _ from "lodash";
+import { ChangeEventHandler, FC, useMemo } from "react";
+import { withAuth } from "state/auth";
+import { UnAuthRoutes } from "utils";
 import "./styles/login.scss";
-// import GoogleLogin from "./googleLogin";
 import { USER_TYPES } from "API";
-//import Navbar from "components/navbar/navbar";
-//import GoogleLogin from "./googleLogin";
-import { Input } from "components/customInput";
 import { IconLoader } from "components/loader";
-//import ShouldRender from "components/shouldRender";
-//import AuthFooter from "./authFooter";
-//import * as S from "../../components/customInput/styles"; // TODO: separate select into its own component
-import Modal from "./modal";
+import axios from "axios";
 import HeaderDesktop from "components/authentication/components/header-desktop";
 import HeaderMobile from "components/authentication/components/header-mobile";
+import { Link } from "react-router-dom";
 import Footer from "./components/footer";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
+import Modal from "./modal";
+import useZodForm from "hooks/useZodForm";
+import { z } from "zod";
+import { FormInput } from "components";
+
+const DEFAULT_ROLE = "brand";
 
 const sendJSONEmail = async (json: { name: string }): Promise<void> => {
   const mailData = JSON.stringify({
@@ -46,87 +44,64 @@ const sendJSONEmail = async (json: { name: string }): Promise<void> => {
   console.log(res);
 };
 
+const signupSchema = z.object({
+  email: z.string().email(),
+  // password: z.string().nonempty("Please enter your password").min(8),
+  name: z.string().nonempty("Please enter your full name"),
+  role: z.enum(["brand", "creator"]),
+  about: z.string(),
+});
+
 export const Register: FC = () => {
-  const history = useHistory();
   const params = new URL(location.href).searchParams;
-  const [creator, setCreator] = useState<boolean | null>(
-    params.get("role") === "creator" ? true : null
-  );
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [signUpState, setSignUpState] = useState(defaultSignUpState);
-  const [signUpError, setSignUpError] = useState(defaultSignUpError);
-  const [isLoading, setIsLoading] = useState(false);
+  const defaultRole = useMemo(() => {
+    const value = params.get("role");
+    if (!value) return DEFAULT_ROLE;
+    try {
+      return signupSchema.shape.role.parse(value);
+    } catch (e) {
+      console.log(e);
+      return DEFAULT_ROLE;
+    }
+  }, [params]);
 
-  const updateState = (key: string, value: string): void => {
-    setSignUpError((prev) => ({ ...prev, [key]: null }));
-    setSignUpState((prev) => ({ ...prev, [key]: value }));
-  };
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    watch,
+    formState: { errors, isValid, isSubmitting, isSubmitSuccessful, isDirty },
+  } = useZodForm({
+    schema: signupSchema,
+    defaultValues: {
+      email: "",
+      name: "",
+      role: defaultRole,
+      about: "",
+    },
+    mode: "onBlur",
+  });
 
-  const validateSignUpForm = (): boolean => {
-    const emailError = validateEmail(signUpState.email);
-    // TODO: handle password later
-    // const passwordError = validatePassword(signUpState.password);
-    const fullNameError = validateFullName(signUpState.name);
-    const roleError = creator === null ? "Please select" : null;
+  const role = watch("role") || DEFAULT_ROLE;
+  const setRole = (value: z.infer<typeof signupSchema>["role"]) =>
+    setValue("role", value);
 
-    const notValidated = emailError || fullNameError || roleError;
-    if (notValidated)
-      setSignUpError({
-        email: emailError,
-        password: null,
-        name: fullNameError,
-        ["role-select"]: roleError,
-      });
-
-    return !!notValidated;
-  };
-
-  const onLogin = (): void => history.push(UnAuthRoutes.Login);
-  const onSignUp = async (e): Promise<void> => {
-    e.preventDefault();
+  const onSubmit = handleSubmit((data) => {
     localStorage.setItem(
       "userType",
-      creator ? USER_TYPES.CREATIVE_USER : USER_TYPES.BRAND_USER
+      {
+        creator: USER_TYPES.CREATIVE_USER,
+        brand: USER_TYPES.BRAND_USER,
+      }[role]
     );
-    if (!validateSignUpForm()) {
-      setIsLoading(true);
-      await sendJSONEmail(signUpState)
-        .then(() => setIsLoading(false))
-        .catch(() => setIsLoading(false));
-      setIsModalOpen(true);
-    }
+    return sendJSONEmail(data);
+  });
+
+  const handleRoleChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
+    setRole(e.target.value as z.infer<typeof signupSchema>["role"]);
   };
-
-  const isSubmittable = useMemo(
-    () => Object.values(signUpError).every((item) => item === null),
-    [signUpError]
-  );
-
-  const commonProps = {
-    handlers: { state: signUpState, error: signUpError, updateState },
-  };
-
-  /*const toggleMenu = (): void => {
-    setShowMenu(!showMenu);
-    const html = document.documentElement;
-    if (html.classList.contains("is-locked")) {
-      html.classList.remove("is-locked");
-    } else {
-      html.classList.add("is-locked");
-    }
-  };*/
-
-  const handleRoleChange = (e: any) => {
-    if (e.target.value === "creator") {
-      setCreator(true);
-    } else {
-      setCreator(false);
-    }
-  };
-
-  //const burgerIcon = "/images/hamburger.svg";
-  //const crossIcon = "/images/cross.svg";
 
   return (
     <div className="login">
@@ -134,27 +109,25 @@ export const Register: FC = () => {
       <div className="login__wrap">
         <HeaderDesktop />
         <div className="login__content">
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-around",
-            }}
-          >
+          <div className="w-full flex justify-around">
             <div className="signup__container">
               <div className="signup__title">
-                Create a {!creator ? "Brand" : "Creator"} account
+                Create a {_.capitalize(role)} account
               </div>
-              <div className={`${creator ? "active" : false} btns-container`}>
+              <div
+                className={`${
+                  role === "creator" ? "active" : false
+                } btns-container`}
+              >
                 <div
-                  className={`${!creator ? "active" : false}`}
-                  onClick={() => setCreator(false)}
+                  className={`${role === "brand" ? "active" : false}`}
+                  onClick={() => setRole("brand")}
                 >
                   Join as a brand
                 </div>
                 <div
-                  className={`${creator ? "active" : false}`}
-                  onClick={() => setCreator(true)}
+                  className={`${role === "creator" ? "active" : false}`}
+                  onClick={() => setRole("creator")}
                 >
                   Join as a creator
                 </div>
@@ -162,64 +135,61 @@ export const Register: FC = () => {
               <div className="signup__container-form">
                 <form>
                   <div className="signup__container-form-field">
-                    <Input
-                      {...commonProps}
+                    <FormInput
                       placeholder="Full Name"
-                      keyProp="name"
+                      name="name"
+                      register={register}
+                      errors={errors}
                     />
                   </div>
                   <div className="signup__container-form-field">
-                    <Input
-                      {...commonProps}
+                    <FormInput
                       placeholder="Email Address"
-                      keyProp="email"
+                      name="email"
+                      register={register}
+                      errors={errors}
                     />
                   </div>
                   <div className="signup__container-form-field">
                     <select
                       name="role"
-                      id="role-select"
                       placeholder="Who are you?"
-                      onChange={(e) => handleRoleChange(e)}
+                      value={role}
+                      onChange={handleRoleChange}
+                      className="mb-4"
                     >
-                      <option value="" disabled selected hidden>
-                        Please select
-                      </option>
                       <option value="brand">Brand</option>
                       <option value="creator">Creator</option>
                     </select>
-                    {/*<p>
-                  <ShouldRender if={signUpError["role-select"]}>
-                    <S.ParagraphError>
-                      {signUpError["role-select"]}
-                    </S.ParagraphError>
-                  </ShouldRender>
-                </p>*/}
                   </div>
                   <div className="signup__container-form-field">
-                    <Input
-                      {...commonProps}
+                    <FormInput
+                      name="about"
                       placeholder={
-                        creator
-                          ? "Tell us about you and the content you create."
-                          : "Tell us a little more about you and your brand."
+                        {
+                          creator:
+                            "Tell us about you and the content you create.",
+                          brand:
+                            "Tell us a little more about you and your brand.",
+                        }[role]
                       }
-                      keyProp="about"
+                      register={register}
+                      errors={errors}
                     />
                   </div>
                   <button
                     className="signup__container-form-register-button"
-                    onClick={onSignUp}
-                    disabled={isLoading || !isSubmittable}
+                    onClick={onSubmit}
+                    disabled={!isValid || !isDirty || isSubmitting}
                   >
-                    <span style={isLoading ? { marginRight: 12 } : {}}>
+                    <span style={isSubmitting ? { marginRight: 12 } : {}}>
                       Register
                     </span>
-                    {isLoading && <IconLoader />}
+                    {isSubmitting && <IconLoader />}
                   </button>
                   <div className="login__already">
                     Already have an account?{" "}
-                    <span onClick={onLogin}>Login</span>
+                    <Link to={UnAuthRoutes.Login}>Login</Link>
                   </div>
                 </form>
               </div>
@@ -232,10 +202,10 @@ export const Register: FC = () => {
       </div>
       <Footer />
       <Modal
-        isOpen={isModalOpen}
+        isOpen={isSubmitSuccessful}
         content="Thank you for registering, a member of the EDC squared team will be in
           touch shortly."
-        handleClose={() => setIsModalOpen(false)}
+        handleClose={() => reset(undefined, { keepDefaultValues: true })}
       />
     </div>
   );

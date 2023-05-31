@@ -4,6 +4,7 @@ specifiers:
   '@apollo/client': ^3.7.7
   '@aws-amplify/auth': ^5.1.7
   '@aws-amplify/core': ^5.0.13
+  '@hookform/resolvers': ^3.1.0
   '@types/classnames': ^2.3.1
   '@types/draft-js': ^0.11.10
   '@types/lodash': ^4.14.191
@@ -43,6 +44,7 @@ specifiers:
   react-draft-wysiwyg: ^1.15.0
   react-drag-drop-files: ^2.3.10
   react-google-button: ^0.7.2
+  react-hook-form: ^7.44.2
   react-router-dom: ^5.2.0
   react-scripts: 5.0.1
   react-slick: ^0.29.0
@@ -52,11 +54,13 @@ specifiers:
   styled-components: ^5.3.6
   tailwindcss: ^3.3.2
   typescript: ^4.9.5
+  zod: ^3.21.4
 
 dependencies:
   '@apollo/client': 3.7.14_biqbaboplfbrettd7655fr4n2y
   '@aws-amplify/auth': 5.3.6
   '@aws-amplify/core': 5.3.0
+  '@hookform/resolvers': 3.1.0_react-hook-form@7.44.2
   '@types/classnames': 2.3.1
   '@types/react-router-dom': 5.3.3
   '@types/react-slick': 0.23.10
@@ -90,6 +94,7 @@ dependencies:
   react-draft-wysiwyg: 1.15.0_u2uddnr2lenfwn7luyp53wziye
   react-drag-drop-files: 2.3.10_biqbaboplfbrettd7655fr4n2y
   react-google-button: 0.7.2_react@18.2.0
+  react-hook-form: 7.44.2_react@18.2.0
   react-router-dom: 5.3.4_react@18.2.0
   react-scripts: 5.0.1_dpaxmk26c7y4pjgviot4b5jlgu
   react-slick: 0.29.0_biqbaboplfbrettd7655fr4n2y
@@ -97,6 +102,7 @@ dependencies:
   sass: 1.62.1
   slick-carousel: 1.8.1
   styled-components: 5.3.10_biqbaboplfbrettd7655fr4n2y
+  zod: 3.21.4
 
 devDependencies:
   '@types/draft-js': 0.11.10
@@ -3946,6 +3952,14 @@ packages:
     resolution: {integrity: sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+    dev: false
+
+  /@hookform/resolvers/3.1.0_react-hook-form@7.44.2:
+    resolution: {integrity: sha512-z0A8K+Nxq+f83Whm/ajlwE6VtQlp/yPHZnXw7XWVPIGm1Vx0QV8KThU3BpbBRfAZ7/dYqCKKBNnQh85BkmBKkA==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.44.2_react@18.2.0
     dev: false
 
   /@humanwhocodes/config-array/0.11.8:
@@ -11223,6 +11237,15 @@ packages:
       react: 18.2.0
     dev: false
 
+  /react-hook-form/7.44.2_react@18.2.0:
+    resolution: {integrity: sha512-IyihmIbCwzDI/iqlecTRa7+4BCnzNx40upSlGvIU7qwENhTf6APatm4bmL9ANtWKPYlD67SIlxfls7GwCUe+Lg==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
@@ -13440,4 +13463,8 @@ packages:
     resolution: {integrity: sha512-Qv4qvc8ZIue51B/0zmeIMxpIGDVhz4GhJALBvnKs/FRa2T7jy4Ori9wFwaHVt0zWV7MIFglKAHbgnVxVTw7U1w==}
     dependencies:
       zen-observable: 0.7.1
+    dev: false
+
+  /zod/3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
