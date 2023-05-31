@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { FC, useEffect } from "react";
 
 import { FormInput, IconLoader } from "components";
@@ -24,7 +23,7 @@ import { Auth } from "aws-amplify";
 
 const loginSchema = z.object({
   email: z.string().email(),
-  password: z.string(),
+  password: z.string().nonempty("Please enter your password"),
   remember: z.boolean().default(false),
 });
 
