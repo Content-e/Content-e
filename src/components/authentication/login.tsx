@@ -5,7 +5,6 @@ import { FormInput, IconLoader } from "components";
 import HeaderDesktop from "components/authentication/components/header-desktop";
 import HeaderMobile from "components/authentication/components/header-mobile";
 import { Link, useHistory } from "react-router-dom";
-import Checkbox from "./checkbox";
 
 import { useLogin } from "hooks";
 import { withAuth } from "state/auth";
@@ -20,10 +19,12 @@ import useZodForm from "hooks/useZodForm";
 import { z } from "zod";
 import Footer from "./components/footer";
 import "./styles/login.scss";
+import Checkbox from "components/ui/checkbox";
 
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string(),
+  remember: z.boolean().default(false),
 });
 
 export const Login: FC<AuthProps> = ({ getAuth }) => {
@@ -36,6 +37,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
 
   const {
     register,
+    control,
     handleSubmit,
     watch,
     formState: { errors },
@@ -86,7 +88,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
                   <div className="login__forgot-box">
                     {" "}
                     <div className="login__checkbox">
-                      <Checkbox />
+                      <Checkbox name="remember" control={control} />
                       <span className="login__remember">Remember me.</span>{" "}
                     </div>{" "}
                     <Link
