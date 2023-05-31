@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Amplify } from "aws-amplify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import config from "aws-exports";
@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "state/auth";
 import MainRouter from "./router";
 import { ProfileProvider } from "state/profileSteps";
+import ScrollToTop from "./ScrollToTop";
 import "./assets/css/index.scss";
 
 Amplify.configure(config);
@@ -19,6 +20,7 @@ const App: React.FC = () => {
   return (
     <ErrorProvider>
       <Router>
+        <ScrollToTop />
         <div className="App">
           <AuthProvider>
             <ProfileProvider>
