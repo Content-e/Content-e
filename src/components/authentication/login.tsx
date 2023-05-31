@@ -20,6 +20,7 @@ import { z } from "zod";
 import Footer from "./components/footer";
 import "./styles/login.scss";
 import Checkbox from "components/ui/checkbox";
+import { Auth } from "aws-amplify";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -49,8 +50,12 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
 
   const formState = watch();
 
-  const onSubmit = handleSubmit((data) => {
-    performAction(data);
+  const onSubmit = handleSubmit(async (data) => {
+    await performAction(data);
+    if (data.remember) {
+      const result = await Auth.rememberDevice();
+      console.log("Device remembered: ", result);
+    }
   });
 
   useEffect(() => {
