@@ -61,4 +61,3 @@ export const CheckInput = styled.input`
   left: 0px;
   z-index: 2;
 `;
-
