@@ -19,7 +19,6 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
   isVideoLinked,
   profileState: { data },
   videoUrls,
-  showSuccessModal,
 }) => {
   const [showPopup, setPopupVisibility] = useState(false);
   const [showInspiration, setShowInspiration] = useState(false);
