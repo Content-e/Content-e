@@ -77,13 +77,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
         <div className="login__wrap">
           <HeaderDesktop />
           <div className="login__content">
-            <div
-              style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-around",
-              }}
-            >
+            <div className="w-full flex justify-around">
               <div className="login__container">
                 <div className="login__box">
                   <div className="login__title">Login</div>

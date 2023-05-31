@@ -134,13 +134,7 @@ export const Register: FC = () => {
       <div className="login__wrap">
         <HeaderDesktop />
         <div className="login__content">
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-around",
-            }}
-          >
+          <div className="w-full flex justify-around">
             <div className="signup__container">
               <div className="signup__title">
                 Create a {!creator ? "Brand" : "Creator"} account
