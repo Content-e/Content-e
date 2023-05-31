@@ -26,7 +26,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
   const params = new URL(location.href).searchParams;
   const {
-    res: { isLoading, error, success },
+    res: { error, success },
     performAction,
   } = useLogin();
 
@@ -35,7 +35,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     control,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid, isDirty, isSubmitting },
   } = useZodForm({
     schema: loginSchema,
     defaultValues: {
@@ -106,12 +106,12 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
                     <button
                       className="login__btn"
                       onClick={onSubmit}
-                      disabled={isLoading}
+                      disabled={!isValid || !isDirty || isSubmitting}
                     >
-                      <span style={isLoading ? { marginRight: 12 } : {}}>
+                      <span style={isSubmitting ? { marginRight: 12 } : {}}>
                         Login
                       </span>
-                      {isLoading && <IconLoader />}
+                      {isSubmitting && <IconLoader />}
                     </button>
                     <div className="login__already">
                       Don’t have an account?{" "}
