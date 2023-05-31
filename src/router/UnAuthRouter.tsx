@@ -19,6 +19,7 @@ import {
   CreatorsPage,
   BrandsPage,
   SayHello,
+  PrivacyPolicy,
 } from "pages";
 import AdminLogin from "components/adminLogin/adminLogin";
 
@@ -27,6 +28,7 @@ const UnAuthRouter: FC = () => {
     <UnAuthFullNameProvider>
       <Switch>
         <Route exact path={path.Landing} component={LandingPage} />
+        <Route exact path={path.PrivacyPolicy} component={PrivacyPolicy} />
         <Route exact path={path.Creators} component={CreatorsPage} />
         <Route exact path={path.Brands} component={BrandsPage} />
         <Route exact path={path.SayHello} component={SayHello} />

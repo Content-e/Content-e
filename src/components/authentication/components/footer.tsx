@@ -3,7 +3,11 @@ import { UnAuthRoutes } from "utils";
 
 import "../styles/login.scss";
 
-export const Footer = () => {
+interface Props {
+  isDark?: boolean;
+}
+
+export const Footer: React.FC<Props> = ({ isDark }) => {
   const history = useHistory();
   const path = window.location.pathname;
 
@@ -36,26 +40,40 @@ export const Footer = () => {
         </div>
         <div
           className="landing-footer-text"
-          onClick={() =>
-            path === "/homePageLogin"
-              ? history.push(UnAuthRoutes.Register)
-              : history.push(UnAuthRoutes.Login)
-          }
+          onClick={() => history.push(UnAuthRoutes.PrivacyPolicy)}
         >
-          Login / Sign up
+          Pricacy Policy
         </div>
       </div>
 
       <div className="landing-footer-img-container">
-        <a target="_blank" href="https://www.linkedin.com/company/edcsquared/">
-          <img src="/images/landing-linkedin.svg" />
-        </a>
-        <a target="_blank" href="https://www.instagram.com/edcsq/">
-          <img src="/images/landing-insta.svg" />
-        </a>
-        <a target="_blank" href="https://www.tiktok.com/@edcsquared">
-          <img src="/images/landing-tiktok.svg" />
-        </a>
+        {!isDark
+        ? (
+          <>
+            <a target="_blank" href="https://www.linkedin.com/company/edcsquared/">
+              <img src="/images/landing-linkedin.svg" />
+            </a>
+            <a target="_blank" href="https://www.instagram.com/edcsq/">
+              <img src="/images/landing-insta.svg" />
+            </a>
+            <a target="_blank" href="https://www.tiktok.com/@edcsquared">
+              <img src="/images/landing-tiktok.svg" />
+            </a>
+          </>
+        )
+        : (
+          <>
+            <a target="_blank" href="https://www.linkedin.com/company/edcsquared/">
+              <img src="/images/landing-linkedin-dark.svg" />
+            </a>
+            <a target="_blank" href="https://www.instagram.com/edcsq/">
+              <img src="/images/landing-insta-dark.svg" />
+            </a>
+            <a target="_blank" href="https://www.tiktok.com/@edcsquared">
+              <img src="/images/landing-tiktok-dark.svg" />
+            </a>
+          </>
+        )}
       </div>
 
       <div className="landing-footer-text">

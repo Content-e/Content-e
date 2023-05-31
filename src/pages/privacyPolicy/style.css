@@ -1,0 +1,191 @@
+.privacy-policy-wrapper {
+  background: #F3F8F8;
+}
+
+.privacy-policy-wrapper .landing-footer .landing-footer-text {
+  color: rgba(62, 62, 54, 0.83);
+}
+
+.privacy-policy-container {
+  padding: 45px 45px 0px 45px;
+}
+
+.privacy-policy-top {
+  background-image: url('../../../public/images/privacy-bg.png');
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 158px;
+}
+
+.privacy-policy-top-title {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 70px;
+  text-transform: capitalize;
+  color: #E5D5A5;
+  margin-top: 93px;
+  text-align: center;
+}
+
+.privacy-policy-top-subtitle {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 140%;
+  color: #E5D5A5;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.privacy-policy-subtitle.bold {
+  margin-top: 30px;
+}
+
+.privacy-policy-top-description {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 140%;
+  text-align: center;
+  color: #E5D5A5;
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.privacy-policy-title {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #3E3E36;
+  margin-bottom: 30px;
+  line-height: 120%;
+}
+
+.privacy-policy-subtitle {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 20px;
+  color: #3E3E36;
+  margin-bottom: 20px;
+  line-height: 120%;
+}
+
+.privacy-policy-text {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 130%;
+  color: #3E3E36;
+  margin-bottom: 20px;
+}
+
+.privacy-policy-text p {
+  margin-bottom: 20px;
+}
+
+.privacy-policy-text p:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-policy-text span {
+  font-weight: 700;
+}
+
+.privacy-policy-text:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-policy-list {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 130%;
+  color: #3E3E36;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.privacy-policy-list li {
+  margin-bottom: 20px;
+  margin-left: 100px;
+  max-width: 941px;
+}
+
+.privacy-policy-list li:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-policy-list span {
+  font-weight: 700;
+}
+
+.privacy-policy-content {
+  padding-top: 80px;
+  padding-bottom: 30px;
+}
+
+.privacy-policy-section {
+  margin-bottom: 60px;
+}
+
+.privacy-policy-section:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-policy-table {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  max-width: 975px;
+}
+
+.privacy-policy-table td {
+  border: 1px solid #000000;
+  padding: 30px 23px;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 120%;
+  color: #3E3E36;
+  vertical-align: text-top;
+}
+
+.privacy-policy-table th {
+  width: 33.33%;
+  border: 1px solid #000000;
+  padding: 30px 23px;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 120%;
+  color: #3E3E36;
+  vertical-align: text-top;
+}
+
+@media screen and (max-width: 1280px) {
+  .privacy-policy-table th {
+    font-size: 12px;
+    padding: 15px 10px;
+  }
+  .privacy-policy-table td {
+    font-size: 12px;
+    padding: 15px 10px;
+  }
+  .privacy-policy-list li {
+    margin-left: 50px;
+  }
+}

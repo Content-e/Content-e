@@ -16,5 +16,6 @@ export * from "./creators";
 export * from "./brands";
 export * from "./sayHello";
 export * from "./homePageLogin";
+export * from "./privacyPolicy";
 
 export * from "./coBranded";

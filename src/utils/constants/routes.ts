@@ -22,6 +22,8 @@ export enum UnAuthRoutes {
 
   ResetPassword = "/resetPassword",
   SubResetPassword = "/resetPassword/:id",
+
+  PrivacyPolicy = "/privacyPolicy",
 }
 
 export enum AuthRoutes {
