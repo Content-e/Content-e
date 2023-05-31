@@ -9,7 +9,6 @@ interface Props {
 
 export const Footer: React.FC<Props> = ({ isDark }) => {
   const history = useHistory();
-  const path = window.location.pathname;
 
   return (
     <div className="landing-footer">
@@ -47,10 +46,12 @@ export const Footer: React.FC<Props> = ({ isDark }) => {
       </div>
 
       <div className="landing-footer-img-container">
-        {!isDark
-        ? (
+        {!isDark ? (
           <>
-            <a target="_blank" href="https://www.linkedin.com/company/edcsquared/">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/company/edcsquared/"
+            >
               <img src="/images/landing-linkedin.svg" />
             </a>
             <a target="_blank" href="https://www.instagram.com/edcsq/">
@@ -60,10 +61,12 @@ export const Footer: React.FC<Props> = ({ isDark }) => {
               <img src="/images/landing-tiktok.svg" />
             </a>
           </>
-        )
-        : (
+        ) : (
           <>
-            <a target="_blank" href="https://www.linkedin.com/company/edcsquared/">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/company/edcsquared/"
+            >
               <img src="/images/landing-linkedin-dark.svg" />
             </a>
             <a target="_blank" href="https://www.instagram.com/edcsq/">
