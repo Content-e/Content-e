@@ -19,7 +19,6 @@ interface Props {
   onCross: () => void;
   briefId: string;
   disableBackground?: boolean;
-  showSuccessModal?: () => void;
 }
 export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
   authState,
@@ -27,7 +26,6 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
   briefId: id,
   onCross,
   profileState: { data: profile },
-  showSuccessModal,
 }) => {
   const { createTiktokRequest, loading, data } = handleCreativeRequest();
   const { updateTiktokRequest, loading: updateLoading } =
@@ -88,10 +86,7 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
   };
 
   useEffect(() => {
-    if (!loading && data && !uploading && showSuccessModal) {
-      onCross();
-      showSuccessModal();
-    }
+    if (!loading && data && !uploading) onCross();
   }, [loading, data]);
 
   return (

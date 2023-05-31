@@ -54,16 +54,6 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
     }
   };
 
-  const getElementByXpath = (path) => {
-    return document.evaluate(
-      path,
-      document,
-      null,
-      XPathResult.FIRST_ORDERED_NODE_TYPE,
-      null
-    ).singleNodeValue;
-  };
-
   return (
     <div className="tik-tok-modal">
       <AuthorizeTikTokHeader onCross={onCross} title="Upload the video" />
@@ -74,9 +64,9 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
           multiple={false}
           types={fileTypes}
           onDrop={() => {
-            const xpath =
-              "//*[@id='root']/div/div[2]/div[4]/div/div/div[3]/div[4]/div/div/div[2]/label/div/span[1]";
-            const span = getElementByXpath(xpath);
+            const span = document.querySelector(
+              ".tik-tok-upload label div span"
+            );
             span!.textContent = "File Selected!";
           }}
         />

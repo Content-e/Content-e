@@ -152,7 +152,6 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
         <AuthorizeTikTokHandler
           briefId={id}
           onCross={(): void => setPopupVisibility(false)}
-          showSuccessModal={showSuccessModal}
           disableBackground
         />
       )}
