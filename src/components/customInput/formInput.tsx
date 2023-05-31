@@ -33,17 +33,16 @@ export default function Input<T extends FieldValues>({
   return (
     <fieldset className={`flex flex-col ${className}`}>
       {/* {labelName && <S.InputLabel>{labelName}</S.InputLabel>} */}
-      <div className="relative">
-        <S.Input
-          id={name}
-          type={rest.type}
-          {...register(name, {
-            valueAsNumber: rest.type === "number",
-            required,
-          })}
-          {...rest}
-        />
-      </div>
+      <S.Input
+        id={name}
+        className="w-full"
+        type={rest.type}
+        {...register(name, {
+          valueAsNumber: rest.type === "number",
+          required,
+        })}
+        {...rest}
+      />
       {error?.message && <S.ParagraphError>{error.message}</S.ParagraphError>}
     </fieldset>
   );

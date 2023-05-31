@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import AuthorizeTikTokHeader from "./authorizeTikTokHeader";
 import { FileUploader } from "react-drag-drop-files";
 import { Storage } from "aws-amplify";
-import { IconLoader } from "components";
+import { Spinner } from "react-bootstrap";
 
 interface Props {
   onCross: () => void;
@@ -91,7 +91,11 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
             </button>
           </>
         ) : (
-          <IconLoader />
+          <Spinner
+            animation="border"
+            className="spinner-border"
+            variant="primary"
+          />
         )}
       </div>
     </div>

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { FC, useEffect } from "react";
 
 import { FormInput, IconLoader } from "components";
@@ -8,12 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import { useLogin } from "hooks";
 import { withAuth } from "state/auth";
-import {
-  AuthProps,
-  defaultLoginState,
-  UnAuthRoutes,
-  unverifiedUser,
-} from "utils";
+import { AuthProps, UnAuthRoutes, unverifiedUser } from "utils";
 
 import useZodForm from "hooks/useZodForm";
 import { z } from "zod";
@@ -24,7 +18,7 @@ import { Auth } from "aws-amplify";
 
 const loginSchema = z.object({
   email: z.string().email(),
-  password: z.string(),
+  password: z.string().nonempty("Please enter your password"),
   remember: z.boolean().default(false),
 });
 
@@ -32,7 +26,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
   const params = new URL(location.href).searchParams;
   const {
-    res: { isLoading, error, success },
+    res: { error, success },
     performAction,
   } = useLogin();
 
@@ -41,10 +35,14 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     control,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid, isDirty, isSubmitting },
   } = useZodForm({
     schema: loginSchema,
-    defaultValues: defaultLoginState,
+    defaultValues: {
+      email: localStorage.getItem("userEmail") || "",
+      password: "",
+      remember: false,
+    },
     mode: "onBlur",
   });
 
@@ -53,6 +51,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
   const onSubmit = handleSubmit(async (data) => {
     await performAction(data);
     if (data.remember) {
+      localStorage.setItem("userEmail", data.email);
       const result = await Auth.rememberDevice();
       console.log("Device remembered: ", result);
     }
@@ -107,12 +106,12 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
                     <button
                       className="login__btn"
                       onClick={onSubmit}
-                      disabled={isLoading}
+                      disabled={!isValid || !isDirty || isSubmitting}
                     >
-                      <span style={isLoading ? { marginRight: 12 } : {}}>
+                      <span style={isSubmitting ? { marginRight: 12 } : {}}>
                         Login
                       </span>
-                      {isLoading && <IconLoader />}
+                      {isSubmitting && <IconLoader />}
                     </button>
                     <div className="login__already">
                       Don’t have an account?{" "}
