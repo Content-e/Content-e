@@ -2,6 +2,7 @@ import "./paymentCard.css";
 import Pagination from "components/pagination";
 import { useState } from "react";
 
+const IS_EMPTY = true;
 const HISTORY = [
   {
     id: 0,
@@ -120,71 +121,8 @@ export default function PaymentCard() {
         />
       </div>
       <div className="brand-dashboard__list-mobile">
-        {HISTORY.map((e, i) => {
-          let statusColor = "";
-          switch (e?.status) {
-            case "approved":
-              statusColor = "green";
-              break;
-            case "requested":
-              statusColor = "yellow";
-              break;
-            case "rejected":
-              statusColor = "red";
-              break;
-          }
-          return (
-            <div
-              onClick={handleClick}
-              key={`${e?.id}--${i}--mobile`}
-              className="brand-dashboard__list-mobile-wrap"
-            >
-              <div className="brand-dashboard__list-mobile-item">
-                <span>{e?.date}</span>
-                <img alt="" src="/images/arrow-down-orange.svg" />
-              </div>
-              <div className="brand-dashboard__list-mobile-info">
-                <div className="brand-dashboard__list-mobile-table">
-                  <div className="brand-dashboard__list-mobile-keys">
-                    <div className="brand-dashboard__list-mobile-key">
-                      Payment amount
-                    </div>
-                    <div className="brand-dashboard__list-mobile-key">
-                      Status
-                    </div>
-                  </div>
-                  <div className="brand-dashboard__list-mobile-values">
-                    <div className="brand-dashboard__list-mobile-value">
-                      <div className="brand-dashboard__list-mobile-content">
-                        ${e?.amount}
-                      </div>
-                    </div>
-                    <div
-                      className={`brand-dashboard__list-mobile-value ${statusColor}
-                      brand-dashboard__list-mobile-status`}
-                    >
-                      <div className="brand-dashboard__list-mobile-content">
-                        <div className="brand-dashboard__list-mobile-dot"></div>
-                        <span>{e?.status}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <table className="creator-dashboard__list history-list">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Payment amount</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {HISTORY?.map((e, index) => {
+        {!IS_EMPTY &&
+          HISTORY.map((e, i) => {
             let statusColor = "";
             switch (e?.status) {
               case "approved":
@@ -198,31 +136,100 @@ export default function PaymentCard() {
                 break;
             }
             return (
-              <tr key={`${e?.id}-brandBrief--${index}`}>
-                <td className="brand-dashboard__list-name">
-                  <div className="brand-dashboard__list-content">{e?.date}</div>
-                </td>
-                <td className="brand-dashboard__list-name">
-                  <div className="brand-dashboard__list-content">
-                    ${e?.amount}
+              <div
+                onClick={handleClick}
+                key={`${e?.id}--${i}--mobile`}
+                className="brand-dashboard__list-mobile-wrap"
+              >
+                <div className="brand-dashboard__list-mobile-item">
+                  <span>{e?.date}</span>
+                  <img alt="" src="/images/arrow-down-orange.svg" />
+                </div>
+                <div className="brand-dashboard__list-mobile-info">
+                  <div className="brand-dashboard__list-mobile-table">
+                    <div className="brand-dashboard__list-mobile-keys">
+                      <div className="brand-dashboard__list-mobile-key">
+                        Payment amount
+                      </div>
+                      <div className="brand-dashboard__list-mobile-key">
+                        Status
+                      </div>
+                    </div>
+                    <div className="brand-dashboard__list-mobile-values">
+                      <div className="brand-dashboard__list-mobile-value">
+                        <div className="brand-dashboard__list-mobile-content">
+                          ${e?.amount}
+                        </div>
+                      </div>
+                      <div
+                        className={`brand-dashboard__list-mobile-value ${statusColor}
+                        brand-dashboard__list-mobile-status`}
+                      >
+                        <div className="brand-dashboard__list-mobile-content">
+                          <div className="brand-dashboard__list-mobile-dot"></div>
+                          <span>{e?.status}</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </td>
-                <td className={`${statusColor} brand-dashboard__list-status`}>
-                  <div className="brand-dashboard__list-content">
-                    <div className="brand-dashboard__list-dot"></div>
-                    <span>{e?.status}</span>
-                  </div>
-                </td>
-              </tr>
+                </div>
+              </div>
             );
           })}
+      </div>
+      <table className="creator-dashboard__list history-list">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Payment amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {!IS_EMPTY &&
+            HISTORY.map((e, index) => {
+              let statusColor = "";
+              switch (e?.status) {
+                case "approved":
+                  statusColor = "green";
+                  break;
+                case "requested":
+                  statusColor = "yellow";
+                  break;
+                case "rejected":
+                  statusColor = "red";
+                  break;
+              }
+              return (
+                <tr key={`${e?.id}-brandBrief--${index}`}>
+                  <td className="brand-dashboard__list-name">
+                    <div className="brand-dashboard__list-content">
+                      {e?.date}
+                    </div>
+                  </td>
+                  <td className="brand-dashboard__list-name">
+                    <div className="brand-dashboard__list-content">
+                      ${e?.amount}
+                    </div>
+                  </td>
+                  <td className={`${statusColor} brand-dashboard__list-status`}>
+                    <div className="brand-dashboard__list-content">
+                      <div className="brand-dashboard__list-dot"></div>
+                      <span>{e?.status}</span>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
-      <Pagination
-        total={HISTORY?.length || 0}
-        limit={tableLimit}
-        goToPage={setCurrentPage}
-      />
+      {!IS_EMPTY && (
+        <Pagination
+          total={HISTORY?.length || 0}
+          limit={tableLimit}
+          goToPage={setCurrentPage}
+        />
+      )}
     </div>
   );
 }
