@@ -12,6 +12,7 @@ import {
 } from "utils";
 import BriefInput from "./briefInput";
 import BriefInspirations from "./briefInspiration";
+import Modal from "components/authentication/modal";
 import "./createBrief.css";
 
 export const CreateBrief: FC<SaveBriefProps> = ({
@@ -65,10 +66,6 @@ export const CreateBrief: FC<SaveBriefProps> = ({
   const handleSubmit = (): void => {
     if (validateInputs()) saveData(formState);
   };
-
-  useEffect(() => {
-    if (response && !loading) history.goBack();
-  }, [response, loading]);
 
   useEffect(() => {
     if (briefState) setFormState(briefState);
@@ -146,16 +143,16 @@ export const CreateBrief: FC<SaveBriefProps> = ({
           <div
             className="
             flex sm:flex-row w-full sm:justify-center
-            sm:gap-6 font-sans text-base text-white font-bold flex-col-reverse gap-2 items-center px-6"
+            font-sans text-base text-white font-bold flex-col-reverse gap-4 items-center px-6"
           >
             <button
-              className="bg-brand-secondary px-10 py-3 rounded-[40px] sm:w-fit w-full"
+              className="bg-brand-secondary px-12 py-3 rounded-[40px] sm:w-fit w-full"
               onClick={() => history.goBack()}
             >
               CANCEL
             </button>
             <button
-              className="bg-brand-primary px-10 py-3 rounded-[40px] sm:w-fit w-full"
+              className="bg-brand-primary px-12 py-3 rounded-[40px] sm:w-fit w-full"
               onClick={handleSubmit}
             >
               SAVE BRIEF
@@ -163,6 +160,14 @@ export const CreateBrief: FC<SaveBriefProps> = ({
           </div>
         </div>
       </div>
+      <Modal
+        content="Great, your brief has been saved!"
+        isOpen={!!response && !loading}
+        type="brand"
+        handleClose={() => history.goBack()}
+        actionLabel="BACK TO COMPAIGN BRIEFS"
+        actionHandler={() => history.goBack()}
+      />
     </div>
   );
   return (
