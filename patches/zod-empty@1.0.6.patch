@@ -1,0 +1,19 @@
+diff --git a/esm/index.js b/esm/index.js
+index f774b639ab93f307fb271cc5cd0059e01b4cf3ea..5ec1d105f24441bb76471b4643be48e4a2a6ab7e 100644
+--- a/esm/index.js
++++ b/esm/index.js
+@@ -1,6 +1,6 @@
+ // Bundled with Packemon: https://packemon.dev
+ // Platform: browser, Support: current, Format: esm
+-import clone from 'just-clone';
++const clone = require('just-clone');
+ /* eslint @typescript-eslint/no-explicit-any: off */
+ 
+ function init(schema) {
+@@ -95,5 +95,5 @@ function init(schema) {
+   }
+ }
+ 
+-export { init as default };
++module.exports = init;
+ //# sourceMappingURL=index.js.map
