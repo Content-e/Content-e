@@ -69,14 +69,6 @@
   gap: 20px;
 }
 
-.create-brief-input::placeholder {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #a1a9b8;
-}
-
 .creator-brief-textarea {
   padding: 6px 12px;
   width: 100%;

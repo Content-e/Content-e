@@ -52,14 +52,6 @@ img {
   margin: 0px 0px 12px 0px;
 }
 
-::placeholder {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 20px;
-  color: #a1a9b8;
-}
-
 .brand-brief-label-container {
   display: flex;
   align-items: center;
