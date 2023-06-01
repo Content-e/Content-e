@@ -623,4 +623,7 @@
   .landing-content-container-gradient {
     background-position: -50px;
   }
+  .landing-footer-text-container {
+    flex-direction: column;
+  }
 }

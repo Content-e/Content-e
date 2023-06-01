@@ -87,7 +87,7 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
               Back
             </button>
             <button onClick={handleUpload} className="tik-tok-done">
-              Done
+              Upload
             </button>
           </>
         ) : (

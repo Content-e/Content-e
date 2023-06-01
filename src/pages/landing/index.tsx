@@ -29,13 +29,13 @@ export const LandingPage: React.FC = () => {
                   </div>
                   <ul className="landing-page-detailed-content-list">
                     <li className="landing-page-detailed-content-item detailed-list-item-1">
-                      Authentic content at scale
+                      Authentic content at scale.
                     </li>
                     <li className="landing-page-detailed-content-item detailed-list-item-2">
                       A better way of doing things for creators and brands.
                     </li>
                     <li className="landing-page-detailed-content-item detailed-list-item-3">
-                      A Performance based payment model
+                      A performance based payment model.
                     </li>
                   </ul>
 
