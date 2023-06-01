@@ -2,7 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'sans': ['Google Sans', 'sans-serif']
+      },
+      colors: {
+        'brand-primary': '#0A9396',
+        'brand-secondary': '#94D2BD',
+      },
+    },
   },
   plugins: [],
 }

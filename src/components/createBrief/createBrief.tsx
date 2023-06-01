@@ -85,7 +85,7 @@ export const CreateBrief: FC<SaveBriefProps> = ({
 
   const props = { formState, errorState: formError, onChange: handleChange };
   return (
-    <div className="brand-dashboard__items brief-items">
+    <div>
       <div className="brand-dashboard__item">
         <div className="brand-dashboard__top">
           <div className="brand-dashboard__top-title">{headingText} Brief</div>
@@ -95,43 +95,71 @@ export const CreateBrief: FC<SaveBriefProps> = ({
             src="/images/dots.svg"
           />
         </div>
-        <div className="brand-dashboard__form">
-          <div className="brand-dashboard__form-item form-item-1">
-            <div className="brand-dashboard__form-group">
-              <BriefInput {...props} keyProp="BriefName" title="Brief Name" />
-            </div>
-            <div className="brand-dashboard__form-group">
-              <div className="brand-dashboard__form-label">
-                Select TikTok campaign to link to
+        <div>
+          <div className="xl:flex w-full p-6 xl:gap-8">
+            <div className="brand-dashboard__form-item form-item-1 xl:w-2/3 w-full">
+              <div className="brand-dashboard__form-group">
+                <BriefInput {...props} keyProp="BriefName" title="Brief Name" />
               </div>
-              <select
-                className="brand-dashboard__identity-select"
-                onChange={updateCampaign}
-                value={formState.campaignId}
-                disabled={dataLoading}
-              >
-                <option value="">Select One</option>
-                {listCampaigns.map((e) => (
-                  <option value={e.id}>{e.value}</option>
-                ))}
-              </select>
+              <div className="brand-dashboard__form-group">
+                <div className="brand-dashboard__form-label">
+                  Select TikTok campaign to link to
+                </div>
+                <select
+                  className="brand-dashboard__identity-select"
+                  onChange={updateCampaign}
+                  value={formState.campaignId}
+                  disabled={dataLoading}
+                >
+                  <option value="">Select One</option>
+                  {listCampaigns.map((e) => (
+                    <option value={e.id}>{e.value}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="brand-dashboard__form-group">
+                <BriefInput {...props} keyProp="adgroupId" title="Add group" />
+              </div>
+              <div className="brand-dashboard__form-group">
+                <BriefInput {...props} keyProp="objective" title="Objective" />
+              </div>
+              <div className="brand-dashboard__form-group">
+                <div className="brand-dashboard__form-label">Brief status</div>
+                <input type="text" className="brand-dashboard__form-input" />
+              </div>
             </div>
-            <div className="brand-dashboard__form-group">
-              <BriefInput {...props} keyProp="objective" title="Objective" />
-            </div>
-            <div className="brand-dashboard__form-group">
-              <div className="brand-dashboard__form-label">Brief status</div>
-              <input type="text" className="brand-dashboard__form-input" />
+            <div className="xl:block hidden">
+              <BriefInspirations {...props} keyProp="creativeInspirations" />
             </div>
           </div>
-          <BriefInspirations {...props} keyProp="creativeInspirations" />
-          <div className="brand-dashboard__form-item full form-item-3">
+          <div className="pb-6 px-6">
             <BriefInput
               {...props}
               keyProp="brandBriefDetails"
               title="Brief details"
               isTextArea
             />
+          </div>
+          <div className="xl:hidden w-full px-6 pb-6">
+            <BriefInspirations {...props} keyProp="creativeInspirations" />
+          </div>
+          <div
+            className="
+            flex sm:flex-row w-full sm:justify-center
+            sm:gap-6 font-sans text-base text-white font-bold flex-col-reverse gap-2 items-center px-6"
+          >
+            <button
+              className="bg-brand-secondary px-10 py-3 rounded-[40px] sm:w-fit w-full"
+              onClick={() => history.goBack()}
+            >
+              CANCEL
+            </button>
+            <button
+              className="bg-brand-primary px-10 py-3 rounded-[40px] sm:w-fit w-full"
+              onClick={handleSubmit}
+            >
+              SAVE BRIEF
+            </button>
           </div>
         </div>
       </div>
