@@ -86,7 +86,8 @@ export function withSaveBrief<T>(
             console.log(err);
           }
         }
-        history.goBack();
+        // TODO: do you really want to goBack() every time profile state changes?
+        // history.goBack();
       }
     }, [profileState]);
     useEffect(() => {
