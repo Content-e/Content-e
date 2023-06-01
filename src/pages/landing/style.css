@@ -140,9 +140,8 @@
   color: #E9D8A6;
 }
 .landing-page-wrapper .landing-page-body .landing-page-subtitle {
-  font-family: 'Comfortaa';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 32px;
   line-height: 38px;
   color: #E5D5A5;
@@ -178,7 +177,6 @@
 }
 
 .landing-page-workBtn {
-  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 60px;
@@ -197,7 +195,6 @@
 }
 
 .landing-page-steps-item-title {
-  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 25px;

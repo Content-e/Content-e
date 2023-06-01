@@ -20,10 +20,10 @@ export const LandingPage: React.FC = () => {
               <HeaderDesktop />
               <div className="landing-content-container">
                 <div className="landing-page-body">
-                  <div className="landing-page-title">
+                  <div className="landing-page-title font-title">
                     Unlocking the power of brand communities
                   </div>
-                  <div className="landing-page-subtitle">
+                  <div className="landing-page-subtitle font-body">
                     We solve for authentic creator led content at scale on a
                     results based payment model.
                   </div>
@@ -61,12 +61,12 @@ export const LandingPage: React.FC = () => {
         </div>
 
         <div className="how-it-works-container-landing">
-          <div className="landing-page-workBtn">Our Purpose</div>
+          <div className="landing-page-workBtn font-title">Our Purpose</div>
           <div className="landing-page-steps-wrapper">
             <div className="landing-page-steps-row">
               <div className="landing-page-steps-item steps-item-1">
                 <div className="landing-page-steps-item-content">
-                  <div className="landing-page-steps-item-title">
+                  <div className="landing-page-steps-item-title font-title">
                     Social Impact
                   </div>
                   <div className="landing-page-steps-item-text">
@@ -101,7 +101,7 @@ export const LandingPage: React.FC = () => {
               <div className="landing-page-steps-item steps-item-3"></div>
               <div className="landing-page-steps-item steps-item-4">
                 <div className="landing-page-steps-item-content">
-                  <div className="landing-page-steps-item-title">
+                  <div className="landing-page-steps-item-title font-title">
                     The Industry
                   </div>
                   <div className="landing-page-steps-item-text">
