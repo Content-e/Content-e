@@ -33,7 +33,7 @@ export default function WalletCard({ dueDateCheck, walletTitle, cost }) {
         <div className="wallet-header">{walletTitle}</div>
         {dueDateCheck && (
           <div className="wallet-due-date">
-            Next payment processing date {day}th {monthName}.
+            Next payment processing date is {monthName}, {day}.
           </div>
         )}
         <div className="wallet-cost">{cost}</div>
