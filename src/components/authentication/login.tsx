@@ -11,12 +11,13 @@ import { AuthProps, UnAuthRoutes, unverifiedUser } from "utils";
 
 import useZodForm from "hooks/useZodForm";
 import { z } from "zod";
+import init from "zod-empty";
 import Footer from "./components/footer";
 import "./styles/login.scss";
 import Checkbox from "components/ui/checkbox";
 import { Auth } from "aws-amplify";
 
-const loginSchema = z.object({
+const schema = z.object({
   email: z.string().email(),
   password: z.string().nonempty("Please enter your password"),
   remember: z.boolean().default(false),
@@ -37,11 +38,10 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     watch,
     formState: { errors, isValid, isDirty, isSubmitting },
   } = useZodForm({
-    schema: loginSchema,
+    schema: schema,
     defaultValues: {
+      ...init(schema),
       email: localStorage.getItem("userEmail") || "",
-      password: "",
-      remember: false,
     },
     mode: "onBlur",
   });
@@ -72,7 +72,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
           <div className="login__content">
             <div className="w-full flex justify-around">
               <div className="login__container">
-                <div className="login__box">
+                <form className="login__box" onSubmit={onSubmit}>
                   <div className="login__title">Login</div>
                   <div className="login__fields">
                     <FormInput
@@ -104,8 +104,8 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
                   </div>
                   <div className="login__bottom">
                     <button
+                      type="submit"
                       className="login__btn"
-                      onClick={onSubmit}
                       disabled={!isValid || !isDirty || isSubmitting}
                     >
                       <span style={isSubmitting ? { marginRight: 12 } : {}}>
@@ -124,7 +124,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
                       </Link>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
             <div className="login__landing">

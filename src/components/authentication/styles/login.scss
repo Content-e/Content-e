@@ -358,7 +358,7 @@
 
 .login__btn {
   width: 100%;
-  background: linear-gradient(180deg, #9FD0BD 0%, #409094 100%);
+  background: linear-gradient(180deg, #9FD0BD 0%, #409094 100%) !important;
   border-radius: 10px;
   height: 34px;
   font-family: 'Raleway';
@@ -695,7 +695,7 @@
       }
       &-register-button {
         width: 100%;
-        background: linear-gradient(180deg, #9FD0BD 0%, #409094 100%);
+        background: linear-gradient(180deg, #9FD0BD 0%, #409094 100%) !important;
         border-radius: 10px;
         height: 34px;
         font-family: 'Raleway';

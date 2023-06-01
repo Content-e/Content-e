@@ -14,6 +14,7 @@ import Modal from "./modal";
 import useZodForm from "hooks/useZodForm";
 import { z } from "zod";
 import { FormInput } from "components";
+import init from "zod-empty";
 
 const DEFAULT_ROLE = "brand";
 
@@ -44,7 +45,7 @@ const sendJSONEmail = async (json: { name: string }): Promise<void> => {
   console.log(res);
 };
 
-const signupSchema = z.object({
+const schema = z.object({
   email: z.string().email(),
   // password: z.string().nonempty("Please enter your password").min(8),
   name: z.string().nonempty("Please enter your full name"),
@@ -59,7 +60,7 @@ export const Register: FC = () => {
     const value = params.get("role");
     if (!value) return DEFAULT_ROLE;
     try {
-      return signupSchema.shape.role.parse(value);
+      return schema.shape.role.parse(value);
     } catch (e) {
       console.log(e);
       return DEFAULT_ROLE;
@@ -74,18 +75,16 @@ export const Register: FC = () => {
     watch,
     formState: { errors, isValid, isSubmitting, isSubmitSuccessful, isDirty },
   } = useZodForm({
-    schema: signupSchema,
+    schema: schema,
     defaultValues: {
-      email: "",
-      name: "",
+      ...init(schema),
       role: defaultRole,
-      about: "",
     },
     mode: "onBlur",
   });
 
   const role = watch("role") || DEFAULT_ROLE;
-  const setRole = (value: z.infer<typeof signupSchema>["role"]) =>
+  const setRole = (value: z.infer<typeof schema>["role"]) =>
     setValue("role", value);
 
   const onSubmit = handleSubmit((data) => {
@@ -100,7 +99,7 @@ export const Register: FC = () => {
   });
 
   const handleRoleChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
-    setRole(e.target.value as z.infer<typeof signupSchema>["role"]);
+    setRole(e.target.value as z.infer<typeof schema>["role"]);
   };
 
   return (
@@ -133,7 +132,7 @@ export const Register: FC = () => {
                 </div>
               </div>
               <div className="signup__container-form">
-                <form>
+                <form onSubmit={onSubmit}>
                   <div className="signup__container-form-field">
                     <FormInput
                       placeholder="Full Name"
@@ -178,8 +177,8 @@ export const Register: FC = () => {
                     />
                   </div>
                   <button
+                    type="submit"
                     className="signup__container-form-register-button"
-                    onClick={onSubmit}
                     disabled={!isValid || !isDirty || isSubmitting}
                   >
                     <span style={isSubmitting ? { marginRight: 12 } : {}}>
