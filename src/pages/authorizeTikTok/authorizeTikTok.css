@@ -259,6 +259,7 @@
 
 .authorization-code-input input {
   width: 100%;
+  color: #9C9992;
 }
 
 @media only screen and (max-width: 650px) {
