@@ -24,7 +24,7 @@ export const BriefInspirations: FC<Props> = ({
 
   return (
     <div className="brand-dashboard__form-item block-form-item form-item-2">
-      <div className="brand-dashboard__form-title">Creative Inspiration</div>
+      <div className="brand-dashboard__form-title">Creative inspiration</div>
       {times(4, (index) => (
         <input
           onChange={(e): void => handleChange(index, e.target.value)}
