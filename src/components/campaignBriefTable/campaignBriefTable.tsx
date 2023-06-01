@@ -2,6 +2,7 @@ import { BrandBrief } from "API";
 import { getSlicedArray } from "components/helpers";
 import { FC, useMemo } from "react";
 import { IBriefListElems } from "state/dashboard";
+import { CreativeRequestStatus } from "utils";
 import "./campaignBriefTable.css";
 
 interface Props {
@@ -65,6 +66,7 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
               break;
           }
           let statusColor = "";
+          let statusLabel = brief?.status || "";
           switch (brief?.status) {
             case "new":
               statusColor = "green";
@@ -72,14 +74,16 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
             case "submitted":
               statusColor = "yellow";
               break;
-            case "accept":
+            case CreativeRequestStatus.Accept:
               statusColor = "green";
+              statusLabel = "accepted";
               break;
             case "accepted":
               statusColor = "green";
               break;
-            case "reject":
+            case CreativeRequestStatus.Reject:
               statusColor = "red";
+              statusLabel = "rejected";
               break;
             case "rejected":
               statusColor = "red";
@@ -130,7 +134,7 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
                   {statusColor && (
                     <div className="brand-dashboard__list-dot"></div>
                   )}
-                  <span>{brief?.status}</span>
+                  <span>{statusLabel}</span>
                 </div>
               </td>
               <td

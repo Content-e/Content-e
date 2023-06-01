@@ -28,7 +28,7 @@ export const CampaignSlider: FC<Props> = ({ videoUrls, onClose }) => {
   return (
     <div className="campaign-slider-container">
       <div className="creative-inspiration-header">
-        <div className="creative-inspiration-text">Creative Inspiration</div>
+        <div className="creative-inspiration-text">Creative inspiration</div>
         <img
           src="/images/modal-cross.svg"
           className="close-icon-inspiration"
