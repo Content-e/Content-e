@@ -2938,6 +2938,7 @@ input[type='checkbox']:checked + .checkbox {
 		align-items: flex-start;
 		justify-content: flex-end;
 		&-btn {
+			cursor: pointer;
 			display: block;
 			flex-shrink: 0;
 			width: max-content;

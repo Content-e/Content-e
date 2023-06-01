@@ -22,6 +22,7 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
   const [currentPage, setCurrentPage] = useState(0);
   const [searchText, setSearchText] = useState("");
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
+  const [selectedBriefStatus, setSelectedBriefStatus] = useState("");
 
   const handleClick = (e: any) => {
     if (e.target.classList.contains("brand-dashboard__list-mobile-wrap")) {
@@ -71,6 +72,7 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
       <CampaignBriefDetails
         data={selectedBrief}
         onBack={(): void => setSelectedBrief(undefined)}
+        status={selectedBriefStatus}
       />
     );
   return (
@@ -232,6 +234,7 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
           currentPage={currentPage}
           searchText={searchText}
           onSingleSelect={setSelectedBrief}
+          setSelectedBriefStatus={setSelectedBriefStatus}
         />
         <Pagination
           total={data.length}

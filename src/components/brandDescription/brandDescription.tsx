@@ -12,6 +12,7 @@ interface Props {
   videoUrls?: Array<string | null> | null;
   isVideoLinked?: boolean;
   showSuccessModal: () => void;
+  status: string | undefined;
 }
 export const BrandDesciption: FC<Props & ProfileProps> = ({
   detail,
@@ -19,6 +20,7 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
   isVideoLinked,
   profileState: { data },
   videoUrls,
+  status,
 }) => {
   const [showPopup, setPopupVisibility] = useState(false);
   const [showInspiration, setShowInspiration] = useState(false);
@@ -138,14 +140,16 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
             Creative inspiration
           </button>
         )}
-        {data?.userType === USER_TYPES.CREATIVE_USER && isVideoLinked && (
-          <div
-            className="creator-dashboard__creative-btn link"
-            onClick={(): void => setPopupVisibility(true)}
-          >
-            Link Creative
-          </div>
-        )}
+        {data?.userType === USER_TYPES.CREATIVE_USER &&
+          isVideoLinked &&
+          status === "new" && (
+            <div
+              className="creator-dashboard__creative-btn link"
+              onClick={(): void => setPopupVisibility(true)}
+            >
+              Link Creative
+            </div>
+          )}
       </div>
       {showPopup && (
         <AuthorizeTikTokHandler

@@ -10,12 +10,14 @@ import { useState } from "react";
 
 export default function CreatorDashboard({ data }) {
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
+  const [selectedBriefStatus, setSelectedBriefStatus] = useState("");
 
   if (selectedBrief)
     return (
       <CampaignBriefDetails
         data={selectedBrief}
         onBack={(): void => setSelectedBrief(undefined)}
+        status={selectedBriefStatus}
       />
     );
 
@@ -40,7 +42,10 @@ export default function CreatorDashboard({ data }) {
           />
         </div>
       </div>
-      <CreativeRequests onSelectRequest={setSelectedBrief} />
+      <CreativeRequests
+        onSelectRequest={setSelectedBrief}
+        setSelectedBriefStatus={setSelectedBriefStatus}
+      />
       <CreatorNotifications />
       <BestPractices />
     </div>

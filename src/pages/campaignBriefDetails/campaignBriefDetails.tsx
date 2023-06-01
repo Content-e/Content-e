@@ -12,8 +12,9 @@ import { AuthRoutes } from "utils";
 interface Props {
   data: BrandBrief;
   onBack: () => void;
+  status?: string;
 }
-const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
+const CampaignBriefDetails: FC<Props> = ({ onBack, data, status }) => {
   const history = useHistory();
   const [showDetails, handleDetailVisibility] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -54,6 +55,7 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
         videoUrls={data.creativeInspirations}
         isVideoLinked={!!data.creativeRequests?.items.length}
         showSuccessModal={() => setShowSuccessModal(true)}
+        status={status}
       />
       {data.brandProfile && showDetails && (
         <DetailCard

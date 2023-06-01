@@ -15,4 +15,3 @@ function ScrollToTop({ history }) {
 }
 
 export default withRouter(ScrollToTop);
-

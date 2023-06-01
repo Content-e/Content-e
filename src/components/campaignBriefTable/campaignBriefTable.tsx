@@ -11,6 +11,7 @@ interface Props {
   onSingleSelect: (e: BrandBrief) => void;
   data: Array<IBriefListElems>;
   briefList?: Array<BrandBrief | null> | null;
+  setSelectedBriefStatus: any;
 }
 
 const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
@@ -20,11 +21,13 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
   searchText,
   currentPage,
   onSingleSelect,
+  setSelectedBriefStatus,
 }) => {
-  const onSelectBrief = (id?: string): void => {
+  const onSelectBrief = (id?: string, status?: string): void => {
     if (id) {
       const selectedBrief = briefList?.find((e) => e?.id === id);
       if (selectedBrief) onSingleSelect(selectedBrief);
+      setSelectedBriefStatus(status);
     }
   };
 
@@ -135,7 +138,7 @@ const withCreatorBriefListCampaignBriefTable: FC<Props> = ({
               </td>
               <td
                 className="centered"
-                onClick={(): void => onSelectBrief(brief?.id)}
+                onClick={(): void => onSelectBrief(brief?.id, brief?.status)}
               >
                 <img src="/images/doc_red.svg" />
               </td>

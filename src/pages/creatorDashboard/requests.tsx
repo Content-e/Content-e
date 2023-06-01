@@ -14,11 +14,13 @@ import moment from "moment";
 
 interface Props {
   onSelectRequest: (e: BrandBrief) => void;
+  setSelectedBriefStatus?: any;
 }
 const tableLimit = 8;
 const CreativeRequests: FC<Props & ICreatorBriefListProps> = ({
   briefList,
   onSelectRequest,
+  setSelectedBriefStatus,
   requestList,
   loading,
   error,
@@ -216,6 +218,7 @@ const CreativeRequests: FC<Props & ICreatorBriefListProps> = ({
         searchText=""
         currentPage={currentPage}
         onSingleSelect={onSelectRequest}
+        setSelectedBriefStatus={setSelectedBriefStatus}
       />
       <Pagination
         total={data.length}
