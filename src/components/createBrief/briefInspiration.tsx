@@ -29,7 +29,7 @@ export const BriefInspirations: FC<Props> = ({
         <input
           onChange={(e): void => handleChange(index, e.target.value)}
           key={index.toString()}
-          className="brand-dashboard__form-input"
+          className="brand-dashboard__form-input xl:mt-10 first-of-type:xl:mt-0"
           value={formState[key][index]}
           placeholder="Paste creative URL"
         />

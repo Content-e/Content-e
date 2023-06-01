@@ -4,9 +4,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        title: 'Comfortaa',
-        body: 'Raleway',
-      }
+        'sans': ['Google Sans', 'sans-serif'],
+        'title': 'Comfortaa',
+        'body': 'Raleway',
+      },
+      colors: {
+        'brand-primary': '#0A9396',
+        'brand-secondary': '#94D2BD',
+      },
     },
   },
   plugins: [],
