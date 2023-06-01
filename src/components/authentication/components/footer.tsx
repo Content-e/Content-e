@@ -41,7 +41,17 @@ export const Footer: React.FC<Props> = ({ isDark }) => {
           className="landing-footer-text"
           onClick={() => history.push(UnAuthRoutes.PrivacyPolicy)}
         >
-          Pricacy Policy
+          Privacy Policy
+        </div>
+        <div
+          className="landing-footer-text"
+          onClick={() =>
+            window.location.pathname === "/homePageLogin"
+              ? history.push(UnAuthRoutes.Register)
+              : history.push(UnAuthRoutes.Login)
+          }
+        >
+          Login / Sign up
         </div>
       </div>
 
