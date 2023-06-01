@@ -24,12 +24,12 @@ export const BriefInspirations: FC<Props> = ({
 
   return (
     <div className="brand-dashboard__form-item block-form-item form-item-2">
-      <div className="brand-dashboard__form-title">Creative Inspiration</div>
+      <div className="brand-dashboard__form-title">Creative inspiration</div>
       {times(4, (index) => (
         <input
           onChange={(e): void => handleChange(index, e.target.value)}
           key={index.toString()}
-          className="brand-dashboard__form-input"
+          className="brand-dashboard__form-input xl:mt-10 first-of-type:xl:mt-0"
           value={formState[key][index]}
           placeholder="Paste creative URL"
         />

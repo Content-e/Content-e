@@ -1,5 +1,4 @@
 import { BrandBrief } from "API";
-import { getSlicedArray } from "components";
 import BrandBriefTable from "components/brandBriefTable/brandBriefTable";
 // eslint-disable-next-line max-len
 //import BrandProfileConfirmationModal from "components/brandProfileConfirmationModal/brandProfileConfirmationModal";
@@ -11,7 +10,6 @@ import { BrandBriefProps, withBrandBriefs } from "state/brandBrief";
 //import { BrandErrorModal, BrandRoutes } from "utils";
 import "./brandBriefs.css";
 
-const tableLimit = 7;
 export const BrandBriefs: FC<BrandBriefProps> = ({
   data,
   //brand,
@@ -45,12 +43,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({
         onBack={(): void => setSelectedBrief(undefined)}
       />
     );
-  return (
-    <BrandBriefTable
-      data={getSlicedArray(filteredData || [], tableLimit, 1 /*currentPage*/)}
-      openBrief={setSelectedBrief}
-    />
-  );
+  return <BrandBriefTable data={filteredData} openBrief={setSelectedBrief} />;
   /*return (
     <div>
       {showAlert && <BrandProfileConfirmationModal errorType={showAlert} />}

@@ -3,14 +3,20 @@ import { FC, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { BrandRoutes } from "utils";
 import "./brandBriefTable.css";
+import Pagination from "components/pagination";
+import { getSlicedArray } from "components";
 
 interface Props {
   data?: Array<BrandBrief | null>;
   openBrief: (brief: BrandBrief) => void;
 }
 
+const tableLimit = 17;
+
 export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
   const history = useHistory();
+
+  const [currentPage, setCurrentPage] = useState(0);
 
   const onBriefSelection = (brief?: BrandBrief | null): void => {
     if (brief) openBrief(brief);
@@ -75,6 +81,8 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
     }
   };
 
+  const slicedData = getSlicedArray(data || [], tableLimit, currentPage);
+
   return (
     <div className="brand-dashboard__items brand-briefs-items new">
       <div className="search-and-create-container">
@@ -109,7 +117,7 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
           </div>
         </div>
         <div className="brand-dashboard__list-mobile">
-          {data?.map((e, i) => {
+          {slicedData?.map((e, i) => {
             let objectiveColor = "";
             switch (e?.objective) {
               case "awareness":
@@ -238,7 +246,7 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
             </tr>
           </thead>
           <tbody>
-            {data?.map((e, index) => {
+            {slicedData?.map((e, index) => {
               let objectiveColor = "";
               switch (e?.objective) {
                 case "awareness":
@@ -357,6 +365,11 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
             })}
           </tbody>
         </table>
+        <Pagination
+          total={data?.length || 0}
+          limit={tableLimit}
+          goToPage={setCurrentPage}
+        />
       </div>
     </div>
   );
