@@ -1,86 +1,72 @@
-import { isValidUrl } from "components/helpers";
-import { IconLoader } from "components/loader";
-import ShouldRender from "components/shouldRender";
-import { FC, useEffect, useMemo, useState } from "react";
-import { useHistory } from "react-router-dom";
+import Modal from "components/authentication/modal";
+import BriefInput from "components/customInput/briefInput";
+import Label from "components/customInput/label";
+import useZodForm from "hooks/useZodForm";
+import _ from "lodash";
+import { FC, useMemo } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { SaveBriefProps } from "state/brandBrief";
 import withSaveBrief from "state/brandBrief/withSaveBriefHoc";
-import {
-  initialCreateBriefError,
-  initialCreateBriefState,
-  UnknownType,
-} from "utils";
-import BriefInput from "./briefInput";
-import BriefInspirations from "./briefInspiration";
-import Modal from "components/authentication/modal";
+import { AuthRoutes } from "utils";
+import { z } from "zod";
+import init from "zod-empty";
 import "./createBrief.css";
+
+const schema = z.object({
+  BriefName: z.string().nonempty(), // TODO: wtf is this name, should be renamed to 'name'
+  // tiktokHandle: z.string().nonempty(),
+  // vertical: z.string().nonempty(),
+  objective: z.string().nonempty(),
+  brandBriefDetails: z.string().nonempty(), // TODO: rename -> details
+  creativeInspirations: z.string().url().nullish().array(),
+  active: z.boolean(),
+  // campaignId: z.string().nonempty(),
+  adgroupId: z.string().nonempty(),
+  status: z.string(),
+});
+
+const defaultValues = {
+  ...init(schema),
+  creativeInspirations: [null, null, null, null],
+};
 
 export const CreateBrief: FC<SaveBriefProps> = ({
   saveData,
   loading,
   response,
   briefState,
-  getAdGroups,
+  // getAdGroups, // use campaignId to fetch
   dataLoading,
-  listAdGroups,
   listCampaigns,
 }) => {
   const history = useHistory();
-  const [formState, setFormState] = useState(initialCreateBriefState);
-  const [formError, setFormError] = useState(initialCreateBriefError);
 
-  const handleChange = (
-    key: string,
-    value: string | Array<string> | boolean
-  ): void => {
-    setFormState((prev) => ({ ...prev, [key]: value }));
-    setFormError((prev) => ({ ...prev, [key]: null }));
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid, isDirty, isSubmitting },
+  } = useZodForm({
+    schema,
+    defaultValues,
+    mode: "all",
+  });
 
-  const updateStatus = (e: UnknownType): void =>
-    handleChange("active", !!parseInt(e.target.value));
-  const updateAdGroup = (e: UnknownType): void =>
-    handleChange("adgroupId", e.target.value);
-  const updateCampaign = (e: UnknownType): void =>
-    handleChange("campaignId", e.target.value);
-
-  const validateInputs = (): boolean => {
-    const errObj = { ...initialCreateBriefError };
-    if (!formState.BriefName.length)
-      errObj.BriefName = "Brief name is required";
-    if (!formState.objective.length) errObj.objective = "Objective is required";
-    if (!formState.creativeInspirations.find((e) => e.length))
-      errObj.creativeInspirations = "Atleast one inspiration is required";
-    if (formState.creativeInspirations.find((e) => !isValidUrl(e)))
-      errObj.creativeInspirations = "Inspiration URL must be valid";
-    if (!formState.brandBriefDetails.length)
-      errObj.brandBriefDetails = "Brief details is required";
-    if (!formState.campaignId.length)
-      errObj.campaignId = "Campaign is required";
-    if (!formState.adgroupId.length) errObj.adgroupId = "Ad Group is required";
-
-    setFormError({ ...errObj });
-    return !Object.values(errObj).find((e) => e);
-  };
-
-  const handleSubmit = (): void => {
-    if (validateInputs()) saveData(formState);
-  };
-
-  useEffect(() => {
-    if (briefState) setFormState(briefState);
-  }, [briefState]);
-
-  useEffect(() => {
-    if (formState.campaignId) getAdGroups(formState.campaignId);
-  }, [formState.campaignId]);
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+    saveData({
+      ...data,
+      creativeInspirations: data.creativeInspirations.filter(_.isString),
+      vertical: "TODO",
+      tiktokHandle: "TODO",
+      campaignId: "TODO",
+    });
+  });
 
   const headingText = useMemo(
     () => (briefState ? "Edit" : "Create"),
     [briefState]
   );
 
-  const props = { formState, errorState: formError, onChange: handleChange };
   return (
     <div>
       <div className="brand-dashboard__item">
@@ -92,20 +78,23 @@ export const CreateBrief: FC<SaveBriefProps> = ({
             src="/images/dots.svg"
           />
         </div>
-        <div>
-          <div className="xl:flex w-full p-6 xl:gap-8">
-            <div className="brand-dashboard__form-item form-item-1 xl:w-2/3 w-full">
-              <div className="brand-dashboard__form-group">
-                <BriefInput {...props} keyProp="BriefName" title="Brief Name" />
-              </div>
-              <div className="brand-dashboard__form-group">
+        <form onSubmit={onSubmit}>
+          <div className="grid xl:grid-cols-3 p-6 xl:gap-8">
+            <div className="xl:col-span-2 col-span-3">
+              <BriefInput
+                required
+                name="BriefName"
+                label="Brief Name"
+                register={register}
+                errors={errors}
+              />
+              <div className="pb-6">
                 <div className="brand-dashboard__form-label">
-                  Select TikTok campaign to link to
+                  Select TikTok campaign to link to (temporarily disabled)
                 </div>
                 <select
                   className="brand-dashboard__identity-select"
-                  onChange={updateCampaign}
-                  value={formState.campaignId}
+                  // value={formState.campaignId}
                   disabled={dataLoading}
                 >
                   <option value="">Select One</option>
@@ -114,144 +103,83 @@ export const CreateBrief: FC<SaveBriefProps> = ({
                   ))}
                 </select>
               </div>
-              <div className="brand-dashboard__form-group">
-                <BriefInput {...props} keyProp="adgroupId" title="Add group" />
-              </div>
-              <div className="brand-dashboard__form-group">
-                <BriefInput {...props} keyProp="objective" title="Objective" />
-              </div>
-              <div className="brand-dashboard__form-group">
-                <div className="brand-dashboard__form-label">Brief status</div>
-                <input type="text" className="brand-dashboard__form-input" />
-              </div>
+              <BriefInput
+                required
+                name="adgroupId"
+                label="Ad group"
+                register={register}
+                errors={errors}
+              />
+              <BriefInput
+                required
+                name="objective"
+                register={register}
+                errors={errors}
+              />
+              <BriefInput
+                required
+                name="status"
+                placeholder="This field is not used on the backend"
+                label="Brief Status"
+                register={register}
+                errors={errors}
+              />
             </div>
-            <div className="xl:block hidden">
-              <BriefInspirations {...props} keyProp="creativeInspirations" />
+            <div className="xl:col-span-1 col-span-3 bg-[#f9fbfd] border-[#005F730D] border-[1px] p-4">
+              <Label name="Creative inspiration" />
+              {_.times(4).map((index) => (
+                <BriefInput
+                  name={`creativeInspirations.${index}`}
+                  className="mb-14 mt-8"
+                  placeholder="Paste creative URL"
+                  inputClassName="bg-white"
+                  label=""
+                  register={register}
+                  errors={errors}
+                />
+              ))}
             </div>
           </div>
-          <div className="pb-6 px-6">
-            <BriefInput
-              {...props}
-              keyProp="brandBriefDetails"
-              title="Brief details"
-              isTextArea
-            />
-          </div>
-          <div className="xl:hidden w-full px-6 pb-6">
-            <BriefInspirations {...props} keyProp="creativeInspirations" />
-          </div>
+          <BriefInput
+            required
+            className="pb-6 px-6"
+            name="brandBriefDetails"
+            label="Brief details"
+            placeholder="TODO: make me a text area please"
+            register={register}
+            errors={errors}
+          />
+          <div className="xl:hidden w-full px-6 pb-6"></div>
           <div
             className="
             flex sm:flex-row w-full sm:justify-center
             font-sans text-base text-white font-bold flex-col-reverse gap-4 items-center px-6"
           >
-            <button
+            <Link
               className="bg-brand-secondary px-12 py-3 rounded-[40px] sm:w-fit w-full"
-              onClick={() => history.goBack()}
+              to={AuthRoutes.CampaignBrief}
             >
               CANCEL
-            </button>
+            </Link>
             <button
+              type="submit"
               className="bg-brand-primary px-12 py-3 rounded-[40px] sm:w-fit w-full"
-              onClick={handleSubmit}
+              disabled={!isValid || !isDirty || isSubmitting}
             >
               SAVE BRIEF
             </button>
           </div>
-        </div>
+        </form>
       </div>
       <Modal
         content="Great, your brief has been saved!"
         isOpen={!!response && !loading}
         type="brand"
-        handleClose={() => history.goBack()}
+        handleClose={() => history.push(AuthRoutes.CampaignBrief)}
         actionLabel="BACK TO COMPAIGN BRIEFS"
-        actionHandler={() => history.goBack()}
+        actionHandler={() => history.push(AuthRoutes.CampaignBrief)}
       />
     </div>
-  );
-  return (
-    <>
-      <div className="creatives-table-label">{headingText} Brief</div>
-      <div className="create-brief-box">
-        <div className="brief-container">
-          <div className="create-brief-input-box">
-            <BriefInput {...props} keyProp="BriefName" title="Brief Name" />
-
-            <div className="create-brief-input-container">
-              <div className="create-brief-input-title">
-                Select TikTok campaign to link to
-              </div>
-              <select
-                className="create-brief-input select-input"
-                onChange={updateCampaign}
-                value={formState.campaignId}
-                disabled={dataLoading}
-              >
-                <option value="">Select One</option>
-                {listCampaigns.map((e) => (
-                  <option value={e.id}>{e.value}</option>
-                ))}
-              </select>
-              <ShouldRender if={formError.campaignId}>
-                <div className="input-brief-error">{formError.campaignId}</div>
-              </ShouldRender>
-            </div>
-
-            <div className="create-brief-input-container">
-              <div className="create-brief-input-title">
-                Select TikTok adgroup
-              </div>
-              <select
-                className="create-brief-input select-input"
-                onChange={updateAdGroup}
-                value={formState.adgroupId}
-                disabled={dataLoading || !formState.campaignId}
-              >
-                <option value="">Select One</option>
-                {listAdGroups.map((e) => (
-                  <option value={e.id}>{e.value}</option>
-                ))}
-              </select>
-              <ShouldRender if={formError.adgroupId}>
-                <div className="input-brief-error">{formError.adgroupId}</div>
-              </ShouldRender>
-            </div>
-
-            <BriefInput {...props} keyProp="objective" title="Objective" />
-            <div className="create-brief-input-container">
-              <div className="create-brief-input-title">Brief status</div>
-              <select
-                className="create-brief-input select-input"
-                onChange={updateStatus}
-                value={+formState.active}
-              >
-                <option value={1}>Active</option>
-                <option value={0}>Inactive</option>
-              </select>
-              <ShouldRender if={formError.active}>
-                <div className="input-brief-error">{formError.active}</div>
-              </ShouldRender>
-            </div>
-          </div>
-          <BriefInspirations {...props} keyProp="creativeInspirations" />
-        </div>
-
-        <BriefInput
-          {...props}
-          keyProp="brandBriefDetails"
-          title="Brief details"
-          isTextArea
-        />
-
-        <div className="create-brief-btn-container">
-          <div className="create-brief-btn" onClick={handleSubmit}>
-            <span className="create-brief-text">{headingText} Brief</span>
-            {loading && <IconLoader />}
-          </div>
-        </div>
-      </div>
-    </>
   );
 };
 
