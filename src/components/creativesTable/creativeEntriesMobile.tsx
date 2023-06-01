@@ -3,6 +3,7 @@ import { getSlicedArray } from "components/helpers";
 import { FC, useMemo } from "react";
 import { ICreativeEntry, ISelectredRequest } from "state/brandBrief";
 import "./creativesTable.css";
+import { CreativeRequestStatus } from "utils";
 
 interface Props {
   data?: Array<BrandBrief | null>;
@@ -63,15 +64,18 @@ export const creativeEntriesMobile: FC<Props> = ({
     <>
       {requests.map((e, i) => {
         let color = "";
+        let statusLabel = e.status;
         switch (e.status) {
-          case "accept":
+          case CreativeRequestStatus.Accept:
             color = "green";
+            statusLabel = "accepted";
             break;
           case "new":
             color = "yellow";
             break;
-          case "reject":
+          case CreativeRequestStatus.Reject:
             color = "red";
+            statusLabel = "rejected";
             break;
         }
         return (
@@ -145,7 +149,7 @@ export const creativeEntriesMobile: FC<Props> = ({
                   >
                     <div className="brand-dashboard__list-mobile-content">
                       <div className="brand-dashboard__list-mobile-dot"></div>
-                      <span>{e.status}</span>
+                      <span>{statusLabel}</span>
                     </div>
                   </div>
                   <div
