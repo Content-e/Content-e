@@ -8,7 +8,7 @@ export interface BrandBriefProps {
 }
 
 export interface SaveBriefProps {
-  saveData: (data: ICreateBriefState) => void;
+  saveData: (data: ICreateBriefState) => Promise<void>;
   getAdGroups: (campaignId: string) => void;
   briefState?: ICreateBriefState;
   loading: boolean;

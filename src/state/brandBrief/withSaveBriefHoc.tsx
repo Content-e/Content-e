@@ -51,18 +51,17 @@ export function withSaveBrief<T>(
       loading: adGroupsListLoading,
     } = getlistAdGroups();
 
-    const saveData = (data: ICreateBriefState): void => {
+    const saveData = async (data: ICreateBriefState) => {
       const brandId = profileState.data?.brand?.items?.[0]?.id;
 
       if (brandId) {
         const { tiktokHandle, ...rest } = data;
         const input = { ...rest, brandId };
 
-        if (rest.id) editBrief({ variables: { input } });
-        else
-          createBrief({
-            variables: { input: { ...input, vertical: "retail" } },
-          });
+        if (rest.id) return editBrief({ variables: { input } });
+        return createBrief({
+          variables: { input: { ...input, vertical: "retail" } },
+        });
       }
     };
     const getAdGroups = (campaignId: string): void => {
