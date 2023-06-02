@@ -1,6 +1,7 @@
 import Modal from "components/authentication/modal";
 import BriefInput from "components/customInput/briefInput";
 import Label from "components/customInput/label";
+import Button from "components/ui/button";
 import useZodForm from "hooks/useZodForm";
 import _ from "lodash";
 import { FC, useMemo } from "react";
@@ -51,9 +52,9 @@ export const CreateBrief: FC<SaveBriefProps> = ({
     mode: "all",
   });
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit(async (data) => {
     console.log(data);
-    saveData(
+    await saveData(
       _.omit(
         {
           ...data,
@@ -160,19 +161,16 @@ export const CreateBrief: FC<SaveBriefProps> = ({
             flex sm:flex-row w-full sm:justify-center
             font-sans text-base text-white font-bold flex-col-reverse gap-4 items-center px-6"
           >
-            <Link
-              className="bg-brand-secondary px-12 py-3 rounded-[40px] sm:w-fit w-full"
-              to={AuthRoutes.CampaignBrief}
-            >
-              CANCEL
+            <Link to={AuthRoutes.CampaignBrief}>
+              <Button variant="secondary">CANCEL</Button>
             </Link>
-            <button
+            <Button
               type="submit"
-              className="bg-brand-primary px-12 py-3 rounded-[40px] sm:w-fit w-full"
               disabled={!isValid || !isDirty || isSubmitting}
+              isLoading={isSubmitting}
             >
               SAVE BRIEF
-            </button>
+            </Button>
           </div>
         </form>
       </div>

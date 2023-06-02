@@ -1,10 +1,11 @@
 import { BrandBrief } from "API";
 import { FC, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { BrandRoutes } from "utils";
 import "./brandBriefTable.css";
 import Pagination from "components/pagination";
 import { getSlicedArray } from "components";
+import Button from "components/ui/button";
 
 interface Props {
   data?: Array<BrandBrief | null>;
@@ -93,12 +94,9 @@ export const BrandBriefTable: FC<Props> = ({ data, openBrief }) => {
             src="/images/search.svg"
           />
         </div>
-        <button
-          onClick={() => history.push(BrandRoutes.CreateBrief)}
-          className="add-brief-button"
-        >
-          ADD NEW BRIEF
-        </button>
+        <Link to={BrandRoutes.CreateBrief}>
+          <Button>ADD NEW BRIEF</Button>
+        </Link>
       </div>
       <div className="brand-dashboard__item full mobile-list-item">
         <div className="brand-dashboard__top mobile-main-title">
