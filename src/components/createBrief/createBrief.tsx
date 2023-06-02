@@ -1,7 +1,8 @@
 import Modal from "components/authentication/modal";
-import BriefInput from "components/customInput/briefInput";
-import Label from "components/customInput/label";
+import BriefInput from "components/ui/input";
+import Label from "components/ui/label";
 import Button from "components/ui/button";
+import TextArea from "components/ui/textArea";
 import useZodForm from "hooks/useZodForm";
 import _ from "lodash";
 import { FC, useMemo } from "react";
@@ -146,12 +147,12 @@ export const CreateBrief: FC<SaveBriefProps> = ({
               ))}
             </div>
           </div>
-          <BriefInput
+          <TextArea
             required
             className="pb-6 px-6"
             name="brandBriefDetails"
             label="Brief details"
-            placeholder="TODO: make me a text area please"
+            placeholder="Decsribe your brief in more detail..."
             register={register}
             errors={errors}
           />
