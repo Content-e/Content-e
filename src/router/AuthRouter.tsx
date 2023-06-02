@@ -23,7 +23,7 @@ import {
 import Wallet from "pages/wallet/wallet";
 import BestPractice from "pages/bestPractice";
 import CreativesTable from "components/creativesTable/creativesTable";
-import CreateBrief from "components/createBrief/createBrief";
+import CreateBrief from "components/briefForm/briefForm";
 import { USER_TYPES } from "API";
 import {
   AdminAuthArray,
