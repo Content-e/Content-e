@@ -1,4 +1,5 @@
 import { isValidUrl } from "components/helpers";
+import Button from "components/ui/button";
 import { FC } from "react";
 import { Carousel } from "react-bootstrap";
 import "./campaignSlider.css";
@@ -28,7 +29,9 @@ export const CampaignSlider: FC<Props> = ({ videoUrls, onClose }) => {
   return (
     <div className="campaign-slider-container">
       <div className="creative-inspiration-header">
-        <div className="creative-inspiration-text">Creative inspiration</div>
+        <div className="text-2xl text-primary font-bold">
+          Creative inspiration
+        </div>
         <img
           src="/images/modal-cross.svg"
           className="close-icon-inspiration"
@@ -62,9 +65,7 @@ export const CampaignSlider: FC<Props> = ({ videoUrls, onClose }) => {
           </Carousel.Item>
         ))}
       </Carousel>
-      <div className="inspiration-clear-button" onClick={onClose}>
-        Done
-      </div>
+      <Button onClick={onClose}>Done</Button>
     </div>
   );
 };
