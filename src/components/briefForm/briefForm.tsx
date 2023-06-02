@@ -82,7 +82,7 @@ function BriefForm({
 
   return (
     <section className="paper">
-      <h1 className="text-brand-primary text-2xl font-bold">
+      <h1 className="text-primary text-2xl font-bold">
         {briefState ? "Edit" : "Create"} Brief
       </h1>
       <form onSubmit={onSubmit}>
@@ -97,12 +97,13 @@ function BriefForm({
               errors={errors}
             />
             <Select
+              required
               name="campaignId"
               label="Select TikTok campaign to link to"
               placeholder="Select an option"
               options={[
-                { text: "Fake option 1", value: "fake1" },
-                { text: "Fake option 2", value: "fake2" },
+                { text: "Fake Campaign 1", value: "fake1" },
+                { text: "Fake Campaign 2", value: "fake2" },
               ]}
               control={control}
               errors={errors}

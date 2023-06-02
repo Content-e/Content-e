@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html[data-theme="brand"] .gradient {
+    background: linear-gradient(112.9deg, #036868 -47.06%, #0A9396 23.87%, #94D2BD 95.1%);
+  }
+  html[data-theme="creator"] .gradient {
+    background: linear-gradient(112.9deg, #AF4B11 -32.81%, #C1620C 20.8%, #DFDB9D 95.1%);
+  }
+}
+
 @layer utilities {
   .paper {
     @apply rounded-2xl bg-white p-6;

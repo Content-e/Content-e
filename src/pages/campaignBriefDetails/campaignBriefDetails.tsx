@@ -8,6 +8,7 @@ import { BrandBrief } from "API";
 import DetailCard from "components/brandCard/detailCard";
 import Modal from "components/authentication/modal";
 import { AuthRoutes } from "utils";
+import Button from "components/ui/button";
 
 interface Props {
   data: BrandBrief;
@@ -20,34 +21,47 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data, status }) => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   return (
-    <div className="creator-dashboard__items creatives-items">
-      <div className="creator-dashboard__creative-back">
-        <button
-          onClick={onBack}
-          className="creator-dashboard__creative-back-btn"
-        >
-          Back
-        </button>
-      </div>
-      <div className="brand-dashboard__item statistics-item">
-        <div className="statistics-elements">
-          <BrandCard
-            briefName={data.BriefName}
-            onShowDetails={(): void => handleDetailVisibility(true)}
-          />
-          <CampaignDetailCard
-            campaign={data.brandProfile?.name}
-            campaignHeader="Brand Name"
-          />
-          <CampaignDetailCard
-            campaign={data.vertical}
-            campaignHeader="Vertical"
-          />
-          <CampaignDetailCard
-            campaign={data.objective}
-            campaignHeader="Objective"
-          />
+    <>
+      <div className="creator-dashboard__items creatives-items">
+        <div className="creator-dashboard__creative-back">
+          <Button onClick={onBack} variant="secondary">
+            Back
+          </Button>
         </div>
+        <div className="brand-dashboard__item statistics-item">
+          <div className="statistics-elements">
+            <BrandCard
+              briefName={data.BriefName}
+              onShowDetails={(): void => handleDetailVisibility(true)}
+            />
+            <CampaignDetailCard
+              campaign={data.brandProfile?.name}
+              campaignHeader="Brand Name"
+            />
+            <CampaignDetailCard
+              campaign={data.vertical}
+              campaignHeader="Vertical"
+            />
+            <CampaignDetailCard
+              campaign={data.objective}
+              campaignHeader="Objective"
+            />
+          </div>
+        </div>
+        {data.brandProfile && showDetails && (
+          <DetailCard
+            data={data.brandProfile}
+            onCross={(): void => handleDetailVisibility(false)}
+          />
+        )}
+        <Modal
+          isOpen={showSuccessModal}
+          content="Your creative has been successfully linked!"
+          handleClose={() => setShowSuccessModal(false)}
+          actionLabel="BACK TO DASHBOARD"
+          actionHandler={() => history.push(AuthRoutes.Dashboard)}
+          type="creator"
+        />
       </div>
       <BrandDesciption
         id={data.id}
@@ -57,21 +71,7 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data, status }) => {
         showSuccessModal={() => setShowSuccessModal(true)}
         status={status}
       />
-      {data.brandProfile && showDetails && (
-        <DetailCard
-          data={data.brandProfile}
-          onCross={(): void => handleDetailVisibility(false)}
-        />
-      )}
-      <Modal
-        isOpen={showSuccessModal}
-        content="Your creative has been successfully linked!"
-        handleClose={() => setShowSuccessModal(false)}
-        actionLabel="BACK TO DASHBOARD"
-        actionHandler={() => history.push(AuthRoutes.Dashboard)}
-        type="creator"
-      />
-    </div>
+    </>
   );
 };
 

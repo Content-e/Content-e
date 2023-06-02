@@ -1,4 +1,5 @@
 import { BrandProfile } from "API";
+import Button from "components/ui/button";
 import { FC } from "react";
 import "./brandCard.css";
 
@@ -11,7 +12,7 @@ const DetailCard: FC<Props> = ({ data, onCross }) => {
     <div className="detail-card-wrapper">
       <div className="detail-card-canvas">
         <div className="detail-card-header">
-          <div className="detail-card-heading capitalized">
+          <div className="text-2xl text-primary font-bold">
             Brand details - {data.name}
           </div>
           <div className="detail-card-cross">
@@ -52,10 +53,8 @@ const DetailCard: FC<Props> = ({ data, onCross }) => {
             {data.toneVoice}
           </div>
         </div>
-        <div className="detail-card-button-panel">
-          <button className="detail-card-button" onClick={onCross}>
-            Done
-          </button>
+        <div className="flex justify-center mt-6">
+          <Button onClick={onCross}>Done</Button>
         </div>
       </div>
     </div>
