@@ -53,13 +53,18 @@ export const CreateBrief: FC<SaveBriefProps> = ({
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
-    saveData({
-      ...data,
-      creativeInspirations: data.creativeInspirations.filter(_.isString),
-      vertical: "TODO",
-      tiktokHandle: "TODO",
-      campaignId: "TODO",
-    });
+    saveData(
+      _.omit(
+        {
+          ...data,
+          creativeInspirations: data.creativeInspirations.filter(_.isString),
+          vertical: "TODO",
+          tiktokHandle: "TODO",
+          campaignId: "TODO",
+        },
+        ["status"]
+      )
+    );
   });
 
   const headingText = useMemo(
