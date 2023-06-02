@@ -2,7 +2,7 @@ import { USER_TYPES } from "API";
 import CampaignSlider from "components/campaignSlider/campaignSlider";
 import Button from "components/ui/button";
 import AuthorizeTikTokHandler from "pages/authorizeTikTok/authorizeTikTokHandler";
-import { FC, useMemo, useState, useEffect } from "react";
+import { FC, useMemo, useState } from "react";
 import { withProfile } from "state/profileSteps";
 import { ProfileProps } from "utils";
 import "./brandDescription.css";

@@ -1,11 +1,8 @@
-import { FC, useMemo, useState, useEffect } from "react";
+import { FC, useMemo } from "react";
 import { BrandBrief } from "API";
 import { ISelectredRequest } from "state/brandBrief";
 import { getUserProfile } from "hooks";
 import CreativeTikTokApproval from "components/creativeTikTokApproval/creativeTikTokApproval";
-//import CreativeDetailsCard from "components/creativeDetailsCard/creativeDetailsCard";
-//import CreatorProfileDescription from "components/creatorProfileDescription/creatorProfileDescription";
-//import CreativeTikTokApproval from "components/creativeTikTokApproval/creativeTikTokApproval";
 import "./creativeDetails.css";
 
 interface Props {
@@ -33,34 +30,6 @@ export const CreativeDetails: FC<Props> = ({
     if (!loading && profileData) return profileData.description;
     return "";
   }, [loading, profileData]);
-  
-
-  const openedSidebar = false;
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
-  const [briefLimit, setBriefLimit] = useState({
-    full: 15,
-    short: 9,
-  });
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowSize(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (windowSize <= 1445) {
-      setBriefLimit({ full: 10, short: 6 });
-    } else {
-      setBriefLimit({ full: 15, short: 9 });
-    }
-  }, [windowSize]);
 
   return (
     <div className="brand-dashboard__items creatives-items">
@@ -79,8 +48,8 @@ export const CreativeDetails: FC<Props> = ({
               </div>
               <div className="brand-dashboard__item-block-value">
                 {request?.creativeTiktokHandle
-                ? `@${request?.creativeTiktokHandle}`
-                : ""}
+                  ? `@${request?.creativeTiktokHandle}`
+                  : ""}
               </div>
             </div>
           </div>
