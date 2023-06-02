@@ -97,12 +97,13 @@ function BriefForm({
               errors={errors}
             />
             <Select
+              required
               name="campaignId"
               label="Select TikTok campaign to link to"
               placeholder="Select an option"
               options={[
-                { text: "Fake option 1", value: "fake1" },
-                { text: "Fake option 2", value: "fake2" },
+                { text: "Fake Campaign 1", value: "fake1" },
+                { text: "Fake Campaign 2", value: "fake2" },
               ]}
               control={control}
               errors={errors}
