@@ -29,7 +29,8 @@ module.exports = {
         primary: '#BB3E03',
         secondary: '#EE9B00',
       },
-    })
+    }),
+    require('@tailwindcss/typography'),
   ],
 }
 
