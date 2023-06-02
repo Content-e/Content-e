@@ -17,7 +17,7 @@ export default function Button({
       type="submit"
       className={`
         px-12 py-3 sm:w-fit w-full rounded-full
-        flex items-center relative
+        flex items-center justify-center relative
         whitespace-nowrap font-bold text-md
         disabled:cursor-not-allowed
         disabled:bg-gray-400
