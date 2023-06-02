@@ -1089,6 +1089,7 @@ img {
 			width: 303px;
 			height: 583px;
 			&.main-slider-item {
+				overflow: hidden;
 				position: relative;
 				z-index: 1;
 			}

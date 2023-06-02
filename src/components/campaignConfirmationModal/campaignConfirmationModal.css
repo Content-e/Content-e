@@ -9,6 +9,7 @@
   border-radius: 8px;
   padding: 20px 30px 27px 30px;
   position: absolute;
+  z-index: 2;
 }
 
 .campaign-confirmation-modal-title {

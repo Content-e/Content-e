@@ -19,7 +19,7 @@ export const CreativeTikTokVideo: FC<Props> = ({
   // if (!previewUrl || !isValidUrl(videoUrl || "") || !awsURL)
   //   return <Fragment key="no video" />;
   return (
-    <div className="creative-video-canvas">
+    <div className="creative-video-canvas brand-dashboard__slider-item main-slider-item">
       <div
         style={{ background: previewUrl ? "none" : "#999" }}
         className="creative-video-preview"
