@@ -76,7 +76,7 @@ function Select<T extends FieldValues>(props: Props<T>) {
               key={option.value}
               className={({ active }) =>
                 `py-1 px-2 relative flex cursor-pointer ${
-                  active && "bg-brand-primary text-white"
+                  active && "bg-primary text-white"
                 }`
               }
             >

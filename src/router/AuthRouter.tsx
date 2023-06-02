@@ -40,6 +40,12 @@ const AuthRouterPaths: FC<ProfileProps> = ({
   const { pathname } = useLocation();
 
   useEffect(() => {
+    if (data?.userType === USER_TYPES.CREATIVE_USER) {
+      document.documentElement.setAttribute("data-theme", "creator");
+    } else {
+      document.documentElement.setAttribute("data-theme", "brand");
+    }
+
     if (pathname && data) {
       if (
         (data?.userType === USER_TYPES.CREATIVE_USER &&

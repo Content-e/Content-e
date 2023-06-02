@@ -22,8 +22,8 @@ export default function Button({
         disabled:cursor-not-allowed
         disabled:bg-gray-400
         ${isLoading && "cursor-progress"}
-        ${variant === "primary" && "bg-brand-primary"}
-        ${variant === "secondary" && "bg-brand-secondary"}
+        ${variant === "primary" && "bg-primary"}
+        ${variant === "secondary" && "bg-secondary"}
       `}
       {...rest}
     >

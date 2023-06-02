@@ -82,7 +82,7 @@ function BriefForm({
 
   return (
     <section className="paper">
-      <h1 className="text-brand-primary text-2xl font-bold">
+      <h1 className="text-primary text-2xl font-bold">
         {briefState ? "Edit" : "Create"} Brief
       </h1>
       <form onSubmit={onSubmit}>

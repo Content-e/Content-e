@@ -12,7 +12,7 @@ const DetailCard: FC<Props> = ({ data, onCross }) => {
     <div className="detail-card-wrapper">
       <div className="detail-card-canvas">
         <div className="detail-card-header">
-          <div className="text-2xl text-brand-primary font-bold">
+          <div className="text-2xl text-primary font-bold">
             Brand details - {data.name}
           </div>
           <div className="detail-card-cross">

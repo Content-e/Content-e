@@ -49,7 +49,7 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
   return (
     <div className="paper w-full min-h-[60vh] flex flex-col justify-between">
       <section>
-        <div className="text-xl text-brand-primary font-bold">
+        <div className="text-xl text-primary font-bold">
           Campaign brief details
         </div>
         <div className="creator-dashboard__text-wrapper">
