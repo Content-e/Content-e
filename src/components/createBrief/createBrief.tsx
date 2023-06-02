@@ -1,5 +1,5 @@
 import Modal from "components/authentication/modal";
-import BriefInput from "components/ui/input";
+import Input from "components/ui/input";
 import Label from "components/ui/label";
 import Button from "components/ui/button";
 import TextArea from "components/ui/textArea";
@@ -13,6 +13,7 @@ import { AuthRoutes } from "utils";
 import { z } from "zod";
 import init from "zod-empty";
 import "./createBrief.css";
+import Select from "components/ui/select";
 
 const schema = z.object({
   BriefName: z.string().nonempty(), // TODO: wtf is this name, should be renamed to 'name'
@@ -22,7 +23,7 @@ const schema = z.object({
   brandBriefDetails: z.string().nonempty(), // TODO: rename -> details
   creativeInspirations: z.string().url().nullish().array(),
   active: z.boolean(),
-  // campaignId: z.string().nonempty(),
+  campaignId: z.string().nonempty(),
   adgroupId: z.string().nonempty(),
   status: z.string(),
 });
@@ -38,13 +39,14 @@ export const CreateBrief: FC<SaveBriefProps> = ({
   response,
   briefState,
   // getAdGroups, // use campaignId to fetch
-  dataLoading,
-  listCampaigns,
+  // dataLoading,
+  // listCampaigns,
 }) => {
   const history = useHistory();
 
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors, isValid, isDirty, isSubmitting },
   } = useZodForm({
@@ -62,7 +64,6 @@ export const CreateBrief: FC<SaveBriefProps> = ({
           creativeInspirations: data.creativeInspirations.filter(_.isString),
           vertical: "TODO",
           tiktokHandle: "TODO",
-          campaignId: "TODO",
         },
         ["status"]
       )
@@ -88,43 +89,39 @@ export const CreateBrief: FC<SaveBriefProps> = ({
         <form onSubmit={onSubmit}>
           <div className="grid xl:grid-cols-3 p-6 xl:gap-8">
             <div className="xl:col-span-2 col-span-3">
-              <BriefInput
+              <Input
                 required
+                placeholder="Give your brief a name"
                 name="BriefName"
                 label="Brief Name"
                 register={register}
                 errors={errors}
               />
-              <div className="pb-6">
-                <div className="brand-dashboard__form-label">
-                  Select TikTok campaign to link to (temporarily disabled)
-                </div>
-                <select
-                  className="brand-dashboard__identity-select"
-                  // value={formState.campaignId}
-                  disabled={dataLoading}
-                >
-                  <option value="">Select One</option>
-                  {listCampaigns.map((e) => (
-                    <option value={e.id}>{e.value}</option>
-                  ))}
-                </select>
-              </div>
-              <BriefInput
+              <Select
+                name="campaignId"
+                label="Select TikTok campaign to link to"
+                placeholder="Select an option"
+                options={[
+                  { text: "Fake option 1", value: "fake1" },
+                  { text: "Fake option 2", value: "fake2" },
+                ]}
+                control={control}
+                errors={errors}
+              />
+              <Input
                 required
                 name="adgroupId"
                 label="Ad group"
                 register={register}
                 errors={errors}
               />
-              <BriefInput
+              <Input
                 required
                 name="objective"
                 register={register}
                 errors={errors}
               />
-              <BriefInput
-                required
+              <Input
                 name="status"
                 placeholder="This field is not used on the backend"
                 label="Brief Status"
@@ -135,7 +132,7 @@ export const CreateBrief: FC<SaveBriefProps> = ({
             <div className="xl:col-span-1 col-span-3 bg-[#f9fbfd] border-[#005F730D] border-[1px] p-4">
               <Label name="Creative inspiration" />
               {_.times(4).map((index) => (
-                <BriefInput
+                <Input
                   name={`creativeInspirations.${index}`}
                   className="mb-14 mt-8"
                   placeholder="Paste creative URL"

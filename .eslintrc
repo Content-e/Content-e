@@ -18,7 +18,7 @@
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/no-var-requires": 1,
     "max-len": [
-      2,
+      1,
       110, // airbnb's default is 100 but we give some additional space for edge cases where prettier is not that strict
       2,
       {
