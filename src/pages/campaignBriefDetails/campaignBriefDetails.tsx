@@ -71,7 +71,7 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data, status }) => {
           isOpen={showDetails}
           handleClose={() => handleDetailVisibility(false)}
         >
-          <div className="flex flex-col gap-3 my-6 font-sans text-neutral-400">
+          <div className="flex flex-col gap-3 mt-6 font-sans text-neutral-400">
             <span>
               <b>Strap line:</b> {data.brandProfile?.strapLine}
             </span>
@@ -104,7 +104,10 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data, status }) => {
               <b>Tone of voice:</b> {data.brandProfile?.toneVoice}
             </span>
             <div className="w-full flex justify-center text-white mt-5">
-              <Button onClick={() => handleDetailVisibility(false)}>
+              <Button
+                className="px-24"
+                onClick={() => handleDetailVisibility(false)}
+              >
                 DONE
               </Button>
             </div>

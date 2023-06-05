@@ -117,7 +117,7 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
         isOpen={showDetails}
         handleClose={() => setShowDetails(false)}
       >
-        <div className="flex flex-col gap-4 my-6 text-neutral-400">
+        <div className="flex flex-col gap-4 mt-6 text-neutral-400">
           <span>
             <b>Creator name:</b> {profileState.data?.name}
           </span>
@@ -130,7 +130,9 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
           </span>
         </div>
         <div className="w-full flex justify-center text-white mt-5">
-          <Button onClick={() => setShowDetails(false)}>DONE</Button>
+          <Button className="px-24" onClick={() => setShowDetails(false)}>
+            DONE
+          </Button>
         </div>
       </ModalBase>
     </div>
