@@ -21,7 +21,7 @@
       "function": {
         "GPTLambda": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/GPTLambda-5974695454704a655256-build.zip"
+          "s3Key": "amplify-builds/GPTLambda-44783154546137654e6e-build.zip"
         },
         "emailService": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
@@ -30,6 +30,30 @@
         "graphQlLambdaAuthorizerc946ef1d": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
           "s3Key": "amplify-builds/graphQlLambdaAuthorizerc946ef1d-305531662f6e64636f59-build.zip"
+        },
+        "createAd": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/createAd-61337a6e646359324e46-build.zip"
+        },
+        "getVideoFromAuthCode": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/getVideoFromAuthCode-49396e4938776f32764a-build.zip"
+        },
+        "linkTiktokAccount": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/linkTiktokAccount-643041424f477a647952-build.zip"
+        },
+        "listAdGroups": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/listAdGroups-394b7643615548623446-build.zip"
+        },
+        "listCompaigns": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/listCompaigns-4257306f326a792b5051-build.zip"
+        },
+        "updateUserType": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/updateUserType-77764b41336343785a74-build.zip"
         }
       },
       "hosting": {
