@@ -2,7 +2,6 @@ import { BrandBrief } from "API";
 import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
 import { FC, useEffect, useMemo, useState } from "react";
 import { BrandBriefProps, withBrandBriefs } from "state/brandBrief";
-import "./brandBriefs.css";
 import { Link } from "react-router-dom";
 import { BrandRoutes } from "utils";
 import { createColumnHelper } from "@tanstack/react-table";
@@ -88,6 +87,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data, loading }) => {
             alt=""
             src="/images/search.svg"
           />
+          <input className="creatives-search" placeholder="Search..." />
         </div>
         <Link to={BrandRoutes.CreateBrief}>
           <Button>ADD NEW BRIEF</Button>
