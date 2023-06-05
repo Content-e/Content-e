@@ -20,7 +20,7 @@ export default function Modal({ title, isOpen, handleClose, children }: Props) {
             <Dialog.Title className="text-2xl text-primary font-bold">
               {title}
             </Dialog.Title>
-            <button onClick={handleClose}>
+            <button onClick={handleClose} className="focus:outline-none">
               <XMarkIcon className="h-8 w-8" />
             </button>
           </div>
