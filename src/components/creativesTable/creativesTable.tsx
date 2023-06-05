@@ -75,6 +75,7 @@ export const CreativesTable: FC<BrandBriefProps> = (props) => {
       <section className="paper">
         <Table
           title="Creatives"
+          primaryField="BriefName"
           data={props.data || []}
           columns={columns}
           isLoading={props.loading}

@@ -96,6 +96,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data, loading }) => {
       <section className="paper">
         <Table
           title="Campaign Briefs"
+          primaryField="BriefName"
           isLoading={loading}
           data={filteredData}
           columns={columns}

@@ -36,11 +36,12 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
     );
   return (
     <div className="grid md:grid-cols-2 gap-5">
-      <section className="col-span-2 paper">
+      <section className="md:col-span-2 paper">
         <Table
           title="Creatives"
           data={props.data?.slice(10) || []}
           columns={_.at(creativeColumns, [2, 1, 0, 5])}
+          primaryField="BriefName"
           onRowClick={(brief) =>
             brief &&
             setSelectedRequest({
@@ -57,6 +58,7 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
           data={props.data?.slice(10) || []}
           columns={_.at(brandBriefColumns, [0, 3])}
           onRowClick={(brief) => brief && setSelectedBrief(brief)}
+          primaryField="BriefName"
         />
       </section>
       <BrandInfo {...props} />
