@@ -26,9 +26,6 @@ export const MainWrapperCreator = styled.div`
   min-height: 100vh;
   background: #fcf8eb;
   gap: 40px;
-  font-family: "Google Sans", Arial, sans-serif;
-  font-weight: 400;
-  color: #fff;
   .brand-dashboard__mobile-header {
     background: #bb3e03;
   }
