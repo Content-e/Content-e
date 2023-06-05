@@ -55,7 +55,7 @@ const columns = [
   }),
 ];
 
-export const BrandBriefs: FC<BrandBriefProps> = ({ data }) => {
+export const BrandBriefs: FC<BrandBriefProps> = ({ data, loading }) => {
   const [input, setInput] = useState("");
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
 
@@ -96,6 +96,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data }) => {
       <section className="paper">
         <Table
           title="Campaign Briefs"
+          isLoading={loading}
           data={filteredData}
           columns={columns}
           onRowClick={(brief) => brief && setSelectedBrief(brief)}
