@@ -6,7 +6,7 @@ import {
   UnAuthRoutes,
 } from "utils";
 import { FullPageLoader, replaceSubPath } from "components";
-import { isValidRoute, ShouldRender, ToastContainer } from "components";
+import { isValidRoute, ShouldRender } from "components";
 import { LogoutPage } from "pages";
 import React, { Fragment, useEffect, useState } from "react";
 import {
@@ -26,7 +26,6 @@ import {
 
 const MainRouter: React.FC<AuthProps & ErrorProps> = ({
   authState: { isLoading, isLoggedIn, email },
-  ...rest
 }) => {
   const [pathFound, handlePathFound] = useState(false);
   const history = useHistory();
@@ -58,7 +57,6 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
 
   return (
     <Fragment>
-      <ToastContainer {...rest} />
       <ShouldRender if={!pathFound}>
         <FullPageLoader />
       </ShouldRender>
