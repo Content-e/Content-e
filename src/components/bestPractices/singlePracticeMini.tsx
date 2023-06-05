@@ -42,7 +42,7 @@ export const SinglePracticeMini: FC<Props> = ({
 
   return (
     <div
-      className={classNames("creator-dashboard__item half_2", {
+      className={classNames("creator-dashboard__item", {
         "best-practices-full": showDetails,
       })}
       onClick={(): void => onClick?.(practice.id)}

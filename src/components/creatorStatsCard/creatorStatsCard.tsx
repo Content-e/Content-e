@@ -14,7 +14,7 @@ export const CreatorStatsCard: FC<Props> = ({
 }) => {
   if (!value) return <Fragment />;
   return (
-    <div className="creator-dashboard__item colored">
+    <div className="creator-dashboard__item colored text-white">
       <div className="creator-dashboard__bg"></div>
       <div className="creator-dashboard__item-block grow-mobile">
         <div className="creator-dashboard__item-block-key shrink-mobile">

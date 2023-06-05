@@ -52,7 +52,7 @@ export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
   }, [briefList, requestList, loading, error]);
 
   return (
-    <div className="creator-dashboard__item half_1">
+    <div className="creator-dashboard__item">
       <div className="brand-dashboard__top">
         <div className="brand-dashboard__top-title">Notifications</div>
         <img
