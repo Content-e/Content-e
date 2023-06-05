@@ -8,7 +8,7 @@ interface Props {
 
 const Label: FC<Props> = ({ name, required = false }) => {
   return (
-    <label className="text-brand-secondary my-1" htmlFor={name}>
+    <label className="text-secondary my-1" htmlFor={name}>
       {_.startCase(_.last(name.split("."))) + (required ? "*" : "")}
     </label>
   );
