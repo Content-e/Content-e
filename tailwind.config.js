@@ -31,6 +31,7 @@ module.exports = {
       },
     }),
     require('@tailwindcss/typography'),
+    require('@headlessui/tailwindcss'),
   ],
 }
 
