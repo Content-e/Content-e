@@ -15,7 +15,7 @@ export default function Modal({ title, isOpen, handleClose, children }: Props) {
       {/* The backdrop, rendered as a fixed sibling to the panel container */}
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
       <div className="fixed inset-0 flex items-center justify-center">
-        <Dialog.Panel className="w-6/12 bg-white rounded-xl p-4 shadow-md">
+        <Dialog.Panel className="w-11/12 sm:w-6/12 bg-white rounded-xl p-4 shadow-md">
           <div className="flex justify-between">
             <Dialog.Title className="text-2xl text-primary font-bold">
               {title}
