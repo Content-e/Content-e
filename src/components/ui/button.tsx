@@ -4,12 +4,14 @@ import Spinner from "./spinner";
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   isLoading?: boolean;
   variant?: "primary" | "secondary";
+  className?: string;
 };
 
 export default function Button({
   children,
   isLoading,
   variant = "primary",
+  className = "",
   ...rest
 }: Props) {
   return (
@@ -24,6 +26,7 @@ export default function Button({
         ${isLoading && "cursor-progress"}
         ${variant === "primary" && "bg-primary"}
         ${variant === "secondary" && "bg-secondary"}
+        ${className}
       `}
       {...rest}
     >
