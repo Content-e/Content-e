@@ -7,9 +7,6 @@ export const MainWrapperBrand = styled.div`
   overflow: hidden;
   padding: 38px 40px;
   gap: 40px;
-  font-family: "Google Sans", Arial, sans-serif;
-  font-weight: 400;
-  color: #fff;
   background: #f3f8f8;
   min-height: 100vh;
   @media screen and (max-width: 1280px) {

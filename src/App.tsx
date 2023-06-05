@@ -21,7 +21,7 @@ const App: React.FC = () => {
     <ErrorProvider>
       <Router>
         <ScrollToTop />
-        <div className="App">
+        <div className="App text-gray-600">
           <AuthProvider>
             <ProfileProvider>
               <Route path="/" component={MainRouter} />

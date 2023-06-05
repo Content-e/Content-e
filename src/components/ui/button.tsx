@@ -21,6 +21,7 @@ export default function Button({
         whitespace-nowrap font-bold text-md
         disabled:cursor-not-allowed
         disabled:bg-gray-400
+        text-white
         ${isLoading && "cursor-progress"}
         ${variant === "primary" && "bg-primary"}
         ${variant === "secondary" && "bg-secondary"}

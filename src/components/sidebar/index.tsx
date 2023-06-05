@@ -156,56 +156,6 @@ export const MobileHeader: FC<ProfileProps> = ({ profileState: { data } }) => {
       </div>
     </>
   );
-
-  /*return (
-    <S.SidebarWrapper>
-      <S.CrossIcon>
-        <img src="/images/circle-cross.svg" alt="cross-icon" />
-      </S.CrossIcon>
-      <S.SidebarPanel>
-        <S.TopHeader>
-          <img src="/images/sidebar-logo.svg" />
-        </S.TopHeader>
-        <S.ProfilePanel>
-          <S.Image>
-            <img src={profilePic || "/images/default-image.png"} />
-          </S.Image>
-          <S.Username onClick={onEditProfile}>{userName}</S.Username>
-        </S.ProfilePanel>
-        <S.SidebarMenu>
-          {data?.userType === USER_TYPES.CREATIVE_USER && (
-            <Fragment key="creator menu options">
-              {getOption("chat", AuthRoutes.Dashboard)}
-              {getOption("bag", AuthRoutes.CampaignBrief)}
-              {getOption("wallet", CreatorRoutes.Wallet)}
-              {getOption("bookOpen", AuthRoutes.BestPractices)}
-            </Fragment>
-          )}
-          {data?.userType === USER_TYPES.BRAND_USER && (
-            <Fragment key="creator menu options">
-              {getOption("chat", AuthRoutes.Dashboard)}
-              {getOption("notes", BrandRoutes.Creatives)}
-              {getOption("bag", AuthRoutes.CampaignBrief)}
-              {getOption("bookOpen", BrandRoutes.Brand)}
-            </Fragment>
-          )}
-          {data?.userType === USER_TYPES.ADMIN_USER && (
-            <Fragment key="creator menu options">
-              {getOption("chat", AuthRoutes.Dashboard)}
-              {getOption("bag", AdminRoutes.Brands)}
-              {getOption("wallet", AdminRoutes.Creators)}
-              {getOption("bookOpen", AuthRoutes.BestPractices)}
-            </Fragment>
-          )}
-        </S.SidebarMenu>
-
-        <S.LogoutBtn onClick={onLogout}>
-          <img src="/images/logout.svg" />
-          Logout
-        </S.LogoutBtn>
-      </S.SidebarPanel>
-    </S.SidebarWrapper>
-  );*/
 };
 
 export default withProfile(MobileHeader);
