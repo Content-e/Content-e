@@ -65,7 +65,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
           errorMsg={errorMsg}
         />
       )}
-      <div className="brand-dashboard__item half_2">
+      <div className="brand-dashboard__item">
         <div className="brand-dashboard__top">
           <div className="brand-dashboard__top-title">Creative</div>
           <img
