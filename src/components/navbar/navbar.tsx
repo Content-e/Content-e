@@ -12,7 +12,7 @@ const Navbar = () => {
   const onLogin = (): void => history.push(UnAuthRoutes.Login);
   return (
     <>
-      <ul className="navbar">
+      <ul className="list-none navbar">
         <li>
           <Link to={"/landing"}>HOME</Link>
         </li>

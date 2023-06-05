@@ -27,7 +27,7 @@ export const LandingPage: React.FC = () => {
                     We solve for authentic creator led content at scale on a
                     results based payment model.
                   </div>
-                  <ul className="landing-page-detailed-content-list">
+                  <ul className="list-none landing-page-detailed-content-list">
                     <li className="landing-page-detailed-content-item detailed-list-item-1">
                       Authentic content at scale.
                     </li>

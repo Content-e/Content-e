@@ -123,7 +123,7 @@ export const MobileHeader: FC<ProfileProps> = ({ profileState: { data } }) => {
           ></div>
           <span>{userName}</span>
         </div>
-        <ul className="brand-dashboard__menu">
+        <ul className="list-none brand-dashboard__menu">
           {data?.userType === USER_TYPES.CREATIVE_USER && (
             <Fragment key="creator menu options">
               {getOption("images/menu-1.svg", AuthRoutes.Dashboard)}

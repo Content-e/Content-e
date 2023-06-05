@@ -15,7 +15,7 @@ export const HeaderDesktop = () => {
           alt="edc-squared"
         />
       </div>
-      <ul className="header-list">
+      <ul className="list-none header-list">
         <li>
           <Link
             className={`${path === "/landing" ? "active" : ""} default-link`}

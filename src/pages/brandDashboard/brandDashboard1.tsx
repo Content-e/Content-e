@@ -409,7 +409,7 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
               fillOpacity="0.37"
             />
           </svg>
-          <ul className="brand-dashboard__pagination-numbers">
+          <ul className="list-none brand-dashboard__pagination-numbers">
             <li>1</li>
             <li>2</li>
           </ul>
@@ -565,7 +565,7 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
               fillOpacity="0.37"
             />
           </svg>
-          <ul className="brand-dashboard__pagination-numbers">
+          <ul className="list-none brand-dashboard__pagination-numbers">
             <li>1</li>
             <li>2</li>
           </ul>
