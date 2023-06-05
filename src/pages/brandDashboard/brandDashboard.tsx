@@ -1,3 +1,4 @@
+import _ from "lodash";
 import "./brandDashboard.css";
 import { FC, useState } from "react";
 import {
@@ -5,12 +6,13 @@ import {
   ISelectredRequest,
   withBrandBriefs,
 } from "state/brandBrief";
-import CreativeRequests from "./creativeRequests";
-import BrandBriefs from "./brandBriefs";
 import BrandInfo from "./brandInfo";
 import CreativeDetails from "pages/creativeDetails/creativeDetails";
 import { BrandBrief } from "API";
 import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
+import { columns as creativeColumns } from "components/creativesTable/creativesTable";
+import { columns as brandBriefColumns } from "pages/brandBriefs/brandBriefs";
+import Table from "components/ui/table";
 
 export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
   const [selectedRequest, setSelectedRequest] = useState<ISelectredRequest>();
@@ -33,9 +35,30 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
       />
     );
   return (
-    <div className="brand-dashboard__items dashboard-items">
-      <CreativeRequests {...props} openCreative={setSelectedRequest} />
-      <BrandBriefs {...props} openBrief={setSelectedBrief} />
+    <div className="grid md:grid-cols-2 gap-5">
+      <section className="col-span-2 paper">
+        <Table
+          title="Creatives"
+          data={props.data?.slice(10) || []}
+          columns={_.at(creativeColumns, [2, 1, 0, 5])}
+          onRowClick={(brief) =>
+            brief &&
+            setSelectedRequest({
+              briefId: brief.id,
+              requestId: "TODO",
+              authCode: "TODO",
+            })
+          }
+        />
+      </section>
+      <section className="paper">
+        <Table
+          title="Campaign briefs"
+          data={props.data?.slice(10) || []}
+          columns={_.at(brandBriefColumns, [0, 3])}
+          onRowClick={(brief) => brief && setSelectedBrief(brief)}
+        />
+      </section>
       <BrandInfo {...props} />
     </div>
   );

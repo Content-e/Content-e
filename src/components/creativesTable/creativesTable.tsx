@@ -11,7 +11,7 @@ import {
 
 const columnHelper = createColumnHelper<BrandBrief | null | undefined>();
 
-const columns = [
+export const columns = [
   columnHelper.accessor("BriefName", {
     header: "Brief Name",
   }),
