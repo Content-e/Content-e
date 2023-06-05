@@ -42,20 +42,19 @@ img {
 .custom-tooltip {
   --bs-tooltip-bg: white;
   --bs-tooltip-color: black;
-  --bs-tooltip-border-width: 2px;
-  --bs-tooltip-border-color: yellow;
-  border-width: 2px;
-  border-color: yellow;
+  --bs-tooltip-opacity: 1;
 }
 
 .custom-tooltip .tooltip-inner {
   max-width: 312px;
-  border: 1px solid black;
+  border: 1px solid rgba(202, 103, 2, 0.72);
+  text-align: left;
+  padding: 12px;
 }
 
 .custom-tooltip .tooltip-arrow::before {
-  border-left-color: black;
-  border-right-color: black;
+  border-left-color: rgba(202, 103, 2, 0.72);
+  border-right-color: rgba(202, 103, 2, 0.72);
 }
 
 @media only screen and (max-width: 768px) {

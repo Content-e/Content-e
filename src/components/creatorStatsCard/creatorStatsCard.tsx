@@ -23,14 +23,14 @@ export const CreatorStatsCard: FC<Props> = ({
         <OverlayTrigger
           placement={placement}
           overlay={
-            <Tooltip id={`tooltip-${label}`} className="custom-tooltip">
+            <Tooltip id={`tooltip-${label}`} className="custom-tooltip mx-3">
               {tooltip}.
             </Tooltip>
           }
         >
           <img
-            className="creator-dashboard__item-block-icon"
-            alt=""
+            className="absolute right-4 top-4"
+            alt="tooltip icon"
             src="/images/info-icon.svg"
           />
         </OverlayTrigger>
