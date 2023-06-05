@@ -8,7 +8,6 @@ import {
   ISelectredRequest,
   withBrandBriefs,
 } from "state/brandBrief";
-import "./creativesTable.css";
 
 const columnHelper = createColumnHelper<BrandBrief | null | undefined>();
 
