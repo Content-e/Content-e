@@ -3,6 +3,7 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { useEffect, useState } from "react";
@@ -16,6 +17,7 @@ interface Props<T> {
   title: string;
   isLoading?: boolean;
   primaryField: string;
+  limit?: number;
 }
 
 function Table<T>({
@@ -25,26 +27,26 @@ function Table<T>({
   title,
   onRowClick,
   primaryField,
+  limit = 10,
 }: Props<T>) {
   const table = useReactTable({
     columns,
     data,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
   });
 
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowSize(window.innerWidth);
-    };
-
+    const handleWindowResize = () => setWindowSize(window.innerWidth);
     window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
+    return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
+
+  useEffect(() => {
+    table.setPageSize(limit);
+  }, [table, limit]);
 
   return (
     <div>
@@ -138,9 +140,37 @@ function Table<T>({
           ))}
         </ul>
       )}
-      {isLoading && (
+      {isLoading ? (
         <div className="w-full flex items-center justify-center py-8">
           <Spinner className="w-10 h-10 " />
+        </div>
+      ) : (
+        <div className="w-full flex justify-center mt-2 text-secondary">
+          <button
+            className="disabled:text-gray-300 disabled:cursor-not-allowed px-2 cursor-pointer"
+            disabled={!table.getCanPreviousPage()}
+            onClick={table.previousPage}
+          >
+            &lt;
+          </button>
+          {_.times(table.getPageCount(), (i) => (
+            <div
+              key={i}
+              className={`px-3 cursor-pointer ${
+                table.getState().pagination.pageIndex === i && "text-primary"
+              }`}
+              onClick={() => table.setPageIndex(i)}
+            >
+              {i + 1}
+            </div>
+          ))}
+          <button
+            className="disabled:text-gray-300 disabled:cursor-not-allowed px-2 cursor-pointer"
+            disabled={!table.getCanNextPage()}
+            onClick={table.nextPage}
+          >
+            &gt;
+          </button>
         </div>
       )}
     </div>

@@ -39,7 +39,7 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
       <section className="md:col-span-2 paper">
         <Table
           title="Creatives"
-          data={props.data?.slice(10) || []}
+          data={props.data || []}
           isLoading={loading}
           columns={_.at(creativeColumns, [2, 1, 0, 5])}
           primaryField="BriefName"
@@ -56,7 +56,7 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
       <section className="paper">
         <Table
           title="Campaign briefs"
-          data={props.data?.slice(10) || []}
+          data={props.data || []}
           isLoading={loading}
           columns={_.at(brandBriefColumns, [0, 3])}
           onRowClick={(brief) => brief && setSelectedBrief(brief)}
