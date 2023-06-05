@@ -104,7 +104,7 @@ function Table<T>({
         <ul className="flex flex-col">
           {table.getRowModel().rows.map((row) => (
             <Disclosure
-              title={_.toString(row.original[primaryField]) + "ASDSA"}
+              title={_.toString(_.get(row.original, primaryField))}
               defaultOpen={false}
             >
               <table onClick={() => onRowClick && onRowClick(row.original)}>
