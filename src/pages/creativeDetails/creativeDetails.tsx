@@ -4,6 +4,7 @@ import { ISelectredRequest } from "state/brandBrief";
 import { getUserProfile } from "hooks";
 import CreativeTikTokApproval from "components/creativeTikTokApproval/creativeTikTokApproval";
 import "./creativeDetails.css";
+import GradientCard from "components/gradientCard/gradientCard";
 
 interface Props {
   data?: Array<BrandBrief | null>;
@@ -35,54 +36,34 @@ export const CreativeDetails: FC<Props> = ({
     <div className="brand-dashboard__items creatives-items">
       <div className="brand-dashboard__item statistics-item">
         <div className="statistics-elements">
-          <div className="brand-dashboard__item colored">
-            <div className="brand-dashboard__bg"></div>
-            <div className="brand-dashboard__item-block">
+          <GradientCard>
+            <div className="flex justify-between">
+              Creator handle
               <img
                 className="brand-dashboard__item-block-icon"
                 alt=""
                 src="/images/doc_1_white.svg"
+                onClick={() => console.log("TODO: toggle some modal here")}
               />
-              <div className="brand-dashboard__item-block-key">
-                Creator handle
-              </div>
-              <div className="brand-dashboard__item-block-value">
-                {request?.creativeTiktokHandle
-                  ? `@${request?.creativeTiktokHandle}`
-                  : ""}
-              </div>
             </div>
-          </div>
-          <div className="brand-dashboard__item colored">
-            <div className="brand-dashboard__bg"></div>
-            <div className="brand-dashboard__item-block">
-              <img alt="" src="" />
-              <div className="brand-dashboard__item-block-key">
-                Campaign brief name
-              </div>
-              <div className="brand-dashboard__item-block-value">
-                {brief?.BriefName}
-              </div>
-            </div>
-          </div>
-          <div className="brand-dashboard__item colored">
-            <div className="brand-dashboard__bg"></div>
-            <div className="brand-dashboard__item-block">
-              <img alt="" src="" />
-              <div className="brand-dashboard__item-block-key">View count</div>
-              <div className="brand-dashboard__item-block-value">0</div>
-            </div>
-          </div>
-          <div className="brand-dashboard__item colored">
-            <div className="brand-dashboard__bg"></div>
-            <div className="brand-dashboard__item-block">
-              <img alt="" src="" />
-              <div className="brand-dashboard__item-block-key">
-                Engagement rate
-              </div>
-              <div className="brand-dashboard__item-block-value">0%</div>
-            </div>
-          </div>
+            <h3 className="text-2xl font-bold">
+              {request?.creativeTiktokHandle
+                ? `@${request?.creativeTiktokHandle}`
+                : ""}
+            </h3>
+          </GradientCard>
+          <GradientCard>
+            Objective
+            <h3 className="text-2xl font-bold">{brief?.BriefName}</h3>
+          </GradientCard>
+          <GradientCard>
+            View count
+            <h3 className="text-2xl font-bold">0</h3>
+          </GradientCard>
+          <GradientCard>
+            Engagement rate
+            <h3 className="text-2xl font-bold">0%</h3>
+          </GradientCard>
         </div>
       </div>
       <div className="brand-dashboard__item half_1">
