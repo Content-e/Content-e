@@ -11,6 +11,7 @@ export const MainWrapperBrand = styled.div`
   font-weight: 400;
   color: #fff;
   background: #f3f8f8;
+  min-height: 100vh;
   @media screen and (max-width: 1280px) {
     padding-top: 96px;
     padding-bottom: 87px;
@@ -25,6 +26,7 @@ export const MainWrapperCreator = styled.div`
   flex-grow: 1;
   overflow: hidden;
   padding: 38px 40px;
+  min-height: 100vh;
   background: #fcf8eb;
   gap: 40px;
   font-family: "Google Sans", Arial, sans-serif;
