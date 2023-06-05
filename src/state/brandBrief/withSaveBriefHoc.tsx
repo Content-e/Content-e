@@ -107,7 +107,10 @@ export function withSaveBrief<T>(
             campaignId: brief.campaignId || "",
             adgroupId: brief.adgroupId || "",
           });
-        } else history.replace(AuthRoutes.CampaignBrief);
+        } else {
+          history.replace(AuthRoutes.CampaignBrief);
+          console.log("No brief found in router state!");
+        }
       }
     }, [state, pathname]);
     useEffect(() => {
