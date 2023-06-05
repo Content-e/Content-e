@@ -97,7 +97,7 @@ export const PrivacyPolicy: React.FC = () => {
                 different kinds of personal data about you which we have grouped
                 together as follows:
               </div>
-              <ul className="privacy-policy-list">
+              <ul className="list-none privacy-policy-list">
                 <li>
                   <span>· Identity Data</span> includes first name, maiden name,
                   last name, username or similar identifier, marital status,
@@ -183,7 +183,7 @@ export const PrivacyPolicy: React.FC = () => {
                 We use different methods to collect data from and about you
                 including through:
               </div>
-              <ul className="privacy-policy-list">
+              <ul className="list-none privacy-policy-list">
                 <li>
                   <span>· Direct interactions.</span> You may give us your
                   Identity, Contact and Financial Data by filling in account
@@ -232,7 +232,7 @@ export const PrivacyPolicy: React.FC = () => {
                 Most commonly, we will use your personal data in the following
                 circumstances:
               </div>
-              <ul className="privacy-policy-list">
+              <ul className="list-none privacy-policy-list">
                 <li>
                   · Where we need to perform the contract we are about to enter
                   into or have entered into with you.
@@ -592,7 +592,7 @@ export const PrivacyPolicy: React.FC = () => {
                 for the purposes set out in the table Purposes for which we will
                 use your personal data above.
               </div>
-              <ul className="privacy-policy-list">
+              <ul className="list-none privacy-policy-list">
                 <li>· External Third Parties as set out below.</li>
                 <li>
                   · Third parties to whom we may choose to sell, transfer or
@@ -768,7 +768,7 @@ export const PrivacyPolicy: React.FC = () => {
               <div className="privacy-policy-subtitle">
                 External Third Parties
               </div>
-              <ul className="privacy-policy-list">
+              <ul className="list-none privacy-policy-list">
                 <li>
                   · Service providers acting as processors who provide IT and
                   system administration services.
@@ -831,7 +831,7 @@ export const PrivacyPolicy: React.FC = () => {
                   processing of your personal data in the following scenarios:
                 </p>
               </div>
-              <ul className="privacy-policy-list">
+              <ul className="list-none privacy-policy-list">
                 <li>· If you want us to establish the data's accuracy</li>
                 <li>
                   · Where our use of the data is unlawful but you do not want us

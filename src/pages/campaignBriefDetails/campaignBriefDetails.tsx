@@ -71,35 +71,46 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data, status }) => {
           isOpen={showDetails}
           handleClose={() => handleDetailVisibility(false)}
         >
-          <div className="flex flex-col gap-3 my-6">
+          <div className="flex flex-col gap-3 mt-6 font-sans text-neutral-400">
             <span>
-              <b className="text-gray-500">Strap line:</b>{" "}
-              {data.brandProfile?.strapLine}
+              <b>Strap line:</b> {data.brandProfile?.strapLine}
             </span>
             <span>
-              <b className="text-gray-500">Mission statement:</b>{" "}
-              {data.brandProfile?.internalMission}
+              <b>Mission statement:</b> {data.brandProfile?.internalMission}
             </span>
             <div>
-              <b className="text-gray-500">Brand pillars:</b>
-              <ul>
+              <b>Brand Pillars:</b>
+              <ul className="list-disc text-[#E9D8A6] pl-4 pt-3">
                 {data.brandProfile?.pillars?.map((e) => {
                   if (!e) return "";
                   const [title, detail] = e.split(":");
                   if (detail?.length)
                     return (
                       <li>
-                        <b>{title}</b>: {detail}
+                        <p className="text-neutral-400">
+                          <b>{title}</b>: {detail}
+                        </p>
                       </li>
                     );
-                  return <li>{title}</li>;
+                  return (
+                    <li>
+                      <p className="text-neutral-400">{title}</p>
+                    </li>
+                  );
                 })}
               </ul>
             </div>
             <span>
-              <b className="text-gray-500">Tone of voice:</b>{" "}
-              {data.brandProfile?.toneVoice}
+              <b>Tone of voice:</b> {data.brandProfile?.toneVoice}
             </span>
+            <div className="w-full flex justify-center text-white mt-5">
+              <Button
+                className="px-24"
+                onClick={() => handleDetailVisibility(false)}
+              >
+                DONE
+              </Button>
+            </div>
           </div>
         </ModalBase>
       </section>
