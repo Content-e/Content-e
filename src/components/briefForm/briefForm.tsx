@@ -25,7 +25,6 @@ const schema = z.object({
   active: z.boolean(),
   campaignId: z.string().nonempty(),
   adgroupId: z.string().nonempty(),
-  status: z.string().nullish(),
 });
 
 const defaultValues = {
@@ -67,17 +66,12 @@ function BriefForm({
 
   const onSubmit = handleSubmit(async (data) => {
     console.log(data);
-    await saveData(
-      _.omit(
-        {
-          ...data,
-          creativeInspirations: data.creativeInspirations.filter(_.isString),
-          vertical: 'TODO',
-          tiktokHandle: 'TODO',
-        },
-        ['status']
-      )
-    );
+    await saveData({
+      ...data,
+      creativeInspirations: data.creativeInspirations.filter(_.isString),
+      vertical: 'TODO',
+      tiktokHandle: 'TODO',
+    });
   });
 
   return (
@@ -118,13 +112,6 @@ function BriefForm({
             <Input
               required
               name="objective"
-              register={register}
-              errors={errors}
-            />
-            <Input
-              name="status"
-              placeholder="This field is not used on the backend"
-              label="Brief Status"
               register={register}
               errors={errors}
             />
