@@ -77,7 +77,7 @@ function Table<T>({
               table.getRowModel().rows.map((row, rowIndex) => (
                 <tr
                   key={row.id}
-                  onClick={() => onRowClick && onRowClick(row.original)}
+                  onClick={() => onRowClick?.(row.original)}
                   className={`hover:bg-gray-200/50 cursor-pointer ${
                     rowIndex % 2 ? 'bg-gray-200/20' : ''
                   }`}
@@ -107,7 +107,7 @@ function Table<T>({
               title={_.toString(_.get(row.original, primaryField))}
               defaultOpen={false}
             >
-              <table onClick={() => onRowClick && onRowClick(row.original)}>
+              <table onClick={() => onRowClick?.(row.original)}>
                 {_.zip(
                   table
                     .getHeaderGroups()

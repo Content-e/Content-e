@@ -15,7 +15,7 @@ const RedirectingStep: React.FC<ProfileProps> = ({
   const redirectToValidRoute = (): void => {
     if (
       pathnameParts.length === 3 &&
-      pathnameParts[2].length &&
+      pathnameParts[2]?.length &&
       data?.userType === USER_TYPES.CREATIVE_USER
     )
       history.replace(replaceSubPath(AuthRoutes.Tiktok));

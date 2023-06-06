@@ -14,16 +14,16 @@ export default function WalletCard({ dueDateCheck, walletTitle, cost }) {
     'October',
     'November',
     'December',
-  ];
+  ] as const;
   const d = new Date();
   let monthName = '';
   let day = 1;
   if (d.getDate() < 15) {
     day = 15;
-    monthName = month[d.getMonth()];
+    monthName = month[d.getMonth()] || 'Invalid month';
   } else {
     day = 1;
-    monthName = month[(d.getMonth() + 1) % 13];
+    monthName = month[(d.getMonth() + 1) % 13] || 'Invalid month';
   }
 
   return (

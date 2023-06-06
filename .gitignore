@@ -26,4 +26,5 @@ python3.9/
 *.zip
 .vscode
 temp/
+tsconfig.tsbuildinfo
 #amplify-do-not-edit-end

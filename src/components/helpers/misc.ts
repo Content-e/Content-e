@@ -16,7 +16,7 @@ export const matchSlugUrls = (pathname: string, route: string): boolean => {
   const pathArr = pathname.split('/');
   if (routeArr.length !== pathArr.length) return false;
   for (const idx in routeArr) {
-    if (routeArr[idx].includes(':')) {
+    if (routeArr[idx]?.includes(':')) {
       if (!pathArr[idx]?.length) return false;
       routeArr.splice(Number(idx), 1);
       pathArr.splice(Number(idx), 1);
@@ -33,7 +33,7 @@ export const isValidRoute = (
   const sluggedRoutes = routesArray.filter((route) => route.includes(':'));
   // eslint-disable-next-line guard-for-in
   for (const idx in sluggedRoutes) {
-    const isMatched = matchSlugUrls(currentPathname, sluggedRoutes[idx]);
+    const isMatched = matchSlugUrls(currentPathname, sluggedRoutes[idx] || '');
     if (isMatched) return true;
   }
   return false;
@@ -59,7 +59,7 @@ export const getPageTitle = (
 export const isSubDomainWithBriefId = (id?: string): boolean => {
   const initialHost = window.location.hostname.split('.')[0];
   const length = id?.length || 0;
-  return allowedSubDomains.includes(initialHost) && length > 8;
+  return allowedSubDomains.includes(initialHost || '') && length > 8;
 };
 
 export const getMainDomainFromSubdomain = (): string => {
@@ -67,7 +67,7 @@ export const getMainDomainFromSubdomain = (): string => {
 
   const hostnameParts = host.split('.');
   const explicitFalse = hostnameParts[0] === 'staging';
-  if (!explicitFalse && allowedSubDomains.includes(hostnameParts[0]))
+  if (!explicitFalse && allowedSubDomains.includes(hostnameParts[0] || ''))
     hostnameParts.shift();
 
   const pathnameParts = pathname.split('/');
