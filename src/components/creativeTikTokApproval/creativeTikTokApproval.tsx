@@ -1,4 +1,3 @@
-import CampaignConfirmationModal from 'components/campaignConfirmationModal/campaignConfirmationModal';
 import { FC, useEffect, useState } from 'react';
 import { CreativeRequestStatus, UnknownType } from 'utils';
 import { CreativeRequest } from 'API';
@@ -6,6 +5,7 @@ import { ViewRequestProps, withRequestView } from 'state/requests';
 import CreativeTikTokVideo from './creativeTikTokVideo';
 import { Storage } from 'aws-amplify';
 import Button from 'components/ui/button';
+import Modal from 'components/ui/modal';
 
 interface Props {
   request?: CreativeRequest | null;
@@ -20,23 +20,23 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
   approveRequest,
   rejectRequest,
   getVideoLink,
-  errorMsg,
   loading,
   isSuccess,
+  errorMsg,
   tiktokVideo,
 }) => {
   const openedSidebar = false;
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [awsURL, setAwsURL] = useState<string>('');
 
-  const onOkay = (): void => {
-    if (showConfirm) approveRequest(createAdPayload);
+  const onOkay = async () => {
+    if (isConfirmationOpen) approveRequest(createAdPayload);
   };
-  const onApprove = (): void => {
-    if (!showConfirm) setShowConfirm(true);
+  const onApprove = () => {
+    if (!isConfirmationOpen) setIsConfirmationOpen(true);
   };
-  const onReject = (): void => {
-    if (!showConfirm) rejectRequest();
+  const onReject = () => {
+    if (!isConfirmationOpen) rejectRequest();
   };
 
   useEffect(() => {
@@ -60,13 +60,27 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
 
   return (
     <>
-      {showConfirm && (
-        <CampaignConfirmationModal
-          isLoading={loading}
-          onOkay={onOkay}
-          errorMsg={errorMsg}
-        />
-      )}
+      <Modal
+        title="Please confirm to add this creative to your live campaign"
+        isOpen={isConfirmationOpen}
+        handleClose={() => setIsConfirmationOpen(false)}
+      >
+        <p className="prose my-8">
+          Clicking confirm below will add this creative to your campaign and
+          will start spending.
+        </p>
+        {errorMsg && (
+          <p className="prose my-8 text-danger">
+            Clicking confirm below will add this creative to your campaign and
+            will start spending.
+          </p>
+        )}
+        <div className="flex justify-center">
+          <Button onClick={onOkay} isLoading={loading} disabled={loading}>
+            Confirm
+          </Button>
+        </div>
+      </Modal>
 
       <section className="paper">
         <h1 className="text-lg text-primary font-bold">Creative</h1>
