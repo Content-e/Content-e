@@ -52,7 +52,7 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
           disabled={
             !(
               data?.userType === USER_TYPES.CREATIVE_USER &&
-              isVideoLinked &&
+              !isVideoLinked &&
               status === 'new'
             )
           }
