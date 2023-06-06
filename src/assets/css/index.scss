@@ -104,6 +104,10 @@ body {
   scroll-behavior: smooth;
 }
 
+input:focus-visible {
+	outline: none;
+}
+
 html {
   scroll-behavior: smooth;
 }
