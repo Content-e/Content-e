@@ -18,6 +18,7 @@ interface Props<T> {
   isLoading?: boolean;
   primaryField: string;
   limit?: number;
+  paginationRange?: number;
 }
 
 function Table<T>({
@@ -28,6 +29,7 @@ function Table<T>({
   onRowClick,
   primaryField,
   limit = 10,
+  paginationRange = 3, // How many page links to show in pagination, should be odd number
 }: Props<T>) {
   const table = useReactTable({
     columns,
@@ -153,17 +155,33 @@ function Table<T>({
           >
             &lt;
           </button>
-          {_.times(table.getPageCount(), (i) => (
-            <div
-              key={i}
-              className={`px-3 cursor-pointer ${
-                table.getState().pagination.pageIndex === i && 'text-primary'
-              }`}
-              onClick={() => table.setPageIndex(i)}
-            >
-              {i + 1}
-            </div>
-          ))}
+          {_.range(0, table.getPageCount())
+            .slice(
+              _.clamp(
+                table.getState().pagination.pageIndex -
+                  Math.floor(paginationRange / 2),
+                0,
+                table.getPageCount()
+              ),
+              _.clamp(
+                table.getState().pagination.pageIndex -
+                  Math.floor(paginationRange / 2),
+                0,
+                table.getPageCount()
+              ) + paginationRange
+            )
+            .map((pageIndex) => (
+              <div
+                key={pageIndex}
+                className={`px-3 cursor-pointer ${
+                  table.getState().pagination.pageIndex === pageIndex &&
+                  'text-primary'
+                }`}
+                onClick={() => table.setPageIndex(pageIndex)}
+              >
+                {pageIndex + 1}
+              </div>
+            ))}
           <button
             className="disabled:text-gray-300 disabled:cursor-not-allowed px-2 cursor-pointer"
             disabled={!table.getCanNextPage()}
