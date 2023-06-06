@@ -3,6 +3,7 @@ import Button from 'components/ui/button';
 import Input from 'components/ui/input';
 import Label from 'components/ui/label';
 import Select from 'components/ui/select';
+import Switch from 'components/ui/switch';
 import TextArea from 'components/ui/textArea';
 import useZodForm from 'hooks/useZodForm';
 import _ from 'lodash';
@@ -29,6 +30,7 @@ const schema = z.object({
 
 const defaultValues = {
   ...init(schema),
+  active: true,
 };
 
 function BriefForm({
@@ -115,6 +117,7 @@ function BriefForm({
               register={register}
               errors={errors}
             />
+            <Switch name="active" control={control} required />
           </div>
           <div className="xl:col-span-1 col-span-3 bg-[#f9fbfd] border-[#005F730D] border-[1px] p-4">
             <Label name="Creative inspiration" />
