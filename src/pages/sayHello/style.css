@@ -3,7 +3,8 @@ a {
   text-decoration: none;
 }
 
-ul, li {
+ul,
+li {
   margin: 0;
   padding: 0;
 }
@@ -70,7 +71,7 @@ ul, li {
   .say-hello-page-menu-header
   .say-hello-page-menu
   .say-hello-page-menu-items {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -139,7 +140,7 @@ ul, li {
 }
 
 .say-hello-page-wrapper .say-hello-page-body .say-hello-page-title {
-  font-family: "Comfortaa";
+  font-family: 'Comfortaa';
   font-style: normal;
   font-weight: 700;
   font-size: 60px;
@@ -148,7 +149,7 @@ ul, li {
   color: #e9d8a6;
 }
 .say-hello-page-wrapper .say-hello-page-body .say-hello-page-subtitle {
-  font-family: "Comfortaa";
+  font-family: 'Comfortaa';
   margin-top: 25px;
   font-style: normal;
   font-weight: 300;
@@ -160,7 +161,7 @@ ul, li {
 }
 
 .say-hello-content-container-gradient {
-  background-image: url("../../../public/images/glass-image.svg");
+  background-image: url('../../../public/images/glass-image.svg');
   padding: 31px 45px 0px 35px;
   border-radius: 50px;
   background-repeat: no-repeat;
@@ -169,7 +170,7 @@ ul, li {
 }
 
 .login-signup {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -188,7 +189,7 @@ ul, li {
 }
 
 .say-hello-page-workBtn {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -245,7 +246,7 @@ ul, li {
   .say-hello-page-single-steps
   .say-hello-page-step-text {
   max-width: 212px;
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -256,7 +257,7 @@ ul, li {
 }
 
 .say-hello-page-detailed-content {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -274,8 +275,13 @@ ul, li {
 .for-brands-btn {
   width: 135px;
   height: 40px;
-  background: linear-gradient(116.82deg, #001219 0%, #BB3E03 5.21%, #EE9B00 100%);
-  border: 1px solid #E9D8A6;
+  background: linear-gradient(
+    116.82deg,
+    #001219 0%,
+    #bb3e03 5.21%,
+    #ee9b00 100%
+  );
+  border: 1px solid #e9d8a6;
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -291,14 +297,19 @@ ul, li {
   text-align: center;
   letter-spacing: -0.02em;
 
-  color: #D9D9D9;
+  color: #d9d9d9;
 }
 
 .for-creators-btn {
   width: 135px;
   height: 40px;
-  background: linear-gradient(116.82deg, #001219 0%, #0A9396 6.25%, #94D2BD 100%);
-  border: 1px solid #E9D8A6;
+  background: linear-gradient(
+    116.82deg,
+    #001219 0%,
+    #0a9396 6.25%,
+    #94d2bd 100%
+  );
+  border: 1px solid #e9d8a6;
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -314,7 +325,7 @@ ul, li {
   text-align: center;
   letter-spacing: -0.02em;
 
-  color: #D9D9D9;
+  color: #d9d9d9;
 }
 
 .for-content-btn-text {
@@ -327,7 +338,7 @@ ul, li {
   align-items: center;
   text-align: center;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .for-say-hello-content-btn-container {
@@ -346,7 +357,7 @@ ul, li {
 }
 
 .say-hello-ask {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -388,7 +399,7 @@ ul, li {
 }
 
 .say-hello-footer-text {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
   font-size: 10px;
@@ -405,7 +416,7 @@ ul, li {
 }
 
 .say-hello-input-text {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -428,7 +439,7 @@ ul, li {
 }
 
 .say-hello-input::placeholder {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -457,7 +468,7 @@ ul, li {
 .send-message-btn {
   background: #e7d7a7;
   border-radius: 25px;
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -482,7 +493,7 @@ ul, li {
 }
 
 .say-hello-edc {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -527,7 +538,7 @@ ul, li {
   }
 
   .say-hello-page-wrapper .say-hello-page-body .say-hello-page-title {
-    font-family: "Comfortaa";
+    font-family: 'Comfortaa';
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
@@ -537,7 +548,7 @@ ul, li {
   }
 
   .say-hello-page-wrapper .say-hello-page-body .say-hello-page-subtitle {
-    font-family: "Comfortaa";
+    font-family: 'Comfortaa';
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
@@ -547,7 +558,7 @@ ul, li {
   }
 
   .say-hello-page-detailed-content {
-    font-family: "Raleway";
+    font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -607,7 +618,7 @@ ul, li {
   }
 
   .say-hello-menu-option {
-    font-family: "Raleway";
+    font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -643,7 +654,7 @@ ul, li {
 
   .say-hello-edc {
     margin-top: 22px;
-    font-family: "Raleway";
+    font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -681,7 +692,7 @@ ul, li {
   }
 
   .say-hello-ask {
-    font-family: "Raleway";
+    font-family: 'Raleway';
     font-style: normal;
     font-weight: 300;
     font-size: 16px;

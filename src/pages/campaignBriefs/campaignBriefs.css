@@ -23,7 +23,7 @@
 .campaign-table-label {
   left: 189px;
   top: calc(50% - 20px / 2 - 278.5px);
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -41,7 +41,7 @@ table {
 }
 
 .table-header-label {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -50,7 +50,7 @@ table {
 }
 
 .table-description {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;

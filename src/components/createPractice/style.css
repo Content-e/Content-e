@@ -39,7 +39,8 @@
 .create-brief-input {
   padding: 6px 12px;
   background: #ffffff;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 0px 0px 1px rgba(104, 113, 130, 0.16);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06),
+    0px 0px 0px 1px rgba(104, 113, 130, 0.16);
   border-radius: 6px;
   border: none;
   outline: none;
@@ -90,7 +91,8 @@
   top: 353px;
   background: #ffffff;
   border: none;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 0px 0px 1px rgba(104, 113, 130, 0.16);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06),
+    0px 0px 0px 1px rgba(104, 113, 130, 0.16);
   border-radius: 6px;
   outline: none;
   resize: none;
@@ -175,8 +177,9 @@
 }
 
 .best-practice-input-box {
-  background: #FFFFFF;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 0px 0px 1px rgba(104, 113, 130, 0.16);
+  background: #ffffff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06),
+    0px 0px 0px 1px rgba(104, 113, 130, 0.16);
   border-radius: 6px;
   height: 32px;
   border: none;
@@ -188,7 +191,7 @@
 }
 
 .best-practice-input-box.isBlurred {
-  color: #A1A9B8;
+  color: #a1a9b8;
 }
 
 .best-practice-input-box:hover,
@@ -201,8 +204,9 @@
 
 .best-practice-editor-wrapper {
   width: 100%;
-  background: #FFFFFF;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 0px 0px 1px rgba(104, 113, 130, 0.16);
+  background: #ffffff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06),
+    0px 0px 0px 1px rgba(104, 113, 130, 0.16);
   color: black;
   border-radius: 6px;
   border: none;
@@ -222,7 +226,7 @@
 
 .editor-input-error {
   font-size: 10px;
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-weight: 400;
   color: red;
   margin-left: auto;

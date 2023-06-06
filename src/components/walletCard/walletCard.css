@@ -3,7 +3,12 @@
   box-sizing: border-box;
   width: 100%;
   height: 206px;
-  background: linear-gradient(112.9deg, #AF4B11 -32.81%, #C1620C 20.8%, #DFDB9D 95.1%);
+  background: linear-gradient(
+    112.9deg,
+    #af4b11 -32.81%,
+    #c1620c 20.8%,
+    #dfdb9d 95.1%
+  );
   border-radius: 16px;
   border-radius: 16px;
   padding: 22px;
@@ -28,7 +33,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 160%;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .wallet-due-date {
@@ -37,7 +42,7 @@
   font-weight: 400;
   font-size: 10px;
   line-height: 180%;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .wallet-cost {
@@ -46,7 +51,7 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 120%;
-  color: #FFFFFF;
+  color: #ffffff;
   width: max-content;
   margin-top: auto;
 }

@@ -24,7 +24,7 @@
 }
 
 .creator-notifications-label {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -42,7 +42,7 @@
 }
 
 .notification-label {
-  font-family: "Lato";
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -51,7 +51,7 @@
 }
 
 .notification-timeline {
-  font-family: "Lato";
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
@@ -60,7 +60,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-
   .creator-notifications-container,
   .best-practices-container {
     height: 124px;

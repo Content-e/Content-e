@@ -87,7 +87,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
             </video>
           ) : _.isEmpty(tiktokVideo) ? (
             <div className="flex items-center">
-                <Spinner className="w-8 h-8" />
+              <Spinner className="w-8 h-8" />
             </div>
           ) : tiktokVideo.videoUrl ? (
             <iframe

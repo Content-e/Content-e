@@ -67,13 +67,22 @@ export const HomePageLogin: React.FC = () => {
           <a
             target="_blank"
             href="https://www.linkedin.com/company/edcsquared/"
+            rel="noreferrer"
           >
             <img src="/images/landing-linkedin.svg" />
           </a>
-          <a target="_blank" href="https://www.instagram.com/edcsq/">
+          <a
+            target="_blank"
+            href="https://www.instagram.com/edcsq/"
+            rel="noreferrer"
+          >
             <img src="/images/landing-insta.svg" />
           </a>
-          <a target="_blank" href="https://www.tiktok.com/@edcsquared">
+          <a
+            target="_blank"
+            href="https://www.tiktok.com/@edcsquared"
+            rel="noreferrer"
+          >
             <img src="/images/landing-tiktok.svg" />
           </a>
         </div>

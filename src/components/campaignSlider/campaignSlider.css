@@ -32,10 +32,10 @@
 }
 
 .carousel-control-prev:hover {
-  background: #CA6702;
+  background: #ca6702;
 }
 .carousel-control-next:hover {
-  background: #CA6702;
+  background: #ca6702;
 }
 
 .carousel-inner {
@@ -50,8 +50,7 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 120%;
-  color: #CA6702;
-  
+  color: #ca6702;
 }
 
 .campaign-slider-container {
@@ -115,14 +114,14 @@
   padding: 16px 32px 14px;
   width: 260px;
   height: 51px;
-  background: #BB3E03;
+  background: #bb3e03;
   border-radius: 40px;
   font-family: 'Google Sans';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 130%;
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
 }
 

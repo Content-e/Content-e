@@ -8,7 +8,7 @@
 }
 
 .login_title {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-weight: 700;
   font-size: 22px;
   line-height: 26px;
@@ -17,7 +17,7 @@
 }
 
 .login_or {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
@@ -38,7 +38,7 @@
   justify-content: center;
   outline: none;
   border: none;
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-weight: 300;
   font-size: 12px;
   line-height: 14px;
@@ -52,7 +52,7 @@
 
 .login_already {
   text-align: center;
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
@@ -79,7 +79,7 @@
 }
 
 .login_remember {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
@@ -88,7 +88,7 @@
 }
 
 .login_forgot {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;

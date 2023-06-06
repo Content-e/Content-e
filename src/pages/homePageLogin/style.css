@@ -62,7 +62,7 @@
   .home-page-login-page-menu-header
   .home-page-login-page-menu
   .home-page-login-page-menu-items {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -133,7 +133,7 @@
 .home-page-login-page-wrapper
   .home-page-login-page-body
   .home-page-login-page-title {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 60px;
@@ -143,7 +143,7 @@
 .home-page-login-page-wrapper
   .home-page-login-page-body
   .home-page-login-page-subtitle {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   margin-top: 25px;
   font-style: normal;
   font-weight: 300;
@@ -155,7 +155,7 @@
 }
 
 .home-page-login-content-container-gradient {
-  background-image: url("../../../public/images/glass-image.svg");
+  background-image: url('../../../public/images/glass-image.svg');
   padding: 31px 45px 0px 35px;
   border-radius: 50px;
   background-repeat: no-repeat;
@@ -165,7 +165,7 @@
 }
 
 .login-signup {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -184,7 +184,7 @@
 }
 
 .home-page-login-page-workBtn {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -199,7 +199,7 @@
 }
 
 .ask-us-anything {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -231,7 +231,7 @@
 }
 
 .home-page-login-footer-text {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
   font-size: 10px;
@@ -241,7 +241,7 @@
 }
 
 .home-page-login-input-text {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -264,7 +264,7 @@
 }
 
 .home-page-login-input::placeholder {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -280,7 +280,7 @@
   background: #e5d7ad;
   border: 1px solid #b6e6ad;
   border-radius: 20px;
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -340,7 +340,7 @@
   .home-page-login-page-wrapper
     .home-page-login-page-body
     .home-page-login-page-title {
-    font-family: "Raleway";
+    font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
@@ -352,7 +352,7 @@
   .home-page-login-page-wrapper
     .home-page-login-page-body
     .home-page-login-page-subtitle {
-    font-family: "Raleway";
+    font-family: 'Raleway';
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
@@ -386,7 +386,7 @@
   }
 
   .home-page-login-menu-option {
-    font-family: "Raleway";
+    font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
     font-size: 14px;

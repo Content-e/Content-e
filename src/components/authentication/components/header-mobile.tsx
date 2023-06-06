@@ -86,6 +86,7 @@ export const HeaderMobile = () => {
                 <a
                   target="_blank"
                   href="https://www.linkedin.com/company/edcsquared/"
+                  rel="noreferrer"
                 >
                   <img
                     src="/images/linkedin.png"
@@ -95,7 +96,11 @@ export const HeaderMobile = () => {
                 </a>
               </div>
               <div>
-                <a target="_blank" href="https://www.instagram.com/edcsq/">
+                <a
+                  target="_blank"
+                  href="https://www.instagram.com/edcsq/"
+                  rel="noreferrer"
+                >
                   <img
                     src="/images/instagram.png"
                     alt="instagram-icon"
@@ -104,7 +109,11 @@ export const HeaderMobile = () => {
                 </a>
               </div>
               <div>
-                <a target="_blank" href="https://www.tiktok.com/@edcsquared">
+                <a
+                  target="_blank"
+                  href="https://www.tiktok.com/@edcsquared"
+                  rel="noreferrer"
+                >
                   <img
                     src="/images/tiktok.png"
                     alt="tiktok-icon"
