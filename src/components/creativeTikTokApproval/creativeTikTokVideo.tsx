@@ -34,7 +34,7 @@ export const CreativeTikTokVideo: FC<Props> = ({
         <div className="creative-video-panel">
           <div className="creative-video-container">
             <div className="creative-inspiration-header">
-              <div className="creative-inspiration-text">
+              <div className="text-xl font-bold text-primary">
                 Creative's TikTok Video
               </div>
               <img
