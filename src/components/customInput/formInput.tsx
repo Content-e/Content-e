@@ -31,7 +31,7 @@ export default function Input<T extends FieldValues>({
   // const labelName = label ?? String(name);
 
   return (
-    <fieldset className={`flex flex-col ${className}`}>
+    <S.FieldSet className={`flex flex-col ${className}`}>
       {/* {labelName && <S.InputLabel>{labelName}</S.InputLabel>} */}
       <S.Input
         id={name}
@@ -44,6 +44,6 @@ export default function Input<T extends FieldValues>({
         {...rest}
       />
       {error?.message && <S.ParagraphError>{error.message}</S.ParagraphError>}
-    </fieldset>
+    </S.FieldSet>
   );
 }
