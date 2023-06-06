@@ -49,6 +49,6 @@ export const allowedSubDomains = ['localhost', 'sa', 'staging'];
 
 export enum CreativeRequestStatus {
   New = 'new',
-  Accept = 'accept',
-  Reject = 'reject',
+  Accept = 'accepted',
+  Reject = 'rejected',
 }
