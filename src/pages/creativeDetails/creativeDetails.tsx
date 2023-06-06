@@ -59,8 +59,8 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
           </GradientCard>
         </div>
       </section>
-      <section className="grid lg:grid-cols-4 grid-cols-1 gap-8">
-        <div className="paper w-full lg:col-span-3">
+      <section className="grid 2xl:grid-cols-4 xl:grid-cols-2 grid-cols-1 gap-8">
+        <div className="paper w-full 2xl:col-span-3">
           <h1 className="text-lg text-primary font-bold">Creator profile</h1>
           <p>{creativeRequest.creatorDescription}</p>
         </div>

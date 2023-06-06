@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { FC, useEffect, useState } from 'react';
 import { CreativeRequestStatus, UnknownType } from 'utils';
 import { CreativeRequest } from 'API';
@@ -6,6 +7,7 @@ import { Storage } from 'aws-amplify';
 import Button from 'components/ui/button';
 import Modal from 'components/ui/modal';
 import Status from 'components/ui/status';
+import Spinner from 'components/ui/spinner';
 
 interface Props {
   request?: CreativeRequest | null;
@@ -78,15 +80,18 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
 
       <section className="paper">
         <h1 className="text-lg text-primary font-bold">Creative</h1>
-        <div className="m-2 flex justify-center items-center">
-          {loading && 'LOADING'}
+        <div className="m-2 flex justify-center min-h-[750px]">
           {awsURL ? (
             <video controls className="outline-none" autoFocus autoPlay muted>
               <source src={awsURL} />
             </video>
-          ) : tiktokVideo?.videoUrl ? (
+          ) : _.isEmpty(tiktokVideo) ? (
+            <div className="flex items-center">
+                <Spinner className="w-8 h-8" />
+            </div>
+          ) : tiktokVideo.videoUrl ? (
             <iframe
-              className="creative-video-iframe"
+              className="w-[325px] h-[740px] overflow-y-hidden"
               src={tiktokVideo?.videoUrl}
               name={`video-${tiktokVideo?.videoUrl}`}
               // eslint-disable-next-line max-len
@@ -96,7 +101,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
             <p className="prose text-danger font-bold">Failed to load TikTok</p>
           )}
         </div>
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-4">
           {request?.status === CreativeRequestStatus.New ? (
             <div className="flex gap-4">
               <Button onClick={onApprove}>Approve</Button>
