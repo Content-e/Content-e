@@ -12,6 +12,7 @@ import moment from 'moment';
 import Table from 'components/ui/table';
 import { createColumnHelper } from '@tanstack/react-table';
 import { CheckIcon } from '@heroicons/react/24/solid';
+import Status from 'components/ui/status';
 
 const columnHelper = createColumnHelper<IBriefListElems | null | undefined>();
 
@@ -41,15 +42,7 @@ export const columns = [
   }),
   columnHelper.accessor('status', {
     header: 'Status',
-    cell: (info) => (
-      <span
-        className={`uppercase font-bold ${
-          info.getValue() === 'new' ? 'text-success' : 'text-danger'
-        }`}
-      >
-        • {info.getValue()}
-      </span>
-    ),
+    cell: (info) => <Status value={info.getValue() || ''} />,
   }),
 ];
 

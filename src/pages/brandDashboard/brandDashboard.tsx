@@ -1,22 +1,35 @@
 import _ from 'lodash';
 import './brandDashboard.css';
-import { FC, useState } from 'react';
-import {
-  BrandBriefProps,
-  ISelectredRequest,
-  withBrandBriefs,
-} from 'state/brandBrief';
+import { FC, useMemo, useState } from 'react';
+import { BrandBriefProps, withBrandBriefs } from 'state/brandBrief';
 import BrandInfo from './brandInfo';
 import CreativeDetails from 'pages/creativeDetails/creativeDetails';
 import { BrandBrief } from 'API';
 import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetails';
-import { columns as creativeColumns } from 'components/creativesTable/creativesTable';
+import {
+  columns as creativeColumns,
+  RequestWithBrief,
+} from 'components/creativesTable/creativesTable';
 import { columns as brandBriefColumns } from 'pages/brandBriefs/brandBriefs';
 import Table from 'components/ui/table';
 
 export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
-  const [selectedRequest, setSelectedRequest] = useState<ISelectredRequest>();
+  const [selectedRequest, setSelectedRequest] = useState<RequestWithBrief>();
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
+
+  const requests = useMemo(
+    () =>
+      _.sortBy(
+        _.compact(props.data).flatMap((brief) =>
+          _.compact(brief.creativeRequests?.items).map((item) => ({
+            ...item,
+            brief,
+          }))
+        ),
+        'updatedAt'
+      ).reverse(),
+    [props.data]
+  ) satisfies RequestWithBrief[];
 
   if (selectedBrief)
     return (
@@ -34,23 +47,17 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
         onBack={(): void => setSelectedRequest(undefined)}
       />
     );
+
   return (
     <div className="grid md:grid-cols-2 gap-5">
       <section className="md:col-span-2 paper">
         <Table
           title="Creatives"
-          data={props.data || []}
+          data={requests}
           isLoading={loading}
           columns={_.at(creativeColumns, [2, 1, 0, 5])}
           primaryField="BriefName"
-          onRowClick={(brief) =>
-            brief &&
-            setSelectedRequest({
-              briefId: brief.id,
-              requestId: 'TODO',
-              authCode: 'TODO',
-            })
-          }
+          onRowClick={(request) => request && setSelectedRequest(request)}
         />
       </section>
       <section className="paper">

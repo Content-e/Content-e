@@ -1,17 +1,16 @@
 import { FC, useMemo, useState } from 'react';
 import { BrandBrief } from 'API';
-import { ISelectredRequest } from 'state/brandBrief';
 import CreativeTikTokApproval from 'components/creativeTikTokApproval/creativeTikTokApproval';
 import Button from 'components/ui/button';
 import { default as ModalBase } from 'components/ui/modal';
 import { withProfile } from 'state/profileSteps';
 import { ProfileProps } from 'utils';
 import GradientCard from 'components/gradientCard/gradientCard';
-import { useHistory } from 'react-router-dom';
+import { RequestWithBrief } from 'components/creativesTable/creativesTable';
 
 interface Props {
   data?: Array<BrandBrief | null>;
-  selectedRequest: ISelectredRequest;
+  selectedRequest: RequestWithBrief;
   onBack: () => void;
 }
 
@@ -22,22 +21,21 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
   profileState,
 }) => {
   const [showDetails, setShowDetails] = useState(false);
-  const history = useHistory();
 
   const brief = useMemo(
-    () => data?.find((e) => e?.id === selectedRequest.briefId),
+    () => data?.find((e) => e?.id === selectedRequest.brandBriefId),
     [data, selectedRequest]
   );
   const request = useMemo(() => {
     const req = brief?.creativeRequests?.items;
-    return req?.find((e) => e?.id === selectedRequest.requestId);
+    return req?.find((e) => e?.id === selectedRequest.id);
   }, [brief]);
 
   return (
     <>
       <section>
         <div className="flex justify-end">
-          <Button onClick={history.goBack} variant="secondary">
+          <Button onClick={onBack} variant="secondary">
             Back
           </Button>
         </div>
@@ -85,8 +83,8 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
             inspiration={brief?.creativeInspirations}
             createAdPayload={{
               adgroupId: brief?.adgroupId,
-              authCode: selectedRequest.authCode,
-              creativeRequestId: selectedRequest.requestId,
+              authCode: 'TODO', // What should be here?
+              creativeRequestId: selectedRequest.id,
             }}
           />
         )}

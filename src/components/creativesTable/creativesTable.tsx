@@ -1,56 +1,79 @@
 import { createColumnHelper } from '@tanstack/react-table';
-import { BrandBrief } from 'API';
+import { BrandBrief, CreativeRequest } from 'API';
+import Status from 'components/ui/status';
 import Table from 'components/ui/table';
+import _ from 'lodash';
 import CreativeDetails from 'pages/creativeDetails/creativeDetails';
-import { FC, useState } from 'react';
-import {
-  BrandBriefProps,
-  ISelectredRequest,
-  withBrandBriefs,
-} from 'state/brandBrief';
+import { FC, useMemo, useState } from 'react';
+import { ICreatorBriefListProps, withCreatorBriefList } from 'state/dashboard';
 
-const columnHelper = createColumnHelper<BrandBrief | null | undefined>();
+export type RequestWithBrief = CreativeRequest & {
+  brief?: BrandBrief;
+};
+
+const columnHelper = createColumnHelper<RequestWithBrief | null | undefined>();
 
 export const columns = [
-  columnHelper.accessor('BriefName', {
-    header: 'Brief Name',
+  columnHelper.accessor('brief.BriefName', {
+    header: 'Campaign Brief Name',
   }),
-  columnHelper.accessor('brandProfile.tiktokHandle', {
+  columnHelper.accessor('creativeTiktokHandle', {
     header: 'Creator handle',
   }),
-  columnHelper.accessor('creativeInspirations', {
+  columnHelper.accessor('tiktokCreativeUrl', {
     header: 'Creative link',
     cell: (info) =>
       info.getValue()?.[0] && (
         <div className="flex">
           <img alt="" src="/images/link-icon.svg" className="mr-2" />
           <span className="text-ellipsis overflow-hidden">
-            {info.getValue()?.[0]}
+            {info.getValue()}
           </span>
         </div>
       ),
   }),
   columnHelper.display({
     header: 'View count',
+    cell: '0',
   }),
   columnHelper.display({
     header: 'Engagement',
+    cell: '0%',
   }),
-  columnHelper.display({
+  columnHelper.accessor('status', {
     header: 'Status',
+    cell: (info) => <Status value={info.getValue()} />,
   }),
 ];
 
-export const CreativesTable: FC<BrandBriefProps> = (props) => {
+export const CreativesTable: FC<ICreatorBriefListProps> = ({
+  briefList,
+  loading,
+}) => {
   const [searchText, setSearchText] = useState('');
-  const [selectedRequest, setSelectedRequest] = useState<ISelectredRequest>();
+  const [selectedRequest, setSelectedRequest] =
+    useState<RequestWithBrief | null>(null);
+
+  const requests = useMemo(
+    () =>
+      _.sortBy(
+        _.compact(briefList).flatMap((brief) =>
+          _.compact(brief.creativeRequests?.items).map((item) => ({
+            ...item,
+            brief,
+          }))
+        ),
+        'updatedAt'
+      ).reverse(),
+    [briefList]
+  ) satisfies RequestWithBrief[];
 
   if (selectedRequest)
     return (
       <CreativeDetails
-        {...props}
+        data={briefList || []}
         selectedRequest={selectedRequest}
-        onBack={(): void => setSelectedRequest(undefined)}
+        onBack={() => setSelectedRequest(null)}
       />
     );
 
@@ -76,20 +99,13 @@ export const CreativesTable: FC<BrandBriefProps> = (props) => {
         <Table
           title="Creatives"
           primaryField="BriefName"
-          data={props.data || []}
+          data={requests}
           columns={columns}
-          isLoading={props.loading}
-          onRowClick={(brief) =>
-            brief &&
-            setSelectedRequest({
-              briefId: brief.id,
-              requestId: 'TODO',
-              authCode: 'TODO',
-            })
-          }
+          isLoading={loading}
+          onRowClick={(brief) => brief && setSelectedRequest(brief)}
         />
       </section>
     </div>
   );
 };
-export default withBrandBriefs(CreativesTable);
+export default withCreatorBriefList(CreativesTable);
