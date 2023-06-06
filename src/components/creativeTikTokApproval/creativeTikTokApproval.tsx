@@ -6,7 +6,6 @@ import { ViewRequestProps, withRequestView } from 'state/requests';
 import CreativeTikTokVideo from './creativeTikTokVideo';
 import { Storage } from 'aws-amplify';
 import Button from 'components/ui/button';
-import _ from 'lodash';
 
 interface Props {
   request?: CreativeRequest | null;

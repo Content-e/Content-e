@@ -34,7 +34,7 @@ export const CreativeTikTokVideo: FC<Props> = ({
       >
         <div className="m-8 flex justify-center items-center">
           {awsURL ? (
-            <video controls className="w-full">
+            <video controls className="w-full" autoPlay>
               <source src={awsURL} />
             </video>
           ) : (
