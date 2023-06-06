@@ -71,7 +71,7 @@ export const CreativesTable: FC<ICreatorBriefListProps> = ({
   if (selectedRequest)
     return (
       <CreativeDetails
-        selectedRequest={selectedRequest}
+        creativeRequest={selectedRequest}
         onBack={() => setSelectedRequest(null)}
       />
     );

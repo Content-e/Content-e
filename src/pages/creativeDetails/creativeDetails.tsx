@@ -8,14 +8,13 @@ import GradientCard from 'components/gradientCard/gradientCard';
 import { RequestWithBrief } from 'components/creativesTable/creativesTable';
 
 interface Props {
-  selectedRequest: RequestWithBrief;
+  creativeRequest: RequestWithBrief;
   onBack: () => void;
 }
 
 export const CreativeDetails: FC<Props & ProfileProps> = ({
-  selectedRequest,
+  creativeRequest,
   onBack,
-  profileState,
 }) => {
   const [showDetails, setShowDetails] = useState(false);
 
@@ -39,15 +38,15 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
               />
             </div>
             <h3 className="text-2xl font-bold">
-              {selectedRequest?.creativeTiktokHandle
-                ? `@${selectedRequest?.creativeTiktokHandle}`
+              {creativeRequest?.creativeTiktokHandle
+                ? `@${creativeRequest?.creativeTiktokHandle}`
                 : ''}
             </h3>
           </GradientCard>
           <GradientCard>
             Objective
             <h3 className="text-2xl font-bold">
-              {selectedRequest.brief?.BriefName}
+              {creativeRequest.brief?.BriefName}
             </h3>
           </GradientCard>
           <GradientCard>
@@ -63,18 +62,18 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
       <section className="grid lg:grid-cols-2 grid-cols-1 gap-8">
         <div className="paper w-full">
           <h1 className="text-lg text-primary font-bold">Creator profile</h1>
-          <p>{profileState.data?.description}</p>
+          <p>{creativeRequest.creatorDescription}</p>
         </div>
-        {selectedRequest && (
+        {creativeRequest && (
           <CreativeTikTokApproval
-            id={selectedRequest?.id}
+            id={creativeRequest?.id}
             onClose={onBack}
-            request={selectedRequest}
-            inspiration={selectedRequest.brief?.creativeInspirations}
+            request={creativeRequest}
+            inspiration={creativeRequest.brief?.creativeInspirations}
             createAdPayload={{
-              adgroupId: selectedRequest.brief?.adgroupId,
+              adgroupId: creativeRequest.brief?.adgroupId,
               authCode: 'TODO', // What should be here?
-              creativeRequestId: selectedRequest.id,
+              creativeRequestId: creativeRequest.id,
             }}
           />
         )}
@@ -85,16 +84,17 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
         >
           <div className="flex flex-col gap-4 mt-6 text-neutral-400">
             <span>
-              <b>Creator name:</b> {profileState.data?.name}
+              {/*TODO: propagate name here somehow*/}
+              <b>Creator name:</b> {creativeRequest.creativeTiktokHandle}
             </span>
             <span>
               <b>Creator's TikTok handle:</b>{' '}
-              {selectedRequest?.creativeTiktokHandle
-                ? `@${selectedRequest?.creativeTiktokHandle}`
+              {creativeRequest?.creativeTiktokHandle
+                ? `@${creativeRequest?.creativeTiktokHandle}`
                 : ''}
             </span>
             <span>
-              <b>Creator's description:</b> {profileState.data?.description}
+              <b>Creator's description:</b> {creativeRequest.creatorDescription}
             </span>
           </div>
           <div className="w-full flex justify-center text-white mt-5">

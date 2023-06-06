@@ -42,8 +42,7 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
   if (selectedRequest)
     return (
       <CreativeDetails
-        {...props}
-        selectedRequest={selectedRequest}
+        creativeRequest={selectedRequest}
         onBack={(): void => setSelectedRequest(undefined)}
       />
     );
