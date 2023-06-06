@@ -68,12 +68,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
           Clicking confirm below will add this creative to your campaign and
           will start spending.
         </p>
-        {errorMsg && (
-          <p className="prose my-8 text-danger">
-            Clicking confirm below will add this creative to your campaign and
-            will start spending.
-          </p>
-        )}
+        {errorMsg && <p className="prose my-8 text-danger">{errorMsg}</p>}
         <div className="flex justify-center">
           <Button onClick={onOkay} isLoading={loading} disabled={loading}>
             Confirm
@@ -98,10 +93,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
               sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation allow-same-origin"
             />
           ) : (
-            <p className="prose text-danger font-bold">
-              There was an error fetching TikTok video{' '}
-              {errorMsg && `: ${errorMsg}`}
-            </p>
+            <p className="prose text-danger font-bold">Failed to load TikTok</p>
           )}
         </div>
         <div className="flex justify-center mt-6">
