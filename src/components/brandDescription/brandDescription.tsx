@@ -39,22 +39,22 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
         </div>
         <p className="text-gray-500 prose my-8">{detail}</p>
       </section>
-      <div className="w-full flex justify-center">
-        {authenticatedUrls.length > 0 && (
-          <Button onClick={() => setShowInspiration(true)}>
-            CREATIVE INSPIRATION
-          </Button>
-        )}
-        {data?.userType === USER_TYPES.CREATIVE_USER &&
-          isVideoLinked &&
-          status === "new" && (
-            <div
-              className="creator-dashboard__creative-btn link"
-              onClick={(): void => setPopupVisibility(true)}
-            >
-              Link Creative
-            </div>
-          )}
+      <div className="w-full flex justify-center gap-4">
+        <Button
+          onClick={() => setShowInspiration(true)}
+          disabled={authenticatedUrls.length <= 0}
+        >
+          CREATIVE INSPIRATION
+        </Button>
+        <Button
+          className="creator-dashboard__creative-btn link"
+          onClick={(): void => setPopupVisibility(true)}
+          disabled={!(data?.userType === USER_TYPES.CREATIVE_USER &&
+            isVideoLinked &&
+            status === "new")}
+        >
+          Link Creative
+        </Button>
       </div>
       {showPopup && (
         <AuthorizeTikTokHandler
