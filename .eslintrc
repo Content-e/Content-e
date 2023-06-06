@@ -19,7 +19,6 @@
     "no-extra-semi": 0,
     "no-restricted-syntax": [2, "WithStatement"],
     "no-console": 0,
-    "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/no-var-requires": 1,
     "max-len": [
       1,

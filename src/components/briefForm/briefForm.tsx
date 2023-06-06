@@ -3,11 +3,12 @@ import Button from 'components/ui/button';
 import Input from 'components/ui/input';
 import Label from 'components/ui/label';
 import Select from 'components/ui/select';
+import Spinner from 'components/ui/spinner';
 import Switch from 'components/ui/switch';
 import TextArea from 'components/ui/textArea';
 import useZodForm from 'hooks/useZodForm';
 import _ from 'lodash';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { SaveBriefProps } from 'state/brandBrief';
 import withSaveBrief from 'state/brandBrief/withSaveBriefHoc';
@@ -34,9 +35,10 @@ const defaultValues = {
 };
 
 function BriefForm({
-  // getAdGroups, // use campaignId to fetch
-  // dataLoading,
-  // listCampaigns,
+  getAdGroups,
+  listAdGroups,
+  dataLoading,
+  listCampaigns,
   saveData,
   loading,
   response,
@@ -46,6 +48,7 @@ function BriefForm({
 
   const {
     register,
+    watch,
     control,
     handleSubmit,
     reset,
@@ -64,7 +67,31 @@ function BriefForm({
         ...briefState,
       });
     }
-  }, [briefState]);
+  }, [briefState, reset]);
+
+  const campaignOptions = useMemo(
+    () =>
+      listCampaigns.map((item) => ({
+        text: item.value,
+        value: item.id,
+      })),
+    [listCampaigns]
+  );
+
+  const adGroupOptions = useMemo(
+    () =>
+      listAdGroups.map((item) => ({
+        text: item.value,
+        value: item.id,
+      })),
+    [listAdGroups]
+  );
+
+  const selectedCampaign = watch('campaignId');
+
+  useEffect(() => {
+    getAdGroups(selectedCampaign);
+  }, [selectedCampaign]); // Adding getAdGroups as dependency causes a loop due to a effect hell in HOCs
 
   const onSubmit = handleSubmit(async (data) => {
     console.log(data);
@@ -97,20 +124,26 @@ function BriefForm({
               name="campaignId"
               label="Select TikTok campaign to link to"
               placeholder="Select an option"
-              options={[
-                { text: 'Fake Campaign 1', value: 'fake1' },
-                { text: 'Fake Campaign 2', value: 'fake2' },
-              ]}
+              options={campaignOptions}
               control={control}
               errors={errors}
             />
-            <Input
-              required
-              name="adgroupId"
-              label="Ad group"
-              register={register}
-              errors={errors}
-            />
+            {selectedCampaign &&
+              (dataLoading ? (
+                <div className="flex justify-center my-12">
+                  <Spinner className="w-6 h-6" />
+                </div>
+              ) : (
+                <Select
+                  required
+                  name="adgroupId"
+                  label="Ad group"
+                  placeholder="Select an option"
+                  options={adGroupOptions}
+                  control={control}
+                  errors={errors}
+                />
+              ))}
             <Input
               required
               name="objective"
@@ -123,6 +156,7 @@ function BriefForm({
             <Label name="Creative inspiration" />
             {_.times(4).map((index) => (
               <Input
+                key={index}
                 name={`creativeInspirations.${index}`}
                 className="mb-14 mt-8"
                 placeholder="Paste creative URL"
