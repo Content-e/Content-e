@@ -1,15 +1,15 @@
-import "./bestPractices.css";
-import { FC, Fragment, useEffect, useState } from "react";
-import { getActiveBestPractice } from "hooks";
-import { BestPractices as IBestPractice } from "API";
-import SinglePracticeMini from "./singlePracticeMini";
+import './bestPractices.css';
+import { FC, Fragment, useEffect, useState } from 'react';
+import { getActiveBestPractice } from 'hooks';
+import { BestPractices as IBestPractice } from 'API';
+import SinglePracticeMini from './singlePracticeMini';
 
 export const BestPractices: FC = () => {
   const { getActivePractice, data, loading } = getActiveBestPractice();
   const [practice, setPractice] = useState<IBestPractice>();
 
   useEffect(() => {
-    getActivePractice({ variables: { active: "true" } });
+    getActivePractice({ variables: { active: 'true' } });
   }, []);
 
   useEffect(() => {

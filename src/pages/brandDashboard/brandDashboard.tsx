@@ -1,18 +1,18 @@
-import _ from "lodash";
-import "./brandDashboard.css";
-import { FC, useState } from "react";
+import _ from 'lodash';
+import './brandDashboard.css';
+import { FC, useState } from 'react';
 import {
   BrandBriefProps,
   ISelectredRequest,
   withBrandBriefs,
-} from "state/brandBrief";
-import BrandInfo from "./brandInfo";
-import CreativeDetails from "pages/creativeDetails/creativeDetails";
-import { BrandBrief } from "API";
-import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
-import { columns as creativeColumns } from "components/creativesTable/creativesTable";
-import { columns as brandBriefColumns } from "pages/brandBriefs/brandBriefs";
-import Table from "components/ui/table";
+} from 'state/brandBrief';
+import BrandInfo from './brandInfo';
+import CreativeDetails from 'pages/creativeDetails/creativeDetails';
+import { BrandBrief } from 'API';
+import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetails';
+import { columns as creativeColumns } from 'components/creativesTable/creativesTable';
+import { columns as brandBriefColumns } from 'pages/brandBriefs/brandBriefs';
+import Table from 'components/ui/table';
 
 export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
   const [selectedRequest, setSelectedRequest] = useState<ISelectredRequest>();
@@ -47,8 +47,8 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
             brief &&
             setSelectedRequest({
               briefId: brief.id,
-              requestId: "TODO",
-              authCode: "TODO",
+              requestId: 'TODO',
+              authCode: 'TODO',
             })
           }
         />

@@ -1,20 +1,20 @@
-import _ from "lodash";
-import BestPractices from "components/bestPractices/bestPractices";
-import CreatorNotifications from "components/creatorNotifications/creatorNotifications";
-import CreatorStatsCard from "components/creatorStatsCard/creatorStatsCard";
-import "./creatorDashboard.css";
-import { CreatorDashboardBoxes } from "utils";
-import { BrandBrief } from "API";
-import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
-import { useEffect, useState } from "react";
+import _ from 'lodash';
+import BestPractices from 'components/bestPractices/bestPractices';
+import CreatorNotifications from 'components/creatorNotifications/creatorNotifications';
+import CreatorStatsCard from 'components/creatorStatsCard/creatorStatsCard';
+import './creatorDashboard.css';
+import { CreatorDashboardBoxes } from 'utils';
+import { BrandBrief } from 'API';
+import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetails';
+import { useEffect, useState } from 'react';
 import {
   IBriefListElems,
   ICreatorBriefListProps,
   withCreatorBriefList,
-} from "state/dashboard";
-import Table from "components/ui/table";
-import { columns } from "pages/campaignBriefs/campaignBriefs";
-import moment from "moment";
+} from 'state/dashboard';
+import Table from 'components/ui/table';
+import { columns } from 'pages/campaignBriefs/campaignBriefs';
+import moment from 'moment';
 
 function CreatorDashboard({
   data: profileData,
@@ -25,7 +25,7 @@ function CreatorDashboard({
 }: ICreatorBriefListProps & Record<string, any>) {
   const [data, setData] = useState<Array<IBriefListElems>>([]);
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
-  const [selectedBriefStatus, setSelectedBriefStatus] = useState("");
+  const [selectedBriefStatus, setSelectedBriefStatus] = useState('');
 
   useEffect(() => {
     if (!loading && !error && requestList && briefList) {
@@ -34,7 +34,7 @@ function CreatorDashboard({
         if (brief) {
           const { BriefName, brandProfile, vertical, objective, id } = brief;
           const status =
-            requestList.find((e) => e?.brandBriefId === id)?.status || "new";
+            requestList.find((e) => e?.brandBriefId === id)?.status || 'new';
           output.push({
             id,
             briefName: BriefName,
@@ -54,7 +54,7 @@ function CreatorDashboard({
     }
   }, [briefList, requestList, loading, error]);
 
-  console.log(" DASHBOARD", { profileData });
+  console.log(' DASHBOARD', { profileData });
 
   if (selectedBrief)
     return (
@@ -74,17 +74,17 @@ function CreatorDashboard({
             value={`$${
               profileData.userWallet
                 ? profileData.userWallet.currentBalance
-                : "0"
+                : '0'
             }`}
           />
-          <CreatorStatsCard type={CreatorDashboardBoxes.Approval} value={"0"} />
+          <CreatorStatsCard type={CreatorDashboardBoxes.Approval} value={'0'} />
           <CreatorStatsCard
             type={CreatorDashboardBoxes.Conversion}
-            value={"0"}
+            value={'0'}
           />
           <CreatorStatsCard
             type={CreatorDashboardBoxes.ClickThrough}
-            value={"0"}
+            value={'0'}
           />
         </div>
       </div>
@@ -99,7 +99,7 @@ function CreatorDashboard({
             if (request) {
               const brief = _.find(briefList, { BriefName: request.briefName });
               if (brief) {
-                setSelectedBriefStatus(request.status || "");
+                setSelectedBriefStatus(request.status || '');
                 setSelectedBrief(brief);
               }
             }

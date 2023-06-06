@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import withApolloProvider from "hooks/apollo/withApollo";
-import { getBrandBriefList } from "hooks";
-import { BrandBriefProps } from "./brandBrief.interface";
-import { BrandBrief } from "API";
-import { ProfileContext } from "state/profileSteps";
+import React, { useContext, useEffect, useState } from 'react';
+import withApolloProvider from 'hooks/apollo/withApollo';
+import { getBrandBriefList } from 'hooks';
+import { BrandBriefProps } from './brandBrief.interface';
+import { BrandBrief } from 'API';
+import { ProfileContext } from 'state/profileSteps';
 
 export function withBrandBriefs<T>(
   Component: React.FC<T & BrandBriefProps>

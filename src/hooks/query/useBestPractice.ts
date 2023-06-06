@@ -1,4 +1,4 @@
-import { useLazyQuery, useMutation } from "@apollo/client";
+import { useLazyQuery, useMutation } from '@apollo/client';
 import {
   CreateBestPracticesMutation,
   CreateBestPracticesMutationVariables,
@@ -6,12 +6,12 @@ import {
   ListBestPracticesQueryVariables,
   UpdateBestPracticesMutation,
   UpdateBestPracticesMutationVariables,
-} from "API";
-import { createBestPractices, updateBestPractices } from "graphql/mutations";
-import { listBestPractices as listAllPractices } from "graphql/queries";
-import { ICreatePracticeResponse, IEditPracticeResponse } from "hooks/utils";
-import { getQuery } from "hooks/utils/helpers";
-import { ListAllBestPracticeProps } from "utils";
+} from 'API';
+import { createBestPractices, updateBestPractices } from 'graphql/mutations';
+import { listBestPractices as listAllPractices } from 'graphql/queries';
+import { ICreatePracticeResponse, IEditPracticeResponse } from 'hooks/utils';
+import { getQuery } from 'hooks/utils/helpers';
+import { ListAllBestPracticeProps } from 'utils';
 
 export const createBestPractice = (): ICreatePracticeResponse => {
   const [createBrief, { data, loading, error }] = useMutation<

@@ -1,5 +1,5 @@
-import React, { FC, useState } from "react";
-import * as S from "./styles";
+import React, { FC, useState } from 'react';
+import * as S from './styles';
 
 export const Checkbox: FC = () => {
   const [checked, setChecked] = useState(false);
@@ -12,7 +12,7 @@ export const Checkbox: FC = () => {
           onChange={(): void => {}}
           onClick={(): void => setChecked(!checked)}
         />
-        <S.CheckBoxTick className={checked ? "tickMark" : ""} />
+        <S.CheckBoxTick className={checked ? 'tickMark' : ''} />
       </S.CheckBoxlabel>
     </S.CheckBoxWrapper>
   );

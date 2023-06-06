@@ -1,9 +1,9 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-import HeaderDesktop from "components/authentication/components/header-desktop";
-import HeaderMobile from "components/authentication/components/header-mobile";
-import Footer from "components/authentication/components/footer";
+import HeaderDesktop from 'components/authentication/components/header-desktop';
+import HeaderMobile from 'components/authentication/components/header-mobile';
+import Footer from 'components/authentication/components/footer';
 
 export const PrivacyPolicy: React.FC = () => {
   return (
@@ -137,7 +137,7 @@ export const PrivacyPolicy: React.FC = () => {
               </ul>
               <div className="privacy-policy-text">
                 <p>
-                  We may also collect, use and share{" "}
+                  We may also collect, use and share{' '}
                   <span>Aggregated Data</span> such as statistical or
                   demographic data for any purpose. Aggregated Data could be
                   derived from your personal data but is not considered personal
@@ -151,7 +151,7 @@ export const PrivacyPolicy: React.FC = () => {
                   privacy policy.
                 </p>
                 <p>
-                  We do not collect any{" "}
+                  We do not collect any{' '}
                   <span>Special Categories of Personal Data</span> about you
                   (this includes details about your race or ethnicity, religious
                   or philosophical beliefs, sex life, sexual orientation,
@@ -208,10 +208,10 @@ export const PrivacyPolicy: React.FC = () => {
                   and patterns. We collect this personal data by using cookies[,
                   server logs] and other similar technologies. We may also
                   receive Technical Data about you if you visit other websites
-                  employing our cookies. Please see our cookie policy{" "}
+                  employing our cookies. Please see our cookie policy{' '}
                   <a href="https://www.edcsquared.io/cookiepolicy">
                     https://www.edcsquared.io/cookiepolicy
-                  </a>{" "}
+                  </a>{' '}
                   for further details.
                 </li>
                 <li>
@@ -556,7 +556,7 @@ export const PrivacyPolicy: React.FC = () => {
                 or to alert you when websites set or access cookies. If you
                 disable or refuse cookies, please note that some parts of this
                 website may become inaccessible or not function properly. For
-                more information about the cookies we use, please see{" "}
+                more information about the cookies we use, please see{' '}
                 <a href="https://www.edcsquared.io/cookiepolicy.">
                   https://www.edcsquared.io/cookiepolicy.
                 </a>

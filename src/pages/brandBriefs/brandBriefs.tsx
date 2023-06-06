@@ -1,24 +1,24 @@
-import { BrandBrief } from "API";
-import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
-import { FC, useEffect, useMemo, useState } from "react";
-import { BrandBriefProps, withBrandBriefs } from "state/brandBrief";
-import { Link } from "react-router-dom";
-import { BrandRoutes } from "utils";
-import { createColumnHelper } from "@tanstack/react-table";
-import Table from "components/ui/table";
-import Button from "components/ui/button";
+import { BrandBrief } from 'API';
+import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetails';
+import { FC, useEffect, useMemo, useState } from 'react';
+import { BrandBriefProps, withBrandBriefs } from 'state/brandBrief';
+import { Link } from 'react-router-dom';
+import { BrandRoutes } from 'utils';
+import { createColumnHelper } from '@tanstack/react-table';
+import Table from 'components/ui/table';
+import Button from 'components/ui/button';
 
 const columnHelper = createColumnHelper<BrandBrief | null | undefined>();
 
 export const columns = [
-  columnHelper.accessor("BriefName", {
-    header: "Brief Name",
+  columnHelper.accessor('BriefName', {
+    header: 'Brief Name',
   }),
-  columnHelper.accessor("brandBriefDetails", {
-    header: "Details",
+  columnHelper.accessor('brandBriefDetails', {
+    header: 'Details',
   }),
-  columnHelper.accessor("creativeInspirations", {
-    header: "Linked TikTok Campaign",
+  columnHelper.accessor('creativeInspirations', {
+    header: 'Linked TikTok Campaign',
     cell: (info) =>
       info.getValue()?.[0] && (
         <div className="flex">
@@ -29,15 +29,15 @@ export const columns = [
         </div>
       ),
   }),
-  columnHelper.accessor("objective", {
-    header: "Objective",
+  columnHelper.accessor('objective', {
+    header: 'Objective',
     cell: (info) => <span className="uppercase">{info.getValue()}</span>,
   }),
   columnHelper.display({
-    header: "Status",
+    header: 'Status',
   }),
   columnHelper.display({
-    header: "Edit",
+    header: 'Edit',
     cell: (info) => (
       <Link
         to={{
@@ -55,11 +55,11 @@ export const columns = [
 ];
 
 export const BrandBriefs: FC<BrandBriefProps> = ({ data, loading }) => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
 
   useEffect(() => {
-    if (data) setInput("");
+    if (data) setInput('');
   }, [data]);
 
   const filteredData = useMemo(

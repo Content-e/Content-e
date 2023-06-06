@@ -1,20 +1,20 @@
-import { USER_TYPES } from "API";
-import { Storage } from "aws-amplify";
-import classNames from "classnames";
-import { getProfileRole, IconLoader, ShouldRender } from "components";
-import { FC, Fragment, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { USER_TYPES } from 'API';
+import { Storage } from 'aws-amplify';
+import classNames from 'classnames';
+import { getProfileRole, IconLoader, ShouldRender } from 'components';
+import { FC, Fragment, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   validateDescription,
   validateFullName,
   validateTiktokHandle,
-} from "state/auth";
+} from 'state/auth';
 import {
   IProfileImageUpload,
   IUpdateProfile,
   IUpdateProfileError,
   withProfile,
-} from "state/profileSteps";
+} from 'state/profileSteps';
 import {
   AuthRoutes,
   defaultProfileError,
@@ -22,9 +22,9 @@ import {
   AllowedProfileSizeKB,
   ProfileProps,
   UnknownType,
-} from "utils";
-import "./creatorProfile.css";
-import Modal from "components/authentication/modal";
+} from 'utils';
+import './creatorProfile.css';
+import Modal from 'components/authentication/modal';
 
 export const EditProfile: FC<ProfileProps> = ({
   editProfile,
@@ -41,12 +41,12 @@ export const EditProfile: FC<ProfileProps> = ({
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const validateProfileForm = (): boolean => {
-    const name = validateFullName(formState?.name || "");
+    const name = validateFullName(formState?.name || '');
     const isCreator = data?.userType === USER_TYPES.CREATIVE_USER ? true : null;
     const description =
-      isCreator && validateDescription(formState?.description || "");
+      isCreator && validateDescription(formState?.description || '');
     const tiktokHandler =
-      isCreator && validateTiktokHandle(formState?.tiktokHandler || "");
+      isCreator && validateTiktokHandle(formState?.tiktokHandler || '');
     if (name || description || tiktokHandler) {
       setFormError({ name, description, tiktokHandler });
       return false;
@@ -78,7 +78,7 @@ export const EditProfile: FC<ProfileProps> = ({
 
   const linkTiktokAccount = (): void => {
     window.open(
-      "https://ads.tiktok.com/marketing_api/auth?app_id=7204753405493903362&state=your_custom_params&redirect_uri=http%3A%2F%2Fwww.edcsquared.io%2Fbranddashboard&rid=8w8cll1xcbs"
+      'https://ads.tiktok.com/marketing_api/auth?app_id=7204753405493903362&state=your_custom_params&redirect_uri=http%3A%2F%2Fwww.edcsquared.io%2Fbranddashboard&rid=8w8cll1xcbs'
     );
   };
 
@@ -112,7 +112,7 @@ export const EditProfile: FC<ProfileProps> = ({
                 <input
                   className="brand-dashboard__profile-input"
                   value={formState.name}
-                  onChange={(e): void => updateState("name", e.target.value)}
+                  onChange={(e): void => updateState('name', e.target.value)}
                 />
                 <ShouldRender if={formError.name}>
                   <span>{formError.name}</span>
@@ -138,7 +138,7 @@ export const EditProfile: FC<ProfileProps> = ({
                       className="brand-dashboard__profile-input"
                       value={formState.tiktokHandler}
                       onChange={(e): void =>
-                        updateState("tiktokHandler", e.target.value)
+                        updateState('tiktokHandler', e.target.value)
                       }
                     />
                     <ShouldRender if={formError.tiktokHandler}>
@@ -153,7 +153,7 @@ export const EditProfile: FC<ProfileProps> = ({
                       className="brand-dashboard__profile-input"
                       value={formState.description}
                       onChange={(e): void =>
-                        updateState("description", e.target.value)
+                        updateState('description', e.target.value)
                       }
                     />
                     <ShouldRender if={formError.description}>

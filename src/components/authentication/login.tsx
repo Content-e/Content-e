@@ -1,25 +1,25 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect } from 'react';
 
-import { FormInput, IconLoader } from "components";
-import HeaderDesktop from "components/authentication/components/header-desktop";
-import HeaderMobile from "components/authentication/components/header-mobile";
-import { Link, useHistory } from "react-router-dom";
+import { FormInput, IconLoader } from 'components';
+import HeaderDesktop from 'components/authentication/components/header-desktop';
+import HeaderMobile from 'components/authentication/components/header-mobile';
+import { Link, useHistory } from 'react-router-dom';
 
-import { useLogin } from "hooks";
-import { withAuth } from "state/auth";
-import { AuthProps, UnAuthRoutes, unverifiedUser } from "utils";
+import { useLogin } from 'hooks';
+import { withAuth } from 'state/auth';
+import { AuthProps, UnAuthRoutes, unverifiedUser } from 'utils';
 
-import useZodForm from "hooks/useZodForm";
-import { z } from "zod";
-import init from "zod-empty";
-import Footer from "./components/footer";
-import "./styles/login.scss";
-import Checkbox from "components/ui/checkbox";
-import { Auth } from "aws-amplify";
+import useZodForm from 'hooks/useZodForm';
+import { z } from 'zod';
+import init from 'zod-empty';
+import Footer from './components/footer';
+import './styles/login.scss';
+import Checkbox from 'components/ui/checkbox';
+import { Auth } from 'aws-amplify';
 
 const schema = z.object({
   email: z.string().email(),
-  password: z.string().nonempty("Please enter your password"),
+  password: z.string().nonempty('Please enter your password'),
   remember: z.boolean().default(false),
 });
 
@@ -41,9 +41,9 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     schema: schema,
     defaultValues: {
       ...init(schema),
-      email: localStorage.getItem("userEmail") || "",
+      email: localStorage.getItem('userEmail') || '',
     },
-    mode: "onBlur",
+    mode: 'onBlur',
   });
 
   const formState = watch();
@@ -51,9 +51,9 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
   const onSubmit = handleSubmit(async (data) => {
     await performAction(data);
     if (data.remember) {
-      localStorage.setItem("userEmail", data.email);
+      localStorage.setItem('userEmail', data.email);
       const result = await Auth.rememberDevice();
-      console.log("Device remembered: ", result);
+      console.log('Device remembered: ', result);
     }
   });
 
@@ -90,17 +90,17 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
                     />
                   </div>
                   <div className="login__forgot-box">
-                    {" "}
+                    {' '}
                     <div className="login__checkbox">
                       <Checkbox name="remember" control={control} />
-                      <span className="login__remember">Remember me.</span>{" "}
-                    </div>{" "}
+                      <span className="login__remember">Remember me.</span>{' '}
+                    </div>{' '}
                     <Link
                       className="login__forgot"
                       to={UnAuthRoutes.ForgetPassword}
                     >
-                      <span>Forgot Password?</span>{" "}
-                    </Link>{" "}
+                      <span>Forgot Password?</span>{' '}
+                    </Link>{' '}
                   </div>
                   <div className="login__bottom">
                     <button
@@ -114,10 +114,10 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
                       {isSubmitting && <IconLoader />}
                     </button>
                     <div className="login__already">
-                      Don’t have an account?{" "}
+                      Don’t have an account?{' '}
                       <Link
                         to={
-                          UnAuthRoutes.Register + "?role=" + params.get("role")
+                          UnAuthRoutes.Register + '?role=' + params.get('role')
                         }
                       >
                         Sign up

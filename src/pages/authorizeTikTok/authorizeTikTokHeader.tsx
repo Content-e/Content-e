@@ -1,5 +1,5 @@
-import { FC } from "react";
-import "./authorizeTikTok.css";
+import { FC } from 'react';
+import './authorizeTikTok.css';
 
 interface Props {
   title: string;

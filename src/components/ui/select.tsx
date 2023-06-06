@@ -1,6 +1,6 @@
-import _ from "lodash";
-import { Listbox, Transition } from "@headlessui/react";
-import { Fragment, type SelectHTMLAttributes, useMemo } from "react";
+import _ from 'lodash';
+import { Listbox, Transition } from '@headlessui/react';
+import { Fragment, type SelectHTMLAttributes, useMemo } from 'react';
 import {
   type FieldError,
   type FieldErrors,
@@ -8,9 +8,9 @@ import {
   type Path,
   useController,
   type UseControllerProps,
-} from "react-hook-form";
-import Label from "./label";
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+} from 'react-hook-form';
+import Label from './label';
+import { ChevronUpDownIcon } from '@heroicons/react/24/outline';
 
 export interface Option {
   text: string;
@@ -51,7 +51,7 @@ function Select<T extends FieldValues>(props: Props<T>) {
         id={name}
         className={`
           w-full rounded-lg bg-[#F9FBFD] border-[#005F730D] border-[1px] text-gray-400 p-5 text-start
-          ${error && "ring-2 ring-red-400"}
+          ${error && 'ring-2 ring-red-400'}
         `}
       >
         <ChevronUpDownIcon className="absolute h-6 right-0 mr-2" />
@@ -76,7 +76,7 @@ function Select<T extends FieldValues>(props: Props<T>) {
               key={option.value}
               className={({ active }) =>
                 `py-1 px-2 relative flex cursor-pointer ${
-                  active && "bg-primary text-white"
+                  active && 'bg-primary text-white'
                 }`
               }
             >

@@ -1,15 +1,15 @@
-import { FC, useEffect, useState } from "react";
-import { IconLoader, Input } from "components";
-import { useHistory, useLocation } from "react-router-dom";
+import { FC, useEffect, useState } from 'react';
+import { IconLoader, Input } from 'components';
+import { useHistory, useLocation } from 'react-router-dom';
 
-import { AuthProps, UnAuthRoutes, UnknownType } from "utils";
-import { useConfirmSignUp, useLogin } from "hooks";
-import { validateVerificationCode, withAuth } from "state/auth";
+import { AuthProps, UnAuthRoutes, UnknownType } from 'utils';
+import { useConfirmSignUp, useLogin } from 'hooks';
+import { validateVerificationCode, withAuth } from 'state/auth';
 
-import "./styles/login.scss";
-import Footer from "./components/footer";
-import HeaderDesktop from "./components/header-desktop";
-import HeaderMobile from "./components/header-mobile";
+import './styles/login.scss';
+import Footer from './components/footer';
+import HeaderDesktop from './components/header-desktop';
+import HeaderMobile from './components/header-mobile';
 
 export const Reverify: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
@@ -23,12 +23,12 @@ export const Reverify: FC<AuthProps> = ({ getAuth }) => {
     performAction: autoLogin,
   } = useLogin();
 
-  const [code, setCode] = useState("");
-  const [codeError, setCodeError] = useState("");
+  const [code, setCode] = useState('');
+  const [codeError, setCodeError] = useState('');
 
   const validateVerifyForm = (): boolean => {
     const notValidated = validateVerificationCode(code);
-    if (notValidated) setCodeError("Code length is invalid");
+    if (notValidated) setCodeError('Code length is invalid');
     return !notValidated;
   };
 

@@ -1,5 +1,5 @@
-import { FC, Fragment } from "react";
-import * as S from "../styles";
+import { FC, Fragment } from 'react';
+import * as S from '../styles';
 
 interface Props {
   step: number;
@@ -19,13 +19,13 @@ export const StepBelt: FC<Props> = ({
     <Fragment key={`step number and bar ${e}`}>
       <S.StepNumber
         onClick={(): void => goToStep(e)}
-        className={step >= e ? "active" : ""}
+        className={step >= e ? 'active' : ''}
       >
         {e + 1}
       </S.StepNumber>
       {showBar && (
         <S.StepBar>
-          {step >= e && <span className={step > e ? "active" : ""} />}
+          {step >= e && <span className={step > e ? 'active' : ''} />}
         </S.StepBar>
       )}
     </Fragment>

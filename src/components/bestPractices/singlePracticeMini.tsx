@@ -1,10 +1,10 @@
-import { useHistory } from "react-router-dom";
-import "./bestPractices.css";
-import { AuthRoutes } from "utils";
-import { FC, useEffect, useState } from "react";
-import { BestPractices as IBestPractice } from "API";
-import { Storage } from "aws-amplify";
-import classNames from "classnames";
+import { useHistory } from 'react-router-dom';
+import './bestPractices.css';
+import { AuthRoutes } from 'utils';
+import { FC, useEffect, useState } from 'react';
+import { BestPractices as IBestPractice } from 'API';
+import { Storage } from 'aws-amplify';
+import classNames from 'classnames';
 
 interface Props {
   practice: IBestPractice;
@@ -30,7 +30,7 @@ export const SinglePracticeMini: FC<Props> = ({
           if (res.status === 200) setPracticeImage(url);
         });
       } catch (err) {
-        console.log("Error", err);
+        console.log('Error', err);
         setPracticeImage(undefined);
       }
     }
@@ -42,8 +42,8 @@ export const SinglePracticeMini: FC<Props> = ({
 
   return (
     <div
-      className={classNames("creator-dashboard__item", {
-        "best-practices-full": showDetails,
+      className={classNames('creator-dashboard__item', {
+        'best-practices-full': showDetails,
       })}
       onClick={(): void => onClick?.(practice.id)}
     >

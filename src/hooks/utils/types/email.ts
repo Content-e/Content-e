@@ -1,4 +1,4 @@
-import { UnknownType } from "utils";
+import { UnknownType } from 'utils';
 
 export type UseSendEmailProps = {
   sendEmailData: (unknown) => void;

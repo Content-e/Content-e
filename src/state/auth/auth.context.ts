@@ -1,10 +1,10 @@
-import { createContext } from "react";
-import { initialAuthContext } from "utils";
+import { createContext } from 'react';
+import { initialAuthContext } from 'utils';
 import {
   AuthContextType,
   IUnAuthUserName,
   TitleContextType,
-} from "../types/authTypes";
+} from '../types/authTypes';
 
 export const AuthContext = createContext<AuthContextType>({
   authState: initialAuthContext,
@@ -12,12 +12,12 @@ export const AuthContext = createContext<AuthContextType>({
 });
 
 export const TitleContext = createContext<TitleContextType>({
-  title: "",
+  title: '',
   setTitle: () => {},
 });
 
 export const UnAuthUserName = createContext<IUnAuthUserName>({
-  fullName: "",
+  fullName: '',
   setFullName: () => {},
 });
 

@@ -1,6 +1,6 @@
-import styled, { css, keyframes } from "styled-components";
-import { StyledProps } from "utils";
-import { PropType } from "..";
+import styled, { css, keyframes } from 'styled-components';
+import { StyledProps } from 'utils';
+import { PropType } from '..';
 
 export const rotate = keyframes`
   100% {
@@ -26,7 +26,7 @@ export const LoadingSpinner = styled.div<PropType>`
   animation: ${rotate} 1s linear;
   animation-iteration-count: infinite;
   ${(props): StyledProps =>
-    props.color === "#4c40f7"
+    props.color === '#4c40f7'
       ? css`
           border-top-color: #4c40f7;
         `

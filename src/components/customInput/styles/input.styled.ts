@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const InputLabel = styled.div`
   margin: 12px 0 2px;

@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const TopHeading = styled.div`
-  font-family: "Lato";
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -74,7 +74,7 @@ export const SuggestionButton = styled.button`
   padding: 10px 25px;
   font-size: 12px;
   line-height: 12px;
-  font-family: "LatoLight";
+  font-family: 'LatoLight';
 
   &.separateBtn {
     margin-bottom: 20px;

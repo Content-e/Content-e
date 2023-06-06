@@ -1,7 +1,7 @@
-import classNames from "classnames";
-import { FC } from "react";
-import * as S from "../styles";
-import SuggestionButton from "./suggestionButton";
+import classNames from 'classnames';
+import { FC } from 'react';
+import * as S from '../styles';
+import SuggestionButton from './suggestionButton';
 
 interface Props {
   small?: boolean;

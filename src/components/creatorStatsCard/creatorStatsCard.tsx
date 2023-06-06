@@ -1,7 +1,7 @@
-import "./creatorStatsCard.css";
-import { FC, Fragment } from "react";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { IDashboardValue } from "state/dashboard";
+import './creatorStatsCard.css';
+import { FC, Fragment } from 'react';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { IDashboardValue } from 'state/dashboard';
 
 interface Props {
   type: IDashboardValue;

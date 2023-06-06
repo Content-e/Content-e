@@ -1,8 +1,8 @@
-import "./brandDashboard.css";
-import { useHistory } from "react-router-dom";
-import { BrandRoutes } from "utils";
-import { FC } from "react";
-import { BrandProfile } from "API";
+import './brandDashboard.css';
+import { useHistory } from 'react-router-dom';
+import { BrandRoutes } from 'utils';
+import { FC } from 'react';
+import { BrandProfile } from 'API';
 
 interface Props {
   brand?: BrandProfile | null;
@@ -25,7 +25,7 @@ export const BrandInfo: FC<Props> = ({ brand }) => {
             />
             <div className="brand-dashboard__top-info">
               <div className="brand-dashboard__top-name">
-                {brand?.name || "brand name"}
+                {brand?.name || 'brand name'}
               </div>
               <div className="brand-dashboard__top-profile">Brand Profile</div>
             </div>
@@ -38,7 +38,7 @@ export const BrandInfo: FC<Props> = ({ brand }) => {
           />
         </div>
         <div className="brand-dashboard__text columns">
-          {brand?.description || "brand description"}
+          {brand?.description || 'brand description'}
         </div>
         <div className="brand-dashboard__item-bottom" onClick={goToBrandPage}>
           <button className="brand-dashboard__button">Brand Profile</button>

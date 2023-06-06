@@ -1,6 +1,6 @@
-import React, { FC, ReactNode, useState } from "react";
-import { IErrorStateType } from "utils";
-import ErrorContext from "./error.context";
+import React, { FC, ReactNode, useState } from 'react';
+import { IErrorStateType } from 'utils';
+import ErrorContext from './error.context';
 
 interface Props {
   children?: ReactNode;

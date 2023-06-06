@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const BrandTopWrapper = styled.div`
   margin: 0;
@@ -39,7 +39,7 @@ export const EditBtnCanvas = styled.div`
   margin: 50px auto 10px;
 `;
 export const EditBrandButton = styled.div`
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
   font-size: 12px;

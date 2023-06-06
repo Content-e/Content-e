@@ -1,5 +1,5 @@
-import { Dropdown } from "react-bootstrap";
-import styled from "styled-components";
+import { Dropdown } from 'react-bootstrap';
+import styled from 'styled-components';
 
 export const DropdownTag = styled(Dropdown)`
   margin: 20px 0;

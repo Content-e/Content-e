@@ -1,6 +1,6 @@
-import { FC } from "react";
-import "./authorizeTikTok.css";
-import AuthorizeTikTokHeader from "./authorizeTikTokHeader";
+import { FC } from 'react';
+import './authorizeTikTok.css';
+import AuthorizeTikTokHeader from './authorizeTikTokHeader';
 
 interface Props {
   goToNext: () => void;
@@ -19,8 +19,8 @@ export const AuthorizeTikTokStep1: FC<Props> = ({ goToNext, ...props }) => {
             Note: Due to the difference in TikTok versions, to find Ad settings
             in the app, some users may need to tap:
           </div>
-          <div>&#x2022; {"Me > Settings and privacy > Privacy."}</div>
-          <div>&#x2022; {"or Me > Creator tools."}</div>
+          <div>&#x2022; {'Me > Settings and privacy > Privacy.'}</div>
+          <div>&#x2022; {'or Me > Creator tools.'}</div>
         </div>
 
         <div className="content-1">
@@ -28,15 +28,15 @@ export const AuthorizeTikTokStep1: FC<Props> = ({ goToNext, ...props }) => {
             To authorize a post, from the TikTok app (version 22.6 and above):
           </div>
           <div>
-            &#x2022;{" "}
+            &#x2022;{' '}
             {
-              "Tap on Me to go to your personal profile page, then tap the 3 dots on the top-right corner."
+              'Tap on Me to go to your personal profile page, then tap the 3 dots on the top-right corner.'
             }
           </div>
           <div>
-            &#x2022; {"From the Settings and privacy page, tap Creator tools."}
+            &#x2022; {'From the Settings and privacy page, tap Creator tools.'}
           </div>
-          <div>&#x2022; {"Turn on the Ad settings toggle."}</div>
+          <div>&#x2022; {'Turn on the Ad settings toggle.'}</div>
         </div>
       </div>
 

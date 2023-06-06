@@ -1,8 +1,8 @@
-import "./bestPractices.css";
-import { FC, useEffect, useState } from "react";
-import { BestPractices as IBestPractice } from "API";
-import { Storage } from "aws-amplify";
-import classNames from "classnames";
+import './bestPractices.css';
+import { FC, useEffect, useState } from 'react';
+import { BestPractices as IBestPractice } from 'API';
+import { Storage } from 'aws-amplify';
+import classNames from 'classnames';
 
 interface Props {
   practice: IBestPractice;
@@ -26,7 +26,7 @@ export const SinglePractice: FC<Props> = ({
           if (res.status === 200) setPracticeImage(url);
         });
       } catch (err) {
-        console.log("Error", err);
+        console.log('Error', err);
         setPracticeImage(undefined);
       }
     }
@@ -47,17 +47,17 @@ export const SinglePractice: FC<Props> = ({
       setWindowSize(window.innerWidth);
     };
 
-    window.addEventListener("resize", handleWindowResize);
+    window.addEventListener('resize', handleWindowResize);
 
     return () => {
-      window.removeEventListener("resize", handleWindowResize);
+      window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
 
   return (
     <div
-      className={classNames("creator-identity__block", {
-        "best-practices-full": showDetails,
+      className={classNames('creator-identity__block', {
+        'best-practices-full': showDetails,
       })}
       onClick={(): void => onClick?.(practice.id)}
     >
@@ -66,13 +66,13 @@ export const SinglePractice: FC<Props> = ({
       </h3>
       <div
         className={`creator-identity__img ${
-          showDetails ? "showed-details-img" : ""
+          showDetails ? 'showed-details-img' : ''
         }`}
         style={{
           backgroundImage: `url(${practiceImage})`,
         }}
       ></div>
-      <div className={showDetails ? "c-2" : ""}>
+      <div className={showDetails ? 'c-2' : ''}>
         <div>
           <p>
             The budget is crucial information as it lets creative teams assess
@@ -164,7 +164,7 @@ export const SinglePractice: FC<Props> = ({
       </div>
       <div className="creator-dashboard__creative-learn">
         <button
-          className={`${mobileDetailsOpened.first ? "opened " : ""}learn-more`}
+          className={`${mobileDetailsOpened.first ? 'opened ' : ''}learn-more`}
           onClick={() =>
             setMobileDetailsOpened((prev) => ({
               ...prev,

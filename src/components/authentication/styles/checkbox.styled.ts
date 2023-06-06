@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CheckBoxWrapper = styled.div``;
 
@@ -14,7 +14,7 @@ export const CheckBoxTick = styled.div`
   overflow: hidden;
   &::after {
     display: none;
-    content: "";
+    content: '';
     position: absolute;
     width: 5px;
     height: 10px;

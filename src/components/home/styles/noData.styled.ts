@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const NoDataWrapper = styled.div`
   margin: 30px 0 0;

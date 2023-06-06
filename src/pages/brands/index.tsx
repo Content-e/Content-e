@@ -1,10 +1,10 @@
-import React from "react";
-import "./style.css";
-import { useHistory } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
-import HeaderDesktop from "components/authentication/components/header-desktop";
-import HeaderMobile from "components/authentication/components/header-mobile";
-import Footer from "components/authentication/components/footer";
+import React from 'react';
+import './style.css';
+import { useHistory } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
+import HeaderDesktop from 'components/authentication/components/header-desktop';
+import HeaderMobile from 'components/authentication/components/header-mobile';
+import Footer from 'components/authentication/components/footer';
 
 export const BrandsPage: React.FC = () => {
   const history = useHistory();
@@ -78,7 +78,7 @@ export const BrandsPage: React.FC = () => {
               <div
                 className="login-signup brands-btn"
                 onClick={() =>
-                  history.push(UnAuthRoutes.HomePageLogin + "?role=brand")
+                  history.push(UnAuthRoutes.HomePageLogin + '?role=brand')
                 }
               >
                 Login / Sign up
@@ -95,9 +95,9 @@ export const BrandsPage: React.FC = () => {
             src="/images/brands-union.png"
             className="brands-union"
             style={{
-              marginLeft: "63px",
-              width: "492px",
-              height: "595px",
+              marginLeft: '63px',
+              width: '492px',
+              height: '595px',
             }}
           />
         </div>

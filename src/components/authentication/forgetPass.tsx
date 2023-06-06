@@ -1,12 +1,12 @@
-import { FC, useEffect, useState } from "react";
-import { IconLoader, Input } from "components";
-import { useHistory } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
-import { useForgetPass } from "hooks";
-import { validateEmail, withAuth } from "state/auth";
-import HeaderDesktop from "./components/header-desktop";
-import HeaderMobile from "./components/header-mobile";
-import Footer from "./components/footer";
+import { FC, useEffect, useState } from 'react';
+import { IconLoader, Input } from 'components';
+import { useHistory } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
+import { useForgetPass } from 'hooks';
+import { validateEmail, withAuth } from 'state/auth';
+import HeaderDesktop from './components/header-desktop';
+import HeaderMobile from './components/header-mobile';
+import Footer from './components/footer';
 
 export const ForgetPassword: FC = () => {
   const history = useHistory();
@@ -15,7 +15,7 @@ export const ForgetPassword: FC = () => {
     res: { isLoading, success },
   } = useForgetPass();
 
-  const [email, setEmail] = useState<string>("");
+  const [email, setEmail] = useState<string>('');
   const [emailError, setEmailError] = useState<string | null>(null);
 
   const updateState = (_: string, value: string): void => {

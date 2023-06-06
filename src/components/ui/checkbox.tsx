@@ -1,11 +1,11 @@
-import * as S from "./checkbox.styled";
-import { type InputHTMLAttributes } from "react";
+import * as S from './checkbox.styled';
+import { type InputHTMLAttributes } from 'react';
 import {
   useController,
   UseControllerProps,
   type FieldValues,
   type Path,
-} from "react-hook-form";
+} from 'react-hook-form';
 
 type Props<T extends FieldValues> = UseControllerProps<T> &
   InputHTMLAttributes<HTMLInputElement> & {
@@ -28,7 +28,7 @@ export default function Checkbox<T extends FieldValues>(props: Props<T>) {
           onChange={onChange}
           {...props}
         />
-        <S.CheckBoxTick className={value ? "tickMark" : ""} />
+        <S.CheckBoxTick className={value ? 'tickMark' : ''} />
       </S.CheckBoxlabel>
     </S.CheckBoxWrapper>
   );

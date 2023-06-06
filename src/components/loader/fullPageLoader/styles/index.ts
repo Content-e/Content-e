@@ -1,1 +1,1 @@
-export * from "./fullLoader.styled";
+export * from './fullLoader.styled';

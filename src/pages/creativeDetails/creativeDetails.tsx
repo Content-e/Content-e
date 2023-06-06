@@ -1,13 +1,13 @@
-import { FC, useMemo, useState } from "react";
-import { BrandBrief } from "API";
-import { ISelectredRequest } from "state/brandBrief";
-import CreativeTikTokApproval from "components/creativeTikTokApproval/creativeTikTokApproval";
-import Button from "components/ui/button";
-import { default as ModalBase } from "components/ui/modal";
-import { withProfile } from "state/profileSteps";
-import { ProfileProps } from "utils";
-import GradientCard from "components/gradientCard/gradientCard";
-import { useHistory } from "react-router-dom";
+import { FC, useMemo, useState } from 'react';
+import { BrandBrief } from 'API';
+import { ISelectredRequest } from 'state/brandBrief';
+import CreativeTikTokApproval from 'components/creativeTikTokApproval/creativeTikTokApproval';
+import Button from 'components/ui/button';
+import { default as ModalBase } from 'components/ui/modal';
+import { withProfile } from 'state/profileSteps';
+import { ProfileProps } from 'utils';
+import GradientCard from 'components/gradientCard/gradientCard';
+import { useHistory } from 'react-router-dom';
 
 interface Props {
   data?: Array<BrandBrief | null>;
@@ -55,7 +55,7 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
             <h3 className="text-2xl font-bold">
               {request?.creativeTiktokHandle
                 ? `@${request?.creativeTiktokHandle}`
-                : ""}
+                : ''}
             </h3>
           </GradientCard>
           <GradientCard>
@@ -100,10 +100,10 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
               <b>Creator name:</b> {profileState.data?.name}
             </span>
             <span>
-              <b>Creator's TikTok handle:</b>{" "}
+              <b>Creator's TikTok handle:</b>{' '}
               {request?.creativeTiktokHandle
                 ? `@${request?.creativeTiktokHandle}`
-                : ""}
+                : ''}
             </span>
             <span>
               <b>Creator's description:</b> {profileState.data?.description}

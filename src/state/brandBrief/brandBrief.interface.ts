@@ -1,4 +1,4 @@
-import { BrandBrief, BrandProfile } from "API";
+import { BrandBrief, BrandProfile } from 'API';
 
 export interface BrandBriefProps {
   data?: Array<BrandBrief | null>;

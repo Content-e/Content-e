@@ -1,2 +1,2 @@
-export * from "./withBriefListHoc";
-export * from "./dashboard.interface";
+export * from './withBriefListHoc';
+export * from './dashboard.interface';

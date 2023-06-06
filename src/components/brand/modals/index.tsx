@@ -1,8 +1,8 @@
-import { FC, useEffect, useState } from "react";
-import { CreateBrandProfileInput, GPT_PROMPT } from "API";
-import CustomModal from "./modal";
-import { useGetSuggestions } from "hooks";
-import { getSuggestionInput, getSuggestions } from "components";
+import { FC, useEffect, useState } from 'react';
+import { CreateBrandProfileInput, GPT_PROMPT } from 'API';
+import CustomModal from './modal';
+import { useGetSuggestions } from 'hooks';
+import { getSuggestionInput, getSuggestions } from 'components';
 
 interface Props {
   data: CreateBrandProfileInput;
@@ -19,7 +19,7 @@ export const Modal: FC<Props> = ({
   ...rest
 }) => {
   const [responseNames, setResponseNames] = useState<Array<string>>([]);
-  const [rawResponse, setRawResponse] = useState("");
+  const [rawResponse, setRawResponse] = useState('');
   const [firstApiCall, setFirstApiCall] = useState(true);
   const [loading, setLoading] = useState(false);
 
@@ -41,10 +41,10 @@ export const Modal: FC<Props> = ({
       setFirstApiCall(false);
       const prompt = firstApiCall
         ? prompType
-        : ((prompType + "_REFRESH") as GPT_PROMPT);
+        : ((prompType + '_REFRESH') as GPT_PROMPT);
       const rawData = suggestions?.[prompt];
       const suggestionRes = getSuggestions(prompt, rawData);
-      setRawResponse(rawData || "");
+      setRawResponse(rawData || '');
       let newResponse = suggestionRes || [];
       if (filterResponse) newResponse = filterResponse(newResponse);
       setResponseNames(newResponse);

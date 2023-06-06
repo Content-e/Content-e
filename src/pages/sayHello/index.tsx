@@ -1,54 +1,54 @@
-import React, { useEffect, useState } from "react";
-import "./style.css";
-import { useSendEmail } from "hooks/query/useEmail";
-import axios from "axios";
-import { IconLoader } from "components";
-import HeaderDesktop from "components/authentication/components/header-desktop";
-import HeaderMobile from "components/authentication/components/header-mobile";
-import Footer from "components/authentication/components/footer";
+import React, { useEffect, useState } from 'react';
+import './style.css';
+import { useSendEmail } from 'hooks/query/useEmail';
+import axios from 'axios';
+import { IconLoader } from 'components';
+import HeaderDesktop from 'components/authentication/components/header-desktop';
+import HeaderMobile from 'components/authentication/components/header-mobile';
+import Footer from 'components/authentication/components/footer';
 
 export const SayHello: React.FC = () => {
   const { data, loading } = useSendEmail();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [isLoading, setIsLoading] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState('');
 
   const openContactUs = (): void => {
-    window.location.href = "mailto:hello@edcsquared.io";
+    window.location.href = 'mailto:hello@edcsquared.io';
   };
 
   const handleSend = async (): Promise<void> => {
     const mailData = JSON.stringify({
-      operationName: "SendEmail",
+      operationName: 'SendEmail',
       variables: {
         data: {
-          from: "adeeltahir1995@gmail.com",
+          from: 'adeeltahir1995@gmail.com',
           message: `${email}, ${message}`,
           name,
         },
       },
       query:
-        "query SendEmail($data: EMAIL_INPUT) {\n  sendEmail(data: $data)\n}\n",
+        'query SendEmail($data: EMAIL_INPUT) {\n  sendEmail(data: $data)\n}\n',
     });
     try {
-      setIsLoading("loading");
+      setIsLoading('loading');
       const res = await axios.post(
-        "https://ibqmmfkfajfbvgtxmjzfx3u6rm.appsync-api.us-east-1.amazonaws.com/graphql",
+        'https://ibqmmfkfajfbvgtxmjzfx3u6rm.appsync-api.us-east-1.amazonaws.com/graphql',
         mailData,
         {
           headers: {
-            "x-api-key": "da2-ndivz7milrarjolsdmpucfdelm",
-            "Content-Type": "application/json",
+            'x-api-key': 'da2-ndivz7milrarjolsdmpucfdelm',
+            'Content-Type': 'application/json',
           },
         }
       );
       console.log(res);
-      setMessage("");
-      setEmail("");
-      setName("");
-      setIsLoading("sent");
+      setMessage('');
+      setEmail('');
+      setName('');
+      setIsLoading('sent');
     } catch (err) {
       console.log(err);
     }
@@ -107,14 +107,14 @@ export const SayHello: React.FC = () => {
                 />
               </div>
 
-              {isLoading === "sent" && (
+              {isLoading === 'sent' && (
                 <div className="say-hello-sent-message">
                   Thanks for dropping us a note, we will get back to you
                   shortly.
                 </div>
               )}
 
-              {isLoading === "loading" && <IconLoader sayHello="-40px" />}
+              {isLoading === 'loading' && <IconLoader sayHello="-40px" />}
               <div className="send-message-btn-container">
                 <div onClick={handleSend} className="send-message-btn">
                   Send Message

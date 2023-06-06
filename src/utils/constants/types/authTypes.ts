@@ -1,17 +1,17 @@
 export enum UserType {
-  Talent = "Talent",
-  Client = "Client",
-  Recruiter = "Recruiter",
-  Admin = "Admin",
+  Talent = 'Talent',
+  Client = 'Client',
+  Recruiter = 'Recruiter',
+  Admin = 'Admin',
 }
 
 export enum UnAuthType {
-  SignIn = "Sign In",
-  SignUp = "Sign Up",
-  ForgotPassword = "Forgot Password",
-  ResetPassword = "Reset Password",
-  ConfirmPassword = "Confirm Password",
-  Reverify = "Re-verify",
+  SignIn = 'Sign In',
+  SignUp = 'Sign Up',
+  ForgotPassword = 'Forgot Password',
+  ResetPassword = 'Reset Password',
+  ConfirmPassword = 'Confirm Password',
+  Reverify = 'Re-verify',
 }
 
 /* eslint-disable */

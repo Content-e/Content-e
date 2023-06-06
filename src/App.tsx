@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { Amplify } from "aws-amplify";
-import "bootstrap/dist/css/bootstrap.min.css";
-import config from "aws-exports";
-import ErrorProvider from "state/error/error.provider";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { AuthProvider } from "state/auth";
-import MainRouter from "./router";
-import { ProfileProvider } from "state/profileSteps";
-import ScrollToTop from "./ScrollToTop";
-import "./assets/css/index.scss";
+import React, { useState } from 'react';
+import { Amplify } from 'aws-amplify';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import config from 'aws-exports';
+import ErrorProvider from 'state/error/error.provider';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { AuthProvider } from 'state/auth';
+import MainRouter from './router';
+import { ProfileProvider } from 'state/profileSteps';
+import ScrollToTop from './ScrollToTop';
+import './assets/css/index.scss';
 
 Amplify.configure(config);
 
 const App: React.FC = () => {
   const [allowCookies, setAllowCookies] = useState(
-    localStorage.getItem("allowCookies")
+    localStorage.getItem('allowCookies')
   );
 
   return (
@@ -36,8 +36,8 @@ const App: React.FC = () => {
               </p>
               <button
                 onClick={() => {
-                  localStorage.setItem("allowCookies", "true");
-                  setAllowCookies("true");
+                  localStorage.setItem('allowCookies', 'true');
+                  setAllowCookies('true');
                 }}
               >
                 Ok

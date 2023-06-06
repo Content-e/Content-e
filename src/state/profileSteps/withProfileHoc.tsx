@@ -1,17 +1,17 @@
-import { USER_TYPES } from "API";
+import { USER_TYPES } from 'API';
 import {
   createUserProfile,
   getUserProfile,
   updateUserProfile,
   useUserTypeSetter,
-} from "hooks";
-import withApolloProvider from "hooks/apollo/withApollo";
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "state/auth";
-import { AuthContextType } from "state/types/authTypes";
-import { initialProfileState, ProfileProps } from "utils";
-import { ProfileContext } from "./profile.context";
-import { IUpdateProfile } from "./profile.interface";
+} from 'hooks';
+import withApolloProvider from 'hooks/apollo/withApollo';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from 'state/auth';
+import { AuthContextType } from 'state/types/authTypes';
+import { initialProfileState, ProfileProps } from 'utils';
+import { ProfileContext } from './profile.context';
+import { IUpdateProfile } from './profile.interface';
 
 interface HocProps {
   shouldCallApi?: boolean;
@@ -90,7 +90,7 @@ export function withProfile<T>(
           });
         else if (!isProfileExists && !createProfileApiCall) {
           const input = {
-            name: name ?? email?.split("@")[0],
+            name: name ?? email?.split('@')[0],
             userEmail: email,
             id: userId,
           };
@@ -108,7 +108,7 @@ export function withProfile<T>(
           variables: {
             profileId: createProfileData.id,
             userType:
-              localStorage.getItem("userType") || USER_TYPES.CREATIVE_USER,
+              localStorage.getItem('userType') || USER_TYPES.CREATIVE_USER,
           },
         });
     }, [createProfileLoading, createProfileData]);

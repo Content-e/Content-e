@@ -1,4 +1,4 @@
-import { BestPractices } from "API";
+import { BestPractices } from 'API';
 
 export interface BestPracticeProps {
   saveData: (data: ICreateBestPractice) => void;

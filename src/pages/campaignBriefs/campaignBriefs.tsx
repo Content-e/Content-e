@@ -1,37 +1,37 @@
-import _ from "lodash";
-import { FC, useEffect, useState } from "react";
-import { BrandBrief } from "API";
-import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
-import "./campaignBriefs.css";
+import _ from 'lodash';
+import { FC, useEffect, useState } from 'react';
+import { BrandBrief } from 'API';
+import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetails';
+import './campaignBriefs.css';
 import {
   IBriefListElems,
   ICreatorBriefListProps,
   withCreatorBriefList,
-} from "state/dashboard";
-import moment from "moment";
-import Table from "components/ui/table";
-import { createColumnHelper } from "@tanstack/react-table";
-import { CheckIcon } from "@heroicons/react/24/solid";
+} from 'state/dashboard';
+import moment from 'moment';
+import Table from 'components/ui/table';
+import { createColumnHelper } from '@tanstack/react-table';
+import { CheckIcon } from '@heroicons/react/24/solid';
 
 const columnHelper = createColumnHelper<IBriefListElems | null | undefined>();
 
 export const columns = [
-  columnHelper.accessor("briefName", {
-    header: "Campaign Brief Name",
+  columnHelper.accessor('briefName', {
+    header: 'Campaign Brief Name',
   }),
-  columnHelper.accessor("brandName", {
-    header: "Brand",
+  columnHelper.accessor('brandName', {
+    header: 'Brand',
   }),
-  columnHelper.accessor("vertical", {
-    header: "Vertical",
+  columnHelper.accessor('vertical', {
+    header: 'Vertical',
   }),
-  columnHelper.accessor("objective", {
-    header: "Objective",
+  columnHelper.accessor('objective', {
+    header: 'Objective',
     cell: (info) => (
       <div
         className={`uppercase font-bold flex items-center ${
           // WTF which color should be here?
-          info.getValue() === "unawareness" ? "text-danger" : "text-success"
+          info.getValue() === 'unawareness' ? 'text-danger' : 'text-success'
         }`}
       >
         <CheckIcon className="w-4 h-4 mr-1" />
@@ -39,12 +39,12 @@ export const columns = [
       </div>
     ),
   }),
-  columnHelper.accessor("status", {
-    header: "Status",
+  columnHelper.accessor('status', {
+    header: 'Status',
     cell: (info) => (
       <span
         className={`uppercase font-bold ${
-          info.getValue() === "new" ? "text-success" : "text-danger"
+          info.getValue() === 'new' ? 'text-success' : 'text-danger'
         }`}
       >
         • {info.getValue()}
@@ -61,7 +61,7 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
 }) => {
   const [data, setData] = useState<Array<IBriefListElems>>([]);
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
-  const [selectedBriefStatus, setSelectedBriefStatus] = useState("");
+  const [selectedBriefStatus, setSelectedBriefStatus] = useState('');
 
   useEffect(() => {
     if (!loading && !error && requestList && briefList) {
@@ -70,7 +70,7 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
         if (brief) {
           const { BriefName, brandProfile, vertical, objective, id } = brief;
           const status =
-            requestList.find((e) => e?.brandBriefId === id)?.status || "new";
+            requestList.find((e) => e?.brandBriefId === id)?.status || 'new';
           output.push({
             id,
             briefName: BriefName,
@@ -123,7 +123,7 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
             if (request) {
               const brief = _.find(briefList, { BriefName: request.briefName });
               if (brief) {
-                setSelectedBriefStatus(request.status || "");
+                setSelectedBriefStatus(request.status || '');
                 setSelectedBrief(brief);
               }
             }

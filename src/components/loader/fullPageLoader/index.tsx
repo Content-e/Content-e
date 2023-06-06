@@ -1,5 +1,5 @@
-import { Spinner } from "react-bootstrap";
-import * as S from "./styles";
+import { Spinner } from 'react-bootstrap';
+import * as S from './styles';
 
 export const FullPageLoader: React.FC = () => {
   return (

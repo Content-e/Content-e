@@ -1,6 +1,6 @@
 // import { FC, Fragment, useState } from "react";
-import { FC, useState } from "react";
-import "./creativeTikTokApproval.css";
+import { FC, useState } from 'react';
+import './creativeTikTokApproval.css';
 // import { isValidUrl } from "components/helpers";
 
 interface Props {
@@ -21,7 +21,7 @@ export const CreativeTikTokVideo: FC<Props> = ({
   return (
     <div className="creative-video-canvas brand-dashboard__slider-item main-slider-item">
       <div
-        style={{ background: previewUrl ? "none" : "#999" }}
+        style={{ background: previewUrl ? 'none' : '#999' }}
         className="creative-video-preview"
         onClick={toggleModal}
       >
@@ -47,8 +47,8 @@ export const CreativeTikTokVideo: FC<Props> = ({
               <video
                 controls
                 style={{
-                  width: "100%",
-                  margin: "5%",
+                  width: '100%',
+                  margin: '5%',
                 }}
               >
                 <source src={awsURL} />

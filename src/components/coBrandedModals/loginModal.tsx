@@ -1,19 +1,19 @@
-import { FC, useEffect, useState } from "react";
-import { IconLoader, Input, replaceSubPath } from "components";
-import GoogleLogin from "components/authentication/googleLogin";
+import { FC, useEffect, useState } from 'react';
+import { IconLoader, Input, replaceSubPath } from 'components';
+import GoogleLogin from 'components/authentication/googleLogin';
 import {
   AuthProps,
   defaultLoginError,
   defaultLoginState,
   UnAuthRoutes,
   unverifiedUser,
-} from "utils";
-import Checkbox from "components/authentication/checkbox";
+} from 'utils';
+import Checkbox from 'components/authentication/checkbox';
 
-import "./coBrandedModals.css";
-import { useHistory } from "react-router-dom";
-import { validateEmail, validatePassword, withAuth } from "state/auth";
-import { useLogin } from "hooks";
+import './coBrandedModals.css';
+import { useHistory } from 'react-router-dom';
+import { validateEmail, validatePassword, withAuth } from 'state/auth';
+import { useLogin } from 'hooks';
 
 export const LoginModal: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();

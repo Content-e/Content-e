@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const typeColors = {
-  brand: "#0A9396",
-  creator: "#BB3E03",
+  brand: '#0A9396',
+  creator: '#BB3E03',
 };
 
 export const LoginWrapper = styled.div`
@@ -236,10 +236,10 @@ export const ModalContent = styled.div`
 export const ModalActionButton = styled.button<{ $type: string }>`
   font-size: 16px;
   font-weight: 700;
-  font-family: "Google Sans";
+  font-family: 'Google Sans';
   padding: 16px 32px;
   border-radius: 40px;
-  background-color: ${(props) => typeColors[props.$type] || "#0A9396"};
+  background-color: ${(props) => typeColors[props.$type] || '#0A9396'};
   color: #fff;
 
   @media only screen and (max-width: 768px) {
@@ -248,5 +248,5 @@ export const ModalActionButton = styled.button<{ $type: string }>`
 `;
 
 export const ModalCheckmark = styled.div<{ $type: string }>`
-  color: ${(props) => typeColors[props.$type] || "#7b7b7b"};
+  color: ${(props) => typeColors[props.$type] || '#7b7b7b'};
 `;

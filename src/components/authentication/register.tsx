@@ -1,44 +1,44 @@
-import _ from "lodash";
-import { ChangeEventHandler, FC, useMemo } from "react";
-import { withAuth } from "state/auth";
-import { UnAuthRoutes } from "utils";
-import "./styles/login.scss";
-import { USER_TYPES } from "API";
-import { IconLoader } from "components/loader";
-import axios from "axios";
-import HeaderDesktop from "components/authentication/components/header-desktop";
-import HeaderMobile from "components/authentication/components/header-mobile";
-import { Link } from "react-router-dom";
-import Footer from "./components/footer";
-import Modal from "./modal";
-import useZodForm from "hooks/useZodForm";
-import { z } from "zod";
-import { FormInput } from "components";
-import init from "zod-empty";
+import _ from 'lodash';
+import { ChangeEventHandler, FC, useMemo } from 'react';
+import { withAuth } from 'state/auth';
+import { UnAuthRoutes } from 'utils';
+import './styles/login.scss';
+import { USER_TYPES } from 'API';
+import { IconLoader } from 'components/loader';
+import axios from 'axios';
+import HeaderDesktop from 'components/authentication/components/header-desktop';
+import HeaderMobile from 'components/authentication/components/header-mobile';
+import { Link } from 'react-router-dom';
+import Footer from './components/footer';
+import Modal from './modal';
+import useZodForm from 'hooks/useZodForm';
+import { z } from 'zod';
+import { FormInput } from 'components';
+import init from 'zod-empty';
 
-const DEFAULT_ROLE = "brand";
+const DEFAULT_ROLE = 'brand';
 
 const sendJSONEmail = async (json: { name: string }): Promise<void> => {
   const mailData = JSON.stringify({
-    operationName: "SendEmail",
+    operationName: 'SendEmail',
     variables: {
       data: {
-        from: "no-reply@edcsquared.io",
+        from: 'no-reply@edcsquared.io',
         message: json,
         name: json.name,
       },
     },
     query:
-      "query SendEmail($data: EMAIL_INPUT) {\n  sendEmail(data: $data)\n}\n",
+      'query SendEmail($data: EMAIL_INPUT) {\n  sendEmail(data: $data)\n}\n',
   });
 
   const res = await axios.post(
-    "https://ibqmmfkfajfbvgtxmjzfx3u6rm.appsync-api.us-east-1.amazonaws.com/graphql",
+    'https://ibqmmfkfajfbvgtxmjzfx3u6rm.appsync-api.us-east-1.amazonaws.com/graphql',
     mailData,
     {
       headers: {
-        "x-api-key": "da2-ndivz7milrarjolsdmpucfdelm",
-        "Content-Type": "application/json",
+        'x-api-key': 'da2-ndivz7milrarjolsdmpucfdelm',
+        'Content-Type': 'application/json',
       },
     }
   );
@@ -48,8 +48,8 @@ const sendJSONEmail = async (json: { name: string }): Promise<void> => {
 const schema = z.object({
   email: z.string().email(),
   // password: z.string().nonempty("Please enter your password").min(8),
-  name: z.string().nonempty("Please enter your full name"),
-  role: z.enum(["brand", "creator"]),
+  name: z.string().nonempty('Please enter your full name'),
+  role: z.enum(['brand', 'creator']),
   about: z.string(),
 });
 
@@ -57,7 +57,7 @@ export const Register: FC = () => {
   const params = new URL(location.href).searchParams;
 
   const defaultRole = useMemo(() => {
-    const value = params.get("role");
+    const value = params.get('role');
     if (!value) return DEFAULT_ROLE;
     try {
       return schema.shape.role.parse(value);
@@ -80,16 +80,16 @@ export const Register: FC = () => {
       ...init(schema),
       role: defaultRole,
     },
-    mode: "onBlur",
+    mode: 'onBlur',
   });
 
-  const role = watch("role") || DEFAULT_ROLE;
-  const setRole = (value: z.infer<typeof schema>["role"]) =>
-    setValue("role", value);
+  const role = watch('role') || DEFAULT_ROLE;
+  const setRole = (value: z.infer<typeof schema>['role']) =>
+    setValue('role', value);
 
   const onSubmit = handleSubmit((data) => {
     localStorage.setItem(
-      "userType",
+      'userType',
       {
         creator: USER_TYPES.CREATIVE_USER,
         brand: USER_TYPES.BRAND_USER,
@@ -99,7 +99,7 @@ export const Register: FC = () => {
   });
 
   const handleRoleChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
-    setRole(e.target.value as z.infer<typeof schema>["role"]);
+    setRole(e.target.value as z.infer<typeof schema>['role']);
   };
 
   return (
@@ -115,18 +115,18 @@ export const Register: FC = () => {
               </div>
               <div
                 className={`${
-                  role === "creator" ? "active" : false
+                  role === 'creator' ? 'active' : false
                 } btns-container`}
               >
                 <div
-                  className={`${role === "brand" ? "active" : false}`}
-                  onClick={() => setRole("brand")}
+                  className={`${role === 'brand' ? 'active' : false}`}
+                  onClick={() => setRole('brand')}
                 >
                   Join as a brand
                 </div>
                 <div
-                  className={`${role === "creator" ? "active" : false}`}
-                  onClick={() => setRole("creator")}
+                  className={`${role === 'creator' ? 'active' : false}`}
+                  onClick={() => setRole('creator')}
                 >
                   Join as a creator
                 </div>
@@ -167,9 +167,9 @@ export const Register: FC = () => {
                       placeholder={
                         {
                           creator:
-                            "Tell us about you and the content you create.",
+                            'Tell us about you and the content you create.',
                           brand:
-                            "Tell us a little more about you and your brand.",
+                            'Tell us a little more about you and your brand.',
                         }[role]
                       }
                       register={register}
@@ -187,7 +187,7 @@ export const Register: FC = () => {
                     {isSubmitting && <IconLoader />}
                   </button>
                   <div className="login__already">
-                    Already have an account?{" "}
+                    Already have an account?{' '}
                     <Link to={UnAuthRoutes.Login}>Login</Link>
                   </div>
                 </form>

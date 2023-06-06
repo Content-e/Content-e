@@ -1,8 +1,8 @@
-import { isValidUrl } from "components/helpers";
-import Button from "components/ui/button";
-import { FC } from "react";
-import { Carousel } from "react-bootstrap";
-import "./campaignSlider.css";
+import { isValidUrl } from 'components/helpers';
+import Button from 'components/ui/button';
+import { FC } from 'react';
+import { Carousel } from 'react-bootstrap';
+import './campaignSlider.css';
 
 interface Props {
   videoUrls: Array<string>;
@@ -12,9 +12,9 @@ export const CampaignSlider: FC<Props> = ({ videoUrls, onClose }) => {
   const getEmbeddedUrl = (e: string): string => {
     try {
       const { hostname, pathname } = new URL(e);
-      if (hostname.includes("tiktok.com")) {
-        const videoId = pathname.split("/").at(-1);
-        const isValidId = /^\d+$/.test(videoId || "");
+      if (hostname.includes('tiktok.com')) {
+        const videoId = pathname.split('/').at(-1);
+        const isValidId = /^\d+$/.test(videoId || '');
         if (videoId?.length && isValidId)
           return `https://www.tiktok.com/embed/v2/${videoId}`;
       }

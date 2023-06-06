@@ -1,9 +1,9 @@
-import { Sidebar } from "components";
+import { Sidebar } from 'components';
 //import AuthFooter from "components/authentication/authFooter";
 // import MobileFooter from "components/mobileFooter";
 // import MobileHeader from "components/mobileHeader";
-import { FC, ReactNode } from "react";
-import * as S from "./styles";
+import { FC, ReactNode } from 'react';
+import * as S from './styles';
 
 interface Props {
   children?: ReactNode;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const SidebarLayout: FC<Props> = ({ children, data }) => {
-  if (data.userType === "BRAND_USER") {
+  if (data.userType === 'BRAND_USER') {
     return (
       <>
         <S.MainWrapperBrand>

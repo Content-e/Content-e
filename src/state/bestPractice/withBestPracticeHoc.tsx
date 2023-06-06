@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import withApolloProvider from "hooks/apollo/withApollo";
-import { createBestPractice, editBestPractice } from "hooks";
+import React, { useEffect, useState } from 'react';
+import withApolloProvider from 'hooks/apollo/withApollo';
+import { createBestPractice, editBestPractice } from 'hooks';
 import {
   ICreateBestPractice,
   BestPracticeProps,
-} from "./bestPractice.interface";
-import { useHistory, useLocation } from "react-router-dom";
-import { BestPractices } from "API";
-import { AdminRoutes } from "utils";
+} from './bestPractice.interface';
+import { useHistory, useLocation } from 'react-router-dom';
+import { BestPractices } from 'API';
+import { AdminRoutes } from 'utils';
 
 export function withBestPractice<T>(
   Component: React.FC<T & BestPracticeProps>

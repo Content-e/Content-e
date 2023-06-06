@@ -1,12 +1,12 @@
-import { FC, useMemo, useState } from "react";
-import { useHistory } from "react-router-dom";
-import BrandDesciption from "components/brandDescription/brandDescription";
-import { BrandBrief } from "API";
-import Modal from "components/authentication/modal";
-import { default as ModalBase } from "components/ui/modal";
-import { AuthRoutes } from "utils";
-import Button from "components/ui/button";
-import GradientCard from "components/gradientCard/gradientCard";
+import { FC, useMemo, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import BrandDesciption from 'components/brandDescription/brandDescription';
+import { BrandBrief } from 'API';
+import Modal from 'components/authentication/modal';
+import { default as ModalBase } from 'components/ui/modal';
+import { AuthRoutes } from 'utils';
+import Button from 'components/ui/button';
+import GradientCard from 'components/gradientCard/gradientCard';
 
 interface Props {
   data: BrandBrief;
@@ -19,8 +19,8 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data, status }) => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const tag = useMemo(() => {
-    if (!data.BriefName) return "";
-    return data.BriefName.trim().replaceAll(" ", "_").replaceAll("-", "_");
+    if (!data.BriefName) return '';
+    return data.BriefName.trim().replaceAll(' ', '_').replaceAll('-', '_');
   }, [data.BriefName]);
 
   return (
@@ -82,8 +82,8 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data, status }) => {
               <b>Brand Pillars:</b>
               <ul className="list-disc text-[#E9D8A6] pl-4 pt-3">
                 {data.brandProfile?.pillars?.map((e) => {
-                  if (!e) return "";
-                  const [title, detail] = e.split(":");
+                  if (!e) return '';
+                  const [title, detail] = e.split(':');
                   if (detail?.length)
                     return (
                       <li>

@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import withApolloProvider from "hooks/apollo/withApollo";
-import { updateBriefStatus, useCreateAd, useGetVideoUrl } from "hooks";
-import { CreativeRequestStatus, UnknownType } from "utils";
-import { ProfileContext } from "state/profileSteps";
-import { ITiktokVideo, ViewRequestProps } from "./requests.interface";
+import React, { useContext, useEffect, useState } from 'react';
+import withApolloProvider from 'hooks/apollo/withApollo';
+import { updateBriefStatus, useCreateAd, useGetVideoUrl } from 'hooks';
+import { CreativeRequestStatus, UnknownType } from 'utils';
+import { ProfileContext } from 'state/profileSteps';
+import { ITiktokVideo, ViewRequestProps } from './requests.interface';
 
 interface HocProps {
   id?: string;
@@ -39,7 +39,7 @@ export function withRequestView<T>(
 
     const approveRequest = (createAdPayload: UnknownType): void => {
       updateSuccessStatus(false);
-      setErrorMsg("");
+      setErrorMsg('');
       if (
         !loading &&
         profile?.tiktokAccountAccess &&
@@ -67,7 +67,7 @@ export function withRequestView<T>(
 
     const rejectRequest = (): void => {
       updateSuccessStatus(false);
-      setErrorMsg("");
+      setErrorMsg('');
       if (!loading) {
         setLoading(true);
         callApi(CreativeRequestStatus.Reject);
@@ -85,7 +85,7 @@ export function withRequestView<T>(
       if (!createAdLoading) {
         if (createAdResponse) callApi(CreativeRequestStatus.Accept);
         else if (createAdResponse === false) {
-          setErrorMsg("Ad creation failed");
+          setErrorMsg('Ad creation failed');
           setLoading(false);
         }
       }

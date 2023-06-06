@@ -1,13 +1,13 @@
-import _ from "lodash";
-import * as S from "./styles";
-import { type InputHTMLAttributes } from "react";
+import _ from 'lodash';
+import * as S from './styles';
+import { type InputHTMLAttributes } from 'react';
 import {
   type FieldError,
   type FieldErrors,
   type FieldValues,
   type Path,
   type UseFormRegister,
-} from "react-hook-form";
+} from 'react-hook-form';
 
 type Props<T extends FieldValues> = InputHTMLAttributes<HTMLInputElement> & {
   name: Path<T>;
@@ -22,7 +22,7 @@ export default function Input<T extends FieldValues>({
   label,
   register,
   errors,
-  className = "mb-4",
+  className = 'mb-4',
   required,
   ...rest
 }: Props<T>) {
@@ -38,7 +38,7 @@ export default function Input<T extends FieldValues>({
         className="w-full"
         type={rest.type}
         {...register(name, {
-          valueAsNumber: rest.type === "number",
+          valueAsNumber: rest.type === 'number',
           required,
         })}
         {...rest}

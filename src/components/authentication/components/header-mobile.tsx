@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
 
-import "../styles/login.scss";
-import "./style.css";
+import '../styles/login.scss';
+import './style.css';
 
 const backgroundColors = {
-  "/landing": "#001219",
-  "/forCreators": "#ab3a05",
-  "/forBrands": "#276f6f",
-  "/homePageLogin": "#001219",
-  "/sayHello": "#001219",
+  '/landing': '#001219',
+  '/forCreators': '#ab3a05',
+  '/forBrands': '#276f6f',
+  '/homePageLogin': '#001219',
+  '/sayHello': '#001219',
 };
 
 export const HeaderMobile = () => {
@@ -22,21 +22,18 @@ export const HeaderMobile = () => {
   const [showMenu, setShowMenu] = useState(false);
   const toggleMenu = (): void => setShowMenu(!showMenu);
 
-  const burgerIcon = "/images/hamburger.svg";
-  const crossIcon = "/images/cross.svg";
-
   return (
     <div className="mobile-header">
       <div className="mobile-header-top">
         <div className="header-logo">
           <img
-            style={{ height: "48px", marginLeft: "-6px" }}
+            style={{ height: '48px', marginLeft: '-6px' }}
             src="/images/edc-squared-landing-logo.svg"
             alt="edc-squared"
           />
         </div>
         <img
-          style={{ width: "32px" }}
+          style={{ width: '32px' }}
           src="/images/burger-menu.svg"
           alt="burger-menu"
           className="responsive-menu"
@@ -51,35 +48,35 @@ export const HeaderMobile = () => {
           <div className="header-menu-option-container">
             <div
               className="header-menu-option"
-              style={path === "/landing" ? { color: "white" } : {}}
+              style={path === '/landing' ? { color: 'white' } : {}}
               onClick={() => history.push(UnAuthRoutes.Landing)}
             >
               Home
             </div>
             <div
               className="header-menu-option"
-              style={path === "/forCreators" ? { color: "white" } : {}}
+              style={path === '/forCreators' ? { color: 'white' } : {}}
               onClick={() => history.push(UnAuthRoutes.Creators)}
             >
               For Creators
             </div>
             <div
               className="header-menu-option"
-              style={path === "/forBrands" ? { color: "white" } : {}}
+              style={path === '/forBrands' ? { color: 'white' } : {}}
               onClick={() => history.push(UnAuthRoutes.Brands)}
             >
               For Brands
             </div>
             <div
               className="header-menu-option"
-              style={path === "/sayHello" ? { color: "white" } : {}}
+              style={path === '/sayHello' ? { color: 'white' } : {}}
               onClick={() => history.push(UnAuthRoutes.SayHello)}
             >
               Say Hello
             </div>
             <div
               className="login-signup"
-              style={path === "/homePageLogin" ? { color: "white" } : {}}
+              style={path === '/homePageLogin' ? { color: 'white' } : {}}
               onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
             >
               Login / Sign UP

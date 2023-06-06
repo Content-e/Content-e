@@ -1,11 +1,11 @@
-import { USER_TYPES } from "API";
-import CampaignSlider from "components/campaignSlider/campaignSlider";
-import Button from "components/ui/button";
-import AuthorizeTikTokHandler from "pages/authorizeTikTok/authorizeTikTokHandler";
-import { FC, useMemo, useState } from "react";
-import { withProfile } from "state/profileSteps";
-import { ProfileProps } from "utils";
-import "./brandDescription.css";
+import { USER_TYPES } from 'API';
+import CampaignSlider from 'components/campaignSlider/campaignSlider';
+import Button from 'components/ui/button';
+import AuthorizeTikTokHandler from 'pages/authorizeTikTok/authorizeTikTokHandler';
+import { FC, useMemo, useState } from 'react';
+import { withProfile } from 'state/profileSteps';
+import { ProfileProps } from 'utils';
+import './brandDescription.css';
 
 interface Props {
   detail?: string | null;
@@ -49,9 +49,13 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
         <Button
           className="creator-dashboard__creative-btn link"
           onClick={(): void => setPopupVisibility(true)}
-          disabled={!(data?.userType === USER_TYPES.CREATIVE_USER &&
-            isVideoLinked &&
-            status === "new")}
+          disabled={
+            !(
+              data?.userType === USER_TYPES.CREATIVE_USER &&
+              isVideoLinked &&
+              status === 'new'
+            )
+          }
         >
           Link Creative
         </Button>

@@ -1,13 +1,13 @@
 // import moment from "moment";
-import moment from "moment";
-import { FC, useEffect, useState } from "react";
+import moment from 'moment';
+import { FC, useEffect, useState } from 'react';
 import {
   ICreatorBriefListProps,
   INotification,
   withCreatorBriefList,
-} from "state/dashboard";
-import { CreativeRequestStatus } from "utils";
-import "./creatorNotifications.css";
+} from 'state/dashboard';
+import { CreativeRequestStatus } from 'utils';
+import './creatorNotifications.css';
 
 export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
   briefList,
@@ -20,13 +20,13 @@ export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
   const getNotification = (status: CreativeRequestStatus): string => {
     switch (status) {
       case CreativeRequestStatus.New:
-        return "created";
+        return 'created';
       case CreativeRequestStatus.Accept:
-        return "accepted";
+        return 'accepted';
       case CreativeRequestStatus.Reject:
-        return "rejected";
+        return 'rejected';
       default:
-        return "in review";
+        return 'in review';
     }
   };
 

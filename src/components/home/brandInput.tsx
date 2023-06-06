@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { IBrandFormState } from "state/brand";
+import { FC } from 'react';
+import { IBrandFormState } from 'state/brand';
 
 interface Props {
   title: string;

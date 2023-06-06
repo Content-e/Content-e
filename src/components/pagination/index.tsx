@@ -1,5 +1,5 @@
-import { times } from "lodash";
-import { FC, Fragment, useEffect, useMemo, useState } from "react";
+import { times } from 'lodash';
+import { FC, Fragment, useEffect, useMemo, useState } from 'react';
 
 interface Props {
   total: number;
@@ -30,7 +30,7 @@ export const Pagination: FC<Props> = ({ total, limit, goToPage }) => {
       <div
         className={`
           ${
-            currentPage <= 0 && "text-gray-400 select-none cursor-not-allowed"
+            currentPage <= 0 && 'text-gray-400 select-none cursor-not-allowed'
           } px-2 cursor-pointer
         `}
         onClick={goToPrev}
@@ -41,7 +41,7 @@ export const Pagination: FC<Props> = ({ total, limit, goToPage }) => {
         <div
           key={i}
           className={`px-3 cursor-pointer ${
-            currentPage === i && "text-primary"
+            currentPage === i && 'text-primary'
           }`}
           onClick={(): void => goToPageNo(i)}
         >
@@ -52,7 +52,7 @@ export const Pagination: FC<Props> = ({ total, limit, goToPage }) => {
         className={`
           ${
             currentPage >= totalPages - 1 &&
-            "text-gray-400 select-none cursor-not-allowed"
+            'text-gray-400 select-none cursor-not-allowed'
           } px-2 cursor-pointer
         `}
         onClick={goToNext}

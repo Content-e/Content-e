@@ -1,20 +1,20 @@
-import { useState, useEffect, FC, useMemo } from "react";
-import { BestPractices as IBestPractice } from "API";
-import { getSlicedArray } from "components";
-import AdminPracticeTableDetails from "components/bestPracticeTable/bestPracticeTable";
-import Pagination from "components/pagination";
-import { listBestPractices } from "hooks";
-import { useHistory } from "react-router-dom";
-import { AdminRoutes } from "utils";
-import "./practice.css";
-import SinglePractice from "components/bestPractices/singlePractice";
+import { useState, useEffect, FC, useMemo } from 'react';
+import { BestPractices as IBestPractice } from 'API';
+import { getSlicedArray } from 'components';
+import AdminPracticeTableDetails from 'components/bestPracticeTable/bestPracticeTable';
+import Pagination from 'components/pagination';
+import { listBestPractices } from 'hooks';
+import { useHistory } from 'react-router-dom';
+import { AdminRoutes } from 'utils';
+import './practice.css';
+import SinglePractice from 'components/bestPractices/singlePractice';
 
 const tableLimit = 8;
 export const AdminBestPracticeTable: FC = () => {
   const history = useHistory();
   const { getAllPractice, data } = listBestPractices();
   const [selectedPractice, setSelectedPractice] = useState<IBestPractice>();
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [currentPage, setCurrentPage] = useState(0);
 
   const goToPracticeCreation = (): void =>

@@ -1,4 +1,4 @@
-import { BrandBrief } from "API";
+import { BrandBrief } from 'API';
 
 export type IUpdateBriefResponse = {
   updateStatus: (unknown) => void;

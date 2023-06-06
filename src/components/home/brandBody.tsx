@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { BrandProfile } from "API";
-import { useHistory, useLocation } from "react-router-dom";
-import { BrandRoutes } from "utils";
+import { FC } from 'react';
+import { BrandProfile } from 'API';
+import { useHistory, useLocation } from 'react-router-dom';
+import { BrandRoutes } from 'utils';
 
 interface Props {
   data?: BrandProfile;

@@ -9,9 +9,9 @@ export const initialAuthContext = {
 };
 
 export const defaultSignUpState = {
-  email: "",
-  password: "",
-  name: "",
+  email: '',
+  password: '',
+  name: '',
 };
 
 export const defaultSignUpError: { [key: string]: null | string } = {
@@ -22,8 +22,8 @@ export const defaultSignUpError: { [key: string]: null | string } = {
 };
 
 export const defaultLoginState = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
   remember: false,
 };
 
@@ -33,9 +33,9 @@ export const defaultLoginError: { [key: string]: null | string } = {
 };
 
 export const defaultProfileState = {
-  name: "",
-  description: "",
-  tiktokHandler: "",
+  name: '',
+  description: '',
+  tiktokHandler: '',
 };
 
 export const defaultProfileError = {
@@ -45,8 +45,8 @@ export const defaultProfileError = {
 };
 
 export const defaultResetState = {
-  code: "",
-  password: "",
+  code: '',
+  password: '',
 };
 
 export const defaultResetError: { [key: string]: null | string } = {

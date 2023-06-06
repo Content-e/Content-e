@@ -1,4 +1,4 @@
-import "./creativeDetailsCard.css";
+import './creativeDetailsCard.css';
 
 export default function CreativeDetailsCard({
   campaign,

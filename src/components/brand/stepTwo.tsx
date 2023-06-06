@@ -1,11 +1,11 @@
-import { FC, useState } from "react";
-import { CreateBrandProfileInput, GPT_PROMPT } from "API";
-import { createBrand } from "utils";
-import { TextArea, isPillarSuggestionDisable } from "components";
-import { Field } from "./components";
-import Modal from "./modals";
-import * as S from "./styles";
-import { times } from "lodash";
+import { FC, useState } from 'react';
+import { CreateBrandProfileInput, GPT_PROMPT } from 'API';
+import { createBrand } from 'utils';
+import { TextArea, isPillarSuggestionDisable } from 'components';
+import { Field } from './components';
+import Modal from './modals';
+import * as S from './styles';
+import { times } from 'lodash';
 
 interface Props {
   data: CreateBrandProfileInput;
@@ -18,7 +18,7 @@ export const StepTwo: FC<Props> = ({ data, onUpdate }) => {
   const [activePillar, setActivePillar] = useState(0);
 
   const setPillars = (text: string, index: number): void => {
-    const newValues = [...(pillars || ["", "", "", ""])];
+    const newValues = [...(pillars || ['', '', '', ''])];
     newValues[index] = text;
     onUpdate({ pillars: [...newValues] });
   };
@@ -36,14 +36,14 @@ export const StepTwo: FC<Props> = ({ data, onUpdate }) => {
       {times(4, (i) => (
         <TextArea
           key={i}
-          value={pillars?.[i] || ""}
+          value={pillars?.[i] || ''}
           updateValue={(text: string): void => setPillars(text, i)}
           label={`Brand communication pillar ${i + 1}`}
           editable={activePillar === i}
           onEditClick={(): void => setActivePillar(i)}
           suggestionBtn={{
             disabled: isPillarSuggestionDisable(data),
-            className: "insertMargin",
+            className: 'insertMargin',
             onClick: toggleSuggestionBox,
           }}
         />

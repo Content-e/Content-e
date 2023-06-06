@@ -1,4 +1,4 @@
-import { GPT_RESPONSE } from "API";
+import { GPT_RESPONSE } from 'API';
 
 export type GetSuggestionsProps = {
   getSuggestions: (unknown) => void;

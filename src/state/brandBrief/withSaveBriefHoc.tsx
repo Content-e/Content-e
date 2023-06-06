@@ -1,22 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
-import withApolloProvider from "hooks/apollo/withApollo";
+import React, { useContext, useEffect, useState } from 'react';
+import withApolloProvider from 'hooks/apollo/withApollo';
 import {
   createCampaignBrief,
   editCampaignBrief,
   getlistAdGroups,
   getlistCampaigns,
-} from "hooks";
+} from 'hooks';
 import {
   ICreateBriefState,
   ISelectDropdown,
   ITikTokAccess,
   ITikTokCreds,
   SaveBriefProps,
-} from "./brandBrief.interface";
-import { ProfileContext } from "state/profileSteps";
-import { useHistory, useLocation } from "react-router-dom";
-import { BrandBrief } from "API";
-import { BrandRoutes, AuthRoutes } from "utils";
+} from './brandBrief.interface';
+import { ProfileContext } from 'state/profileSteps';
+import { useHistory, useLocation } from 'react-router-dom';
+import { BrandBrief } from 'API';
+import { BrandRoutes, AuthRoutes } from 'utils';
 
 export function withSaveBrief<T>(
   Component: React.FC<T & SaveBriefProps>
@@ -60,7 +60,7 @@ export function withSaveBrief<T>(
 
         if (rest.id) return editBrief({ variables: { input } });
         return createBrief({
-          variables: { input: { ...input, vertical: "retail" } },
+          variables: { input: { ...input, vertical: 'retail' } },
         });
       }
     };
@@ -94,22 +94,22 @@ export function withSaveBrief<T>(
         const { brief } = (state || {}) as { brief: BrandBrief };
         if (brief?.id) {
           setBriefState({
-            BriefName: brief.BriefName || "",
-            tiktokHandle: "",
+            BriefName: brief.BriefName || '',
+            tiktokHandle: '',
             vertical: brief.vertical,
-            objective: brief.objective || "",
-            brandBriefDetails: brief.brandBriefDetails || "",
+            objective: brief.objective || '',
+            brandBriefDetails: brief.brandBriefDetails || '',
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             creativeInspirations: brief?.creativeInspirations || [],
-            active: typeof brief.active === "boolean" ? brief.active : true,
+            active: typeof brief.active === 'boolean' ? brief.active : true,
             id: brief.id,
-            campaignId: brief.campaignId || "",
-            adgroupId: brief.adgroupId || "",
+            campaignId: brief.campaignId || '',
+            adgroupId: brief.adgroupId || '',
           });
         } else {
           history.replace(AuthRoutes.CampaignBrief);
-          console.log("No brief found in router state!");
+          console.log('No brief found in router state!');
         }
       }
     }, [state, pathname]);

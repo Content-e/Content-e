@@ -1,16 +1,16 @@
-import { AuthRoutes, ProfileProps } from "utils";
-import { FullPageLoader, replaceSubPath } from "components";
-import React, { useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import { withProfile } from "state/profileSteps";
-import { USER_TYPES } from "API";
+import { AuthRoutes, ProfileProps } from 'utils';
+import { FullPageLoader, replaceSubPath } from 'components';
+import React, { useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import { withProfile } from 'state/profileSteps';
+import { USER_TYPES } from 'API';
 
 const RedirectingStep: React.FC<ProfileProps> = ({
   profileState: { data },
 }) => {
   const history = useHistory();
   const { pathname } = useLocation();
-  const pathnameParts = pathname.split("/");
+  const pathnameParts = pathname.split('/');
 
   const redirectToValidRoute = (): void => {
     if (

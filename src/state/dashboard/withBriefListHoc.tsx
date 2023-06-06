@@ -1,8 +1,8 @@
-import { getCreatorBriefList, getCreatorRequests } from "hooks";
-import React, { FC, useContext, useEffect } from "react";
-import { ProfileContext } from "state/profileSteps";
-import { UnknownType } from "utils";
-import { ICreatorBriefListProps } from "./dashboard.interface";
+import { getCreatorBriefList, getCreatorRequests } from 'hooks';
+import React, { FC, useContext, useEffect } from 'react';
+import { ProfileContext } from 'state/profileSteps';
+import { UnknownType } from 'utils';
+import { ICreatorBriefListProps } from './dashboard.interface';
 
 export function withCreatorBriefList<T>(
   Component: React.FC<T & ICreatorBriefListProps>

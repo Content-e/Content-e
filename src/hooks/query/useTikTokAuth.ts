@@ -1,26 +1,26 @@
-import { useMutation } from "@apollo/client";
+import { useMutation } from '@apollo/client';
 import {
   CreateCreativeRequestInput,
   CreateCreativeRequestMutation,
   UpdateCreativeRequestInput,
   UpdateCreativeRequestMutation,
-} from "API";
+} from 'API';
 import {
   createCreativeRequest,
   updateCreativeRequest,
-} from "graphql/mutations";
+} from 'graphql/mutations';
 import {
   HandleCreativeRequestReturn,
   UpdateCreativeRequestReturn,
-} from "hooks/utils";
-import { getQuery } from "hooks/utils/helpers";
+} from 'hooks/utils';
+import { getQuery } from 'hooks/utils/helpers';
 
 export const handleCreativeRequest = (): HandleCreativeRequestReturn => {
   const [createTiktokRequest, { data, loading, error }] = useMutation<
     CreateCreativeRequestMutation,
     CreateCreativeRequestInput
   >(getQuery(createCreativeRequest));
-  const errorData = error || (data ? undefined : new Error("No Data created"));
+  const errorData = error || (data ? undefined : new Error('No Data created'));
   return {
     loading,
     createTiktokRequest,
@@ -34,7 +34,7 @@ export const handleUpdateCreativeRequest = (): UpdateCreativeRequestReturn => {
     UpdateCreativeRequestMutation,
     UpdateCreativeRequestInput
   >(getQuery(updateCreativeRequest));
-  const errorData = error || (data ? undefined : new Error("No Data created"));
+  const errorData = error || (data ? undefined : new Error('No Data created'));
   return {
     loading,
     updateTiktokRequest,

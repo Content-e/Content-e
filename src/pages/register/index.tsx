@@ -1,5 +1,5 @@
-import { Register } from "components";
-import { FC } from "react";
+import { Register } from 'components';
+import { FC } from 'react';
 
 export const RegisterPage: FC = () => {
   return <Register />;

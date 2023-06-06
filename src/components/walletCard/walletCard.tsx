@@ -1,22 +1,22 @@
-import "./walletCard.css";
+import './walletCard.css';
 
 export default function WalletCard({ dueDateCheck, walletTitle, cost }) {
   const month = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
   const d = new Date();
-  let monthName = "";
+  let monthName = '';
   let day = 1;
   if (d.getDate() < 15) {
     day = 15;

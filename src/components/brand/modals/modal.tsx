@@ -1,7 +1,7 @@
-import { FullPageLoader } from "components";
-import { FC, useEffect, useMemo, useState } from "react";
-import { Modal } from "react-bootstrap";
-import * as S from "../styles";
+import { FullPageLoader } from 'components';
+import { FC, useEffect, useMemo, useState } from 'react';
+import { Modal } from 'react-bootstrap';
+import * as S from '../styles';
 
 interface Props {
   title: string;
@@ -19,12 +19,12 @@ export const CustomModal: FC<Props> = ({
   loading,
   responses,
 }) => {
-  const [selectedName, setSelectedName] = useState("");
+  const [selectedName, setSelectedName] = useState('');
 
   useEffect(onRefresh, []);
 
   useEffect(() => {
-    if (loading) setSelectedName("");
+    if (loading) setSelectedName('');
   }, [loading]);
 
   const suggestionResponse = useMemo(() => {
@@ -36,7 +36,7 @@ export const CustomModal: FC<Props> = ({
         {responses.map((name, index) => (
           <S.SuggestionBox
             key={index}
-            className={name === selectedName ? "active" : ""}
+            className={name === selectedName ? 'active' : ''}
             onClick={(): void => setSelectedName(name)}
           >
             {name}
@@ -56,7 +56,7 @@ export const CustomModal: FC<Props> = ({
       <Modal.Body>
         <S.ModalTitle>{title}</S.ModalTitle>
         <S.CrossIcon onClick={onCancel}>
-          <img src={"/images/circle-cross.svg"} alt="cross-icon" />
+          <img src={'/images/circle-cross.svg'} alt="cross-icon" />
         </S.CrossIcon>
         <S.ModalInputWrapper>
           {loading ? (

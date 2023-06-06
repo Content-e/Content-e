@@ -1,9 +1,9 @@
-import "./adminDashboard.css";
-import CreativeDetailsCard from "components/creativeDetailsCard/creativeDetailsCard";
-import AdminDashboardTable from "components/adminDashboardTable/adminDashboardTable";
-import { listAllRequests, listRequestsByStatus } from "hooks";
-import { useEffect, useState } from "react";
-import { CreativeRequestStatus } from "utils";
+import './adminDashboard.css';
+import CreativeDetailsCard from 'components/creativeDetailsCard/creativeDetailsCard';
+import AdminDashboardTable from 'components/adminDashboardTable/adminDashboardTable';
+import { listAllRequests, listRequestsByStatus } from 'hooks';
+import { useEffect, useState } from 'react';
+import { CreativeRequestStatus } from 'utils';
 
 export default function AdminDashboard() {
   const [totalRequests, setTotalRequests] = useState(0);

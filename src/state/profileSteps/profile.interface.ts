@@ -1,5 +1,5 @@
-import { ApolloError } from "@apollo/client";
-import { BrandProfile, UserProfile } from "API";
+import { ApolloError } from '@apollo/client';
+import { BrandProfile, UserProfile } from 'API';
 
 export interface IProfileDetails {
   id: string;

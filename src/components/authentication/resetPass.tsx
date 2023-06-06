@@ -1,18 +1,18 @@
-import React, { FC, useEffect, useState } from "react";
-import { IconLoader, Input } from "components";
-import { useHistory, useLocation } from "react-router-dom";
+import React, { FC, useEffect, useState } from 'react';
+import { IconLoader, Input } from 'components';
+import { useHistory, useLocation } from 'react-router-dom';
 import {
   defaultResetError,
   defaultResetState,
   UnAuthRoutes,
   UnknownType,
   unverifiedUser,
-} from "utils";
-import { validateVerificationCode, validatePassword } from "state/auth";
-import { useResetPass } from "hooks";
-import Footer from "./components/footer";
-import HeaderDesktop from "./components/header-desktop";
-import HeaderMobile from "./components/header-mobile";
+} from 'utils';
+import { validateVerificationCode, validatePassword } from 'state/auth';
+import { useResetPass } from 'hooks';
+import Footer from './components/footer';
+import HeaderDesktop from './components/header-desktop';
+import HeaderMobile from './components/header-mobile';
 
 export const ResetPassword: FC = () => {
   const history = useHistory();

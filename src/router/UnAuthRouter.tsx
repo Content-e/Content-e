@@ -1,8 +1,8 @@
-import { FC } from "react";
-import withApolloProvider from "hooks/apollo/withApollo";
-import { Redirect, Route, Switch } from "react-router-dom";
-import { UnAuthFullNameProvider } from "state/auth";
-import { UnAuthRoutes as path, UnknownType } from "utils";
+import { FC } from 'react';
+import withApolloProvider from 'hooks/apollo/withApollo';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { UnAuthFullNameProvider } from 'state/auth';
+import { UnAuthRoutes as path, UnknownType } from 'utils';
 import {
   LandingPage,
   ForgetPasswordPage,
@@ -20,8 +20,8 @@ import {
   BrandsPage,
   SayHello,
   PrivacyPolicy,
-} from "pages";
-import AdminLogin from "components/adminLogin/adminLogin";
+} from 'pages';
+import AdminLogin from 'components/adminLogin/adminLogin';
 
 const UnAuthRouter: FC = () => {
   return (

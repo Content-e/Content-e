@@ -1,25 +1,25 @@
-import { createColumnHelper } from "@tanstack/react-table";
-import { BrandBrief } from "API";
-import Table from "components/ui/table";
-import CreativeDetails from "pages/creativeDetails/creativeDetails";
-import { FC, useState } from "react";
+import { createColumnHelper } from '@tanstack/react-table';
+import { BrandBrief } from 'API';
+import Table from 'components/ui/table';
+import CreativeDetails from 'pages/creativeDetails/creativeDetails';
+import { FC, useState } from 'react';
 import {
   BrandBriefProps,
   ISelectredRequest,
   withBrandBriefs,
-} from "state/brandBrief";
+} from 'state/brandBrief';
 
 const columnHelper = createColumnHelper<BrandBrief | null | undefined>();
 
 export const columns = [
-  columnHelper.accessor("BriefName", {
-    header: "Brief Name",
+  columnHelper.accessor('BriefName', {
+    header: 'Brief Name',
   }),
-  columnHelper.accessor("brandProfile.tiktokHandle", {
-    header: "Creator handle",
+  columnHelper.accessor('brandProfile.tiktokHandle', {
+    header: 'Creator handle',
   }),
-  columnHelper.accessor("creativeInspirations", {
-    header: "Creative link",
+  columnHelper.accessor('creativeInspirations', {
+    header: 'Creative link',
     cell: (info) =>
       info.getValue()?.[0] && (
         <div className="flex">
@@ -31,18 +31,18 @@ export const columns = [
       ),
   }),
   columnHelper.display({
-    header: "View count",
+    header: 'View count',
   }),
   columnHelper.display({
-    header: "Engagement",
+    header: 'Engagement',
   }),
   columnHelper.display({
-    header: "Status",
+    header: 'Status',
   }),
 ];
 
 export const CreativesTable: FC<BrandBriefProps> = (props) => {
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
   const [selectedRequest, setSelectedRequest] = useState<ISelectredRequest>();
 
   if (selectedRequest)
@@ -83,8 +83,8 @@ export const CreativesTable: FC<BrandBriefProps> = (props) => {
             brief &&
             setSelectedRequest({
               briefId: brief.id,
-              requestId: "TODO",
-              authCode: "TODO",
+              requestId: 'TODO',
+              authCode: 'TODO',
             })
           }
         />

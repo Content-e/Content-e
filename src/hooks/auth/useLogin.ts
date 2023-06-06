@@ -1,5 +1,5 @@
-import { Auth, CognitoUser } from "@aws-amplify/auth";
-import { useCallback, useContext, useState } from "react";
+import { Auth, CognitoUser } from '@aws-amplify/auth';
+import { useCallback, useContext, useState } from 'react';
 import {
   ApiCustomHookStateType,
   ApiHookReturnType,
@@ -7,12 +7,12 @@ import {
   LoginPayloadType,
   getSuccessResponse,
   getErrorResponse,
-} from "hooks/utils";
-import { AuthContextType } from "state/types";
-import { AuthContext } from "state/auth";
-import { IErrorContextType, loginErrorHeading, unverifiedUser } from "utils";
-import ErrorContext from "state/error/error.context";
-import { updateErrorState } from "components";
+} from 'hooks/utils';
+import { AuthContextType } from 'state/types';
+import { AuthContext } from 'state/auth';
+import { IErrorContextType, loginErrorHeading, unverifiedUser } from 'utils';
+import ErrorContext from 'state/error/error.context';
+import { updateErrorState } from 'components';
 
 export const useLogin = (): ApiHookReturnType<
   CognitoUser,

@@ -1,5 +1,5 @@
-import { IMeterValue } from "state/brand";
-import styled from "styled-components";
+import { IMeterValue } from 'state/brand';
+import styled from 'styled-components';
 
 export const MeterWrapper = styled.div`
   height: 187px;
@@ -44,7 +44,7 @@ export const MeterCanvas = styled.div<IMeterValue>`
   border: none;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0px;
     right: 0px;
@@ -163,7 +163,7 @@ export const MeterValue = styled.div`
   right: auto;
   width: 100%;
   text-align: center;
-  font-family: "Google Sans";
+  font-family: 'Google Sans';
   color: black;
   font-style: normal;
   font-weight: 700;

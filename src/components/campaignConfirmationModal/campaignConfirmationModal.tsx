@@ -1,6 +1,6 @@
-import { IconLoader } from "components/loader";
-import { FC } from "react";
-import "./campaignConfirmationModal.css";
+import { IconLoader } from 'components/loader';
+import { FC } from 'react';
+import './campaignConfirmationModal.css';
 
 interface Props {
   onOkay: () => void;
@@ -25,7 +25,7 @@ export const CampaignConfirmationModal: FC<Props> = ({
         <div className="confirm-btn-container">
           <div className="confirm-btn" onClick={onOkay}>
             <span className="confirm-btn-title">
-              <span style={{ marginRight: 12 }}>Confirm</span>{" "}
+              <span style={{ marginRight: 12 }}>Confirm</span>{' '}
               {isLoading && <IconLoader />}
             </span>
           </div>

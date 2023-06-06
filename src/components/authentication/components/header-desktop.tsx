@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
+import { Link } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
 
-import "../styles/login.scss";
+import '../styles/login.scss';
 
 export const HeaderDesktop = () => {
   const path = window.location.pathname;
@@ -10,7 +10,7 @@ export const HeaderDesktop = () => {
     <div className="login__top">
       <div className="header-logo">
         <img
-          style={{ height: "72px", width: "190px" }}
+          style={{ height: '72px', width: '190px' }}
           src="/images/edc-squared-landing-logo.svg"
           alt="edc-squared"
         />
@@ -18,8 +18,8 @@ export const HeaderDesktop = () => {
       <ul className="list-none header-list">
         <li>
           <Link
-            className={`${path === "/landing" ? "active" : ""} default-link`}
-            to={"/landing"}
+            className={`${path === '/landing' ? 'active' : ''} default-link`}
+            to={'/landing'}
           >
             HOME
           </Link>
@@ -27,25 +27,25 @@ export const HeaderDesktop = () => {
         <li>
           <Link
             className={`${
-              path === "/forCreators" ? "active" : ""
+              path === '/forCreators' ? 'active' : ''
             } default-link`}
-            to={"/forCreators"}
+            to={'/forCreators'}
           >
             FOR CREATORS
           </Link>
         </li>
         <li>
           <Link
-            className={`${path === "/forBrands" ? "active" : ""} default-link`}
-            to={"/forBrands"}
+            className={`${path === '/forBrands' ? 'active' : ''} default-link`}
+            to={'/forBrands'}
           >
             FOR BRANDS
           </Link>
         </li>
         <li>
           <Link
-            className={`${path === "/sayHello" ? "active" : ""} default-link`}
-            to={"/sayHello"}
+            className={`${path === '/sayHello' ? 'active' : ''} default-link`}
+            to={'/sayHello'}
           >
             Say hello
           </Link>
@@ -53,10 +53,10 @@ export const HeaderDesktop = () => {
         <li className="login-signup">
           <Link
             className={`${
-              path === "/homePageLogin" ? "active" : ""
+              path === '/homePageLogin' ? 'active' : ''
             } login-signup-link`}
             to={
-              path === "/homePageLogin" || path === "/login"
+              path === '/homePageLogin' || path === '/login'
                 ? UnAuthRoutes.Register
                 : UnAuthRoutes.Login
             }

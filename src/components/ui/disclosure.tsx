@@ -1,6 +1,6 @@
-import { Disclosure as DisclosureBase, Transition } from "@headlessui/react";
-import { ChevronRightIcon } from "@heroicons/react/24/outline";
-import { PropsWithChildren } from "react";
+import { Disclosure as DisclosureBase, Transition } from '@headlessui/react';
+import { ChevronRightIcon } from '@heroicons/react/24/outline';
+import { PropsWithChildren } from 'react';
 
 type Props = PropsWithChildren & {
   title: string;
@@ -20,7 +20,7 @@ export default function Disclosure({
         {title && (
           <DisclosureBase.Button
             className="text-xl text-primary font-medium mb-2 flex items-center justify-between w-full"
-            title={"Toggle section"}
+            title={'Toggle section'}
           >
             <span className="overflow-hidden whitespace-nowrap text-ellipsis">
               {title}

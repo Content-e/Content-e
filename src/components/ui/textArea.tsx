@@ -1,13 +1,13 @@
-import Label from "components/ui/label";
-import _ from "lodash";
-import { type TextareaHTMLAttributes } from "react";
+import Label from 'components/ui/label';
+import _ from 'lodash';
+import { type TextareaHTMLAttributes } from 'react';
 import {
   type FieldError,
   type FieldErrors,
   type FieldValues,
   type Path,
   type UseFormRegister,
-} from "react-hook-form";
+} from 'react-hook-form';
 
 type Props<T extends FieldValues> =
   TextareaHTMLAttributes<HTMLTextAreaElement> & {
@@ -24,8 +24,8 @@ export default function TextArea<T extends FieldValues>({
   label,
   register,
   errors,
-  className = "mb-4",
-  inputClassName = "",
+  className = 'mb-4',
+  inputClassName = '',
   required,
   ...rest
 }: Props<T>) {

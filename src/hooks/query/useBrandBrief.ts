@@ -1,4 +1,4 @@
-import { useMutation } from "@apollo/client";
+import { useMutation } from '@apollo/client';
 import {
   CreateAdsMutation,
   CreateAdsMutationVariables,
@@ -14,7 +14,7 @@ import {
   UpdateBrandBriefMutationVariables,
   UpdateCreativeRequestMutation,
   UpdateCreativeRequestMutationVariables,
-} from "API";
+} from 'API';
 import {
   createAds,
   createBrandBrief,
@@ -23,7 +23,7 @@ import {
   listCampaigns,
   updateBrandBrief,
   updateCreativeRequest,
-} from "graphql/mutations";
+} from 'graphql/mutations';
 import {
   ICreateBriefResponse,
   IEditBriefResponse,
@@ -32,8 +32,8 @@ import {
   IUpdateBriefResponse,
   IUseCreateAdResponse,
   IUseGetVideoUrlResponse,
-} from "hooks/utils";
-import { getQuery } from "hooks/utils/helpers";
+} from 'hooks/utils';
+import { getQuery } from 'hooks/utils/helpers';
 
 export const updateBriefStatus = (): IUpdateBriefResponse => {
   const [updateStatus, { data, loading, error }] = useMutation<

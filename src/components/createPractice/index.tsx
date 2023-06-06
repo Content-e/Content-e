@@ -1,27 +1,27 @@
-import classNames from "classnames";
-import { IconLoader } from "components/loader";
-import ShouldRender from "components/shouldRender";
-import { FC, useEffect, useMemo, useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { BestPracticeProps, withBestPractice } from "state/bestPractice";
-import { IProfileImageUpload } from "state/profileSteps";
+import classNames from 'classnames';
+import { IconLoader } from 'components/loader';
+import ShouldRender from 'components/shouldRender';
+import { FC, useEffect, useMemo, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { BestPracticeProps, withBestPractice } from 'state/bestPractice';
+import { IProfileImageUpload } from 'state/profileSteps';
 import {
   EditorState,
   convertToRaw,
   ContentState,
   convertFromHTML,
-} from "draft-js";
-import draftToHtml from "draftjs-to-html";
-import { Editor } from "react-draft-wysiwyg";
+} from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import { Editor } from 'react-draft-wysiwyg';
 import {
   AllowedProfileSizeKB,
   initialCreatePracticeError,
   initialCreatePracticeState,
   UnknownType,
-} from "utils";
-import "./style.css";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { Storage } from "aws-amplify";
+} from 'utils';
+import './style.css';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { Storage } from 'aws-amplify';
 
 export const CreatePractice: FC<BestPracticeProps> = ({
   saveData,
@@ -62,12 +62,12 @@ export const CreatePractice: FC<BestPracticeProps> = ({
 
   const validateInputs = (): boolean => {
     const errObj = { ...initialCreatePracticeError };
-    if (!formState.headLine.length) errObj.headLine = "Headline is required";
+    if (!formState.headLine.length) errObj.headLine = 'Headline is required';
     if (!getDescription().length)
-      errObj.description = "Best practice description is required";
+      errObj.description = 'Best practice description is required';
 
     let imageError: string | undefined = undefined;
-    if (!formState.urlPath && !image.file) imageError = "Image is required";
+    if (!formState.urlPath && !image.file) imageError = 'Image is required';
 
     setFormError({ ...errObj });
     setImage({ ...image, error: imageError });
@@ -108,14 +108,14 @@ export const CreatePractice: FC<BestPracticeProps> = ({
 
     // eslint-disable-next-line no-constant-condition
     while (true) {
-      const openIndex = newDescp.indexOf("<img", newPos);
-      const closeIndex = newDescp.indexOf("/>", openIndex);
+      const openIndex = newDescp.indexOf('<img', newPos);
+      const closeIndex = newDescp.indexOf('/>', openIndex);
       if (openIndex > -1 && closeIndex > -1) {
         newDescp =
           newDescp.slice(0, openIndex) +
-          "<figure>" +
+          '<figure>' +
           newDescp.slice(openIndex, closeIndex + 2) +
-          "</figure>" +
+          '</figure>' +
           newDescp.slice(closeIndex + 2);
         newPos = closeIndex + 17;
       } else break;
@@ -143,7 +143,7 @@ export const CreatePractice: FC<BestPracticeProps> = ({
   }, [bestPracticeState]);
 
   const headingText = useMemo(
-    () => (bestPracticeState ? "Edit" : "Create"),
+    () => (bestPracticeState ? 'Edit' : 'Create'),
     [bestPracticeState]
   );
   const imageName = useMemo(() => image.file?.name.slice(0, 15), [image]);
@@ -160,7 +160,7 @@ export const CreatePractice: FC<BestPracticeProps> = ({
             <input
               className="best-practice-input-box"
               value={formState.headLine}
-              onChange={(e): void => handleChange("headLine", e.target.value)}
+              onChange={(e): void => handleChange('headLine', e.target.value)}
             />
             <ShouldRender if={formError.headLine}>
               <span>{formError.headLine}</span>
@@ -178,11 +178,11 @@ export const CreatePractice: FC<BestPracticeProps> = ({
             />
             <button
               onClick={(): void => imageInputRef.current?.click()}
-              className={classNames("best-practice-input-box", {
+              className={classNames('best-practice-input-box', {
                 isBlurred: !imageName,
               })}
             >
-              {imageName || "Upload image"}
+              {imageName || 'Upload image'}
             </button>
             <ShouldRender if={image.error}>
               <span>{image.error}</span>
@@ -193,7 +193,7 @@ export const CreatePractice: FC<BestPracticeProps> = ({
             <div className="field-label">Status</div>
             <select
               className="create-brief-input select-input best-practice-input-box"
-              onChange={(e): void => handleChange("active", e.target.value)}
+              onChange={(e): void => handleChange('active', e.target.value)}
               value={formState.active}
             >
               <option value="true">Active</option>
@@ -208,7 +208,7 @@ export const CreatePractice: FC<BestPracticeProps> = ({
             wrapperClassName="best-practice-editor-wrapper"
             editorClassName="best-practice-editor"
             toolbar={{
-              options: ["inline", "list", "textAlign", "image"],
+              options: ['inline', 'list', 'textAlign', 'image'],
               image: { uploadCallback },
             }}
           />

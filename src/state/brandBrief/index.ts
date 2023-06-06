@@ -1,3 +1,3 @@
-export * from "./withBrandBriefHoc";
-export * from "./withSaveBriefHoc";
-export * from "./brandBrief.interface";
+export * from './withBrandBriefHoc';
+export * from './withSaveBriefHoc';
+export * from './brandBrief.interface';

@@ -1,11 +1,11 @@
-import React from "react";
-import "./style.css";
-import { useHistory } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
+import React from 'react';
+import './style.css';
+import { useHistory } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
 
-import HeaderDesktop from "components/authentication/components/header-desktop";
-import HeaderMobile from "components/authentication/components/header-mobile";
-import Footer from "components/authentication/components/footer";
+import HeaderDesktop from 'components/authentication/components/header-desktop';
+import HeaderMobile from 'components/authentication/components/header-mobile';
+import Footer from 'components/authentication/components/footer';
 
 export const LandingPage: React.FC = () => {
   const history = useHistory();

@@ -1,11 +1,11 @@
-import { FC, useEffect, useState } from "react";
-import { IconLoader, Input, replaceSubPath } from "components";
-import GoogleLogin from "components/authentication/googleLogin";
-import "./coBrandedModals.css";
-import { useHistory } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
-import { useForgetPass } from "hooks";
-import { validateEmail } from "state/auth";
+import { FC, useEffect, useState } from 'react';
+import { IconLoader, Input, replaceSubPath } from 'components';
+import GoogleLogin from 'components/authentication/googleLogin';
+import './coBrandedModals.css';
+import { useHistory } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
+import { useForgetPass } from 'hooks';
+import { validateEmail } from 'state/auth';
 
 export const ForgotPasswordModal: FC = () => {
   const history = useHistory();
@@ -14,7 +14,7 @@ export const ForgotPasswordModal: FC = () => {
     res: { isLoading, success },
   } = useForgetPass();
 
-  const [email, setEmail] = useState<string>("");
+  const [email, setEmail] = useState<string>('');
   const [emailError, setEmailError] = useState<string | null>(null);
 
   const updateState = (_: string, value: string): void => {

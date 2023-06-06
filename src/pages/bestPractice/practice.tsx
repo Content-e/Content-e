@@ -1,8 +1,8 @@
-import { BestPractices as IBestPractice } from "API";
-import SinglePractice from "components/bestPractices/singlePractice";
-import { getActiveBestPractice } from "hooks";
-import { useState, useEffect, Fragment } from "react";
-import "./practice.css";
+import { BestPractices as IBestPractice } from 'API';
+import SinglePractice from 'components/bestPractices/singlePractice';
+import { getActiveBestPractice } from 'hooks';
+import { useState, useEffect, Fragment } from 'react';
+import './practice.css';
 
 export default function BestPractice() {
   const { getActivePractice, data, loading } = getActiveBestPractice();
@@ -15,7 +15,7 @@ export default function BestPractice() {
   };
 
   useEffect(() => {
-    getActivePractice({ variables: { active: "true" } });
+    getActivePractice({ variables: { active: 'true' } });
   }, []);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function BestPractice() {
       </div>
       <div
         className={`creator-identity__content ${
-          !selectedPractice ? "c-2" : ""
+          !selectedPractice ? 'c-2' : ''
         }`}
       >
         {selectedPractice ? (

@@ -1,11 +1,11 @@
-import { FC, useEffect, useState } from "react";
-import { withProfile } from "state/profileSteps";
-import { BrandProps, IBrandFormState, withBrand } from "state/brand";
-import * as S from "./styles";
-import { ProfileProps } from "utils";
-import BrandInput from "./brandInput";
-import { IconLoader } from "components/loader";
-import classNames from "classnames";
+import { FC, useEffect, useState } from 'react';
+import { withProfile } from 'state/profileSteps';
+import { BrandProps, IBrandFormState, withBrand } from 'state/brand';
+import * as S from './styles';
+import { ProfileProps } from 'utils';
+import BrandInput from './brandInput';
+import { IconLoader } from 'components/loader';
+import classNames from 'classnames';
 
 export const BrandForm: FC<ProfileProps & BrandProps> = ({
   profileState: { data },
@@ -30,7 +30,7 @@ export const BrandForm: FC<ProfileProps & BrandProps> = ({
 
   useEffect(() => {
     const brand = data?.brand?.items?.[0];
-    if (brand?.metaData && typeof brand.metaData === "string") {
+    if (brand?.metaData && typeof brand.metaData === 'string') {
       try {
         const metadata = JSON.parse(brand.metaData) as IBrandFormState;
         setFormState(metadata);
@@ -65,9 +65,9 @@ export const BrandForm: FC<ProfileProps & BrandProps> = ({
           onClick={submitForm}
           disabled={btnDisable}
           className={
-            "brand-dashboard__item-button " +
+            'brand-dashboard__item-button ' +
             classNames({
-              "no-dirty-state": btnDisable,
+              'no-dirty-state': btnDisable,
               active: brandLoading,
             })
           }

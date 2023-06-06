@@ -1,5 +1,5 @@
-import { FC } from "react";
-import AuthorizeTikTokHeader from "./authorizeTikTokHeader";
+import { FC } from 'react';
+import AuthorizeTikTokHeader from './authorizeTikTokHeader';
 
 interface Props {
   goToNext: () => void;

@@ -1,18 +1,18 @@
-import Modal from "components/authentication/modal";
-import Button from "components/ui/button";
-import Input from "components/ui/input";
-import Label from "components/ui/label";
-import Select from "components/ui/select";
-import TextArea from "components/ui/textArea";
-import useZodForm from "hooks/useZodForm";
-import _ from "lodash";
-import { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { SaveBriefProps } from "state/brandBrief";
-import withSaveBrief from "state/brandBrief/withSaveBriefHoc";
-import { AuthRoutes } from "utils";
-import { z } from "zod";
-import init from "zod-empty";
+import Modal from 'components/authentication/modal';
+import Button from 'components/ui/button';
+import Input from 'components/ui/input';
+import Label from 'components/ui/label';
+import Select from 'components/ui/select';
+import TextArea from 'components/ui/textArea';
+import useZodForm from 'hooks/useZodForm';
+import _ from 'lodash';
+import { useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { SaveBriefProps } from 'state/brandBrief';
+import withSaveBrief from 'state/brandBrief/withSaveBriefHoc';
+import { AuthRoutes } from 'utils';
+import { z } from 'zod';
+import init from 'zod-empty';
 
 const schema = z.object({
   id: z.string().optional(),
@@ -21,7 +21,7 @@ const schema = z.object({
   // vertical: z.string().nonempty(),
   objective: z.string().nonempty(),
   brandBriefDetails: z.string().nonempty(), // TODO: rename -> details
-  creativeInspirations: z.string().url().or(z.literal("")).array(),
+  creativeInspirations: z.string().url().or(z.literal('')).array(),
   active: z.boolean(),
   campaignId: z.string().nonempty(),
   adgroupId: z.string().nonempty(),
@@ -52,7 +52,7 @@ function BriefForm({
   } = useZodForm({
     schema,
     defaultValues,
-    mode: "all",
+    mode: 'all',
   });
 
   // This is a workaround bad route architecture
@@ -72,10 +72,10 @@ function BriefForm({
         {
           ...data,
           creativeInspirations: data.creativeInspirations.filter(_.isString),
-          vertical: "TODO",
-          tiktokHandle: "TODO",
+          vertical: 'TODO',
+          tiktokHandle: 'TODO',
         },
-        ["status"]
+        ['status']
       )
     );
   });
@@ -83,7 +83,7 @@ function BriefForm({
   return (
     <section className="paper">
       <h1 className="text-primary text-2xl font-bold">
-        {briefState ? "Edit" : "Create"} Brief
+        {briefState ? 'Edit' : 'Create'} Brief
       </h1>
       <form onSubmit={onSubmit}>
         <div className="grid xl:grid-cols-3 p-6 xl:gap-8">
@@ -102,8 +102,8 @@ function BriefForm({
               label="Select TikTok campaign to link to"
               placeholder="Select an option"
               options={[
-                { text: "Fake Campaign 1", value: "fake1" },
-                { text: "Fake Campaign 2", value: "fake2" },
+                { text: 'Fake Campaign 1', value: 'fake1' },
+                { text: 'Fake Campaign 2', value: 'fake2' },
               ]}
               control={control}
               errors={errors}

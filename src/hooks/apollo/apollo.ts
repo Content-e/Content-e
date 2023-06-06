@@ -1,8 +1,8 @@
-import { InMemoryCache } from "@apollo/client";
-import { CachePersistor, LocalStorageWrapper } from "apollo3-cache-persist";
+import { InMemoryCache } from '@apollo/client';
+import { CachePersistor, LocalStorageWrapper } from 'apollo3-cache-persist';
 
 const LOCAL_STORAGE_KEYS = {
-  GRAPHQL_SCHEMA_VERSION: "graphqlSchemaVersion",
+  GRAPHQL_SCHEMA_VERSION: 'graphqlSchemaVersion',
 };
 
 const cache = new InMemoryCache();

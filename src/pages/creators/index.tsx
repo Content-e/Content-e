@@ -1,10 +1,10 @@
-import React from "react";
-import "./style.css";
-import { useHistory } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
-import HeaderDesktop from "components/authentication/components/header-desktop";
-import HeaderMobile from "components/authentication/components/header-mobile";
-import Footer from "components/authentication/components/footer";
+import React from 'react';
+import './style.css';
+import { useHistory } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
+import HeaderDesktop from 'components/authentication/components/header-desktop';
+import HeaderMobile from 'components/authentication/components/header-mobile';
+import Footer from 'components/authentication/components/footer';
 
 export const CreatorsPage: React.FC = () => {
   const history = useHistory();
@@ -63,7 +63,7 @@ export const CreatorsPage: React.FC = () => {
                 <div
                   className="login-signup creators-btn"
                   onClick={() =>
-                    history.push(UnAuthRoutes.HomePageLogin + "?role=creator")
+                    history.push(UnAuthRoutes.HomePageLogin + '?role=creator')
                   }
                 >
                   Login / Sign up
@@ -79,7 +79,7 @@ export const CreatorsPage: React.FC = () => {
             <img
               src="/images/creators-union.png"
               className="creators-union"
-              style={{ marginLeft: "63px" }}
+              style={{ marginLeft: '63px' }}
             />
           </div>
         </div>

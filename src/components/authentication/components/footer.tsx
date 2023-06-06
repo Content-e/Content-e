@@ -1,7 +1,7 @@
-import { useHistory } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
+import { useHistory } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
 
-import "../styles/login.scss";
+import '../styles/login.scss';
 
 interface Props {
   isDark?: boolean;
@@ -40,7 +40,7 @@ export const Footer: React.FC<Props> = ({ isDark }) => {
         <div
           className="landing-footer-text"
           onClick={() =>
-            window.location.pathname === "/homePageLogin"
+            window.location.pathname === '/homePageLogin'
               ? history.push(UnAuthRoutes.Register)
               : history.push(UnAuthRoutes.Login)
           }

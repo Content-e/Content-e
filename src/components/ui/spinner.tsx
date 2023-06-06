@@ -2,7 +2,7 @@ interface Props {
   className?: string;
 }
 
-export default function Spinner({ className = "" }: Props) {
+export default function Spinner({ className = '' }: Props) {
   return (
     <div className="w-full h-full flex justify-center items-center">
       <div role="status">

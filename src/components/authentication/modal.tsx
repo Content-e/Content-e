@@ -1,4 +1,4 @@
-import * as S from "./styles/auth.styled";
+import * as S from './styles/auth.styled';
 
 interface Props {
   handleClose: () => void;
@@ -26,12 +26,12 @@ export default function Modal({
           <img src="/images/cross.svg" alt="cross icon" onClick={handleClose} />
         </S.ModalTopBar>
         <img
-          src={`/images/checkmark${type ? `-${type}` : ""}.svg`}
+          src={`/images/checkmark${type ? `-${type}` : ''}.svg`}
           alt="checkmark icon"
         />
         <span>{content}</span>
         {actionLabel && (
-          <S.ModalActionButton $type={type || ""} onClick={actionHandler}>
+          <S.ModalActionButton $type={type || ''} onClick={actionHandler}>
             {actionLabel}
           </S.ModalActionButton>
         )}

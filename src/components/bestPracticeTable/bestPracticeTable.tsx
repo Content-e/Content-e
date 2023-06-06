@@ -1,8 +1,8 @@
-import { BestPractices } from "API";
-import { FC } from "react";
-import { useHistory } from "react-router-dom";
-import { AdminRoutes } from "utils";
-import "./bestPracticeTable.css";
+import { BestPractices } from 'API';
+import { FC } from 'react';
+import { useHistory } from 'react-router-dom';
+import { AdminRoutes } from 'utils';
+import './bestPracticeTable.css';
 
 interface Props {
   data?: Array<BestPractices | null>;
@@ -37,10 +37,10 @@ export const AdminPracticeTableDetails: FC<Props> = ({
             {e?.headLine}
           </td>
           <td className="brand-table-description break-entry capitalized best-practice-description">
-            {e?.description.replaceAll(/<\/?[^>]+(>|$)/gi, "")}
+            {e?.description.replaceAll(/<\/?[^>]+(>|$)/gi, '')}
           </td>
           <td className="brand-table-description centered capitalized best-practice-status">
-            {e?.active === "true" ? "Active" : "Inactive"}
+            {e?.active === 'true' ? 'Active' : 'Inactive'}
           </td>
           <td
             className="centered best-practice-icon"

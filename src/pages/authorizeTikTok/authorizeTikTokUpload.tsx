@@ -1,8 +1,8 @@
-import { FC, useState } from "react";
-import AuthorizeTikTokHeader from "./authorizeTikTokHeader";
-import { FileUploader } from "react-drag-drop-files";
-import { Storage } from "aws-amplify";
-import { Spinner } from "react-bootstrap";
+import { FC, useState } from 'react';
+import AuthorizeTikTokHeader from './authorizeTikTokHeader';
+import { FileUploader } from 'react-drag-drop-files';
+import { Storage } from 'aws-amplify';
+import { Spinner } from 'react-bootstrap';
 
 interface Props {
   onCross: () => void;
@@ -12,7 +12,7 @@ interface Props {
   updatePath: (path: string, vidID: string) => void;
 }
 
-const fileTypes: string[] = ["MP4", "MOV", "AVI", "WMV", "WebM"];
+const fileTypes: string[] = ['MP4', 'MOV', 'AVI', 'WMV', 'WebM'];
 
 export const AuthorizeTiktokUpload: FC<Props> = ({
   goToPrev,
@@ -65,16 +65,16 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
           types={fileTypes}
           onDrop={() => {
             const span = document.querySelector(
-              ".tik-tok-upload label div span"
+              '.tik-tok-upload label div span'
             );
-            span!.innerHTML = "File Selected!";
+            span!.innerHTML = 'File Selected!';
           }}
           onSelect={() => {
             const span = document.querySelector(
-              ".tik-tok-upload label div span"
+              '.tik-tok-upload label div span'
             );
             setTimeout(function () {
-              span!.innerHTML = "File Selected!";
+              span!.innerHTML = 'File Selected!';
             }, 50);
           }}
         />

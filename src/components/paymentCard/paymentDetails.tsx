@@ -1,4 +1,4 @@
-import "./paymentCard.css";
+import './paymentCard.css';
 
 export default function PaymentDetails() {
   return (

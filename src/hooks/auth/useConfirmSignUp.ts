@@ -1,17 +1,17 @@
-import { Auth, CognitoUser } from "@aws-amplify/auth";
+import { Auth, CognitoUser } from '@aws-amplify/auth';
 import {
   getSuccessResponse,
   getErrorResponse,
   ApiCustomHookStateType,
   apiInitialState,
   ApiHookReturnType,
-} from "hooks/utils";
-import { useCallback, useContext, useState } from "react";
-import { AuthContext } from "state/auth";
-import { AuthContextType } from "state/types";
-import ErrorContext from "state/error/error.context";
-import { confirmSignUpErrorHeading, IErrorContextType } from "utils";
-import { updateErrorState } from "components";
+} from 'hooks/utils';
+import { useCallback, useContext, useState } from 'react';
+import { AuthContext } from 'state/auth';
+import { AuthContextType } from 'state/types';
+import ErrorContext from 'state/error/error.context';
+import { confirmSignUpErrorHeading, IErrorContextType } from 'utils';
+import { updateErrorState } from 'components';
 
 export const useConfirmSignUp = (): ApiHookReturnType<CognitoUser, string> => {
   const [res, setRes] =
@@ -35,7 +35,7 @@ export const useConfirmSignUp = (): ApiHookReturnType<CognitoUser, string> => {
           setAuthState((current) => ({
             ...current,
             isVerified: true,
-            tempPasswd: "",
+            tempPasswd: '',
             isLoggedIn: true,
           }));
         }

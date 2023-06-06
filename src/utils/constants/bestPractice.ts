@@ -1,16 +1,16 @@
-import { ApolloError } from "@apollo/client";
-import { BestPractices } from "API";
+import { ApolloError } from '@apollo/client';
+import { BestPractices } from 'API';
 import {
   ICreateBestPractice,
   ICreateBestPracticeError,
-} from "state/bestPractice";
+} from 'state/bestPractice';
 
 export const initialCreatePracticeState: ICreateBestPractice = {
-  headLine: "",
-  description: "",
-  urlPath: "",
-  active: "true",
-  id: "",
+  headLine: '',
+  description: '',
+  urlPath: '',
+  active: 'true',
+  id: '',
 };
 
 export const initialCreatePracticeError: ICreateBestPracticeError = {

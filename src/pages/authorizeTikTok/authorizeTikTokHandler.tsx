@@ -1,19 +1,19 @@
-import classNames from "classnames";
-import TiktokHandlerAlertModal from "components/tiktokHandlerAlertModal";
+import classNames from 'classnames';
+import TiktokHandlerAlertModal from 'components/tiktokHandlerAlertModal';
 import {
   handleCreativeRequest,
   handleUpdateCreativeRequest,
-} from "hooks/query/useTikTokAuth";
-import { FC, useEffect, useState } from "react";
-import { withAuth } from "state/auth";
-import { withProfile } from "state/profileSteps";
-import { AuthProps, ProfileProps } from "utils";
-import "./authorizeTikTok.css";
-import AuthorizeTikTokStep1 from "./authorizeTikTokStep1";
-import AuthorizeTikTokStep2 from "./authorizeTikTokStep2";
-import AuthorizeTikTokStep3 from "./authorizeTikTokStep3";
-import AuthorizeTiktokType from "./authorizeTiktokType";
-import AuthorizeTiktokUpload from "./authorizeTikTokUpload";
+} from 'hooks/query/useTikTokAuth';
+import { FC, useEffect, useState } from 'react';
+import { withAuth } from 'state/auth';
+import { withProfile } from 'state/profileSteps';
+import { AuthProps, ProfileProps } from 'utils';
+import './authorizeTikTok.css';
+import AuthorizeTikTokStep1 from './authorizeTikTokStep1';
+import AuthorizeTikTokStep2 from './authorizeTikTokStep2';
+import AuthorizeTikTokStep3 from './authorizeTikTokStep3';
+import AuthorizeTiktokType from './authorizeTiktokType';
+import AuthorizeTiktokUpload from './authorizeTikTokUpload';
 
 interface Props {
   onCross: () => void;
@@ -43,7 +43,7 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
         const input = {
           brandBriefId: id,
           creatorId: userId,
-          status: "new",
+          status: 'new',
           tiktokCreativeUrl: link,
           tiktokVideoCode: link,
           creativeTiktokHandle: profile?.tiktokHandler,
@@ -59,9 +59,9 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
         const input = {
           brandBriefId: id,
           creatorId: userId,
-          status: "submitted",
-          tiktokCreativeUrl: "",
-          tiktokVideoCode: "",
+          status: 'submitted',
+          tiktokCreativeUrl: '',
+          tiktokVideoCode: '',
           creativeTiktokHandle: profile?.tiktokHandler,
         };
         const res = await createTiktokRequest({ variables: { input } });
@@ -92,8 +92,8 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
 
   return (
     <div
-      className={classNames("tik-tok-wrapper", {
-        "tik-tok-background": disableBackground,
+      className={classNames('tik-tok-wrapper', {
+        'tik-tok-background': disableBackground,
       })}
     >
       <div className="tik-tok-container">
@@ -101,10 +101,10 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
           <AuthorizeTiktokType
             onCross={onCross}
             goToNext={(): void => setStep(0)}
-            goToUpload={(): void => setStep("upload")}
+            goToUpload={(): void => setStep('upload')}
           />
         )}
-        {step === "upload" && (
+        {step === 'upload' && (
           <AuthorizeTiktokUpload
             onCross={onCross}
             updatePath={updatePath}

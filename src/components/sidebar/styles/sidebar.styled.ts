@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const DashboardMenu = styled.ul`
   margin-top: 50px;
@@ -6,10 +6,10 @@ export const DashboardMenu = styled.ul`
     &.selected {
       opacity: 1;
       &:before {
-        content: "";
+        content: '';
         display: block;
         position: absolute;
-        background: url("/images/selected.svg");
+        background: url('/images/selected.svg');
         background-size: 100% 100%;
         width: 7px;
         height: 48px;
@@ -39,11 +39,11 @@ export const DashboardMenu = styled.ul`
     opacity: 1;
   }
   li:hover:before {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     background-color: white;
-    background: url("/images/selected.svg");
+    background: url('/images/selected.svg');
     background-size: 100% 100%;
     width: 7px;
     height: 48px;
@@ -231,7 +231,7 @@ export const Username = styled.div`
   font-size: 12px;
   line-height: 20px;
   color: #409094;
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   cursor: pointer;
 `;
 export const Image = styled.div`

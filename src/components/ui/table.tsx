@@ -1,14 +1,14 @@
-import _ from "lodash";
+import _ from 'lodash';
 import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
   useReactTable,
-} from "@tanstack/react-table";
-import { useEffect, useState } from "react";
-import Spinner from "./spinner";
-import Disclosure from "./disclosure";
+} from '@tanstack/react-table';
+import { useEffect, useState } from 'react';
+import Spinner from './spinner';
+import Disclosure from './disclosure';
 
 interface Props<T> {
   data: T[];
@@ -40,8 +40,8 @@ function Table<T>({
 
   useEffect(() => {
     const handleWindowResize = () => setWindowSize(window.innerWidth);
-    window.addEventListener("resize", handleWindowResize);
-    return () => window.removeEventListener("resize", handleWindowResize);
+    window.addEventListener('resize', handleWindowResize);
+    return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
 
   useEffect(() => {
@@ -79,7 +79,7 @@ function Table<T>({
                   key={row.id}
                   onClick={() => onRowClick && onRowClick(row.original)}
                   className={`hover:bg-gray-200/50 cursor-pointer ${
-                    rowIndex % 2 ? "bg-gray-200/20" : ""
+                    rowIndex % 2 ? 'bg-gray-200/20' : ''
                   }`}
                 >
                   {row.getVisibleCells().map((cell) => (
@@ -157,7 +157,7 @@ function Table<T>({
             <div
               key={i}
               className={`px-3 cursor-pointer ${
-                table.getState().pagination.pageIndex === i && "text-primary"
+                table.getState().pagination.pageIndex === i && 'text-primary'
               }`}
               onClick={() => table.setPageIndex(i)}
             >

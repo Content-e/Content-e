@@ -1,11 +1,11 @@
-import CampaignConfirmationModal from "components/campaignConfirmationModal/campaignConfirmationModal";
-import { FC, useEffect, useState } from "react";
-import "./creativeTikTokApproval.css";
-import { CreativeRequestStatus, UnknownType } from "utils";
-import { CreativeRequest } from "API";
-import { ViewRequestProps, withRequestView } from "state/requests";
-import CreativeTikTokVideo from "./creativeTikTokVideo";
-import { Storage } from "aws-amplify";
+import CampaignConfirmationModal from 'components/campaignConfirmationModal/campaignConfirmationModal';
+import { FC, useEffect, useState } from 'react';
+import './creativeTikTokApproval.css';
+import { CreativeRequestStatus, UnknownType } from 'utils';
+import { CreativeRequest } from 'API';
+import { ViewRequestProps, withRequestView } from 'state/requests';
+import CreativeTikTokVideo from './creativeTikTokVideo';
+import { Storage } from 'aws-amplify';
 
 interface Props {
   request?: CreativeRequest | null;
@@ -76,7 +76,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
         </div>
         <div
           className={`brand-dashboard__slider
-            ${openedSidebar ? "short-slider" : ""}
+            ${openedSidebar ? 'short-slider' : ''}
           `}
         >
           <div className="brand-dashboard__slider-left">

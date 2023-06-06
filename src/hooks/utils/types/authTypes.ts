@@ -1,4 +1,4 @@
-import { CognitoUser } from "@aws-amplify/auth";
+import { CognitoUser } from '@aws-amplify/auth';
 
 export type SignPayloadType = {
   email: string;

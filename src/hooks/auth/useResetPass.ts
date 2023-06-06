@@ -1,5 +1,5 @@
-import { Auth } from "@aws-amplify/auth";
-import { useCallback, useContext, useState } from "react";
+import { Auth } from '@aws-amplify/auth';
+import { useCallback, useContext, useState } from 'react';
 import {
   ApiCustomHookStateType,
   ApiHookReturnType,
@@ -7,12 +7,12 @@ import {
   getSuccessResponse,
   getErrorResponse,
   SubmitPassowrdPayloadType,
-} from "hooks/utils";
-import { AuthContextType } from "state/types/authTypes";
-import { AuthContext } from "state/auth";
-import ErrorContext from "state/error/error.context";
-import { IErrorContextType, passwordErrorHeading, UnknownType } from "utils";
-import { updateErrorState } from "components";
+} from 'hooks/utils';
+import { AuthContextType } from 'state/types/authTypes';
+import { AuthContext } from 'state/auth';
+import ErrorContext from 'state/error/error.context';
+import { IErrorContextType, passwordErrorHeading, UnknownType } from 'utils';
+import { updateErrorState } from 'components';
 
 export const useResetPass = (): ApiHookReturnType<
   string,

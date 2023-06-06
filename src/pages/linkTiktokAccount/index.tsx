@@ -1,10 +1,10 @@
-import { AuthRoutes, ProfileProps } from "utils";
-import { FullPageLoader } from "components";
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { withProfile } from "state/profileSteps";
-import { useLinkTiktokAccount } from "hooks";
-import "./style.css";
+import { AuthRoutes, ProfileProps } from 'utils';
+import { FullPageLoader } from 'components';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { withProfile } from 'state/profileSteps';
+import { useLinkTiktokAccount } from 'hooks';
+import './style.css';
 
 const LinkTiktokAccount: React.FC<ProfileProps> = ({
   profileState: { data },
@@ -18,7 +18,7 @@ const LinkTiktokAccount: React.FC<ProfileProps> = ({
 
   useEffect(() => {
     const url = new URL(window.location.href);
-    const authCode = url.searchParams.get("auth_code");
+    const authCode = url.searchParams.get('auth_code');
     if (data?.id && authCode)
       linkTiktok({ variables: { authCode, userProfileId: data.id } });
   }, [data]);

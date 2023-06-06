@@ -1,6 +1,6 @@
-import React, { FC, useContext } from "react";
-import { UnAuthUserName } from "state/auth";
-import { UnAuthUserNameProps } from "utils";
+import React, { FC, useContext } from 'react';
+import { UnAuthUserName } from 'state/auth';
+import { UnAuthUserNameProps } from 'utils';
 
 export function withUnAuthName<T>(
   Component: React.FC<T & UnAuthUserNameProps>
