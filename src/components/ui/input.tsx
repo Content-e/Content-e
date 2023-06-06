@@ -37,7 +37,8 @@ export default function Input<T extends FieldValues>({
       <input
         id={name}
         className={`
-          w-full rounded-lg bg-[#F9FBFD] border-[#005F730D] border-[1px] text-gray-400 p-5 ${inputClassName}
+          w-full rounded-lg focus:outline-secondary
+          bg-[#F9FBFD] border-[#005F730D] border-[1px] text-gray-400 p-5 ${inputClassName}
         `}
         type={rest.type}
         {...register(name, {
