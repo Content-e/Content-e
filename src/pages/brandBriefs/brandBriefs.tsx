@@ -1,18 +1,21 @@
 import { BrandBrief } from 'API';
 import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetails';
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { BrandBriefProps, withBrandBriefs } from 'state/brandBrief';
 import { Link } from 'react-router-dom';
 import { BrandRoutes } from 'utils';
 import { createColumnHelper } from '@tanstack/react-table';
 import Table from 'components/ui/table';
 import Button from 'components/ui/button';
+import { BriefWithStatus } from 'pages/campaignBriefs/campaignBriefs';
+import _ from 'lodash';
+import Status from 'components/ui/status';
 
-const columnHelper = createColumnHelper<BrandBrief | null | undefined>();
+const columnHelper = createColumnHelper<BriefWithStatus | null | undefined>();
 
 export const columns = [
   columnHelper.accessor('BriefName', {
-    header: 'Brief Name',
+    header: 'Name',
   }),
   columnHelper.accessor('brandBriefDetails', {
     header: 'Details',
@@ -33,8 +36,9 @@ export const columns = [
     header: 'Objective',
     cell: (info) => <span className="uppercase">{info.getValue()}</span>,
   }),
-  columnHelper.display({
+  columnHelper.accessor('status', {
     header: 'Status',
+    cell: (info) => <Status value={info.getValue()} />,
   }),
   columnHelper.display({
     header: 'Edit',
@@ -55,17 +59,19 @@ export const columns = [
 ];
 
 export const BrandBriefs: FC<BrandBriefProps> = ({ data, loading }) => {
-  const [input, setInput] = useState('');
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
 
-  useEffect(() => {
-    if (data) setInput('');
-  }, [data]);
-
-  const filteredData = useMemo(
+  const dataWithStatus = useMemo(
     () =>
-      data?.filter((e) => e?.BriefName?.toLowerCase().includes(input)) || [],
-    [data, input]
+      _.sortBy(
+        _.compact(data).map((brief) => ({
+          ...brief,
+          status:
+            _.first(_.compact(brief.creativeRequests?.items))?.status || 'new',
+        })),
+        'updatedAt'
+      ).reverse(),
+    [data]
   );
 
   // TODO: wtf this is dumb! Should be separate route
@@ -98,7 +104,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data, loading }) => {
           title="Campaign Briefs"
           primaryField="BriefName"
           isLoading={loading}
-          data={filteredData}
+          data={dataWithStatus}
           columns={columns}
           onRowClick={(brief) => brief && setSelectedBrief(brief)}
         />

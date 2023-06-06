@@ -49,7 +49,7 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
   briefList,
   loading,
 }) => {
-  const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
+  const [selectedBrief, setSelectedBrief] = useState<BriefWithStatus>();
   const [selectedBriefStatus, setSelectedBriefStatus] = useState('');
 
   const data = useMemo(
@@ -57,12 +57,13 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
       _.sortBy(
         _.compact(briefList).map((brief) => ({
           ...brief,
-          status: _.first(brief.creativeRequests?.items)?.status || 'new',
+          status:
+            _.first(_.compact(brief.creativeRequests?.items))?.status || 'new',
         })),
         'updatedAt'
       ).reverse(),
     [briefList]
-  );
+  ) satisfies BriefWithStatus[];
 
   if (selectedBrief)
     return (

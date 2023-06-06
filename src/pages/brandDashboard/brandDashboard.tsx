@@ -12,6 +12,7 @@ import {
 } from 'components/creativesTable/creativesTable';
 import { columns as brandBriefColumns } from 'pages/brandBriefs/brandBriefs';
 import Table from 'components/ui/table';
+import { BriefWithStatus } from 'pages/campaignBriefs/campaignBriefs';
 
 export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
   const [selectedRequest, setSelectedRequest] = useState<RequestWithBrief>();
@@ -30,6 +31,19 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
       ).reverse(),
     [props.data]
   ) satisfies RequestWithBrief[];
+
+  const briefs = useMemo(
+    () =>
+      _.sortBy(
+        _.compact(props.data).map((brief) => ({
+          ...brief,
+          status:
+            _.first(_.compact(brief.creativeRequests?.items))?.status || 'new',
+        })),
+        'updatedAt'
+      ).reverse(),
+    [props.data]
+  ) satisfies BriefWithStatus[];
 
   if (selectedBrief)
     return (
@@ -62,7 +76,7 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
       <section className="paper">
         <Table
           title="Campaign briefs"
-          data={props.data || []}
+          data={briefs}
           isLoading={loading}
           columns={_.at(brandBriefColumns, [0, 3])}
           onRowClick={(brief) => brief && setSelectedBrief(brief)}
