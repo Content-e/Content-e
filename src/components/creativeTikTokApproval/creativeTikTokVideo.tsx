@@ -1,5 +1,5 @@
 import Modal from 'components/ui/modal';
-import { FC, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 import './creativeTikTokApproval.css';
 
 interface Props {
@@ -14,6 +14,7 @@ export const CreativeTikTokVideo: FC<Props> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleModal = (): void => setIsOpen(!isOpen);
+  const videoRef = useRef(null);
 
   return (
     <div className="creative-video-canvas brand-dashboard__slider-item main-slider-item">
@@ -31,10 +32,16 @@ export const CreativeTikTokVideo: FC<Props> = ({
         isOpen={isOpen}
         title="Creative's TikTok Video"
         handleClose={() => setIsOpen(false)}
+        focusRef={videoRef}
       >
         <div className="m-8 flex justify-center items-center">
           {awsURL ? (
-            <video controls className="w-full" autoPlay>
+            <video
+              controls
+              className="w-full outline-none"
+              autoPlay
+              ref={videoRef}
+            >
               <source src={awsURL} />
             </video>
           ) : (
