@@ -1,11 +1,12 @@
-import { FC, useState } from 'react';
+import { RequestWithBrief } from 'components/creativesTable/creativesTable';
 import CreativeTikTokApproval from 'components/creativeTikTokApproval/creativeTikTokApproval';
+import GradientCard from 'components/gradientCard/gradientCard';
 import Button from 'components/ui/button';
 import Modal from 'components/ui/modal';
+import _ from 'lodash';
+import { FC, useState } from 'react';
 import { withProfile } from 'state/profileSteps';
 import { ProfileProps } from 'utils';
-import GradientCard from 'components/gradientCard/gradientCard';
-import { RequestWithBrief } from 'components/creativesTable/creativesTable';
 
 interface Props {
   creativeRequest: RequestWithBrief;
@@ -38,9 +39,8 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
               />
             </div>
             <h3 className="text-2xl font-bold">
-              {creativeRequest?.creativeTiktokHandle
-                ? `@${creativeRequest?.creativeTiktokHandle}`
-                : ''}
+              {creativeRequest?.creativeTiktokHandle &&
+                `@${_.trimStart(creativeRequest?.creativeTiktokHandle, '@')}`}
             </h3>
           </GradientCard>
           <GradientCard>
@@ -87,9 +87,8 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
             </span>
             <span>
               <b>Creator's TikTok handle:</b>{' '}
-              {creativeRequest?.creativeTiktokHandle
-                ? `@${creativeRequest?.creativeTiktokHandle}`
-                : ''}
+              {creativeRequest?.creativeTiktokHandle &&
+                `@${_.trimStart(creativeRequest?.creativeTiktokHandle, '@')}`}
             </span>
             <span>
               <b>Creator's description:</b> {creativeRequest.creatorDescription}
