@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import CreativeTikTokApproval from 'components/creativeTikTokApproval/creativeTikTokApproval';
 import Button from 'components/ui/button';
-import { default as ModalBase } from 'components/ui/modal';
+import Modal from 'components/ui/modal';
 import { withProfile } from 'state/profileSteps';
 import { ProfileProps } from 'utils';
 import GradientCard from 'components/gradientCard/gradientCard';
@@ -64,20 +64,18 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
           <h1 className="text-lg text-primary font-bold">Creator profile</h1>
           <p>{creativeRequest.creatorDescription}</p>
         </div>
-        {creativeRequest && (
-          <CreativeTikTokApproval
-            id={creativeRequest?.id}
-            onClose={onBack}
-            request={creativeRequest}
-            inspiration={creativeRequest.brief?.creativeInspirations}
-            createAdPayload={{
-              adgroupId: creativeRequest.brief?.adgroupId,
-              authCode: 'TODO', // What should be here?
-              creativeRequestId: creativeRequest.id,
-            }}
-          />
-        )}
-        <ModalBase
+        <CreativeTikTokApproval
+          id={creativeRequest?.id}
+          onClose={onBack}
+          request={creativeRequest}
+          inspiration={creativeRequest.brief?.creativeInspirations}
+          createAdPayload={{
+            adgroupId: creativeRequest.brief?.adgroupId,
+            authCode: 'TODO', // What should be here?
+            creativeRequestId: creativeRequest.id,
+          }}
+        />
+        <Modal
           title="Creator details"
           isOpen={showDetails}
           handleClose={() => setShowDetails(false)}
@@ -102,7 +100,7 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
               DONE
             </Button>
           </div>
-        </ModalBase>
+        </Modal>
       </section>
     </>
   );

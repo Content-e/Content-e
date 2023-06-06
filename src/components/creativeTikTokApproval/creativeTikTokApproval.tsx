@@ -1,11 +1,12 @@
 import CampaignConfirmationModal from 'components/campaignConfirmationModal/campaignConfirmationModal';
 import { FC, useEffect, useState } from 'react';
-import './creativeTikTokApproval.css';
 import { CreativeRequestStatus, UnknownType } from 'utils';
 import { CreativeRequest } from 'API';
 import { ViewRequestProps, withRequestView } from 'state/requests';
 import CreativeTikTokVideo from './creativeTikTokVideo';
 import { Storage } from 'aws-amplify';
+import Button from 'components/ui/button';
+import _ from 'lodash';
 
 interface Props {
   request?: CreativeRequest | null;
@@ -27,8 +28,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
 }) => {
   const openedSidebar = false;
   const [showConfirm, setShowConfirm] = useState(false);
-
-  const [awsURL, setAwsURL] = useState<any>(null);
+  const [awsURL, setAwsURL] = useState<string>('');
 
   const onOkay = (): void => {
     if (showConfirm) approveRequest(createAdPayload);
@@ -41,17 +41,20 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
   };
 
   useEffect(() => {
-    if (request?.id && request?.tiktokVideoCode)
+    if (request?.tiktokVideoCode) {
       getVideoLink(request.tiktokVideoCode);
-    else {
+    } else {
       Storage.get(`${request?.tiktokCreativeUrl}`)
         .then((data) => {
-          console.log(data);
+          console.log('AWS video URL:', data);
           setAwsURL(data);
         })
-        .catch((err) => console.log(err));
+        .catch((err) =>
+          console.log(`Failed to load ${request?.tiktokCreativeUrl}:`, err)
+        );
     }
   }, [request]);
+
   useEffect(() => {
     if (!loading && isSuccess) onClose();
   }, [loading, isSuccess]);
@@ -65,15 +68,9 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
           errorMsg={errorMsg}
         />
       )}
-      <div className="brand-dashboard__item">
-        <div className="brand-dashboard__top">
-          <div className="brand-dashboard__top-title">Creative</div>
-          <img
-            className="brand-dashboard__top-icon"
-            alt=""
-            src="/images/dots.svg/"
-          />
-        </div>
+
+      <section className="paper">
+        <h1 className="text-lg text-primary font-bold">Creative</h1>
         <div
           className={`brand-dashboard__slider
             ${openedSidebar ? 'short-slider' : ''}
@@ -131,7 +128,15 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
             </div>
           )}
         </div>
-      </div>
+        <div className="flex justify-center mt-6">
+          <div className="flex gap-4">
+            <Button onClick={onApprove}>Approve</Button>
+            <Button onClick={onReject} variant="secondary">
+              Reject
+            </Button>
+          </div>
+        </div>
+      </section>
     </>
   );
 };

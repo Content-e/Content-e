@@ -1,7 +1,6 @@
-// import { FC, Fragment, useState } from "react";
+import Modal from 'components/ui/modal';
 import { FC, useState } from 'react';
 import './creativeTikTokApproval.css';
-// import { isValidUrl } from "components/helpers";
 
 interface Props {
   videoUrl?: string;
@@ -13,11 +12,9 @@ export const CreativeTikTokVideo: FC<Props> = ({
   previewUrl,
   awsURL,
 }) => {
-  const [openVideoModal, handleVideoModal] = useState(false);
-  const toggleModal = (): void => handleVideoModal(!openVideoModal);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleModal = (): void => setIsOpen(!isOpen);
 
-  // if (!previewUrl || !isValidUrl(videoUrl || "") || !awsURL)
-  //   return <Fragment key="no video" />;
   return (
     <div className="creative-video-canvas brand-dashboard__slider-item main-slider-item">
       <div
@@ -30,41 +27,27 @@ export const CreativeTikTokVideo: FC<Props> = ({
           <img src="/images/play.svg" alt="play icon" />
         </div>
       </div>
-      {openVideoModal && (
-        <div className="creative-video-panel">
-          <div className="creative-video-container">
-            <div className="creative-inspiration-header">
-              <div className="text-xl font-bold text-primary">
-                Creative's TikTok Video
-              </div>
-              <img
-                src="/images/close-icon.svg"
-                className="close-icon-inspiration"
-                onClick={toggleModal}
-              />
-            </div>
-            {awsURL ? (
-              <video
-                controls
-                style={{
-                  width: '100%',
-                  margin: '5%',
-                }}
-              >
-                <source src={awsURL} />
-              </video>
-            ) : (
-              <iframe
-                className="creative-video-iframe"
-                src={videoUrl}
-                name={`video-${videoUrl}`}
-                // eslint-disable-next-line max-len
-                sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation allow-same-origin"
-              />
-            )}
-          </div>
+      <Modal
+        isOpen={isOpen}
+        title="Creative's TikTok Video"
+        handleClose={() => setIsOpen(false)}
+      >
+        <div className="m-8 flex justify-center items-center">
+          {awsURL ? (
+            <video controls className="w-full">
+              <source src={awsURL} />
+            </video>
+          ) : (
+            <iframe
+              className="creative-video-iframe"
+              src={videoUrl}
+              name={`video-${videoUrl}`}
+              // eslint-disable-next-line max-len
+              sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation allow-same-origin"
+            />
+          )}
         </div>
-      )}
+      </Modal>
     </div>
   );
 };
