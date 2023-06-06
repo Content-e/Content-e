@@ -5,13 +5,19 @@
     "project": "./tsconfig.json",
     "sourceType": "module"
   },
-  "extends": ["eslint:recommended", "airbnb-typescript/base", "plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended", "prettier", "plugin:prettier/recommended"],
-  "plugins": ["import", "prettier", "no-only-tests"],
+  "extends": [
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["react", "react-hooks", "@typescript-eslint"],
   "rules": {
+    "react/react-in-jsx-scope": 0,
     "no-underscore-dangle": "off",
     "no-extra-semi": 0,
     "no-restricted-syntax": [2, "WithStatement"],
-    "import/export": 0,
     "no-console": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/no-var-requires": 1,
@@ -24,32 +30,14 @@
         "ignoreComments": false
       }
     ],
-    "@typescript-eslint/indent": 0, // https://github.com/typescript-eslint/typescript-eslint/issues/1824,
     "@typescript-eslint/no-implied-eval": 0, // trade-0 for faster linting without parserOptions setting
     "@typescript-eslint/no-throw-literal": 0, // trade-0 for faster linting without parserOptions setting
-    "import/no-cycle": 2,
     "@typescript-eslint/no-unused-vars": 2,
-    "@typescript-eslint/prefer-optional-chain": 1,
-    "import/extensions": 0,
-    "no-only-tests/no-only-tests": "error"
-  },
-  "overrides": [
-    {
-      "files": ["*.test.*"],
-      "rules": {
-        "import/no-named-as-default-member": 0
-      }
-    }
-  ],
-  "env": {
-    "browser": true,
-    "jest": true
+    "@typescript-eslint/prefer-optional-chain": 1
   },
   "settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".ts"]
-      }
+    "react": {
+      "version": "detect"
     }
   }
 }
