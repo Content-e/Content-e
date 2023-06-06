@@ -1,10 +1,11 @@
 import { BrandBrief } from 'API';
 import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetails';
-import { FC, useMemo, useState } from 'react';
+import { FC, useMemo, useState, useEffect } from 'react';
 import { BrandBriefProps, withBrandBriefs } from 'state/brandBrief';
 import { Link } from 'react-router-dom';
 import { BrandRoutes } from 'utils';
 import { createColumnHelper } from '@tanstack/react-table';
+import Search from 'components/search';
 import Table from 'components/ui/table';
 import Button from 'components/ui/button';
 import { BriefWithStatus } from 'pages/campaignBriefs/campaignBriefs';
@@ -60,6 +61,7 @@ export const columns = [
 
 export const BrandBriefs: FC<BrandBriefProps> = ({ data, loading }) => {
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
+  const [searchText, setSearchText] = useState('');
 
   const dataWithStatus = useMemo(
     () =>
@@ -74,6 +76,18 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data, loading }) => {
     [data]
   );
 
+  const filteredData = useMemo(
+    () =>
+      dataWithStatus?.filter((e) =>
+        e?.BriefName?.toLowerCase().includes(searchText)
+      ) || [],
+    [dataWithStatus, searchText]
+  );
+
+  useEffect(() => {
+    if (data) setSearchText('');
+  }, [data]);
+
   // TODO: wtf this is dumb! Should be separate route
   if (selectedBrief)
     return (
@@ -86,15 +100,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data, loading }) => {
   return (
     <div className="flex flex-col gap-4">
       <section className="flex gap-4">
-        {/*TODO: working search bar*/}
-        <div className="brand-dashboard__item search-item">
-          <img
-            className="brand-dashboard__item-search"
-            alt=""
-            src="/images/search.svg"
-          />
-          <input className="creatives-search" placeholder="Search..." />
-        </div>
+        <Search searchText={searchText} setSearchText={setSearchText} />
         <Link to={BrandRoutes.CreateBrief}>
           <Button>ADD NEW BRIEF</Button>
         </Link>
@@ -104,7 +110,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data, loading }) => {
           title="Campaign Briefs"
           primaryField="BriefName"
           isLoading={loading}
-          data={dataWithStatus}
+          data={filteredData}
           columns={columns}
           onRowClick={(brief) => brief && setSelectedBrief(brief)}
         />

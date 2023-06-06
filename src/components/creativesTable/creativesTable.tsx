@@ -2,9 +2,10 @@ import { createColumnHelper } from '@tanstack/react-table';
 import { BrandBrief, CreativeRequest } from 'API';
 import Status from 'components/ui/status';
 import Table from 'components/ui/table';
+import Search from 'components/search';
 import _ from 'lodash';
 import CreativeDetails from 'pages/creativeDetails/creativeDetails';
-import { FC, useMemo, useState } from 'react';
+import { FC, useMemo, useState, useEffect } from 'react';
 import { ICreatorBriefListProps, withCreatorBriefList } from 'state/dashboard';
 
 export type RequestWithBrief = CreativeRequest & {
@@ -68,6 +69,18 @@ export const CreativesTable: FC<ICreatorBriefListProps> = ({
     [briefList]
   ) satisfies RequestWithBrief[];
 
+  useEffect(() => {
+    if (requests) setSearchText('');
+  }, [requests]);
+
+  const filteredData = useMemo(
+    () =>
+      requests?.filter((e) =>
+        e?.brief.BriefName?.toLowerCase().includes(searchText)
+      ),
+    [requests, searchText]
+  );
+
   if (selectedRequest)
     return (
       <CreativeDetails
@@ -79,26 +92,13 @@ export const CreativesTable: FC<ICreatorBriefListProps> = ({
   return (
     <div className="flex flex-col gap-4">
       <section className="flex gap-4">
-        {/*TODO: working search bar*/}
-        <div className="brand-dashboard__item search-item">
-          <img
-            className="brand-dashboard__item-search"
-            alt=""
-            src="/images/search.svg"
-          />
-          <input
-            className="creatives-search"
-            placeholder="Search..."
-            value={searchText}
-            onChange={(e): void => setSearchText(e.target.value)}
-          />
-        </div>
+        <Search searchText={searchText} setSearchText={setSearchText} />
       </section>
       <section className="paper">
         <Table
           title="Creatives"
           primaryField="BriefName"
-          data={requests}
+          data={filteredData}
           columns={columns}
           isLoading={loading}
           onRowClick={(brief) => brief && setSelectedRequest(brief)}
