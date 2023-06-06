@@ -7,7 +7,7 @@ interface Props {
   isDark?: boolean;
 }
 
-export const Footer: React.FC<Props> = ({ isDark }) => {
+export function Footer({ isDark }: Props) {
   const history = useHistory();
 
   return (
@@ -112,6 +112,6 @@ export const Footer: React.FC<Props> = ({ isDark }) => {
       </div>
     </div>
   );
-};
+}
 
 export default Footer;

@@ -8,17 +8,17 @@ import {
 
 export const AuthContext = createContext<AuthContextType>({
   authState: initialAuthContext,
-  setAuthState: () => {},
+  setAuthState: console.log,
 });
 
 export const TitleContext = createContext<TitleContextType>({
   title: '',
-  setTitle: () => {},
+  setTitle: console.log,
 });
 
 export const UnAuthUserName = createContext<IUnAuthUserName>({
   fullName: '',
-  setFullName: () => {},
+  setFullName: console.log,
 });
 
 export default AuthContext;

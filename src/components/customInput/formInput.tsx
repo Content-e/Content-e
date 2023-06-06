@@ -19,7 +19,6 @@ type Props<T extends FieldValues> = InputHTMLAttributes<HTMLInputElement> & {
 /// This is react-hook-form compatible version of Input
 export default function Input<T extends FieldValues>({
   name,
-  label,
   register,
   errors,
   className = 'mb-4',

@@ -1,11 +1,14 @@
+import { UserProfile } from 'API';
 import PaymentCard from 'components/paymentCard/paymentCard';
 import PaymentDetails from 'components/paymentCard/paymentDetails';
 import WalletCard from 'components/walletCard/walletCard';
 import './wallet.css';
 
-export default function Wallet({ data }) {
-  console.log('data');
-  console.log(data);
+interface Props {
+  data: UserProfile;
+}
+
+export default function Wallet({ data }: Props) {
   return (
     <>
       <div className="wallet-section">

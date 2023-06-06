@@ -45,24 +45,20 @@ export default function AdminDashboard() {
           <CreativeDetailsCard
             campaign="0"
             campaignHeader="Last 24 hour spend"
-            iconCheck={false}
           />
           <CreativeDetailsCard
             campaign={totalRequests}
             campaignHeader="Number of creatives linked"
-            iconCheck={false}
           />
           <CreativeDetailsCard
             campaign={((acceptedRequests / (totalRequests || 1)) * 100).toFixed(
               2
             )}
             campaignHeader="Creative approval rate"
-            iconCheck={false}
           />
           <CreativeDetailsCard
             campaign="0"
             campaignHeader="Average ad spend per creative"
-            iconCheck={false}
           />
         </div>
       </div>

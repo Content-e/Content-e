@@ -15,24 +15,10 @@
   "plugins": ["react", "react-hooks", "@typescript-eslint"],
   "rules": {
     "react/react-in-jsx-scope": 0,
-    "no-underscore-dangle": "off",
-    "no-extra-semi": 0,
-    "no-restricted-syntax": [2, "WithStatement"],
+    "react/no-unescaped-entities": 1, // TODO: escape everything properly
+    "react-hooks/rules-of-hooks": 1, // Too many HOCs with side effects; TODO: refactor into hooks
     "no-console": 0,
-    "@typescript-eslint/no-var-requires": 1,
-    "max-len": [
-      1,
-      110, // airbnb's default is 100 but we give some additional space for edge cases where prettier is not that strict
-      2,
-      {
-        "ignoreUrls": true,
-        "ignoreComments": false
-      }
-    ],
-    "@typescript-eslint/no-implied-eval": 0, // trade-0 for faster linting without parserOptions setting
-    "@typescript-eslint/no-throw-literal": 0, // trade-0 for faster linting without parserOptions setting
-    "@typescript-eslint/no-unused-vars": 2,
-    "@typescript-eslint/prefer-optional-chain": 1
+    "@typescript-eslint/no-unused-vars": 2
   },
   "settings": {
     "react": {

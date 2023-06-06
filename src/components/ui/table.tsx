@@ -106,6 +106,7 @@ function Table<T>({
         <ul className="flex flex-col">
           {table.getRowModel().rows.map((row) => (
             <Disclosure
+              key={row.id}
               title={_.toString(_.get(row.original, primaryField))}
               defaultOpen={false}
             >

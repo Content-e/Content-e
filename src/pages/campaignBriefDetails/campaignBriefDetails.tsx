@@ -93,7 +93,7 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data, status }) => {
                       </li>
                     );
                   return (
-                    <li>
+                    <li key={e}>
                       <p className="text-neutral-400">{title}</p>
                     </li>
                   );

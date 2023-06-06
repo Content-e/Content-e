@@ -1,6 +1,12 @@
 import './walletCard.css';
 
-export default function WalletCard({ dueDateCheck, walletTitle, cost }) {
+interface Props {
+  dueDateCheck: boolean;
+  walletTitle: string;
+  cost: string;
+}
+
+export default function WalletCard({ dueDateCheck, walletTitle, cost }: Props) {
   const month = [
     'January',
     'February',

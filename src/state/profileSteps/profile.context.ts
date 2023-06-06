@@ -4,10 +4,10 @@ import { BrandContextType, ProfileContextType } from './profile.interface';
 
 export const ProfileContext = createContext<ProfileContextType>({
   profileState: initialProfileState,
-  setProfileState: (): void => {},
+  setProfileState: console.log,
 });
 
 export const BrandContext = createContext<BrandContextType>({
   brandState: null,
-  setBrandState: (): void => {},
+  setBrandState: console.log,
 });

@@ -55,10 +55,9 @@ export function withSaveBrief<T>(
       const brandId = profileState.data?.brand?.items?.[0]?.id;
 
       if (brandId) {
-        const { tiktokHandle, ...rest } = data;
-        const input = { ...rest, brandId };
+        const input = { ...data, brandId };
 
-        if (rest.id) return editBrief({ variables: { input } });
+        if (data.id) return editBrief({ variables: { input } });
         return createBrief({
           variables: { input: { ...input, vertical: 'retail' } },
         });
