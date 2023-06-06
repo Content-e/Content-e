@@ -1,5 +1,4 @@
-import { FC, useMemo, useState } from 'react';
-import { BrandBrief } from 'API';
+import { FC, useState } from 'react';
 import CreativeTikTokApproval from 'components/creativeTikTokApproval/creativeTikTokApproval';
 import Button from 'components/ui/button';
 import { default as ModalBase } from 'components/ui/modal';
@@ -9,27 +8,16 @@ import GradientCard from 'components/gradientCard/gradientCard';
 import { RequestWithBrief } from 'components/creativesTable/creativesTable';
 
 interface Props {
-  data?: Array<BrandBrief | null>;
   selectedRequest: RequestWithBrief;
   onBack: () => void;
 }
 
 export const CreativeDetails: FC<Props & ProfileProps> = ({
-  data,
   selectedRequest,
   onBack,
   profileState,
 }) => {
   const [showDetails, setShowDetails] = useState(false);
-
-  const brief = useMemo(
-    () => data?.find((e) => e?.id === selectedRequest.brandBriefId),
-    [data, selectedRequest]
-  );
-  const request = useMemo(() => {
-    const req = brief?.creativeRequests?.items;
-    return req?.find((e) => e?.id === selectedRequest.id);
-  }, [brief]);
 
   return (
     <>
@@ -51,14 +39,16 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
               />
             </div>
             <h3 className="text-2xl font-bold">
-              {request?.creativeTiktokHandle
-                ? `@${request?.creativeTiktokHandle}`
+              {selectedRequest?.creativeTiktokHandle
+                ? `@${selectedRequest?.creativeTiktokHandle}`
                 : ''}
             </h3>
           </GradientCard>
           <GradientCard>
             Objective
-            <h3 className="text-2xl font-bold">{brief?.BriefName}</h3>
+            <h3 className="text-2xl font-bold">
+              {selectedRequest.brief?.BriefName}
+            </h3>
           </GradientCard>
           <GradientCard>
             View count
@@ -77,12 +67,12 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
         </div>
         {selectedRequest && (
           <CreativeTikTokApproval
-            id={request?.id}
+            id={selectedRequest?.id}
             onClose={onBack}
-            request={request}
-            inspiration={brief?.creativeInspirations}
+            request={selectedRequest}
+            inspiration={selectedRequest.brief?.creativeInspirations}
             createAdPayload={{
-              adgroupId: brief?.adgroupId,
+              adgroupId: selectedRequest.brief?.adgroupId,
               authCode: 'TODO', // What should be here?
               creativeRequestId: selectedRequest.id,
             }}
@@ -99,8 +89,8 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
             </span>
             <span>
               <b>Creator's TikTok handle:</b>{' '}
-              {request?.creativeTiktokHandle
-                ? `@${request?.creativeTiktokHandle}`
+              {selectedRequest?.creativeTiktokHandle
+                ? `@${selectedRequest?.creativeTiktokHandle}`
                 : ''}
             </span>
             <span>
