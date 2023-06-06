@@ -56,6 +56,7 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
               status === 'new'
             )
           }
+          variant="secondary"
         >
           Link Creative
         </Button>
