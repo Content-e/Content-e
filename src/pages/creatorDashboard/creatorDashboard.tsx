@@ -4,57 +4,32 @@ import CreatorNotifications from 'components/creatorNotifications/creatorNotific
 import CreatorStatsCard from 'components/creatorStatsCard/creatorStatsCard';
 import './creatorDashboard.css';
 import { CreatorDashboardBoxes } from 'utils';
-import { BrandBrief } from 'API';
+import { BrandBrief, UserProfile } from 'API';
 import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetails';
-import { useEffect, useState } from 'react';
-import {
-  IBriefListElems,
-  ICreatorBriefListProps,
-  withCreatorBriefList,
-} from 'state/dashboard';
+import { useMemo, useState } from 'react';
+import { ICreatorBriefListProps, withCreatorBriefList } from 'state/dashboard';
 import Table from 'components/ui/table';
 import { columns } from 'pages/campaignBriefs/campaignBriefs';
-import moment from 'moment';
 
 function CreatorDashboard({
   data: profileData,
   loading,
   briefList,
-  error,
-  requestList,
-}: ICreatorBriefListProps & Record<string, any>) {
-  const [data, setData] = useState<Array<IBriefListElems>>([]);
+}: ICreatorBriefListProps & { data: UserProfile }) {
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
   const [selectedBriefStatus, setSelectedBriefStatus] = useState('');
 
-  useEffect(() => {
-    if (!loading && !error && requestList && briefList) {
-      const output = [] as Array<IBriefListElems>;
-      briefList.forEach((brief) => {
-        if (brief) {
-          const { BriefName, brandProfile, vertical, objective, id } = brief;
-          const status =
-            requestList.find((e) => e?.brandBriefId === id)?.status || 'new';
-          output.push({
-            id,
-            briefName: BriefName,
-            brandName: brandProfile?.name,
-            vertical,
-            objective,
-            status,
-            date: brief.createdAt,
-          });
-        }
-      });
-      output.sort(
-        (a, b) => moment(b.date).valueOf() - moment(a.date).valueOf()
-      );
-
-      setData(output);
-    }
-  }, [briefList, requestList, loading, error]);
-
-  console.log(' DASHBOARD', { profileData });
+  const data = useMemo(
+    () =>
+      _.sortBy(
+        _.compact(briefList).map((brief) => ({
+          ...brief,
+          status: _.first(brief.creativeRequests?.items)?.status || 'new',
+        })),
+        'updatedAt'
+      ).reverse(),
+    [briefList]
+  );
 
   if (selectedBrief)
     return (
@@ -95,14 +70,9 @@ function CreatorDashboard({
           isLoading={loading}
           data={data}
           columns={columns}
-          onRowClick={(request) => {
-            if (request) {
-              const brief = _.find(briefList, { BriefName: request.briefName });
-              if (brief) {
-                setSelectedBriefStatus(request.status || '');
-                setSelectedBrief(brief);
-              }
-            }
+          onRowClick={(brief) => {
+            setSelectedBriefStatus(brief.status || '');
+            setSelectedBrief(brief);
           }}
         />
       </div>

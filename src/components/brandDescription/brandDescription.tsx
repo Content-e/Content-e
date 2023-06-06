@@ -47,7 +47,6 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
           CREATIVE INSPIRATION
         </Button>
         <Button
-          className="creator-dashboard__creative-btn link"
           onClick={(): void => setPopupVisibility(true)}
           disabled={
             !(

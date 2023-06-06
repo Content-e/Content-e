@@ -1,26 +1,25 @@
 import _ from 'lodash';
-import { FC, useEffect, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { BrandBrief } from 'API';
 import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetails';
 import './campaignBriefs.css';
-import {
-  IBriefListElems,
-  ICreatorBriefListProps,
-  withCreatorBriefList,
-} from 'state/dashboard';
-import moment from 'moment';
+import { ICreatorBriefListProps, withCreatorBriefList } from 'state/dashboard';
 import Table from 'components/ui/table';
 import { createColumnHelper } from '@tanstack/react-table';
 import { CheckIcon } from '@heroicons/react/24/solid';
 import Status from 'components/ui/status';
 
-const columnHelper = createColumnHelper<IBriefListElems | null | undefined>();
+export interface BriefWithStatus extends BrandBrief {
+  status: string;
+}
+
+const columnHelper = createColumnHelper<BriefWithStatus>();
 
 export const columns = [
-  columnHelper.accessor('briefName', {
+  columnHelper.accessor('BriefName', {
     header: 'Campaign Brief Name',
   }),
-  columnHelper.accessor('brandName', {
+  columnHelper.accessor('brandProfile.name', {
     header: 'Brand',
   }),
   columnHelper.accessor('vertical', {
@@ -42,46 +41,28 @@ export const columns = [
   }),
   columnHelper.accessor('status', {
     header: 'Status',
-    cell: (info) => <Status value={info.getValue() || ''} />,
+    cell: (info) => <Status value={info.getValue()} />,
   }),
 ];
 
 export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
   briefList,
-  requestList,
   loading,
-  error,
 }) => {
-  const [data, setData] = useState<Array<IBriefListElems>>([]);
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
   const [selectedBriefStatus, setSelectedBriefStatus] = useState('');
 
-  useEffect(() => {
-    if (!loading && !error && requestList && briefList) {
-      const output = [] as Array<IBriefListElems>;
-      briefList.forEach((brief) => {
-        if (brief) {
-          const { BriefName, brandProfile, vertical, objective, id } = brief;
-          const status =
-            requestList.find((e) => e?.brandBriefId === id)?.status || 'new';
-          output.push({
-            id,
-            briefName: BriefName,
-            brandName: brandProfile?.name,
-            vertical,
-            objective,
-            status,
-            date: brief.createdAt,
-          });
-        }
-      });
-      output.sort(
-        (a, b) => moment(b.date).valueOf() - moment(a.date).valueOf()
-      );
-
-      setData(output);
-    }
-  }, [briefList, requestList, loading, error]);
+  const data = useMemo(
+    () =>
+      _.sortBy(
+        _.compact(briefList).map((brief) => ({
+          ...brief,
+          status: _.first(brief.creativeRequests?.items)?.status || 'new',
+        })),
+        'updatedAt'
+      ).reverse(),
+    [briefList]
+  );
 
   if (selectedBrief)
     return (
@@ -112,14 +93,9 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
           isLoading={loading}
           data={data}
           columns={columns}
-          onRowClick={(request) => {
-            if (request) {
-              const brief = _.find(briefList, { BriefName: request.briefName });
-              if (brief) {
-                setSelectedBriefStatus(request.status || '');
-                setSelectedBrief(brief);
-              }
-            }
+          onRowClick={(brief) => {
+            setSelectedBriefStatus(brief.status || '');
+            setSelectedBrief(brief);
           }}
         />
       </section>
