@@ -18,7 +18,7 @@ const columnHelper = createColumnHelper<BriefWithStatus>();
 
 export const columns = [
   columnHelper.accessor('BriefName', {
-    header: 'Campaign Brief Name',
+    header: 'Name',
   }),
   columnHelper.accessor('brandProfile.name', {
     header: 'Brand',
