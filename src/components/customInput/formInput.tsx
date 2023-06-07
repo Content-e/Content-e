@@ -34,7 +34,7 @@ export default function Input<T extends FieldValues>({
       {/* {labelName && <S.InputLabel>{labelName}</S.InputLabel>} */}
       <S.Input
         id={name}
-        className="w-full"
+        className="w-full ring-0"
         type={rest.type}
         {...register(name, {
           valueAsNumber: rest.type === 'number',

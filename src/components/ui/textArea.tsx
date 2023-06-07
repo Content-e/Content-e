@@ -38,6 +38,7 @@ export default function TextArea<T extends FieldValues>({
       <textarea
         id={name}
         className={`
+          focus:ring-2 focus:ring-secondary
           w-full rounded-lg bg-[#F9FBFD] border-[#005F730D] border-[1px] text-gray-400 p-5 ${inputClassName}
         `}
         {...register(name, { required })}
