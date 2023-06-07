@@ -71,7 +71,7 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
           inspiration={creativeRequest.brief?.creativeInspirations}
           createAdPayload={{
             adgroupId: creativeRequest.brief?.adgroupId,
-            authCode: 'TODO', // What should be here?
+            authCode: creativeRequest.tiktokVideoCode,
             creativeRequestId: creativeRequest.id,
           }}
         />
