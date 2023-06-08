@@ -23,6 +23,9 @@ export const columns = [
   columnHelper.accessor('brandProfile.name', {
     header: 'Brand',
   }),
+  columnHelper.accessor('brandProfile.tiktokHandle', {
+    header: 'Brand Handle',
+  }),
   columnHelper.accessor('vertical', {
     header: 'Vertical',
   }),
@@ -39,10 +42,16 @@ export const columns = [
         <span className="overflow-hidden text-ellipsis">{info.getValue()}</span>
       </div>
     ),
+    maxSize: 150,
   }),
   columnHelper.accessor('status', {
     header: 'Status',
     cell: (info) => <Status value={info.getValue()} />,
+  }),
+  columnHelper.display({
+    header: 'View',
+    cell: () => <img src="/images/doc_red.svg" className="ml-3" />,
+    size: 70,
   }),
 ];
 
@@ -69,8 +78,9 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
 
   const filteredData = useMemo(
     () =>
-      data?.filter((e) => e?.BriefName?.toLowerCase().includes(searchText.toLowerCase())) ||
-      [],
+      data?.filter((e) =>
+        e?.BriefName?.toLowerCase().includes(searchText.toLowerCase())
+      ) || [],
     [data, searchText]
   );
 

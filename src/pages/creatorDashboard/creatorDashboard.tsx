@@ -66,10 +66,10 @@ function CreatorDashboard({
       <div className="paper w-full">
         <Table
           title="Campaign Briefs"
-          primaryField="briefName"
+          primaryField="BriefName"
           isLoading={loading}
           data={data}
-          columns={columns}
+          columns={_.at(columns, [0, 1, 3, 4, 5, 6])}
           onRowClick={(brief) => {
             setSelectedBriefStatus(brief.status || '');
             setSelectedBrief(brief);
