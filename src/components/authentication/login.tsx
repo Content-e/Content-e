@@ -18,7 +18,10 @@ import Checkbox from 'components/ui/checkbox';
 import { Auth } from 'aws-amplify';
 
 const schema = z.object({
-  email: z.string().email(),
+  email: z
+    .string()
+    .nonempty("Please enter your email address")
+    .email("Please enter the correct email address"),
   password: z.string().nonempty('Please enter your password'),
   remember: z.boolean().default(false),
 });
