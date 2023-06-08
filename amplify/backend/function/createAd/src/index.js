@@ -5,7 +5,7 @@ const { uploadToTiktok, createAdWithVideoUpload } = require("./tiktokVideoUpload
 exports.handler = async (event) => {
     console.log(`EVENT: ${JSON.stringify(event)}`);
     try {
-        if ( (event.arguments.landingPageUrl.split("/")).length > 0 ){
+        if ( (event?.arguments?.landingPageUrl?.split("/")).length > 1 ){
             const data = await uploadToTiktok(event.arguments.token,event.arguments.advId,event.arguments.landingPageUrl);
             console.log("data====>>>", data?.data);
             if (data?.data?.message !== 'OK'){
