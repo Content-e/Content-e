@@ -6,7 +6,7 @@ import Search from 'components/search';
 import _ from 'lodash';
 import CreativeDetails from 'pages/creativeDetails/creativeDetails';
 import { FC, useMemo, useState, useEffect } from 'react';
-import { ICreatorBriefListProps, withCreatorBriefList } from 'state/dashboard';
+import { BrandBriefProps, withBrandBriefs } from 'state/brandBrief';
 
 export type RequestWithBrief = CreativeRequest & {
   brief?: BrandBrief;
@@ -47,10 +47,7 @@ export const columns = [
   }),
 ];
 
-export const CreativesTable: FC<ICreatorBriefListProps> = ({
-  briefList,
-  loading,
-}) => {
+export const CreativesTable: FC<BrandBriefProps> = ({ data, loading }) => {
   const [searchText, setSearchText] = useState('');
   const [selectedRequest, setSelectedRequest] =
     useState<RequestWithBrief | null>(null);
@@ -58,7 +55,7 @@ export const CreativesTable: FC<ICreatorBriefListProps> = ({
   const requests = useMemo(
     () =>
       _.sortBy(
-        _.compact(briefList).flatMap((brief) =>
+        _.compact(data).flatMap((brief) =>
           _.compact(brief.creativeRequests?.items).map((item) => ({
             ...item,
             brief,
@@ -66,7 +63,7 @@ export const CreativesTable: FC<ICreatorBriefListProps> = ({
         ),
         'updatedAt'
       ).reverse(),
-    [briefList]
+    [data]
   ) satisfies RequestWithBrief[];
 
   useEffect(() => {
@@ -107,4 +104,4 @@ export const CreativesTable: FC<ICreatorBriefListProps> = ({
     </div>
   );
 };
-export default withCreatorBriefList(CreativesTable);
+export default withBrandBriefs(CreativesTable);
