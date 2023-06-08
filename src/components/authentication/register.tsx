@@ -46,7 +46,10 @@ const sendJSONEmail = async (json: { name: string }): Promise<void> => {
 };
 
 const schema = z.object({
-  email: z.string().email(),
+  email: z
+    .string()
+    .nonempty("Please enter your email address")
+    .email("Please enter the correct email address"),
   // password: z.string().nonempty("Please enter your password").min(8),
   name: z.string().nonempty('Please enter your full name'),
   role: z.enum(['brand', 'creator']),
