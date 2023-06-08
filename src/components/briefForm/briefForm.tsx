@@ -131,7 +131,12 @@ function BriefForm({
               required
               name="adgroupId"
               label="Ad group"
-              placeholder="Select an option"
+              placeholder={
+                adGroupOptions.length
+                  ? 'Select an option'
+                  : 'Select campaign first'
+              }
+              disabled={!adGroupOptions.length}
               isLoading={dataLoading}
               options={adGroupOptions}
               control={control}
@@ -145,13 +150,13 @@ function BriefForm({
             />
             <Switch name="active" control={control} required />
           </div>
-          <div className="xl:col-span-1 col-span-3 bg-[#f9fbfd] border-[#005F730D] border-[1px] p-4">
+          <div className="xl:col-span-1 col-span-3 bg-[#f9fbfd] border-[#005F730D] border-[1px] p-4 rounded-lg">
             <Label name="Creative inspiration" />
             {_.times(4).map((index) => (
               <Input
                 key={index}
                 name={`creativeInspirations.${index}`}
-                className="mb-14 mt-8"
+                className="mt-12"
                 placeholder="Paste creative URL"
                 inputClassName="bg-white"
                 label=""
@@ -164,6 +169,7 @@ function BriefForm({
         <TextArea
           required
           className="pb-6 px-6"
+          rows={9}
           name="brandBriefDetails"
           label="Brief details"
           placeholder="Decsribe your brief in more detail..."

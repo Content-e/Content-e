@@ -24,10 +24,11 @@ type Props<T extends FieldValues> = UseControllerProps<T> &
     options: Option[];
     errors?: FieldErrors<T>;
     isLoading?: boolean;
+    disabled?: boolean;
   };
 
 function Select<T extends FieldValues>(props: Props<T>) {
-  const { name, label, errors, className, options } = props;
+  const { name, label, errors, className, options, disabled } = props;
   const {
     field: { value, onChange },
   } = useController(props);
@@ -44,6 +45,7 @@ function Select<T extends FieldValues>(props: Props<T>) {
       name={name}
       value={value}
       onChange={onChange}
+      disabled={disabled}
       className={`flex flex-col relative mb-4 ${className}`}
       as="fieldset"
     >
@@ -51,7 +53,7 @@ function Select<T extends FieldValues>(props: Props<T>) {
       <Listbox.Button
         id={name}
         className={`
-          w-full rounded-lg bg-[#F9FBFD] border-[#005F730D] border-[1px] text-gray-400 p-5 text-start
+          w-full rounded-lg bg-[#F9FBFD] border-[#005F730D] border-[1px] text-gray-400 p-5 text-start disabled:cursor-not-allowed
           ${error && 'ring-2 ring-red-400'}
         `}
       >

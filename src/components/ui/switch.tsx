@@ -29,13 +29,13 @@ export default function Switch<T extends FieldValues>(props: Props<T>) {
         onChange={onChange}
         className={`${
           value ? 'bg-primary' : 'bg-gray-200'
-        } relative inline-flex h-6 w-11 items-center rounded-full outline-none`}
+        } relative inline-flex h-8 w-16 items-center rounded-full outline-none`}
       >
         <span className="sr-only">Enable notifications</span>
         <span
           className={`${
-            value ? 'translate-x-6' : 'translate-x-1'
-          } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+            value ? 'translate-x-9' : 'translate-x-1'
+          } inline-block h-6 w-6 transform rounded-full bg-white transition`}
         />
       </SwitchBase>
     </fieldset>
