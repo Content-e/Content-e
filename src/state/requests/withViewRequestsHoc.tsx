@@ -54,9 +54,10 @@ export function withRequestView<T>(
           const input = {
             token,
             advId,
-            landingPageUrl: `public/${createAdPayload.authCode}`,
+            landingPageUrl: '',
             ...createAdPayload,
           };
+          console.log({ input });
           createAd({ variables: { ...input } });
         } catch (err) {
           setErrorMsg(err.message);
