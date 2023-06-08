@@ -57,7 +57,7 @@ function Table<T>({
   }, [table, limit]);
 
   return (
-    <div className="overflow-x-scroll max-w-full">
+    <div className="overflow-x-auto max-w-full">
       <h1 className="text-primary font-bold mb-4">{title}</h1>
       {windowSize > 800 ? (
         <table className="w-full whitespace-nowrap text-sm">
