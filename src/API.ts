@@ -829,10 +829,10 @@ export type LinkUserTypeMutation = {
 
 export type CreateAdsMutationVariables = {
   token?: string | null;
-  authCode?: string | null;
+  authCode?: string | null; // tiktok video code
   advId?: string | null;
   adgroupId?: string | null;
-  landingPageUrl?: string | null;
+  landingPageUrl?: string | null; // tiktok ad creation via AWS upload (AWS key: creative/asdjdasjdasjadsjds)
   creativeRequestId?: string | null;
 };
 
