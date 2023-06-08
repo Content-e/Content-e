@@ -17,6 +17,7 @@ import { ProfileContext } from 'state/profileSteps';
 import { useHistory, useLocation } from 'react-router-dom';
 import { BrandBrief } from 'API';
 import { BrandRoutes, AuthRoutes } from 'utils';
+import _ from 'lodash';
 
 export function withSaveBrief<T>(
   Component: React.FC<T & SaveBriefProps>
@@ -55,9 +56,9 @@ export function withSaveBrief<T>(
       const brandId = profileState.data?.brand?.items?.[0]?.id;
 
       if (brandId) {
-        const input = { ...data, brandId };
+        const input = { ..._.omit(data, 'tiktokHandle'), brandId };
 
-        if (data.id) return editBrief({ variables: { input } });
+        if (input.id) return editBrief({ variables: { input } });
         return createBrief({
           variables: { input: { ...input, vertical: 'retail' } },
         });
