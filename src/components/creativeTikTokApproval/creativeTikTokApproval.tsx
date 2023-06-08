@@ -29,6 +29,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
 }) => {
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [awsURL, setAwsURL] = useState<string>('');
+  const [status, setStatus] = useState<string>('');
 
   const onOkay = async () => {
     if (isConfirmationOpen) approveRequest(createAdPayload);
@@ -52,6 +53,10 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
         .catch((err) =>
           console.log(`Failed to load ${request?.tiktokCreativeUrl}:`, err)
         );
+    }
+    if (request?.status) {
+      const isShortForm = ['reject', 'accept', 'submit'].includes(request.status);
+      setStatus(isShortForm ? `${request.status}ed` : request.status);
     }
   }, [request]);
 
@@ -101,11 +106,16 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
             <p className="prose text-danger font-bold">Failed to load TikTok</p>
           )}
         </div>
-        <div className="flex justify-center mt-4">
-          {request?.status === CreativeRequestStatus.New ? (
+        <div className="flex justify-center mt-6">
+          {request?.status === CreativeRequestStatus.New
+          || status === CreativeRequestStatus.Reject ? (
             <div className="flex gap-4">
               <Button onClick={onApprove}>Approve</Button>
-              <Button onClick={onReject} variant="secondary">
+              <Button
+                onClick={onReject}
+                disabled={request?.status === CreativeRequestStatus.Reject ? true : false}
+                variant="secondary"
+              >
                 Reject
               </Button>
             </div>
