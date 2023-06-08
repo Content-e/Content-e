@@ -32,6 +32,7 @@ export const columns = [
           </span>
         </div>
       ),
+    maxSize: 200,
   }),
   columnHelper.accessor('objective', {
     header: 'Objective',
@@ -40,6 +41,11 @@ export const columns = [
   columnHelper.accessor('status', {
     header: 'Status',
     cell: (info) => <Status value={info.getValue()} />,
+  }),
+  columnHelper.display({
+    header: 'View',
+    cell: () => <img src="/images/doc_1.svg" className="ml-3" />,
+    size: 70,
   }),
   columnHelper.display({
     header: 'Edit',
@@ -56,6 +62,7 @@ export const columns = [
         <img alt="Edit" src="/images/list-edit.svg" className="ml-2" />
       </Link>
     ),
+    size: 90,
   }),
 ];
 

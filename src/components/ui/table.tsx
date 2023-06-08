@@ -36,6 +36,12 @@ function Table<T>({
     data,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    defaultColumn: {
+      // Fixed size will only be added to the column if present
+      size: 0,
+      maxSize: 0,
+      minSize: 0,
+    },
   });
 
   const [windowSize, setWindowSize] = useState(window.innerWidth);
@@ -51,7 +57,7 @@ function Table<T>({
   }, [table, limit]);
 
   return (
-    <div>
+    <div className="overflow-x-scroll max-w-full">
       <h1 className="text-primary font-bold mb-4">{title}</h1>
       {windowSize > 800 ? (
         <table className="w-full whitespace-nowrap text-sm">
@@ -62,6 +68,13 @@ function Table<T>({
                   <th
                     key={header.id}
                     className="py-2 px-2 overflow-hidden text-ellipsis text-secondary"
+                    {...{
+                      style: {
+                        maxWidth: header.column.columnDef.maxSize || undefined,
+                        minWidth: header.column.columnDef.minSize || undefined,
+                        width: header.column.columnDef.size || undefined,
+                      },
+                    }}
                   >
                     {header.isPlaceholder
                       ? null
@@ -87,10 +100,14 @@ function Table<T>({
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      style={{
-                        maxWidth: cell.column.getSize(),
+                      {...{
+                        style: {
+                          maxWidth: cell.column.columnDef.maxSize || undefined,
+                          minWidth: cell.column.columnDef.minSize || undefined,
+                          width: cell.column.columnDef.size || undefined,
+                        },
                       }}
-                      className="py-3 px-2 whitespace-nowrap overflow-hidden text-ellipsis"
+                      className="py-3 pl-2 pr-6 whitespace-nowrap overflow-hidden text-ellipsis"
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
@@ -127,8 +144,7 @@ function Table<T>({
                     {cell && (
                       <td
                         key={cell.id}
-                        style={{ maxWidth: cell.column.getSize() }}
-                        className="py-3 px-2 whitespace-nowrap overflow-hidden text-ellipsis"
+                        className="py-3 px-2 pr-6 whitespace-nowrap overflow-hidden text-ellipsis"
                       >
                         {flexRender(
                           cell.column.columnDef.cell,

@@ -16,7 +16,7 @@ const columnHelper = createColumnHelper<RequestWithBrief | null | undefined>();
 
 export const columns = [
   columnHelper.accessor('brief.BriefName', {
-    header: 'Campaign Brief Name',
+    header: 'Brief Name',
   }),
   columnHelper.accessor('creativeTiktokHandle', {
     header: 'Creator handle',
@@ -32,18 +32,26 @@ export const columns = [
           </span>
         </div>
       ),
+    maxSize: 200,
   }),
   columnHelper.display({
     header: 'View count',
-    cell: '0',
+    // TODO: add actual view count
+    cell: () => <span className="ml-7">0</span>,
   }),
   columnHelper.display({
     header: 'Engagement',
-    cell: '0%',
+    // TODO: add actual engagement
+    cell: () => <span className="ml-7">0%</span>,
   }),
   columnHelper.accessor('status', {
     header: 'Status',
     cell: (info) => <Status value={info.getValue()} />,
+  }),
+  columnHelper.display({
+    header: 'View',
+    cell: () => <img src="/images/doc_1.svg" className="ml-3" />,
+    size: 70,
   }),
 ];
 
@@ -87,14 +95,14 @@ export const CreativesTable: FC<BrandBriefProps> = ({ data, loading }) => {
     );
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="grid grid-cols-1 gap-4">
       <section className="flex gap-4">
         <Search searchText={searchText} setSearchText={setSearchText} />
       </section>
       <section className="paper">
         <Table
           title="Creatives"
-          primaryField="BriefName"
+          primaryField="brief.BriefName"
           data={filteredData}
           columns={columns}
           isLoading={loading}

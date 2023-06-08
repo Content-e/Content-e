@@ -68,8 +68,8 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
           title="Creatives"
           data={requests}
           isLoading={loading}
-          columns={_.at(creativeColumns, [2, 1, 0, 5])}
-          primaryField="BriefName"
+          columns={_.at(creativeColumns, [2, 1, 0, 5, 6])}
+          primaryField="brief.BriefName"
           onRowClick={(request) => request && setSelectedRequest(request)}
         />
       </section>
@@ -78,7 +78,7 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
           title="Campaign briefs"
           data={briefs}
           isLoading={loading}
-          columns={_.at(brandBriefColumns, [0, 3])}
+          columns={_.at(brandBriefColumns, [0, 3, 5])}
           onRowClick={(brief) => brief && setSelectedBrief(brief)}
           primaryField="BriefName"
         />
