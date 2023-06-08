@@ -69,7 +69,7 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
 
   const filteredData = useMemo(
     () =>
-      data?.filter((e) => e?.BriefName?.toLowerCase().includes(searchText)) ||
+      data?.filter((e) => e?.BriefName?.toLowerCase().includes(searchText.toLowerCase())) ||
       [],
     [data, searchText]
   );

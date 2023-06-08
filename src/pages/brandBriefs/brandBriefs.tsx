@@ -86,7 +86,7 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data, loading }) => {
   const filteredData = useMemo(
     () =>
       dataWithStatus?.filter((e) =>
-        e?.BriefName?.toLowerCase().includes(searchText)
+        e?.BriefName?.toLowerCase().includes(searchText.toLowerCase())
       ) || [],
     [dataWithStatus, searchText]
   );

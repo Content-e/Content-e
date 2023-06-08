@@ -81,7 +81,7 @@ export const CreativesTable: FC<BrandBriefProps> = ({ data, loading }) => {
   const filteredData = useMemo(
     () =>
       requests?.filter((e) =>
-        e?.brief.BriefName?.toLowerCase().includes(searchText)
+        e?.brief.BriefName?.toLowerCase().includes(searchText.toLowerCase())
       ),
     [requests, searchText]
   );
