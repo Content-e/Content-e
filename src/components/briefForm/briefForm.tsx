@@ -3,7 +3,6 @@ import Button from 'components/ui/button';
 import Input from 'components/ui/input';
 import Label from 'components/ui/label';
 import Select from 'components/ui/select';
-import Spinner from 'components/ui/spinner';
 import Switch from 'components/ui/switch';
 import TextArea from 'components/ui/textArea';
 import useZodForm from 'hooks/useZodForm';
@@ -128,22 +127,16 @@ function BriefForm({
               control={control}
               errors={errors}
             />
-            {selectedCampaign &&
-              (dataLoading ? (
-                <div className="flex justify-center my-12">
-                  <Spinner className="w-6 h-6" />
-                </div>
-              ) : (
-                <Select
-                  required
-                  name="adgroupId"
-                  label="Ad group"
-                  placeholder="Select an option"
-                  options={adGroupOptions}
-                  control={control}
-                  errors={errors}
-                />
-              ))}
+            <Select
+              required
+              name="adgroupId"
+              label="Ad group"
+              placeholder="Select an option"
+              isLoading={dataLoading}
+              options={adGroupOptions}
+              control={control}
+              errors={errors}
+            />
             <Input
               required
               name="objective"

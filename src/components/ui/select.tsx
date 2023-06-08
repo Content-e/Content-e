@@ -23,6 +23,7 @@ type Props<T extends FieldValues> = UseControllerProps<T> &
     label?: string;
     options: Option[];
     errors?: FieldErrors<T>;
+    isLoading?: boolean;
   };
 
 function Select<T extends FieldValues>(props: Props<T>) {
@@ -46,7 +47,7 @@ function Select<T extends FieldValues>(props: Props<T>) {
       className={`flex flex-col relative mb-4 ${className}`}
       as="fieldset"
     >
-      {labelName && <Label name={labelName} />}
+      {labelName && <Label name={labelName} isLoading={props.isLoading} />}
       <Listbox.Button
         id={name}
         className={`
