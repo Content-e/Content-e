@@ -55,6 +55,12 @@ export const columns = [
   }),
 ];
 
+const overrideCreativeStatusForBrand = (status: string) => {
+  if (status === 'new') return 'submitted';
+  if (status === 'accepted') return 'approved';
+  return status;
+};
+
 export const CreativesTable: FC<BrandBriefProps> = ({ data, loading }) => {
   const [searchText, setSearchText] = useState('');
   const [selectedRequest, setSelectedRequest] =
@@ -66,6 +72,7 @@ export const CreativesTable: FC<BrandBriefProps> = ({ data, loading }) => {
         _.compact(data).flatMap((brief) =>
           _.compact(brief.creativeRequests?.items).map((item) => ({
             ...item,
+            status: overrideCreativeStatusForBrand(item.status),
             brief,
           }))
         ),

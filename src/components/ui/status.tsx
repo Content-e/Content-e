@@ -5,7 +5,7 @@ interface Props {
 }
 
 const iconMap = {
-  submitted: CheckIcon,
+  approved: CheckIcon,
   rejected: XMarkIcon,
   inactive: XMarkIcon,
 };
@@ -23,11 +23,7 @@ export default function Status({ value }: Props) {
           : 'text-success'
       }`}
     >
-      {Icon ? (
-        <Icon className="h-4 w-4" />
-      ) : (
-        <span className="mx-1">●</span>
-      )}
+      {Icon ? <Icon className="h-4 w-4" /> : <span className="mx-1">●</span>}
       {status}
     </span>
   );
