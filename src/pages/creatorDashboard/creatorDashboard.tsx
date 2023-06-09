@@ -9,7 +9,10 @@ import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetail
 import { useMemo, useState } from 'react';
 import { ICreatorBriefListProps, withCreatorBriefList } from 'state/dashboard';
 import Table from 'components/ui/table';
-import { columns } from 'pages/creatorBriefs/creatorBriefs';
+import {
+  columns,
+  mapBriefDataForCreator,
+} from 'pages/creatorBriefs/creatorBriefs';
 import GradientCard from 'components/gradientCard/gradientCard';
 
 function CreatorDashboard({
@@ -19,20 +22,7 @@ function CreatorDashboard({
 }: ICreatorBriefListProps & { data: UserProfile }) {
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
 
-  const data = useMemo(
-    () =>
-      _.sortBy(
-        _.compact(briefList).map((brief) => ({
-          ...brief,
-          status: _.first(brief.creativeRequests?.items)?.status || 'new',
-          updatedAt:
-            _.first(_.compact(brief.creativeRequests?.items))?.updatedAt ||
-            brief.updatedAt,
-        })),
-        'updatedAt'
-      ).reverse(),
-    [briefList]
-  );
+  const data = useMemo(() => mapBriefDataForCreator(briefList), [briefList]);
 
   if (selectedBrief)
     return (

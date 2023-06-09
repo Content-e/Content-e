@@ -9,9 +9,6 @@ import { CheckIcon } from '@heroicons/react/24/solid';
 import Search from 'components/search';
 import Status from 'components/ui/status';
 
-/**
- * Only makes sesnse for CREATOR user
- */
 interface BriefWithStatus extends BrandBrief {
   status: string;
 }
@@ -57,6 +54,31 @@ export const columns = [
   }),
 ];
 
+export const mapBriefDataForCreator = (
+  data?: (BrandBrief | null)[] | null
+): BriefWithStatus[] => {
+  const overrideStatus = (status: string) => {
+    if (status === 'new') return 'submitted';
+    if (status === 'approved') return 'accepted';
+    return status;
+  };
+
+  return _.sortBy(
+    _.compact(data).map((brief) => ({
+      ...brief,
+      status: brief.creativeRequests?.items.length
+        ? overrideStatus(
+            _.first(_.compact(brief.creativeRequests?.items))?.status || ''
+          )
+        : 'new',
+      updatedAt:
+        _.first(_.compact(brief.creativeRequests?.items))?.updatedAt ||
+        brief.updatedAt,
+    })),
+    'updatedAt'
+  ).reverse();
+};
+
 export const CreatorBriefs: FC<ICreatorBriefListProps> = ({
   briefList,
   loading,
@@ -64,21 +86,7 @@ export const CreatorBriefs: FC<ICreatorBriefListProps> = ({
   const [searchText, setSearchText] = useState('');
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
 
-  const data = useMemo(
-    () =>
-      _.sortBy(
-        _.compact(briefList).map((brief) => ({
-          ...brief,
-          status:
-            _.first(_.compact(brief.creativeRequests?.items))?.status || 'new',
-          updatedAt:
-            _.first(_.compact(brief.creativeRequests?.items))?.updatedAt ||
-            brief.updatedAt,
-        })),
-        'updatedAt'
-      ).reverse(),
-    [briefList]
-  ) satisfies BriefWithStatus[];
+  const data = useMemo(() => mapBriefDataForCreator(briefList), [briefList]);
 
   const filteredData = useMemo(
     () =>
