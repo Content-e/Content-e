@@ -496,7 +496,7 @@ img {
     background: #ffffff;
     border-radius: 16px;
     width: 100%;
-    height: 100%;
+    height: auto;
     padding: 24px 0;
     &.creator-dashboard-full {
       grid-column-start: 1;
@@ -2502,7 +2502,7 @@ img {
     background: #ffffff;
     border-radius: 16px;
     width: 100%;
-    height: 100%;
+    height: auto;
     padding: 24px 0;
     .best-practice-image {
       width: 100%;
