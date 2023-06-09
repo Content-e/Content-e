@@ -32,10 +32,6 @@ const LinkTiktokAccount: React.FC<ProfileProps> = ({
     }
   }, [data, linkTiktok]);
 
-  useEffect(() => {
-    if (!loading && tiktokAccountData) history.replace(AuthRoutes.Dashboard);
-  }, [tiktokAccountData, loading, history]);
-
   const handleModalAction = () => history.push(AuthRoutes.EditProfile);
 
   if (loading) return <FullPageLoader />;
