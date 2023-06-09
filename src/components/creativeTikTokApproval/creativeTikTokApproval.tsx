@@ -29,7 +29,6 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
 }) => {
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [awsURL, setAwsURL] = useState<string>('');
-  const [status, setStatus] = useState<string>('');
 
   const onOkay = async () => {
     if (isConfirmationOpen) approveRequest(createAdPayload);
@@ -54,15 +53,11 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
           console.log(`Failed to load ${request?.tiktokCreativeUrl}:`, err)
         );
     }
-    if (request?.status) {
-      const isShortForm = ['reject', 'accept', 'submit'].includes(request.status);
-      setStatus(isShortForm ? `${request.status}ed` : request.status);
-    }
-  }, [request]);
+  }, [request, getVideoLink]);
 
   useEffect(() => {
     if (!loading && isSuccess) onClose();
-  }, [loading, isSuccess]);
+  }, [loading, isSuccess, onClose]);
 
   return (
     <>
@@ -107,24 +102,26 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
           )}
         </div>
         <div className="flex justify-center mt-6">
-          {request?.status === CreativeRequestStatus.New
-          || status === CreativeRequestStatus.Reject ? (
-            <div className="flex gap-4">
-              <Button onClick={onApprove}>Approve</Button>
-              <Button
-                onClick={onReject}
-                disabled={request?.status === CreativeRequestStatus.Reject ? true : false}
-                variant="secondary"
-              >
-                Reject
-              </Button>
-            </div>
-          ) : (
-            <p>
-              This request is in status:{' '}
-              <Status value={request?.status || ''} />
-            </p>
-          )}
+          {
+            // Hardcoded string because I don't trust CreativeRequestStatus enum, it's overriden on the backend anyway -_-
+            request?.status === 'approved' ? (
+              <p className="flex gap-2">
+                <span>This request is in status:</span>
+                <Status value={request.status} />
+              </p>
+            ) : (
+              <div className="flex gap-4">
+                <Button onClick={onApprove}>Approve</Button>
+                <Button
+                  onClick={onReject}
+                  disabled={request?.status === CreativeRequestStatus.Reject}
+                  variant="secondary"
+                >
+                  Reject
+                </Button>
+              </div>
+            )
+          }
         </div>
       </section>
     </>
