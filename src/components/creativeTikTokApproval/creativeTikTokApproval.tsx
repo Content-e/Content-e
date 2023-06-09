@@ -78,7 +78,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
         </div>
       </Modal>
 
-      <section className="paper">
+      <section className="paper 2xl:col-span-2">
         <h1 className="text-lg text-primary font-bold">Creative</h1>
         <div className="m-2 flex justify-center min-h-[750px]">
           {awsURL ? (
