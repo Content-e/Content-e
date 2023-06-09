@@ -2521,6 +2521,10 @@ img {
       border-radius: 0;
       padding: 0;
       background: none;
+      flex-direction: row;
+      .statistics-cards-container {
+        width: 100%;
+      }
       .statistics-elements {
         height: 100%;
         display: grid;
