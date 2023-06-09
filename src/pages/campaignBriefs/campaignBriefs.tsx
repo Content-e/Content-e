@@ -10,7 +10,10 @@ import { CheckIcon } from '@heroicons/react/24/solid';
 import Search from 'components/search';
 import Status from 'components/ui/status';
 
-export interface BriefWithStatus extends BrandBrief {
+/**
+ * Only makes sesnse for CREATOR user
+ */
+interface BriefWithStatus extends BrandBrief {
   status: string;
 }
 
