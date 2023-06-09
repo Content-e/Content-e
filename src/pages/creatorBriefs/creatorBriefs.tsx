@@ -8,6 +8,7 @@ import { createColumnHelper } from '@tanstack/react-table';
 import { CheckIcon } from '@heroicons/react/24/solid';
 import Search from 'components/search';
 import Status from 'components/ui/status';
+import { z } from 'zod';
 
 interface BriefWithStatus extends BrandBrief {
   status: string;
@@ -24,6 +25,21 @@ export const columns = [
   }),
   columnHelper.accessor('brandProfile.tiktokHandle', {
     header: 'Brand Handle',
+    cell: (info) => {
+      try {
+        const parsed = JSON.parse(
+          info.cell.row.original.brandProfile?.metaData || ''
+        );
+        const { tiktok } = z
+          .object({
+            tiktok: z.string(),
+          })
+          .parse(parsed);
+        return tiktok;
+      } catch {
+        return '';
+      }
+    },
   }),
   columnHelper.accessor('vertical', {
     header: 'Vertical',
