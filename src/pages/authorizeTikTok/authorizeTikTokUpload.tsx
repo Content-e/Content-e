@@ -3,6 +3,7 @@ import AuthorizeTikTokHeader from './authorizeTikTokHeader';
 import { FileUploader } from 'react-drag-drop-files';
 import { Storage } from 'aws-amplify';
 import { Spinner } from 'react-bootstrap';
+import Button from 'components/ui/button';
 
 interface Props {
   onCross: () => void;
@@ -83,12 +84,10 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
       <div className="tik-tok-method" style={{ marginTop: 16 }}>
         {!loading ? (
           <>
-            <button onClick={goToPrev} className="tik-tok-done">
+            <Button variant="secondary" onClick={goToPrev}>
               Back
-            </button>
-            <button onClick={handleUpload} className="tik-tok-done">
-              Upload
-            </button>
+            </Button>
+            <Button onClick={handleUpload}>Upload</Button>
           </>
         ) : (
           <Spinner

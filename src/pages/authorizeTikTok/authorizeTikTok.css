@@ -71,24 +71,6 @@
   text-align: center;
 }
 
-.tik-tok-method button {
-  outline: none;
-  border: none;
-  background: linear-gradient(180deg, #9ecfbd 0%, #459396 100%);
-  border-radius: 10px;
-  width: 230px;
-  height: 34px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-}
-
 .tik-tok-method span {
   border-color: #459396;
   width: 30px;
