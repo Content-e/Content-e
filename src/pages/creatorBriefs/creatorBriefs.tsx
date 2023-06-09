@@ -2,7 +2,6 @@ import _ from 'lodash';
 import { FC, useMemo, useState, useEffect } from 'react';
 import { BrandBrief } from 'API';
 import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetails';
-import './campaignBriefs.css';
 import { ICreatorBriefListProps, withCreatorBriefList } from 'state/dashboard';
 import Table from 'components/ui/table';
 import { createColumnHelper } from '@tanstack/react-table';
@@ -58,7 +57,7 @@ export const columns = [
   }),
 ];
 
-export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
+export const CreatorBriefs: FC<ICreatorBriefListProps> = ({
   briefList,
   loading,
 }) => {
@@ -117,4 +116,4 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
   );
 };
 
-export default withCreatorBriefList(CampaignBriefs);
+export default withCreatorBriefList(CreatorBriefs);

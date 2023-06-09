@@ -9,7 +9,7 @@ import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetail
 import { useMemo, useState } from 'react';
 import { ICreatorBriefListProps, withCreatorBriefList } from 'state/dashboard';
 import Table from 'components/ui/table';
-import { columns } from 'pages/campaignBriefs/campaignBriefs';
+import { columns } from 'pages/creatorBriefs/creatorBriefs';
 
 function CreatorDashboard({
   data: profileData,

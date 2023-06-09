@@ -53,7 +53,7 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
     }
   };
 
-  const uploadVideo = async (): Promise<void> => {
+  const uploadVideo = async () => {
     if (!loading && userId && id) {
       if (profile?.tiktokHandler) {
         const input = {
@@ -70,7 +70,7 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
     }
   };
 
-  const updatePath = async (path: string, vidID: string): Promise<void> => {
+  const updatePath = async (path: string, vidID: string) => {
     if (!updateLoading && userId && id) {
       if (profile?.tiktokHandler) {
         const input = {
