@@ -86,7 +86,7 @@ export function withRequestView<T>(
       if (!createAdLoading) {
         if (createAdResponse) callApi(CreativeRequestStatus.Accept);
         else if (createAdResponse === false) {
-          setErrorMsg('Ad creation failed');
+          setErrorMsg('Ad creation failed. Please make sure you are using a supported aspect ratio and not uploading the same filename twice.');
           setLoading(false);
         }
       }

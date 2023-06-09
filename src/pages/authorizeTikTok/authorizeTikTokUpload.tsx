@@ -58,6 +58,10 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
   return (
     <div className="tik-tok-modal">
       <AuthorizeTikTokHeader onCross={onCross} title="Upload the video" />
+      <p className="my-4">
+        Only 9:16, 1:1, or 16:9 aspect ratios are supported. Resolution must be
+        a minimum of 540*960px, 640*640px, or 960*540px.
+      </p>
       <div className="tik-tok-upload">
         <FileUploader
           handleChange={handleChange}
