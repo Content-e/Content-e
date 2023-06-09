@@ -185,7 +185,7 @@ export const EditProfile: FC<ProfileProps> = ({
                 </span>
                 {isLoading && <IconLoader color="#005f73" />}
               </button>
-              {data?.userType === USER_TYPES.BRAND_USER && (
+              {data?.userType === USER_TYPES.BRAND_USER && !data?.tiktokAccountAccess && (
                 <div className="save-profile" onClick={linkTiktokAccount}>
                   <span>Link Tiktok Account</span>
                   <img src="/images/profile-arrow.svg" />
