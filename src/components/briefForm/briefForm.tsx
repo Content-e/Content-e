@@ -201,7 +201,7 @@ function BriefForm({
         isOpen={!!response && !loading}
         type="brand"
         handleClose={() => history.push(AuthRoutes.CampaignBrief)}
-        actionLabel="BACK TO COMPAIGN BRIEFS"
+        actionLabel="BACK TO CAMPAIGN BRIEFS"
         actionHandler={() => history.push(AuthRoutes.CampaignBrief)}
       />
     </section>
