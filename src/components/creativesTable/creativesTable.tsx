@@ -12,7 +12,7 @@ export type RequestWithBrief = CreativeRequest & {
   brief?: BrandBrief;
 };
 
-const columnHelper = createColumnHelper<RequestWithBrief | null | undefined>();
+const columnHelper = createColumnHelper<RequestWithBrief>();
 
 export const columns = [
   columnHelper.accessor('brief.BriefName', {

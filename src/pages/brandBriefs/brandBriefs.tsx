@@ -11,7 +11,7 @@ import Button from 'components/ui/button';
 import _ from 'lodash';
 import Status from 'components/ui/status';
 
-const columnHelper = createColumnHelper<BrandBrief | null | undefined>();
+const columnHelper = createColumnHelper<BrandBrief>();
 
 export const columns = [
   columnHelper.accessor('BriefName', {
