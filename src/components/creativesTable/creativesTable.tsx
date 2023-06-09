@@ -55,10 +55,25 @@ export const columns = [
   }),
 ];
 
-export const overrideCreativeStatusForBrand = (status: string) => {
-  if (status === 'new') return 'submitted';
-  if (status.includes('accept')) return 'approved';
-  return status;
+export const mapBriefsDataForBrand = (
+  data?: (BrandBrief | null)[] | null
+): RequestWithBrief[] => {
+  const overrideStatus = (status: string) => {
+    if (status === 'new') return 'submitted';
+    if (status.includes('accept')) return 'approved';
+    return status;
+  };
+
+  return _.sortBy(
+    _.compact(data).flatMap((brief) =>
+      _.compact(brief.creativeRequests?.items).map((item) => ({
+        ...item,
+        status: overrideStatus(item.status),
+        brief,
+      }))
+    ),
+    [(brief) => brief.status !== 'rejected', 'updatedAt']
+  ).reverse();
 };
 
 export const CreativesTable: FC<BrandBriefProps> = ({ data, loading }) => {
@@ -66,20 +81,7 @@ export const CreativesTable: FC<BrandBriefProps> = ({ data, loading }) => {
   const [selectedRequest, setSelectedRequest] =
     useState<RequestWithBrief | null>(null);
 
-  const requests = useMemo(
-    () =>
-      _.sortBy(
-        _.compact(data).flatMap((brief) =>
-          _.compact(brief.creativeRequests?.items).map((item) => ({
-            ...item,
-            status: overrideCreativeStatusForBrand(item.status),
-            brief,
-          }))
-        ),
-        'updatedAt'
-      ).reverse(),
-    [data]
-  ) satisfies RequestWithBrief[];
+  const requests = useMemo(() => mapBriefsDataForBrand(data), [data]);
 
   useEffect(() => {
     if (requests) setSearchText('');
@@ -88,7 +90,7 @@ export const CreativesTable: FC<BrandBriefProps> = ({ data, loading }) => {
   const filteredData = useMemo(
     () =>
       requests?.filter((e) =>
-        e?.brief.BriefName?.toLowerCase().includes(searchText.toLowerCase())
+        e?.brief?.BriefName?.toLowerCase().includes(searchText.toLowerCase())
       ),
     [requests, searchText]
   );

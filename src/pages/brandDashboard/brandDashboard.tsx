@@ -8,7 +8,7 @@ import { BrandBrief } from 'API';
 import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetails';
 import {
   columns as creativeColumns,
-  overrideCreativeStatusForBrand,
+  mapBriefsDataForBrand,
   RequestWithBrief,
 } from 'components/creativesTable/creativesTable';
 import { columns as brandBriefColumns } from 'pages/brandBriefs/brandBriefs';
@@ -19,19 +19,9 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
 
   const requests = useMemo(
-    () =>
-      _.sortBy(
-        _.compact(props.data).flatMap((brief) =>
-          _.compact(brief.creativeRequests?.items).map((item) => ({
-            ...item,
-            status: overrideCreativeStatusForBrand(item.status),
-            brief,
-          }))
-        ),
-        'updatedAt'
-      ).reverse(),
+    () => mapBriefsDataForBrand(props.data),
     [props.data]
-  ) satisfies RequestWithBrief[];
+  );
 
   const briefs = useMemo(
     () => _.sortBy(_.compact(props.data), 'updatedAt').reverse(),
