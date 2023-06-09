@@ -20,6 +20,11 @@ export const columns = [
   }),
   columnHelper.accessor('brandBriefDetails', {
     header: 'Details',
+    cell: (info) =>
+      info.getValue() && (
+        <span className="text-ellipsis overflow-hidden">{info.getValue()}</span>
+      ),
+    maxSize: 150,
   }),
   columnHelper.accessor('creativeInspirations', {
     header: 'Linked TikTok Campaign',
