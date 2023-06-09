@@ -10,6 +10,7 @@ import { useMemo, useState } from 'react';
 import { ICreatorBriefListProps, withCreatorBriefList } from 'state/dashboard';
 import Table from 'components/ui/table';
 import { columns } from 'pages/creatorBriefs/creatorBriefs';
+import GradientCard from 'components/gradientCard/gradientCard';
 
 function CreatorDashboard({
   data: profileData,
@@ -40,8 +41,8 @@ function CreatorDashboard({
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="creator-dashboard__item statistics-item">
-        <div className="statistics-cards-container">
+      <div className="grid xl:grid-cols-4 grid-cols-1 gap-8 w-full">
+        <GradientCard>
           <CreatorStatsCard
             type={CreatorDashboardBoxes.Wallet}
             value={`$${
@@ -50,16 +51,22 @@ function CreatorDashboard({
                 : '0'
             }`}
           />
+        </GradientCard>
+        <GradientCard>
           <CreatorStatsCard type={CreatorDashboardBoxes.Approval} value={'0'} />
+        </GradientCard>
+        <GradientCard>
           <CreatorStatsCard
             type={CreatorDashboardBoxes.Conversion}
             value={'0'}
           />
+        </GradientCard>
+        <GradientCard>
           <CreatorStatsCard
             type={CreatorDashboardBoxes.ClickThrough}
             value={'0'}
           />
-        </div>
+        </GradientCard>
       </div>
       <div className="paper w-full">
         <Table

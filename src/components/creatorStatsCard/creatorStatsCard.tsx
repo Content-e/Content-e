@@ -14,29 +14,26 @@ export const CreatorStatsCard: FC<Props> = ({
 }) => {
   if (!value) return <Fragment />;
   return (
-    <div className="creator-dashboard__item colored text-white">
-      <div className="creator-dashboard__bg"></div>
-      <div className="creator-dashboard__item-block grow-mobile">
-        <div className="creator-dashboard__item-block-key shrink-mobile">
-          {label}
-        </div>
-        <OverlayTrigger
-          placement={placement}
-          overlay={
-            <Tooltip id={`tooltip-${label}`} className="custom-tooltip mx-3">
-              {tooltip}.
-            </Tooltip>
-          }
-        >
-          <img
-            className="absolute right-4 top-4"
-            alt="tooltip icon"
-            src="/images/info-icon.svg"
-          />
-        </OverlayTrigger>
-        <div className="creator-dashboard__item-block-value">{value}</div>
+    <>
+      <div className="creator-dashboard__item-block-key shrink-mobile">
+        {label}
       </div>
-    </div>
+      <OverlayTrigger
+        placement={placement}
+        overlay={
+          <Tooltip id={`tooltip-${label}`} className="custom-tooltip mx-3">
+            {tooltip}.
+          </Tooltip>
+        }
+      >
+        <img
+          className="absolute right-4 top-4"
+          alt="tooltip icon"
+          src="/images/info-icon.svg"
+        />
+      </OverlayTrigger>
+      <div className="creator-dashboard__item-block-value">{value}</div>
+    </>
   );
 };
 

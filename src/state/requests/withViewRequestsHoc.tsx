@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import withApolloProvider from 'hooks/apollo/withApollo';
 import { updateBriefStatus, useCreateAd, useGetVideoUrl } from 'hooks';
-import { CreativeRequestStatus, UnknownType } from 'utils';
+import { CreativeRequestStatus } from 'utils';
 import { ProfileContext } from 'state/profileSteps';
 import { ITiktokVideo, ViewRequestProps } from './requests.interface';
 import { CreateAdsMutationVariables } from 'API';
