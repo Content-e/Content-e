@@ -110,7 +110,7 @@ export const CreativeTikTokApproval: FC<Props & ViewRequestProps> = ({
                 <Status value={request.status} />
               </p>
             ) : (
-              <div className="flex gap-4">
+              <div className="flex gap-4 md:flex-row flex-col">
                 <Button onClick={onApprove}>Approve</Button>
                 <Button
                   onClick={onReject}

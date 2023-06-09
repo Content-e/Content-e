@@ -4,6 +4,7 @@ import { updateBriefStatus, useCreateAd, useGetVideoUrl } from 'hooks';
 import { CreativeRequestStatus, UnknownType } from 'utils';
 import { ProfileContext } from 'state/profileSteps';
 import { ITiktokVideo, ViewRequestProps } from './requests.interface';
+import { CreateAdsMutationVariables } from 'API';
 
 interface HocProps {
   id?: string;
@@ -37,14 +38,14 @@ export function withRequestView<T>(
       if (id) updateStatus({ variables: { input: { id, status } } });
     };
 
-    const approveRequest = (createAdPayload: UnknownType): void => {
+    const approveRequest = (createAdPayload: CreateAdsMutationVariables) => {
       updateSuccessStatus(false);
       setErrorMsg('');
       if (
         !loading &&
         profile?.tiktokAccountAccess &&
         createAdPayload.adgroupId &&
-        createAdPayload.authCode
+        (createAdPayload.authCode || createAdPayload.landingPageUrl)
       ) {
         setLoading(true);
         try {
@@ -54,7 +55,6 @@ export function withRequestView<T>(
           const input = {
             token,
             advId,
-            landingPageUrl: '',
             ...createAdPayload,
           };
           console.log({ input });
@@ -66,7 +66,7 @@ export function withRequestView<T>(
       }
     };
 
-    const rejectRequest = (): void => {
+    const rejectRequest = () => {
       updateSuccessStatus(false);
       setErrorMsg('');
       if (!loading) {

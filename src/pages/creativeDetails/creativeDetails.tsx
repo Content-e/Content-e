@@ -1,3 +1,4 @@
+import { CreateAdsMutationVariables } from 'API';
 import { RequestWithBrief } from 'components/creativesTable/creativesTable';
 import CreativeTikTokApproval from 'components/creativeTikTokApproval/creativeTikTokApproval';
 import GradientCard from 'components/gradientCard/gradientCard';
@@ -18,6 +19,18 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
   onBack,
 }) => {
   const [showDetails, setShowDetails] = useState(false);
+
+  const adPayload: CreateAdsMutationVariables = {
+    adgroupId: creativeRequest.brief?.adgroupId,
+    authCode: creativeRequest.tiktokVideoCode, // this is correct, property name is misleading
+    // AWS url, property name is misleading
+    // Only use AWS upload if no tiktok code is provided
+    landingPageUrl:
+      !creativeRequest.tiktokVideoCode && creativeRequest.tiktokCreativeUrl
+        ? `public/${creativeRequest.tiktokCreativeUrl}`
+        : '',
+    creativeRequestId: creativeRequest.id,
+  };
 
   return (
     <>
@@ -69,11 +82,7 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
           onClose={onBack}
           request={creativeRequest}
           inspiration={creativeRequest.brief?.creativeInspirations}
-          createAdPayload={{
-            adgroupId: creativeRequest.brief?.adgroupId,
-            authCode: creativeRequest.tiktokVideoCode,
-            creativeRequestId: creativeRequest.id,
-          }}
+          createAdPayload={adPayload}
         />
         <Modal
           title="Creator details"
