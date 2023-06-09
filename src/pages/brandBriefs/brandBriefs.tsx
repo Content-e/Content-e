@@ -10,6 +10,7 @@ import Table from 'components/ui/table';
 import Button from 'components/ui/button';
 import _ from 'lodash';
 import Status from 'components/ui/status';
+import { CheckIcon } from '@heroicons/react/24/outline';
 
 const columnHelper = createColumnHelper<BrandBrief>();
 
@@ -35,7 +36,18 @@ export const columns = [
   }),
   columnHelper.accessor('objective', {
     header: 'Objective',
-    cell: (info) => <span className="uppercase">{info.getValue()}</span>,
+    cell: (info) => (
+      <div
+        className={`uppercase font-bold flex items-center ${
+          // WTF which color should be here?
+          info.getValue() === 'unawareness' ? 'text-danger' : 'text-success'
+        }`}
+      >
+        <CheckIcon className="w-4 h-4 mr-1" />
+        <span className="overflow-hidden text-ellipsis">{info.getValue()}</span>
+      </div>
+    ),
+    maxSize: 150,
   }),
   columnHelper.accessor('active', {
     header: 'Status',
