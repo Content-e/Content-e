@@ -12,7 +12,6 @@ import {
 } from 'components/creativesTable/creativesTable';
 import { columns as brandBriefColumns } from 'pages/brandBriefs/brandBriefs';
 import Table from 'components/ui/table';
-import { BriefWithStatus } from 'pages/campaignBriefs/campaignBriefs';
 
 export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
   const [selectedRequest, setSelectedRequest] = useState<RequestWithBrief>();
@@ -35,15 +34,11 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
   const briefs = useMemo(
     () =>
       _.sortBy(
-        _.compact(props.data).map((brief) => ({
-          ...brief,
-          status:
-            _.first(_.compact(brief.creativeRequests?.items))?.status || 'new',
-        })),
+        _.compact(props.data),
         'updatedAt'
       ).reverse(),
     [props.data]
-  ) satisfies BriefWithStatus[];
+  ) satisfies BrandBrief[];
 
   if (selectedBrief)
     return (

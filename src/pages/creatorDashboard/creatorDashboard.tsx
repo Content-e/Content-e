@@ -17,7 +17,6 @@ function CreatorDashboard({
   briefList,
 }: ICreatorBriefListProps & { data: UserProfile }) {
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
-  const [selectedBriefStatus, setSelectedBriefStatus] = useState('');
 
   const data = useMemo(
     () =>
@@ -36,7 +35,6 @@ function CreatorDashboard({
       <CampaignBriefDetails
         data={selectedBrief}
         onBack={(): void => setSelectedBrief(undefined)}
-        status={selectedBriefStatus}
       />
     );
 
@@ -70,10 +68,7 @@ function CreatorDashboard({
           isLoading={loading}
           data={data}
           columns={_.at(columns, [0, 1, 3, 4, 5, 6])}
-          onRowClick={(brief) => {
-            setSelectedBriefStatus(brief.status || '');
-            setSelectedBrief(brief);
-          }}
+          onRowClick={(brief) => setSelectedBrief(brief)}
         />
       </div>
       <div className="grid md:grid-cols-2 gap-8">

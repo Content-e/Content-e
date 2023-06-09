@@ -8,11 +8,10 @@ import { createColumnHelper } from '@tanstack/react-table';
 import Search from 'components/search';
 import Table from 'components/ui/table';
 import Button from 'components/ui/button';
-import { BriefWithStatus } from 'pages/campaignBriefs/campaignBriefs';
 import _ from 'lodash';
 import Status from 'components/ui/status';
 
-const columnHelper = createColumnHelper<BriefWithStatus | null | undefined>();
+const columnHelper = createColumnHelper<BrandBrief | null | undefined>();
 
 export const columns = [
   columnHelper.accessor('BriefName', {
@@ -38,9 +37,9 @@ export const columns = [
     header: 'Objective',
     cell: (info) => <span className="uppercase">{info.getValue()}</span>,
   }),
-  columnHelper.accessor('status', {
+  columnHelper.accessor('active', {
     header: 'Status',
-    cell: (info) => <Status value={info.getValue()} />,
+    cell: (info) => <Status value={info.getValue() ? 'active' : 'inactive'} />,
   }),
   columnHelper.display({
     header: 'View',
@@ -70,25 +69,17 @@ export const BrandBriefs: FC<BrandBriefProps> = ({ data, loading }) => {
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
   const [searchText, setSearchText] = useState('');
 
-  const dataWithStatus = useMemo(
-    () =>
-      _.sortBy(
-        _.compact(data).map((brief) => ({
-          ...brief,
-          status:
-            _.first(_.compact(brief.creativeRequests?.items))?.status || 'new',
-        })),
-        'updatedAt'
-      ).reverse(),
+  const sortedData = useMemo(
+    () => _.sortBy(_.compact(data), 'updatedAt').reverse(),
     [data]
   );
 
   const filteredData = useMemo(
     () =>
-      dataWithStatus?.filter((e) =>
+      sortedData?.filter((e) =>
         e?.BriefName?.toLowerCase().includes(searchText.toLowerCase())
       ) || [],
-    [dataWithStatus, searchText]
+    [sortedData, searchText]
   );
 
   useEffect(() => {

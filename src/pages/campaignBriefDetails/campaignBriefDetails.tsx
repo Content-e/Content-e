@@ -11,9 +11,8 @@ import GradientCard from 'components/gradientCard/gradientCard';
 interface Props {
   data: BrandBrief;
   onBack: () => void;
-  status?: string;
 }
-const CampaignBriefDetails: FC<Props> = ({ onBack, data, status }) => {
+const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
   const history = useHistory();
   const [showDetails, handleDetailVisibility] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -120,7 +119,6 @@ const CampaignBriefDetails: FC<Props> = ({ onBack, data, status }) => {
         videoUrls={data.creativeInspirations}
         isVideoLinked={!!data.creativeRequests?.items.length}
         showSuccessModal={() => setShowSuccessModal(true)}
-        status={status}
       />
     </>
   );

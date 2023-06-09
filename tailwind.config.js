@@ -15,7 +15,7 @@ module.exports = {
       },
       colors: {
         success: '#94D2BD',
-        danger: '#D29494',
+        danger: '#D01C0B7D',
       },
       backgroundImage: {
         glass:

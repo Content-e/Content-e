@@ -61,7 +61,6 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
 }) => {
   const [searchText, setSearchText] = useState('');
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
-  const [selectedBriefStatus, setSelectedBriefStatus] = useState('');
 
   const data = useMemo(
     () =>
@@ -93,7 +92,6 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
       <CampaignBriefDetails
         data={selectedBrief}
         onBack={(): void => setSelectedBrief(undefined)}
-        status={selectedBriefStatus}
       />
     );
 
@@ -109,10 +107,7 @@ export const CampaignBriefs: FC<ICreatorBriefListProps> = ({
           isLoading={loading}
           data={filteredData}
           columns={columns}
-          onRowClick={(brief) => {
-            setSelectedBriefStatus(brief.status || '');
-            setSelectedBrief(brief);
-          }}
+          onRowClick={(brief) => setSelectedBrief(brief)}
         />
       </section>
     </div>

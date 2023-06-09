@@ -13,7 +13,6 @@ interface Props {
   videoUrls?: Array<string | null> | null;
   isVideoLinked?: boolean;
   showSuccessModal: () => void;
-  status: string | undefined;
 }
 export const BrandDesciption: FC<Props & ProfileProps> = ({
   detail,
@@ -21,7 +20,6 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
   isVideoLinked,
   profileState: { data },
   videoUrls,
-  status,
 }) => {
   const [showPopup, setPopupVisibility] = useState(false);
   const [showInspiration, setShowInspiration] = useState(false);
@@ -46,16 +44,10 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
         >
           CREATIVE INSPIRATION
         </Button>
-
         {data?.userType === USER_TYPES.CREATIVE_USER && (
           <Button
             onClick={(): void => setPopupVisibility(true)}
-            disabled={
-              !(
-                !isVideoLinked &&
-                status === 'new'
-              )
-            }
+            disabled={isVideoLinked}
             variant="secondary"
           >
             Link Creative
