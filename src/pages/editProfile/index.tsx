@@ -25,6 +25,7 @@ import {
 } from 'utils';
 import './creatorProfile.css';
 import Modal from 'components/authentication/modal';
+import { CheckIcon } from '@heroicons/react/24/outline';
 
 export const EditProfile: FC<ProfileProps> = ({
   editProfile,
@@ -185,12 +186,18 @@ export const EditProfile: FC<ProfileProps> = ({
                 </span>
                 {isLoading && <IconLoader color="#005f73" />}
               </button>
-              {data?.userType === USER_TYPES.BRAND_USER && !data?.tiktokAccountAccess && (
-                <div className="save-profile" onClick={linkTiktokAccount}>
-                  <span>Link Tiktok Account</span>
-                  <img src="/images/profile-arrow.svg" />
-                </div>
-              )}
+              {data?.userType === USER_TYPES.BRAND_USER &&
+                (data?.tiktokAccountAccess ? (
+                  <div className="text-primary flex items-center gap-2 text-lg">
+                    <span>TikTok linked</span>
+                    <CheckIcon className="w-6 h-6" />
+                  </div>
+                ) : (
+                  <div className="save-profile" onClick={linkTiktokAccount}>
+                    <span>Link Tiktok Account</span>
+                    <img src="/images/profile-arrow.svg" />
+                  </div>
+                ))}
             </div>
           </div>
         </div>
