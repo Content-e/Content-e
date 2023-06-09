@@ -55,9 +55,9 @@ export const columns = [
   }),
 ];
 
-const overrideCreativeStatusForBrand = (status: string) => {
+export const overrideCreativeStatusForBrand = (status: string) => {
   if (status === 'new') return 'submitted';
-  if (status === 'accepted') return 'approved';
+  if (status.includes('accept')) return 'approved';
   return status;
 };
 
