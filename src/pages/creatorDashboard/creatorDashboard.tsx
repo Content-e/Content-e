@@ -25,6 +25,9 @@ function CreatorDashboard({
         _.compact(briefList).map((brief) => ({
           ...brief,
           status: _.first(brief.creativeRequests?.items)?.status || 'new',
+          updatedAt:
+            _.first(_.compact(brief.creativeRequests?.items))?.updatedAt ||
+            brief.updatedAt,
         })),
         'updatedAt'
       ).reverse(),

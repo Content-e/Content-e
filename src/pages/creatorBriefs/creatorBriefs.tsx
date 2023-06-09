@@ -71,6 +71,9 @@ export const CreatorBriefs: FC<ICreatorBriefListProps> = ({
           ...brief,
           status:
             _.first(_.compact(brief.creativeRequests?.items))?.status || 'new',
+          updatedAt:
+            _.first(_.compact(brief.creativeRequests?.items))?.updatedAt ||
+            brief.updatedAt,
         })),
         'updatedAt'
       ).reverse(),
