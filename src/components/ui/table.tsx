@@ -163,7 +163,7 @@ function Table<T>({
         <div className="w-full flex items-center justify-center py-8">
           <Spinner className="w-10 h-10 " />
         </div>
-      ) : (
+      ) : data.length ? (
         <div className="w-full flex justify-center mt-2 text-secondary">
           <button
             className="disabled:text-gray-300 disabled:cursor-not-allowed px-2 cursor-pointer"
@@ -207,6 +207,8 @@ function Table<T>({
             &gt;
           </button>
         </div>
+      ) : (
+        <p className="w-full my-6 text-center text-gray-400">No data</p>
       )}
     </div>
   );
