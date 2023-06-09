@@ -46,19 +46,21 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
         >
           CREATIVE INSPIRATION
         </Button>
-        <Button
-          onClick={(): void => setPopupVisibility(true)}
-          disabled={
-            !(
-              data?.userType === USER_TYPES.CREATIVE_USER &&
-              !isVideoLinked &&
-              status === 'new'
-            )
-          }
-          variant="secondary"
-        >
-          Link Creative
-        </Button>
+
+        {data?.userType === USER_TYPES.CREATIVE_USER && (
+          <Button
+            onClick={(): void => setPopupVisibility(true)}
+            disabled={
+              !(
+                !isVideoLinked &&
+                status === 'new'
+              )
+            }
+            variant="secondary"
+          >
+            Link Creative
+          </Button>
+        )}
       </div>
       {showPopup && (
         <AuthorizeTikTokHandler
