@@ -23,9 +23,11 @@ import {
   mainRoutes,
   UnAuthRoutesArray,
 } from './RoutesConstants';
+import ToastContainer from 'components/toast';
 
 const MainRouter: React.FC<AuthProps & ErrorProps> = ({
   authState: { isLoading, isLoggedIn, email },
+  ...rest
 }) => {
   const [pathFound, handlePathFound] = useState(false);
   const history = useHistory();
@@ -57,6 +59,7 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
 
   return (
     <Fragment>
+      <ToastContainer {...rest} />
       <ShouldRender if={!pathFound}>
         <FullPageLoader />
       </ShouldRender>
