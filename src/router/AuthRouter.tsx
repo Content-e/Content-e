@@ -32,6 +32,7 @@ import {
 } from './RoutesConstants';
 import CreatePractice from 'components/createPractice';
 import linkTiktokAccount from 'pages/linkTiktokAccount';
+import AdminAccountCreator from 'pages/adminAccountCreator';
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -85,6 +86,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
                 exact
                 path={AdminRoutes.EditPractice}
                 component={CreatePractice}
+              />
+              <Route
+                exact
+                path={AdminRoutes.AccountCreator}
+                component={AdminAccountCreator}
               />
             </Fragment>
           )}

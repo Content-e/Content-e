@@ -45,7 +45,7 @@ const sendJSONEmail = async (json: { name: string }): Promise<void> => {
   console.log(res);
 };
 
-const schema = z.object({
+export const schema = z.object({
   email: z
     .string()
     .nonempty("Please enter your email address")

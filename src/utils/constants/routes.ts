@@ -42,6 +42,7 @@ export enum AdminRoutes {
   Creators = '/creators',
   CreatePractice = '/createPractice',
   EditPractice = '/editPractice',
+  AccountCreator = '/user-management',
 }
 
 export enum CreatorRoutes {
