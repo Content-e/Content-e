@@ -6,7 +6,6 @@ import {
   ApiCustomHookStateType,
   apiInitialState,
   SignPayloadType,
-  ApiHookReturnType,
   SignUpResponse,
   getSuccessResponse,
   getErrorResponse,
@@ -15,15 +14,11 @@ import ErrorContext from 'state/error/error.context';
 import { IErrorContextType, signUpErrorHeading } from 'utils';
 import { updateErrorState } from 'components';
 
-export const useSignup = (): ApiHookReturnType<
-  CognitoUser,
-  SignPayloadType
-> => {
+export const useSignup = () => {
   const [res, setRes] =
     useState<ApiCustomHookStateType<CognitoUser>>(apiInitialState);
   const { setAuthState } = useContext<AuthContextType>(AuthContext);
-  const { setErrorState, errorState } =
-    useContext<IErrorContextType>(ErrorContext);
+  const { setErrorState } = useContext<IErrorContextType>(ErrorContext);
 
   const performSignUp = useCallback(
     async (payload: SignPayloadType): Promise<void> => {
@@ -32,8 +27,7 @@ export const useSignup = (): ApiHookReturnType<
       try {
         const response: SignUpResponse = await Auth.signUp({
           username: email,
-          // Default password that can be changed later. This is dumb insecure, should be changed ASAP
-          password: password || Math.random().toString(36).slice(2),
+          password: password,
           attributes: { email, name },
         });
         setRes(getSuccessResponse<CognitoUser>(response.user));
@@ -50,7 +44,7 @@ export const useSignup = (): ApiHookReturnType<
         updateErrorState({ title: signUpErrorHeading, message }, setErrorState);
       }
     },
-    [errorState]
+    [setAuthState, setErrorState]
   );
   return { res, performAction: performSignUp };
 };
