@@ -8,6 +8,7 @@ import ErrorContext from 'state/error/error.context';
 import { useContext } from 'react';
 import { z } from 'zod';
 import init from 'zod-empty';
+import { USER_TYPES } from 'API';
 
 const options = [
   { value: 'brand', text: 'Brand' },
@@ -36,6 +37,11 @@ export default function AdminAccountCreator() {
   const { performAction } = useSignup();
 
   const onSubmit = handleSubmit((data) => {
+    console.log('Singin up', data);
+    localStorage.setItem(
+      "userType",
+      data.role === 'creator' ? USER_TYPES.CREATIVE_USER : USER_TYPES.BRAND_USER
+    );
     performAction(data);
   });
 
