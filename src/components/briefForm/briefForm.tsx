@@ -51,6 +51,8 @@ function BriefForm({
     control,
     handleSubmit,
     reset,
+    setError,
+    resetField,
     formState: { errors, isValid, isDirty, isSubmitting },
   } = useZodForm({
     schema,
@@ -91,6 +93,14 @@ function BriefForm({
   useEffect(() => {
     getAdGroups(selectedCampaign);
   }, [selectedCampaign]); // Adding getAdGroups as dependency causes a loop due to a effect hell in HOCs
+
+  useEffect(() => {
+    if (selectedCampaign && !listAdGroups.length && !dataLoading) {
+      setError('adgroupId', { message: 'No Ad Groups found in the campaign. Please configure it in TikTok' });
+    } else {
+      resetField('adgroupId');
+    }
+  }, [listAdGroups, selectedCampaign, resetField, setError])
 
   const onSubmit = handleSubmit(async (data) => {
     console.log(data);

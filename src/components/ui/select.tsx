@@ -54,7 +54,6 @@ function Select<T extends FieldValues>(props: Props<T>) {
         id={name}
         className={`
           w-full rounded-lg bg-[#F9FBFD] border-[#005F730D] border-[1px] text-gray-400 p-5 text-start disabled:cursor-not-allowed
-          ${error && 'ring-2 ring-red-400'}
         `}
       >
         <ChevronUpDownIcon className="absolute h-6 right-0 mr-2" />
