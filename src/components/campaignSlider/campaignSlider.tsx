@@ -42,7 +42,7 @@ export const CampaignSlider: FC<Props> = ({ videoUrls, onClose }) => {
       <Carousel
         variant="dark"
         indicators={false}
-        className="carousel-wrapper"
+        className="carousel-wrapper my-4"
         interval={null}
         slide={false}
       >

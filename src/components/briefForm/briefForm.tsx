@@ -22,7 +22,13 @@ const schema = z.object({
   // vertical: z.string().nonempty(),
   objective: z.string().nonempty(),
   brandBriefDetails: z.string().nonempty(), // TODO: rename -> details
-  creativeInspirations: z.string().url().or(z.literal('')).array(),
+  creativeInspirations: z
+    .string()
+    .url()
+    .startsWith('https://www.tiktok.com')
+    .includes('/video/')
+    .or(z.literal(''))
+    .array(),
   active: z.boolean(),
   campaignId: z.string().nonempty(),
   adgroupId: z.string().nonempty(),
@@ -96,11 +102,14 @@ function BriefForm({
 
   useEffect(() => {
     if (selectedCampaign && !listAdGroups.length && !dataLoading) {
-      setError('adgroupId', { message: 'No Ad Groups found in the campaign. Please configure it in TikTok' });
+      setError('adgroupId', {
+        message:
+          'No Ad Groups found in the campaign. Please configure it in TikTok',
+      });
     } else {
       resetField('adgroupId');
     }
-  }, [listAdGroups, resetField, setError, dataLoading]) // selectedCampaign is used in a different effect
+  }, [listAdGroups, resetField, setError, dataLoading]); // selectedCampaign is used in a different effect
 
   const onSubmit = handleSubmit(async (data) => {
     console.log(data);
@@ -142,9 +151,7 @@ function BriefForm({
               name="adgroupId"
               label="Ad group"
               placeholder={
-                selectedCampaign
-                  ? 'Select an option'
-                  : 'Select campaign first'
+                selectedCampaign ? 'Select an option' : 'Select campaign first'
               }
               disabled={!adGroupOptions.length}
               isLoading={dataLoading}
@@ -167,7 +174,7 @@ function BriefForm({
                 key={index}
                 name={`creativeInspirations.${index}`}
                 className="mt-12"
-                placeholder="Paste creative URL"
+                placeholder="https://www.tiktok.com/@user/video/id"
                 inputClassName="bg-white"
                 label=""
                 register={register}
