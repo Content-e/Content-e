@@ -91,7 +91,7 @@ function BriefForm({
   const selectedCampaign = watch('campaignId');
 
   useEffect(() => {
-    getAdGroups(selectedCampaign);
+    if (selectedCampaign) getAdGroups(selectedCampaign);
   }, [selectedCampaign]); // Adding getAdGroups as dependency causes a loop due to a effect hell in HOCs
 
   useEffect(() => {
@@ -100,7 +100,7 @@ function BriefForm({
     } else {
       resetField('adgroupId');
     }
-  }, [listAdGroups, selectedCampaign, resetField, setError])
+  }, [listAdGroups, resetField, setError, dataLoading]) // selectedCampaign is used in a different effect
 
   const onSubmit = handleSubmit(async (data) => {
     console.log(data);
@@ -142,7 +142,7 @@ function BriefForm({
               name="adgroupId"
               label="Ad group"
               placeholder={
-                adGroupOptions.length
+                selectedCampaign
                   ? 'Select an option'
                   : 'Select campaign first'
               }
