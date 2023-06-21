@@ -46,10 +46,11 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
       setLoading(true);
       const res: any = await goToNext();
       const id = res.data.createCreativeRequest.id;
-      console.log(file);
-      Storage.put(`creative/${id}/${generateUniqueFilename(file.name)}`, file)
+      const fileName = generateUniqueFilename(file.name);
+      console.log({ file, fileName });
+      Storage.put(`creative/${id}/${fileName}`, file)
         .then(() => {
-          updatePath(`creative/${id}/${generateUniqueFilename(file.name)}`, id);
+          updatePath(`creative/${id}/${fileName}`, id);
         })
         .catch((error) => console.log(error))
         .finally(() => {
