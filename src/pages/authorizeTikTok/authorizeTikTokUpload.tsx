@@ -1,9 +1,11 @@
+import _ from 'lodash';
 import { FC, useState } from 'react';
 import AuthorizeTikTokHeader from './authorizeTikTokHeader';
 import { FileUploader } from 'react-drag-drop-files';
 import { Storage } from 'aws-amplify';
 import { Spinner } from 'react-bootstrap';
 import Button from 'components/ui/button';
+import { v4 as uuid } from 'uuid';
 
 interface Props {
   onCross: () => void;
@@ -14,6 +16,11 @@ interface Props {
 }
 
 const fileTypes: string[] = ['MP4', 'MOV', 'AVI', 'WMV', 'WebM'];
+
+const generateUniqueFilename = (fileName: string) => {
+  const extension = _.last(fileName.split('.'));
+  return `${uuid()}.${extension}`;
+}
 
 export const AuthorizeTiktokUpload: FC<Props> = ({
   goToPrev,
@@ -40,9 +47,9 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
       const res: any = await goToNext();
       const id = res.data.createCreativeRequest.id;
       console.log(file);
-      Storage.put(`creative/${id}/${file.name}`, file)
+      Storage.put(`creative/${id}/${generateUniqueFilename(file.name)}`, file)
         .then(() => {
-          updatePath(`creative/${id}/${file.name}`, id);
+          updatePath(`creative/${id}/${generateUniqueFilename(file.name)}`, id);
         })
         .catch((error) => console.log(error))
         .finally(() => {
