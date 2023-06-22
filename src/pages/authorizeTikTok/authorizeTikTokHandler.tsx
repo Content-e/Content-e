@@ -43,6 +43,8 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
         const input = {
           brandBriefId: id,
           creatorId: userId,
+          creatorName: profile.name,
+          creatorDescription: profile.description,
           status: 'new',
           tiktokCreativeUrl: link,
           tiktokVideoCode: link,
@@ -59,6 +61,8 @@ export const AuthorizeTikTokHandler: FC<Props & AuthProps & ProfileProps> = ({
         const input = {
           brandBriefId: id,
           creatorId: userId,
+          creatorName: profile.name,
+          creatorDescription: profile.description,
           status: 'submitted',
           tiktokCreativeUrl: '',
           tiktokVideoCode: '',

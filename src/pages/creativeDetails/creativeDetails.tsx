@@ -91,8 +91,7 @@ export const CreativeDetails: FC<Props & ProfileProps> = ({
         >
           <div className="flex flex-col gap-4 mt-6 text-neutral-400">
             <span>
-              {/*TODO: propagate name here somehow*/}
-              <b>Creator name:</b> {creativeRequest.creativeTiktokHandle}
+              <b>Creator name:</b> {creativeRequest.creatorName}
             </span>
             <span>
               <b>Creator's TikTok handle:</b>{' '}
