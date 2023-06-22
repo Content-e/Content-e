@@ -33,7 +33,7 @@
         },
         "createAd": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/createAd-61337a6e646359324e46-build.zip"
+          "s3Key": "amplify-builds/createAd-516263555353466e5545-build.zip"
         },
         "getVideoFromAuthCode": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
@@ -45,7 +45,7 @@
         },
         "listAdGroups": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/listAdGroups-394b7643615548623446-build.zip"
+          "s3Key": "amplify-builds/listAdGroups-30546c654367366c6b4b-build.zip"
         },
         "listCompaigns": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",

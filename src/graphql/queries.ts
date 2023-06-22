@@ -17,6 +17,7 @@ export const getGPTresponse = /* GraphQL */ `
       BRAND_MISSION_STATEMENT_REFRESH
       error
       message
+      __typename
     }
   }
 `;
@@ -37,6 +38,7 @@ export const getApprovedAds = /* GraphQL */ `
       status
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -62,8 +64,10 @@ export const listApprovedAds = /* GraphQL */ `
         status
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -97,8 +101,10 @@ export const approvedAdsById = /* GraphQL */ `
         status
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -132,8 +138,10 @@ export const approvedAdsByCreativeRequestId = /* GraphQL */ `
         status
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -167,8 +175,10 @@ export const approvedAdsByAd_id = /* GraphQL */ `
         status
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -202,8 +212,10 @@ export const approvedAdsByAd_group_id = /* GraphQL */ `
         status
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -237,8 +249,10 @@ export const approvedAdsByCampaing_id = /* GraphQL */ `
         status
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -272,8 +286,10 @@ export const approvedAdsByAdvertiser_id = /* GraphQL */ `
         status
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -307,8 +323,10 @@ export const approvedAdsByUser_profile_id = /* GraphQL */ `
         status
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -342,8 +360,10 @@ export const approvedAdsByStatus = /* GraphQL */ `
         status
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -369,12 +389,15 @@ export const getUserProfile = /* GraphQL */ `
           metaData
           briefs {
             nextToken
+            __typename
           }
           createdAt
           updatedAt
           userProfileBrandId
+          __typename
         }
         nextToken
+        __typename
       }
       owner
       userType
@@ -390,8 +413,10 @@ export const getUserProfile = /* GraphQL */ `
           createdAt
           updatedAt
           userProfileBestPracticesId
+          __typename
         }
         nextToken
+        __typename
       }
       tiktokAccountAccess
       userWallet {
@@ -401,10 +426,12 @@ export const getUserProfile = /* GraphQL */ `
         userProfileId
         createdAt
         updatedAt
+        __typename
       }
       createdAt
       updatedAt
       userProfileUserWalletId
+      __typename
     }
   }
 `;
@@ -436,8 +463,10 @@ export const listUserProfiles = /* GraphQL */ `
             createdAt
             updatedAt
             userProfileBrandId
+            __typename
           }
           nextToken
+          __typename
         }
         owner
         userType
@@ -453,8 +482,10 @@ export const listUserProfiles = /* GraphQL */ `
             createdAt
             updatedAt
             userProfileBestPracticesId
+            __typename
           }
           nextToken
+          __typename
         }
         tiktokAccountAccess
         userWallet {
@@ -464,12 +495,15 @@ export const listUserProfiles = /* GraphQL */ `
           userProfileId
           createdAt
           updatedAt
+          __typename
         }
         createdAt
         updatedAt
         userProfileUserWalletId
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -509,8 +543,10 @@ export const userProfilesByUserEmail = /* GraphQL */ `
             createdAt
             updatedAt
             userProfileBrandId
+            __typename
           }
           nextToken
+          __typename
         }
         owner
         userType
@@ -526,8 +562,10 @@ export const userProfilesByUserEmail = /* GraphQL */ `
             createdAt
             updatedAt
             userProfileBestPracticesId
+            __typename
           }
           nextToken
+          __typename
         }
         tiktokAccountAccess
         userWallet {
@@ -537,12 +575,15 @@ export const userProfilesByUserEmail = /* GraphQL */ `
           userProfileId
           createdAt
           updatedAt
+          __typename
         }
         createdAt
         updatedAt
         userProfileUserWalletId
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -555,6 +596,7 @@ export const getUserWallet = /* GraphQL */ `
       userProfileId
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -572,8 +614,10 @@ export const listUserWallets = /* GraphQL */ `
         userProfileId
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -589,6 +633,7 @@ export const getBestPractices = /* GraphQL */ `
       createdAt
       updatedAt
       userProfileBestPracticesId
+      __typename
     }
   }
 `;
@@ -609,8 +654,10 @@ export const listBestPractices = /* GraphQL */ `
         createdAt
         updatedAt
         userProfileBestPracticesId
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -639,8 +686,10 @@ export const bestPracticesByActive = /* GraphQL */ `
         createdAt
         updatedAt
         userProfileBestPracticesId
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -671,6 +720,7 @@ export const getBrandProfile = /* GraphQL */ `
           adgroupId
           creativeRequests {
             nextToken
+            __typename
           }
           brandId
           brandProfile {
@@ -688,15 +738,19 @@ export const getBrandProfile = /* GraphQL */ `
             createdAt
             updatedAt
             userProfileBrandId
+            __typename
           }
           createdAt
           updatedAt
+          __typename
         }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
       userProfileBrandId
+      __typename
     }
   }
 `;
@@ -733,14 +787,18 @@ export const listBrandProfiles = /* GraphQL */ `
             brandId
             createdAt
             updatedAt
+            __typename
           }
           nextToken
+          __typename
         }
         createdAt
         updatedAt
         userProfileBrandId
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -785,14 +843,18 @@ export const brandProfilesByUserEmail = /* GraphQL */ `
             brandId
             createdAt
             updatedAt
+            __typename
           }
           nextToken
+          __typename
         }
         createdAt
         updatedAt
         userProfileBrandId
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -817,11 +879,14 @@ export const getBrandBrief = /* GraphQL */ `
           tiktokVideoCode
           creativeTiktokHandle
           creatorDescription
+          creatorName
           id
           createdAt
           updatedAt
+          __typename
         }
         nextToken
+        __typename
       }
       brandId
       brandProfile {
@@ -850,15 +915,19 @@ export const getBrandBrief = /* GraphQL */ `
             brandId
             createdAt
             updatedAt
+            __typename
           }
           nextToken
+          __typename
         }
         createdAt
         updatedAt
         userProfileBrandId
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -888,11 +957,14 @@ export const listBrandBriefs = /* GraphQL */ `
             tiktokVideoCode
             creativeTiktokHandle
             creatorDescription
+            creatorName
             id
             createdAt
             updatedAt
+            __typename
           }
           nextToken
+          __typename
         }
         brandId
         brandProfile {
@@ -909,15 +981,19 @@ export const listBrandBriefs = /* GraphQL */ `
           metaData
           briefs {
             nextToken
+            __typename
           }
           createdAt
           updatedAt
           userProfileBrandId
+          __typename
         }
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -955,11 +1031,14 @@ export const brandBriefsByVertical = /* GraphQL */ `
             tiktokVideoCode
             creativeTiktokHandle
             creatorDescription
+            creatorName
             id
             createdAt
             updatedAt
+            __typename
           }
           nextToken
+          __typename
         }
         brandId
         brandProfile {
@@ -976,15 +1055,19 @@ export const brandBriefsByVertical = /* GraphQL */ `
           metaData
           briefs {
             nextToken
+            __typename
           }
           createdAt
           updatedAt
           userProfileBrandId
+          __typename
         }
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -1022,11 +1105,14 @@ export const brandBriefsByBrandId = /* GraphQL */ `
             tiktokVideoCode
             creativeTiktokHandle
             creatorDescription
+            creatorName
             id
             createdAt
             updatedAt
+            __typename
           }
           nextToken
+          __typename
         }
         brandId
         brandProfile {
@@ -1043,15 +1129,19 @@ export const brandBriefsByBrandId = /* GraphQL */ `
           metaData
           briefs {
             nextToken
+            __typename
           }
           createdAt
           updatedAt
           userProfileBrandId
+          __typename
         }
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -1065,9 +1155,11 @@ export const getCreativeRequest = /* GraphQL */ `
       tiktokVideoCode
       creativeTiktokHandle
       creatorDescription
+      creatorName
       id
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -1090,11 +1182,14 @@ export const listCreativeRequests = /* GraphQL */ `
         tiktokVideoCode
         creativeTiktokHandle
         creatorDescription
+        creatorName
         id
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -1121,11 +1216,14 @@ export const creativeRequestsByBrandBriefId = /* GraphQL */ `
         tiktokVideoCode
         creativeTiktokHandle
         creatorDescription
+        creatorName
         id
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -1152,11 +1250,14 @@ export const creativeRequestsByCreatorId = /* GraphQL */ `
         tiktokVideoCode
         creativeTiktokHandle
         creatorDescription
+        creatorName
         id
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -1183,11 +1284,14 @@ export const creativeRequestsByStatus = /* GraphQL */ `
         tiktokVideoCode
         creativeTiktokHandle
         creatorDescription
+        creatorName
         id
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
