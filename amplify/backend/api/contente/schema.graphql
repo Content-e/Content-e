@@ -106,6 +106,7 @@ type CreativeRequest
   tiktokVideoCode: String!
   creativeTiktokHandle: String
   creatorDescription: String
+  creatorName: String
 }
 
 enum USER_TYPES{
