@@ -1,10 +1,10 @@
-import { FC, useState } from "react";
-import { CreateBrandProfileInput, GPT_PROMPT } from "API";
-import { createBrand } from "utils";
-import { TextArea, isNameSuggestionDisable } from "components";
-import { Field, SuggestedInput, ToneOfVoice } from "./components";
-import Modal from "./modals";
-import * as S from "./styles";
+import { FC, useState } from 'react';
+import { CreateBrandProfileInput, GPT_PROMPT } from 'API';
+import { createBrand } from 'utils';
+import { TextArea, isNameSuggestionDisable } from 'components';
+import { Field, SuggestedInput, ToneOfVoice } from './components';
+import Modal from './modals';
+import * as S from './styles';
 
 interface Props {
   data: CreateBrandProfileInput;
@@ -27,7 +27,7 @@ export const StepOne: FC<Props> = ({ data, onUpdate }) => {
   return (
     <S.TopWrapper>
       <Field {...createBrand.description} />
-      <TextArea value={description || ""} updateValue={setDescript} />
+      <TextArea value={description || ''} updateValue={setDescript} />
       <Field {...createBrand.tonOfVoice} />
       <ToneOfVoice currentTone={toneVoice?.[0]} onSelect={setTonVoice} />
       <Field {...createBrand.brandName} />
@@ -35,7 +35,7 @@ export const StepOne: FC<Props> = ({ data, onUpdate }) => {
         small
         placeholder="Enter Brand Name"
         disableSuggestions={isNameSuggestionDisable(data)}
-        value={name || ""}
+        value={name || ''}
         setValue={setName}
         getSuggestions={toggleSuggestionBox}
       />

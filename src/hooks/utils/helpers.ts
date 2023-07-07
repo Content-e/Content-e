@@ -1,6 +1,6 @@
-import { DocumentNode, gql } from "@apollo/client";
-import { GetSuccessResponseType, ApiCustomHookStateType } from "./types";
-import { apiInitialState } from "./constants";
+import { DocumentNode, gql } from '@apollo/client';
+import { GetSuccessResponseType, ApiCustomHookStateType } from './types';
+import { apiInitialState } from './constants';
 
 export const getQuery = (query: string): DocumentNode => gql`
   ${query}
@@ -22,6 +22,6 @@ export function getErrorResponse<T>(
     ...apiInitialState,
     success: false,
     isLoading: false,
-    error: errorMsg || "An error occurred, try again later.",
+    error: errorMsg || 'An error occurred, try again later.',
   };
 }

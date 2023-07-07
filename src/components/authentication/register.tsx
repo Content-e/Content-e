@@ -1,139 +1,214 @@
-import { useState, useEffect, FC, useMemo } from "react";
-// import { IconLoader, Input } from "components";
-import { useHistory } from "react-router-dom";
-import { defaultSignUpError, defaultSignUpState, UnAuthRoutes } from "utils";
-import { useSignup } from "hooks";
-import {
-  validateEmail,
-  validateFullName,
-  validatePassword,
-  withAuth,
-} from "state/auth";
+import _ from 'lodash';
+import { ChangeEventHandler, FC, useMemo } from 'react';
+import { withAuth } from 'state/auth';
+import { UnAuthRoutes } from 'utils';
+import './styles/login.scss';
+import { USER_TYPES } from 'API';
+import { IconLoader } from 'components/loader';
+import axios from 'axios';
+import HeaderDesktop from 'components/authentication/components/header-desktop';
+import HeaderMobile from 'components/authentication/components/header-mobile';
+import { Link } from 'react-router-dom';
+import Footer from './components/footer';
+import Modal from './modal';
+import useZodForm from 'hooks/useZodForm';
+import { z } from 'zod';
+import { FormInput } from 'components';
+import init from 'zod-empty';
 
-import "./styles/login.css";
-// import GoogleLogin from "./googleLogin";
-import { USER_TYPES } from "API";
-import Navbar from "components/navbar/navbar";
-import GoogleLogin from "./googleLogin";
-import { Input } from "components/customInput";
-import { IconLoader } from "components/loader";
-import AuthFooter from "./authFooter";
+const DEFAULT_ROLE = 'brand';
+
+const sendJSONEmail = async (json: { name: string }): Promise<void> => {
+  const mailData = JSON.stringify({
+    operationName: 'SendEmail',
+    variables: {
+      data: {
+        from: 'no-reply@edcsquared.io',
+        message: json,
+        name: json.name,
+      },
+    },
+    query:
+      'query SendEmail($data: EMAIL_INPUT) {\n  sendEmail(data: $data)\n}\n',
+  });
+
+  const res = await axios.post(
+    'https://ibqmmfkfajfbvgtxmjzfx3u6rm.appsync-api.us-east-1.amazonaws.com/graphql',
+    mailData,
+    {
+      headers: {
+        'x-api-key': 'da2-ndivz7milrarjolsdmpucfdelm',
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+  console.log(res);
+};
+
+export const schema = z.object({
+  email: z
+    .string()
+    .nonempty("Please enter your email address")
+    .email("Please enter the correct email address"),
+  // password: z.string().nonempty("Please enter your password").min(8),
+  name: z.string().nonempty('Please enter your full name'),
+  role: z.enum(['brand', 'creator']),
+  about: z.string(),
+});
 
 export const Register: FC = () => {
-  const [creator, setCreator] = useState(false);
+  const params = new URL(location.href).searchParams;
 
-  const history = useHistory();
+  const defaultRole = useMemo(() => {
+    const value = params.get('role');
+    if (!value) return DEFAULT_ROLE;
+    try {
+      return schema.shape.role.parse(value);
+    } catch (e) {
+      console.log(e);
+      return DEFAULT_ROLE;
+    }
+  }, [params]);
+
   const {
-    performAction,
-    res: { isLoading, success },
-  } = useSignup();
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    watch,
+    formState: { errors, isValid, isSubmitting, isSubmitSuccessful, isDirty },
+  } = useZodForm({
+    schema: schema,
+    defaultValues: {
+      ...init(schema),
+      role: defaultRole,
+    },
+    mode: 'onBlur',
+  });
 
-  const [signUpState, setSignUpState] = useState(defaultSignUpState);
-  const [signUpError, setSignUpError] = useState(defaultSignUpError);
+  const role = watch('role') || DEFAULT_ROLE;
+  const setRole = (value: z.infer<typeof schema>['role']) =>
+    setValue('role', value);
 
-  const updateState = (key: string, value: string): void => {
-    setSignUpError((prev) => ({ ...prev, [key]: null }));
-    setSignUpState((prev) => ({ ...prev, [key]: value }));
-  };
-
-  const validateSignUpForm = (): boolean => {
-    const emailError = validateEmail(signUpState.email);
-    const passwordError = validatePassword(signUpState.password);
-    const fullNameError = validateFullName(signUpState.name);
-    const notValidated = emailError || passwordError || fullNameError;
-    if (notValidated)
-      setSignUpError({
-        email: emailError,
-        password: passwordError,
-        name: fullNameError,
-      });
-    return !!notValidated;
-  };
-
-  const onLogin = (): void => history.push(UnAuthRoutes.Login);
-  const onSignUp = (): void => {
+  const onSubmit = handleSubmit((data) => {
     localStorage.setItem(
-      "userType",
-      creator ? USER_TYPES.CREATIVE_USER : USER_TYPES.BRAND_USER
+      'userType',
+      {
+        creator: USER_TYPES.CREATIVE_USER,
+        brand: USER_TYPES.BRAND_USER,
+      }[role]
     );
-    if (!validateSignUpForm()) performAction(signUpState);
-  };
+    return sendJSONEmail(data);
+  });
 
-  const isSubmittable = useMemo(
-    () => Object.values(signUpError).every((item) => item === null),
-    [signUpError]
-  );
-
-  useEffect(() => {
-    if (success) history.push(UnAuthRoutes.Reverify, { ...signUpState });
-  }, [success]);
-
-  const commonProps = {
-    handlers: { state: signUpState, error: signUpError, updateState },
+  const handleRoleChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
+    setRole(e.target.value as z.infer<typeof schema>['role']);
   };
 
   return (
     <div className="login">
-      <div className="login__landing">
-        <img src="/images/edc-logo.svg" alt="edc-squared" />
-        <div className="login__landing-container">
-          <span>
-            Everyday creators, <br />
-            everyday creative.
-          </span>
-          <div>Your content, your story, your impact.</div>
+      <HeaderMobile />
+      <div className="login__wrap">
+        <HeaderDesktop />
+        <div className="login__content">
+          <div className="w-full flex justify-around">
+            <div className="signup__container">
+              <div className="signup__title">
+                Create a {_.capitalize(role)} account
+              </div>
+              <div
+                className={`${
+                  role === 'creator' ? 'active' : false
+                } btns-container`}
+              >
+                <div
+                  className={`${role === 'brand' ? 'active' : false}`}
+                  onClick={() => setRole('brand')}
+                >
+                  Join as a brand
+                </div>
+                <div
+                  className={`${role === 'creator' ? 'active' : false}`}
+                  onClick={() => setRole('creator')}
+                >
+                  Join as a creator
+                </div>
+              </div>
+              <div className="signup__container-form">
+                <form onSubmit={onSubmit}>
+                  <div className="signup__container-form-field">
+                    <FormInput
+                      placeholder="Full Name"
+                      name="name"
+                      register={register}
+                      errors={errors}
+                    />
+                  </div>
+                  <div className="signup__container-form-field">
+                    <FormInput
+                      placeholder="Email Address"
+                      name="email"
+                      register={register}
+                      errors={errors}
+                    />
+                  </div>
+                  <div className="signup__container-form-field">
+                    <select
+                      name="role"
+                      placeholder="Who are you?"
+                      value={role}
+                      onChange={handleRoleChange}
+                      className="mb-4"
+                    >
+                      <option value="brand">Brand</option>
+                      <option value="creator">Creator</option>
+                    </select>
+                  </div>
+                  <div className="signup__container-form-field">
+                    <FormInput
+                      name="about"
+                      placeholder={
+                        {
+                          creator:
+                            'Tell us about you and the content you create.',
+                          brand:
+                            'Tell us a little more about you and your brand.',
+                        }[role]
+                      }
+                      register={register}
+                      errors={errors}
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="signup__container-form-register-button"
+                    disabled={!isValid || !isDirty || isSubmitting}
+                  >
+                    <span style={isSubmitting ? { marginRight: 12 } : {}}>
+                      Register
+                    </span>
+                    {isSubmitting && <IconLoader />}
+                  </button>
+                  <div className="login__already">
+                    Already have an account?{' '}
+                    <Link to={UnAuthRoutes.Login}>Login</Link>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div className="login__landing">
+            <img src="/images/login-image.png" />
+          </div>
         </div>
       </div>
-      <div className="login__container">
-        <Navbar />
-        <div className="login__box">
-          <div className="login__title">
-            Create a {!creator ? "Brand" : "Creator"} account
-          </div>
-          <div className={`${creator ? "active" : false} btns-container`}>
-            <div
-              className={`${!creator ? "active" : false}`}
-              onClick={() => setCreator(false)}
-            >
-              Join as a brand
-            </div>
-            <div
-              className={`${creator ? "active" : false}`}
-              onClick={() => setCreator(true)}
-            >
-              Join as a creator
-            </div>
-          </div>
-          <GoogleLogin />
-          <div className="login__or">- OR -</div>
-          <div className="login__fields">
-            <Input {...commonProps} placeholder="Full Name" keyProp="name" />
-            <Input
-              {...commonProps}
-              placeholder="Email Address"
-              keyProp="email"
-            />
-            <Input
-              {...commonProps}
-              placeholder="Password"
-              type="password"
-              keyProp="password"
-            />
-          </div>
-          <button
-            className="login__btn"
-            onClick={onSignUp}
-            disabled={isLoading || !isSubmittable}
-          >
-            <span style={{ marginRight: 12 }}>Sign up</span>
-            {isLoading && <IconLoader />}
-          </button>{" "}
-          <div className="login__already">
-            Already have an account? <span onClick={onLogin}>Login</span>
-          </div>
-        </div>
-        <AuthFooter />
-      </div>
+      <Footer />
+      <Modal
+        isOpen={isSubmitSuccessful}
+        content="Thank you for registering, a member of the EDC squared team will be in
+          touch shortly."
+        handleClose={() => reset(undefined, { keepDefaultValues: true })}
+      />
     </div>
   );
 };

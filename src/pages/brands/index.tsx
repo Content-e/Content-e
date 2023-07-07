@@ -1,164 +1,20 @@
-import React, { useState } from "react";
-import "./style.css";
-import { useHistory } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
+import React from 'react';
+import './style.css';
+import { useHistory } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
+import HeaderDesktop from 'components/authentication/components/header-desktop';
+import HeaderMobile from 'components/authentication/components/header-mobile';
+import Footer from 'components/authentication/components/footer';
 
 export const BrandsPage: React.FC = () => {
   const history = useHistory();
-  const [menu, setMenu] = useState(false);
 
   return (
     <div className="brands-page-wrapper">
+      <HeaderMobile />
       <div className="brands-content-container-gradient">
         <div className="brands-page-container">
-          <div className="brands-page-navbar comingSoon">
-            <div className="brands-page-logo">
-              <img
-                src="/images/edc-squared-landing-logo.svg"
-                alt="edc-squared"
-              />
-            </div>
-            <img
-              src="/images/responsive-menu.svg"
-              alt="responsive-menu"
-              className="responsive-menu"
-              onClick={() => setMenu(!menu)}
-            />
-            <div className="brands-page-menu-header">
-              <div className="brands-page-menu">
-                <div
-                  className="brands-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Landing)}
-                >
-                  Home
-                </div>
-                <div
-                  className="brands-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Creators)}
-                >
-                  For Creators
-                </div>
-                <div
-                  className="brands-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Brands)}
-                  style={{ color: "#D9D9D9" }}
-                >
-                  For Brands
-                </div>
-                <div
-                  className="brands-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.SayHello)}
-                >
-                  Say Hello
-                </div>
-                <div
-                  className="login-signup"
-                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
-                >
-                  Login / Sign up
-                </div>
-
-                <div className="brands-page-socials">
-                  <div className="brands-page-socials-item">
-                    <a
-                      target="_blank"
-                      href="https://www.linkedin.com/company/edcsquared/"
-                    >
-                      <img src="/images/linkedin.png" alt="linkedin-icon" />
-                    </a>
-                  </div>
-                  <div className="brands-page-socials-item">
-                    <a target="_blank" href="https://www.instagram.com/edcsq/">
-                      <img src="/images/instagram.png" alt="instagram-icon" />
-                    </a>
-                  </div>
-                  <div className="brands-page-socials-item">
-                    <a
-                      target="_blank"
-                      href="https://www.tiktok.com/@edcsquared"
-                    >
-                      <img src="/images/tiktok.png" alt="tiktok-icon" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {menu && (
-              <div className="brands-menu">
-                <div className="brands-menu-option-container">
-                  <div
-                    className="brands-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.Landing)}
-                  >
-                    Home
-                  </div>
-                  <div
-                    className="brands-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.Creators)}
-                  >
-                    For Creators
-                  </div>
-                  <div
-                    className="brands-menu-option"
-                    style={{ color: "#D9D9D9" }}
-                    onClick={() => history.push(UnAuthRoutes.Brands)}
-                  >
-                    For Brands
-                  </div>
-                  <div
-                    className="brands-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.SayHello)}
-                  >
-                    Say Hello
-                  </div>
-                  <div
-                    className="login-signup"
-                    onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
-                  >
-                    Login / Sign UP
-                  </div>
-                  <div className="brands-menu-img-container">
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.linkedin.com/company/edcsquared/"
-                      >
-                        <img
-                          src="/images/linkedin.png"
-                          alt="linkedin-icon"
-                          className="brands-menu-img"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.instagram.com/edcsq/"
-                      >
-                        <img
-                          src="/images/instagram.png"
-                          alt="instagram-icon"
-                          className="brands-menu-img"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.tiktok.com/@edcsquared"
-                      >
-                        <img
-                          src="/images/tiktok.png"
-                          alt="tiktok-icon"
-                          className="brands-menu-img"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+          <HeaderDesktop />
         </div>
 
         <div className="brands-content-container">
@@ -221,7 +77,9 @@ export const BrandsPage: React.FC = () => {
             <div className="for-brands-content-btn-container">
               <div
                 className="login-signup brands-btn"
-                onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                onClick={() =>
+                  history.push(UnAuthRoutes.HomePageLogin + '?role=brand')
+                }
               >
                 Login / Sign up
               </div>
@@ -236,7 +94,11 @@ export const BrandsPage: React.FC = () => {
           <img
             src="/images/brands-union.png"
             className="brands-union"
-            style={{ marginLeft: "63px", marginBottom: "-32px" }}
+            style={{
+              marginLeft: '63px',
+              width: '492px',
+              height: '595px',
+            }}
           />
         </div>
       </div>
@@ -279,54 +141,7 @@ export const BrandsPage: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <div className="landing-footer">
-        <div className="landing-footer-text-container">
-          <div
-            className="landing-footer-text"
-            onClick={() => history.push(UnAuthRoutes.Landing)}
-          >
-            Home
-          </div>
-          <div
-            className="landing-footer-text"
-            onClick={() => history.push(UnAuthRoutes.Creators)}
-          >
-            For Creators
-          </div>
-          <div
-            className="landing-footer-text"
-            onClick={() => history.push(UnAuthRoutes.Brands)}
-          >
-            For Brands
-          </div>
-          <div
-            className="landing-footer-text"
-            onClick={() => history.push(UnAuthRoutes.SayHello)}
-          >
-            Say Hello
-          </div>
-        </div>
-
-        <div className="landing-footer-img-container">
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/company/edcsquared/"
-          >
-            <img src="/images/landing-linkedin.svg" />
-          </a>
-          <a target="_blank" href="https://www.instagram.com/edcsq/">
-            <img src="/images/landing-insta.svg" />
-          </a>
-          <a target="_blank" href="https://www.tiktok.com/@edcsquared">
-            <img src="/images/landing-tiktok.svg" />
-          </a>
-        </div>
-
-        <div className="landing-footer-text">
-          © 2023 Copyright EDC Squared. All Rights Reserved.
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };

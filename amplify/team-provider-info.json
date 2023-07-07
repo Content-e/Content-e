@@ -21,7 +21,7 @@
       "function": {
         "GPTLambda": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/GPTLambda-5974695454704a655256-build.zip"
+          "s3Key": "amplify-builds/GPTLambda-44783154546137654e6e-build.zip"
         },
         "emailService": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
@@ -30,6 +30,30 @@
         "graphQlLambdaAuthorizerc946ef1d": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
           "s3Key": "amplify-builds/graphQlLambdaAuthorizerc946ef1d-305531662f6e64636f59-build.zip"
+        },
+        "createAd": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/createAd-516263555353466e5545-build.zip"
+        },
+        "getVideoFromAuthCode": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/getVideoFromAuthCode-49396e4938776f32764a-build.zip"
+        },
+        "linkTiktokAccount": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/linkTiktokAccount-643041424f477a647952-build.zip"
+        },
+        "listAdGroups": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/listAdGroups-30546c654367366c6b4b-build.zip"
+        },
+        "listCompaigns": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/listCompaigns-4257306f326a792b5051-build.zip"
+        },
+        "updateUserType": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/updateUserType-77764b41336343785a74-build.zip"
         }
       },
       "hosting": {
@@ -62,7 +86,7 @@
       "function": {
         "GPTLambda": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",
-          "s3Key": "amplify-builds/GPTLambda-565148426975555a5563-build.zip"
+          "s3Key": "amplify-builds/GPTLambda-63386c59795861614259-build.zip"
         },
         "emailService": {
           "deploymentBucketName": "amplify-contente-staging-175407-deployment",

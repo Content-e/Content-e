@@ -1,5 +1,5 @@
-import { CreateBrandProfileInput, GPT_INPUT, GPT_PROMPT } from "API";
-import { UnknownType } from "utils";
+import { CreateBrandProfileInput, GPT_INPUT, GPT_PROMPT } from 'API';
+import { UnknownType } from 'utils';
 
 export const isNameSuggestionDisable = (
   data: CreateBrandProfileInput
@@ -32,11 +32,11 @@ const brandPillars = (data: UnknownType): Array<string> => {
   return [];
 };
 const brandMission = (data: UnknownType): Array<string> => [
-  data?.missionStatement || "",
+  data?.missionStatement || '',
 ];
 const brandTagline = (data: UnknownType): Array<string> => {
   if (!data) return [];
-  if (typeof data[0] !== "string") return data.map((e) => Object.values(e)[0]);
+  if (typeof data[0] !== 'string') return data.map((e) => Object.values(e)[0]);
   return data;
 };
 
@@ -99,7 +99,7 @@ export const getSuggestionInput = (
     }
   }
   return {
-    prompType: firstApiCall ? prompt : ((prompt + "_REFRESH") as GPT_PROMPT),
+    prompType: firstApiCall ? prompt : ((prompt + '_REFRESH') as GPT_PROMPT),
     businessDescription: data.description,
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore

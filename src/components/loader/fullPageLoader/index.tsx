@@ -1,15 +1,10 @@
-import { Spinner } from "react-bootstrap";
-import * as S from "./styles";
+import Spinner from 'components/ui/spinner';
 
 export const FullPageLoader: React.FC = () => {
   return (
-    <S.LoadingWrapper>
-      <Spinner
-        animation="border"
-        className="spinner-border"
-        variant="primary"
-      />
-    </S.LoadingWrapper>
+    <div className="absolute top-0 left-0 bottom-0 right-0 flex items-center justify-center">
+      <Spinner className="w-8 h-8" />
+    </div>
   );
 };
 export default FullPageLoader;

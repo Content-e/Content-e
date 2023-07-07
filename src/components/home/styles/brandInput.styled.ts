@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const BrandInputContainer = styled.div`
   display: flex;
@@ -6,7 +6,7 @@ export const BrandInputContainer = styled.div`
   gap: 5px;
 `;
 export const BrandInputTitle = styled.div`
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;

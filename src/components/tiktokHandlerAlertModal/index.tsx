@@ -1,5 +1,5 @@
-import { FC } from "react";
-import "./style.css";
+import { FC } from 'react';
+import './style.css';
 
 interface Props {
   onClick: () => void;

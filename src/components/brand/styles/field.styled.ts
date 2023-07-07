@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Heading = styled.div`
   text-align: left;
@@ -8,11 +8,11 @@ export const Heading = styled.div`
   line-height: 20px;
   color: #1c1c1c;
   margin-top: 15px;
-  font-family: "Raleway";
+  font-family: 'Raleway';
 `;
 
 export const Body = styled.div`
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;

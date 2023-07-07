@@ -1,12 +1,12 @@
-import { FC, useContext, useState } from "react";
-import { Auth } from "aws-amplify";
-import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
-import { IconLoader, updateErrorState } from "components";
-import { withAuth } from "state/auth";
-import { authFailedErrorHeading, AuthProps, IErrorContextType } from "utils";
-import ErrorContext from "state/error/error.context";
+import { FC, useContext, useState } from 'react';
+import { Auth } from 'aws-amplify';
+import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth';
+import { IconLoader, updateErrorState } from 'components';
+import { withAuth } from 'state/auth';
+import { authFailedErrorHeading, AuthProps, IErrorContextType } from 'utils';
+import ErrorContext from 'state/error/error.context';
 
-import "./styles/login.css";
+import './styles/login.scss';
 
 export const GoogleLogin: FC<AuthProps> = ({ getAuth }) => {
   const [isLoading, setIsLoading] = useState(false);

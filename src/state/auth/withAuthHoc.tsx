@@ -1,8 +1,8 @@
-import { Auth } from "aws-amplify";
-import React, { FC, useContext, useEffect } from "react";
-import { AuthContextType } from "state/types/authTypes";
-import { AuthContext } from "state/auth";
-import { AuthProps, initialAuthContext } from "utils";
+import { Auth } from 'aws-amplify';
+import React, { FC, useContext, useEffect } from 'react';
+import { AuthContextType } from 'state/types/authTypes';
+import { AuthContext } from 'state/auth';
+import { AuthProps, initialAuthContext } from 'utils';
 
 export function withAuth<T>(Component: React.FC<T & AuthProps>): React.FC<T> {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -37,7 +37,7 @@ export function withAuth<T>(Component: React.FC<T & AuthProps>): React.FC<T> {
     };
 
     useEffect(() => {
-      if ((isLoggedIn === null && !isLoading) || authState.tempPasswd === "") {
+      if ((isLoggedIn === null && !isLoading) || authState.tempPasswd === '') {
         getAuth();
       }
     }, [authState.isLoggedIn]);

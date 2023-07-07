@@ -1,4 +1,4 @@
-import { useLazyQuery, useMutation } from "@apollo/client";
+import { useLazyQuery, useMutation } from '@apollo/client';
 import {
   GetUserProfileQuery,
   GetUserProfileQueryVariables,
@@ -10,22 +10,22 @@ import {
   LinkUserTypeMutationVariables,
   LinkTiktokAccountMutation,
   LinkTiktokAccountMutationVariables,
-} from "API";
+} from 'API';
 import {
   createUserProfile as createUserQuery,
   linkTiktokAccount,
   linkUserType,
   updateUserProfile as updateUserQuery,
-} from "graphql/mutations";
-import { getUserProfile as getUserProfileQuery } from "graphql/queries";
+} from 'graphql/mutations';
+import { getUserProfile as getUserProfileQuery } from 'graphql/queries';
 import {
   CreateUserProfileProps,
   GetUserProfileProps,
   ILinkTiktokAccountResponse,
   UpdateUserProfileProps,
   UserTypeSetterProps,
-} from "hooks/utils";
-import { getQuery } from "hooks/utils/helpers";
+} from 'hooks/utils';
+import { getQuery } from 'hooks/utils/helpers';
 
 export const getUserProfile = (): GetUserProfileProps => {
   const [getProfile, { data, loading, error }] = useLazyQuery<
@@ -34,7 +34,7 @@ export const getUserProfile = (): GetUserProfileProps => {
   >(getQuery(getUserProfileQuery));
   const profileData = data?.getUserProfile || null;
   const errorData =
-    error || (profileData ? undefined : new Error("No User Found"));
+    error || (profileData ? undefined : new Error('No User Found'));
   return {
     loading,
     getProfile,
@@ -51,7 +51,7 @@ export const createUserProfile = (): CreateUserProfileProps => {
   >(getQuery(createUserQuery));
   const profileData = data?.createUserProfile || null;
   const errorData =
-    error || (profileData ? undefined : new Error("No User Found"));
+    error || (profileData ? undefined : new Error('No User Found'));
   return { loading, createProfile, profileData, error: errorData };
 };
 
@@ -70,7 +70,7 @@ export const updateUserProfile = (): UpdateUserProfileProps => {
   >(getQuery(updateUserQuery));
   const profileData = data?.updateUserProfile || null;
   const errorData =
-    error || (profileData ? undefined : new Error("No User Found"));
+    error || (profileData ? undefined : new Error('No User Found'));
   return { loading, updateProfile, profileData, error: errorData };
 };
 

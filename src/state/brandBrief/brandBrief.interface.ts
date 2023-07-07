@@ -1,4 +1,4 @@
-import { BrandBrief, BrandProfile } from "API";
+import { BrandBrief, BrandProfile } from 'API';
 
 export interface BrandBriefProps {
   data?: Array<BrandBrief | null>;
@@ -8,7 +8,7 @@ export interface BrandBriefProps {
 }
 
 export interface SaveBriefProps {
-  saveData: (data: ICreateBriefState) => void;
+  saveData: (data: ICreateBriefState) => Promise<void>;
   getAdGroups: (campaignId: string) => void;
   briefState?: ICreateBriefState;
   loading: boolean;
@@ -30,7 +30,6 @@ export interface ICreativeEntry {
   status?: string | null;
   briefId: string;
   id: string;
-  date?: string;
 }
 
 export interface ISelectredRequest {

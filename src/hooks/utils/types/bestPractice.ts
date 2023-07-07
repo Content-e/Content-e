@@ -1,4 +1,4 @@
-import { BestPractices } from "API";
+import { BestPractices } from 'API';
 
 export type ICreatePracticeResponse = {
   createBrief: (unknown) => void;

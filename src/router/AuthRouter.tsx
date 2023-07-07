@@ -1,37 +1,38 @@
-import { FC, Fragment, useEffect } from "react";
-import { BrandSteps, FullPageLoader, HomePage, isValidRoute } from "components";
-import withApolloProvider from "hooks/apollo/withApollo";
-import { SidebarLayout } from "layout";
-import { AuthorizeTikTokStep, Brief, Dashboard, RedirectingStep } from "pages";
+import { FC, Fragment, useEffect } from 'react';
+import { BrandSteps, FullPageLoader, HomePage, isValidRoute } from 'components';
+import withApolloProvider from 'hooks/apollo/withApollo';
+import { SidebarLayout } from 'layout';
+import { AuthorizeTikTokStep, Brief, Dashboard, RedirectingStep } from 'pages';
 
-import EditProfile from "pages/editProfile";
+import EditProfile from 'pages/editProfile';
 import {
   Redirect,
   Route,
   Switch,
   useHistory,
   useLocation,
-} from "react-router-dom";
-import { withProfile } from "state/profileSteps";
+} from 'react-router-dom';
+import { withProfile } from 'state/profileSteps';
 import {
   AdminRoutes,
   AuthRoutes,
   BrandRoutes,
   CreatorRoutes,
   ProfileProps,
-} from "utils";
-import Wallet from "pages/wallet/wallet";
-import BestPractice from "pages/bestPractice";
-import CreativesTable from "components/creativesTable/creativesTable";
-import CreateBrief from "components/createBrief/createBrief";
-import { USER_TYPES } from "API";
+} from 'utils';
+import Wallet from 'pages/wallet/wallet';
+import BestPractice from 'pages/bestPractice';
+import CreativesTable from 'components/creativesTable/creativesTable';
+import CreateBrief from 'components/briefForm/briefForm';
+import { USER_TYPES } from 'API';
 import {
   AdminAuthArray,
   BrandAuthArray,
   CreatorAuthArray,
-} from "./RoutesConstants";
-import CreatePractice from "components/createPractice";
-import linkTiktokAccount from "pages/linkTiktokAccount";
+} from './RoutesConstants';
+import CreatePractice from 'components/createPractice';
+import linkTiktokAccount from 'pages/linkTiktokAccount';
+import AdminAccountCreator from 'pages/adminAccountCreator';
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -40,6 +41,12 @@ const AuthRouterPaths: FC<ProfileProps> = ({
   const { pathname } = useLocation();
 
   useEffect(() => {
+    if (data?.userType === USER_TYPES.CREATIVE_USER) {
+      document.documentElement.setAttribute('data-theme', 'creator');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'brand');
+    }
+
     if (pathname && data) {
       if (
         (data?.userType === USER_TYPES.CREATIVE_USER &&
@@ -58,7 +65,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
       <Switch>
         <Route exact path={AuthRoutes.Redirector} component={RedirectingStep} />
         <Route exact path={AuthRoutes.Tiktok} component={AuthorizeTikTokStep} />
-        <SidebarLayout>
+        <SidebarLayout data={data}>
           <Route exact path={AuthRoutes.EditProfile} component={EditProfile} />
           <Route exact path={AuthRoutes.Dashboard} component={Dashboard} />
           <Route exact path={AuthRoutes.CampaignBrief} component={Brief} />
@@ -79,6 +86,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
                 exact
                 path={AdminRoutes.EditPractice}
                 component={CreatePractice}
+              />
+              <Route
+                exact
+                path={AdminRoutes.AccountCreator}
+                component={AdminAccountCreator}
               />
             </Fragment>
           )}
@@ -115,7 +127,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
           )}
 
           {data.userType === USER_TYPES.CREATIVE_USER && (
-            <Route exact path={CreatorRoutes.Wallet} component={Wallet} />
+            <Route
+              exact
+              path={CreatorRoutes.Wallet}
+              component={() => <Wallet data={data} />}
+            />
           )}
 
           <Route

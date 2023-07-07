@@ -1,24 +1,24 @@
-import { createContext } from "react";
-import { initialAuthContext } from "utils";
+import { createContext } from 'react';
+import { initialAuthContext } from 'utils';
 import {
   AuthContextType,
   IUnAuthUserName,
   TitleContextType,
-} from "../types/authTypes";
+} from '../types/authTypes';
 
 export const AuthContext = createContext<AuthContextType>({
   authState: initialAuthContext,
-  setAuthState: () => {},
+  setAuthState: console.log,
 });
 
 export const TitleContext = createContext<TitleContextType>({
-  title: "",
-  setTitle: () => {},
+  title: '',
+  setTitle: console.log,
 });
 
 export const UnAuthUserName = createContext<IUnAuthUserName>({
-  fullName: "",
-  setFullName: () => {},
+  fullName: '',
+  setFullName: console.log,
 });
 
 export default AuthContext;

@@ -1,8 +1,11 @@
-import { FC, useState } from "react";
-import AuthorizeTikTokHeader from "./authorizeTikTokHeader";
-import { FileUploader } from "react-drag-drop-files";
-import { Storage } from "aws-amplify";
-import { IconLoader } from "components";
+import _ from 'lodash';
+import { FC, useState } from 'react';
+import AuthorizeTikTokHeader from './authorizeTikTokHeader';
+import { FileUploader } from 'react-drag-drop-files';
+import { Storage } from 'aws-amplify';
+import { Spinner } from 'react-bootstrap';
+import Button from 'components/ui/button';
+import { v4 as uuid } from 'uuid';
 
 interface Props {
   onCross: () => void;
@@ -12,7 +15,12 @@ interface Props {
   updatePath: (path: string, vidID: string) => void;
 }
 
-const fileTypes: string[] = ["MP4", "MOV", "AVI", "WMV", "WebM"];
+const fileTypes: string[] = ['MP4', 'MOV', 'AVI', 'WMV', 'WebM'];
+
+const generateUniqueFilename = (fileName: string) => {
+  const extension = _.last(fileName.split('.'));
+  return `${uuid()}.${extension}`;
+}
 
 export const AuthorizeTiktokUpload: FC<Props> = ({
   goToPrev,
@@ -38,10 +46,11 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
       setLoading(true);
       const res: any = await goToNext();
       const id = res.data.createCreativeRequest.id;
-      console.log(file);
-      Storage.put(`creative/${id}/${file.name}`, file)
+      const fileName = generateUniqueFilename(file.name);
+      console.log({ file, fileName });
+      Storage.put(`creative/${id}/${fileName}`, file)
         .then(() => {
-          updatePath(`creative/${id}/${file.name}`, id);
+          updatePath(`creative/${id}/${fileName}`, id);
         })
         .catch((error) => console.log(error))
         .finally(() => {
@@ -57,6 +66,10 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
   return (
     <div className="tik-tok-modal">
       <AuthorizeTikTokHeader onCross={onCross} title="Upload the video" />
+      <p className="my-4">
+        Only 9:16, 1:1, or 16:9 aspect ratios are supported. Resolution must be
+        a minimum of 540*960px, 640*640px, or 960*540px.
+      </p>
       <div className="tik-tok-upload">
         <FileUploader
           handleChange={handleChange}
@@ -64,8 +77,18 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
           multiple={false}
           types={fileTypes}
           onDrop={() => {
-            const span = document.querySelector(".sc-eGFuAX.gjDYDz");
-            span!.textContent = "File Selected!";
+            const span = document.querySelector(
+              '.tik-tok-upload label div span'
+            );
+            span!.innerHTML = 'File Selected!';
+          }}
+          onSelect={() => {
+            const span = document.querySelector(
+              '.tik-tok-upload label div span'
+            );
+            setTimeout(function () {
+              span!.innerHTML = 'File Selected!';
+            }, 50);
           }}
         />
       </div>
@@ -73,15 +96,17 @@ export const AuthorizeTiktokUpload: FC<Props> = ({
       <div className="tik-tok-method" style={{ marginTop: 16 }}>
         {!loading ? (
           <>
-            <button onClick={goToPrev} className="tik-tok-done">
+            <Button variant="secondary" onClick={goToPrev}>
               Back
-            </button>
-            <button onClick={handleUpload} className="tik-tok-done">
-              Done
-            </button>
+            </Button>
+            <Button onClick={handleUpload}>Upload</Button>
           </>
         ) : (
-          <IconLoader />
+          <Spinner
+            animation="border"
+            className="spinner-border"
+            variant="primary"
+          />
         )}
       </div>
     </div>

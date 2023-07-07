@@ -1,7 +1,7 @@
-import React, { FC } from "react";
-import { SuggestionButton } from "./suggestionButton";
-import * as S from "../styles";
-import classNames from "classnames";
+import React, { FC } from 'react';
+import { SuggestionButton } from './suggestionButton';
+import * as S from '../styles';
+import classNames from 'classnames';
 
 interface ISuggestionBtn {
   disabled: boolean;
@@ -26,12 +26,12 @@ export const TextArea: FC<Props> = ({
 }) => {
   return (
     <S.TextAreaWrapper>
-      <S.TextAreaCanvas className={suggestionBtn ? "small_box" : ""}>
+      <S.TextAreaCanvas className={suggestionBtn ? 'small_box' : ''}>
         <S.TextAreaLabel>{label}</S.TextAreaLabel>
         <S.TextAreaBox>
           <S.TextArea
             disabled={editable === false}
-            value={value || ""}
+            value={value || ''}
             onChange={(e): void => updateValue(e.target.value)}
             rows={4}
             className={classNames({

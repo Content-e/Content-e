@@ -68,7 +68,7 @@
   .brands-page-menu-header
   .brands-page-menu
   .brands-page-menu-items {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -133,12 +133,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: -5%;
-  max-width: 645px;
 }
 
 .brands-page-wrapper .brands-page-body .brands-page-title {
-  font-family: "Raleway";
+  font-family: 'Comfortaa';
   font-style: normal;
   font-weight: 700;
   font-size: 60px;
@@ -147,7 +145,7 @@
   color: #e9d8a6;
 }
 .brands-page-wrapper .brands-page-body .brands-page-subtitle {
-  font-family: "Raleway";
+  font-family: 'Comfortaa';
   margin-top: 7px;
   font-style: normal;
   font-weight: 300;
@@ -159,16 +157,16 @@
 }
 
 .brands-content-container-gradient {
-  background-image: url("../../../public/images/glass-image.svg");
+  background-image: url('../../../public/images/glass-image.svg');
   background-size: cover;
-  padding: 31px 45px 32px 35px;
+  padding: 31px 45px 0 35px;
   border-radius: 50px;
   background-repeat: no-repeat;
   margin-bottom: 25px;
 }
 
 .login-signup {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -193,7 +191,7 @@
 }
 
 .brands-page-workBtn {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -250,7 +248,7 @@
 
 .brands-page-steps-wrapper .brands-page-single-steps .brands-page-step-text {
   max-width: 400px;
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -261,7 +259,7 @@
 }
 
 .brands-page-detailed-content {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -277,7 +275,7 @@
 }
 
 .for-content-btn-text {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -297,9 +295,9 @@
 
 .brands-content-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  margin-top: 77px;
+  margin-top: 55px;
 }
 
 .how-it-works-container-brands {
@@ -334,7 +332,7 @@
 }
 
 .brands-footer-text {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
   font-size: 10px;
@@ -344,7 +342,7 @@
 }
 
 .brands-main-points {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -373,6 +371,12 @@
   display: none;
 }
 
+@media only screen and (max-width: 1280) {
+  .responsive-menu {
+    display: block;
+  }
+}
+
 @media only screen and (max-width: 1060px) {
   .brands-page-wrapper .brands-page-bg_image img {
     object-fit: cover;
@@ -397,11 +401,15 @@
     background-color: #041416;
   }
 
+  .brands-page-body {
+    padding-top: 0;
+  }
+
   .brands-union {
     display: none;
   }
   .brands-page-wrapper {
-    padding: 13px;
+    padding: 0 0 13px;
     background-color: #041416;
     width: auto;
   }
@@ -415,10 +423,11 @@
 
   .brands-content-container-gradient {
     padding: 19px 25px 41px 25px;
+    background-position: -50px;
   }
 
   .brands-page-wrapper .brands-page-body .brands-page-title {
-    font-family: "Raleway";
+    font-family: 'Comfortaa';
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
@@ -437,7 +446,7 @@
   }
 
   .brands-page-wrapper .brands-page-body .brands-page-subtitle {
-    font-family: "Raleway";
+    font-family: 'Comfortaa';
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
@@ -447,7 +456,7 @@
   }
 
   .brands-page-detailed-content {
-    font-family: "Raleway";
+    font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -504,7 +513,7 @@
   }
 
   .brands-menu-option {
-    font-family: "Raleway";
+    font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -525,10 +534,6 @@
     gap: 28px;
   }
 
-  .responsive-menu {
-    display: block;
-  }
-
   .brands-menu-option-container {
     display: flex;
     flex-direction: column;
@@ -539,7 +544,7 @@
   }
 
   .brands-main-points {
-    font-family: "Raleway";
+    font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;

@@ -1,14 +1,14 @@
-import { FC } from "react";
-import { RouteProps } from "react-router-dom";
+import { FC } from 'react';
+import { RouteProps } from 'react-router-dom';
 import {
   AdminRoutes,
   AuthRoutes,
   BrandRoutes,
   CreatorRoutes,
   UnAuthRoutes,
-} from "utils";
-import AuthRouter from "./AuthRouter";
-import UnAuthRouter from "./UnAuthRouter";
+} from 'utils';
+import AuthRouter from './AuthRouter';
+import UnAuthRouter from './UnAuthRouter';
 
 export const UnAuthRoutesArray = Object.values(UnAuthRoutes) as Array<string>;
 export const CreatorAuthArray = [

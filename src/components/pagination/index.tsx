@@ -1,7 +1,5 @@
-import classNames from "classnames";
-import { times } from "lodash";
-import { FC, Fragment, useEffect, useMemo, useState } from "react";
-import "./style.css";
+import { times } from 'lodash';
+import { FC, Fragment, useEffect, useMemo, useState } from 'react';
 
 interface Props {
   total: number;
@@ -28,29 +26,35 @@ export const Pagination: FC<Props> = ({ total, limit, goToPage }) => {
 
   if (totalPages <= 1) return <Fragment />;
   return (
-    <div className="pagination-panel">
+    <div className="w-full flex justify-center mt-2 text-secondary">
       <div
-        className={classNames("pagination-box", {
-          disabled: currentPage <= 0,
-        })}
+        className={`
+          ${
+            currentPage <= 0 && 'text-gray-400 select-none cursor-not-allowed'
+          } px-2 cursor-pointer
+        `}
         onClick={goToPrev}
       >
         &lt;
       </div>
       {times(totalPages, (i) => (
         <div
-          className={classNames("pagination-box", {
-            "active-page": currentPage === i,
-          })}
+          key={i}
+          className={`px-3 cursor-pointer ${
+            currentPage === i && 'text-primary'
+          }`}
           onClick={(): void => goToPageNo(i)}
         >
           {i + 1}
         </div>
       ))}
       <div
-        className={classNames("pagination-box", {
-          disabled: currentPage >= totalPages - 1,
-        })}
+        className={`
+          ${
+            currentPage >= totalPages - 1 &&
+            'text-gray-400 select-none cursor-not-allowed'
+          } px-2 cursor-pointer
+        `}
         onClick={goToNext}
       >
         &gt;

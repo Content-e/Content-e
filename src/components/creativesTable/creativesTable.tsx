@@ -1,69 +1,124 @@
-import Pagination from "components/pagination";
-import CreativeDetails from "pages/creativeDetails/creativeDetails";
-import { FC, useState } from "react";
-import {
-  BrandBriefProps,
-  ISelectredRequest,
-  withBrandBriefs,
-} from "state/brandBrief";
-import CreativeEntries from "./creativeEntries";
-import "./creativesTable.css";
+import { createColumnHelper } from '@tanstack/react-table';
+import { BrandBrief, CreativeRequest } from 'API';
+import Status from 'components/ui/status';
+import Table from 'components/ui/table';
+import Search from 'components/search';
+import _ from 'lodash';
+import CreativeDetails from 'pages/creativeDetails/creativeDetails';
+import { FC, useMemo, useState, useEffect } from 'react';
+import { BrandBriefProps, withBrandBriefs } from 'state/brandBrief';
 
-const tableLimit = 7;
-export const CreativesTable: FC<BrandBriefProps> = (props) => {
-  const [searchText, setSearchText] = useState("");
-  const [currentPage, setCurrentPage] = useState(0);
-  const [selectedRequest, setSelectedRequest] = useState<ISelectredRequest>();
+export type RequestWithBrief = CreativeRequest & {
+  brief?: BrandBrief;
+};
+
+const columnHelper = createColumnHelper<RequestWithBrief>();
+
+export const columns = [
+  columnHelper.accessor('brief.BriefName', {
+    header: 'Brief Name',
+  }),
+  columnHelper.accessor('creativeTiktokHandle', {
+    header: 'Creator handle',
+  }),
+  columnHelper.accessor('tiktokCreativeUrl', {
+    header: 'Creative link',
+    cell: (info) =>
+      info.getValue()?.[0] && (
+        <div className="flex">
+          <img alt="" src="/images/link-icon.svg" className="mr-2" />
+          <span className="text-ellipsis overflow-hidden">
+            {info.getValue()}
+          </span>
+        </div>
+      ),
+    maxSize: 200,
+  }),
+  columnHelper.display({
+    header: 'View count',
+    // TODO: add actual view count
+    cell: () => <span className="ml-7">0</span>,
+  }),
+  columnHelper.display({
+    header: 'Engagement',
+    // TODO: add actual engagement
+    cell: () => <span className="ml-7">0%</span>,
+  }),
+  columnHelper.accessor('status', {
+    header: 'Status',
+    cell: (info) => <Status value={info.getValue()} />,
+  }),
+  columnHelper.display({
+    header: 'View',
+    cell: () => <img src="/images/doc_1.svg" className="ml-3" />,
+    size: 70,
+  }),
+];
+
+export const mapBriefsDataForBrand = (
+  data?: (BrandBrief | null)[] | null
+): RequestWithBrief[] => {
+  const overrideStatus = (status: string) => {
+    if (status === 'new') return 'submitted';
+    if (status.includes('accept')) return 'approved';
+    return status;
+  };
+
+  return _.sortBy(
+    _.compact(data).flatMap((brief) =>
+      _.compact(brief.creativeRequests?.items).map((item) => ({
+        ...item,
+        status: overrideStatus(item.status),
+        brief,
+      }))
+    ),
+    [(brief) => brief.status !== 'rejected', 'updatedAt']
+  ).reverse();
+};
+
+export const CreativesTable: FC<BrandBriefProps> = ({ data, loading }) => {
+  const [searchText, setSearchText] = useState('');
+  const [selectedRequest, setSelectedRequest] =
+    useState<RequestWithBrief | null>(null);
+
+  const requests = useMemo(() => mapBriefsDataForBrand(data), [data]);
+
+  useEffect(() => {
+    if (requests) setSearchText('');
+  }, [requests]);
+
+  const filteredData = useMemo(
+    () =>
+      requests?.filter((e) =>
+        e?.brief?.BriefName?.toLowerCase().includes(searchText.toLowerCase())
+      ),
+    [requests, searchText]
+  );
 
   if (selectedRequest)
     return (
       <CreativeDetails
-        {...props}
-        selectedRequest={selectedRequest}
-        onBack={(): void => setSelectedRequest(undefined)}
+        creativeRequest={selectedRequest}
+        onBack={() => setSelectedRequest(null)}
       />
     );
+
   return (
-    <>
-      <div className="creatives-table-label">Creatives</div>
-      <div className="creatives-table-container">
-        <div className="brand-table-wrapper">
-          <input
-            className="creatives-search"
-            placeholder="Search..."
-            value={searchText}
-            onChange={(e): void => setSearchText(e.target.value)}
-          />
-          <table className="creatives-table">
-            <tr className="creatives-table-header-bottom-border">
-              <th className="creatives-table-header-label">Brief Name</th>
-              <th className="creatives-table-header-label">Creator handle</th>
-              <th className="creatives-table-header-label">Creative link</th>
-              <th className="creatives-table-header-label centered">
-                View count
-              </th>
-              <th className="creatives-table-header-label centered">
-                Engagement
-              </th>
-              <th className="creatives-table-header-label centered">Status</th>
-              <th className="creatives-table-header-label centered">Details</th>
-            </tr>
-            <CreativeEntries
-              {...props}
-              searchText={searchText}
-              openCreative={setSelectedRequest}
-              limit={tableLimit}
-              currentPage={currentPage}
-            />
-          </table>
-          <Pagination
-            total={props?.data?.length || 0}
-            limit={tableLimit}
-            goToPage={setCurrentPage}
-          />
-        </div>
-      </div>
-    </>
+    <div className="grid grid-cols-1 gap-4">
+      <section className="flex gap-4">
+        <Search searchText={searchText} setSearchText={setSearchText} />
+      </section>
+      <section className="paper">
+        <Table
+          title="Creatives"
+          primaryField="brief.BriefName"
+          data={filteredData}
+          columns={columns}
+          isLoading={loading}
+          onRowClick={(brief) => brief && setSelectedRequest(brief)}
+        />
+      </section>
+    </div>
   );
 };
 export default withBrandBriefs(CreativesTable);

@@ -1,16 +1,18 @@
-import { USER_TYPES } from "API";
-import CampaignSlider from "components/campaignSlider/campaignSlider";
-import AuthorizeTikTokHandler from "pages/authorizeTikTok/authorizeTikTokHandler";
-import { FC, useMemo, useState } from "react";
-import { withProfile } from "state/profileSteps";
-import { ProfileProps } from "utils";
-import "./brandDescription.css";
+import { USER_TYPES } from 'API';
+import CampaignSlider from 'components/campaignSlider/campaignSlider';
+import Button from 'components/ui/button';
+import AuthorizeTikTokHandler from 'pages/authorizeTikTok/authorizeTikTokHandler';
+import { FC, useMemo, useState } from 'react';
+import { withProfile } from 'state/profileSteps';
+import { ProfileProps } from 'utils';
+import './brandDescription.css';
 
 interface Props {
   detail?: string | null;
   id: string;
   videoUrls?: Array<string | null> | null;
   isVideoLinked?: boolean;
+  showSuccessModal: () => void;
 }
 export const BrandDesciption: FC<Props & ProfileProps> = ({
   detail,
@@ -28,31 +30,28 @@ export const BrandDesciption: FC<Props & ProfileProps> = ({
   }, [videoUrls]);
 
   return (
-    <div className="brand-brief-details-container">
-      <div className="brand-brief-info-panel">
-        <div className="brand-brief-title brand-sub-description-margin">
-          Brand brief details
+    <div className="paper w-full min-h-[60vh] flex flex-col justify-between">
+      <section>
+        <div className="text-xl text-primary font-bold">
+          Campaign brief details
         </div>
-        <div className="brand-sub-description brand-sub-description-margin">
-          {detail}
-        </div>
-      </div>
-      <div className="link-creative-btn-container">
-        {authenticatedUrls.length > 0 && (
-          <div
-            className="link-creative-btn"
-            onClick={(): void => setShowInspiration(true)}
-          >
-            <span className="link-creative-text">Creative inspiration</span>
-          </div>
-        )}
-        {data?.userType === USER_TYPES.CREATIVE_USER && !isVideoLinked && (
-          <div
-            className="link-creative-btn"
+        <p className="text-gray-500 prose my-8">{detail}</p>
+      </section>
+      <div className="w-full flex justify-center gap-4">
+        <Button
+          onClick={() => setShowInspiration(true)}
+          disabled={authenticatedUrls.length <= 0}
+        >
+          CREATIVE INSPIRATION
+        </Button>
+        {data?.userType === USER_TYPES.CREATIVE_USER && (
+          <Button
             onClick={(): void => setPopupVisibility(true)}
+            disabled={isVideoLinked}
+            variant="secondary"
           >
-            <span className="link-creative-text">Link Creative</span>
-          </div>
+            Link Creative
+          </Button>
         )}
       </div>
       {showPopup && (

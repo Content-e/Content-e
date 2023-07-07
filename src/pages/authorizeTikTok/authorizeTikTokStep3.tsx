@@ -1,7 +1,7 @@
-import { FC, useState } from "react";
-import { IconLoader, Input } from "components";
-import "./authorizeTikTok.css";
-import AuthorizeTikTokHeader from "./authorizeTikTokHeader";
+import { FC, useState } from 'react';
+import { IconLoader, Input } from 'components';
+import './authorizeTikTok.css';
+import AuthorizeTikTokHeader from './authorizeTikTokHeader';
 
 interface Props {
   loading: boolean;
@@ -15,7 +15,7 @@ export const AuthorizeTikTokStep3: FC<Props> = ({
   goToNext,
   ...props
 }) => {
-  const [tikTokCode, setTikTokCode] = useState<string>("");
+  const [tikTokCode, setTikTokCode] = useState<string>('');
   const [codeError, setCodeError] = useState<string | null>(null);
 
   const updateState = (_: string, value: string): void => {
@@ -25,7 +25,7 @@ export const AuthorizeTikTokStep3: FC<Props> = ({
 
   const onSubmit = (): void => {
     if (tikTokCode.length) goToNext(tikTokCode);
-    else setCodeError("Kindly provide valid URL");
+    else setCodeError('Kindly provide valid URL');
   };
 
   return (
@@ -38,14 +38,14 @@ export const AuthorizeTikTokStep3: FC<Props> = ({
           </div>
           <div>From the post's Ad settings module:</div>
           <div>
-            &#x2022;{" "}
+            &#x2022;{' '}
             {
-              "Tap Generate Code, then select the authorization duration. Choose 60 days."
+              'Tap Generate Code, then select the authorization duration. Choose 60 days.'
             }
           </div>
           <div>
-            &#x2022;{" "}
-            {"Next, tap Copy Code to share the code with the advertiser."}
+            &#x2022;{' '}
+            {'Next, tap Copy Code to share the code with the advertiser.'}
           </div>
         </div>
       </div>

@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { ApolloClient, ApolloLink } from "@apollo/client";
-import Auth from "@aws-amplify/auth";
-import { Hub } from "@aws-amplify/core";
-import { createAuthLink } from "aws-appsync-auth-link";
-import { createSubscriptionHandshakeLink } from "aws-appsync-subscription-link";
-import { useEffect, useRef, useState } from "react";
-import { setupApolloCache } from "./apollo";
+import { ApolloClient, ApolloLink } from '@apollo/client';
+import Auth from '@aws-amplify/auth';
+import { Hub } from '@aws-amplify/core';
+import { createAuthLink } from 'aws-appsync-auth-link';
+import { createSubscriptionHandshakeLink } from 'aws-appsync-subscription-link';
+import { useEffect, useRef, useState } from 'react';
+import { setupApolloCache } from './apollo';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const useApollo = (config) => {
@@ -105,11 +105,11 @@ const useApollo = (config) => {
       cache,
       defaultOptions: {
         watchQuery: {
-          fetchPolicy: "cache-and-network",
-          nextFetchPolicy: "cache-first",
+          fetchPolicy: 'cache-and-network',
+          nextFetchPolicy: 'cache-first',
         },
         query: {
-          fetchPolicy: "cache-first",
+          fetchPolicy: 'cache-first',
         },
       },
     });
@@ -124,23 +124,23 @@ const useApollo = (config) => {
     const listener = (data) => {
       const { payload } = data;
       if (
-        (firstConfigure || payload.event !== "configured") &&
-        payload.event !== "tokenRefresh_failure" &&
-        payload.event !== "parsingCallbackUrl"
+        (firstConfigure || payload.event !== 'configured') &&
+        payload.event !== 'tokenRefresh_failure' &&
+        payload.event !== 'parsingCallbackUrl'
       ) {
         firstConfigure = false;
         reconfigure();
 
-        if (payload.event === "signOut") apolloClientRef?.current?.resetStore();
+        if (payload.event === 'signOut') apolloClientRef?.current?.resetStore();
       }
     };
 
-    Hub.listen("auth", listener);
+    Hub.listen('auth', listener);
     // Amplify.configure trigger the callback
     Auth.configure(config.awsAmplifyConfig);
 
     return () => {
-      Hub.remove("auth", listener);
+      Hub.remove('auth', listener);
     };
   }, []);
 

@@ -11,8 +11,20 @@
   overflow: auto;
 }
 
+.notifications-container {
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.creative-notification-icon-and-text {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .creator-notifications-label {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -21,19 +33,16 @@
 }
 
 .creative-notification-container {
-  display: flex;
-  align-items: center;
   margin-top: 12px;
-  gap: 8px;
 }
 
 .notifiation-container {
-  display: flex;
-  flex-direction: column;
+  margin-left: 32px;
+  margin-top: -6px;
 }
 
 .notification-label {
-  font-family: "Lato";
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -42,7 +51,7 @@
 }
 
 .notification-timeline {
-  font-family: "Lato";
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
@@ -51,7 +60,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-
   .creator-notifications-container,
   .best-practices-container {
     height: 124px;

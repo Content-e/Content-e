@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { Dropdown } from "react-bootstrap";
-import { ToneOptions } from "utils";
-import * as S from "../styles";
+import { FC } from 'react';
+import { Dropdown } from 'react-bootstrap';
+import { ToneOptions } from 'utils';
+import * as S from '../styles';
 
 interface Props {
   currentTone?: string | null;
@@ -10,9 +10,9 @@ interface Props {
 
 export const ToneOfVoice: FC<Props> = ({ currentTone, onSelect }) => {
   return (
-    <S.DropdownTag className={currentTone ? "option__selected" : ""}>
+    <S.DropdownTag className={currentTone ? 'option__selected' : ''}>
       <Dropdown.Toggle variant="success" id="dropdown-for-salary">
-        <span>{currentTone || "Select brand tone of voice"}</span>
+        <span>{currentTone || 'Select brand tone of voice'}</span>
         <S.IconDown>
           <img src="/images/icon-chevron-down.svg" alt="chevron icon" />
         </S.IconDown>
@@ -20,7 +20,7 @@ export const ToneOfVoice: FC<Props> = ({ currentTone, onSelect }) => {
       <Dropdown.Menu>
         {ToneOptions.map((text) => (
           <Dropdown.Item
-            className={currentTone === text ? "active" : ""}
+            className={currentTone === text ? 'active' : ''}
             onClick={(): void => onSelect(text)}
             key={`${text}toneOfVoice`}
           >

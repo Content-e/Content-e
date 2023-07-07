@@ -1,5 +1,5 @@
-import { ApolloError } from "@apollo/client";
-import { BestPractices, BrandBrief, CreativeRequest } from "API";
+import { ApolloError } from '@apollo/client';
+import { BestPractices, BrandBrief, CreativeRequest } from 'API';
 
 export type GetCreatorBriefListProps = {
   loading: boolean;

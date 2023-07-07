@@ -1,10 +1,10 @@
-import { AuthRoutes, ProfileProps } from "utils";
-import React from "react";
-import { withProfile } from "state/profileSteps";
-import { USER_TYPES } from "API";
-import { Redirect } from "react-router-dom";
-import BestPractice from "./practice";
-import AdminBestPracticeTable from "./adminPractice";
+import { AuthRoutes, ProfileProps } from 'utils';
+import React from 'react';
+import { withProfile } from 'state/profileSteps';
+import { USER_TYPES } from 'API';
+import { Redirect } from 'react-router-dom';
+import BestPractice from './practice';
+import AdminBestPracticeTable from './adminPractice';
 
 const BestPracticePage: React.FC<ProfileProps> = ({
   profileState: { data },

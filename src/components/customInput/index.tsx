@@ -1,6 +1,7 @@
-import React, { FC, Fragment } from "react";
-import { ShouldRender } from "components";
-import * as S from "./styles";
+import { FC, Fragment } from 'react';
+import { ShouldRender } from 'components';
+import * as S from './styles';
+
 import {
   defaultSignUpState,
   defaultLoginState,
@@ -8,7 +9,7 @@ import {
   defaultLoginError,
   defaultResetState,
   defaultResetError,
-} from "utils";
+} from 'utils';
 
 interface Handlers {
   state?:
@@ -30,6 +31,7 @@ interface Props {
   keyProp: string;
   label?: string;
 }
+
 export const Input: FC<Props> = ({
   type,
   value,
@@ -43,9 +45,9 @@ export const Input: FC<Props> = ({
     <Fragment key="custom input">
       {label && <S.InputLabel>{label}</S.InputLabel>}
       <S.Input
-        type={type || "string"}
+        type={type || 'string'}
         placeholder={placeholder}
-        value={state?.[keyProp] || value || ""}
+        value={state?.[keyProp] || value || ''}
         onChange={(e): void => updateState(keyProp, e.target.value)}
       />
       <ShouldRender if={error?.[keyProp] || errorVal}>
@@ -54,3 +56,5 @@ export const Input: FC<Props> = ({
     </Fragment>
   );
 };
+
+export { default as FormInput } from './formInput';

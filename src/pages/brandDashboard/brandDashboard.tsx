@@ -1,20 +1,32 @@
-import "./brandDashboard.css";
-import { FC, useState } from "react";
+import _ from 'lodash';
+import './brandDashboard.css';
+import { FC, useMemo, useState } from 'react';
+import { BrandBriefProps, withBrandBriefs } from 'state/brandBrief';
+import BrandInfo from './brandInfo';
+import CreativeDetails from 'pages/creativeDetails/creativeDetails';
+import { BrandBrief } from 'API';
+import CampaignBriefDetails from 'pages/campaignBriefDetails/campaignBriefDetails';
 import {
-  BrandBriefProps,
-  ISelectredRequest,
-  withBrandBriefs,
-} from "state/brandBrief";
-import CreativeRequests from "./creativeRequests";
-import BrandBriefs from "./brandBriefs";
-import BrandInfo from "./brandInfo";
-import CreativeDetails from "pages/creativeDetails/creativeDetails";
-import { BrandBrief } from "API";
-import CampaignBriefDetails from "pages/campaignBriefDetails/campaignBriefDetails";
+  columns as creativeColumns,
+  mapBriefsDataForBrand,
+  RequestWithBrief,
+} from 'components/creativesTable/creativesTable';
+import { columns as brandBriefColumns } from 'pages/brandBriefs/brandBriefs';
+import Table from 'components/ui/table';
 
 export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
-  const [selectedRequest, setSelectedRequest] = useState<ISelectredRequest>();
+  const [selectedRequest, setSelectedRequest] = useState<RequestWithBrief>();
   const [selectedBrief, setSelectedBrief] = useState<BrandBrief>();
+
+  const requests = useMemo(
+    () => mapBriefsDataForBrand(props.data),
+    [props.data]
+  );
+
+  const briefs = useMemo(
+    () => _.sortBy(_.compact(props.data), 'updatedAt').reverse(),
+    [props.data]
+  ) satisfies BrandBrief[];
 
   if (selectedBrief)
     return (
@@ -27,20 +39,35 @@ export const BrandDashboard: FC<BrandBriefProps> = ({ loading, ...props }) => {
   if (selectedRequest)
     return (
       <CreativeDetails
-        {...props}
-        selectedRequest={selectedRequest}
+        creativeRequest={selectedRequest}
         onBack={(): void => setSelectedRequest(undefined)}
       />
     );
+
   return (
-    <>
-      <div className="dashboard-label">Dashboard</div>
-      <CreativeRequests {...props} openCreative={setSelectedRequest} />
-      <div className="dashboard-campaign-section">
-        <BrandBriefs {...props} openBrief={setSelectedBrief} />
-        <BrandInfo {...props} />
-      </div>
-    </>
+    <div className="grid md:grid-cols-2 gap-5">
+      <section className="md:col-span-2 paper">
+        <Table
+          title="Creatives"
+          data={requests}
+          isLoading={loading}
+          columns={_.at(creativeColumns, [2, 1, 0, 5, 6])}
+          primaryField="brief.BriefName"
+          onRowClick={(request) => request && setSelectedRequest(request)}
+        />
+      </section>
+      <section className="paper">
+        <Table
+          title="Campaign briefs"
+          data={briefs}
+          isLoading={loading}
+          columns={_.at(brandBriefColumns, [0, 3, 5])}
+          onRowClick={(brief) => brief && setSelectedBrief(brief)}
+          primaryField="BriefName"
+        />
+      </section>
+      <BrandInfo {...props} />
+    </div>
   );
 };
 

@@ -1,17 +1,17 @@
-import { Auth } from "@aws-amplify/auth";
-import { AuthContext } from "state/auth";
-import { AuthContextType } from "state/types";
-import { useCallback, useContext, useState } from "react";
+import { Auth } from '@aws-amplify/auth';
+import { AuthContext } from 'state/auth';
+import { AuthContextType } from 'state/types';
+import { useCallback, useContext, useState } from 'react';
 import {
   ApiCustomHookStateType,
   apiInitialState,
   ApiHookReturnType,
   getSuccessResponse,
   getErrorResponse,
-} from "hooks/utils";
-import ErrorContext from "state/error/error.context";
-import { IErrorContextType, passwordErrorHeading } from "utils";
-import { updateErrorState } from "components";
+} from 'hooks/utils';
+import ErrorContext from 'state/error/error.context';
+import { IErrorContextType, passwordErrorHeading } from 'utils';
+import { updateErrorState } from 'components';
 
 export const useForgetPass = (): ApiHookReturnType<string, string> => {
   const [res, setRes] =

@@ -1,4 +1,4 @@
-import { useLazyQuery } from "@apollo/client";
+import { useLazyQuery } from '@apollo/client';
 import {
   BestPracticesByActiveQuery,
   BestPracticesByActiveQueryVariables,
@@ -13,14 +13,14 @@ import {
   ListBrandBriefsQueryVariables,
   ListCreativeRequestsQuery,
   ListCreativeRequestsQueryVariables,
-} from "API";
+} from 'API';
 import {
   brandBriefsByBrandId,
   creativeRequestsByCreatorId,
   creativeRequestsByStatus,
   listBrandBriefs,
   listCreativeRequests as listAllRequestsQuery,
-} from "graphql/queries";
+} from 'graphql/queries';
 import {
   bestPracticesByStatus,
   GetBrandBriefListProps,
@@ -29,9 +29,9 @@ import {
   ListActiveBestPracticeProps,
   ListAllRequestsProps,
   ListRequestsByStatusProps,
-} from "hooks/utils";
-import { getQuery } from "hooks/utils/helpers";
-import { UnknownType } from "utils";
+} from 'hooks/utils';
+import { getQuery } from 'hooks/utils/helpers';
+import { UnknownType } from 'utils';
 
 export const getCreatorBriefList = (): GetCreatorBriefListProps => {
   const [getBriefList, { data, loading, error }] = useLazyQuery<

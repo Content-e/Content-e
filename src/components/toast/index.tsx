@@ -1,21 +1,18 @@
-import React, { Fragment } from "react";
-import { ShouldRender } from "components";
-import { ToastDisplay } from "./ToastDisplay";
-import * as Styled from "./styles";
-import { ErrorProps, IErrorStateType } from "utils";
+import React, { Fragment } from 'react';
+import { ShouldRender } from 'components';
+import { ToastDisplay } from './ToastDisplay';
+import * as Styled from './styles';
+import { ErrorProps, IErrorStateType } from 'utils';
 
 export const ToastContainer: React.FC<ErrorProps> = ({
   errorState,
   setErrorState,
 }) => {
-  const setToastClosed = (
-    errors: Array<IErrorStateType>,
-    id: number
-  ): Array<IErrorStateType> => [
-    ...errors.slice(0, id),
-    { ...errors[id], closed: true },
-    ...errors.slice(id + 1),
-  ];
+  const setToastClosed = (errors: Array<IErrorStateType>, id: number) =>
+    errors.map((error, index) => {
+      if (id === index) return { ...error, closed: true };
+      return error;
+    });
 
   const removeToasts = (id: number): void =>
     setErrorState((current) => {

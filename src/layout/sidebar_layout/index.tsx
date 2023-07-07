@@ -1,30 +1,24 @@
-import { Sidebar } from "components";
-import AuthFooter from "components/authentication/authFooter";
-// import MobileFooter from "components/mobileFooter";
-import MobileHeader from "components/mobileHeader";
-import { FC, ReactNode } from "react";
-import * as S from "./styles";
+import { UserProfile } from 'API';
+import { Sidebar } from 'components';
+import { FC, ReactNode } from 'react';
+import * as S from './styles';
 
 interface Props {
   children?: ReactNode;
+  data: UserProfile;
 }
-export const SidebarLayout: FC<Props> = ({ children }) => {
-  return (
-    <S.MainWrapper>
-      <Sidebar />
 
-      <S.ParentWrapper>
-        <S.AppMain>
-          <S.TitleMenu>
-            <MobileHeader />
-          </S.TitleMenu>
-          {children}
-        </S.AppMain>
-        <S.Footer>
-          <AuthFooter />
-        </S.Footer>
-      </S.ParentWrapper>
-    </S.MainWrapper>
+export const SidebarLayout: FC<Props> = ({ children, data }) => {
+  const Wrapper =
+    data.userType === 'BRAND_USER' ? S.MainWrapperBrand : S.MainWrapperCreator;
+
+  return (
+    <>
+      <Wrapper>
+        <Sidebar />
+        <main className="w-full">{children}</main>
+      </Wrapper>
+    </>
   );
 };
 

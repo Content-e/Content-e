@@ -1,164 +1,20 @@
-import React, { useState } from "react";
-import "./style.css";
-import { useHistory } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
+import React from 'react';
+import './style.css';
+import { useHistory } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
+import HeaderDesktop from 'components/authentication/components/header-desktop';
+import HeaderMobile from 'components/authentication/components/header-mobile';
+import Footer from 'components/authentication/components/footer';
 
 export const CreatorsPage: React.FC = () => {
   const history = useHistory();
-  const [menu, setMenu] = useState(false);
 
   return (
     <div className="creators-page-wrapper">
+      <HeaderMobile />
       <div className="creators-content-container-gradient">
         <div className="creators-page-container">
-          <div className="creators-page-navbar comingSoon">
-            <div className="creators-page-logo">
-              <img
-                src="/images/edc-squared-landing-logo.svg"
-                alt="edc-squared"
-              />
-            </div>
-            <img
-              src="/images/responsive-menu.svg"
-              alt="responsive-menu"
-              className="responsive-menu"
-              onClick={() => setMenu(!menu)}
-            />
-            <div className="creators-page-menu-header">
-              <div className="creators-page-menu">
-                <div
-                  className="creators-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Landing)}
-                >
-                  Home
-                </div>
-                <div
-                  className="creators-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Creators)}
-                  style={{ color: "#D9D9D9" }}
-                >
-                  For Creators
-                </div>
-                <div
-                  className="creators-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Brands)}
-                >
-                  For Brands
-                </div>
-                <div
-                  className="creators-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.SayHello)}
-                >
-                  Say Hello
-                </div>
-                <div
-                  className="login-signup"
-                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
-                >
-                  Login / Sign up
-                </div>
-
-                <div className="creators-page-socials">
-                  <div className="creators-page-socials-item">
-                    <a
-                      target="_blank"
-                      href="https://www.linkedin.com/company/edcsquared/"
-                    >
-                      <img src="/images/linkedin.png" alt="linkedin-icon" />
-                    </a>
-                  </div>
-                  <div className="creators-page-socials-item">
-                    <a target="_blank" href="https://www.instagram.com/edcsq/">
-                      <img src="/images/instagram.png" alt="instagram-icon" />
-                    </a>
-                  </div>
-                  <div className="creators-page-socials-item">
-                    <a
-                      target="_blank"
-                      href="https://www.tiktok.com/@edcsquared"
-                    >
-                      <img src="/images/tiktok.png" alt="tiktok-icon" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {menu && (
-              <div className="creators-menu">
-                <div className="creators-menu-option-container">
-                  <div
-                    className="creators-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.Landing)}
-                  >
-                    Home
-                  </div>
-                  <div
-                    className="creators-menu-option"
-                    style={{ color: "#D9D9D9" }}
-                    onClick={() => history.push(UnAuthRoutes.Creators)}
-                  >
-                    For Creators
-                  </div>
-                  <div
-                    className="creators-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.Brands)}
-                  >
-                    For Brands
-                  </div>
-                  <div
-                    className="creators-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.SayHello)}
-                  >
-                    Say Hello
-                  </div>
-                  <div
-                    className="login-signup"
-                    onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
-                  >
-                    Login / Sign UP
-                  </div>
-                  <div className="creators-menu-img-container">
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.linkedin.com/company/edcsquared/"
-                      >
-                        <img
-                          src="/images/linkedin.png"
-                          alt="linkedin-icon"
-                          className="creators-menu-img"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.instagram.com/edcsq/"
-                      >
-                        <img
-                          src="/images/instagram.png"
-                          alt="instagram-icon"
-                          className="creators-menu-img"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.tiktok.com/@edcsquared"
-                      >
-                        <img
-                          src="/images/tiktok.png"
-                          alt="tiktok-icon"
-                          className="creators-menu-img"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+          <HeaderDesktop />
           <div className="creators-content-container">
             <div className="creators-page-body">
               <div className="creators-page-title">
@@ -206,7 +62,9 @@ export const CreatorsPage: React.FC = () => {
               <div className="for-creators-content-btn-container">
                 <div
                   className="login-signup creators-btn"
-                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
+                  onClick={() =>
+                    history.push(UnAuthRoutes.HomePageLogin + '?role=creator')
+                  }
                 >
                   Login / Sign up
                 </div>
@@ -221,7 +79,7 @@ export const CreatorsPage: React.FC = () => {
             <img
               src="/images/creators-union.png"
               className="creators-union"
-              style={{ marginLeft: "63px", marginBottom: "-32px" }}
+              style={{ marginLeft: '63px' }}
             />
           </div>
         </div>
@@ -273,53 +131,7 @@ export const CreatorsPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="landing-footer">
-        <div className="landing-footer-text-container">
-          <div
-            className="landing-footer-text"
-            onClick={() => history.push(UnAuthRoutes.Landing)}
-          >
-            Home
-          </div>
-          <div
-            className="landing-footer-text"
-            onClick={() => history.push(UnAuthRoutes.Creators)}
-          >
-            For Creators
-          </div>
-          <div
-            className="landing-footer-text"
-            onClick={() => history.push(UnAuthRoutes.Brands)}
-          >
-            For Brands
-          </div>
-          <div
-            className="landing-footer-text"
-            onClick={() => history.push(UnAuthRoutes.SayHello)}
-          >
-            Say Hello
-          </div>
-        </div>
-
-        <div className="landing-footer-img-container">
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/company/edcsquared/"
-          >
-            <img src="/images/landing-linkedin.svg" />
-          </a>
-          <a target="_blank" href="https://www.instagram.com/edcsq/">
-            <img src="/images/landing-insta.svg" />
-          </a>
-          <a target="_blank" href="https://www.tiktok.com/@edcsquared">
-            <img src="/images/landing-tiktok.svg" />
-          </a>
-        </div>
-
-        <div className="landing-footer-text">
-          © 2023 Copyright EDC Squared. All Rights Reserved.
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };

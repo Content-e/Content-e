@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import withApolloProvider from "hooks/apollo/withApollo";
-import { createUserBrand, updateUserBrand } from "hooks";
-import { BrandProps } from "./brand.interface";
-import { BrandProfile, CreateBrandProfileInput } from "API";
-import { AuthContext } from "state/auth";
-import { ProfileContext } from "state/profileSteps";
+import React, { useContext, useEffect, useState } from 'react';
+import withApolloProvider from 'hooks/apollo/withApollo';
+import { createUserBrand, updateUserBrand } from 'hooks';
+import { BrandProps } from './brand.interface';
+import { BrandProfile, CreateBrandProfileInput } from 'API';
+import { AuthContext } from 'state/auth';
+import { ProfileContext } from 'state/profileSteps';
 
 export function withBrand<T>(Component: React.FC<T & BrandProps>): React.FC<T> {
   return withApolloProvider((props: T) => {

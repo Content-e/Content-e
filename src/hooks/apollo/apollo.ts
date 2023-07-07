@@ -1,8 +1,8 @@
-import { InMemoryCache } from "@apollo/client";
-import { CachePersistor, LocalStorageWrapper } from "apollo3-cache-persist";
+import { InMemoryCache } from '@apollo/client';
+import { CachePersistor, LocalStorageWrapper } from 'apollo3-cache-persist';
 
 const LOCAL_STORAGE_KEYS = {
-  GRAPHQL_SCHEMA_VERSION: "graphqlSchemaVersion",
+  GRAPHQL_SCHEMA_VERSION: 'graphqlSchemaVersion',
 };
 
 const cache = new InMemoryCache();
@@ -10,7 +10,6 @@ const cache = new InMemoryCache();
 // This is a MD5 hash of schema.graphql
 const SCHEMA_VERSION = process.env.REACT_APP_GRAPHQL_SCHEMA_VERSION;
 
-// eslint-disable-next-line import/prefer-default-export
 export const setupApolloCache = async (): Promise<InMemoryCache> => {
   const persistor = new CachePersistor({
     cache,

@@ -1,11 +1,11 @@
-import { FC, useEffect, useState } from "react";
-import { IconLoader, Input, replaceSubPath } from "components";
-import GoogleLogin from "components/authentication/googleLogin";
-import "./coBrandedModals.css";
-import { useHistory, useLocation } from "react-router-dom";
-import { AuthProps, UnAuthRoutes, UnknownType } from "utils";
-import { useConfirmSignUp, useLogin } from "hooks";
-import { validateVerificationCode, withAuth } from "state/auth";
+import { FC, useEffect, useState } from 'react';
+import { IconLoader, Input, replaceSubPath } from 'components';
+import GoogleLogin from 'components/authentication/googleLogin';
+import './coBrandedModals.css';
+import { useHistory, useLocation } from 'react-router-dom';
+import { AuthProps, UnAuthRoutes, UnknownType } from 'utils';
+import { useConfirmSignUp, useLogin } from 'hooks';
+import { validateVerificationCode, withAuth } from 'state/auth';
 
 export const ReverifyModal: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
@@ -19,12 +19,12 @@ export const ReverifyModal: FC<AuthProps> = ({ getAuth }) => {
     performAction: autoLogin,
   } = useLogin();
 
-  const [code, setCode] = useState("");
-  const [codeError, setCodeError] = useState("");
+  const [code, setCode] = useState('');
+  const [codeError, setCodeError] = useState('');
 
   const validateVerifyForm = (): boolean => {
     const notValidated = validateVerificationCode(code);
-    if (notValidated) setCodeError("Code length is invalid");
+    if (notValidated) setCodeError('Code length is invalid');
     return !notValidated;
   };
 

@@ -1,5 +1,5 @@
-import { Button, Modal } from "react-bootstrap";
-import styled from "styled-components";
+import { Button, Modal } from 'react-bootstrap';
+import styled from 'styled-components';
 
 export const ModalWrapper = styled(Modal)`
   padding-left: 0px !important;

@@ -1,4 +1,4 @@
-import { BrandProfile, CreateBrandProfileInput } from "API";
+import { BrandProfile, CreateBrandProfileInput } from 'API';
 
 export interface BrandProps {
   updateData: (data: CreateBrandProfileInput) => void;

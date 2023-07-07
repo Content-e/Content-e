@@ -1,5 +1,6 @@
-import { FC } from "react";
-import AuthorizeTikTokHeader from "./authorizeTikTokHeader";
+import Button from 'components/ui/button';
+import { FC } from 'react';
+import AuthorizeTikTokHeader from './authorizeTikTokHeader';
 
 interface Props {
   goToNext: () => void;
@@ -16,8 +17,8 @@ export const AuthorizeTiktokType: FC<Props> = ({
     <div className="tik-tok-modal">
       <AuthorizeTikTokHeader {...props} title="Select the method" />
       <div className="tik-tok-method">
-        <button onClick={goToNext}>Link via code</button>
-        <button onClick={goToUpload}>Upload</button>
+        <Button onClick={goToNext}>Link TikTok via code</Button>
+        <Button onClick={goToUpload}>Upload</Button>
       </div>
     </div>
   );

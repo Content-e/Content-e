@@ -1,9 +1,9 @@
-import { Auth } from "aws-amplify";
-import { AuthProps, initialAuthContext, ProfileProps } from "utils";
-import { FC, Fragment, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { withProfile } from "state/profileSteps";
-import { withAuth } from "../../state/auth";
+import { Auth } from 'aws-amplify';
+import { AuthProps, initialAuthContext, ProfileProps } from 'utils';
+import { FC, Fragment, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { withProfile } from 'state/profileSteps';
+import { withAuth } from '../../state/auth';
 
 export const LogoutPage: FC<ProfileProps & AuthProps> = ({
   cleanProfileState,
@@ -14,7 +14,7 @@ export const LogoutPage: FC<ProfileProps & AuthProps> = ({
     await Auth.signOut();
     setAuthState({ ...initialAuthContext });
     cleanProfileState();
-    history.push("/login");
+    history.push('/login');
   };
   useEffect(() => {
     logUserOut();

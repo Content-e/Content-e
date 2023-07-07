@@ -1,7 +1,7 @@
-import { FC, Fragment } from "react";
-import { ReverifyModal } from "components";
-import CoBrandedMainPage from "./main";
-import "./styles.css";
+import { FC, Fragment } from 'react';
+import { ReverifyModal } from 'components';
+import CoBrandedMainPage from './main';
+import './styles.css';
 
 export const SubReverify: FC = () => {
   return (

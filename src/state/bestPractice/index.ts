@@ -1,2 +1,2 @@
-export * from "./withBestPracticeHoc";
-export * from "./bestPractice.interface";
+export * from './withBestPracticeHoc';
+export * from './bestPractice.interface';

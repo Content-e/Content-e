@@ -1,58 +1,64 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState, useEffect, FC } from "react";
+import { FC, useEffect } from 'react';
 
-import { IconLoader, Input } from "components";
-import { useHistory } from "react-router-dom";
-import Checkbox from "./checkbox";
-import GoogleLogin from "./googleLogin";
+import { FormInput, IconLoader } from 'components';
+import HeaderDesktop from 'components/authentication/components/header-desktop';
+import HeaderMobile from 'components/authentication/components/header-mobile';
+import { Link, useHistory } from 'react-router-dom';
 
-import { validateEmail, validatePassword, withAuth } from "state/auth";
-import {
-  AuthProps,
-  defaultLoginError,
-  defaultLoginState,
-  UnAuthRoutes,
-  unverifiedUser,
-} from "utils";
-import { useLogin } from "hooks";
+import { useLogin } from 'hooks';
+import { withAuth } from 'state/auth';
+import { AuthProps, UnAuthRoutes, unverifiedUser } from 'utils';
 
-import "./styles/login.css";
-import Navbar from "components/navbar/navbar";
-import AuthFooter from "./authFooter";
+import useZodForm from 'hooks/useZodForm';
+import { z } from 'zod';
+import init from 'zod-empty';
+import Footer from './components/footer';
+import './styles/login.scss';
+import Checkbox from 'components/ui/checkbox';
+import { Auth } from 'aws-amplify';
+
+const schema = z.object({
+  email: z
+    .string()
+    .nonempty("Please enter your email address")
+    .email("Please enter the correct email address"),
+  password: z.string().nonempty('Please enter your password'),
+  remember: z.boolean().default(false),
+});
 
 export const Login: FC<AuthProps> = ({ getAuth }) => {
   const history = useHistory();
+  const params = new URL(location.href).searchParams;
   const {
-    res: { isLoading, error, success },
+    res: { error, success },
     performAction,
   } = useLogin();
 
-  const [formState, setFormState] = useState(defaultLoginState);
-  const [formError, setFormError] = useState(defaultLoginError);
+  const {
+    register,
+    control,
+    handleSubmit,
+    watch,
+    formState: { errors, isValid, isDirty, isSubmitting },
+  } = useZodForm({
+    schema: schema,
+    defaultValues: {
+      ...init(schema),
+      email: localStorage.getItem('userEmail') || '',
+    },
+    mode: 'onBlur',
+  });
 
-  const validateSignUpForm = (): boolean => {
-    const email = validateEmail(formState.email);
-    const password = validatePassword(formState.password);
-    if (email || password) {
-      setFormError({ email, password });
-      return false;
+  const formState = watch();
+
+  const onSubmit = handleSubmit(async (data) => {
+    await performAction(data);
+    if (data.remember) {
+      localStorage.setItem('userEmail', data.email);
+      const result = await Auth.rememberDevice();
+      console.log('Device remembered: ', result);
     }
-    return true;
-  };
-
-  const updateState = (key: string, value: string): void => {
-    setFormError((prev) => ({ ...prev, [key]: null }));
-    setFormState((prev) => ({ ...prev, [key]: value }));
-  };
-
-  const onLogin = (): void => {
-    if (validateSignUpForm()) {
-      performAction(formState);
-    }
-  };
-
-  const onSignUp = (): void => history.push(UnAuthRoutes.Register);
-  const onForget = (): void => history.push(UnAuthRoutes.ForgetPassword);
+  });
 
   useEffect(() => {
     if (error === unverifiedUser)
@@ -60,70 +66,78 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     else if (success) getAuth();
   }, [success, error]);
 
-  const commonProps = {
-    handlers: { state: formState, error: formError, updateState },
-  };
-
   return (
-    <div className="login">
-      <div className="login__landing">
-        <img src="/images/edc-logo.svg" alt="edc-squared" />
-        <div className="login__landing-container">
-          <span>
-            Everyday creators, <br />
-            everyday creative.
-          </span>
-          <div>Your content, your story, your impact.</div>
+    <>
+      <div className="login">
+        <HeaderMobile />
+        <div className="login__wrap">
+          <HeaderDesktop />
+          <div className="login__content">
+            <div className="w-full flex justify-around">
+              <div className="login__container">
+                <form className="login__box" onSubmit={onSubmit}>
+                  <div className="login__title">Login</div>
+                  <div className="login__fields">
+                    <FormInput
+                      name="email"
+                      placeholder="Email Address"
+                      register={register}
+                      errors={errors}
+                    />
+                    <FormInput
+                      name="password"
+                      type="password"
+                      placeholder="Password"
+                      register={register}
+                      errors={errors}
+                    />
+                  </div>
+                  <div className="login__forgot-box">
+                    {' '}
+                    <div className="login__checkbox">
+                      <Checkbox name="remember" control={control} />
+                      <span className="login__remember">Remember me.</span>{' '}
+                    </div>{' '}
+                    <Link
+                      className="login__forgot"
+                      to={UnAuthRoutes.ForgetPassword}
+                    >
+                      <span>Forgot Password?</span>{' '}
+                    </Link>{' '}
+                  </div>
+                  <div className="login__bottom">
+                    <button
+                      type="submit"
+                      className="login__btn"
+                      disabled={!isValid || !isDirty || isSubmitting}
+                    >
+                      <span style={isSubmitting ? { marginRight: 12 } : {}}>
+                        Login
+                      </span>
+                      {isSubmitting && <IconLoader />}
+                    </button>
+                    <div className="login__already">
+                      Don’t have an account?{' '}
+                      <Link
+                        to={
+                          UnAuthRoutes.Register + '?role=' + params.get('role')
+                        }
+                      >
+                        Sign up
+                      </Link>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div className="login__landing">
+              <img src="/images/login-image.png" />
+            </div>
+          </div>
         </div>
+        <Footer />
       </div>
-      <div className="login__container">
-        <Navbar />
-        <div className="login__box">
-          <div className="login__title">Login</div>
-          <GoogleLogin />
-          <div className="login__or">- OR -</div>
-          <div className="login__fields">
-            <Input
-              {...commonProps}
-              placeholder="Email Address"
-              keyProp="email"
-            />
-            <Input
-              {...commonProps}
-              placeholder="Password"
-              type="password"
-              keyProp="password"
-            />
-          </div>
-          <div className="login__forgot-box">
-            {" "}
-            <div className="login__checkbox">
-              <Checkbox />
-              <span className="login__remember">Remember me.</span>{" "}
-            </div>{" "}
-            <div className="login__forgot" onClick={onForget}>
-              <span>Forgot Password?</span>{" "}
-            </div>{" "}
-          </div>
-          {/* <button
-            className="login__btn"
-            onClick={onSignUp}
-            disabled={isLoading || !isSubmittable}
-          >
-            <span style={{ marginRight: 12 }}>Sign up</span>
-            {isLoading && <IconLoader />}
-          </button>{" "} */}
-          <button className="login__btn" onClick={onLogin} disabled={isLoading}>
-            <span style={{ marginRight: 12 }}>Login</span>
-            {isLoading && <IconLoader />}
-          </button>
-          <div className="login__already">
-            Don’t have an account? <span onClick={onSignUp}>Sign up</span>
-          </div>
-        </div>
-        <AuthFooter />
-      </div>
-    </div>
+    </>
   );
 };
 

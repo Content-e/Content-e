@@ -1,18 +1,18 @@
-import { FC, useEffect, useState } from "react";
-import { IconLoader, Input, replaceSubPath } from "components";
-import GoogleLogin from "components/authentication/googleLogin";
+import { FC, useEffect, useState } from 'react';
+import { IconLoader, Input, replaceSubPath } from 'components';
+import GoogleLogin from 'components/authentication/googleLogin';
 import {
   defaultResetError,
   defaultResetState,
   UnAuthRoutes,
   UnknownType,
   unverifiedUser,
-} from "utils";
+} from 'utils';
 
-import "./coBrandedModals.css";
-import { useHistory, useLocation } from "react-router-dom";
-import { useResetPass } from "hooks";
-import { validateVerificationCode, validatePassword } from "state/auth";
+import './coBrandedModals.css';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useResetPass } from 'hooks';
+import { validateVerificationCode, validatePassword } from 'state/auth';
 
 export const ResetPassModal: FC = () => {
   const history = useHistory();

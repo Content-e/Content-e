@@ -1,8 +1,8 @@
-import { BestPractices as IBestPractice } from "API";
-import SinglePractice from "components/bestPractices/singlePractice";
-import { getActiveBestPractice } from "hooks";
-import { useState, useEffect, Fragment } from "react";
-import "./practice.css";
+import { BestPractices as IBestPractice } from 'API';
+import SinglePractice from 'components/bestPractices/singlePractice';
+import { getActiveBestPractice } from 'hooks';
+import { useState, useEffect, Fragment } from 'react';
+import './practice.css';
 
 export default function BestPractice() {
   const { getActivePractice, data, loading } = getActiveBestPractice();
@@ -15,7 +15,7 @@ export default function BestPractice() {
   };
 
   useEffect(() => {
-    getActivePractice({ variables: { active: "true" } });
+    getActivePractice({ variables: { active: 'true' } });
   }, []);
 
   useEffect(() => {
@@ -23,23 +23,27 @@ export default function BestPractice() {
   }, [data, loading]);
 
   return (
-    <>
-      <div className="campaign-brief-header-container">
-        <div className="campaign-brief-details-text">Best practices</div>
+    <div className="creator-identity step-1">
+      <div className="creator-identity__title-wrap">
+        <h2 className="creator-identity__title">Best practices</h2>
         {selectedPractice && (
-          <div
-            className="back-btn"
+          <button
             onClick={(): void => setSelectedPractice(undefined)}
+            className="creator-dashboard__creative-back-btn"
           >
-            <span className="back-btn-text">Back</span>
-          </div>
+            Back
+          </button>
         )}
       </div>
-      {selectedPractice ? (
-        <SinglePractice practice={selectedPractice} showDetails />
-      ) : (
-        <div className="best-practice-table">
-          {practices.map((singlePractice, index) => {
+      <div
+        className={`creator-identity__content ${
+          !selectedPractice ? 'c-2' : ''
+        }`}
+      >
+        {selectedPractice ? (
+          <SinglePractice practice={selectedPractice} showDetails />
+        ) : (
+          practices.map((singlePractice, index) => {
             const key = `bestPractice---${singlePractice?.id || index}`;
             if (singlePractice)
               return (
@@ -50,9 +54,9 @@ export default function BestPractice() {
                 />
               );
             return <Fragment key={key} />;
-          })}
-        </div>
-      )}
-    </>
+          })
+        )}
+      </div>
+    </div>
   );
 }

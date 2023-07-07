@@ -1,11 +1,10 @@
-import { FC, Fragment, useMemo } from "react";
-import { withProfile } from "state/profileSteps";
-import { ProfileProps } from "utils";
-import BrandBody from "./brandBody";
-import Meter from "./meter";
-import { NoDataFound } from "./noData";
-import * as S from "./styles";
-import BrandForm from "./brandForm";
+import { FC, Fragment, useMemo } from 'react';
+import { withProfile } from 'state/profileSteps';
+import { ProfileProps } from 'utils';
+import BrandBody from './brandBody';
+import Meter from './meter';
+import { NoDataFound } from './noData';
+import BrandForm from './brandForm';
 
 export const HomePage: FC<ProfileProps> = ({ profileState: { data } }) => {
   const brandExists = useMemo(() => {
@@ -16,21 +15,17 @@ export const HomePage: FC<ProfileProps> = ({ profileState: { data } }) => {
 
   if (!data) return <Fragment key="no profie found" />;
   return (
-    <>
-      <div className="brand-table-label">Brand Profile</div>
-      <S.BrandTopHead>
-        <S.TopCanvas>
-          <S.TopWrapper>
-            <Meter />
-          </S.TopWrapper>
-          {!brandExists && <NoDataFound />}
-          {brandExists && <BrandBody data={brandExists} />}
-        </S.TopCanvas>
-        <S.TopCanvas>
-          <BrandForm />
-        </S.TopCanvas>
-      </S.BrandTopHead>
-    </>
+    <div className="brand-dashboard__items brand-profile-items">
+      <div className="brand-dashboard__item title">Brand profile</div>
+      <div className="brand-dashboard__item">
+        <Meter />
+        {!brandExists && <NoDataFound />}
+        {brandExists && <BrandBody data={brandExists} />}
+      </div>
+      <div className="brand-dashboard__item">
+        <BrandForm />
+      </div>
+    </div>
   );
 };
 

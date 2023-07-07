@@ -1,4 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
+const typeColors = {
+  brand: '#0A9396',
+  creator: '#BB3E03',
+};
 
 export const LoginWrapper = styled.div`
   position: relative;
@@ -180,4 +185,68 @@ export const AuthButtonWhite = styled.span`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+
+  @media only screen and (max-width: 768px) {
+    padding: 0 24px;
+  }
+`;
+
+export const ModalTopBar = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 32px;
+  margin-right: 50px;
+`;
+
+export const ModalContent = styled.div`
+  text-align: center;
+  border-radius: 16px;
+  width: 705px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #7b7b7b;
+  padding-bottom: 48px;
+
+  @media only screen and (max-width: 768px) {
+    width: 650px;
+    gap: 24px;
+  }
+`;
+
+export const ModalActionButton = styled.button<{ $type: string }>`
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Google Sans';
+  padding: 16px 32px;
+  border-radius: 40px;
+  background-color: ${(props) => typeColors[props.$type] || '#0A9396'};
+  color: #fff;
+
+  @media only screen and (max-width: 768px) {
+    margin-top: 24px;
+  }
+`;
+
+export const ModalCheckmark = styled.div<{ $type: string }>`
+  color: ${(props) => typeColors[props.$type] || '#7b7b7b'};
 `;

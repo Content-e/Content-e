@@ -1,13 +1,13 @@
 // import moment from "moment";
-import moment from "moment";
-import { FC, useEffect, useState } from "react";
+import moment from 'moment';
+import { FC, useEffect, useState } from 'react';
 import {
   ICreatorBriefListProps,
   INotification,
   withCreatorBriefList,
-} from "state/dashboard";
-import "./creatorNotifications.css";
-import { getStatusName } from "components/helpers";
+} from 'state/dashboard';
+import { CreativeRequestStatus } from 'utils';
+import './creatorNotifications.css';
 
 export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
   briefList,
@@ -16,6 +16,19 @@ export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
   error,
 }) => {
   const [data, setData] = useState<Array<INotification>>([]);
+
+  const getNotification = (status: CreativeRequestStatus): string => {
+    switch (status) {
+      case CreativeRequestStatus.New:
+        return 'created';
+      case CreativeRequestStatus.Accept:
+        return 'accepted';
+      case CreativeRequestStatus.Reject:
+        return 'rejected';
+      default:
+        return 'in review';
+    }
+  };
 
   useEffect(() => {
     if (!loading && !error && requestList && briefList) {
@@ -29,7 +42,7 @@ export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
         if (status && createdAt !== updatedAt) {
           output.push({
             name: brandProfile?.name,
-            status,
+            status: getNotification(status as CreativeRequestStatus),
             time: moment(updatedAt).fromNow(),
           });
         }
@@ -39,21 +52,30 @@ export const CreatorNotifications: FC<ICreatorBriefListProps> = ({
   }, [briefList, requestList, loading, error]);
 
   return (
-    <div className="creator-notifications-container">
-      <div className="creator-notifications-label">Notifications</div>
-
-      {data.map((notify, index) => (
-        <div className="creative-notification-container" key={index}>
-          <img src="/images/feature-notification.svg" />
-          <div className="notifiation-container">
-            <div className="notification-label">
-              Your creative for {notify.name} is{" "}
-              {getStatusName(notify.status, true)}
+    <div className="creator-dashboard__item">
+      <div className="brand-dashboard__top">
+        <div className="brand-dashboard__top-title">Notifications</div>
+        <img
+          className="brand-dashboard__top-icon"
+          alt=""
+          src="/images/dots-orange.svg"
+        />
+      </div>
+      <div className="notifications-container">
+        {data.map((notify, index) => (
+          <div className="creative-notification-container" key={index}>
+            <div className="creative-notification-icon-and-text">
+              <img src="/images/feature-notification.svg" />
+              <div className="notification-label">
+                Your creative for {notify.name} is {notify.status}
+              </div>
             </div>
-            <div className="notification-timeline">{notify.time}</div>
+            <div className="notifiation-container">
+              <div className="notification-timeline">{notify.time}</div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,19 +1,19 @@
-import { FC, Fragment, useContext, useEffect, useMemo, useState } from "react";
-import { CreateBrandProfileInput } from "API";
-import { withProfile } from "state/profileSteps";
-import { AuthRoutes, ProfileProps } from "utils";
-import StepOne from "./stepOne";
-import StepTwo from "./stepTwo";
-import StepThree from "./stepThree";
+import { FC, Fragment, useContext, useEffect, useMemo, useState } from 'react';
+import { CreateBrandProfileInput } from 'API';
+import { withProfile } from 'state/profileSteps';
+import { AuthRoutes, ProfileProps } from 'utils';
+import StepOne from './stepOne';
+import StepTwo from './stepTwo';
+import StepThree from './stepThree';
 import {
   isMissionSuggestionDisable,
   isPillarSuggestionDisable,
   isTaglineSuggestionDisable,
-} from "components";
-import { StepBelt } from "./components";
-import { BrandProps, withBrand } from "state/brand";
-import { TitleContext } from "state/auth";
-import { TopBordered, TopHeading } from "./styles";
+} from 'components';
+import { StepBelt } from './components';
+import { BrandProps, withBrand } from 'state/brand';
+import { TitleContext } from 'state/auth';
+import { TopBordered, TopHeading } from './styles';
 
 export const BrandSteps: FC<ProfileProps & BrandProps> = ({
   profileState: { data },

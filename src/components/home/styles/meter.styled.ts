@@ -1,5 +1,5 @@
-import { IMeterValue } from "state/brand";
-import styled from "styled-components";
+import { IMeterValue } from 'state/brand';
+import styled from 'styled-components';
 
 export const MeterWrapper = styled.div`
   height: 187px;
@@ -44,7 +44,7 @@ export const MeterCanvas = styled.div<IMeterValue>`
   border: none;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0px;
     right: 0px;
@@ -70,7 +70,11 @@ export const MeterCanvas = styled.div<IMeterValue>`
 export const MeterNumber = styled.div`
   position: absolute;
   width: fit-content;
-  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13.1732px;
+  line-height: 180%;
+  color: #94d2bd;
 
   &.zero {
     left: -20px;
@@ -159,5 +163,10 @@ export const MeterValue = styled.div`
   right: auto;
   width: 100%;
   text-align: center;
-  font-size: 25px;
+  font-family: 'Google Sans';
+  color: black;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21.5392px;
+  line-height: 120%;
 `;

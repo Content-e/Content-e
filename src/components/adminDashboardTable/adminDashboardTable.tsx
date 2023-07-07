@@ -1,4 +1,4 @@
-import "./adminDashboardTable.css";
+import './adminDashboardTable.css';
 
 export default function AdminDashboardTable() {
   return (

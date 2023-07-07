@@ -1,310 +1,128 @@
-import React, { useState } from "react";
-import "./style.css";
-import { useHistory } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
+import React from 'react';
+import './style.css';
+import { useHistory } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
+
+import HeaderDesktop from 'components/authentication/components/header-desktop';
+import HeaderMobile from 'components/authentication/components/header-mobile';
+import Footer from 'components/authentication/components/footer';
 
 export const LandingPage: React.FC = () => {
   const history = useHistory();
-  const [menu, setMenu] = useState(false);
 
   return (
-    <div className="landing-page-wrapper">
-      <div className="landing-content-container-gradient">
-        <div className="landing-page-container">
-          <div className="landing-page-navbar comingSoon">
-            <div className="landing-page-logo">
-              <img
-                src="/images/edc-squared-landing-logo.svg"
-                alt="edc-squared"
-              />
-            </div>
-            <img
-              src="/images/responsive-menu.svg"
-              alt="responsive-menu"
-              className="responsive-menu"
-              onClick={() => setMenu(!menu)}
-            />
-            <div className="landing-page-menu-header">
-              <div className="landing-page-menu">
-                <div
-                  className="landing-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Landing)}
-                  style={{ color: "#D9D9D9" }}
-                >
-                  Home
-                </div>
-                <div
-                  className="landing-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Creators)}
-                >
-                  For Creators
-                </div>
-                <div
-                  className="landing-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.Brands)}
-                >
-                  For Brands
-                </div>
-                <div
-                  className="landing-page-menu-items"
-                  onClick={() => history.push(UnAuthRoutes.SayHello)}
-                >
-                  Say Hello
-                </div>
-                <div
-                  className="login-signup"
-                  onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
-                >
-                  Login / Sign up
-                </div>
+    <>
+      <div className="landing-page-wrapper">
+        <HeaderMobile />
+        <div className="landing-page-wrapper-container">
+          <div className="landing-content-container-gradient">
+            <div className="landing-page-container">
+              <HeaderDesktop />
+              <div className="landing-content-container">
+                <div className="landing-page-body">
+                  <div className="landing-page-title font-title">
+                    Unlocking the power of brand communities
+                  </div>
+                  <div className="landing-page-subtitle font-body">
+                    We solve for authentic creator led content at scale on a
+                    results based payment model.
+                  </div>
+                  <ul className="list-none landing-page-detailed-content-list">
+                    <li className="landing-page-detailed-content-item detailed-list-item-1">
+                      Authentic content at scale.
+                    </li>
+                    <li className="landing-page-detailed-content-item detailed-list-item-2">
+                      A better way of doing things for creators and brands.
+                    </li>
+                    <li className="landing-page-detailed-content-item detailed-list-item-3">
+                      A performance based payment model.
+                    </li>
+                  </ul>
 
-                <div className="landing-page-socials">
-                  <div className="landing-page-socials-item">
-                    <a
-                      target="_blank"
-                      href="https://www.linkedin.com/company/edcsquared/"
+                  <div className="for-landing-content-btn-container">
+                    <div
+                      className="for-brands-btn"
+                      onClick={() => history.push(UnAuthRoutes.Creators)}
                     >
-                      <img src="/images/linkedin.png" alt="linkedin-icon" />
-                    </a>
-                  </div>
-                  <div className="landing-page-socials-item">
-                    <a target="_blank" href="https://www.instagram.com/edcsq/">
-                      <img src="/images/instagram.png" alt="instagram-icon" />
-                    </a>
-                  </div>
-                  <div className="landing-page-socials-item">
-                    <a
-                      target="_blank"
-                      href="https://www.tiktok.com/@edcsquared"
+                      FOR CREATORS
+                    </div>
+                    <div
+                      className="for-creators-btn"
+                      onClick={() => history.push(UnAuthRoutes.Brands)}
                     >
-                      <img src="/images/tiktok.png" alt="tiktok-icon" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {menu && (
-              <div className="landing-menu">
-                <div className="landing-menu-option-container">
-                  <div
-                    className="landing-menu-option"
-                    style={{ color: "#D9D9D9" }}
-                    onClick={() => history.push(UnAuthRoutes.Landing)}
-                  >
-                    Home
-                  </div>
-                  <div
-                    className="landing-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.Creators)}
-                  >
-                    For Creators
-                  </div>
-                  <div
-                    className="landing-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.Brands)}
-                  >
-                    For Brands
-                  </div>
-                  <div
-                    className="landing-menu-option"
-                    onClick={() => history.push(UnAuthRoutes.SayHello)}
-                  >
-                    Say Hello
-                  </div>
-                  <div
-                    className="login-signup"
-                    onClick={() => history.push(UnAuthRoutes.HomePageLogin)}
-                  >
-                    Login / Sign UP
-                  </div>
-                  <div className="landing-menu-img-container">
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.linkedin.com/company/edcsquared/"
-                      >
-                        <img
-                          src="/images/linkedin.png"
-                          alt="linkedin-icon"
-                          className="landing-menu-img"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.instagram.com/edcsq/"
-                      >
-                        <img
-                          src="/images/instagram.png"
-                          alt="instagram-icon"
-                          className="landing-menu-img"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        target="_blank"
-                        href="https://www.tiktok.com/@edcsquared"
-                      >
-                        <img
-                          src="/images/tiktok.png"
-                          alt="tiktok-icon"
-                          className="landing-menu-img"
-                        />
-                      </a>
+                      FOR BRANDS
                     </div>
                   </div>
                 </div>
+                <img src="/images/landing-union.png" />
               </div>
-            )}
+            </div>
           </div>
-          <div className="landing-content-container">
-            <div className="landing-page-body">
-              <div className="landing-page-title">
-                Everyday Creators, everyday Creative.
-              </div>
-              <div className="landing-page-subtitle">
-                Your content, your story, your impact.
-              </div>
+        </div>
 
-              <div className="landing-page-detailed-content-container">
-                <div className="landing-page-detailed-content">
-                  We are passionate about creating positive social impact by
-                  empowering anyone across the globe to become a content
-                  creator.
-                </div>
-                <div className="landing-page-detailed-content">
-                  One of the major challenges for brands is having to drive
-                  influence and impact amongst their audience. An audience who
-                  have an ever-decreasing attention span. Creating authentic
-                  content at scale solves this challenge, but, until now has not
-                  been a viable solution.
-                </div>
-                <div className="landing-page-detailed-content">
-                  EDC squared is focused on solving this challenge by enabling
-                  everyday creators and seamlessly connecting them with brands.
-                  We create opportunities for individuals whilst solving major
-                  industry challenges for brands.
+        <div className="how-it-works-container-landing">
+          <div className="landing-page-workBtn font-title">Our Purpose</div>
+          <div className="landing-page-steps-wrapper">
+            <div className="landing-page-steps-row">
+              <div className="landing-page-steps-item steps-item-1">
+                <div className="landing-page-steps-item-content">
+                  <div className="landing-page-steps-item-title font-title">
+                    Social Impact
+                  </div>
+                  <div className="landing-page-steps-item-text">
+                    <p>
+                      We are passionate about creating positive social impact by
+                      unlocking the power of Brand communities across the globe.
+                    </p>
+                    <p>
+                      We believe in providing opportunities for individuals and
+                      communities as well as enabling brands to market in a
+                      morally responsible way.
+                    </p>
+                  </div>
                 </div>
               </div>
-
-              <div className="for-landing-content-btn-container">
-                <div className="for-brands-btn">
-                  <span
-                    className="for-content-btn-text"
-                    onClick={() => history.push(UnAuthRoutes.Creators)}
-                  >
-                    FOR CREATORS
-                  </span>
-                </div>
-                <div className="for-creators-btn">
-                  <span
-                    className="for-content-btn-text"
-                    onClick={() => history.push(UnAuthRoutes.Brands)}
-                  >
-                    FOR BRANDS
-                  </span>
+              <div className="landing-page-steps-item steps-item-2">
+                <div className="landing-page-steps-item-content">
+                  <img
+                    className="landing-photo"
+                    alt=""
+                    src="/images/landing-photo.png"
+                  />
+                  <img
+                    className="landing-photo-mobile"
+                    alt=""
+                    src="/images/landing-photo-mobile.png"
+                  />
                 </div>
               </div>
             </div>
-            <img
-              src="/images/landing-union.png"
-              style={{ marginLeft: "63px", marginBottom: "-32px" }}
-              className="landing-union"
-            />
+            <div className="landing-page-steps-row">
+              <div className="landing-page-steps-item steps-item-3"></div>
+              <div className="landing-page-steps-item steps-item-4">
+                <div className="landing-page-steps-item-content">
+                  <div className="landing-page-steps-item-title font-title">
+                    The Industry
+                  </div>
+                  <div className="landing-page-steps-item-text">
+                    <p>
+                      We believe there is a better way to do things.
+                      Inefficient, inauthentic advertising on a cost per
+                      creative pricing model should be a thing of the past.
+                    </p>
+                    <p>
+                      We believe in a more seamless connection between brands
+                      and creators, enabling an always on collaboration.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <Footer />
       </div>
-
-      <div className="how-it-works-container-landing">
-        <div className="landing-page-workBtn">How it works</div>
-        <div className="landing-page-steps-wrapper">
-          <div className="landing-page-single-steps">
-            <div className="landing-page-step-number-circle">
-              <div className="landing-page-step-number-text">1</div>
-            </div>
-            <div className="landing-page-step-text">
-              Creators post content about the brands and topics they love.
-            </div>
-          </div>
-          <div className="landing-page-single-steps">
-            <div className="landing-page-step-number-circle">
-              <div className="landing-page-step-number-text">2</div>
-            </div>
-            <div className="landing-page-step-text">
-              Content is linked to brands via EDC squared
-            </div>
-          </div>
-          <div className="landing-page-single-steps">
-            <div className="landing-page-step-number-circle">
-              <div className="landing-page-step-number-text">3</div>
-            </div>
-            <div className="landing-page-step-text">
-              If brands like it, they promote it.
-            </div>
-          </div>
-          <div className="landing-page-single-steps">
-            <div className="landing-page-step-number-circle">
-              <div className="landing-page-step-number-text">4</div>
-            </div>
-            <div className="landing-page-step-text">
-              Creators earn from their content. Brands get authentic content at
-              scale.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="landing-footer">
-        <div className="landing-footer-text-container">
-          <div
-            className="landing-footer-text"
-            onClick={() => history.push(UnAuthRoutes.Landing)}
-          >
-            Home
-          </div>
-          <div
-            className="landing-footer-text"
-            onClick={() => history.push(UnAuthRoutes.Creators)}
-          >
-            For Creators
-          </div>
-          <div
-            className="landing-footer-text"
-            onClick={() => history.push(UnAuthRoutes.Brands)}
-          >
-            For Brands
-          </div>
-          <div
-            className="landing-footer-text"
-            onClick={() => history.push(UnAuthRoutes.SayHello)}
-          >
-            Say Hello
-          </div>
-        </div>
-
-        <div className="landing-footer-img-container">
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/company/edcsquared/"
-          >
-            <img src="/images/landing-linkedin.svg" />
-          </a>
-          <a target="_blank" href="https://www.instagram.com/edcsq/">
-            <img src="/images/landing-insta.svg" />
-          </a>
-          <a target="_blank" href="https://www.tiktok.com/@edcsquared">
-            <img src="/images/landing-tiktok.svg" />
-          </a>
-        </div>
-
-        <div className="landing-footer-text">
-          © 2023 Copyright EDC Squared. All Rights Reserved.
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

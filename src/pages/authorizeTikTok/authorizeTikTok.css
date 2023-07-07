@@ -26,15 +26,24 @@
   left: 0;
 }
 
+.tik-tok-label-policy {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 120%;
+  color: #ca6702;
+}
+
 .tik-tok-modal {
-  width: 808px;
+  width: 705px;
   left: 271px;
   top: 23px;
-  background: #ffffff;
   border: 1px solid #dee2e6;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
-  padding: 6px 10px 25px 30px;
+  padding: 24px;
+
+  background: #ffffff;
+  border-radius: 16px;
 }
 
 .tik-tok-method {
@@ -60,24 +69,6 @@
   font-size: 12px;
   color: red;
   text-align: center;
-}
-
-.tik-tok-method button {
-  outline: none;
-  border: none;
-  background: linear-gradient(180deg, #9ecfbd 0%, #459396 100%);
-  border-radius: 10px;
-  width: 230px;
-  height: 34px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
 }
 
 .tik-tok-method span {
@@ -126,30 +117,23 @@
   margin-inline: auto;
 }
 
-.tik-tok-label-policy {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 29px;
-  color: #005f73;
-}
-
 .tik-tok-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 10px 0px;
 }
 
 .policy-content {
+  font-family: 'Google Sans';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 20px;
-  color: #a1a1a1;
+  line-height: 160%;
+  color: #9c9992;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-top: 20px;
 }
 
 .content-1 {
@@ -159,16 +143,16 @@
 }
 
 .creator-img {
-  margin: 20px 0px;
+  margin: 64px 0px;
   display: flex;
   justify-content: center;
 }
 
 .next-btn {
-  background: linear-gradient(180deg, #9ecfbd 0%, #459396 100%);
-  border-radius: 10px;
-  width: 469px;
-  height: 34px;
+  width: 260px;
+  height: 51px;
+  background: #bb3e03;
+  border-radius: 40px;
   left: 169px;
   top: 571px;
   display: flex;
@@ -179,11 +163,11 @@
 
 .next-btn span {
   font-style: normal;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 130%;
   color: #ffffff;
+  text-transform: uppercase;
 }
 
 .next-btn-container {
@@ -198,14 +182,14 @@
 }
 
 .next-btn-sm {
-  width: 222px;
-  height: 34px;
+  width: 224px;
+  height: 51px;
+  background: #bb3e03;
+  border-radius: 40px;
   left: 47.65%;
   right: 24.88%;
   top: 89.65%;
   bottom: 4.39%;
-  background: linear-gradient(180deg, #9ecfbd 0%, #459396 100%);
-  border-radius: 10px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -214,11 +198,11 @@
 
 .next-btn-sm span {
   font-style: normal;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 130%;
   color: #ffffff;
+  text-transform: uppercase;
 }
 
 .back-btn-sm {
@@ -226,11 +210,10 @@
   right: 53.84%;
   top: 89.65%;
   bottom: 4.39%;
-  width: 172px;
-  height: 34px;
-  background: #ffffff;
-  border: 1px solid #026b7b;
-  border-radius: 10px;
+  width: 224px;
+  height: 51px;
+  background: #ee9b00;
+  border-radius: 40px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -238,12 +221,13 @@
 }
 
 .back-btn-sm span {
+  font-family: 'Google Sans';
   font-style: normal;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: -0.02em;
-  color: #005f73;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 130%;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
 .authorization-code-input {
@@ -256,7 +240,8 @@
 }
 
 .authorization-code-input input {
-  width: 464px;
+  width: 100%;
+  color: #9c9992;
 }
 
 @media only screen and (max-width: 650px) {

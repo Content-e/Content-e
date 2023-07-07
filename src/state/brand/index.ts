@@ -1,2 +1,2 @@
-export * from "./withBrandHoc";
-export * from "./brand.interface";
+export * from './withBrandHoc';
+export * from './brand.interface';

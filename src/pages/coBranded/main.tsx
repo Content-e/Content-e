@@ -2,11 +2,11 @@ import {
   getMainDomainFromSubdomain,
   isSubDomainWithBriefId,
   replaceSubPath,
-} from "components";
-import { FC, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { UnAuthRoutes } from "utils";
-import "./styles.css";
+} from 'components';
+import { FC, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
+import './styles.css';
 
 interface Props {
   isAuthenticated?: boolean;

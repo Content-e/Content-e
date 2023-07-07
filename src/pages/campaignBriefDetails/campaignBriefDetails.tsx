@@ -1,60 +1,125 @@
-import { FC, useState } from "react";
-import BrandCard from "components/brandCard/brandCard";
-import BrandDesciption from "components/brandDescription/brandDescription";
-import CampaignDetailCard from "components/campaignDetailCard/campaignDetailCard";
-import "./campaignBriefDetails.css";
-import { BrandBrief } from "API";
-import DetailCard from "components/brandCard/detailCard";
+import { FC, useMemo, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import BrandDesciption from 'components/brandDescription/brandDescription';
+import { BrandBrief } from 'API';
+import Modal from 'components/authentication/modal';
+import { default as ModalBase } from 'components/ui/modal';
+import { AuthRoutes } from 'utils';
+import Button from 'components/ui/button';
+import GradientCard from 'components/gradientCard/gradientCard';
 
 interface Props {
   data: BrandBrief;
   onBack: () => void;
 }
 const CampaignBriefDetails: FC<Props> = ({ onBack, data }) => {
+  const history = useHistory();
   const [showDetails, handleDetailVisibility] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const tag = useMemo(() => {
+    if (!data.BriefName) return '';
+    return data.BriefName.trim().replaceAll(' ', '_').replaceAll('-', '_');
+  }, [data.BriefName]);
 
   return (
     <>
-      <div className="campaign-brief-header-container">
-        <div className="campaign-brief-details-text">
-          Campaign brief details
+      <section>
+        <div className="flex justify-end">
+          <Button onClick={onBack} variant="secondary">
+            Back
+          </Button>
         </div>
-        <div className="back-btn" onClick={onBack}>
-          <span className="back-btn-text">Back</span>
+        <div className="grid xl:grid-cols-4 grid-cols-1 gap-8 w-full my-8">
+          <GradientCard>
+            <div className="flex justify-between">
+              Brand
+              <img
+                className="brand-dashboard__item-block-icon"
+                alt=""
+                src="/images/doc_1_white.svg"
+                onClick={() => handleDetailVisibility(true)}
+              />
+            </div>
+            <h3 className="text-2xl font-bold">{data.BriefName}</h3>
+            <span>@{tag}</span>
+          </GradientCard>
+          <GradientCard>
+            Brand name
+            <h3 className="text-2xl font-bold">{data.brandProfile?.name}</h3>
+          </GradientCard>
+          <GradientCard>
+            Vertical
+            <h3 className="text-2xl font-bold">{data.vertical}</h3>
+          </GradientCard>
+          <GradientCard>
+            Objective
+            <h3 className="text-2xl font-bold">{data.objective}</h3>
+          </GradientCard>
         </div>
-      </div>
-      <div className="campaign-brief-container">
-        <BrandCard
-          briefName={data.BriefName}
-          onShowDetails={(): void => handleDetailVisibility(true)}
+        <Modal
+          isOpen={showSuccessModal}
+          content="Your creative has been successfully linked!"
+          handleClose={() => setShowSuccessModal(false)}
+          actionLabel="BACK TO DASHBOARD"
+          actionHandler={() => history.push(AuthRoutes.Dashboard)}
+          type="creator"
         />
-        <CampaignDetailCard
-          campaign={data.brandProfile?.name}
-          campaignHeader="Brand Name"
-        />
-        <CampaignDetailCard
-          campaign={data.vertical}
-          campaignHeader="Vertical"
-        />
-        <CampaignDetailCard
-          campaign={data.objective}
-          campaignHeader="Objective"
-        />
-      </div>
-      <div className="brand-description">
-        <BrandDesciption
-          id={data.id}
-          detail={data.brandBriefDetails}
-          videoUrls={data.creativeInspirations}
-          isVideoLinked={!!data.creativeRequests?.items.length}
-        />
-      </div>
-      {data.brandProfile && showDetails && (
-        <DetailCard
-          data={data.brandProfile}
-          onCross={(): void => handleDetailVisibility(false)}
-        />
-      )}
+        <ModalBase
+          title={`Brand details - ${data.brandProfile?.name}`}
+          isOpen={showDetails}
+          handleClose={() => handleDetailVisibility(false)}
+        >
+          <div className="flex flex-col gap-3 mt-6 font-sans text-neutral-400">
+            <span>
+              <b>Strap line:</b> {data.brandProfile?.strapLine}
+            </span>
+            <span>
+              <b>Mission statement:</b> {data.brandProfile?.internalMission}
+            </span>
+            <div>
+              <b>Brand Pillars:</b>
+              <ul className="list-disc text-[#E9D8A6] pl-4 pt-3">
+                {data.brandProfile?.pillars?.map((e) => {
+                  if (!e) return '';
+                  const [title, detail] = e.split(':');
+                  if (detail?.length)
+                    return (
+                      <li>
+                        <p className="text-neutral-400">
+                          <b>{title}</b>: {detail}
+                        </p>
+                      </li>
+                    );
+                  return (
+                    <li key={e}>
+                      <p className="text-neutral-400">{title}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <span>
+              <b>Tone of voice:</b> {data.brandProfile?.toneVoice}
+            </span>
+            <div className="w-full flex justify-center text-white mt-5">
+              <Button
+                className="px-24"
+                onClick={() => handleDetailVisibility(false)}
+              >
+                DONE
+              </Button>
+            </div>
+          </div>
+        </ModalBase>
+      </section>
+      <BrandDesciption
+        id={data.id}
+        detail={data.brandBriefDetails}
+        videoUrls={data.creativeInspirations}
+        isVideoLinked={!!data.creativeRequests?.items.length}
+        showSuccessModal={() => setShowSuccessModal(true)}
+      />
     </>
   );
 };

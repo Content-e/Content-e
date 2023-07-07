@@ -1,2 +1,2 @@
-export * from "./withViewRequestsHoc";
-export * from "./requests.interface";
+export * from './withViewRequestsHoc';
+export * from './requests.interface';

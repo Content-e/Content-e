@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { FC, useEffect, useState } from "react";
-import { IconLoader, Input } from "components";
-import { AuthProps, defaultLoginError, defaultLoginState } from "utils";
-import "./adminLogin.css";
-import { validateEmail, validatePassword, withAuth } from "state/auth";
-import { useLogin } from "hooks";
-import Checkbox from "components/authentication/checkbox";
+import { FC, useEffect, useState } from 'react';
+import { IconLoader, Input } from 'components';
+import { AuthProps, defaultLoginError, defaultLoginState } from 'utils';
+import './adminLogin.css';
+import { validateEmail, validatePassword, withAuth } from 'state/auth';
+import { useLogin } from 'hooks';
+import Checkbox from 'components/authentication/checkbox';
 
 export const AdminLogin: FC<AuthProps> = ({ getAuth }) => {
   const {
@@ -67,11 +67,11 @@ export const AdminLogin: FC<AuthProps> = ({ getAuth }) => {
           <div className="login_forgot-box">
             <div className="login_checkbox">
               <Checkbox />
-              <span className="login_remember">Remember me.</span>{" "}
-            </div>{" "}
+              <span className="login_remember">Remember me.</span>{' '}
+            </div>{' '}
             <div className="login_forgot">
-              <span>Forgot Password?</span>{" "}
-            </div>{" "}
+              <span>Forgot Password?</span>{' '}
+            </div>{' '}
           </div>
           <button className="login_btn" onClick={onLogin}>
             <span style={{ marginRight: 12 }}>Login</span>

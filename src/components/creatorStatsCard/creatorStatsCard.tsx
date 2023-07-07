@@ -1,7 +1,7 @@
-import "./creatorStatsCard.css";
-import { FC, Fragment } from "react";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { IDashboardValue } from "state/dashboard";
+import './creatorStatsCard.css';
+import { FC, Fragment } from 'react';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { IDashboardValue } from 'state/dashboard';
 
 interface Props {
   type: IDashboardValue;
@@ -14,22 +14,26 @@ export const CreatorStatsCard: FC<Props> = ({
 }) => {
   if (!value) return <Fragment />;
   return (
-    <div className="creator-stats-card-container">
-      <div className="stats-header">
-        <div className="stats-label">{label}</div>
-        <OverlayTrigger
-          placement={placement}
-          overlay={
-            <Tooltip id={`tooltip-${label}`} className="custom-tooltip">
-              {tooltip}.
-            </Tooltip>
-          }
-        >
-          <img src="/images/tooltip-icon.svg" />
-        </OverlayTrigger>
+    <>
+      <div className="creator-dashboard__item-block-key shrink-mobile">
+        {label}
       </div>
-      <div className="stats-count">{value}</div>
-    </div>
+      <OverlayTrigger
+        placement={placement}
+        overlay={
+          <Tooltip id={`tooltip-${label}`} className="custom-tooltip mx-3">
+            {tooltip}.
+          </Tooltip>
+        }
+      >
+        <img
+          className="absolute right-4 top-4"
+          alt="tooltip icon"
+          src="/images/info-icon.svg"
+        />
+      </OverlayTrigger>
+      <div className="creator-dashboard__item-block-value">{value}</div>
+    </>
   );
 };
 

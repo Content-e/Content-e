@@ -1,4 +1,4 @@
-import { useLazyQuery, useMutation } from "@apollo/client";
+import { useLazyQuery, useMutation } from '@apollo/client';
 import {
   CreateBrandProfileMutation,
   CreateBrandProfileMutationVariables,
@@ -6,15 +6,15 @@ import {
   GetBrandProfileQueryVariables,
   UpdateBrandProfileMutation,
   UpdateBrandProfileMutationVariables,
-} from "API";
-import { createBrandProfile, updateBrandProfile } from "graphql/mutations";
-import { getBrandProfile } from "graphql/queries";
+} from 'API';
+import { createBrandProfile, updateBrandProfile } from 'graphql/mutations';
+import { getBrandProfile } from 'graphql/queries';
 import {
   CreateBrandProps,
   GetBrandProfileProps,
   UpdateBrandProps,
-} from "hooks/utils";
-import { getQuery } from "hooks/utils/helpers";
+} from 'hooks/utils';
+import { getQuery } from 'hooks/utils/helpers';
 
 export const createUserBrand = (): CreateBrandProps => {
   const [createBrand, { data, loading, error }] = useMutation<
@@ -23,7 +23,7 @@ export const createUserBrand = (): CreateBrandProps => {
   >(getQuery(createBrandProfile));
   const brand = data?.createBrandProfile || null;
   const errorData =
-    error || (brand ? undefined : new Error("No Brand Created"));
+    error || (brand ? undefined : new Error('No Brand Created'));
   return { loading, createBrand, brand, error: errorData };
 };
 
@@ -33,7 +33,7 @@ export const updateUserBrand = (): UpdateBrandProps => {
     UpdateBrandProfileMutationVariables
   >(getQuery(updateBrandProfile));
   const brand = data?.updateBrandProfile || null;
-  const errorData = error || (brand ? undefined : new Error("No User Found"));
+  const errorData = error || (brand ? undefined : new Error('No User Found'));
   return { loading, updateBrand, brand, error: errorData };
 };
 
@@ -46,7 +46,7 @@ export const useGetBrandProfile = (): GetBrandProfileProps => {
     ? { ...data?.getBrandProfile, brand: undefined }
     : null;
   const errorData =
-    error || (brandData ? undefined : new Error("No User Found"));
+    error || (brandData ? undefined : new Error('No User Found'));
   return {
     loading,
     getBrand,

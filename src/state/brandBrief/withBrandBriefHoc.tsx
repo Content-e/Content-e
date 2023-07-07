@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import withApolloProvider from "hooks/apollo/withApollo";
-import { getBrandBriefList } from "hooks";
-import { BrandBriefProps } from "./brandBrief.interface";
-import { BrandBrief } from "API";
-import { ProfileContext } from "state/profileSteps";
-import { getSortedArray } from "components";
+import React, { useContext, useEffect, useState } from 'react';
+import withApolloProvider from 'hooks/apollo/withApollo';
+import { getBrandBriefList } from 'hooks';
+import { BrandBriefProps } from './brandBrief.interface';
+import { BrandBrief } from 'API';
+import { ProfileContext } from 'state/profileSteps';
 
 export function withBrandBriefs<T>(
   Component: React.FC<T & BrandBriefProps>
@@ -28,7 +27,7 @@ export function withBrandBriefs<T>(
     }, []);
     useEffect(() => {
       if (!brandBriefListLoading && brandBriefList)
-        setBrandBriefsState(getSortedArray(brandBriefList, "createdAt"));
+        setBrandBriefsState(brandBriefList);
     }, [brandBriefList, brandBriefListLoading]);
 
     const hocProps: BrandBriefProps = {

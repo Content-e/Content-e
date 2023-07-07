@@ -1,2 +1,2 @@
-export * from "./authTypes";
-export * from "./errorTypes";
+export * from './authTypes';
+export * from './errorTypes';

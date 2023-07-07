@@ -1,1 +1,1 @@
-export * from "./Loader.styled";
+export * from './Loader.styled';

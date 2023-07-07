@@ -1,14 +1,14 @@
-import { FC, useState } from "react";
-import { CreateBrandProfileInput, GPT_PROMPT } from "API";
-import { createBrand } from "utils";
+import { FC, useState } from 'react';
+import { CreateBrandProfileInput, GPT_PROMPT } from 'API';
+import { createBrand } from 'utils';
 import {
   TextArea,
   isMissionSuggestionDisable,
   isTaglineSuggestionDisable,
-} from "components";
-import { Field, SuggestedInput } from "./components";
-import Modal from "./modals";
-import * as S from "./styles";
+} from 'components';
+import { Field, SuggestedInput } from './components';
+import Modal from './modals';
+import * as S from './styles';
 
 interface Props {
   data: CreateBrandProfileInput;
@@ -42,7 +42,7 @@ export const StepThree: FC<Props> = ({ data, onUpdate }) => {
     <S.TopWrapper>
       <Field {...createBrand.missionStatement} />
       <TextArea
-        value={internalMission || ""}
+        value={internalMission || ''}
         updateValue={setMission}
         suggestionBtn={{
           disabled: isMissionSuggestionDisable(data),
@@ -52,7 +52,7 @@ export const StepThree: FC<Props> = ({ data, onUpdate }) => {
 
       <Field {...createBrand.strapLine} />
       <SuggestedInput
-        value={strapLine || ""}
+        value={strapLine || ''}
         setValue={setStrapLine}
         getSuggestions={toggleStrapSuggestionBox}
         disableSuggestions={isTaglineSuggestionDisable(data)}

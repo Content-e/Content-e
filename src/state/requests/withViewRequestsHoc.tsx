@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import withApolloProvider from "hooks/apollo/withApollo";
-import { updateBriefStatus, useCreateAd, useGetVideoUrl } from "hooks";
-import { CreativeRequestStatus, UnknownType } from "utils";
-import { ProfileContext } from "state/profileSteps";
-import { ITiktokVideo, ViewRequestProps } from "./requests.interface";
+import React, { useContext, useEffect, useState } from 'react';
+import withApolloProvider from 'hooks/apollo/withApollo';
+import { updateBriefStatus, useCreateAd, useGetVideoUrl } from 'hooks';
+import { CreativeRequestStatus } from 'utils';
+import { ProfileContext } from 'state/profileSteps';
+import { ITiktokVideo, ViewRequestProps } from './requests.interface';
+import { CreateAdsMutationVariables } from 'API';
 
 interface HocProps {
   id?: string;
@@ -37,14 +38,14 @@ export function withRequestView<T>(
       if (id) updateStatus({ variables: { input: { id, status } } });
     };
 
-    const approveRequest = (createAdPayload: UnknownType): void => {
+    const approveRequest = (createAdPayload: CreateAdsMutationVariables) => {
       updateSuccessStatus(false);
-      setErrorMsg("");
+      setErrorMsg('');
       if (
         !loading &&
         profile?.tiktokAccountAccess &&
         createAdPayload.adgroupId &&
-        createAdPayload.authCode
+        (createAdPayload.authCode || createAdPayload.landingPageUrl)
       ) {
         setLoading(true);
         try {
@@ -54,9 +55,9 @@ export function withRequestView<T>(
           const input = {
             token,
             advId,
-            landingPageUrl: `public/${createAdPayload.authCode}`,
             ...createAdPayload,
           };
+          console.log({ input });
           createAd({ variables: { ...input } });
         } catch (err) {
           setErrorMsg(err.message);
@@ -65,9 +66,9 @@ export function withRequestView<T>(
       }
     };
 
-    const rejectRequest = (): void => {
+    const rejectRequest = () => {
       updateSuccessStatus(false);
-      setErrorMsg("");
+      setErrorMsg('');
       if (!loading) {
         setLoading(true);
         callApi(CreativeRequestStatus.Reject);
@@ -85,7 +86,7 @@ export function withRequestView<T>(
       if (!createAdLoading) {
         if (createAdResponse) callApi(CreativeRequestStatus.Accept);
         else if (createAdResponse === false) {
-          setErrorMsg("Ad creation failed");
+          setErrorMsg('Ad creation failed. Please make sure you are using a supported aspect ratio and not uploading the same filename twice.');
           setLoading(false);
         }
       }

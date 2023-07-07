@@ -1,1 +1,1 @@
-export * from "./sidebar.styled";
+export * from './sidebar.styled';

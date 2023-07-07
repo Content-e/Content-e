@@ -1,6 +1,6 @@
-import { FC } from "react";
-import cn from "classnames";
-import * as S from "../styles";
+import { FC } from 'react';
+import cn from 'classnames';
+import * as S from '../styles';
 
 interface Props {
   disableSuggestions?: boolean;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const BrandInputForm = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ export const SaveButtonContainer = styled.div`
 `;
 
 export const SaveButton = styled.button`
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
   font-size: 12px;

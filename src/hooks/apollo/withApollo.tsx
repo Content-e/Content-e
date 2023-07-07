@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { ApolloProvider } from "@apollo/client";
-import { Fragment, FC, PropsWithChildren } from "react";
-import AwsConfig from "./awsConfig";
-import useAuthSwapListener from "./useApollo";
+import { ApolloProvider } from '@apollo/client';
+import { Fragment, FC, PropsWithChildren } from 'react';
+import AwsConfig from './awsConfig';
+import useAuthSwapListener from './useApollo';
 
 function withApolloProvider<T>(PassedComponent: FC<T>) {
-  return ({ children, ...props }: PropsWithChildren<T>): JSX.Element => {
+  return function Inner({ children, ...props }: PropsWithChildren<T>) {
     const { client, isApolloInitialized } = useAuthSwapListener(AwsConfig);
 
     if (!isApolloInitialized) return <Fragment />;

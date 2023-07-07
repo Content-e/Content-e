@@ -1,11 +1,11 @@
-import { FC, useEffect, useState } from "react";
-import { withProfile } from "state/profileSteps";
-import { BrandProps, IBrandFormState, withBrand } from "state/brand";
-import * as S from "./styles";
-import { ProfileProps } from "utils";
-import BrandInput from "./brandInput";
-import { IconLoader } from "components/loader";
-import classNames from "classnames";
+import { FC, useEffect, useState } from 'react';
+import { withProfile } from 'state/profileSteps';
+import { BrandProps, IBrandFormState, withBrand } from 'state/brand';
+import * as S from './styles';
+import { ProfileProps } from 'utils';
+import BrandInput from './brandInput';
+import { IconLoader } from 'components/loader';
+import classNames from 'classnames';
 
 export const BrandForm: FC<ProfileProps & BrandProps> = ({
   profileState: { data },
@@ -30,7 +30,7 @@ export const BrandForm: FC<ProfileProps & BrandProps> = ({
 
   useEffect(() => {
     const brand = data?.brand?.items?.[0];
-    if (brand?.metaData && typeof brand.metaData === "string") {
+    if (brand?.metaData && typeof brand.metaData === 'string') {
       try {
         const metadata = JSON.parse(brand.metaData) as IBrandFormState;
         setFormState(metadata);
@@ -47,34 +47,38 @@ export const BrandForm: FC<ProfileProps & BrandProps> = ({
   const props = { formState, onChange: handleChange };
 
   return (
-    <S.BrandInputForm>
-      <BrandInput {...props} keyProp="tiktok" title="Link Tiktok account" />
-      <BrandInput {...props} keyProp="website" title="Brand website" />
-      <BrandInput
-        {...props}
-        keyProp="instagram"
-        title="Brand instagram handle"
-      />
-      <BrandInput {...props} keyProp="facebook" title="Brand facebook page" />
-      <BrandInput {...props} keyProp="linkedin" title="Brand linkedin page" />
-      <BrandInput {...props} keyProp="twitter" title="Brand Twitter handle" />
-
-      <S.SaveButtonContainer>
-        <S.SaveButton
+    <>
+      <div className="brand-dashboard__form">
+        <BrandInput {...props} keyProp="website" title="Brand website" />
+        <BrandInput {...props} keyProp="tiktok" title="Brand TikTok account" />
+        <BrandInput
+          {...props}
+          keyProp="instagram"
+          title="Brand instagram handle"
+        />
+        <BrandInput {...props} keyProp="facebook" title="Brand facebook page" />
+        <BrandInput {...props} keyProp="linkedin" title="Brand linkedin page" />
+        <BrandInput {...props} keyProp="twitter" title="Brand Twitter handle" />
+      </div>
+      <div className="brand-dashboard__item-button-wrap">
+        <button
           onClick={submitForm}
           disabled={btnDisable}
-          className={classNames({
-            "no-dirty-state": btnDisable,
-            active: brandLoading,
-          })}
+          className={
+            'brand-dashboard__item-button ' +
+            classNames({
+              'no-dirty-state': btnDisable,
+              active: brandLoading,
+            })
+          }
         >
           <S.SaveBtnText className={classNames({ loading: brandLoading })}>
             Save
           </S.SaveBtnText>
           {brandLoading && <IconLoader />}
-        </S.SaveButton>
-      </S.SaveButtonContainer>
-    </S.BrandInputForm>
+        </button>
+      </div>
+    </>
   );
 };
 

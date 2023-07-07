@@ -1,9 +1,9 @@
-import "./adminDashboard.css";
-import CreativeDetailsCard from "components/creativeDetailsCard/creativeDetailsCard";
-import AdminDashboardTable from "components/adminDashboardTable/adminDashboardTable";
-import { listAllRequests, listRequestsByStatus } from "hooks";
-import { useEffect, useState } from "react";
-import { CreativeRequestStatus } from "utils";
+import './adminDashboard.css';
+import CreativeDetailsCard from 'components/creativeDetailsCard/creativeDetailsCard';
+import AdminDashboardTable from 'components/adminDashboardTable/adminDashboardTable';
+import { listAllRequests, listRequestsByStatus } from 'hooks';
+import { useEffect, useState } from 'react';
+import { CreativeRequestStatus } from 'utils';
 
 export default function AdminDashboard() {
   const [totalRequests, setTotalRequests] = useState(0);
@@ -45,24 +45,20 @@ export default function AdminDashboard() {
           <CreativeDetailsCard
             campaign="0"
             campaignHeader="Last 24 hour spend"
-            iconCheck={false}
           />
           <CreativeDetailsCard
             campaign={totalRequests}
             campaignHeader="Number of creatives linked"
-            iconCheck={false}
           />
           <CreativeDetailsCard
             campaign={((acceptedRequests / (totalRequests || 1)) * 100).toFixed(
               2
             )}
             campaignHeader="Creative approval rate"
-            iconCheck={false}
           />
           <CreativeDetailsCard
             campaign="0"
             campaignHeader="Average ad spend per creative"
-            iconCheck={false}
           />
         </div>
       </div>

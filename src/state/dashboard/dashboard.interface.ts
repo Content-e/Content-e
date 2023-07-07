@@ -1,6 +1,6 @@
-import { ApolloError } from "@apollo/client";
-import { BrandBrief, CreativeRequest } from "API";
-import { Placement } from "react-bootstrap/esm/types";
+import { ApolloError } from '@apollo/client';
+import { BrandBrief, CreativeRequest } from 'API';
+import { Placement } from 'react-bootstrap/esm/types';
 
 export interface ICreatorBriefListProps {
   briefList?: Array<BrandBrief | null> | null;

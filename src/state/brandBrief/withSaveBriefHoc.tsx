@@ -1,22 +1,23 @@
-import React, { useContext, useEffect, useState } from "react";
-import withApolloProvider from "hooks/apollo/withApollo";
+import React, { useContext, useEffect, useState } from 'react';
+import withApolloProvider from 'hooks/apollo/withApollo';
 import {
   createCampaignBrief,
   editCampaignBrief,
   getlistAdGroups,
   getlistCampaigns,
-} from "hooks";
+} from 'hooks';
 import {
   ICreateBriefState,
   ISelectDropdown,
   ITikTokAccess,
   ITikTokCreds,
   SaveBriefProps,
-} from "./brandBrief.interface";
-import { ProfileContext } from "state/profileSteps";
-import { useHistory, useLocation } from "react-router-dom";
-import { BrandBrief } from "API";
-import { BrandRoutes, AuthRoutes } from "utils";
+} from './brandBrief.interface';
+import { ProfileContext } from 'state/profileSteps';
+import { useHistory, useLocation } from 'react-router-dom';
+import { BrandBrief } from 'API';
+import { BrandRoutes, AuthRoutes } from 'utils';
+import _ from 'lodash';
 
 export function withSaveBrief<T>(
   Component: React.FC<T & SaveBriefProps>
@@ -51,18 +52,16 @@ export function withSaveBrief<T>(
       loading: adGroupsListLoading,
     } = getlistAdGroups();
 
-    const saveData = (data: ICreateBriefState): void => {
+    const saveData = async (data: ICreateBriefState) => {
       const brandId = profileState.data?.brand?.items?.[0]?.id;
 
       if (brandId) {
-        const { tiktokHandle, ...rest } = data;
-        const input = { ...rest, brandId };
+        const input = { ..._.omit(data, 'tiktokHandle'), brandId };
 
-        if (rest.id) editBrief({ variables: { input } });
-        else
-          createBrief({
-            variables: { input: { ...input, vertical: "retail" } },
-          });
+        if (input.id) return editBrief({ variables: { input } });
+        return createBrief({
+          variables: { input: { ...input, vertical: 'retail' } },
+        });
       }
     };
     const getAdGroups = (campaignId: string): void => {
@@ -86,7 +85,8 @@ export function withSaveBrief<T>(
             console.log(err);
           }
         }
-        history.goBack();
+        // TODO: do you really want to goBack() every time profile state changes?
+        // history.goBack();
       }
     }, [profileState]);
     useEffect(() => {
@@ -94,20 +94,23 @@ export function withSaveBrief<T>(
         const { brief } = (state || {}) as { brief: BrandBrief };
         if (brief?.id) {
           setBriefState({
-            BriefName: brief.BriefName || "",
-            tiktokHandle: "",
+            BriefName: brief.BriefName || '',
+            tiktokHandle: '',
             vertical: brief.vertical,
-            objective: brief.objective || "",
-            brandBriefDetails: brief.brandBriefDetails || "",
+            objective: brief.objective || '',
+            brandBriefDetails: brief.brandBriefDetails || '',
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             creativeInspirations: brief?.creativeInspirations || [],
-            active: typeof brief.active === "boolean" ? brief.active : true,
+            active: typeof brief.active === 'boolean' ? brief.active : true,
             id: brief.id,
-            campaignId: brief.campaignId || "",
-            adgroupId: brief.adgroupId || "",
+            campaignId: brief.campaignId || '',
+            adgroupId: brief.adgroupId || '',
           });
-        } else history.replace(AuthRoutes.CampaignBrief);
+        } else {
+          history.replace(AuthRoutes.CampaignBrief);
+          console.log('No brief found in router state!');
+        }
       }
     }, [state, pathname]);
     useEffect(() => {
