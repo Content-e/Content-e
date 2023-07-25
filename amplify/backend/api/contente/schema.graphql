@@ -4,18 +4,18 @@
 
 type UserProfile
 @model 
-@auth(rules: [{ allow: owner }]) 
+@auth(rules: [{ allow: private }])
 {
   id: ID!
   name: String!
   userEmail: String! @index
   description: String
   brand: [BrandProfile] @hasMany
-  owner: String @auth(rules: [{ allow: owner, operations: [read] }])
-  userType: USER_TYPES @auth(rules: [{ allow: owner, operations: [read] }])
+  owner: String @auth(rules: [{ allow: private, operations: [read] }])
+  userType: USER_TYPES @auth(rules: [{ allow: private, operations: [read] }])
   tiktokHandler: String 
   bestPractices: [BestPractices] @hasMany
-  tiktokAccountAccess: String @auth(rules: [{ allow: owner, operations: [read] }])
+  tiktokAccountAccess: String @auth(rules: [{ allow: private, operations: [read] }])
   userWallet: UserWallet @hasOne
 }
 

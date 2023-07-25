@@ -730,6 +730,7 @@ export type ModelSubscriptionUserProfileFilterInput = {
   name?: ModelSubscriptionStringInput | null,
   userEmail?: ModelSubscriptionStringInput | null,
   description?: ModelSubscriptionStringInput | null,
+  owner?: ModelSubscriptionStringInput | null,
   userType?: ModelSubscriptionStringInput | null,
   tiktokHandler?: ModelSubscriptionStringInput | null,
   tiktokAccountAccess?: ModelSubscriptionStringInput | null,
@@ -3096,7 +3097,6 @@ export type OnDeleteApprovedAdsSubscription = {
 
 export type OnCreateUserProfileSubscriptionVariables = {
   filter?: ModelSubscriptionUserProfileFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnCreateUserProfileSubscription = {
@@ -3168,7 +3168,6 @@ export type OnCreateUserProfileSubscription = {
 
 export type OnUpdateUserProfileSubscriptionVariables = {
   filter?: ModelSubscriptionUserProfileFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnUpdateUserProfileSubscription = {
@@ -3240,7 +3239,6 @@ export type OnUpdateUserProfileSubscription = {
 
 export type OnDeleteUserProfileSubscriptionVariables = {
   filter?: ModelSubscriptionUserProfileFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnDeleteUserProfileSubscription = {

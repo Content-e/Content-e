@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './style.css';
 import { useHistory } from 'react-router-dom';
 import { UnAuthRoutes } from 'utils';
 import HeaderDesktop from 'components/authentication/components/header-desktop';
 import HeaderMobile from 'components/authentication/components/header-mobile';
 import Footer from 'components/authentication/components/footer';
+import {withProfile} from "../../state/profileSteps";
 
-export const BrandsPage: React.FC = () => {
+export const BrandsPage: React.FC = (profile) => {
+  useEffect(() => console.log(profile), [])
   const history = useHistory();
-
   return (
     <div className="brands-page-wrapper">
       <HeaderMobile />

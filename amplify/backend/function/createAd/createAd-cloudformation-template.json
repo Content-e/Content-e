@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"10.7.0\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.1.0\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -74,8 +74,8 @@
             "CREATIVES_BUCKET": "user-avatar175407-staging",
             "TKTOK_SECRET": "f00309a914025be7d09ce298ed49de44c0da1100",
             "TKTOK_APP_ID": "7204753405493903362",
-            "USER_PROFILE_TABLE_NAME": "UserProfile-daf5ud4kqze7peoeykz43ykgcm-staging",
-            "APPROVED_ADS_TABLE_NAME": "ApprovedAds-daf5ud4kqze7peoeykz43ykgcm-staging"
+            "USER_PROFILE_TABLE_NAME": "UserProfile-[GraphQLApiId]-${env}",
+            "APPROVED_ADS_TABLE_NAME": "ApprovedAds-[GraphQLApiId]-${env}"
           }
         },
         "Role": {

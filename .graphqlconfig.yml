@@ -1,6 +1,6 @@
 projects:
   contente:
-    schemaPath: src/graphql/schema.json
+    schemaPath: amplify/backend/api/contente/build/schema.graphql
     includes:
       - src/graphql/**/*.ts
     excludes:

@@ -4,9 +4,7 @@
     "apiName": "contente",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "AWS_LAMBDA",
-      "lambdaFunction": "graphQlLambdaAuthorizerc946ef1d",
-      "ttlSeconds": "300"
+      "mode": "AWS_IAM"
     },
     "additionalAuthTypes": [
       {

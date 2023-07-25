@@ -16,6 +16,7 @@ import Footer from './components/footer';
 import './styles/login.scss';
 import Checkbox from 'components/ui/checkbox';
 import { Auth } from 'aws-amplify';
+import {useAuth0} from "@auth0/auth0-react";
 
 const schema = z.object({
   email: z
@@ -48,7 +49,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     },
     mode: 'onBlur',
   });
-
+  const { loginWithRedirect, loginWithPopup } = useAuth0();
   const formState = watch();
 
   const onSubmit = handleSubmit(async (data) => {
@@ -107,9 +108,10 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
                   </div>
                   <div className="login__bottom">
                     <button
-                      type="submit"
+                      // type="submit"
                       className="login__btn"
-                      disabled={!isValid || !isDirty || isSubmitting}
+                      // disabled={!isValid || !isDirty || isSubmitting}
+                      onClick={async () => await loginWithPopup()}
                     >
                       <span style={isSubmitting ? { marginRight: 12 } : {}}>
                         Login

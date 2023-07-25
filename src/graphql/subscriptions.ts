@@ -74,9 +74,8 @@ export const onDeleteApprovedAds = /* GraphQL */ `
 export const onCreateUserProfile = /* GraphQL */ `
   subscription OnCreateUserProfile(
     $filter: ModelSubscriptionUserProfileFilterInput
-    $owner: String
   ) {
-    onCreateUserProfile(filter: $filter, owner: $owner) {
+    onCreateUserProfile(filter: $filter) {
       id
       name
       userEmail
@@ -145,9 +144,8 @@ export const onCreateUserProfile = /* GraphQL */ `
 export const onUpdateUserProfile = /* GraphQL */ `
   subscription OnUpdateUserProfile(
     $filter: ModelSubscriptionUserProfileFilterInput
-    $owner: String
   ) {
-    onUpdateUserProfile(filter: $filter, owner: $owner) {
+    onUpdateUserProfile(filter: $filter) {
       id
       name
       userEmail
@@ -216,9 +214,8 @@ export const onUpdateUserProfile = /* GraphQL */ `
 export const onDeleteUserProfile = /* GraphQL */ `
   subscription OnDeleteUserProfile(
     $filter: ModelSubscriptionUserProfileFilterInput
-    $owner: String
   ) {
-    onDeleteUserProfile(filter: $filter, owner: $owner) {
+    onDeleteUserProfile(filter: $filter) {
       id
       name
       userEmail

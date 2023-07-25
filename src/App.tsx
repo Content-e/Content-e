@@ -9,6 +9,7 @@ import MainRouter from './router';
 import { ProfileProvider } from 'state/profileSteps';
 import ScrollToTop from './ScrollToTop';
 import './assets/css/index.scss';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 Amplify.configure(config);
 
@@ -19,6 +20,13 @@ const App: React.FC = () => {
 
   return (
     <ErrorProvider>
+      <Auth0Provider
+          domain={process.env.REACT_APP_AUTH_DOMAIN || ''}
+          clientId={process.env.REACT_APP_AUTH_CLIENT_ID || ''}
+          authorizationParams={{
+            redirect_uri: process.env.REACT_APP_URL || '',// window.location.origin
+          }}
+      >
       <Router>
         <ScrollToTop />
         <div className="App text-gray-600">
@@ -46,6 +54,7 @@ const App: React.FC = () => {
           )}
         </div>
       </Router>
+      </Auth0Provider>
     </ErrorProvider>
   );
 };
