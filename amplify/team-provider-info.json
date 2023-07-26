@@ -219,7 +219,11 @@
         "updateUserType": {
           "deploymentBucketName": "amplify-contente-authp-21243-deployment",
           "s3Key": "amplify-builds/updateUserType-77764b41336343785a74-build.zip"
-        }
+        },
+        "contente9303b093PostConfirmation": {
+          "GROUP": "users"
+        },
+        "contente9303b093PreTokenGeneration": {}
       },
       "hosting": {
         "amplifyhosting": {

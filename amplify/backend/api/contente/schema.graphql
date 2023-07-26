@@ -4,18 +4,18 @@
 
 type UserProfile
 @model 
-@auth(rules: [{ allow: private }])
+@auth(rules: [{ allow: owner }]) 
 {
   id: ID!
   name: String!
   userEmail: String! @index
   description: String
   brand: [BrandProfile] @hasMany
-  owner: String @auth(rules: [{ allow: private, operations: [read] }])
-  userType: USER_TYPES @auth(rules: [{ allow: private, operations: [read] }])
+  owner: String @auth(rules: [{ allow: owner, operations: [read] }])
+  userType: USER_TYPES @auth(rules: [{ allow: owner, operations: [read] }])
   tiktokHandler: String 
   bestPractices: [BestPractices] @hasMany
-  tiktokAccountAccess: String @auth(rules: [{ allow: private, operations: [read] }])
+  tiktokAccountAccess: String @auth(rules: [{ allow: owner, operations: [read] }])
   userWallet: UserWallet @hasOne
 }
 
@@ -31,7 +31,7 @@ type UserWallet
 
 type ApprovedAds
 @model
-@aws_iam 
+@auth(rules: [{ allow: private }])
 {
   id: String @index
   creativeRequestId: String @index

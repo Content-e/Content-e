@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.1.0\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.1.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -70,7 +70,7 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "USER_PROFILE_TABLE_NAME": "UserProfile-[GraphQLApiId]-${env}"
+            "USER_PROFILE_TABLE_NAME": "UserProfile-tykxfw6n7jg23nvor65pti5qia-dev"
           }
         },
         "Role": {

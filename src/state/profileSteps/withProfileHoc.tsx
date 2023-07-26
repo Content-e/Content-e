@@ -12,8 +12,6 @@ import { AuthContextType } from 'state/types/authTypes';
 import { initialProfileState, ProfileProps } from 'utils';
 import { ProfileContext } from './profile.context';
 import { IUpdateProfile } from './profile.interface';
-import {useAuth0} from "@auth0/auth0-react";
-import Auth from "@aws-amplify/auth";
 
 interface HocProps {
   shouldCallApi?: boolean;
@@ -49,16 +47,12 @@ export function withProfile<T>(
     const { isLoggedIn, email, userId, name } = authState;
     const [createProfileApiCall, updateCreateProfileApiCall] = useState(false);
     const [isApiCalled, setIsApiCalled] = useState(false);
-    const { isAuthenticated, user} = useAuth0();
-    Auth.currentCredentials()
 
-    const refetchProfile = async (force?: boolean): Promise<void> => {
-      const cred = await Auth.currentCredentials()
-      console.log(cred, 4444444444)
-      if (cred && user || (email && (shouldCallApi || force))) {
+    const refetchProfile = (force?: boolean): void => {
+      if (email && (shouldCallApi || force)) {
         setIsApiCalled(true);
         setProfileState({ isLoading: true });
-        getProfile({ variables: { id: userId || '' } });
+        getProfile({ variables: { id: userId } });
       }
     };
 
@@ -75,17 +69,16 @@ export function withProfile<T>(
     };
 
     useEffect(() => {
-      console.log('isLoggedIn', isLoggedIn)
-      if (isAuthenticated || (
+      if (
         email &&
         isLoggedIn &&
         userId &&
         profileState.data === undefined &&
-        shouldCallApi)
+        shouldCallApi
       )
-        console.log('isrefetch')
         refetchProfile();
-    }, [email, isLoggedIn, profileState.data, userId, shouldCallApi, isAuthenticated]);
+    }, [email, isLoggedIn, profileState.data, userId, shouldCallApi]);
+
     useEffect(() => {
       console.log('isProfileExistsHook')
       if (!loading && shouldCallApi && isApiCalled) {
@@ -104,13 +97,13 @@ export function withProfile<T>(
             userEmail: email,
             id: userId,
           };
-          createProfile({ variables: { id: `${Math.random()*10000}`,userEmail: user?.email || `${user?.nickname}@fake_mail.com`, name: user?.nickname || user?.given_name } });
+          createProfile({ variables: { input } });
           updateCreateProfileApiCall(true);
           setAuthState({ ...authState, name });
           setProfileState({ isLoading: false, error, data: null });
         }
       }
-    }, [profileData, loading, error, isAuthenticated]);
+    }, [profileData, loading, error]);
 
     useEffect(() => {
       if (createProfileData && !createProfileLoading)

@@ -66,11 +66,8 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
                 redirectToInValidRoute();
             handlePathFound(true);
         }
-        if(isAuthenticated) {
-            history.push('/dashboard')
-        }
 
-    }, [isLoading, isLoggedIn, email, isAuthenticated]);
+    }, [isLoading, isLoggedIn, email]);
 
     return (
         <Fragment>

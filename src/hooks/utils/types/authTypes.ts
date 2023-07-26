@@ -9,6 +9,7 @@ export type SignPayloadType = {
 export type LoginPayloadType = {
   email: string;
   password: string;
+  username?: string;
 };
 export type ApiCustomHookStateType<T> = {
   isLoading: boolean;
