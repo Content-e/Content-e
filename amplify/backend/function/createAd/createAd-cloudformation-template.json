@@ -74,8 +74,8 @@
             "CREATIVES_BUCKET": "user-avatar175407-staging",
             "TKTOK_SECRET": "f00309a914025be7d09ce298ed49de44c0da1100",
             "TKTOK_APP_ID": "7204753405493903362",
-            "USER_PROFILE_TABLE_NAME": "UserProfile-[GraphQLApiId]-${env}",
-            "APPROVED_ADS_TABLE_NAME": "ApprovedAds-[GraphQLApiId]-${env}"
+            "USER_PROFILE_TABLE_NAME": "UserProfile-tykxfw6n7jg23nvor65pti5qia-dev",
+            "APPROVED_ADS_TABLE_NAME": "ApprovedAds-tykxfw6n7jg23nvor65pti5qia-dev"
           }
         },
         "Role": {
