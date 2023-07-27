@@ -1,15 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './style.css';
 import { useHistory } from 'react-router-dom';
 import { UnAuthRoutes } from 'utils';
 import HeaderDesktop from 'components/authentication/components/header-desktop';
 import HeaderMobile from 'components/authentication/components/header-mobile';
 import Footer from 'components/authentication/components/footer';
-import {withProfile} from "../../state/profileSteps";
+import {useAuth0} from "@auth0/auth0-react";
+import {USER_TYPES} from "../../API";
 
-export const BrandsPage: React.FC = (profile) => {
-  useEffect(() => console.log(profile), [])
+export const BrandsPage: React.FC = () => {
   const history = useHistory();
+  const {loginWithPopup} = useAuth0()
   return (
     <div className="brands-page-wrapper">
       <HeaderMobile />
@@ -78,9 +79,10 @@ export const BrandsPage: React.FC = (profile) => {
             <div className="for-brands-content-btn-container">
               <div
                 className="login-signup brands-btn"
-                onClick={() =>
-                  history.push(UnAuthRoutes.HomePageLogin + '?role=brand')
-                }
+                onClick={() => {
+                  localStorage.setItem('userType', USER_TYPES.BRAND_USER)
+                  loginWithPopup()
+                }}
               >
                 Login / Sign up
               </div>

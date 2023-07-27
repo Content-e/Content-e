@@ -85,7 +85,6 @@ export const EditProfile: FC<ProfileProps> = ({
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       const { name, description, tiktokHandler } = data;
       const state = { name } as IUpdateProfile;
       if (description) state.description = description;
@@ -119,7 +118,7 @@ export const EditProfile: FC<ProfileProps> = ({
                   <span>{formError.name}</span>
                 </ShouldRender>
               </div>
-              <div className="brand-dashboard__profile-group">
+              { !data?.userEmail.includes(process.env.REACT_APP_FAKE_MAIL || '@fakemail.com')? <div className="brand-dashboard__profile-group">
                 <div className="brand-dashboard__profile-label">
                   Email Address
                 </div>
@@ -128,7 +127,7 @@ export const EditProfile: FC<ProfileProps> = ({
                   value={data.userEmail}
                   readOnly
                 />
-              </div>
+              </div>: null}
               {data?.userType === USER_TYPES.CREATIVE_USER && (
                 <Fragment>
                   <div className="brand-dashboard__profile-group">

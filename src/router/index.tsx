@@ -45,7 +45,6 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
         const url = new URL(window.location.href);
         const code = url.searchParams.get('code')
         if (code) {
-            localStorage.setItem('auth0accessCode', code)
             url.searchParams.delete('code');
             window.location.href = url.href;
             return;
@@ -60,7 +59,7 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
             }
         }
         if (typeof isLoggedIn === 'boolean' && !isLoading) {
-            if (isLoggedIn && !isAuthenticated && !isValidRoute(AuthRoutesArray, pathname))
+            if (isLoggedIn && isAuthenticated && !isValidRoute(AuthRoutesArray, pathname))
                 history.replace(replaceSubPath(AuthRoutes.Redirector));
             else if (!isAuthenticated && !isLoggedIn && !isValidRoute(UnAuthRoutesArray, pathname))
                 redirectToInValidRoute();

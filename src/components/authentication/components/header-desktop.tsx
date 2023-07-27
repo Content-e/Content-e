@@ -55,11 +55,7 @@ export const HeaderDesktop = () => {
             className={`${
               path === '/homePageLogin' ? 'active' : ''
             } login-signup-link`}
-            to={
-              path === '/homePageLogin' || path === '/login'
-                ? UnAuthRoutes.Register
-                : UnAuthRoutes.Login
-            }
+            to={UnAuthRoutes.Register}
           >
             LOGIN / SIGN UP
           </Link>

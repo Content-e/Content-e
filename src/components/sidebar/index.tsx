@@ -146,7 +146,7 @@ export const MobileHeader: FC<ProfileProps> = ({ profileState: { data } }) => {
               {getOption('images/menu-2.svg', AdminRoutes.Brands)}
               {getOption('images/menu-3.svg', AdminRoutes.Creators)}
               {getOption('images/menu-4.svg', AuthRoutes.BestPractices)}
-              {getOption('images/menu-1.svg', AdminRoutes.AccountCreator)}
+              {/*{getOption('images/menu-1.svg', AdminRoutes.AccountCreator)}*/}
             </Fragment>
           )}
         </ul>

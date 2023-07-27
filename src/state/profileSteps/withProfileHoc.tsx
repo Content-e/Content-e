@@ -80,9 +80,7 @@ export function withProfile<T>(
     }, [email, isLoggedIn, profileState.data, userId, shouldCallApi]);
 
     useEffect(() => {
-      console.log('isProfileExistsHook')
       if (!loading && shouldCallApi && isApiCalled) {
-        console.log(22222222222)
         setIsApiCalled(false);
         if (profileData && isProfileExists)
           setProfileState({
@@ -117,7 +115,10 @@ export function withProfile<T>(
     }, [createProfileLoading, createProfileData]);
 
     useEffect(() => {
-      if (userTypeData && !userTypeLoading) window.location.reload();
+      if (userTypeData && !userTypeLoading) {
+        localStorage.removeItem('userType')
+        window.location.reload();
+      }
     }, [userTypeData, userTypeLoading]);
 
     useEffect(() => {

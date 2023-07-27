@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './style.css';
 import { useHistory } from 'react-router-dom';
 import { UnAuthRoutes } from 'utils';
@@ -6,27 +6,9 @@ import { UnAuthRoutes } from 'utils';
 import HeaderDesktop from 'components/authentication/components/header-desktop';
 import HeaderMobile from 'components/authentication/components/header-mobile';
 import Footer from 'components/authentication/components/footer';
-import {useLogin, useSignup} from "../../hooks";
-import {useAuth0} from "@auth0/auth0-react";
 
 export const LandingPage: React.FC = () => {
   const history = useHistory();
-  const {res, performAction} = useLogin()
-  const {res : reSignUp, performAction: signUp} = useSignup()
-  const {user, isAuthenticated} = useAuth0()
-  useEffect(() => {
-    if (user && isAuthenticated) {
-    const some = async() => {
-      try {
-        performAction({email: `${user.sub?.replace('|', '.')}@fakemail.com`, password: '12345678', username: user.given_name || ''})
-      } catch (e) {
-        console.log(e)
-       // signUp({email: `${user.sub?.replace('|', '-')}@fake_mail.com`, password: '12345678', username: user.given_name || ''})
-      }
-      }
-      some()
-    }
-  }, [user, isAuthenticated])
 
   return (
     <>

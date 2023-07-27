@@ -10,6 +10,7 @@ import { ProfileProvider } from 'state/profileSteps';
 import ScrollToTop from './ScrollToTop';
 import './assets/css/index.scss';
 import { Auth0Provider } from '@auth0/auth0-react';
+import Auto0Login from "./components/auth0Login";
 
 Amplify.configure(config);
 
@@ -32,6 +33,7 @@ const App: React.FC = () => {
         <div className="App text-gray-600">
           <AuthProvider>
             <ProfileProvider>
+                <Auto0Login/>
               <Route path="/" component={MainRouter} />
             </ProfileProvider>
           </AuthProvider>

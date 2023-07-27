@@ -40,7 +40,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     control,
     handleSubmit,
     watch,
-    formState: { errors, isValid, isDirty, isSubmitting },
+    formState: { errors, isSubmitting },
   } = useZodForm({
     schema: schema,
     defaultValues: {
@@ -49,7 +49,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     },
     mode: 'onBlur',
   });
-  const { loginWithRedirect, loginWithPopup } = useAuth0();
+  const { loginWithPopup } = useAuth0();
   const formState = watch();
 
   const onSubmit = handleSubmit(async (data) => {
