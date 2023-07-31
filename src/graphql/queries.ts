@@ -21,6 +21,260 @@ export const getGPTresponse = /* GraphQL */ `
     }
   }
 `;
+export const getUserProfile = /* GraphQL */ `
+  query GetUserProfile($id: ID!) {
+    getUserProfile(id: $id) {
+      id
+      name
+      userEmail
+      description
+      brand {
+        items {
+          id
+          name
+          toneVoice
+          pillars
+          description
+          internalMission
+          strapLine
+          userEmail
+          tiktokHandle
+          vertical
+          metaData
+          briefs {
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          userProfileBrandId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      owner
+      userType
+      tiktokHandler
+      bestPractices {
+        items {
+          id
+          headLine
+          description
+          urlPath
+          active
+          owner
+          createdAt
+          updatedAt
+          userProfileBestPracticesId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      tiktokAccountAccess
+      userWallet {
+        id
+        currentBalance
+        totalEarned
+        userProfileId
+        createdAt
+        updatedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      userProfileUserWalletId
+      __typename
+    }
+  }
+`;
+export const listUserProfiles = /* GraphQL */ `
+  query ListUserProfiles(
+    $filter: ModelUserProfileFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserProfiles(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        userEmail
+        description
+        brand {
+          items {
+            id
+            name
+            toneVoice
+            pillars
+            description
+            internalMission
+            strapLine
+            userEmail
+            tiktokHandle
+            vertical
+            metaData
+            createdAt
+            updatedAt
+            userProfileBrandId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        owner
+        userType
+        tiktokHandler
+        bestPractices {
+          items {
+            id
+            headLine
+            description
+            urlPath
+            active
+            owner
+            createdAt
+            updatedAt
+            userProfileBestPracticesId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        tiktokAccountAccess
+        userWallet {
+          id
+          currentBalance
+          totalEarned
+          userProfileId
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        userProfileUserWalletId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const userProfilesByUserEmail = /* GraphQL */ `
+  query UserProfilesByUserEmail(
+    $userEmail: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelUserProfileFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    userProfilesByUserEmail(
+      userEmail: $userEmail
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        userEmail
+        description
+        brand {
+          items {
+            id
+            name
+            toneVoice
+            pillars
+            description
+            internalMission
+            strapLine
+            userEmail
+            tiktokHandle
+            vertical
+            metaData
+            createdAt
+            updatedAt
+            userProfileBrandId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        owner
+        userType
+        tiktokHandler
+        bestPractices {
+          items {
+            id
+            headLine
+            description
+            urlPath
+            active
+            owner
+            createdAt
+            updatedAt
+            userProfileBestPracticesId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        tiktokAccountAccess
+        userWallet {
+          id
+          currentBalance
+          totalEarned
+          userProfileId
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        userProfileUserWalletId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getUserWallet = /* GraphQL */ `
+  query GetUserWallet($id: ID!) {
+    getUserWallet(id: $id) {
+      id
+      currentBalance
+      totalEarned
+      userProfileId
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listUserWallets = /* GraphQL */ `
+  query ListUserWallets(
+    $filter: ModelUserWalletFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserWallets(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        currentBalance
+        totalEarned
+        userProfileId
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
 export const getApprovedAds = /* GraphQL */ `
   query GetApprovedAds($id: ID!) {
     getApprovedAds(id: $id) {
@@ -358,260 +612,6 @@ export const approvedAdsByStatus = /* GraphQL */ `
         accessToken
         ad_report
         status
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
-export const getUserProfile = /* GraphQL */ `
-  query GetUserProfile($id: ID!) {
-    getUserProfile(id: $id) {
-      id
-      name
-      userEmail
-      description
-      brand {
-        items {
-          id
-          name
-          toneVoice
-          pillars
-          description
-          internalMission
-          strapLine
-          userEmail
-          tiktokHandle
-          vertical
-          metaData
-          briefs {
-            nextToken
-            __typename
-          }
-          createdAt
-          updatedAt
-          userProfileBrandId
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      owner
-      userType
-      tiktokHandler
-      bestPractices {
-        items {
-          id
-          headLine
-          description
-          urlPath
-          active
-          owner
-          createdAt
-          updatedAt
-          userProfileBestPracticesId
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      tiktokAccountAccess
-      userWallet {
-        id
-        currentBalance
-        totalEarned
-        userProfileId
-        createdAt
-        updatedAt
-        __typename
-      }
-      createdAt
-      updatedAt
-      userProfileUserWalletId
-      __typename
-    }
-  }
-`;
-export const listUserProfiles = /* GraphQL */ `
-  query ListUserProfiles(
-    $filter: ModelUserProfileFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUserProfiles(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        userEmail
-        description
-        brand {
-          items {
-            id
-            name
-            toneVoice
-            pillars
-            description
-            internalMission
-            strapLine
-            userEmail
-            tiktokHandle
-            vertical
-            metaData
-            createdAt
-            updatedAt
-            userProfileBrandId
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        owner
-        userType
-        tiktokHandler
-        bestPractices {
-          items {
-            id
-            headLine
-            description
-            urlPath
-            active
-            owner
-            createdAt
-            updatedAt
-            userProfileBestPracticesId
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        tiktokAccountAccess
-        userWallet {
-          id
-          currentBalance
-          totalEarned
-          userProfileId
-          createdAt
-          updatedAt
-          __typename
-        }
-        createdAt
-        updatedAt
-        userProfileUserWalletId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
-export const userProfilesByUserEmail = /* GraphQL */ `
-  query UserProfilesByUserEmail(
-    $userEmail: String!
-    $sortDirection: ModelSortDirection
-    $filter: ModelUserProfileFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    userProfilesByUserEmail(
-      userEmail: $userEmail
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        name
-        userEmail
-        description
-        brand {
-          items {
-            id
-            name
-            toneVoice
-            pillars
-            description
-            internalMission
-            strapLine
-            userEmail
-            tiktokHandle
-            vertical
-            metaData
-            createdAt
-            updatedAt
-            userProfileBrandId
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        owner
-        userType
-        tiktokHandler
-        bestPractices {
-          items {
-            id
-            headLine
-            description
-            urlPath
-            active
-            owner
-            createdAt
-            updatedAt
-            userProfileBestPracticesId
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        tiktokAccountAccess
-        userWallet {
-          id
-          currentBalance
-          totalEarned
-          userProfileId
-          createdAt
-          updatedAt
-          __typename
-        }
-        createdAt
-        updatedAt
-        userProfileUserWalletId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
-export const getUserWallet = /* GraphQL */ `
-  query GetUserWallet($id: ID!) {
-    getUserWallet(id: $id) {
-      id
-      currentBalance
-      totalEarned
-      userProfileId
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const listUserWallets = /* GraphQL */ `
-  query ListUserWallets(
-    $filter: ModelUserWalletFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUserWallets(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        currentBalance
-        totalEarned
-        userProfileId
         createdAt
         updatedAt
         __typename

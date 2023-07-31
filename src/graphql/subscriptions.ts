@@ -2,80 +2,12 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateApprovedAds = /* GraphQL */ `
-  subscription OnCreateApprovedAds(
-    $filter: ModelSubscriptionApprovedAdsFilterInput
-  ) {
-    onCreateApprovedAds(filter: $filter) {
-      id
-      creativeRequestId
-      identity_id
-      item_id
-      ad_id
-      ad_group_id
-      campaing_id
-      advertiser_id
-      user_profile_id
-      accessToken
-      ad_report
-      status
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onUpdateApprovedAds = /* GraphQL */ `
-  subscription OnUpdateApprovedAds(
-    $filter: ModelSubscriptionApprovedAdsFilterInput
-  ) {
-    onUpdateApprovedAds(filter: $filter) {
-      id
-      creativeRequestId
-      identity_id
-      item_id
-      ad_id
-      ad_group_id
-      campaing_id
-      advertiser_id
-      user_profile_id
-      accessToken
-      ad_report
-      status
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onDeleteApprovedAds = /* GraphQL */ `
-  subscription OnDeleteApprovedAds(
-    $filter: ModelSubscriptionApprovedAdsFilterInput
-  ) {
-    onDeleteApprovedAds(filter: $filter) {
-      id
-      creativeRequestId
-      identity_id
-      item_id
-      ad_id
-      ad_group_id
-      campaing_id
-      advertiser_id
-      user_profile_id
-      accessToken
-      ad_report
-      status
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
 export const onCreateUserProfile = /* GraphQL */ `
   subscription OnCreateUserProfile(
     $filter: ModelSubscriptionUserProfileFilterInput
+    $owner: String
   ) {
-    onCreateUserProfile(filter: $filter) {
+    onCreateUserProfile(filter: $filter, owner: $owner) {
       id
       name
       userEmail
@@ -144,8 +76,9 @@ export const onCreateUserProfile = /* GraphQL */ `
 export const onUpdateUserProfile = /* GraphQL */ `
   subscription OnUpdateUserProfile(
     $filter: ModelSubscriptionUserProfileFilterInput
+    $owner: String
   ) {
-    onUpdateUserProfile(filter: $filter) {
+    onUpdateUserProfile(filter: $filter, owner: $owner) {
       id
       name
       userEmail
@@ -214,8 +147,9 @@ export const onUpdateUserProfile = /* GraphQL */ `
 export const onDeleteUserProfile = /* GraphQL */ `
   subscription OnDeleteUserProfile(
     $filter: ModelSubscriptionUserProfileFilterInput
+    $owner: String
   ) {
-    onDeleteUserProfile(filter: $filter) {
+    onDeleteUserProfile(filter: $filter, owner: $owner) {
       id
       name
       userEmail
@@ -320,6 +254,75 @@ export const onDeleteUserWallet = /* GraphQL */ `
       currentBalance
       totalEarned
       userProfileId
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateApprovedAds = /* GraphQL */ `
+  subscription OnCreateApprovedAds(
+    $filter: ModelSubscriptionApprovedAdsFilterInput
+  ) {
+    onCreateApprovedAds(filter: $filter) {
+      id
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateApprovedAds = /* GraphQL */ `
+  subscription OnUpdateApprovedAds(
+    $filter: ModelSubscriptionApprovedAdsFilterInput
+  ) {
+    onUpdateApprovedAds(filter: $filter) {
+      id
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteApprovedAds = /* GraphQL */ `
+  subscription OnDeleteApprovedAds(
+    $filter: ModelSubscriptionApprovedAdsFilterInput
+  ) {
+    onDeleteApprovedAds(filter: $filter) {
+      id
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
       createdAt
       updatedAt
       __typename

@@ -11,6 +11,8 @@ import ScrollToTop from './ScrollToTop';
 import './assets/css/index.scss';
 import Auto0Login from './components/clerkLogin';
 import { ClerkProvider } from '@clerk/clerk-react';
+import {UnAuthRoutes, UnknownType} from "./utils";
+import {clerkStyles} from "./utils/constants/clerkStyles";
 
 Amplify.configure(config);
 
@@ -25,15 +27,9 @@ const App: React.FC = () => {
     <ErrorProvider>
       <ClerkProvider
         publishableKey={clerkPubKey}
-        appearance={{
-          layout: {
-            logoImageUrl: '/images/logo.png',
-            logoPlacement: 'inside',
-            privacyPageUrl: 'https://www.edcsquared.io/privacyPolicy',
-            showOptionalFields: true,
-            socialButtonsPlacement: 'bottom',
-          },
-        }}
+        afterSignInUrl={UnAuthRoutes.ClerkRedirect}
+        afterSignUpUrl={UnAuthRoutes.ClerkRedirect}
+        appearance={clerkStyles as UnknownType}
       >
         <Router>
           <ScrollToTop />

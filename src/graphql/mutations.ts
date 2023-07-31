@@ -133,78 +133,6 @@ export const deleteUserProfile = /* GraphQL */ `
     }
   }
 `;
-export const createApprovedAds = /* GraphQL */ `
-  mutation CreateApprovedAds(
-    $input: CreateApprovedAdsInput!
-    $condition: ModelApprovedAdsConditionInput
-  ) {
-    createApprovedAds(input: $input, condition: $condition) {
-      id
-      creativeRequestId
-      identity_id
-      item_id
-      ad_id
-      ad_group_id
-      campaing_id
-      advertiser_id
-      user_profile_id
-      accessToken
-      ad_report
-      status
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const updateApprovedAds = /* GraphQL */ `
-  mutation UpdateApprovedAds(
-    $input: UpdateApprovedAdsInput!
-    $condition: ModelApprovedAdsConditionInput
-  ) {
-    updateApprovedAds(input: $input, condition: $condition) {
-      id
-      creativeRequestId
-      identity_id
-      item_id
-      ad_id
-      ad_group_id
-      campaing_id
-      advertiser_id
-      user_profile_id
-      accessToken
-      ad_report
-      status
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const deleteApprovedAds = /* GraphQL */ `
-  mutation DeleteApprovedAds(
-    $input: DeleteApprovedAdsInput!
-    $condition: ModelApprovedAdsConditionInput
-  ) {
-    deleteApprovedAds(input: $input, condition: $condition) {
-      id
-      creativeRequestId
-      identity_id
-      item_id
-      ad_id
-      ad_group_id
-      campaing_id
-      advertiser_id
-      user_profile_id
-      accessToken
-      ad_report
-      status
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
 export const deleteBestPractices = /* GraphQL */ `
   mutation DeleteBestPractices(
     $input: DeleteBestPracticesInput!
@@ -408,6 +336,78 @@ export const deleteUserWallet = /* GraphQL */ `
       currentBalance
       totalEarned
       userProfileId
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const createApprovedAds = /* GraphQL */ `
+  mutation CreateApprovedAds(
+    $input: CreateApprovedAdsInput!
+    $condition: ModelApprovedAdsConditionInput
+  ) {
+    createApprovedAds(input: $input, condition: $condition) {
+      id
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateApprovedAds = /* GraphQL */ `
+  mutation UpdateApprovedAds(
+    $input: UpdateApprovedAdsInput!
+    $condition: ModelApprovedAdsConditionInput
+  ) {
+    updateApprovedAds(input: $input, condition: $condition) {
+      id
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteApprovedAds = /* GraphQL */ `
+  mutation DeleteApprovedAds(
+    $input: DeleteApprovedAdsInput!
+    $condition: ModelApprovedAdsConditionInput
+  ) {
+    deleteApprovedAds(input: $input, condition: $condition) {
+      id
+      creativeRequestId
+      identity_id
+      item_id
+      ad_id
+      ad_group_id
+      campaing_id
+      advertiser_id
+      user_profile_id
+      accessToken
+      ad_report
+      status
       createdAt
       updatedAt
       __typename

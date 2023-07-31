@@ -19,3 +19,4 @@ export * from './homePageLogin';
 export * from './privacyPolicy';
 
 export * from './coBranded';
+export {RedirectClerk} from './redirectClerk'

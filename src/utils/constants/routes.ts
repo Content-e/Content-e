@@ -1,4 +1,5 @@
 export enum UnAuthRoutes {
+  ClerkRedirect = '/redirect',
   Landing = '/landing',
   SubLanding = '/landing/:id',
 

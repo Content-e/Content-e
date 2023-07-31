@@ -11,7 +11,6 @@ import {
 import { AuthContextType } from 'state/types';
 import { AuthContext } from 'state/auth';
 import {
-  AuthRoutes,
   IErrorContextType,
   loginErrorHeading,
   unverifiedUser,
@@ -19,7 +18,6 @@ import {
 } from 'utils';
 import ErrorContext from 'state/error/error.context';
 import { updateErrorState } from 'components';
-import { useHistory } from 'react-router-dom';
 import { useAuth } from '@clerk/clerk-react';
 
 export const useLogin = (): ApiHookReturnType<
@@ -31,7 +29,6 @@ export const useLogin = (): ApiHookReturnType<
   const { setAuthState } = useContext<AuthContextType>(AuthContext);
   const { setErrorState, errorState } =
     useContext<IErrorContextType>(ErrorContext);
-  const history = useHistory();
   const { getToken, userId } = useAuth();
 
   const performLogin = useCallback(
@@ -83,8 +80,7 @@ export const useLogin = (): ApiHookReturnType<
 
         if (response) {
           setRes(getSuccessResponse<CognitoUser>(response));
-          history.replace(AuthRoutes.Dashboard);
-          window.location.reload();
+          setTimeout(() => window.location.reload(), 0);
         }
       }
     },

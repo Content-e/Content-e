@@ -76,6 +76,11 @@
   src: url('../fonts/Poppins-Regular.otf');
 }
 
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi-Regular.otf');
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
@@ -3166,6 +3171,33 @@ input[type='checkbox']:checked + .checkbox {
   & .creator-dashboard__creative-learn {
     padding: 0;
   }
+}
+.clerkGeneral{
+  a {
+    color: dodgerblue;
+  }
+}
+.clerkSocialIconFacebook{
+  background: no-repeat center url("../../../public/images/instagram-colored.svg");
+  background-size: 22%;
+  img{
+    display: none;
+  }
+}
+.clerkLogoBox {
+  height: 60px;
+}
+.clerkInput {
+  button{
+    font-weight: 700;
+  }
+  input {
+    border-radius: 6px;
+    border: 1px solid #eaeaea;
+  }
+}
+.clerkButton {
+  font-weight: 500;
 }
 
 @media screen and (max-width: 991px) {

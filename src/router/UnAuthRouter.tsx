@@ -20,6 +20,7 @@ import {
   BrandsPage,
   SayHello,
   PrivacyPolicy,
+  RedirectClerk,
 } from 'pages';
 import AdminLogin from 'components/adminLogin/adminLogin';
 
@@ -28,6 +29,7 @@ const UnAuthRouter: FC = () => {
     <UnAuthFullNameProvider>
       <Switch>
         <Route exact path={path.Landing} component={LandingPage} />
+        <Route exact path={path.ClerkRedirect} component={RedirectClerk} />
         <Route exact path={path.PrivacyPolicy} component={PrivacyPolicy} />
         <Route exact path={path.Creators} component={CreatorsPage} />
         <Route exact path={path.Brands} component={BrandsPage} />
