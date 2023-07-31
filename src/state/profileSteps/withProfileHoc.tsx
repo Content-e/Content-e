@@ -89,7 +89,7 @@ export function withProfile<T>(
             error: undefined,
           });
         else if (!isProfileExists && !createProfileApiCall) {
-          console.log('isProfileExists', isProfileExists)
+          console.log('isProfileExists', isProfileExists);
           const input = {
             name: name ?? email?.split('@')[0],
             userEmail: email,
@@ -116,7 +116,7 @@ export function withProfile<T>(
 
     useEffect(() => {
       if (userTypeData && !userTypeLoading) {
-        localStorage.removeItem('userType')
+        localStorage.removeItem('userType');
         window.location.reload();
       }
     }, [userTypeData, userTypeLoading]);

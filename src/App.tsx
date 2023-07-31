@@ -9,10 +9,12 @@ import MainRouter from './router';
 import { ProfileProvider } from 'state/profileSteps';
 import ScrollToTop from './ScrollToTop';
 import './assets/css/index.scss';
-import { Auth0Provider } from '@auth0/auth0-react';
-import Auto0Login from "./components/auth0Login";
+import Auto0Login from './components/clerkLogin';
+import { ClerkProvider } from '@clerk/clerk-react';
 
 Amplify.configure(config);
+
+const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY || '';
 
 const App: React.FC = () => {
   const [allowCookies, setAllowCookies] = useState(
@@ -21,42 +23,48 @@ const App: React.FC = () => {
 
   return (
     <ErrorProvider>
-      <Auth0Provider
-          domain={process.env.REACT_APP_AUTH_DOMAIN || ''}
-          clientId={process.env.REACT_APP_AUTH_CLIENT_ID || ''}
-          authorizationParams={{
-            redirect_uri: process.env.REACT_APP_URL || '',// window.location.origin
-          }}
+      <ClerkProvider
+        publishableKey={clerkPubKey}
+        appearance={{
+          layout: {
+            logoImageUrl: '/images/logo.png',
+            logoPlacement: 'inside',
+            privacyPageUrl: 'https://www.edcsquared.io/privacyPolicy',
+            showOptionalFields: true,
+            socialButtonsPlacement: 'bottom',
+          },
+        }}
       >
-      <Router>
-        <ScrollToTop />
-        <div className="App text-gray-600">
-          <AuthProvider>
-            <ProfileProvider>
-                <Auto0Login/>
-              <Route path="/" component={MainRouter} />
-            </ProfileProvider>
-          </AuthProvider>
-          {!allowCookies && (
-            <div className="cookies__banner">
-              <p>
-                We use cookies to help us offer you the best online experience.
-                By continuing to use our website and / or clicking OK, you agree
-                to our use of cookies in accordance with our Privacy Policy.
-              </p>
-              <button
-                onClick={() => {
-                  localStorage.setItem('allowCookies', 'true');
-                  setAllowCookies('true');
-                }}
-              >
-                Ok
-              </button>
-            </div>
-          )}
-        </div>
-      </Router>
-      </Auth0Provider>
+        <Router>
+          <ScrollToTop />
+          <div className="App text-gray-600">
+            <AuthProvider>
+              <ProfileProvider>
+                <Auto0Login />
+                <Route path="/" component={MainRouter} />
+              </ProfileProvider>
+            </AuthProvider>
+            {!allowCookies && (
+              <div className="cookies__banner">
+                <p>
+                  We use cookies to help us offer you the best online
+                  experience. By continuing to use our website and / or clicking
+                  OK, you agree to our use of cookies in accordance with our
+                  Privacy Policy.
+                </p>
+                <button
+                  onClick={() => {
+                    localStorage.setItem('allowCookies', 'true');
+                    setAllowCookies('true');
+                  }}
+                >
+                  Ok
+                </button>
+              </div>
+            )}
+          </div>
+        </Router>
+      </ClerkProvider>
     </ErrorProvider>
   );
 };

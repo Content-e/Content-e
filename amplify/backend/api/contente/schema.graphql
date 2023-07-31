@@ -1,11 +1,7 @@
-
 # This "input" configures a global authorization rule to enable public access to
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 
-type UserProfile
-@model 
-@auth(rules: [{ allow: owner }]) 
-{
+type UserProfile @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String!
   userEmail: String! @index
@@ -13,44 +9,38 @@ type UserProfile
   brand: [BrandProfile] @hasMany
   owner: String @auth(rules: [{ allow: owner, operations: [read] }])
   userType: USER_TYPES @auth(rules: [{ allow: owner, operations: [read] }])
-  tiktokHandler: String 
+  tiktokHandler: String
   bestPractices: [BestPractices] @hasMany
-  tiktokAccountAccess: String @auth(rules: [{ allow: owner, operations: [read] }])
+  tiktokAccountAccess: String
+    @auth(rules: [{ allow: owner, operations: [read] }])
   userWallet: UserWallet @hasOne
 }
 
-type UserWallet 
-@model
-@auth(rules: [{ allow: private}])
-{
+type UserWallet @model @auth(rules: [{ allow: private }]) {
   id: ID!
   currentBalance: String
   totalEarned: String
   userProfileId: ID!
 }
 
-type ApprovedAds
-@model
-@auth(rules: [{ allow: private }])
-{
+type ApprovedAds @model @auth(rules: [{ allow: private }]) {
   id: String @index
   creativeRequestId: String @index
   identity_id: String #tiktok spark ad response
   item_id: String #tiktok spark ad response
-  ad_id: String @index#tiktok ad creation
-  ad_group_id: String @index#tiktok ad group
+  ad_id: String @index #tiktok ad creation
+  ad_group_id: String @index #tiktok ad group
   campaing_id: String @index #tiktok campaign
-  advertiser_id: String @index#approved advertiser Id also called account id in tiktok
+  advertiser_id: String @index #approved advertiser Id also called account id in tiktok
   user_profile_id: String @index #brand user profile
   accessToken: String # tiktok linked account access token
   ad_report: String # json object stored after running tiktok reports against the ad_id
-  status: String @index# ACTIVE or IN_ACTIVE based on if brand user disables the ad and removes from campaign
+  status: String @index # ACTIVE or IN_ACTIVE based on if brand user disables the ad and removes from campaign
 }
 
-type BestPractices 
-@model
-@auth(rules: [{ allow: private, operations: [read]},{ allow: owner }])
-{
+type BestPractices
+  @model
+  @auth(rules: [{ allow: private, operations: [read] }, { allow: owner }]) {
   id: ID!
   headLine: String!
   description: String!
@@ -59,10 +49,7 @@ type BestPractices
   owner: String @auth(rules: [{ allow: owner, operations: [read] }])
 }
 
-type BrandProfile 
-@model 
-@auth(rules: [{ allow: private }]) 
-{
+type BrandProfile @model @auth(rules: [{ allow: private }]) {
   id: ID!
   name: String
   toneVoice: [String]
@@ -70,38 +57,33 @@ type BrandProfile
   description: String
   internalMission: String
   strapLine: String
-  userEmail: String @index 
+  userEmail: String @index
   tiktokHandle: String
   vertical: String
   metaData: String
-  briefs: [BrandBrief] @hasMany(indexName: "byBrand", fields:[ "id" ])
+  briefs: [BrandBrief] @hasMany(indexName: "byBrand", fields: ["id"])
 }
 
-type BrandBrief 
-@model
-@auth(rules: [{ allow: private}])
-{
+type BrandBrief @model @auth(rules: [{ allow: private }]) {
   id: ID!
   BriefName: String
-  vertical: String! @index (name: "byVertical")
+  vertical: String! @index(name: "byVertical")
   objective: String
   brandBriefDetails: String
   creativeInspirations: [String]
-  active: Boolean 
+  active: Boolean
   campaignId: String
   adgroupId: String
-  creativeRequests: [CreativeRequest] @hasMany(indexName: "byBrandBrief",fields:[ "id" ])
+  creativeRequests: [CreativeRequest]
+    @hasMany(indexName: "byBrandBrief", fields: ["id"])
   brandId: ID! @index(name: "byBrand")
-  brandProfile: BrandProfile @hasOne (fields: [ "brandId" ])
+  brandProfile: BrandProfile @hasOne(fields: ["brandId"])
 }
 
-type CreativeRequest 
-@model
-@auth(rules: [{ allow: private}])
-{
-  brandBriefId: ID! @index (name: "byBrandBrief")
-  creatorId: String! @index (name: "byCreator")
-  status: String! @index (name: "byStatus")
+type CreativeRequest @model @auth(rules: [{ allow: private }]) {
+  brandBriefId: ID! @index(name: "byBrandBrief")
+  creatorId: String! @index(name: "byCreator")
+  status: String! @index(name: "byStatus")
   tiktokCreativeUrl: String!
   tiktokVideoCode: String!
   creativeTiktokHandle: String
@@ -109,7 +91,7 @@ type CreativeRequest
   creatorName: String
 }
 
-enum USER_TYPES{
+enum USER_TYPES {
   CREATIVE_USER
   BRAND_USER
   ADMIN_USER
@@ -169,19 +151,51 @@ input EMAIL_INPUT {
   from: String!
 }
 
-
-type Query{
-  getGPTresponse(data: GPT_INPUT): GPT_RESPONSE @function(name: "GPTLambda-${env}") @aws_iam @aws_cognito_user_pools
-  sendEmail(data: EMAIL_INPUT): Boolean @function(name: "emailService-${env}")  @auth(rules: [{ allow: public }])
+type Query {
+  getGPTresponse(data: GPT_INPUT): GPT_RESPONSE
+    @function(name: "GPTLambda-${env}")
+    @aws_iam
+    @aws_cognito_user_pools
+  sendEmail(data: EMAIL_INPUT): Boolean
+    @function(name: "emailService-${env}")
+    @auth(rules: [{ allow: public }])
 }
 
-
-type Mutation{
-  linkTiktokAccount(authCode: String, userProfileId: String): Boolean @function(name: "linkTiktokAccount-${env}") @aws_iam @aws_cognito_user_pools
-  linkUserType(userType: String, profileId: String): Boolean @function(name: "updateUserType-${env}") @aws_iam @aws_cognito_user_pools
-  createAds(token:String,authCode:String,advId:String,adgroupId:String,landingPageUrl:String, creativeRequestId:String ): Boolean @function(name: "createAd-${env}") @aws_iam @aws_cognito_user_pools
-  listAdGroups(token: String, advertiser_id:String,campaignId: String ): String @function(name: "listAdGroups-${env}") @aws_iam @aws_cognito_user_pools
-  listCampaigns(token: String,advertiser_id: String ): String @function(name: "listCompaigns-${env}") @aws_iam @aws_cognito_user_pools
-  getVideoFromAuthCode(token: String,advertiser_id: String, authCode: String ): String @function(name: "getVideoFromAuthCode-${env}") @aws_iam @aws_cognito_user_pools
-  
+type Mutation {
+  linkTiktokAccount(authCode: String, userProfileId: String): Boolean
+    @function(name: "linkTiktokAccount-${env}")
+    @aws_iam
+    @aws_cognito_user_pools
+  linkUserType(userType: String, profileId: String): Boolean
+    @function(name: "updateUserType-${env}")
+    @aws_iam
+    @aws_cognito_user_pools
+  createAds(
+    token: String
+    authCode: String
+    advId: String
+    adgroupId: String
+    landingPageUrl: String
+    creativeRequestId: String
+  ): Boolean @function(name: "createAd-${env}") @aws_iam @aws_cognito_user_pools
+  listAdGroups(
+    token: String
+    advertiser_id: String
+    campaignId: String
+  ): String
+    @function(name: "listAdGroups-${env}")
+    @aws_iam
+    @aws_cognito_user_pools
+  listCampaigns(token: String, advertiser_id: String): String
+    @function(name: "listCompaigns-${env}")
+    @aws_iam
+    @aws_cognito_user_pools
+  getVideoFromAuthCode(
+    token: String
+    advertiser_id: String
+    authCode: String
+  ): String
+    @function(name: "getVideoFromAuthCode-${env}")
+    @aws_iam
+    @aws_cognito_user_pools
 }

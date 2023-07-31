@@ -25,4 +25,3 @@ exports.handler = async (event) => {
   console.log(`response >`, JSON.stringify(response, null, 2));
   return response;
 };
-

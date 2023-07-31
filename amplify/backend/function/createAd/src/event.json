@@ -7,5 +7,5 @@
     "landingPageUrl": "public/creative/4cf3d974-2893-49a4-886f-148465f2afc3/ScreenRecording.mov",
     "creativeRequestId": "94b77ec9-6d74-4f9d-a359-3f01cc20ed7a"
   },
-  "identity":{"claims":{"sub":"a713a19f-c28b-464d-9301-e95a2f554993"}}
+  "identity": { "claims": { "sub": "a713a19f-c28b-464d-9301-e95a2f554993" } }
 }

@@ -16,13 +16,13 @@ import Footer from './components/footer';
 import './styles/login.scss';
 import Checkbox from 'components/ui/checkbox';
 import { Auth } from 'aws-amplify';
-import {useAuth0} from "@auth0/auth0-react";
+import { useClerk } from '@clerk/clerk-react';
 
 const schema = z.object({
   email: z
     .string()
-    .nonempty("Please enter your email address")
-    .email("Please enter the correct email address"),
+    .nonempty('Please enter your email address')
+    .email('Please enter the correct email address'),
   password: z.string().nonempty('Please enter your password'),
   remember: z.boolean().default(false),
 });
@@ -34,6 +34,8 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     res: { error, success },
     performAction,
   } = useLogin();
+
+  const { openSignIn } = useClerk();
 
   const {
     register,
@@ -49,7 +51,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
     },
     mode: 'onBlur',
   });
-  const { loginWithPopup } = useAuth0();
+  // const { loginWithPopup } = useAuth0();
   const formState = watch();
 
   const onSubmit = handleSubmit(async (data) => {
@@ -111,7 +113,7 @@ export const Login: FC<AuthProps> = ({ getAuth }) => {
                       // type="submit"
                       className="login__btn"
                       // disabled={!isValid || !isDirty || isSubmitting}
-                      onClick={async () => await loginWithPopup()}
+                      onClick={async () => await openSignIn()}
                     >
                       <span style={isSubmitting ? { marginRight: 12 } : {}}>
                         Login

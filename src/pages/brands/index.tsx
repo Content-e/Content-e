@@ -5,12 +5,12 @@ import { UnAuthRoutes } from 'utils';
 import HeaderDesktop from 'components/authentication/components/header-desktop';
 import HeaderMobile from 'components/authentication/components/header-mobile';
 import Footer from 'components/authentication/components/footer';
-import {useAuth0} from "@auth0/auth0-react";
-import {USER_TYPES} from "../../API";
+import { USER_TYPES } from '../../API';
+import { useClerk } from '@clerk/clerk-react';
 
 export const BrandsPage: React.FC = () => {
   const history = useHistory();
-  const {loginWithPopup} = useAuth0()
+  const { openSignIn } = useClerk();
   return (
     <div className="brands-page-wrapper">
       <HeaderMobile />
@@ -80,8 +80,8 @@ export const BrandsPage: React.FC = () => {
               <div
                 className="login-signup brands-btn"
                 onClick={() => {
-                  localStorage.setItem('userType', USER_TYPES.BRAND_USER)
-                  loginWithPopup()
+                  localStorage.setItem('userType', USER_TYPES.BRAND_USER);
+                  openSignIn();
                 }}
               >
                 Login / Sign up

@@ -25,7 +25,10 @@ export const AdminBestPracticeTable: FC = () => {
   }, []);
 
   const filteredData = useMemo(
-    () => data?.filter((e) => e?.headLine?.toLowerCase().includes(input.toLowerCase())),
+    () =>
+      data?.filter((e) =>
+        e?.headLine?.toLowerCase().includes(input.toLowerCase())
+      ),
     [data, input]
   );
 

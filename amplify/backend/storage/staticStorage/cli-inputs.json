@@ -4,10 +4,7 @@
   "bucketName": "user-avatar",
   "storageAccess": "auth",
   "guestAccess": [],
-  "authAccess": [
-    "CREATE_AND_UPDATE",
-    "READ"
-  ],
+  "authAccess": ["CREATE_AND_UPDATE", "READ"],
   "triggerFunction": "NONE",
   "groupAccess": {}
 }

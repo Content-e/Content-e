@@ -39,7 +39,7 @@ export default function AdminAccountCreator() {
   const onSubmit = handleSubmit((data) => {
     console.log('Singin up', data);
     localStorage.setItem(
-      "userType",
+      'userType',
       data.role === 'creator' ? USER_TYPES.CREATIVE_USER : USER_TYPES.BRAND_USER
     );
     performAction(data);

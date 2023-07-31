@@ -7,27 +7,27 @@ module.exports = {
   entry: './src/app.js',
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   devServer: {
     client: {
-      overlay: true
+      overlay: true,
     },
     hot: true,
-    watchFiles: ['src/*', 'index.html']
+    watchFiles: ['src/*', 'index.html'],
   },
   plugins: [
     new CopyWebpackPlugin({
-      patterns: ['index.html']
+      patterns: ['index.html'],
     }),
-    new webpack.HotModuleReplacementPlugin()
-  ]
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 };

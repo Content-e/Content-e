@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-contente-dev-202732-unauthRole",
       "StackName": "amplify-contente-dev-202732",
       "StackId": "arn:aws:cloudformation:us-east-1:995966967167:stack/amplify-contente-dev-202732/cb3c5da0-a632-11ed-9e84-12f284457d8b",
-      "AmplifyAppId": "d12cm8tmqhdorb"
+      "AmplifyAppId": "d12cm8tmqhdorb",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-contente-dev-202732-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
@@ -54,6 +55,10 @@
         "updateUserType": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
           "s3Key": "amplify-builds/updateUserType-77764b41336343785a74-build.zip"
+        },
+        "contente9303b093PreSignup": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/contente9303b093PreSignup-6f376959302f4a596b76-build.zip"
         }
       },
       "hosting": {

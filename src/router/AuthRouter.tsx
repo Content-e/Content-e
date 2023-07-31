@@ -86,7 +86,6 @@ const AuthRouterPaths: FC<ProfileProps> = ({
                 path={AdminRoutes.EditPractice}
                 component={CreatePractice}
               />
-
             </Fragment>
           )}
 

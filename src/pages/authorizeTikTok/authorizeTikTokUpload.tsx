@@ -20,7 +20,7 @@ const fileTypes: string[] = ['MP4', 'MOV', 'AVI', 'WMV', 'WebM'];
 const generateUniqueFilename = (fileName: string) => {
   const extension = _.last(fileName.split('.'));
   return `${uuid()}.${extension}`;
-}
+};
 
 export const AuthorizeTiktokUpload: FC<Props> = ({
   goToPrev,

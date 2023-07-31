@@ -118,16 +118,20 @@ export const EditProfile: FC<ProfileProps> = ({
                   <span>{formError.name}</span>
                 </ShouldRender>
               </div>
-              { !data?.userEmail.includes(process.env.REACT_APP_FAKE_MAIL || '@fakemail.com')? <div className="brand-dashboard__profile-group">
-                <div className="brand-dashboard__profile-label">
-                  Email Address
+              {!data?.userEmail.includes(
+                process.env.REACT_APP_FAKE_MAIL || '@fakemail.com'
+              ) ? (
+                <div className="brand-dashboard__profile-group">
+                  <div className="brand-dashboard__profile-label">
+                    Email Address
+                  </div>
+                  <input
+                    className="brand-dashboard__profile-input"
+                    value={data.userEmail}
+                    readOnly
+                  />
                 </div>
-                <input
-                  className="brand-dashboard__profile-input"
-                  value={data.userEmail}
-                  readOnly
-                />
-              </div>: null}
+              ) : null}
               {data?.userType === USER_TYPES.CREATIVE_USER && (
                 <Fragment>
                   <div className="brand-dashboard__profile-group">

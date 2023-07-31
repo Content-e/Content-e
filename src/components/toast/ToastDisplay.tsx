@@ -1,7 +1,7 @@
-import { FC, useState } from "react";
-import { Toast } from "react-bootstrap";
-import { toastDelayTime } from "utils";
-import * as Styled from "./styles";
+import { FC, useState } from 'react';
+import { Toast } from 'react-bootstrap';
+import { toastDelayTime } from 'utils';
+import * as Styled from './styles';
 
 type Props = {
   title: string;
