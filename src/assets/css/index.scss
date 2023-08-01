@@ -62,6 +62,16 @@
 }
 
 @font-face {
+  font-family: 'Oswald';
+  src: url('../fonts/Oswald-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'OswaldBold';
+  src: url('../fonts/Oswald-Bold.ttf');
+}
+
+@font-face {
   font-family: 'LatoLight';
   src: url('../fonts/Lato-Light.ttf');
 }
@@ -3198,6 +3208,17 @@ input[type='checkbox']:checked + .checkbox {
 }
 .clerkButton {
   font-weight: 500;
+}
+
+.clerkHeader {
+  :last-child:after {
+    position: relative;
+    display: block;
+    content: "Are you a brand? Get in touch here or drop us a mail hello@edcsquared.io.";
+    text-align: left;
+    margin: 10px 0;
+    font-size: 13px;
+  }
 }
 
 @media screen and (max-width: 991px) {

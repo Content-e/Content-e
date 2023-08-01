@@ -10,7 +10,8 @@ export const clerkStyles = {
         logoBox: 'clerkLogoBox',
         formFieldRow: 'clerkInput',
         rootBox: 'clerkGeneral',
-        socialButtonsIconButton__facebook: 'clerkSocialIconFacebook'
+        socialButtonsIconButton__facebook: 'clerkSocialIconFacebook',
+        header: 'clerkHeader'
     },
     layout: {
         logoImageUrl: '/images/logo-dark.png',
