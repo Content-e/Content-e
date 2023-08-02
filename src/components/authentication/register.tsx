@@ -1,18 +1,20 @@
 import _ from 'lodash';
-import { FC, useMemo } from 'react';
+import { ChangeEventHandler, FC, useMemo } from 'react';
 import { withAuth } from 'state/auth';
+import { UnAuthRoutes } from 'utils';
 import './styles/login.scss';
 import { USER_TYPES } from 'API';
 import { IconLoader } from 'components/loader';
 import axios from 'axios';
 import HeaderDesktop from 'components/authentication/components/header-desktop';
 import HeaderMobile from 'components/authentication/components/header-mobile';
+import { Link } from 'react-router-dom';
 import Footer from './components/footer';
 import Modal from './modal';
 import useZodForm from 'hooks/useZodForm';
 import { z } from 'zod';
+import { FormInput } from 'components';
 import init from 'zod-empty';
-import { useClerk } from '@clerk/clerk-react';
 
 const DEFAULT_ROLE = 'brand';
 
@@ -46,8 +48,8 @@ const sendJSONEmail = async (json: { name: string }): Promise<void> => {
 export const schema = z.object({
   email: z
     .string()
-    .nonempty('Please enter your email address')
-    .email('Please enter the correct email address'),
+    .nonempty("Please enter your email address")
+    .email("Please enter the correct email address"),
   // password: z.string().nonempty("Please enter your password").min(8),
   name: z.string().nonempty('Please enter your full name'),
   role: z.enum(['brand', 'creator']),
@@ -56,7 +58,6 @@ export const schema = z.object({
 
 export const Register: FC = () => {
   const params = new URL(location.href).searchParams;
-  const { openSignIn } = useClerk();
 
   const defaultRole = useMemo(() => {
     const value = params.get('role');
@@ -70,11 +71,12 @@ export const Register: FC = () => {
   }, [params]);
 
   const {
+    register,
     handleSubmit,
     setValue,
     reset,
     watch,
-    formState: { isSubmitting, isSubmitSuccessful },
+    formState: { errors, isValid, isSubmitting, isSubmitSuccessful, isDirty },
   } = useZodForm({
     schema: schema,
     defaultValues: {
@@ -99,6 +101,10 @@ export const Register: FC = () => {
     return sendJSONEmail(data);
   });
 
+  const handleRoleChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
+    setRole(e.target.value as z.infer<typeof schema>['role']);
+  };
+
   return (
     <div className="login">
       <HeaderMobile />
@@ -110,37 +116,74 @@ export const Register: FC = () => {
               <div className="signup__title">
                 Create a {_.capitalize(role)} account
               </div>
-              <div
-                className={`${
-                  role === 'creator' ? 'active' : false
-                } btns-container`}
-              >
-                <div
-                  className={`${role === 'brand' ? 'active' : false}`}
-                  onClick={() => setRole('brand')}
-                >
-                  Join as a brand
-                </div>
-                <div
-                  className={`${role === 'creator' ? 'active' : false}`}
-                  onClick={() => setRole('creator')}
-                >
-                  Join as a creator
-                </div>
-              </div>
+              {/*<div*/}
+              {/*  className={`${*/}
+              {/*    role === 'creator' ? 'active' : false*/}
+              {/*  } btns-container`}*/}
+              {/*>*/}
+              {/*  <div*/}
+              {/*    className={`${role === 'brand' ? 'active' : false}`}*/}
+              {/*    onClick={() => setRole('brand')}*/}
+              {/*  >*/}
+              {/*    Join as a brand*/}
+              {/*  </div>*/}
+              {/*  <div*/}
+              {/*    className={`${role === 'creator' ? 'active' : false}`}*/}
+              {/*    onClick={() => setRole('creator')}*/}
+              {/*  >*/}
+              {/*    Join as a creator*/}
+              {/*  </div>*/}
+              {/*</div>*/}
               <div className="signup__container-form">
                 <form onSubmit={onSubmit}>
+                  <div className="signup__container-form-field">
+                    <FormInput
+                      placeholder="Full Name"
+                      name="name"
+                      register={register}
+                      errors={errors}
+                    />
+                  </div>
+                  <div className="signup__container-form-field">
+                    <FormInput
+                      placeholder="Email Address"
+                      name="email"
+                      register={register}
+                      errors={errors}
+                    />
+                  </div>
+                  <div className="signup__container-form-field">
+                    <select
+                        disabled={true}
+                      name="role"
+                      placeholder="Who are you?"
+                      value={role}
+                      onChange={handleRoleChange}
+                      className="mb-4"
+                    >
+                      <option value="brand">Brand</option>
+                      <option value="creator">Creator</option>
+                    </select>
+                  </div>
+                  <div className="signup__container-form-field">
+                    <FormInput
+                      name="about"
+                      placeholder={
+                        {
+                          creator:
+                            'Tell us about you and the content you create.',
+                          brand:
+                            'Tell us a little more about you and your brand.',
+                        }[role]
+                      }
+                      register={register}
+                      errors={errors}
+                    />
+                  </div>
                   <button
+                    type="submit"
                     className="signup__container-form-register-button"
-                    onClick={async () => {
-                      localStorage.setItem(
-                        'userType',
-                        role === 'brand'
-                          ? USER_TYPES.BRAND_USER
-                          : USER_TYPES.CREATIVE_USER
-                      );
-                      await openSignIn();
-                    }}
+                    disabled={!isValid || !isDirty || isSubmitting}
                   >
                     <span style={isSubmitting ? { marginRight: 12 } : {}}>
                       Register
@@ -149,18 +192,8 @@ export const Register: FC = () => {
                   </button>
                   <div className="login__already">
                     Already have an account?{' '}
+                    <Link to={UnAuthRoutes.Login}>Login</Link>
                   </div>
-                  <button
-                    // type="submit"
-                    className="login__btn"
-                    // disabled={!isValid || !isDirty || isSubmitting}
-                    onClick={async () => await openSignIn()}
-                  >
-                    <span style={isSubmitting ? { marginRight: 12 } : {}}>
-                      Login
-                    </span>
-                    {isSubmitting && <IconLoader />}
-                  </button>
                 </form>
               </div>
             </div>
@@ -173,6 +206,7 @@ export const Register: FC = () => {
       <Footer />
       <Modal
         isOpen={isSubmitSuccessful}
+        withOutLabel={true}
         content="Thank you for registering, a member of the EDC squared team will be in
           touch shortly."
         handleClose={() => reset(undefined, { keepDefaultValues: true })}

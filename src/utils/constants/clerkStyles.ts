@@ -11,7 +11,9 @@ export const clerkStyles = {
         formFieldRow: 'clerkInput',
         rootBox: 'clerkGeneral',
         socialButtonsIconButton__facebook: 'clerkSocialIconFacebook',
-        header: 'clerkHeader'
+        header: 'clerkHeader',
+        headerTitle: 'clerkHeaderTitle',
+        formFieldLabelRow__emailAddress: 'clerkOptional'
     },
     layout: {
         logoImageUrl: '/images/logo-dark.png',

@@ -7,6 +7,7 @@ interface Props {
   type?: string;
   actionHandler?: () => void;
   actionLabel?: string;
+  withOutLabel?: boolean;
 }
 
 export default function Modal({
@@ -16,6 +17,7 @@ export default function Modal({
   type,
   actionHandler,
   actionLabel,
+                                withOutLabel
 }: Props) {
   if (!isOpen) return <></>;
 
@@ -25,10 +27,10 @@ export default function Modal({
         <S.ModalTopBar>
           <img src="/images/cross.svg" alt="cross icon" onClick={handleClose} />
         </S.ModalTopBar>
-        <img
+        {!withOutLabel ? <img
           src={`/images/checkmark${type ? `-${type}` : ''}.svg`}
           alt="checkmark icon"
-        />
+        />: null}
         <span>{content}</span>
         {actionLabel && (
           <S.ModalActionButton $type={type || ''} onClick={actionHandler}>

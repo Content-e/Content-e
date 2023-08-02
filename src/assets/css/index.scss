@@ -3210,16 +3210,13 @@ input[type='checkbox']:checked + .checkbox {
   font-weight: 500;
 }
 
-.clerkHeader {
-  :last-child:after {
-    position: relative;
-    display: block;
-    content: "Are you a brand? Get in touch here or drop us a mail hello@edcsquared.io.";
-    text-align: left;
-    margin: 10px 0;
-    font-size: 13px;
+.clerkOptional{
+  span {
+    display: none;
   }
 }
+
+.clerkHeaderTitle{}
 
 @media screen and (max-width: 991px) {
   .creator-identity {
