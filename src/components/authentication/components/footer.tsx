@@ -15,35 +15,8 @@ export function Footer({ isDark }: Props) {
       <div className="landing-footer-text-container">
         <div
           className="landing-footer-text"
-          onClick={() => history.push(UnAuthRoutes.Landing)}
-        >
-          Home
-        </div>
-        <div
-          className="landing-footer-text"
-          onClick={() => history.push(UnAuthRoutes.Creators)}
-        >
-          For Creators
-        </div>
-        <div
-          className="landing-footer-text"
-          onClick={() => history.push(UnAuthRoutes.Brands)}
-        >
-          For Brands
-        </div>
-        <div
-          className="landing-footer-text"
-          onClick={() => history.push(UnAuthRoutes.SayHello)}
-        >
-          Say Hello
-        </div>
-        <div
-          className="landing-footer-text"
-          onClick={() =>
-            window.location.pathname === '/homePageLogin'
-              ? history.push(UnAuthRoutes.Register)
-              : history.push(UnAuthRoutes.Login)
-          }
+          onClick={() => history.push(UnAuthRoutes.Login)
+        }
         >
           Login / Sign up
         </div>

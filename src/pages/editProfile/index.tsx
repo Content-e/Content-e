@@ -79,7 +79,7 @@ export const EditProfile: FC<ProfileProps> = ({
 
   const linkTiktokAccount = (): void => {
     window.open(
-      'https://ads.tiktok.com/marketing_api/auth?app_id=7204753405493903362&state=your_custom_params&redirect_uri=http%3A%2F%2Fwww.edcsquared.io%2Fbranddashboard&rid=8w8cll1xcbs'
+      'https://ads.tiktok.com/marketing_api/auth?app_id=7204753405493903362&state=your_custom_params&redirect_uri=https%3A%2F%2Fapp.edcsquared.io%2Fbranddashboard&rid=8w8cll1xcbs'
     );
   };
 

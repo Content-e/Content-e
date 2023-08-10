@@ -10,4 +10,3 @@ export * from './helpers';
 export * from './authentication';
 export * from './customInput';
 export * from './brand/components/textArea';
-export * from './coBrandedModals';

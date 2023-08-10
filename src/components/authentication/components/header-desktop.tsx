@@ -50,16 +50,6 @@ export const HeaderDesktop = () => {
             Say hello
           </Link>
         </li>
-        <li className="login-signup">
-          <Link
-            className={`${
-              path === '/homePageLogin' ? 'active' : ''
-            } login-signup-link`}
-            to={UnAuthRoutes.Register}
-          >
-            LOGIN / SIGN UP
-          </Link>
-        </li>
         <div className="social-links">
           <li>
             <a

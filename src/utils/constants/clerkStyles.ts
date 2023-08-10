@@ -16,7 +16,7 @@ export const clerkStyles = {
         formFieldLabelRow__emailAddress: 'clerkOptional'
     },
     layout: {
-        logoImageUrl: '/images/logo-dark.png',
+        logoImageUrl: '/images/logo-black-full.png',
         logoPlacement: 'inside',
         privacyPageUrl: 'https://www.edcsquared.io/privacyPolicy',
         showOptionalFields: true,

@@ -89,7 +89,6 @@ export function withProfile<T>(
             error: undefined,
           });
         else if (!isProfileExists && !createProfileApiCall) {
-          console.log('isProfileExists', isProfileExists);
           const input = {
             name: name ?? email?.split('@')[0],
             userEmail: email,

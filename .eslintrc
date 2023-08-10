@@ -16,9 +16,10 @@
   "rules": {
     "react/react-in-jsx-scope": 0,
     "react/no-unescaped-entities": 1, // TODO: escape everything properly
-    "react-hooks/rules-of-hooks": 1, // Too many HOCs with side effects; TODO: refactor into hooks
+    "react-hooks/rules-of-hooks": 0, // Too many HOCs with side effects; TODO: refactor into hooks
     "no-console": 0,
-    "@typescript-eslint/no-unused-vars": 1
+    "@typescript-eslint/no-unused-vars": 1,
+    "@typescript-eslint/ban-ts-comment": 0
   },
   "settings": {
     "react": {

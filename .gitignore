@@ -1,5 +1,6 @@
 node_modules/
 .idea/
+
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
 amplify/.config/local-*
@@ -8,9 +9,9 @@ amplify/mock-data
 amplify/mock-api-resources
 amplify/backend/amplify-meta.json
 amplify/backend/.temp
-amplify/team-provider-info.json
 build/
 dist/
+node_modules/
 aws-exports.js
 awsconfiguration.json
 amplifyconfiguration.json
@@ -20,10 +21,4 @@ amplify-gradle-config.json
 amplifytools.xcconfig
 .secret-*
 **.sample
-python3.9/
-**/.DS_Store
-*.zip
-.vscode
-temp/
-tsconfig.tsbuildinfo
 #amplify-do-not-edit-end

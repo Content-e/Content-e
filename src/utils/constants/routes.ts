@@ -1,30 +1,13 @@
 export enum UnAuthRoutes {
   ClerkRedirect = '/redirect',
-  Landing = '/landing',
-  SubLanding = '/landing/:id',
-
-  Creators = '/forCreators',
-  Brands = '/forBrands',
-  SayHello = '/sayHello',
   HomePageLogin = '/homePageLogin',
 
   Login = '/login',
   SubLogin = '/login/:id',
   AdminLogin = '/adminLogin',
 
-  Register = '/register',
-  SubRegister = '/register/:id',
-
-  Reverify = '/reverify',
-  SubReverify = '/reverify/:id',
-
-  ForgetPassword = '/forgetPassword',
-  SubForgetPassword = '/forgetPassword/:id',
-
-  ResetPassword = '/resetPassword',
-  SubResetPassword = '/resetPassword/:id',
-
   PrivacyPolicy = '/privacyPolicy',
+  TermsAndConditions = '/termsAndConditions',
 }
 
 export enum AuthRoutes {

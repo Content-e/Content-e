@@ -206,15 +206,20 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalTopBar = styled.div`
+  
   display: flex;
   justify-content: flex-end;
   width: 100%;
   margin-top: 32px;
   margin-right: 50px;
+  z-index: 10;
+  img {
+    cursor: pointer;
+  }
 `;
 
-export const ModalContent = styled.div`
-  text-align: center;
+export const ModalContent = styled.div<{$type: string, $withCheckBox: boolean}>`
+  text-align: ${ props => props.$withCheckBox? 'left':  'center'};
   border-radius: 16px;
   width: 705px;
   background: white;
@@ -222,16 +227,54 @@ export const ModalContent = styled.div`
   flex-direction: column;
   gap: 36px;
   align-items: center;
-  font-size: 24px;
+  font-size: ${props => props.$withCheckBox? '16px' :  '24px'};
   font-weight: 700;
   color: #7b7b7b;
   padding-bottom: 48px;
+  span {
+    width: 100%;
+    padding-left: 50px;
+  }
+  h1 {
+    position: relative;
+    width: 100%;
+    margin-top: -57px;
+    text-align: left;
+    font-size: 24px;
+    padding-left: 50px;
+    color: ${(props) => typeColors[props.$type] || '#0A9396'};
+  }
 
   @media only screen and (max-width: 768px) {
     width: 650px;
     gap: 24px;
   }
 `;
+
+export const ModalCheckBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 50px;
+
+  p {
+    display: inline;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  span {
+    color: #0a58ca;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  @media only screen and (max-width: 768px) {
+    align-items: flex-start;
+
+  }
+`
 
 export const ModalActionButton = styled.button<{ $type: string }>`
   font-size: 16px;
@@ -241,6 +284,9 @@ export const ModalActionButton = styled.button<{ $type: string }>`
   border-radius: 40px;
   background-color: ${(props) => typeColors[props.$type] || '#0A9396'};
   color: #fff;
+  :disabled{
+    background-color: grey;
+  }
 
   @media only screen and (max-width: 768px) {
     margin-top: 24px;

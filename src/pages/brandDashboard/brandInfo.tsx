@@ -1,14 +1,26 @@
 import './brandDashboard.css';
 import { useHistory } from 'react-router-dom';
 import { BrandRoutes } from 'utils';
-import { FC } from 'react';
+import {FC, useState} from 'react';
 import { BrandProfile } from 'API';
+import {Storage} from "aws-amplify";
 
 interface Props {
   brand?: BrandProfile | null;
 }
 export const BrandInfo: FC<Props> = ({ brand }) => {
   const history = useHistory();
+  const [profilePic, setProfilePic] = useState<string>();
+  const getImageFromS3 = async (id: string): Promise<void> => {
+    try {
+      const url = await Storage.get(`${id}/avatar/profile`);
+      fetch(url).then((res) => {
+        if (res.status === 200) setProfilePic(url);
+      });
+    } catch (err) {
+      console.log('Error', err);
+    }
+  };
 
   const goToBrandPage = (): void => history.push(BrandRoutes.Brand);
 
@@ -20,7 +32,9 @@ export const BrandInfo: FC<Props> = ({ brand }) => {
           <div className="brand-dashboard__top-contact">
             <img
               alt=""
-              src="/images/brand-photo.png"
+              src={`${
+                  profilePic || '/images/default-image.png'
+              }`}
               className="brand-dashboard__top-photo"
             />
             <div className="brand-dashboard__top-info">

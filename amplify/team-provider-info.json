@@ -1,4 +1,77 @@
 {
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-contente-prod-133127-authRole",
+      "UnauthRoleArn": "arn:aws:iam::995966967167:role/amplify-contente-prod-133127-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::995966967167:role/amplify-contente-prod-133127-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-contente-prod-133127-deployment",
+      "UnauthRoleName": "amplify-contente-prod-133127-unauthRole",
+      "StackName": "amplify-contente-prod-133127",
+      "StackId": "arn:aws:cloudformation:us-east-1:995966967167:stack/amplify-contente-prod-133127/178317c0-248d-11ee-a5d4-0a9c69ed45e9",
+      "AmplifyAppId": "d12cm8tmqhdorb",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-contente-prod-133127-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d12cm8tmqhdorb",
+          "type": "manual"
+        }
+      },
+      "auth": {
+        "contente9303b093": {}
+      },
+      "function": {
+        "GPTLambda": {
+          "deploymentBucketName": "amplify-contente-prod-133127-deployment",
+          "s3Key": "amplify-builds/GPTLambda-44355a314b6159743845-build.zip"
+        },
+        "createAd": {
+          "deploymentBucketName": "amplify-contente-prod-133127-deployment",
+          "s3Key": "amplify-builds/createAd-7142755a38444a704474-build.zip"
+        },
+        "emailService": {
+          "deploymentBucketName": "amplify-contente-prod-133127-deployment",
+          "s3Key": "amplify-builds/emailService-56663838656a384a5730-build.zip"
+        },
+        "getVideoFromAuthCode": {
+          "deploymentBucketName": "amplify-contente-prod-133127-deployment",
+          "s3Key": "amplify-builds/getVideoFromAuthCode-64397a75462b53466449-build.zip"
+        },
+        "graphQlLambdaAuthorizerc946ef1d": {
+          "deploymentBucketName": "amplify-contente-prod-133127-deployment",
+          "s3Key": "amplify-builds/graphQlLambdaAuthorizerc946ef1d-5a723531397767663556-build.zip"
+        },
+        "linkTiktokAccount": {
+          "deploymentBucketName": "amplify-contente-prod-133127-deployment",
+          "s3Key": "amplify-builds/linkTiktokAccount-36343255592f674b3853-build.zip"
+        },
+        "listAdGroups": {
+          "deploymentBucketName": "amplify-contente-prod-133127-deployment",
+          "s3Key": "amplify-builds/listAdGroups-4a7174754f326a4b5270-build.zip"
+        },
+        "listCompaigns": {
+          "deploymentBucketName": "amplify-contente-prod-133127-deployment",
+          "s3Key": "amplify-builds/listCompaigns-346e7535672f42547a38-build.zip"
+        },
+        "updateUserType": {
+          "deploymentBucketName": "amplify-contente-prod-133127-deployment",
+          "s3Key": "amplify-builds/updateUserType-75764f4c56304142464e-build.zip"
+        },
+        "contente9303b093PreSignup": {
+          "deploymentBucketName": "amplify-contente-prod-133127-deployment",
+          "s3Key": "amplify-builds/contente9303b093PreSignup-67744c56674465656738-build.zip"
+        }
+      },
+      "storage": {
+        "staticStorage": {}
+      },
+      "api": {
+        "contente": {}
+      }
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-contente-dev-202732-authRole",

@@ -237,6 +237,9 @@ img {
       gap: 16px;
       display: flex;
       align-items: center;
+      img {
+        height: 56px;
+      }
     }
     &-name {
       font-style: normal;
@@ -747,14 +750,10 @@ img {
     width: max-content;
     display: block;
     img {
-      width: 46px;
       height: 51px;
     }
     &.full-logo {
       margin-left: 0;
-      img {
-        width: 131px;
-      }
     }
   }
   &__exit {

@@ -46,34 +46,7 @@ export const HeaderMobile = () => {
           style={{ background: backgroundColors[path] }}
         >
           <div className="header-menu-option-container">
-            <div
-              className="header-menu-option"
-              style={path === '/landing' ? { color: 'white' } : {}}
-              onClick={() => history.push(UnAuthRoutes.Landing)}
-            >
-              Home
-            </div>
-            <div
-              className="header-menu-option"
-              style={path === '/forCreators' ? { color: 'white' } : {}}
-              onClick={() => history.push(UnAuthRoutes.Creators)}
-            >
-              For Creators
-            </div>
-            <div
-              className="header-menu-option"
-              style={path === '/forBrands' ? { color: 'white' } : {}}
-              onClick={() => history.push(UnAuthRoutes.Brands)}
-            >
-              For Brands
-            </div>
-            <div
-              className="header-menu-option"
-              style={path === '/sayHello' ? { color: 'white' } : {}}
-              onClick={() => history.push(UnAuthRoutes.SayHello)}
-            >
-              Say Hello
-            </div>
+
             <div
               className="login-signup"
               style={path === '/homePageLogin' ? { color: 'white' } : {}}

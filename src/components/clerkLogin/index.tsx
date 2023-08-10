@@ -5,16 +5,16 @@ import withApolloProvider from '../../hooks/apollo/withApollo';
 import useAuthSwapListener from '../../hooks/apollo/useApollo';
 import AwsConfig from '../../hooks/apollo/awsConfig';
 import {useHistory} from 'react-router-dom';
-import {AuthRoutes} from '../../utils';
+import {AuthRoutes, UnAuthRoutes} from '../../utils';
 import {useAuth, useUser} from '@clerk/clerk-react';
 
-const Auto0Login: FC = withApolloProvider(() => {
+const ClerkLogin: FC = withApolloProvider(() => {
     const {res, performAction} = useLogin();
     const {user} = useUser();
     const history = useHistory();
     const {isApolloInitialized} = useAuthSwapListener(AwsConfig);
     const {isSignedIn, userId} = useAuth();
-    const getTitles = async () => {
+    const changeClerkTitles = async () => {
         let headerTitle;
         let headerSubTitle;
         let modal
@@ -34,7 +34,7 @@ const Auto0Login: FC = withApolloProvider(() => {
         if (headerTitle && headerSubTitle) {
             if ('innerHTML' in headerTitle && 'innerHTML' in headerSubTitle) {
                 headerTitle.innerHTML = `CREATOR SIGN IN`
-                headerSubTitle.innerHTML = `Are you a brand? Get in touch <a href="${process.env.REACT_APP_URL || ''}/register">here</a> or drop us a mail hello@edcsquared.io.`
+                headerSubTitle.innerHTML = `Are you a brand? Get in touch <a href="${process.env.REACT_APP_CLERK_LANDING_URL || ''}connect">here</a> or drop us a mail hello@edcsquared.io.`
             }
             const config = {attributes: true, childList: true, subtree: true};
             const callback = async (mutationList) => {
@@ -88,7 +88,7 @@ const Auto0Login: FC = withApolloProvider(() => {
                     email: getEmail(),
                     password: process.env.REACT_APP_FAKE_PASSWORD || '12345678',
                     username:
-                        user?.fullName || user?.username || user?.firstName || userId, // || user.nickname || ''
+                        user?.fullName || user?.username || user?.firstName || userId,
                 });
             }
         }
@@ -96,6 +96,9 @@ const Auto0Login: FC = withApolloProvider(() => {
     useEffect(() => {
         signInOrSignUp();
     }, [userId, isSignedIn]);
+    useLayoutEffect(() => {
+        changeClerkTitles();
+    }, [])
     useEffect(() => {
         const redirect = async () => {
             let user: CognitoUser | null = null;
@@ -105,15 +108,14 @@ const Auto0Login: FC = withApolloProvider(() => {
                 );
             }
             const isUser = user?.getUsername() || res.data?.getUsername();
-            if (isUser && isApolloInitialized && isSignedIn) {
+            const url = new URL(window.location.href);
+            const authCode = url.searchParams.get('auth_code');
+            if (isUser && isApolloInitialized && isSignedIn && !authCode && !url.href.includes(UnAuthRoutes.TermsAndConditions)) {
                 history.replace(AuthRoutes.Dashboard);
             }
         };
         redirect();
     }, [res, isApolloInitialized, isSignedIn, userId]);
-    useLayoutEffect(() => {
-        getTitles();
-    }, [])
     return <></>;
 });
-export default Auto0Login;
+export default ClerkLogin;

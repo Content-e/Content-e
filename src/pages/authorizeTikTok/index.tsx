@@ -1,5 +1,4 @@
 import { getMainDomainFromSubdomain } from 'components';
-import CoBrandedMainPage from 'pages/coBranded/main';
 import { FC, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import './authorizeTikTok.css';
@@ -14,7 +13,6 @@ export const AuthorizeTikTokStep: FC = () => {
 
   return (
     <Fragment key="tik tok handlers">
-      <CoBrandedMainPage />
       <AuthorizeTikTokHandler briefId={id} onCross={goToMain} />
     </Fragment>
   );

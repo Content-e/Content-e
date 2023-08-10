@@ -9,7 +9,7 @@ import MainRouter from './router';
 import { ProfileProvider } from 'state/profileSteps';
 import ScrollToTop from './ScrollToTop';
 import './assets/css/index.scss';
-import Auto0Login from './components/clerkLogin';
+import ClerkLogin from './components/clerkLogin';
 import { ClerkProvider } from '@clerk/clerk-react';
 import {UnAuthRoutes, UnknownType} from "./utils";
 import {clerkStyles} from "./utils/constants/clerkStyles";
@@ -36,7 +36,7 @@ const App: React.FC = () => {
           <div className="App text-gray-600">
             <AuthProvider>
               <ProfileProvider>
-                <Auto0Login />
+                <ClerkLogin />
                 <Route path="/" component={MainRouter} />
               </ProfileProvider>
             </AuthProvider>

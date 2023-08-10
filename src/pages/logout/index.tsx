@@ -20,7 +20,7 @@ export const LogoutPage: FC<ProfileProps & AuthProps> = ({
     if (isSignedIn) {
       await signOut();
     }
-    history.push('/landing');
+    window.location.href = process.env.REACT_APP_CLERK_LANDING_URL || process.env.REACT_APP_URL  || '/';
   };
   useEffect(() => {
     logUserOut();
