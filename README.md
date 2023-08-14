@@ -14,9 +14,9 @@
 -> Local setup instructions (make steps)
 
 ## Set clerk cert.pem 
-The project use mixed clerk-cognito auth flow. So for check signIn/signUp lambda contente9303b093PreSignup 
-inside lambda stored cert.pem file in this file wrote public key from clerk dashboard to validate jwt clerk's token. 
-When you push/pull environment don't forget about it for dev and prod (main) use different cert.pem. 
+The project use mixed clerk-cognito auth flow. So for check it is using signIn/signUp lambda contente9303b093PreSignup
+Inside lambda is storing cert.pem file in this file wrote public key from clerk dashboard to validate jwt clerk's token.
+When you push/pull amplify environment don't forget about it for dev and prod (main) use different cert.pem.
 
 # Lambdas environment variables
 Lambdas used hardcoded variables in cloudformation file 
