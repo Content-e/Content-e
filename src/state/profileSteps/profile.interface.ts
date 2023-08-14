@@ -33,9 +33,16 @@ export interface BrandContextType {
 }
 
 export interface IUpdateProfile {
-  tiktokHandler: string;
-  description: string;
-  name: string;
+  tiktokHandler?: string;
+  description?: string;
+  name?: string;
+  tiktokAccountAccess?: ITiktokAccountAccess
+}
+
+export interface ITiktokAccountAccess {
+  access_token: string;
+  advertiser_id: string;
+  advertisers_list: { advertiser_id: string; advertiser_name: string; }[]
 }
 
 export interface IUpdateProfileError {

@@ -48,7 +48,6 @@ const AuthRouterPaths: FC<ProfileProps> = ({
     }
 
     if (pathname && data) {
-      console.log(pathname.includes(UnAuthRoutes.TermsAndConditions), pathname, UnAuthRoutes.TermsAndConditions)
       if(pathname.includes(UnAuthRoutes.TermsAndConditions)){
         return
       }

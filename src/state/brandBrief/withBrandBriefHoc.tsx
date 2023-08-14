@@ -3,7 +3,7 @@ import withApolloProvider from 'hooks/apollo/withApollo';
 import { getBrandBriefList } from 'hooks';
 import { BrandBriefProps } from './brandBrief.interface';
 import { BrandBrief } from 'API';
-import { ProfileContext } from 'state/profileSteps';
+import {ITiktokAccountAccess, ProfileContext} from 'state/profileSteps';
 
 export function withBrandBriefs<T>(
   Component: React.FC<T & BrandBriefProps>
@@ -18,12 +18,13 @@ export function withBrandBriefs<T>(
       profileState: { data },
     } = useContext(ProfileContext);
     const brandId = data?.brand?.items?.[0]?.id;
+    const {advertiser_id} = data?.tiktokAccountAccess as unknown as ITiktokAccountAccess;
 
     const [brandBriefsState, setBrandBriefsState] =
       useState<Array<BrandBrief | null>>();
 
     useEffect(() => {
-      if (brandId) getBrandBriefs({ variables: { brandId } });
+      if (brandId && advertiser_id) getBrandBriefs({ variables: { brandId, tiktokAdvertiserId: advertiser_id } });
     }, []);
     useEffect(() => {
       if (!brandBriefListLoading && brandBriefList)

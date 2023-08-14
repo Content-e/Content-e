@@ -115,7 +115,7 @@
         },
         "linkTiktokAccount": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/linkTiktokAccount-36343255592f674b3853-build.zip"
+          "s3Key": "amplify-builds/linkTiktokAccount-7544714e6d78476c3043-build.zip"
         },
         "listAdGroups": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
@@ -123,7 +123,7 @@
         },
         "listCompaigns": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/listCompaigns-526b566b713050536447-build.zip"
+          "s3Key": "amplify-builds/listCompaigns-346e7535672f42547a38-build.zip"
         },
         "updateUserType": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
@@ -131,7 +131,11 @@
         },
         "contente9303b093PreSignup": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/contente9303b093PreSignup-32616a41753850465546-build.zip"
+          "s3Key": "amplify-builds/contente9303b093PreSignup-2f674b6565656e77427a-build.zip"
+        },
+        "getTikTokAdvertisers": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/getTikTokAdvertisers-7a5a627348664f44656e-build.zip"
         }
       },
       "hosting": {

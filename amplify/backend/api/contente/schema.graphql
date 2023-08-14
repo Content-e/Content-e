@@ -11,8 +11,7 @@ type UserProfile @model @auth(rules: [{ allow: owner }]) {
   userType: USER_TYPES @auth(rules: [{ allow: owner, operations: [read] }])
   tiktokHandler: String
   bestPractices: [BestPractices] @hasMany
-  tiktokAccountAccess: String
-    @auth(rules: [{ allow: owner, operations: [read] }])
+  tiktokAccountAccess: TiktokAccountAccess @auth(rules: [{ allow: owner, operations: [read, update] }])
   userWallet: UserWallet @hasOne
 }
 
@@ -73,6 +72,7 @@ type BrandBrief @model @auth(rules: [{ allow: private }]) {
   creativeInspirations: [String]
   active: Boolean
   campaignId: String
+  tiktokAdvertiserId: String
   adgroupId: String
   creativeRequests: [CreativeRequest]
     @hasMany(indexName: "byBrandBrief", fields: ["id"])
@@ -145,6 +145,17 @@ type GPT_RESPONSE @aws_cognito_user_pools {
   message: String
 }
 
+type TiktokAccountAccess {
+  access_token: String
+  advertiser_id: String
+  advertisers_list: [AdvertiserData!]
+}
+
+type AdvertiserData {
+  advertiser_id: String
+  advertiser_name: String
+}
+
 input EMAIL_INPUT {
   message: String!
   name: String!
@@ -162,10 +173,14 @@ type Query {
 }
 
 type Mutation {
-  linkTiktokAccount(authCode: String, userProfileId: String): Boolean
+  linkTiktokAccount(authCode: String, userProfileId: String): String
     @function(name: "linkTiktokAccount-${env}")
     @aws_iam
     @aws_cognito_user_pools
+  getTikTokAdvertisers(authCode: String, userProfileId: String): String
+  @function(name: "getTikTokAdvertisers-${env}")
+  @aws_iam
+  @aws_cognito_user_pools
   linkUserType(userType: String, profileId: String): Boolean
     @function(name: "updateUserType-${env}")
     @aws_iam

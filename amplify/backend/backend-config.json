@@ -100,6 +100,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "getTikTokAdvertisers": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "getVideoFromAuthCode": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -200,6 +205,22 @@
         {
           "category": "function",
           "resourceName": "emailService"
+        }
+      ]
+    },
+    "AMPLIFY_function_getTikTokAdvertisers_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getTikTokAdvertisers"
+        }
+      ]
+    },
+    "AMPLIFY_function_getTikTokAdvertisers_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getTikTokAdvertisers"
         }
       ]
     },

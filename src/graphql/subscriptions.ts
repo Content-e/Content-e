@@ -56,7 +56,16 @@ export const onCreateUserProfile = /* GraphQL */ `
         nextToken
         __typename
       }
-      tiktokAccountAccess
+      tiktokAccountAccess {
+        access_token
+        advertiser_id
+        advertisers_list {
+          advertiser_id
+          advertiser_name
+          __typename
+        }
+        __typename
+      }
       userWallet {
         id
         currentBalance
@@ -127,7 +136,16 @@ export const onUpdateUserProfile = /* GraphQL */ `
         nextToken
         __typename
       }
-      tiktokAccountAccess
+      tiktokAccountAccess {
+        access_token
+        advertiser_id
+        advertisers_list {
+          advertiser_id
+          advertiser_name
+          __typename
+        }
+        __typename
+      }
       userWallet {
         id
         currentBalance
@@ -198,7 +216,16 @@ export const onDeleteUserProfile = /* GraphQL */ `
         nextToken
         __typename
       }
-      tiktokAccountAccess
+      tiktokAccountAccess {
+        access_token
+        advertiser_id
+        advertisers_list {
+          advertiser_id
+          advertiser_name
+          __typename
+        }
+        __typename
+      }
       userWallet {
         id
         currentBalance
@@ -412,6 +439,7 @@ export const onCreateBrandProfile = /* GraphQL */ `
           creativeInspirations
           active
           campaignId
+          tiktokAdvertiserId
           adgroupId
           creativeRequests {
             nextToken
@@ -475,6 +503,7 @@ export const onUpdateBrandProfile = /* GraphQL */ `
           creativeInspirations
           active
           campaignId
+          tiktokAdvertiserId
           adgroupId
           creativeRequests {
             nextToken
@@ -538,6 +567,7 @@ export const onDeleteBrandProfile = /* GraphQL */ `
           creativeInspirations
           active
           campaignId
+          tiktokAdvertiserId
           adgroupId
           creativeRequests {
             nextToken
@@ -588,6 +618,7 @@ export const onCreateBrandBrief = /* GraphQL */ `
       creativeInspirations
       active
       campaignId
+      tiktokAdvertiserId
       adgroupId
       creativeRequests {
         items {
@@ -630,6 +661,7 @@ export const onCreateBrandBrief = /* GraphQL */ `
             creativeInspirations
             active
             campaignId
+            tiktokAdvertiserId
             adgroupId
             brandId
             createdAt
@@ -663,6 +695,7 @@ export const onUpdateBrandBrief = /* GraphQL */ `
       creativeInspirations
       active
       campaignId
+      tiktokAdvertiserId
       adgroupId
       creativeRequests {
         items {
@@ -705,6 +738,7 @@ export const onUpdateBrandBrief = /* GraphQL */ `
             creativeInspirations
             active
             campaignId
+            tiktokAdvertiserId
             adgroupId
             brandId
             createdAt
@@ -738,6 +772,7 @@ export const onDeleteBrandBrief = /* GraphQL */ `
       creativeInspirations
       active
       campaignId
+      tiktokAdvertiserId
       adgroupId
       creativeRequests {
         items {
@@ -780,6 +815,7 @@ export const onDeleteBrandBrief = /* GraphQL */ `
             creativeInspirations
             active
             campaignId
+            tiktokAdvertiserId
             adgroupId
             brandId
             createdAt

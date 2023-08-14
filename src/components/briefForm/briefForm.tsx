@@ -7,13 +7,14 @@ import Switch from 'components/ui/switch';
 import TextArea from 'components/ui/textArea';
 import useZodForm from 'hooks/useZodForm';
 import _ from 'lodash';
-import { useEffect, useMemo } from 'react';
+import {useContext, useEffect, useMemo} from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { SaveBriefProps } from 'state/brandBrief';
 import withSaveBrief from 'state/brandBrief/withSaveBriefHoc';
 import { AuthRoutes } from 'utils';
 import { z } from 'zod';
 import init from 'zod-empty';
+import {ProfileContext} from "../../state/profileSteps";
 
 const schema = z.object({
   id: z.string().optional(),
@@ -50,6 +51,7 @@ function BriefForm({
   briefState,
 }: SaveBriefProps) {
   const history = useHistory();
+  const {profileState} = useContext(ProfileContext)
 
   const {
     register,
@@ -75,6 +77,8 @@ function BriefForm({
       });
     }
   }, [briefState, reset]);
+
+  useEffect(() => {console.log('profileState', profileState)}, [profileState])
 
   const campaignOptions = useMemo(
     () =>
@@ -112,12 +116,18 @@ function BriefForm({
   }, [listAdGroups, resetField, setError, dataLoading]); // selectedCampaign is used in a different effect
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
-    await saveData({
-      ...data,
+    const dataToReq = {
       creativeInspirations: data.creativeInspirations.filter(_.isString),
       vertical: 'TODO',
       tiktokHandle: 'TODO',
+    }
+    console.log(data);
+    if( profileState.data?.tiktokAccountAccess?.advertiser_id){
+      dataToReq['tiktokAdvertiserId'] = profileState.data?.tiktokAccountAccess.advertiser_id;
+    }
+    await saveData({
+      ...data,
+...dataToReq
     });
   });
 
