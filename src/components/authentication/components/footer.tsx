@@ -15,8 +15,7 @@ export function Footer({ isDark }: Props) {
       <div className="landing-footer-text-container">
         <div
           className="landing-footer-text"
-          onClick={() => history.push(UnAuthRoutes.Login)
-        }
+          onClick={() => history.push(UnAuthRoutes.Login)}
         >
           Login / Sign up
         </div>

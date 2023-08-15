@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.1.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.1.0\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "updateUserType",
+            "validateTiktokAccess",
             {
               "Fn::Join": [
                 "",
                 [
-                  "updateUserType",
+                  "validateTiktokAccess",
                   "-",
                   {
                     "Ref": "env"
@@ -70,7 +70,9 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "USER_PROFILE_TABLE_NAME": "UserProfile-tykxfw6n7jg23nvor65pti5qia-dev"
+            "TKTOK_BUSNS_API_GET_ADVERTISERS": "https://business-api.tiktok.com/open_api/v1.3/oauth2/advertiser/get",
+            "TKTOK_SECRET": "c8be34abbca5dd5dcb1d58b8ff6676a39aaee285",
+            "TKTOK_APP_ID": "7260803702087221250"
           }
         },
         "Role": {
@@ -79,7 +81,7 @@
             "Arn"
           ]
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
         "Layers": [],
         "Timeout": 25
       }
@@ -90,12 +92,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "contenteLambdaRolecf5eef04",
+            "contenteLambdaRole5436a9ed",
             {
               "Fn::Join": [
                 "",
                 [
-                  "contenteLambdaRolecf5eef04",
+                  "contenteLambdaRole5436a9ed",
                   "-",
                   {
                     "Ref": "env"
@@ -161,19 +163,6 @@
                   }
                 ]
               }
-            },
-            {
-              "Effect": "Allow",
-              "Action": [
-                "dynamodb:BatchGetItem",
-                "dynamodb:GetItem",
-                "dynamodb:Query",
-                "dynamodb:Scan",
-                "dynamodb:BatchWriteItem",
-                "dynamodb:PutItem",
-                "dynamodb:UpdateItem"
-              ],
-              "Resource": "*"
             }
           ]
         }

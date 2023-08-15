@@ -10,18 +10,22 @@ import {
   LinkUserTypeMutationVariables,
   LinkTiktokAccountMutation,
   LinkTiktokAccountMutationVariables,
+  ValidateTiktokAccessMutationVariables,
+  ValidateTiktokAccessMutation,
 } from 'API';
 import {
   createUserProfile as createUserQuery,
   linkTiktokAccount,
   linkUserType,
   updateUserProfile as updateUserQuery,
+  validateTiktokAccess,
 } from 'graphql/mutations';
 import { getUserProfile as getUserProfileQuery } from 'graphql/queries';
 import {
   CreateUserProfileProps,
   GetUserProfileProps,
   ILinkTiktokAccountResponse,
+  IValidateTiktokAccessTokenResponse,
   UpdateUserProfileProps,
   UserTypeSetterProps,
 } from 'hooks/utils';
@@ -79,5 +83,24 @@ export const useLinkTiktokAccount = (): ILinkTiktokAccountResponse => {
     LinkTiktokAccountMutation,
     LinkTiktokAccountMutationVariables
   >(getQuery(linkTiktokAccount));
-  return { loading, linkTiktok, data: data?.linkTiktokAccount, error };
+  return {
+    loading,
+    linkTiktok,
+    data: data?.linkTiktokAccount,
+    error,
+  };
 };
+
+export const useValidateTiktokAccessToken =
+  (): IValidateTiktokAccessTokenResponse => {
+    const [validateTiktokAccessToken, { data, loading, error }] = useMutation<
+      ValidateTiktokAccessMutation,
+      ValidateTiktokAccessMutationVariables
+    >(getQuery(validateTiktokAccess));
+    return {
+      loading,
+      validateTiktokAccessToken,
+      data: data?.validateTiktokAccess,
+      error,
+    };
+  };

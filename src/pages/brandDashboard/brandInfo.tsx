@@ -1,15 +1,17 @@
 import './brandDashboard.css';
 import { useHistory } from 'react-router-dom';
 import { BrandRoutes } from 'utils';
-import {FC, useState} from 'react';
+import {FC, useContext, useEffect, useState} from 'react';
 import { BrandProfile } from 'API';
-import {Storage} from "aws-amplify";
+import { Storage } from 'aws-amplify';
+import {ProfileContext} from "../../state/profileSteps";
 
 interface Props {
   brand?: BrandProfile | null;
 }
 export const BrandInfo: FC<Props> = ({ brand }) => {
   const history = useHistory();
+  const {profileState} = useContext(ProfileContext)
   const [profilePic, setProfilePic] = useState<string>();
   const getImageFromS3 = async (id: string): Promise<void> => {
     try {
@@ -22,6 +24,12 @@ export const BrandInfo: FC<Props> = ({ brand }) => {
     }
   };
 
+  useEffect(() => {
+    if(profileState.data?.id) {
+      getImageFromS3(profileState.data?.id)
+    }
+  }, [])
+
   const goToBrandPage = (): void => history.push(BrandRoutes.Brand);
 
   return (
@@ -32,9 +40,7 @@ export const BrandInfo: FC<Props> = ({ brand }) => {
           <div className="brand-dashboard__top-contact">
             <img
               alt=""
-              src={`${
-                  profilePic || '/images/default-image.png'
-              }`}
+              src={`${profilePic || '/images/default-image.png'}`}
               className="brand-dashboard__top-photo"
             />
             <div className="brand-dashboard__top-info">

@@ -20,7 +20,7 @@ const updateUserAccessToken = async (accessTokenPayload, userProfileId) => {
     ReturnValues: 'UPDATED_NEW',
   };
   const response = await ddb.update(input).promise();
-  console.log('resonse', response);
+  console.log('response', response);
 };
 
 module.exports = { updateUserAccessToken };

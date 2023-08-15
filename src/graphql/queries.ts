@@ -72,7 +72,16 @@ export const getUserProfile = /* GraphQL */ `
         nextToken
         __typename
       }
-      tiktokAccountAccess
+      tiktokAccountAccess {
+        access_token
+        advertiser_id
+        advertisers_list {
+          advertiser_id
+          advertiser_name
+          __typename
+        }
+        __typename
+      }
       userWallet {
         id
         currentBalance
@@ -141,7 +150,16 @@ export const listUserProfiles = /* GraphQL */ `
           nextToken
           __typename
         }
-        tiktokAccountAccess
+        tiktokAccountAccess {
+          access_token
+          advertiser_id
+          advertisers_list {
+            advertiser_id
+            advertiser_name
+            __typename
+          }
+          __typename
+        }
         userWallet {
           id
           currentBalance
@@ -221,7 +239,16 @@ export const userProfilesByUserEmail = /* GraphQL */ `
           nextToken
           __typename
         }
-        tiktokAccountAccess
+        tiktokAccountAccess {
+          access_token
+          advertiser_id
+          advertisers_list {
+            advertiser_id
+            advertiser_name
+            __typename
+          }
+          __typename
+        }
         userWallet {
           id
           currentBalance
@@ -717,6 +744,7 @@ export const getBrandProfile = /* GraphQL */ `
           creativeInspirations
           active
           campaignId
+          tiktokAdvertiserId
           adgroupId
           creativeRequests {
             nextToken
@@ -783,6 +811,7 @@ export const listBrandProfiles = /* GraphQL */ `
             creativeInspirations
             active
             campaignId
+            tiktokAdvertiserId
             adgroupId
             brandId
             createdAt
@@ -839,6 +868,7 @@ export const brandProfilesByUserEmail = /* GraphQL */ `
             creativeInspirations
             active
             campaignId
+            tiktokAdvertiserId
             adgroupId
             brandId
             createdAt
@@ -869,6 +899,7 @@ export const getBrandBrief = /* GraphQL */ `
       creativeInspirations
       active
       campaignId
+      tiktokAdvertiserId
       adgroupId
       creativeRequests {
         items {
@@ -911,6 +942,7 @@ export const getBrandBrief = /* GraphQL */ `
             creativeInspirations
             active
             campaignId
+            tiktokAdvertiserId
             adgroupId
             brandId
             createdAt
@@ -947,6 +979,7 @@ export const listBrandBriefs = /* GraphQL */ `
         creativeInspirations
         active
         campaignId
+        tiktokAdvertiserId
         adgroupId
         creativeRequests {
           items {
@@ -1021,6 +1054,82 @@ export const brandBriefsByVertical = /* GraphQL */ `
         creativeInspirations
         active
         campaignId
+        tiktokAdvertiserId
+        adgroupId
+        creativeRequests {
+          items {
+            brandBriefId
+            creatorId
+            status
+            tiktokCreativeUrl
+            tiktokVideoCode
+            creativeTiktokHandle
+            creatorDescription
+            creatorName
+            id
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        brandId
+        brandProfile {
+          id
+          name
+          toneVoice
+          pillars
+          description
+          internalMission
+          strapLine
+          userEmail
+          tiktokHandle
+          vertical
+          metaData
+          briefs {
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          userProfileBrandId
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const brandBriefsByTiktokAdvertiserId = /* GraphQL */ `
+  query BrandBriefsByTiktokAdvertiserId(
+    $tiktokAdvertiserId: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelBrandBriefFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    brandBriefsByTiktokAdvertiserId(
+      tiktokAdvertiserId: $tiktokAdvertiserId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        BriefName
+        vertical
+        objective
+        brandBriefDetails
+        creativeInspirations
+        active
+        campaignId
+        tiktokAdvertiserId
         adgroupId
         creativeRequests {
           items {
@@ -1095,6 +1204,7 @@ export const brandBriefsByBrandId = /* GraphQL */ `
         creativeInspirations
         active
         campaignId
+        tiktokAdvertiserId
         adgroupId
         creativeRequests {
           items {

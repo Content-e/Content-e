@@ -7,6 +7,11 @@ export const linkTiktokAccount = /* GraphQL */ `
     linkTiktokAccount(authCode: $authCode, userProfileId: $userProfileId)
   }
 `;
+export const validateTiktokAccess = /* GraphQL */ `
+  mutation ValidateTiktokAccess($accessToken: String) {
+    validateTiktokAccess(accessToken: $accessToken)
+  }
+`;
 export const linkUserType = /* GraphQL */ `
   mutation LinkUserType($userType: String, $profileId: String) {
     linkUserType(userType: $userType, profileId: $profileId)
@@ -116,7 +121,16 @@ export const deleteUserProfile = /* GraphQL */ `
         nextToken
         __typename
       }
-      tiktokAccountAccess
+      tiktokAccountAccess {
+        access_token
+        advertiser_id
+        advertisers_list {
+          advertiser_id
+          advertiser_name
+          __typename
+        }
+        __typename
+      }
       userWallet {
         id
         currentBalance
@@ -206,7 +220,16 @@ export const createUserProfile = /* GraphQL */ `
         nextToken
         __typename
       }
-      tiktokAccountAccess
+      tiktokAccountAccess {
+        access_token
+        advertiser_id
+        advertisers_list {
+          advertiser_id
+          advertiser_name
+          __typename
+        }
+        __typename
+      }
       userWallet {
         id
         currentBalance
@@ -277,7 +300,16 @@ export const updateUserProfile = /* GraphQL */ `
         nextToken
         __typename
       }
-      tiktokAccountAccess
+      tiktokAccountAccess {
+        access_token
+        advertiser_id
+        advertisers_list {
+          advertiser_id
+          advertiser_name
+          __typename
+        }
+        __typename
+      }
       userWallet {
         id
         currentBalance
@@ -479,6 +511,7 @@ export const createBrandProfile = /* GraphQL */ `
           creativeInspirations
           active
           campaignId
+          tiktokAdvertiserId
           adgroupId
           creativeRequests {
             nextToken
@@ -543,6 +576,7 @@ export const updateBrandProfile = /* GraphQL */ `
           creativeInspirations
           active
           campaignId
+          tiktokAdvertiserId
           adgroupId
           creativeRequests {
             nextToken
@@ -607,6 +641,7 @@ export const deleteBrandProfile = /* GraphQL */ `
           creativeInspirations
           active
           campaignId
+          tiktokAdvertiserId
           adgroupId
           creativeRequests {
             nextToken
@@ -658,6 +693,7 @@ export const createBrandBrief = /* GraphQL */ `
       creativeInspirations
       active
       campaignId
+      tiktokAdvertiserId
       adgroupId
       creativeRequests {
         items {
@@ -700,6 +736,7 @@ export const createBrandBrief = /* GraphQL */ `
             creativeInspirations
             active
             campaignId
+            tiktokAdvertiserId
             adgroupId
             brandId
             createdAt
@@ -734,6 +771,7 @@ export const updateBrandBrief = /* GraphQL */ `
       creativeInspirations
       active
       campaignId
+      tiktokAdvertiserId
       adgroupId
       creativeRequests {
         items {
@@ -776,6 +814,7 @@ export const updateBrandBrief = /* GraphQL */ `
             creativeInspirations
             active
             campaignId
+            tiktokAdvertiserId
             adgroupId
             brandId
             createdAt
@@ -810,6 +849,7 @@ export const deleteBrandBrief = /* GraphQL */ `
       creativeInspirations
       active
       campaignId
+      tiktokAdvertiserId
       adgroupId
       creativeRequests {
         items {
@@ -852,6 +892,7 @@ export const deleteBrandBrief = /* GraphQL */ `
             creativeInspirations
             active
             campaignId
+            tiktokAdvertiserId
             adgroupId
             brandId
             createdAt

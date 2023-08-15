@@ -18,7 +18,8 @@ import {
   AuthRoutes,
   BrandRoutes,
   CreatorRoutes,
-  ProfileProps, UnAuthRoutes,
+  ProfileProps,
+  UnAuthRoutes,
 } from 'utils';
 import Wallet from 'pages/wallet/wallet';
 import BestPractice from 'pages/bestPractice';
@@ -32,7 +33,7 @@ import {
 } from './RoutesConstants';
 import CreatePractice from 'components/createPractice';
 import linkTiktokAccount from 'pages/linkTiktokAccount';
-import {TermsAndConditions} from "../pages/termsAndConditions";
+import { TermsAndConditions } from '../pages/termsAndConditions';
 
 const AuthRouterPaths: FC<ProfileProps> = ({
   profileState: { data, isLoading },
@@ -48,9 +49,8 @@ const AuthRouterPaths: FC<ProfileProps> = ({
     }
 
     if (pathname && data) {
-      console.log(pathname.includes(UnAuthRoutes.TermsAndConditions), pathname, UnAuthRoutes.TermsAndConditions)
-      if(pathname.includes(UnAuthRoutes.TermsAndConditions)){
-        return
+      if (pathname.includes(UnAuthRoutes.TermsAndConditions)) {
+        return;
       }
       if (
         (data?.userType === USER_TYPES.CREATIVE_USER &&
@@ -67,7 +67,11 @@ const AuthRouterPaths: FC<ProfileProps> = ({
   if (!isLoading && data)
     return (
       <Switch>
-        <Route exact path={UnAuthRoutes.TermsAndConditions} component={TermsAndConditions} />
+        <Route
+          exact
+          path={UnAuthRoutes.TermsAndConditions}
+          component={TermsAndConditions}
+        />
         <Route exact path={AuthRoutes.Redirector} component={RedirectingStep} />
         <Route exact path={AuthRoutes.Tiktok} component={AuthorizeTikTokStep} />
         <SidebarLayout data={data}>

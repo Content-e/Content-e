@@ -13,7 +13,6 @@ export type ModelUserProfileConditionInput = {
   owner?: ModelStringInput | null,
   userType?: ModelUSER_TYPESInput | null,
   tiktokHandler?: ModelStringInput | null,
-  tiktokAccountAccess?: ModelStringInput | null,
   and?: Array< ModelUserProfileConditionInput | null > | null,
   or?: Array< ModelUserProfileConditionInput | null > | null,
   not?: ModelUserProfileConditionInput | null,
@@ -99,7 +98,7 @@ export type UserProfile = {
   userType?: USER_TYPES | null,
   tiktokHandler?: string | null,
   bestPractices?: ModelBestPracticesConnection | null,
-  tiktokAccountAccess?: string | null,
+  tiktokAccountAccess?: TiktokAccountAccess | null,
   userWallet?: UserWallet | null,
   createdAt: string,
   updatedAt: string,
@@ -147,6 +146,7 @@ export type BrandBrief = {
   creativeInspirations?: Array< string | null > | null,
   active?: boolean | null,
   campaignId?: string | null,
+  tiktokAdvertiserId: string,
   adgroupId?: string | null,
   creativeRequests?: ModelCreativeRequestConnection | null,
   brandId: string,
@@ -195,6 +195,19 @@ export type BestPractices = {
   userProfileBestPracticesId?: string | null,
 };
 
+export type TiktokAccountAccess = {
+  __typename: "TiktokAccountAccess",
+  access_token?: string | null,
+  advertiser_id?: string | null,
+  advertisers_list?:  Array<AdvertiserData > | null,
+};
+
+export type AdvertiserData = {
+  __typename: "AdvertiserData",
+  advertiser_id?: string | null,
+  advertiser_name?: string | null,
+};
+
 export type UserWallet = {
   __typename: "UserWallet",
   id: string,
@@ -229,8 +242,19 @@ export type CreateUserProfileInput = {
   owner?: string | null,
   userType?: USER_TYPES | null,
   tiktokHandler?: string | null,
-  tiktokAccountAccess?: string | null,
+  tiktokAccountAccess?: TiktokAccountAccessInput | null,
   userProfileUserWalletId?: string | null,
+};
+
+export type TiktokAccountAccessInput = {
+  access_token?: string | null,
+  advertiser_id?: string | null,
+  advertisers_list?: Array< AdvertiserDataInput > | null,
+};
+
+export type AdvertiserDataInput = {
+  advertiser_id?: string | null,
+  advertiser_name?: string | null,
 };
 
 export type UpdateUserProfileInput = {
@@ -241,7 +265,7 @@ export type UpdateUserProfileInput = {
   owner?: string | null,
   userType?: USER_TYPES | null,
   tiktokHandler?: string | null,
-  tiktokAccountAccess?: string | null,
+  tiktokAccountAccess?: TiktokAccountAccessInput | null,
   userProfileUserWalletId?: string | null,
 };
 
@@ -421,6 +445,7 @@ export type CreateBrandBriefInput = {
   creativeInspirations?: Array< string | null > | null,
   active?: boolean | null,
   campaignId?: string | null,
+  tiktokAdvertiserId: string,
   adgroupId?: string | null,
   brandId: string,
 };
@@ -433,6 +458,7 @@ export type ModelBrandBriefConditionInput = {
   creativeInspirations?: ModelStringInput | null,
   active?: ModelBooleanInput | null,
   campaignId?: ModelStringInput | null,
+  tiktokAdvertiserId?: ModelStringInput | null,
   adgroupId?: ModelStringInput | null,
   brandId?: ModelIDInput | null,
   and?: Array< ModelBrandBriefConditionInput | null > | null,
@@ -456,6 +482,7 @@ export type UpdateBrandBriefInput = {
   creativeInspirations?: Array< string | null > | null,
   active?: boolean | null,
   campaignId?: string | null,
+  tiktokAdvertiserId?: string | null,
   adgroupId?: string | null,
   brandId?: string | null,
 };
@@ -567,7 +594,6 @@ export type ModelUserProfileFilterInput = {
   owner?: ModelStringInput | null,
   userType?: ModelUSER_TYPESInput | null,
   tiktokHandler?: ModelStringInput | null,
-  tiktokAccountAccess?: ModelStringInput | null,
   and?: Array< ModelUserProfileFilterInput | null > | null,
   or?: Array< ModelUserProfileFilterInput | null > | null,
   not?: ModelUserProfileFilterInput | null,
@@ -666,6 +692,7 @@ export type ModelBrandBriefFilterInput = {
   creativeInspirations?: ModelStringInput | null,
   active?: ModelBooleanInput | null,
   campaignId?: ModelStringInput | null,
+  tiktokAdvertiserId?: ModelStringInput | null,
   adgroupId?: ModelStringInput | null,
   brandId?: ModelIDInput | null,
   and?: Array< ModelBrandBriefFilterInput | null > | null,
@@ -700,7 +727,6 @@ export type ModelSubscriptionUserProfileFilterInput = {
   description?: ModelSubscriptionStringInput | null,
   userType?: ModelSubscriptionStringInput | null,
   tiktokHandler?: ModelSubscriptionStringInput | null,
-  tiktokAccountAccess?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
   or?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
 };
@@ -796,6 +822,7 @@ export type ModelSubscriptionBrandBriefFilterInput = {
   creativeInspirations?: ModelSubscriptionStringInput | null,
   active?: ModelSubscriptionBooleanInput | null,
   campaignId?: ModelSubscriptionStringInput | null,
+  tiktokAdvertiserId?: ModelSubscriptionStringInput | null,
   adgroupId?: ModelSubscriptionStringInput | null,
   brandId?: ModelSubscriptionIDInput | null,
   and?: Array< ModelSubscriptionBrandBriefFilterInput | null > | null,
@@ -826,7 +853,15 @@ export type LinkTiktokAccountMutationVariables = {
 };
 
 export type LinkTiktokAccountMutation = {
-  linkTiktokAccount?: boolean | null,
+  linkTiktokAccount?: string | null,
+};
+
+export type ValidateTiktokAccessMutationVariables = {
+  accessToken?: string | null,
+};
+
+export type ValidateTiktokAccessMutation = {
+  validateTiktokAccess?: string | null,
 };
 
 export type LinkUserTypeMutationVariables = {
@@ -936,7 +971,16 @@ export type DeleteUserProfileMutation = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    tiktokAccountAccess?: string | null,
+    tiktokAccountAccess?:  {
+      __typename: "TiktokAccountAccess",
+      access_token?: string | null,
+      advertiser_id?: string | null,
+      advertisers_list?:  Array< {
+        __typename: "AdvertiserData",
+        advertiser_id?: string | null,
+        advertiser_name?: string | null,
+      } > | null,
+    } | null,
     userWallet?:  {
       __typename: "UserWallet",
       id: string,
@@ -1028,7 +1072,16 @@ export type CreateUserProfileMutation = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    tiktokAccountAccess?: string | null,
+    tiktokAccountAccess?:  {
+      __typename: "TiktokAccountAccess",
+      access_token?: string | null,
+      advertiser_id?: string | null,
+      advertisers_list?:  Array< {
+        __typename: "AdvertiserData",
+        advertiser_id?: string | null,
+        advertiser_name?: string | null,
+      } > | null,
+    } | null,
     userWallet?:  {
       __typename: "UserWallet",
       id: string,
@@ -1100,7 +1153,16 @@ export type UpdateUserProfileMutation = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    tiktokAccountAccess?: string | null,
+    tiktokAccountAccess?:  {
+      __typename: "TiktokAccountAccess",
+      access_token?: string | null,
+      advertiser_id?: string | null,
+      advertisers_list?:  Array< {
+        __typename: "AdvertiserData",
+        advertiser_id?: string | null,
+        advertiser_name?: string | null,
+      } > | null,
+    } | null,
     userWallet?:  {
       __typename: "UserWallet",
       id: string,
@@ -1313,6 +1375,7 @@ export type CreateBrandProfileMutation = {
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
         campaignId?: string | null,
+        tiktokAdvertiserId: string,
         adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
@@ -1378,6 +1441,7 @@ export type UpdateBrandProfileMutation = {
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
         campaignId?: string | null,
+        tiktokAdvertiserId: string,
         adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
@@ -1443,6 +1507,7 @@ export type DeleteBrandProfileMutation = {
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
         campaignId?: string | null,
+        tiktokAdvertiserId: string,
         adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
@@ -1493,6 +1558,7 @@ export type CreateBrandBriefMutation = {
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
     campaignId?: string | null,
+    tiktokAdvertiserId: string,
     adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
@@ -1538,6 +1604,7 @@ export type CreateBrandBriefMutation = {
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
           campaignId?: string | null,
+          tiktokAdvertiserId: string,
           adgroupId?: string | null,
           brandId: string,
           createdAt: string,
@@ -1570,6 +1637,7 @@ export type UpdateBrandBriefMutation = {
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
     campaignId?: string | null,
+    tiktokAdvertiserId: string,
     adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
@@ -1615,6 +1683,7 @@ export type UpdateBrandBriefMutation = {
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
           campaignId?: string | null,
+          tiktokAdvertiserId: string,
           adgroupId?: string | null,
           brandId: string,
           createdAt: string,
@@ -1647,6 +1716,7 @@ export type DeleteBrandBriefMutation = {
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
     campaignId?: string | null,
+    tiktokAdvertiserId: string,
     adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
@@ -1692,6 +1762,7 @@ export type DeleteBrandBriefMutation = {
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
           campaignId?: string | null,
+          tiktokAdvertiserId: string,
           adgroupId?: string | null,
           brandId: string,
           createdAt: string,
@@ -1851,7 +1922,16 @@ export type GetUserProfileQuery = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    tiktokAccountAccess?: string | null,
+    tiktokAccountAccess?:  {
+      __typename: "TiktokAccountAccess",
+      access_token?: string | null,
+      advertiser_id?: string | null,
+      advertisers_list?:  Array< {
+        __typename: "AdvertiserData",
+        advertiser_id?: string | null,
+        advertiser_name?: string | null,
+      } > | null,
+    } | null,
     userWallet?:  {
       __typename: "UserWallet",
       id: string,
@@ -1922,7 +2002,16 @@ export type ListUserProfilesQuery = {
         } | null >,
         nextToken?: string | null,
       } | null,
-      tiktokAccountAccess?: string | null,
+      tiktokAccountAccess?:  {
+        __typename: "TiktokAccountAccess",
+        access_token?: string | null,
+        advertiser_id?: string | null,
+        advertisers_list?:  Array< {
+          __typename: "AdvertiserData",
+          advertiser_id?: string | null,
+          advertiser_name?: string | null,
+        } > | null,
+      } | null,
       userWallet?:  {
         __typename: "UserWallet",
         id: string,
@@ -1997,7 +2086,16 @@ export type UserProfilesByUserEmailQuery = {
         } | null >,
         nextToken?: string | null,
       } | null,
-      tiktokAccountAccess?: string | null,
+      tiktokAccountAccess?:  {
+        __typename: "TiktokAccountAccess",
+        access_token?: string | null,
+        advertiser_id?: string | null,
+        advertisers_list?:  Array< {
+          __typename: "AdvertiserData",
+          advertiser_id?: string | null,
+          advertiser_name?: string | null,
+        } > | null,
+      } | null,
       userWallet?:  {
         __typename: "UserWallet",
         id: string,
@@ -2464,6 +2562,7 @@ export type GetBrandProfileQuery = {
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
         campaignId?: string | null,
+        tiktokAdvertiserId: string,
         adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
@@ -2532,6 +2631,7 @@ export type ListBrandProfilesQuery = {
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
           campaignId?: string | null,
+          tiktokAdvertiserId: string,
           adgroupId?: string | null,
           brandId: string,
           createdAt: string,
@@ -2583,6 +2683,7 @@ export type BrandProfilesByUserEmailQuery = {
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
           campaignId?: string | null,
+          tiktokAdvertiserId: string,
           adgroupId?: string | null,
           brandId: string,
           createdAt: string,
@@ -2613,6 +2714,7 @@ export type GetBrandBriefQuery = {
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
     campaignId?: string | null,
+    tiktokAdvertiserId: string,
     adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
@@ -2658,6 +2760,7 @@ export type GetBrandBriefQuery = {
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
           campaignId?: string | null,
+          tiktokAdvertiserId: string,
           adgroupId?: string | null,
           brandId: string,
           createdAt: string,
@@ -2693,6 +2796,7 @@ export type ListBrandBriefsQuery = {
       creativeInspirations?: Array< string | null > | null,
       active?: boolean | null,
       campaignId?: string | null,
+      tiktokAdvertiserId: string,
       adgroupId?: string | null,
       creativeRequests?:  {
         __typename: "ModelCreativeRequestConnection",
@@ -2762,6 +2866,77 @@ export type BrandBriefsByVerticalQuery = {
       creativeInspirations?: Array< string | null > | null,
       active?: boolean | null,
       campaignId?: string | null,
+      tiktokAdvertiserId: string,
+      adgroupId?: string | null,
+      creativeRequests?:  {
+        __typename: "ModelCreativeRequestConnection",
+        items:  Array< {
+          __typename: "CreativeRequest",
+          brandBriefId: string,
+          creatorId: string,
+          status: string,
+          tiktokCreativeUrl: string,
+          tiktokVideoCode: string,
+          creativeTiktokHandle?: string | null,
+          creatorDescription?: string | null,
+          creatorName?: string | null,
+          id: string,
+          createdAt: string,
+          updatedAt: string,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
+      brandId: string,
+      brandProfile?:  {
+        __typename: "BrandProfile",
+        id: string,
+        name?: string | null,
+        toneVoice?: Array< string | null > | null,
+        pillars?: Array< string | null > | null,
+        description?: string | null,
+        internalMission?: string | null,
+        strapLine?: string | null,
+        userEmail?: string | null,
+        tiktokHandle?: string | null,
+        vertical?: string | null,
+        metaData?: string | null,
+        briefs?:  {
+          __typename: "ModelBrandBriefConnection",
+          nextToken?: string | null,
+        } | null,
+        createdAt: string,
+        updatedAt: string,
+        userProfileBrandId?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type BrandBriefsByTiktokAdvertiserIdQueryVariables = {
+  tiktokAdvertiserId: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelBrandBriefFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type BrandBriefsByTiktokAdvertiserIdQuery = {
+  brandBriefsByTiktokAdvertiserId?:  {
+    __typename: "ModelBrandBriefConnection",
+    items:  Array< {
+      __typename: "BrandBrief",
+      id: string,
+      BriefName?: string | null,
+      vertical: string,
+      objective?: string | null,
+      brandBriefDetails?: string | null,
+      creativeInspirations?: Array< string | null > | null,
+      active?: boolean | null,
+      campaignId?: string | null,
+      tiktokAdvertiserId: string,
       adgroupId?: string | null,
       creativeRequests?:  {
         __typename: "ModelCreativeRequestConnection",
@@ -2831,6 +3006,7 @@ export type BrandBriefsByBrandIdQuery = {
       creativeInspirations?: Array< string | null > | null,
       active?: boolean | null,
       campaignId?: string | null,
+      tiktokAdvertiserId: string,
       adgroupId?: string | null,
       creativeRequests?:  {
         __typename: "ModelCreativeRequestConnection",
@@ -3078,7 +3254,16 @@ export type OnCreateUserProfileSubscription = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    tiktokAccountAccess?: string | null,
+    tiktokAccountAccess?:  {
+      __typename: "TiktokAccountAccess",
+      access_token?: string | null,
+      advertiser_id?: string | null,
+      advertisers_list?:  Array< {
+        __typename: "AdvertiserData",
+        advertiser_id?: string | null,
+        advertiser_name?: string | null,
+      } > | null,
+    } | null,
     userWallet?:  {
       __typename: "UserWallet",
       id: string,
@@ -3150,7 +3335,16 @@ export type OnUpdateUserProfileSubscription = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    tiktokAccountAccess?: string | null,
+    tiktokAccountAccess?:  {
+      __typename: "TiktokAccountAccess",
+      access_token?: string | null,
+      advertiser_id?: string | null,
+      advertisers_list?:  Array< {
+        __typename: "AdvertiserData",
+        advertiser_id?: string | null,
+        advertiser_name?: string | null,
+      } > | null,
+    } | null,
     userWallet?:  {
       __typename: "UserWallet",
       id: string,
@@ -3222,7 +3416,16 @@ export type OnDeleteUserProfileSubscription = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    tiktokAccountAccess?: string | null,
+    tiktokAccountAccess?:  {
+      __typename: "TiktokAccountAccess",
+      access_token?: string | null,
+      advertiser_id?: string | null,
+      advertisers_list?:  Array< {
+        __typename: "AdvertiserData",
+        advertiser_id?: string | null,
+        advertiser_name?: string | null,
+      } > | null,
+    } | null,
     userWallet?:  {
       __typename: "UserWallet",
       id: string,
@@ -3448,6 +3651,7 @@ export type OnCreateBrandProfileSubscription = {
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
         campaignId?: string | null,
+        tiktokAdvertiserId: string,
         adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
@@ -3512,6 +3716,7 @@ export type OnUpdateBrandProfileSubscription = {
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
         campaignId?: string | null,
+        tiktokAdvertiserId: string,
         adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
@@ -3576,6 +3781,7 @@ export type OnDeleteBrandProfileSubscription = {
         creativeInspirations?: Array< string | null > | null,
         active?: boolean | null,
         campaignId?: string | null,
+        tiktokAdvertiserId: string,
         adgroupId?: string | null,
         creativeRequests?:  {
           __typename: "ModelCreativeRequestConnection",
@@ -3625,6 +3831,7 @@ export type OnCreateBrandBriefSubscription = {
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
     campaignId?: string | null,
+    tiktokAdvertiserId: string,
     adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
@@ -3670,6 +3877,7 @@ export type OnCreateBrandBriefSubscription = {
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
           campaignId?: string | null,
+          tiktokAdvertiserId: string,
           adgroupId?: string | null,
           brandId: string,
           createdAt: string,
@@ -3701,6 +3909,7 @@ export type OnUpdateBrandBriefSubscription = {
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
     campaignId?: string | null,
+    tiktokAdvertiserId: string,
     adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
@@ -3746,6 +3955,7 @@ export type OnUpdateBrandBriefSubscription = {
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
           campaignId?: string | null,
+          tiktokAdvertiserId: string,
           adgroupId?: string | null,
           brandId: string,
           createdAt: string,
@@ -3777,6 +3987,7 @@ export type OnDeleteBrandBriefSubscription = {
     creativeInspirations?: Array< string | null > | null,
     active?: boolean | null,
     campaignId?: string | null,
+    tiktokAdvertiserId: string,
     adgroupId?: string | null,
     creativeRequests?:  {
       __typename: "ModelCreativeRequestConnection",
@@ -3822,6 +4033,7 @@ export type OnDeleteBrandBriefSubscription = {
           creativeInspirations?: Array< string | null > | null,
           active?: boolean | null,
           campaignId?: string | null,
+          tiktokAdvertiserId: string,
           adgroupId?: string | null,
           brandId: string,
           createdAt: string,

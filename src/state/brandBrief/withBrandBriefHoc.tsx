@@ -18,12 +18,19 @@ export function withBrandBriefs<T>(
       profileState: { data },
     } = useContext(ProfileContext);
     const brandId = data?.brand?.items?.[0]?.id;
+    const tiktokAdvertiserId = data?.tiktokAccountAccess?.advertiser_id;
 
     const [brandBriefsState, setBrandBriefsState] =
       useState<Array<BrandBrief | null>>();
 
     useEffect(() => {
-      if (brandId) getBrandBriefs({ variables: { brandId } });
+      if (brandId && tiktokAdvertiserId)
+        getBrandBriefs({
+          variables: {
+            brandId,
+            filter: { tiktokAdvertiserId: { eq: tiktokAdvertiserId } },
+          },
+        });
     }, []);
     useEffect(() => {
       if (!brandBriefListLoading && brandBriefList)

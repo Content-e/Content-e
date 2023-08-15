@@ -46,7 +46,6 @@ export const HeaderMobile = () => {
           style={{ background: backgroundColors[path] }}
         >
           <div className="header-menu-option-container">
-
             <div
               className="login-signup"
               style={path === '/homePageLogin' ? { color: 'white' } : {}}

@@ -2,7 +2,7 @@ import { USER_TYPES } from 'API';
 import { Storage } from 'aws-amplify';
 import classNames from 'classnames';
 import { getProfileRole, IconLoader, ShouldRender } from 'components';
-import { FC, Fragment, useEffect, useState } from 'react';
+import React, { FC, Fragment, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   validateDescription,
@@ -22,10 +22,12 @@ import {
   AllowedProfileSizeKB,
   ProfileProps,
   UnknownType,
+  BrandRoutes,
 } from 'utils';
 import './creatorProfile.css';
 import Modal from 'components/authentication/modal';
-import { CheckIcon } from '@heroicons/react/24/outline';
+import styled from 'styled-components/macro';
+import { Column, Row } from '../../components/common';
 
 export const EditProfile: FC<ProfileProps> = ({
   editProfile,
@@ -78,9 +80,11 @@ export const EditProfile: FC<ProfileProps> = ({
   };
 
   const linkTiktokAccount = (): void => {
-    window.open(
-      'https://ads.tiktok.com/marketing_api/auth?app_id=7204753405493903362&state=your_custom_params&redirect_uri=https%3A%2F%2Fapp.edcsquared.io%2Fbranddashboard&rid=8w8cll1xcbs'
-    );
+    window.location.href = `https://ads.tiktok.com/marketing_api/auth?app_id=${
+      process.env.REACT_APP_CLERK_TKT_MARKETING_APP_ID
+    }&state=your_custom_params&redirect_uri=${encodeURI(
+      process.env.REACT_APP_URL + 'branddashboard' || ''
+    )}&rid=8w8cll1xcbs`;
   };
 
   useEffect(() => {
@@ -166,6 +170,33 @@ export const EditProfile: FC<ProfileProps> = ({
                   </div>
                 </Fragment>
               )}
+              {data?.userType === USER_TYPES.BRAND_USER ? (
+                <BrandPart>
+                  <TiktokActions>
+                    <img src="/images/tiktok.svg" />
+                    <span>Tik Tok</span>
+                    <h5 onClick={linkTiktokAccount}>
+                      Direct ads account linking
+                    </h5>
+                  </TiktokActions>
+                  {data.tiktokAccountAccess?.advertisers_list &&
+                  data.tiktokAccountAccess?.advertisers_list?.length > 1 ? (
+                    <TiktokActions>
+                      <img src="/images/tiktok.svg" />
+                      <span>Tik Tok</span>
+                      <h5
+                        onClick={() =>
+                          history.push(
+                            `${BrandRoutes.LinkTiktokAccount}?change_user=true`
+                          )
+                        }
+                      >
+                        Change account
+                      </h5>
+                    </TiktokActions>
+                  ) : null}
+                </BrandPart>
+              ) : null}
               <div className="field-label-container">
                 <img src="/images/profile-file.svg" />
                 <input
@@ -189,18 +220,6 @@ export const EditProfile: FC<ProfileProps> = ({
                 </span>
                 {isLoading && <IconLoader color="#005f73" />}
               </button>
-              {data?.userType === USER_TYPES.BRAND_USER &&
-                (data?.tiktokAccountAccess ? (
-                  <div className="text-primary flex items-center gap-2 text-lg">
-                    <span>TikTok linked</span>
-                    <CheckIcon className="w-6 h-6" />
-                  </div>
-                ) : (
-                  <div className="save-profile" onClick={linkTiktokAccount}>
-                    <span>Link Tiktok Account</span>
-                    <img src="/images/profile-arrow.svg" />
-                  </div>
-                ))}
             </div>
           </div>
         </div>
@@ -214,5 +233,44 @@ export const EditProfile: FC<ProfileProps> = ({
     </>
   );
 };
+
+const BrandPart = styled(Column)`
+  align-items: flex-start;
+  margin-bottom: 20px;
+
+  h4 {
+    opacity: 0.7;
+    color: #0a9396;
+    font-size: 20px;
+    margin: 10px 0;
+  }
+
+  input {
+    height: 50px;
+    padding-left: 20px;
+  }
+`;
+
+const TiktokActions = styled(Row)`
+  justify-content: flex-start;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 14px;
+  letter-spacing: -0.02em;
+  margin: 15px 0;
+
+  span {
+    color: #8fa4a9;
+    margin: 0 10px;
+  }
+
+  h5 {
+    color: #0a9396;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+`;
 
 export default withProfile(EditProfile);

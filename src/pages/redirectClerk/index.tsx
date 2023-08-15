@@ -1,10 +1,12 @@
-import styled from "styled-components/macro";
+import styled from 'styled-components/macro';
 
 export const RedirectClerk = () => {
-    return <Wrapper>
-        <h2>logging you in, please be patient...</h2>
+  return (
+    <Wrapper>
+      <h2>logging you in, please be patient...</h2>
     </Wrapper>
-}
+  );
+};
 
 const Wrapper = styled.div`
   position: absolute;
@@ -25,4 +27,4 @@ const Wrapper = styled.div`
       font-size: 20px;
     }
   }
-`
+`;

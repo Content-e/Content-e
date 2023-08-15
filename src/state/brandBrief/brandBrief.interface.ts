@@ -46,6 +46,7 @@ export interface ICreateBriefState {
   brandBriefDetails: string;
   creativeInspirations: Array<string>;
   campaignId: string;
+  tiktokAdvertiserId?: string;
   adgroupId: string;
   active: boolean;
   id?: string;

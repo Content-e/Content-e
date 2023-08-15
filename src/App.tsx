@@ -11,8 +11,8 @@ import ScrollToTop from './ScrollToTop';
 import './assets/css/index.scss';
 import ClerkLogin from './components/clerkLogin';
 import { ClerkProvider } from '@clerk/clerk-react';
-import {UnAuthRoutes, UnknownType} from "./utils";
-import {clerkStyles} from "./utils/constants/clerkStyles";
+import { UnAuthRoutes, UnknownType } from './utils';
+import { clerkStyles } from './utils/constants/clerkStyles';
 
 Amplify.configure(config);
 

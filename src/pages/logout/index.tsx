@@ -4,13 +4,11 @@ import { FC, Fragment, useEffect } from 'react';
 import { withProfile } from 'state/profileSteps';
 import { withAuth } from '../../state/auth';
 import { useAuth, useClerk } from '@clerk/clerk-react';
-import { useHistory } from 'react-router-dom';
 
 export const LogoutPage: FC<ProfileProps & AuthProps> = ({
   cleanProfileState,
   setAuthState,
 }) => {
-  const history = useHistory();
   const { isSignedIn } = useAuth();
   const { signOut } = useClerk();
   const logUserOut = async (): Promise<void> => {
@@ -20,7 +18,10 @@ export const LogoutPage: FC<ProfileProps & AuthProps> = ({
     if (isSignedIn) {
       await signOut();
     }
-    window.location.href = process.env.REACT_APP_CLERK_LANDING_URL || process.env.REACT_APP_URL  || '/';
+    window.location.href =
+      process.env.REACT_APP_CLERK_LANDING_URL ||
+      process.env.REACT_APP_URL ||
+      '/';
   };
   useEffect(() => {
     logUserOut();

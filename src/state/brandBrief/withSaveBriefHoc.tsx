@@ -9,7 +9,6 @@ import {
 import {
   ICreateBriefState,
   ISelectDropdown,
-  ITikTokAccess,
   ITikTokCreds,
   SaveBriefProps,
 } from './brandBrief.interface';
@@ -54,7 +53,6 @@ export function withSaveBrief<T>(
 
     const saveData = async (data: ICreateBriefState) => {
       const brandId = profileState.data?.brand?.items?.[0]?.id;
-
       if (brandId) {
         const input = { ..._.omit(data, 'tiktokHandle'), brandId };
 
@@ -74,9 +72,7 @@ export function withSaveBrief<T>(
         if (tiktokAccountAccess) {
           try {
             // eslint-disable-next-line @typescript-eslint/naming-convention
-            const { access_token, advertiser_id } = JSON.parse(
-              tiktokAccountAccess
-            ) as ITikTokAccess;
+            const { access_token, advertiser_id } = tiktokAccountAccess;
             if (access_token && advertiser_id) {
               setTiktokCreds({ token: access_token, advertiser_id });
               return;

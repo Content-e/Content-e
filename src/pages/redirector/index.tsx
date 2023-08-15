@@ -1,4 +1,4 @@
-import {AuthRoutes, ProfileProps, UnAuthRoutes} from 'utils';
+import { AuthRoutes, ProfileProps } from 'utils';
 import { FullPageLoader, replaceSubPath } from 'components';
 import React, { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
