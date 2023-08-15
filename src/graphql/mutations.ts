@@ -7,11 +7,6 @@ export const linkTiktokAccount = /* GraphQL */ `
     linkTiktokAccount(authCode: $authCode, userProfileId: $userProfileId)
   }
 `;
-export const getTikTokAdvertisers = /* GraphQL */ `
-  mutation GetTikTokAdvertisers($authCode: String, $userProfileId: String) {
-    getTikTokAdvertisers(authCode: $authCode, userProfileId: $userProfileId)
-  }
-`;
 export const validateTiktokAccess = /* GraphQL */ `
   mutation ValidateTiktokAccess($accessToken: String) {
     validateTiktokAccess(accessToken: $accessToken)

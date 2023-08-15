@@ -10,14 +10,11 @@ import {
   LinkUserTypeMutationVariables,
   LinkTiktokAccountMutation,
   LinkTiktokAccountMutationVariables,
-  GetTikTokAdvertisersMutationVariables,
-  GetTikTokAdvertisersMutation,
   ValidateTiktokAccessMutationVariables,
   ValidateTiktokAccessMutation,
 } from 'API';
 import {
   createUserProfile as createUserQuery,
-  getTikTokAdvertisers,
   linkTiktokAccount,
   linkUserType,
   updateUserProfile as updateUserQuery,
@@ -107,11 +104,3 @@ export const useValidateTiktokAccessToken =
       error,
     };
   };
-
-export const useGetTiktokAdvertisers = (): ILinkTiktokAccountResponse => {
-  const [linkTiktok, { data, loading, error }] = useMutation<
-    GetTikTokAdvertisersMutation,
-    GetTikTokAdvertisersMutationVariables
-  >(getQuery(getTikTokAdvertisers));
-  return { loading, linkTiktok, data: data?.getTikTokAdvertisers, error };
-};
