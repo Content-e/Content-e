@@ -9,7 +9,6 @@ import {
 import {
   ICreateBriefState,
   ISelectDropdown,
-  ITikTokAccess,
   ITikTokCreds,
   SaveBriefProps,
 } from './brandBrief.interface';
@@ -54,7 +53,6 @@ export function withSaveBrief<T>(
 
     const saveData = async (data: ICreateBriefState) => {
       const brandId = profileState.data?.brand?.items?.[0]?.id;
-
       if (brandId) {
         const input = { ..._.omit(data, 'tiktokHandle'), brandId };
 

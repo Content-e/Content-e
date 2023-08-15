@@ -36,13 +36,13 @@ export interface IUpdateProfile {
   tiktokHandler?: string;
   description?: string;
   name?: string;
-  tiktokAccountAccess?: ITiktokAccountAccess
+  tiktokAccountAccess?: ITiktokAccountAccess | null;
 }
 
 export interface ITiktokAccountAccess {
-  access_token: string;
-  advertiser_id: string;
-  advertisers_list: { advertiser_id: string; advertiser_name: string; }[]
+  access_token: string | null;
+  advertiser_id: string | null;
+  advertisers_list: { advertiser_id: string; advertiser_name: string }[];
 }
 
 export interface IUpdateProfileError {

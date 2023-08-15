@@ -35,3 +35,10 @@ export type ILinkTiktokAccountResponse = {
   loading: boolean;
   error?: Error;
 };
+
+export type IValidateTiktokAccessTokenResponse = {
+  validateTiktokAccessToken: (unknown) => void;
+  data?: UnknownType;
+  loading: boolean;
+  error?: Error;
+};

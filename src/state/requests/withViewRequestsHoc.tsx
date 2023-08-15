@@ -49,7 +49,8 @@ export function withRequestView<T>(
       ) {
         setLoading(true);
         try {
-          const { access_token: token, advertiser_id: advId } = profile.tiktokAccountAccess;
+          const { access_token: token, advertiser_id: advId } =
+            profile.tiktokAccountAccess;
           const input = {
             token,
             advId,
@@ -113,8 +114,8 @@ export function withRequestView<T>(
     const getVideoLink = (authCode?: string): void => {
       if (authCode && profile?.tiktokAccountAccess) {
         try {
-          const { access_token: token, advertiser_id: advId } = profile.tiktokAccountAccess
-          ;
+          const { access_token: token, advertiser_id: advId } =
+            profile.tiktokAccountAccess;
           getVideoUrl({ variables: { token, advertiser_id: advId, authCode } });
         } catch (err) {
           setErrorMsg(err.message);

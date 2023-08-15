@@ -4,6 +4,7 @@ import {
   getUserProfile,
   updateUserProfile,
   useUserTypeSetter,
+  useValidateTiktokAccessToken,
 } from 'hooks';
 import withApolloProvider from 'hooks/apollo/withApollo';
 import React, { useContext, useEffect, useState } from 'react';
@@ -12,6 +13,7 @@ import { AuthContextType } from 'state/types/authTypes';
 import { initialProfileState, ProfileProps } from 'utils';
 import { ProfileContext } from './profile.context';
 import { IUpdateProfile } from './profile.interface';
+import { isArray } from 'lodash';
 
 interface HocProps {
   shouldCallApi?: boolean;
@@ -22,6 +24,9 @@ export function withProfile<T>(
 ): React.FC<T & HocProps> {
   return withApolloProvider((props: T & HocProps) => {
     const { shouldCallApi } = props;
+    const { profileState, setProfileState } = useContext(ProfileContext);
+    const { authState, setAuthState } =
+      useContext<AuthContextType>(AuthContext);
     const { getProfile, profileData, isProfileExists, error, loading } =
       getUserProfile();
     const {
@@ -40,9 +45,10 @@ export function withProfile<T>(
       loading: userTypeLoading,
     } = useUserTypeSetter();
 
-    const { profileState, setProfileState } = useContext(ProfileContext);
-    const { authState, setAuthState } =
-      useContext<AuthContextType>(AuthContext);
+    const {
+      validateTiktokAccessToken,
+      data: tiktokAccountData,
+    } = useValidateTiktokAccessToken();
 
     const { isLoggedIn, email, userId, name } = authState;
     const [createProfileApiCall, updateCreateProfileApiCall] = useState(false);
@@ -66,6 +72,48 @@ export function withProfile<T>(
 
     const cleanProfileState = (): void => {
       setProfileState({ isLoading: false });
+    };
+
+    const validateTiktokAccessTokenHandler = async () => {
+      const accessData = profileState.data?.tiktokAccountAccess;
+      if (
+        tiktokAccountData &&
+        accessData &&
+        accessData.advertisers_list?.length
+      ) {
+        localStorage.setItem(
+          'validateTiktokAccessTokenTime',
+          new Date().getTime().toString()
+        );
+        const { body: advListFromResponse } = JSON.parse(tiktokAccountData);
+        const { advertisers_list, advertiser_id, access_token } = accessData;
+        if (
+          advertiser_id &&
+          advertisers_list &&
+          access_token &&
+          isArray(advListFromResponse) &&
+          advertisers_list.length !== advListFromResponse.length
+        ) {
+          await editProfile({
+            tiktokAccountAccess: {
+              advertisers_list: advListFromResponse,
+              access_token,
+              advertiser_id,
+            },
+          });
+          await refetchProfile(true);
+        }
+      }
+      if (tiktokAccountData === null && isLoggedIn) {
+        await editProfile({
+          tiktokAccountAccess: {
+            advertisers_list: [],
+            access_token: null,
+            advertiser_id: null,
+          },
+        });
+        await refetchProfile(true);
+      }
     };
 
     useEffect(() => {
@@ -132,6 +180,24 @@ export function withProfile<T>(
     useEffect(() => {
       if (!isLoggedIn) setProfileState(initialProfileState);
     }, [isLoggedIn]);
+
+    useEffect(() => {
+      validateTiktokAccessTokenHandler();
+    }, [tiktokAccountData, isLoggedIn]);
+
+    useEffect(() => {
+      const accessToken = profileState.data?.tiktokAccountAccess?.access_token;
+      const lastCheckTime = localStorage.getItem(
+        'validateTiktokAccessTokenTime'
+      );
+      if (
+        accessToken &&
+        (!lastCheckTime ||
+          new Date().getTime() - +lastCheckTime > 1000 * 60 * 60)
+      ) {
+        validateTiktokAccessToken({ variables: { accessToken } });
+      }
+    }, [profileState]);
 
     const profileProps: ProfileProps = {
       profileState: { ...profileState },

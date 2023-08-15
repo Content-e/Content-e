@@ -7,14 +7,14 @@ import Switch from 'components/ui/switch';
 import TextArea from 'components/ui/textArea';
 import useZodForm from 'hooks/useZodForm';
 import _ from 'lodash';
-import {useContext, useEffect, useMemo} from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { SaveBriefProps } from 'state/brandBrief';
 import withSaveBrief from 'state/brandBrief/withSaveBriefHoc';
 import { AuthRoutes } from 'utils';
 import { z } from 'zod';
 import init from 'zod-empty';
-import {ProfileContext} from "../../state/profileSteps";
+import { ProfileContext } from '../../state/profileSteps';
 
 const schema = z.object({
   id: z.string().optional(),
@@ -33,6 +33,7 @@ const schema = z.object({
   active: z.boolean(),
   campaignId: z.string().nonempty(),
   adgroupId: z.string().nonempty(),
+  tiktokAdvertiserId: z.string().optional(),
 });
 
 const defaultValues = {
@@ -51,7 +52,7 @@ function BriefForm({
   briefState,
 }: SaveBriefProps) {
   const history = useHistory();
-  const {profileState} = useContext(ProfileContext)
+  const { profileState } = useContext(ProfileContext);
 
   const {
     register,
@@ -77,8 +78,6 @@ function BriefForm({
       });
     }
   }, [briefState, reset]);
-
-  useEffect(() => {console.log('profileState', profileState)}, [profileState])
 
   const campaignOptions = useMemo(
     () =>
@@ -118,16 +117,16 @@ function BriefForm({
   const onSubmit = handleSubmit(async (data) => {
     const dataToReq = {
       creativeInspirations: data.creativeInspirations.filter(_.isString),
-      vertical: 'TODO',
-      tiktokHandle: 'TODO',
-    }
-    console.log(data);
-    if( profileState.data?.tiktokAccountAccess?.advertiser_id){
-      dataToReq['tiktokAdvertiserId'] = profileState.data?.tiktokAccountAccess.advertiser_id;
+      vertical: '', //'TODO',
+      tiktokHandle: '', //'TODO',
+    };
+    if (profileState.data?.tiktokAccountAccess?.advertiser_id) {
+      dataToReq['tiktokAdvertiserId'] =
+        profileState.data?.tiktokAccountAccess.advertiser_id;
     }
     await saveData({
       ...data,
-...dataToReq
+      ...dataToReq,
     });
   });
 

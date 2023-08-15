@@ -12,6 +12,11 @@ export const getTikTokAdvertisers = /* GraphQL */ `
     getTikTokAdvertisers(authCode: $authCode, userProfileId: $userProfileId)
   }
 `;
+export const validateTiktokAccess = /* GraphQL */ `
+  mutation ValidateTiktokAccess($accessToken: String) {
+    validateTiktokAccess(accessToken: $accessToken)
+  }
+`;
 export const linkUserType = /* GraphQL */ `
   mutation LinkUserType($userType: String, $profileId: String) {
     linkUserType(userType: $userType, profileId: $profileId)

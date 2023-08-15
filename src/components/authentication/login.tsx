@@ -1,40 +1,37 @@
-import {FC, useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
+import { FC, useEffect } from 'react';
 import './styles/login.scss';
-import {useClerk} from '@clerk/clerk-react';
-import styled from "styled-components";
-import {ButtonBlack, Center, Column, Row} from "../common";
-import {Header} from "../header";
-import {Footer} from "../footer";
-
+import { useClerk } from '@clerk/clerk-react';
+import styled from 'styled-components';
+import { ButtonBlack, Center } from '../common';
+import { Header } from '../header';
+import { Footer } from '../footer';
 
 export const Login: FC = () => {
-    const history = useHistory();
 
-    const {openSignIn, loaded} = useClerk();
+  const { openSignIn, loaded } = useClerk();
 
-    useEffect(() => {
-        if (loaded) {
-            openSignIn()
-        }
-    }, [loaded])
+  useEffect(() => {
+    if (loaded) {
+      openSignIn();
+    }
+  }, [loaded]);
 
-    return (
-        <Wrapper>
-            <Header/>
-            <ContentWrapper>
-                <Content>
-                    <h1>JOIN AS A CREATOR</h1>
-                    <LoginButton onClick={() => openSignIn()}>
-                        Login
-                    </LoginButton>
-                    <h3>Are you a brand? Get in touch here or drop us a mail <a
-                        href="mailto:hello@edcsquared.io.">hello@edcsquared.io.</a></h3>
-                </Content>
-            </ContentWrapper>
-            <Footer/>
-        </Wrapper>
-    );
+  return (
+    <Wrapper>
+      <Header />
+      <ContentWrapper>
+        <Content>
+          <h1>JOIN AS A CREATOR</h1>
+          <LoginButton onClick={() => openSignIn()}>Login</LoginButton>
+          <h3>
+            Are you a brand? Get in touch here or drop us a mail{' '}
+            <a href="mailto:hello@edcsquared.io.">hello@edcsquared.io.</a>
+          </h3>
+        </Content>
+      </ContentWrapper>
+      <Footer />
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`
@@ -44,12 +41,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 const LoginButton = styled(ButtonBlack)`
   height: 56px;
   width: 90%;
-`
+`;
 
 const ContentWrapper = styled(Center)`
   width: 100%;
@@ -58,7 +55,7 @@ const ContentWrapper = styled(Center)`
   z-index: 10;
   background-color: white;
   min-height: 100vh;
-`
+`;
 
 const Content = styled(Center)`
   flex-direction: column;
@@ -90,6 +87,6 @@ const Content = styled(Center)`
       color: cornflowerblue;
     }
   }
-`
+`;
 
 export default Login;

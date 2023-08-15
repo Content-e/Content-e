@@ -42,7 +42,6 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
   };
 
   useEffect(() => {
-
     if (pathname === BrandRoutes.LinkTiktokAccount) {
       const url = new URL(window.location.href);
       if (url.searchParams.get('code')) {
@@ -52,7 +51,12 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
       }
     }
     if (typeof isLoggedIn === 'boolean' && !isLoading) {
-      if (isLoggedIn && isSignedIn && !isValidRoute(AuthRoutesArray, pathname) && !pathname.includes(UnAuthRoutes.TermsAndConditions))
+      if (
+        isLoggedIn &&
+        isSignedIn &&
+        !isValidRoute(AuthRoutesArray, pathname) &&
+        !pathname.includes(UnAuthRoutes.TermsAndConditions)
+      )
         history.replace(replaceSubPath(AuthRoutes.Redirector));
       else if (
         !isSignedIn &&

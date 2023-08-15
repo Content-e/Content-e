@@ -7,4 +7,4 @@ import Brief from './brief';
 export { LogoutPage, AuthorizeTikTokStep, RedirectingStep, Dashboard, Brief };
 
 export * from './login';
-export {RedirectClerk} from './redirectClerk'
+export { RedirectClerk } from './redirectClerk';

@@ -1105,6 +1105,81 @@ export const brandBriefsByVertical = /* GraphQL */ `
     }
   }
 `;
+export const brandBriefsByTiktokAdvertiserId = /* GraphQL */ `
+  query BrandBriefsByTiktokAdvertiserId(
+    $tiktokAdvertiserId: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelBrandBriefFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    brandBriefsByTiktokAdvertiserId(
+      tiktokAdvertiserId: $tiktokAdvertiserId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        BriefName
+        vertical
+        objective
+        brandBriefDetails
+        creativeInspirations
+        active
+        campaignId
+        tiktokAdvertiserId
+        adgroupId
+        creativeRequests {
+          items {
+            brandBriefId
+            creatorId
+            status
+            tiktokCreativeUrl
+            tiktokVideoCode
+            creativeTiktokHandle
+            creatorDescription
+            creatorName
+            id
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        brandId
+        brandProfile {
+          id
+          name
+          toneVoice
+          pillars
+          description
+          internalMission
+          strapLine
+          userEmail
+          tiktokHandle
+          vertical
+          metaData
+          briefs {
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          userProfileBrandId
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
 export const brandBriefsByBrandId = /* GraphQL */ `
   query BrandBriefsByBrandId(
     $brandId: ID!

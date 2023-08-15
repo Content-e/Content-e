@@ -82,7 +82,7 @@ export const useLogin = (): ApiHookReturnType<
           setRes(getSuccessResponse<CognitoUser>(response));
           const url = new URL(window.location.href);
           const authCode = url.searchParams.get('auth_code');
-          if(!authCode) {
+          if (!authCode) {
             setTimeout(() => window.location.reload(), 0);
           }
         }

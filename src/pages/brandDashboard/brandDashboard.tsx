@@ -1,6 +1,10 @@
 import _ from 'lodash';
 import './brandDashboard.css';
-import {FC, useEffect, useLayoutEffect, useMemo, useState} from 'react';
+import {
+  FC,
+  useMemo,
+  useState,
+} from 'react';
 import { BrandBriefProps, withBrandBriefs } from 'state/brandBrief';
 import BrandInfo from './brandInfo';
 import CreativeDetails from 'pages/creativeDetails/creativeDetails';

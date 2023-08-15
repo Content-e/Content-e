@@ -3181,15 +3181,16 @@ input[type='checkbox']:checked + .checkbox {
     padding: 0;
   }
 }
-.clerkGeneral{
+.clerkGeneral {
   a {
     color: dodgerblue;
   }
 }
-.clerkSocialIconFacebook{
-  background: no-repeat center url("../../../public/images/instagram-colored.svg");
+.clerkSocialIconFacebook {
+  background: no-repeat center
+    url('../../../public/images/instagram-colored.svg');
   background-size: 22%;
-  img{
+  img {
     display: none;
   }
 }
@@ -3197,7 +3198,7 @@ input[type='checkbox']:checked + .checkbox {
   height: 60px;
 }
 .clerkInput {
-  button{
+  button {
     font-weight: 700;
   }
   input {
@@ -3209,13 +3210,14 @@ input[type='checkbox']:checked + .checkbox {
   font-weight: 500;
 }
 
-.clerkOptional{
+.clerkOptional {
   span {
     display: none;
   }
 }
 
-.clerkHeaderTitle{}
+.clerkHeaderTitle {
+}
 
 @media screen and (max-width: 991px) {
   .creator-identity {

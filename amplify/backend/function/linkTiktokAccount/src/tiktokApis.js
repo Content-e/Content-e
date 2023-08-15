@@ -6,6 +6,7 @@ const exchangeAuthCode = async (authCode) => {
     auth_code: authCode,
     secret: process.env.TKTOK_SECRET,
   };
+
   let url = process.env.TKTOK_BUSNS_API_ACCESS_ENDPOINT;
   const headers = {
     'User-Agent': 'PostmanRuntime/7.31.3',
@@ -23,11 +24,11 @@ const exchangeAuthCode = async (authCode) => {
   url.search = params.toString();
   headers['Access-Token'] = _response?.data?.data?.access_token
   const response = await axios.get(url.href,{ headers });
-  console.log('tiktok api response: ', _response?.data,);
   const advertisers_list = response?.data?.data?.list;
+  console.log('advertisers_list: ', advertisers_list);
   return {
     access_token: _response?.data?.data?.access_token,
-    advertiser_id: _response?.data?.data?.advertiser_ids[0] || '',
+    advertiser_id: _response?.data?.data?.advertiser_ids.length? _response?.data?.data?.advertiser_ids[0]: '',
     advertisers_list
   };
 };

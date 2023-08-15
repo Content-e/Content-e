@@ -95,7 +95,7 @@
       "function": {
         "GPTLambda": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/GPTLambda-355467797542664c6a35-build.zip"
+          "s3Key": "amplify-builds/GPTLambda-44355a314b6159743845-build.zip"
         },
         "emailService": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
@@ -115,7 +115,7 @@
         },
         "linkTiktokAccount": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/linkTiktokAccount-7544714e6d78476c3043-build.zip"
+          "s3Key": "amplify-builds/linkTiktokAccount-6f756351714c4656484b-build.zip"
         },
         "listAdGroups": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
@@ -133,9 +133,9 @@
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
           "s3Key": "amplify-builds/contente9303b093PreSignup-2f674b6565656e77427a-build.zip"
         },
-        "getTikTokAdvertisers": {
+        "validateTiktokAccess": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/getTikTokAdvertisers-7a5a627348664f44656e-build.zip"
+          "s3Key": "amplify-builds/validateTiktokAccess-68523637486f714a782b-build.zip"
         }
       },
       "hosting": {
