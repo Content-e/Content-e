@@ -74,7 +74,7 @@ type BrandBrief
     creativeInspirations: [String]
     active: Boolean
     campaignId: String
-    tiktokAdvertiserId: String! @index(name: "byAdvertiserId")
+    tiktokAdvertiserId: String @index(name: "byAdvertiserId")
     adgroupId: String
     creativeRequests: [CreativeRequest]
     @hasMany(indexName: "byBrandBrief", fields: ["id"])

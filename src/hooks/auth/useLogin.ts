@@ -35,14 +35,13 @@ export const useLogin = (): ApiHookReturnType<
     async (payload: LoginPayloadType): Promise<void> => {
       let error: Error | null = null;
       const token = (await getToken()) || '';
-      console.log('userId', userId);
-      const clientMetadata = { token, user: userId || '' };
       const { email, password, username } = payload;
       setRes({ ...apiInitialState, isLoading: true });
       let response: CognitoUser | null = null;
       if (userId) {
+        const validationData = { token, user: userId || '' };
         try {
-          response = await Auth.signIn(email, password, clientMetadata);
+          response = await Auth.signIn(email, password, validationData);
         } catch (err) {
           error = err;
         }
@@ -54,9 +53,9 @@ export const useLogin = (): ApiHookReturnType<
                 username: email,
                 password,
                 attributes: { email, name: username },
-                clientMetadata,
+                clientMetadata: validationData,
               });
-              response = await Auth.signIn(email, password, clientMetadata);
+              response = await Auth.signIn(email, password, validationData);
             } else {
               if (error?.message === unverifiedUser) {
                 setAuthState((current) => ({

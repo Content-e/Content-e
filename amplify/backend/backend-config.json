@@ -143,6 +143,200 @@
       "type": "manual"
     }
   },
+  "parameters": {
+    "AMPLIFY_function_GPTLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GPTLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_GPTLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GPTLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_contente9303b093PreSignup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "contente9303b093PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_contente9303b093PreSignup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "contente9303b093PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_createAd_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createAd"
+        }
+      ]
+    },
+    "AMPLIFY_function_createAd_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createAd"
+        }
+      ]
+    },
+    "AMPLIFY_function_emailService_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "emailService"
+        }
+      ]
+    },
+    "AMPLIFY_function_emailService_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "emailService"
+        }
+      ]
+    },
+    "AMPLIFY_function_getVideoFromAuthCode_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getVideoFromAuthCode"
+        }
+      ]
+    },
+    "AMPLIFY_function_getVideoFromAuthCode_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getVideoFromAuthCode"
+        }
+      ]
+    },
+    "AMPLIFY_function_graphQlLambdaAuthorizerc946ef1d_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "graphQlLambdaAuthorizerc946ef1d"
+        }
+      ]
+    },
+    "AMPLIFY_function_graphQlLambdaAuthorizerc946ef1d_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "graphQlLambdaAuthorizerc946ef1d"
+        }
+      ]
+    },
+    "AMPLIFY_function_linkTiktokAccount_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "linkTiktokAccount"
+        }
+      ]
+    },
+    "AMPLIFY_function_linkTiktokAccount_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "linkTiktokAccount"
+        }
+      ]
+    },
+    "AMPLIFY_function_listAdGroups_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listAdGroups"
+        }
+      ]
+    },
+    "AMPLIFY_function_listAdGroups_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listAdGroups"
+        }
+      ]
+    },
+    "AMPLIFY_function_listCompaigns_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listCompaigns"
+        }
+      ]
+    },
+    "AMPLIFY_function_listCompaigns_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listCompaigns"
+        }
+      ]
+    },
+    "AMPLIFY_function_updateUserType_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "updateUserType"
+        }
+      ]
+    },
+    "AMPLIFY_function_updateUserType_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "updateUserType"
+        }
+      ]
+    },
+    "AMPLIFY_function_validateTiktokAccess_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "validateTiktokAccess"
+        }
+      ]
+    },
+    "AMPLIFY_function_validateTiktokAccess_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "validateTiktokAccess"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_appId": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_type": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    }
+  },
   "storage": {
     "staticStorage": {
       "dependsOn": [],

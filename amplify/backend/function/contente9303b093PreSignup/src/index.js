@@ -3,12 +3,18 @@ const jwt = require('jsonwebtoken');
 exports.handler = async (event, context) => {
   console.log('event', event);
   const result = validateToken(
-    event.request.clientMetadata.token,
-    event.request.clientMetadata.user
+      event.triggerSource === 'PreAuthentication_Authentication'
+          ? event.request.validationData.token
+          : event.request.clientMetadata.token,
+      event.triggerSource === 'PreAuthentication_Authentication'
+          ? event.request.validationData.user
+          : event.request.clientMetadata.user
   );
   if (result) {
-    event.response.autoConfirmUser = true;
-    event.response.autoVerifyEmail = true;
+    if(event.triggerSource !== 'PreAuthentication_Authentication'){
+      event.response.autoConfirmUser = true;
+      event.response.autoVerifyEmail = true;
+    }
     return event;
   } else {
     return null;

@@ -46,13 +46,6 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     },
-    "getTikTokAdvertisers": {
-      "Arn": "string",
-      "LambdaExecutionRole": "string",
-      "LambdaExecutionRoleArn": "string",
-      "Name": "string",
-      "Region": "string"
-    },
     "getVideoFromAuthCode": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
@@ -89,6 +82,13 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string"
     },
     "updateUserType": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "validateTiktokAccess": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
