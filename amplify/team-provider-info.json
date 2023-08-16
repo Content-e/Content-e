@@ -45,7 +45,7 @@
         },
         "linkTiktokAccount": {
           "deploymentBucketName": "amplify-contente-prod-133127-deployment",
-          "s3Key": "amplify-builds/linkTiktokAccount-36343255592f674b3853-build.zip"
+          "s3Key": "amplify-builds/linkTiktokAccount-6f756351714c4656484b-build.zip"
         },
         "listAdGroups": {
           "deploymentBucketName": "amplify-contente-prod-133127-deployment",
@@ -62,6 +62,10 @@
         "contente9303b093PreSignup": {
           "deploymentBucketName": "amplify-contente-prod-133127-deployment",
           "s3Key": "amplify-builds/contente9303b093PreSignup-67744c56674465656738-build.zip"
+        },
+        "validateTiktokAccess": {
+          "deploymentBucketName": "amplify-contente-prod-133127-deployment",
+          "s3Key": "amplify-builds/validateTiktokAccess-68523637486f714a782b-build.zip"
         }
       },
       "storage": {
@@ -131,7 +135,7 @@
         },
         "contente9303b093PreSignup": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/contente9303b093PreSignup-2f674b6565656e77427a-build.zip"
+          "s3Key": "amplify-builds/contente9303b093PreSignup-77615846324b51534272-build.zip"
         },
         "validateTiktokAccess": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
