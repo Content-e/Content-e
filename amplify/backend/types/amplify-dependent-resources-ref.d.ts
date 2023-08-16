@@ -25,6 +25,13 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     },
+    "clerkAuthentication": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "contente9303b093PreSignup": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
@@ -40,13 +47,6 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string"
     },
     "emailService": {
-      "Arn": "string",
-      "LambdaExecutionRole": "string",
-      "LambdaExecutionRoleArn": "string",
-      "Name": "string",
-      "Region": "string"
-    },
-    "getTikTokAdvertisers": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -89,6 +89,13 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string"
     },
     "updateUserType": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "validateTiktokAccess": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",

@@ -1,7 +1,7 @@
 # This "input" configures a global authorization rule to enable public access to
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 
-type UserProfile @model @auth(rules: [{ allow: owner }]) {
+type UserProfile @model @auth(rules: [{ allow: owner}]) {
     id: ID!
     name: String!
     userEmail: String! @index
@@ -74,7 +74,7 @@ type BrandBrief
     creativeInspirations: [String]
     active: Boolean
     campaignId: String
-    tiktokAdvertiserId: String! @index(name: "byAdvertiserId")
+    tiktokAdvertiserId: String @index(name: "byAdvertiserId")
     adgroupId: String
     creativeRequests: [CreativeRequest]
     @hasMany(indexName: "byBrandBrief", fields: ["id"])
