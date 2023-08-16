@@ -26,7 +26,7 @@
         },
         "emailService": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
-          "s3Key": "amplify-builds/emailService-56663838656a384a5730-build.zip"
+          "s3Key": "amplify-builds/emailService-42796d35515365695a59-build.zip"
         },
         "graphQlLambdaAuthorizerc946ef1d": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
@@ -63,6 +63,10 @@
         "validateTiktokAccess": {
           "deploymentBucketName": "amplify-contente-dev-202732-deployment",
           "s3Key": "amplify-builds/validateTiktokAccess-68523637486f714a782b-build.zip"
+        },
+        "clerkAuthentication": {
+          "deploymentBucketName": "amplify-contente-dev-202732-deployment",
+          "s3Key": "amplify-builds/clerkAuthentication-74763861736c7a434c57-build.zip"
         }
       },
       "hosting": {
