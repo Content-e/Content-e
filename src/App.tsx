@@ -9,10 +9,7 @@ import MainRouter from './router';
 import { ProfileProvider } from 'state/profileSteps';
 import ScrollToTop from './ScrollToTop';
 import './assets/css/index.scss';
-import ClerkLogin from './components/clerkLogin';
-import { ClerkProvider } from '@clerk/clerk-react';
 import { UnAuthRoutes, UnknownType } from './utils';
-import { clerkStyles } from './utils/constants/clerkStyles';
 
 Amplify.configure(config);
 
@@ -25,18 +22,11 @@ const App: React.FC = () => {
 
   return (
     <ErrorProvider>
-      <ClerkProvider
-        publishableKey={clerkPubKey}
-        afterSignInUrl={UnAuthRoutes.ClerkRedirect}
-        afterSignUpUrl={UnAuthRoutes.ClerkRedirect}
-        appearance={clerkStyles as UnknownType}
-      >
         <Router>
           <ScrollToTop />
-          <div className="App text-gray-600">
+          <div className="App">
             <AuthProvider>
               <ProfileProvider>
-                <ClerkLogin />
                 <Route path="/" component={MainRouter} />
               </ProfileProvider>
             </AuthProvider>
@@ -60,7 +50,6 @@ const App: React.FC = () => {
             )}
           </div>
         </Router>
-      </ClerkProvider>
     </ErrorProvider>
   );
 };

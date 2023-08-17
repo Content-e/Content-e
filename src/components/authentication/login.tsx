@@ -1,36 +1,45 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import './styles/login.scss';
-import { useClerk } from '@clerk/clerk-react';
 import styled from 'styled-components';
 import { ButtonBlack, Center } from '../common';
 import { Header } from '../header';
 import { Footer } from '../footer';
+import CognitoLogin from 'components/cognitoLogin/CognitoLogin';
+
 
 export const Login: FC = () => {
+  const [clerkLogin, setClerkLogin] = useState<boolean>(false);
+  const ClerkSigninOrSignup = (): void => {
+    setClerkLogin(true);
+    // openSignIn();
 
-  const { openSignIn, loaded } = useClerk();
-
-  useEffect(() => {
-    if (loaded) {
-      openSignIn();
-    }
-  }, [loaded]);
+  };
 
   return (
-    <Wrapper>
-      <Header />
-      <ContentWrapper>
-        <Content>
-          <h1>JOIN AS A CREATOR</h1>
-          <LoginButton onClick={() => openSignIn()}>Login</LoginButton>
-          <h3>
-            Are you a brand? Get in touch here or drop us a mail{' '}
-            <a href="mailto:hello@edcsquared.io.">hello@edcsquared.io.</a>
-          </h3>
-        </Content>
-      </ContentWrapper>
-      <Footer />
-    </Wrapper>
+      <Wrapper>
+        <Header callback={ClerkSigninOrSignup} />
+        <ContentWrapper>
+          {!clerkLogin ? (
+            <Content>
+              <h1>JOIN AS A CREATOR</h1>
+              <LoginButton
+                onClick={() => {
+                  ClerkSigninOrSignup();
+                }}
+              >
+                Login
+              </LoginButton>
+              <h3>
+                Are you a brand? Get in touch here or drop us a mail{' '}
+                <a href="mailto:hello@edcsquared.io.">hello@edcsquared.io.</a>
+              </h3>
+            </Content>
+          ) : (
+            <CognitoLogin />
+          )}
+        </ContentWrapper>
+        <Footer />
+      </Wrapper>
   );
 };
 

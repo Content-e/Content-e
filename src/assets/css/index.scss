@@ -2249,7 +2249,7 @@ img {
     }
     flex-direction: column;
     height: auto;
-    padding: 22px 0;
+    padding: 4px 0;
     gap: 24px;
   }
 
@@ -3206,6 +3206,25 @@ input[type='checkbox']:checked + .checkbox {
     border: 1px solid #eaeaea;
   }
 }
+.clerkModal{
+  background-color: transparent !important;
+  z-index: -100000;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.clerkCloseButton{
+  display: none;
+}
+.clModalContent{
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .clerkButton {
   font-weight: 500;
 }
@@ -3216,7 +3235,39 @@ input[type='checkbox']:checked + .checkbox {
   }
 }
 
-.clerkHeaderTitle {
+.facebookSignIn{
+  background: url('../../../public/images/ContinuewithFacebook.png');
+  height: 55px;
+  width: 346px;
+  margin-right: 20px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.googleSignIn{
+  background: url('../../../public/images/ContinuewithGoogle.png');
+  height: 60px;
+  width: 353px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+[data-amplify-authenticator][data-variation=modal]{
+  background: transparent;
+  position: relative;
+}
+.amplify-button.amplify-button--primary{
+  background-color: rgb(16, 16, 16);
+  color: rgb(255, 255, 255);
+  border-radius: 60px;
+}
+
+.amplify-input {
+  border-radius: 60px;
+}
+
+.amplify-field__show-password{
+  border-radius: 60px;
 }
 
 @media screen and (max-width: 991px) {
