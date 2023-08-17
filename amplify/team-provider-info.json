@@ -1,4 +1,17 @@
 {
+  "stage": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-contente-stage-100959-authRole",
+      "UnauthRoleArn": "arn:aws:iam::995966967167:role/amplify-contente-stage-100959-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::995966967167:role/amplify-contente-stage-100959-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-contente-stage-100959-deployment",
+      "UnauthRoleName": "amplify-contente-stage-100959-unauthRole",
+      "StackName": "amplify-contente-stage-100959",
+      "StackId": "arn:aws:cloudformation:us-east-1:995966967167:stack/amplify-contente-stage-100959/39694910-3ce6-11ee-86b7-12b3a6afeced",
+      "AmplifyAppId": "d12cm8tmqhdorb"
+    }
+  },
   "prod": {
     "awscloudformation": {
       "AuthRoleName": "amplify-contente-prod-133127-authRole",
