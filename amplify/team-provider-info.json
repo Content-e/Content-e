@@ -59,10 +59,6 @@
           "deploymentBucketName": "amplify-contente-prod-133127-deployment",
           "s3Key": "amplify-builds/updateUserType-75764f4c56304142464e-build.zip"
         },
-        "contente9303b093PreSignup": {
-          "deploymentBucketName": "amplify-contente-prod-133127-deployment",
-          "s3Key": "amplify-builds/contente9303b093PreSignup-67744c56674465656738-build.zip"
-        },
         "validateTiktokAccess": {
           "deploymentBucketName": "amplify-contente-prod-133127-deployment",
           "s3Key": "amplify-builds/validateTiktokAccess-68523637486f714a782b-build.zip"
