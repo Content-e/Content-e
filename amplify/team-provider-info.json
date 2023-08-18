@@ -23,9 +23,7 @@
         "createAd": {
           "deploymentBucketName": "amplify-contente-develop-140523-deployment",
           "s3Key": "amplify-builds/createAd-7142755a38444a704474-build.zip"
-        },
-        "getVideoFromAuthCode": {},
-        "GPTLambda": {}
+        }
       },
       "hosting": {
         "S3AndCloudFront": {}
