@@ -64,6 +64,11 @@
     }
   },
   "function": {
+    "GPTLambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "createAd": {
       "build": true,
       "providerPlugin": "awscloudformation",
