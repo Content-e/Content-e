@@ -1,7 +1,7 @@
 import { UnAuthRoutes } from '../../utils';
 import styled from 'styled-components/macro';
 import { ButtonBlack, Center, Column, Row } from 'components/common';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const navButtons: { name: string; route: string }[] = [
@@ -11,7 +11,11 @@ const navButtons: { name: string; route: string }[] = [
   { name: `Let's Connect`, route: 'connect' },
 ];
 
-export const Header = () => {
+type headerPropsType = {
+  callback?: () => void;
+};
+
+export const Header: FC<headerPropsType> = ({ callback }) => {
   const [isShowMobileMenu, setIsShowMobileMenu] = useState(false);
   const history = useHistory();
   const redirect = (url: string) => {
@@ -40,9 +44,7 @@ export const Header = () => {
               ))}
             </MenuMobile>
           ) : null}
-          <SignInButton onClick={() => history.push(UnAuthRoutes.Login)}>
-            Login or Sign up
-          </SignInButton>
+          <SignInButton onClick={callback}>Login or Sign up</SignInButton>
           <MenuButton
             src={'/images/menu-mobile-hamburger.svg'}
             onClick={() => setIsShowMobileMenu(!isShowMobileMenu)}

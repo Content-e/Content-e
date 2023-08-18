@@ -3,21 +3,15 @@ import { AuthProps, initialAuthContext, ProfileProps } from 'utils';
 import { FC, Fragment, useEffect } from 'react';
 import { withProfile } from 'state/profileSteps';
 import { withAuth } from '../../state/auth';
-import { useAuth, useClerk } from '@clerk/clerk-react';
 
 export const LogoutPage: FC<ProfileProps & AuthProps> = ({
   cleanProfileState,
   setAuthState,
 }) => {
-  const { isSignedIn } = useAuth();
-  const { signOut } = useClerk();
   const logUserOut = async (): Promise<void> => {
     await Auth.signOut();
     setAuthState({ ...initialAuthContext });
     cleanProfileState();
-    if (isSignedIn) {
-      await signOut();
-    }
     window.location.href =
       process.env.REACT_APP_CLERK_LANDING_URL ||
       process.env.REACT_APP_URL ||

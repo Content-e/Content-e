@@ -3,7 +3,9 @@ export enum UnAuthRoutes {
   HomePageLogin = '/homePageLogin',
 
   Login = '/login',
+  SignUp = '/signup',
   SubLogin = '/login/:id',
+  ForgotPass = '/forgot-password',
   AdminLogin = '/adminLogin',
 
   PrivacyPolicy = '/privacyPolicy',

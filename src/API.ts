@@ -586,6 +586,12 @@ export enum GPT_RESPONSE_TYPE {
 }
 
 
+export type EMAIL_INPUT = {
+  message: string,
+  name: string,
+  from: string,
+};
+
 export type ModelUserProfileFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -712,12 +718,6 @@ export type ModelCreativeRequestFilterInput = {
   and?: Array< ModelCreativeRequestFilterInput | null > | null,
   or?: Array< ModelCreativeRequestFilterInput | null > | null,
   not?: ModelCreativeRequestFilterInput | null,
-};
-
-export type EMAIL_INPUT = {
-  message: string,
-  name: string,
-  from: string,
 };
 
 export type ModelSubscriptionUserProfileFilterInput = {
@@ -1865,6 +1865,14 @@ export type GetGPTresponseQuery = {
     error?: boolean | null,
     message?: string | null,
   } | null,
+};
+
+export type SendEmailQueryVariables = {
+  data?: EMAIL_INPUT | null,
+};
+
+export type SendEmailQuery = {
+  sendEmail?: boolean | null,
 };
 
 export type GetUserProfileQueryVariables = {
@@ -3188,14 +3196,6 @@ export type CreativeRequestsByStatusQuery = {
     } | null >,
     nextToken?: string | null,
   } | null,
-};
-
-export type SendEmailQueryVariables = {
-  data?: EMAIL_INPUT | null,
-};
-
-export type SendEmailQuery = {
-  sendEmail?: boolean | null,
 };
 
 export type OnCreateUserProfileSubscriptionVariables = {

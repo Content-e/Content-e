@@ -24,7 +24,6 @@ import {
   UnAuthRoutesArray,
 } from './RoutesConstants';
 import ToastContainer from 'components/toast';
-import { useAuth } from '@clerk/clerk-react';
 
 const MainRouter: React.FC<AuthProps & ErrorProps> = ({
   authState: { isLoading, isLoggedIn, email },
@@ -33,7 +32,6 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
   const [pathFound, handlePathFound] = useState(false);
   const history = useHistory();
   const { pathname } = useLocation();
-  const { isSignedIn } = useAuth();
 
   const redirectToInValidRoute = (): void => {
     if (pathname.split('/').length === 3) {
@@ -53,16 +51,11 @@ const MainRouter: React.FC<AuthProps & ErrorProps> = ({
     if (typeof isLoggedIn === 'boolean' && !isLoading) {
       if (
         isLoggedIn &&
-        isSignedIn &&
         !isValidRoute(AuthRoutesArray, pathname) &&
         !pathname.includes(UnAuthRoutes.TermsAndConditions)
       )
         history.replace(replaceSubPath(AuthRoutes.Redirector));
-      else if (
-        !isSignedIn &&
-        !isLoggedIn &&
-        !isValidRoute(UnAuthRoutesArray, pathname)
-      )
+      else if (!isLoggedIn && !isValidRoute(UnAuthRoutesArray, pathname))
         redirectToInValidRoute();
       handlePathFound(true);
     }

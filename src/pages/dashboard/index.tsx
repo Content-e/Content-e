@@ -6,11 +6,9 @@ import CreatorDashboard from 'pages/creatorDashboard/creatorDashboard';
 import BrandDashboard from 'pages/brandDashboard/brandDashboard';
 import AdminDashboard from 'pages/adminDashboard/adminDashboard';
 import Modal from '../../components/authentication/modal';
-import { useClerk } from '@clerk/clerk-react';
 
 const Dashboard: React.FC<ProfileProps> = ({ profileState: { data } }) => {
   const [isShowModal, setIsShowModal] = useState(true);
-  const { signOut } = useClerk();
   useEffect(() => {
     const confirmed = localStorage.getItem(`agreementConfirmed_${data?.id}`);
     if (confirmed) {
@@ -50,7 +48,7 @@ const Dashboard: React.FC<ProfileProps> = ({ profileState: { data } }) => {
         actionHandler={async () => {
           localStorage.setItem(`agreementConfirmed_${data?.id}`, 'true');
           setIsShowModal(false);
-          await signOut();
+          // await signOut();
         }}
         type={'creator'}
       />

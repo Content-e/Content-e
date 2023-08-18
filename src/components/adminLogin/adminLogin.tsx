@@ -4,14 +4,13 @@ import { IconLoader, Input } from 'components';
 import { AuthProps, defaultLoginError, defaultLoginState } from 'utils';
 import './adminLogin.css';
 import { validateEmail, validatePassword, withAuth } from 'state/auth';
-import { useLogin } from 'hooks';
 import Checkbox from 'components/authentication/checkbox';
 
 export const AdminLogin: FC<AuthProps> = ({ getAuth }) => {
-  const {
-    res: { isLoading, success },
-    performAction,
-  } = useLogin();
+  // const {
+  //   res: { isLoading, success },
+  //   performAction,
+  // } = useLogin();
 
   const [formState, setFormState] = useState(defaultLoginState);
   const [formError, setFormError] = useState(defaultLoginError);
@@ -31,15 +30,15 @@ export const AdminLogin: FC<AuthProps> = ({ getAuth }) => {
     return true;
   };
 
-  const onLogin = (): void => {
-    if (!isLoading && validateSignUpForm()) {
-      performAction(formState);
-    }
-  };
+  // const onLogin = (): void => {
+  //   if (!isLoading && validateSignUpForm()) {
+  //     performAction(formState);
+  //   }
+  // };
 
-  useEffect(() => {
-    if (success) getAuth();
-  }, [success]);
+  // useEffect(() => {
+  //   if (success) getAuth();
+  // }, [success]);
 
   const commonProps = {
     handlers: { state: formState, error: formError, updateState },
@@ -73,10 +72,10 @@ export const AdminLogin: FC<AuthProps> = ({ getAuth }) => {
               <span>Forgot Password?</span>{' '}
             </div>{' '}
           </div>
-          <button className="login_btn" onClick={onLogin}>
+          {/* <button className="login_btn" onClick={onLogin}>
             <span style={{ marginRight: 12 }}>Login</span>
             {isLoading && <IconLoader />}
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

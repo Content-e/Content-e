@@ -1,36 +1,51 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import './styles/login.scss';
-import { useClerk } from '@clerk/clerk-react';
 import styled from 'styled-components';
 import { ButtonBlack, Center } from '../common';
 import { Header } from '../header';
 import { Footer } from '../footer';
+import { useHistory, useLocation } from 'react-router-dom';
+import CognitoAuth from 'components/cognitoAuth';
+
 
 export const Login: FC = () => {
-
-  const { openSignIn, loaded } = useClerk();
-
+  const [userLogin, setUserLogin] = useState<boolean>(false);
+  const history = useHistory();
+  const { pathname } = useLocation();
+  const UserSigninOrSignup = (): void => {
+    history.push('/login')
+    setUserLogin(true);
+  };
   useEffect(() => {
-    if (loaded) {
-      openSignIn();
-    }
-  }, [loaded]);
-
+   if(pathname!=='/login'){
+    setUserLogin(true);
+  }
+  },[])
   return (
-    <Wrapper>
-      <Header />
-      <ContentWrapper>
-        <Content>
-          <h1>JOIN AS A CREATOR</h1>
-          <LoginButton onClick={() => openSignIn()}>Login</LoginButton>
-          <h3>
-            Are you a brand? Get in touch here or drop us a mail{' '}
-            <a href="mailto:hello@edcsquared.io.">hello@edcsquared.io.</a>
-          </h3>
-        </Content>
-      </ContentWrapper>
-      <Footer />
-    </Wrapper>
+      <Wrapper>
+        <Header callback={UserSigninOrSignup} />
+        <ContentWrapper>
+          {!userLogin ? (
+            <Content>
+              <h1>JOIN AS A CREATOR</h1>
+              <LoginButton
+                onClick={() => {
+                  UserSigninOrSignup();
+                }}
+              >
+                Login
+              </LoginButton>
+              <h3>
+                Are you a brand? Get in touch here or drop us a mail{' '}
+                <a href="mailto:hello@edcsquared.io.">hello@edcsquared.io.</a>
+              </h3>
+            </Content>
+          ) : (
+            <CognitoAuth />
+          )}
+        </ContentWrapper>
+        <Footer />
+      </Wrapper>
   );
 };
 

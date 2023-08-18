@@ -21,6 +21,11 @@ export const getGPTresponse = /* GraphQL */ `
     }
   }
 `;
+export const sendEmail = /* GraphQL */ `
+  query SendEmail($data: EMAIL_INPUT) {
+    sendEmail(data: $data)
+  }
+`;
 export const getUserProfile = /* GraphQL */ `
   query GetUserProfile($id: ID!) {
     getUserProfile(id: $id) {
@@ -1403,10 +1408,5 @@ export const creativeRequestsByStatus = /* GraphQL */ `
       nextToken
       __typename
     }
-  }
-`;
-export const sendEmail = /* GraphQL */ `
-  query SendEmail($data: EMAIL_INPUT) {
-    sendEmail(data: $data)
   }
 `;
