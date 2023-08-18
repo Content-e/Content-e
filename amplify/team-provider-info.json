@@ -18,6 +18,15 @@
       },
       "api": {
         "contente": {}
+      },
+      "function": {
+        "createAd": {
+          "deploymentBucketName": "amplify-contente-develop-140523-deployment",
+          "s3Key": "amplify-builds/createAd-4f412b5279637a4e4955-build.zip"
+        }
+      },
+      "hosting": {
+        "S3AndCloudFront": {}
       }
     }
   },
