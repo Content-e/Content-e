@@ -52,7 +52,12 @@ const FooterWithEmail = styled(Center)`
   width: 100%;
   padding-left: 40px;
   z-index: 5;
-
+  @media only screen and (max-width: 480px) {
+    padding-left: 10px;
+    h1 {
+      font-size: 30px !important;
+    }
+  }
   h1 {
     font-size: 40px;
     color: white;
@@ -118,7 +123,6 @@ const FooterColumns = styled(Row)`
   align-items: flex-start;
   width: 50%;
   @media screen and (max-width: 768px) {
-    margin-top: 10%;
     flex-direction: column;
     width: 100%;
   }

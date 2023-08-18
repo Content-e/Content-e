@@ -18,8 +18,8 @@ const UnAuthRouter: FC = () => {
           component={TermsAndConditions}
         />
         <Route exact path={path.Login} component={LoginPage} />
+        <Route exact path={path.ForgotPass} component={LoginPage} />
         <Route exact path={path.AdminLogin} component={AdminLogin} />
-
         <Route component={(): UnknownType => <Redirect to={path.Login} />} />
       </Switch>
     </UnAuthFullNameProvider>

@@ -4,27 +4,33 @@ import styled from 'styled-components';
 import { ButtonBlack, Center } from '../common';
 import { Header } from '../header';
 import { Footer } from '../footer';
-import CognitoLogin from 'components/cognitoLogin/CognitoLogin';
+import { useHistory, useLocation } from 'react-router-dom';
+import CognitoAuth from 'components/cognitoAuth';
 
 
 export const Login: FC = () => {
-  const [clerkLogin, setClerkLogin] = useState<boolean>(false);
-  const ClerkSigninOrSignup = (): void => {
-    setClerkLogin(true);
-    // openSignIn();
-
+  const [userLogin, setUserLogin] = useState<boolean>(false);
+  const history = useHistory();
+  const { pathname } = useLocation();
+  const UserSigninOrSignup = (): void => {
+    history.push('/login')
+    setUserLogin(true);
   };
-
+  useEffect(() => {
+   if(pathname!=='/login'){
+    setUserLogin(true);
+  }
+  },[])
   return (
       <Wrapper>
-        <Header callback={ClerkSigninOrSignup} />
+        <Header callback={UserSigninOrSignup} />
         <ContentWrapper>
-          {!clerkLogin ? (
+          {!userLogin ? (
             <Content>
               <h1>JOIN AS A CREATOR</h1>
               <LoginButton
                 onClick={() => {
-                  ClerkSigninOrSignup();
+                  UserSigninOrSignup();
                 }}
               >
                 Login
@@ -35,7 +41,7 @@ export const Login: FC = () => {
               </h3>
             </Content>
           ) : (
-            <CognitoLogin />
+            <CognitoAuth />
           )}
         </ContentWrapper>
         <Footer />

@@ -135,6 +135,11 @@ input:focus-visible {
   outline: none;
 }
 
+input:focus{
+  border-color: rgb(16, 16, 16) !important;
+  --tw-ring-color: rgb(16, 16, 16) !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -3234,22 +3239,33 @@ input[type='checkbox']:checked + .checkbox {
     display: none;
   }
 }
-
-.facebookSignIn{
-  background: url('../../../public/images/ContinuewithFacebook.png');
-  height: 55px;
-  width: 346px;
-  margin-right: 20px;
-  background-repeat: no-repeat;
+[type='checkbox'], [type='radio']{
+color: rgb(16, 16, 16) !important;
+}
+[type='checkbox']:focus, [type='radio']:focus{
+  --tw-ring-color: transparent !important;
+}
+.socialSignIn{
+  width: 47%;
   cursor: pointer;
 }
 
-.googleSignIn{
-  background: url('../../../public/images/ContinuewithGoogle.png');
-  height: 60px;
-  width: 353px;
-  background-repeat: no-repeat;
-  cursor: pointer;
+@media screen and (max-width: 522px) {
+  .socialSignIn{
+    width: 60%;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+}
+
+.character {
+  border: 1px solid rgb(16, 16, 16);
+  font-size: 20px;
+  border-radius: 8px;
+  width: 50px;
+  height: 50px;
+  color: rgb(16, 16, 16);
+  background-color: white;
 }
 
 [data-amplify-authenticator][data-variation=modal]{
