@@ -79,6 +79,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "linkTiktokAccount": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "listAdGroups": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -102,6 +107,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_GPTLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GPTLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_GPTLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GPTLambda"
+        }
+      ]
+    },
     "AMPLIFY_function_createAd_deploymentBucketName": {
       "usedBy": [
         {
@@ -115,6 +136,70 @@
         {
           "category": "function",
           "resourceName": "createAd"
+        }
+      ]
+    },
+    "AMPLIFY_function_getVideoFromAuthCode_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getVideoFromAuthCode"
+        }
+      ]
+    },
+    "AMPLIFY_function_getVideoFromAuthCode_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getVideoFromAuthCode"
+        }
+      ]
+    },
+    "AMPLIFY_function_listAdGroups_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listAdGroups"
+        }
+      ]
+    },
+    "AMPLIFY_function_listAdGroups_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listAdGroups"
+        }
+      ]
+    },
+    "AMPLIFY_function_listCompaigns_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listCompaigns"
+        }
+      ]
+    },
+    "AMPLIFY_function_listCompaigns_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listCompaigns"
+        }
+      ]
+    },
+    "AMPLIFY_function_updateUserType_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "updateUserType"
+        }
+      ]
+    },
+    "AMPLIFY_function_updateUserType_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "updateUserType"
         }
       ]
     }

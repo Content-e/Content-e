@@ -24,8 +24,26 @@
           "deploymentBucketName": "amplify-contente-develop-140523-deployment",
           "s3Key": "amplify-builds/createAd-7142755a38444a704474-build.zip"
         },
-        "listCompaigns": {},
-        "listAdGroups": {}
+        "listCompaigns": {
+          "deploymentBucketName": "amplify-contente-develop-140523-deployment",
+          "s3Key": "amplify-builds/listCompaigns-346e7535672f42547a38-build.zip"
+        },
+        "getVideoFromAuthCode": {
+          "deploymentBucketName": "amplify-contente-develop-140523-deployment",
+          "s3Key": "amplify-builds/getVideoFromAuthCode-64397a75462b53466449-build.zip"
+        },
+        "GPTLambda": {
+          "deploymentBucketName": "amplify-contente-develop-140523-deployment",
+          "s3Key": "amplify-builds/GPTLambda-6638795748523544366a-build.zip"
+        },
+        "updateUserType": {
+          "deploymentBucketName": "amplify-contente-develop-140523-deployment",
+          "s3Key": "amplify-builds/updateUserType-75764f4c56304142464e-build.zip"
+        },
+        "listAdGroups": {
+          "deploymentBucketName": "amplify-contente-develop-140523-deployment",
+          "s3Key": "amplify-builds/listAdGroups-4a7174754f326a4b5270-build.zip"
+        }
       },
       "hosting": {
         "S3AndCloudFront": {}
