@@ -13,7 +13,7 @@ export const LogoutPage: FC<ProfileProps & AuthProps> = ({
     setAuthState({ ...initialAuthContext });
     cleanProfileState();
     window.location.href =
-      process.env.REACT_APP_CLERK_LANDING_URL ||
+      process.env.REACT_APP_URL ||
       process.env.REACT_APP_URL ||
       '/';
   };

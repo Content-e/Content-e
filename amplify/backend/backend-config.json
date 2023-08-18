@@ -223,6 +223,22 @@
           "resourceName": "updateUserType"
         }
       ]
+    },
+    "AMPLIFY_function_validateTiktokAccess_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "validateTiktokAccess"
+        }
+      ]
+    },
+    "AMPLIFY_function_validateTiktokAccess_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "validateTiktokAccess"
+        }
+      ]
     }
   }
 }

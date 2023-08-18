@@ -1,4 +1,3 @@
-import { UnAuthRoutes } from '../../utils';
 import styled from 'styled-components/macro';
 import { ButtonBlack, Center, Column, Row } from 'components/common';
 import { FC, useState } from 'react';
@@ -11,15 +10,11 @@ const navButtons: { name: string; route: string }[] = [
   { name: `Let's Connect`, route: 'connect' },
 ];
 
-type headerPropsType = {
-  callback?: () => void;
-};
-
-export const Header: FC<headerPropsType> = ({ callback }) => {
+export const Header: FC = () => {
   const [isShowMobileMenu, setIsShowMobileMenu] = useState(false);
   const history = useHistory();
   const redirect = (url: string) => {
-    window.location.href = `${process.env.REACT_APP_CLERK_LANDING_URL}${url}`;
+    window.location.href = `${process.env.REACT_APP_URL}${url}`;
   };
   return (
     <HeaderWrapper>
@@ -44,7 +39,7 @@ export const Header: FC<headerPropsType> = ({ callback }) => {
               ))}
             </MenuMobile>
           ) : null}
-          <SignInButton onClick={callback}>Login or Sign up</SignInButton>
+          <SignInButton onClick={() => history.push("login")}>Login or Sign up</SignInButton>
           <MenuButton
             src={'/images/menu-mobile-hamburger.svg'}
             onClick={() => setIsShowMobileMenu(!isShowMobileMenu)}

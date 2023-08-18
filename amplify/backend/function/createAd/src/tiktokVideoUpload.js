@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 const AWS = require('aws-sdk');
-const s3 = new AWS.S3({ signatureVersion: 'v4' });
+const s3 = new AWS.S3({ signatureVersion: 'v4' }, { region: 'us-east-1' });
 
 const getS3Object = async (key) => {
   try {

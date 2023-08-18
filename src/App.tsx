@@ -13,7 +13,6 @@ import { UnAuthRoutes, UnknownType } from './utils';
 
 Amplify.configure(config);
 
-const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY || '';
 
 const App: React.FC = () => {
   const [allowCookies, setAllowCookies] = useState(
@@ -22,34 +21,34 @@ const App: React.FC = () => {
 
   return (
     <ErrorProvider>
-        <Router>
-          <ScrollToTop />
-          <div className="App">
-            <AuthProvider>
-              <ProfileProvider>
-                <Route path="/" component={MainRouter} />
-              </ProfileProvider>
-            </AuthProvider>
-            {!allowCookies && (
-              <div className="cookies__banner">
-                <p>
-                  We use cookies to help us offer you the best online
-                  experience. By continuing to use our website and / or clicking
-                  OK, you agree to our use of cookies in accordance with our
-                  Privacy Policy.
-                </p>
-                <button
-                  onClick={() => {
-                    localStorage.setItem('allowCookies', 'true');
-                    setAllowCookies('true');
-                  }}
-                >
-                  Ok
-                </button>
-              </div>
-            )}
-          </div>
-        </Router>
+      <Router>
+        <ScrollToTop />
+        <div className="App">
+          <AuthProvider>
+            <ProfileProvider>
+              <Route path="/" component={MainRouter} />
+            </ProfileProvider>
+          </AuthProvider>
+          {!allowCookies && (
+            <div className="cookies__banner">
+              <p>
+                We use cookies to help us offer you the best online
+                experience. By continuing to use our website and / or clicking
+                OK, you agree to our use of cookies in accordance with our
+                Privacy Policy.
+              </p>
+              <button
+                onClick={() => {
+                  localStorage.setItem('allowCookies', 'true');
+                  setAllowCookies('true');
+                }}
+              >
+                Ok
+              </button>
+            </div>
+          )}
+        </div>
+      </Router>
     </ErrorProvider>
   );
 };

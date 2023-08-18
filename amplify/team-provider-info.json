@@ -47,6 +47,10 @@
         "linkTiktokAccount": {
           "deploymentBucketName": "amplify-contente-develop-140523-deployment",
           "s3Key": "amplify-builds/linkTiktokAccount-6f756351714c4656484b-build.zip"
+        },
+        "validateTiktokAccess": {
+          "deploymentBucketName": "amplify-contente-develop-140523-deployment",
+          "s3Key": "amplify-builds/validateTiktokAccess-68523637486f714a782b-build.zip"
         }
       },
       "hosting": {

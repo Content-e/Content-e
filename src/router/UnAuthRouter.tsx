@@ -3,7 +3,7 @@ import withApolloProvider from 'hooks/apollo/withApollo';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { UnAuthFullNameProvider } from 'state/auth';
 import { UnAuthRoutes as path, UnknownType } from 'utils';
-import { LoginPage, RedirectClerk } from 'pages';
+import { LoginPage } from 'pages';
 import AdminLogin from 'components/adminLogin/adminLogin';
 import { TermsAndConditions } from '../pages/termsAndConditions';
 
@@ -11,7 +11,8 @@ const UnAuthRouter: FC = () => {
   return (
     <UnAuthFullNameProvider>
       <Switch>
-        <Route exact path={path.ClerkRedirect} component={RedirectClerk} />
+        {/* TODO: Remove this */}
+        {/* <Route exact path={path.ClerkRedirect} component={RedirectClerk} /> */}
         <Route
           exact
           path={path.TermsAndConditions}

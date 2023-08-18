@@ -1,11 +1,12 @@
 import styled from 'styled-components/macro';
 import { Center, Column, Row } from '../common';
 import { useHistory } from 'react-router-dom';
+import { UnAuthRoutes } from 'utils';
 
 export const Footer = () => {
   const history = useHistory();
   const redirect = (url: string) => {
-    window.location.href = `${process.env.REACT_APP_CLERK_LANDING_URL}${url}`;
+    window.location.href = `${process.env.REACT_APP_URL}${url}`;
   };
   return (
     <>
@@ -31,7 +32,8 @@ export const Footer = () => {
             </FooterColumn>
             <FooterColumn>
               <h1>Join Us</h1>
-              <h3 onClick={() => history.push('/login')}>Login or Sign up</h3>
+              {/* TODO: Use history push like this in all the places */}
+              <h3 onClick={() => history.push(UnAuthRoutes.Login)}>Login or Sign up</h3>
             </FooterColumn>
           </FooterColumns>
         </FooterBody>

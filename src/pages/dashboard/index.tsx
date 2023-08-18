@@ -14,7 +14,9 @@ const Dashboard: React.FC<ProfileProps> = ({ profileState: { data } }) => {
     if (confirmed) {
       setIsShowModal(false);
     }
+    console.log(data?.userType, isShowModal)
   }, []);
+
   if (data?.userType === USER_TYPES.CREATIVE_USER && isShowModal)
     return (
       <Modal
@@ -24,7 +26,7 @@ const Dashboard: React.FC<ProfileProps> = ({ profileState: { data } }) => {
         content="You must agree to terms and conditions to continue."
         handleClose={() => {
           setIsShowModal(false);
-          window.location.href = process.env.REACT_APP_CLERK_LANDING_URL || '/';
+          window.location.href = process.env.REACT_APP_URL || '/';
         }}
         withCheckbox={true}
         checkBoxText={
@@ -33,8 +35,7 @@ const Dashboard: React.FC<ProfileProps> = ({ profileState: { data } }) => {
             <span
               onClick={() => {
                 window.open(
-                  `${
-                    process.env.REACT_APP_URL
+                  `${process.env.REACT_APP_URL
                   }${UnAuthRoutes.TermsAndConditions.slice(1)}`,
                   '_blank'
                 );

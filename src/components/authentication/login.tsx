@@ -4,48 +4,46 @@ import styled from 'styled-components';
 import { ButtonBlack, Center } from '../common';
 import { Header } from '../header';
 import { Footer } from '../footer';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import CognitoAuth from 'components/cognitoAuth';
+import { UnAuthRoutes } from 'utils';
 
 
 export const Login: FC = () => {
+  // TODO: Remove this once we will decide what to do with login default page
   const [userLogin, setUserLogin] = useState<boolean>(false);
-  const history = useHistory();
   const { pathname } = useLocation();
-  const UserSigninOrSignup = (): void => {
-    history.push('/login')
-    setUserLogin(true);
-  };
+
   useEffect(() => {
-   if(pathname!=='/login'){
-    setUserLogin(true);
-  }
-  },[])
+    // TODO: Use checks like this in all the places
+    setUserLogin(pathname !== UnAuthRoutes.Login);
+  }, [pathname]);
+
   return (
-      <Wrapper>
-        <Header callback={UserSigninOrSignup} />
-        <ContentWrapper>
-          {!userLogin ? (
-            <Content>
-              <h1>JOIN AS A CREATOR</h1>
-              <LoginButton
-                onClick={() => {
-                  UserSigninOrSignup();
-                }}
-              >
-                Login
-              </LoginButton>
-              <h3>
-                Are you a brand? Get in touch here or drop us a mail{' '}
-                <a href="mailto:hello@edcsquared.io.">hello@edcsquared.io.</a>
-              </h3>
-            </Content>
-          ) : (
-            <CognitoAuth />
-          )}
-        </ContentWrapper>
-        <Footer />
-      </Wrapper>
+    <Wrapper>
+      <Header />
+      <ContentWrapper>
+        {!userLogin ? (
+          <Content>
+            <h1>JOIN AS A CREATOR</h1>
+            <LoginButton
+              onClick={() => {
+                setUserLogin(true);
+              }}
+            >
+              Login
+            </LoginButton>
+            <h3>
+              Are you a brand? Get in touch here or drop us a mail{' '}
+              <a href="mailto:hello@edcsquared.io.">hello@edcsquared.io.</a>
+            </h3>
+          </Content>
+        ) : (
+          <CognitoAuth />
+        )}
+      </ContentWrapper>
+      <Footer />
+    </Wrapper>
   );
 };
 

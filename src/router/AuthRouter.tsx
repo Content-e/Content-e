@@ -64,6 +64,7 @@ const AuthRouterPaths: FC<ProfileProps> = ({
     }
   }, [pathname, data]);
 
+  // TODO: Here we have a bug fix it.
   if (!isLoading && data)
     return (
       <Switch>

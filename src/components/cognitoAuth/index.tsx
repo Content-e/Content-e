@@ -19,7 +19,7 @@ export const CognitoAuth: FC = () => {
   const { pathname } = useLocation();
   const [user, setUser] = useState(null);
   const [error, setError] = useState('');
-  const [email, setEmail] = useState('dsasad');
+  const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
   const [customState, setCustomState] = useState<string | null>(null);
   const [AuthType, setAuthType] = useState({ type: 'login', text: 'Login' });
@@ -38,13 +38,13 @@ export const CognitoAuth: FC = () => {
     } else if (AuthType.type === 'signup') {
       signUp(data);
     } else {
-        if(emailSended){
-            console.log(email, code);
-            forgotPasswordSubmit(email, code, data.password);
-        }
-        else{
-            forgotPassword(data.email);
-        }
+      if (emailSended) {
+        console.log(email, code);
+        forgotPasswordSubmit(email, code, data.password);
+      }
+      else {
+        forgotPassword(data.email);
+      }
     }
   };
 
@@ -89,18 +89,21 @@ export const CognitoAuth: FC = () => {
   const signUp = async ({ email, password }: SignInParameters) => {
     try {
       const { user } = await Auth.signUp(email, password);
+
       console.log(user);
     } catch (error) {
-        AuthError(error?.message);
+      AuthError(error?.message);
     }
   };
 
   const signIn = async ({ email, password }: SignInParameters) => {
     try {
       const user = await Auth.signIn(email, password);
+      // TODO: Update to use history instead of window.location.href
+      window.location.href = '/dashboard'
       console.log(user);
     } catch (error) {
-        AuthError(error?.message);
+      AuthError(error?.message);
     }
   };
 
@@ -150,7 +153,7 @@ export const CognitoAuth: FC = () => {
   const AuthError = (error) => {
     setError(error);
     setTimeout(() => {
-        setError('')
+      setError('')
     }, 4000);
   };
 
@@ -184,13 +187,13 @@ export const CognitoAuth: FC = () => {
           </LoginChoice>
         </>
       )}
-        {AuthType.type !== 'resetPass' ? (
-          <CognitoLogin {...{ register, callback: signIn }} />
-        ) : (
-          <CognitoForgotPassword
-            {...{ register, callback: sendForgotPassCode, emailSended }}
-          />
-        )}
+      {AuthType.type !== 'resetPass' ? (
+        <CognitoLogin {...{ register, callback: signIn }} />
+      ) : (
+        <CognitoForgotPassword
+          {...{ register, callback: sendForgotPassCode, emailSended }}
+        />
+      )}
       {AuthType.type !== 'resetPass' && (
         <div className="my-3 d-flex justify-between align-items-center">
           <CheckForm>
@@ -228,7 +231,7 @@ export const CognitoAuth: FC = () => {
           )}{' '}
         </span>
         If you're a brand please get in touch{' '}
-        <a href={process.env.REACT_APP_CLERK_LANDING_URL}>here.</a>
+        <a href={process.env.REACT_APP_URL}>here.</a>
       </SignUpText>
       {errors.email || errors.password || error ? (
         <ErrorMessage>
