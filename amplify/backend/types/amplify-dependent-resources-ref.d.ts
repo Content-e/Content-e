@@ -20,6 +20,13 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "GPTLambda": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "createAd": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
@@ -28,6 +35,27 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string"
     },
     "getVideoFromAuthCode": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "listAdGroups": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "listCompaigns": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "updateUserType": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
