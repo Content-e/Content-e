@@ -43,6 +43,10 @@
         "listAdGroups": {
           "deploymentBucketName": "amplify-contente-develop-140523-deployment",
           "s3Key": "amplify-builds/listAdGroups-4a7174754f326a4b5270-build.zip"
+        },
+        "linkTiktokAccount": {
+          "deploymentBucketName": "amplify-contente-develop-140523-deployment",
+          "s3Key": "amplify-builds/linkTiktokAccount-6f756351714c4656484b-build.zip"
         }
       },
       "hosting": {

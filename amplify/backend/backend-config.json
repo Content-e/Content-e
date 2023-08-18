@@ -98,6 +98,11 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "validateTiktokAccess": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "hosting": {
@@ -152,6 +157,22 @@
         {
           "category": "function",
           "resourceName": "getVideoFromAuthCode"
+        }
+      ]
+    },
+    "AMPLIFY_function_linkTiktokAccount_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "linkTiktokAccount"
+        }
+      ]
+    },
+    "AMPLIFY_function_linkTiktokAccount_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "linkTiktokAccount"
         }
       ]
     },
